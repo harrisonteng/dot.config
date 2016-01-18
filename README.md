@@ -1,2 +1,3 @@
 # dot.config
-dot files like shell env and editors
+1. dot files like shell env and editors
+2. make sure your key is right
