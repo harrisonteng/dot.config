@@ -1,0 +1,61 @@
+;; Object src/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "src/"
+  :tables (list 
+   (semanticdb-table "threadpool.py"
+    :major-mode 'python-mode
+    :tags '(("\"\"\"Easy to use object-oriented thread pool framework.
+
+A thread pool is an object that maintains a pool of worker threads to perform
+time consuming operations in parallel. It assigns jobs to the threads
+by putting them in a work request queue, where they are picked up by the
+next available thread. This then performs the requested operation in the
+background and puts the results in another queue.
+
+The thread pool object can then collect the results from all threads from
+this queue as soon as they become available or after all threads have
+finished their work. It's also possible, to define callbacks to handle
+each result as it comes in.
+
+The basic concept and some code was taken from the book \"Python in a Nutshell,
+2nd edition\" by Alex Martelli, O'Reilly 2006, ISBN 0-596-10046-9, from section
+14.5 \"Threaded Program Architecture\". I wrapped the main program logic in the
+ThreadPool class, added the WorkRequest class and the callback system and
+tweaked the code here and there. Kudos also to Florent Aide for the exception
+handling mechanism.
+
+Basic usage::
+
+    >>> pool = ThreadPool(poolsize)
+    >>> requests = makeRequests(some_callable, list_of_args, callback)
+    >>> [pool.putRequest(req) for req in requests]
+    >>> pool.wait()
+
+See the end of the module code for a brief, annotated usage example.
+
+Website : http://chrisarndt.de/projects/threadpool/
+
+\"\"\"" code nil nil [25 1398]) ("__docformat__" variable nil nil [1399 1436]) ("__all__" variable nil nil [1438 1577]) ("__author__" variable nil nil [1579 1611]) ("__version__" variable nil nil [1612 1633]) ("__revision__" variable nil nil [1634 1667]) ("__date__" variable nil nil [1668 1734]) ("__license__" variable nil nil [1735 1762]) ("sys" include nil (dependency-file none) [1792 1802]) ("threading" include nil (dependency-file none) [1803 1819]) ("Queue" include nil (dependency-file none) [1820 1832]) ("traceback" include nil (dependency-file none) [1833 1849]) ("NoResultsPending" type (:superclasses ("Exception") :members (("\"\"\"All work requests have been processed.\"\"\"" code nil (reparse-symbol indented_block_body) [1904 1948]) ("pass" code nil (reparse-symbol indented_block_body) [1953 1957])) :type "class") nil [1865 1958]) ("NoWorkersAvailable" type (:superclasses ("Exception") :members (("\"\"\"No worker threads available to process remaining requests.\"\"\"" code nil (reparse-symbol indented_block_body) [2000 2064]) ("pass" code nil (reparse-symbol indented_block_body) [2069 2073])) :type "class") nil [1959 2074]) ("_handle_thread_exception" function (:arguments (("request" variable nil (reparse-symbol function_parameters) [2140 2147]) ("exc_info" variable nil (reparse-symbol function_parameters) [2149 2157]))) nil [2111 2338]) ("makeRequests" function (:arguments (("callable_" variable nil (reparse-symbol function_parameters) [2377 2386]) ("args_list" variable nil (reparse-symbol function_parameters) [2388 2397]) ("callback" variable nil (reparse-symbol function_parameters) [2399 2407]) ("exc_callback" variable nil (reparse-symbol function_parameters) [2422 2434]))) nil [2360 3512]) ("WorkerThread" type (:superclasses ("threading.Thread") :members (("\"\"\"Background thread connected to the requests/results queues.
+
+    A worker thread sits in the background and picks up work requests from
+    one queue and puts the results in another until it is dismissed.
+
+    \"\"\"" code nil (reparse-symbol indented_block_body) [3566 3782]) ("__init__" function (:arguments (("self" variable nil (reparse-symbol function_parameters) [3801 3805]) ("requests_queue" variable nil (reparse-symbol function_parameters) [3807 3821]) ("results_queue" variable nil (reparse-symbol function_parameters) [3823 3836]) ("poll_timeout" variable nil (reparse-symbol function_parameters) [3838 3850]) ("kwds" variable nil (reparse-symbol function_parameters) [3854 3860]))) (reparse-symbol indented_block_body) [3788 4387]) ("run" function (:arguments (("self" variable nil (reparse-symbol function_parameters) [4400 4404]))) (reparse-symbol indented_block_body) [4392 5510]) ("dismiss" function (:arguments (("self" variable nil (reparse-symbol function_parameters) [5527 5531]))) (reparse-symbol indented_block_body) [5515 5645])) :type "class") nil [3524 5645]) ("WorkRequest" type (:members (("\"\"\"A request to execute a callable for putting in the request queue later.
+
+    See the module function ``makeRequests`` for the common case
+    where you want to build several ``WorkRequest`` objects for the same
+    callable but with different arguments for each call.
+
+    \"\"\"" code nil (reparse-symbol indented_block_body) [5670 5949]) ("__init__" function (:arguments (("self" variable nil (reparse-symbol function_parameters) [5968 5972]) ("callable_" variable nil (reparse-symbol function_parameters) [5974 5983]) ("args" variable nil (reparse-symbol function_parameters) [5985 5989]) ("kwds" variable nil (reparse-symbol function_parameters) [5996 6000]) ("requestID" variable nil (reparse-symbol function_parameters) [6007 6016]) ("callback" variable nil (reparse-symbol function_parameters) [6035 6043]) ("exc_callback" variable nil (reparse-symbol function_parameters) [6050 6062]))) (reparse-symbol indented_block_body) [5955 7862]) ("__str__" function (:arguments (("self" variable nil (reparse-symbol function_parameters) [7879 7883]))) (reparse-symbol indented_block_body) [7867 8025])) :type "class") nil [5647 8025]) ("ThreadPool" type (:members (("\"\"\"A thread pool, distributing work requests and collecting results.
+
+    See the module docstring for more information.
+
+    \"\"\"" code nil (reparse-symbol indented_block_body) [8048 8177]) ("__init__" function (:arguments (("self" variable nil (reparse-symbol function_parameters) [8196 8200]) ("num_workers" variable nil (reparse-symbol function_parameters) [8202 8213]) ("q_size" variable nil (reparse-symbol function_parameters) [8215 8221]) ("resq_size" variable nil (reparse-symbol function_parameters) [8225 8234]) ("poll_timeout" variable nil (reparse-symbol function_parameters) [8238 8250]))) (reparse-symbol indented_block_body) [8183 9544]) ("createWorkers" function (:arguments (("self" variable nil (reparse-symbol function_parameters) [9567 9571]) ("num_workers" variable nil (reparse-symbol function_parameters) [9573 9584]) ("poll_timeout" variable nil (reparse-symbol function_parameters) [9586 9598]))) (reparse-symbol indented_block_body) [9549 10015]) ("dismissWorkers" function (:arguments (("self" variable nil (reparse-symbol function_parameters) [10039 10043]) ("num_workers" variable nil (reparse-symbol function_parameters) [10045 10056]) ("do_join" variable nil (reparse-symbol function_parameters) [10058 10065]))) (reparse-symbol indented_block_body) [10020 10510]) ("joinAllDismissedWorkers" function (:arguments (("self" variable nil (reparse-symbol function_parameters) [10543 10547]))) (reparse-symbol indented_block_body) [10515 10749]) ("putRequest" function (:arguments (("self" variable nil (reparse-symbol function_parameters) [10769 10773]) ("request" variable nil (reparse-symbol function_parameters) [10775 10782]) ("block" variable nil (reparse-symbol function_parameters) [10784 10789]) ("timeout" variable nil (reparse-symbol function_parameters) [10796 10803]))) (reparse-symbol indented_block_body) [10754 11141]) ("poll" function (:arguments (("self" variable nil (reparse-symbol function_parameters) [11155 11159]) ("block" variable nil (reparse-symbol function_parameters) [11161 11166]))) (reparse-symbol indented_block_body) [11146 12140]) ("wait" function (:arguments (("self" variable nil (reparse-symbol function_parameters) [12154 12158]))) (reparse-symbol indented_block_body) [12145 12351])) :type "class") nil [8026 12351]) ("if" code nil nil [12404 15710]))
+    :file "threadpool.py"
+    :pointmax 15710
+    )
+   )
+  :file "semantic.cache"
+  :semantic-tag-version "2.0pre4"
+  :semanticdb-version "2.0pre4"
+  )

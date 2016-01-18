@@ -1,0 +1,37 @@
+p5hacks:~/p5hacks/examples$ module-starter --class=Module::Starter::XSimple --module="XSHello" --author="Shlomi Fish" --email="shlomif@iglu.org.il" --mb
+Created starter directories and files
+p5hacks:~/p5hacks/examples$ cd XSHello
+p5hacks:~/p5hacks/examples/XSHello$ rm t/boilerplate.t
+rm: remove regular file `t/boilerplate.t'? y
+p5hacks:~/p5hacks/examples/XSHello$ perl -n -i -e 'print if !/boilerplate/' MANIFEST
+p5hacks:~/p5hacks/examples/XSHello$ ls
+Build.PL  Changes  lib/  MANIFEST  ppport.h  README  t/
+p5hacks:~/p5hacks/examples/XSHello$ perl Build.PL
+Checking whether your kit is complete...
+WARNING: the following files are missing in your kit:
+        META.yml
+Please inform the author.
+
+Checking prerequisites...
+Looks good
+
+Creating new 'Build' script for 'XSHello' version '0.01'
+p5hacks:~/p5hacks/examples/XSHello$ ./Build test
+lib/XSHello.pm -> blib/lib/XSHello.pm
+lib/XSHello.xs -> lib/XSHello.c
+/usr/bin/perl5.8.8 -I/usr/lib/perl5/5.8.8/i386-linux -I/usr/lib/perl5/5.8.8 /usr/lib/perl5/5.8.8/ExtUtils/xsubpp -noprototypes -typemap /usr/lib/perl5/5.8.8/ExtUtils/typemap -typemap typemap lib/XSHello.xs
+gcc -I. -I/usr/lib/perl5/5.8.8/i386-linux/CORE -DXS_VERSION="0.01" -DVERSION="0.01" -fPIC -c -fno-strict-aliasing -pipe -Wdeclaration-after-statement -I/usr/local/include -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64 -I/usr/include/gdbm -O2 -pipe -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fomit-frame-pointer -march=i586 -mtune=generic -fasynchronous-unwind-tables -o lib/XSHello.o lib/XSHello.c
+XSHello.xs: In function ‘XS_XSHello_increment’:
+XSHello.xs:59: warning: ISO C90 forbids mixed declarations and code
+ExtUtils::Mkbootstrap::Mkbootstrap('blib/arch/auto/XSHello/XSHello.bs')
+gcc -shared -L/usr/local/lib -o blib/arch/auto/XSHello/XSHello.so lib/XSHello.o
+t/00-load.........ok 1/1# Testing XSHello 0.01, Perl 5.008008, /usr/bin/perl5.8.8
+t/00-load.........ok
+t/01-object.......ok
+t/02-feature......ok
+t/pod-coverage....ok
+t/pod.............ok
+All tests successful.
+Files=5, Tests=18,  0 wallclock secs ( 0.38 cusr +  0.06 csys =  0.44 CPU)
+p5hacks:~/p5hacks/examples/XSHello$
+

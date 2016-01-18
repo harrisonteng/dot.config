@@ -1,0 +1,1272 @@
+
+/emcsvn/emc/emcspamd/trunk/src/dcc/dccproc.c,2452
+static char *rcsid rcsid23,944
+static void use_rcsid(24,1024
+static DCC_EMSG dcc_emsg;45,1388
+static const char *homedir;homedir47,1415
+static const char *mapfile_nm mapfile_nm48,1443
+static const char *logdir;logdir50,1492
+static DCC_PATH log_nm;51,1519
+static int lfd 52,1543
+static u_char logging 53,1564
+static u_char honor;54,1631
+static const char *tmpdir;tmpdir56,1653
+static DCC_PATH tfile_nm;57,1680
+static int tfd 58,1706
+static u_char tfd_rewound;59,1727
+static int hdrs_len,60,1754
+static int hdrs_len, body_len;60,1754
+static u_char seen_hdr;61,1785
+static DCC_TGTS targets 63,1810
+static u_char targets_set;64,1839
+static int total_hdrs,65,1866
+static int total_hdrs, cr_hdrs;65,1866
+static const char* white_nm;67,1899
+static const char *ifile_nm ifile_nm68,1928
+static FILE *ifile,ifile69,1989
+static FILE *ifile, *ofile;ofile69,1989
+static DCC_WF cmn_wf;71,2018
+static DCC_CLNT_CTXT *ctxt;ctxt72,2040
+static char xhdr[xhdr73,2068
+static int xhdr_len;74,2130
+static u_char add_xhdr;75,2151
+static u_char query_only;76,2213
+static u_char cksums_only;77,2239
+static u_char x_dcc_only;78,2295
+static u_char fake_envelope;79,2357
+static u_char std_received;80,2417
+static DCC_GOT_CKS cks;82,2486
+static DCC_CKS_WTGTS wtgts;83,2510
+static char clnt_name_buf[clnt_name_buf84,2538
+static char clnt_str_buf[clnt_str_buf85,2601
+static const char *clnt_str;clnt_str86,2645
+static struct in6_addr clnt_addr;87,2674
+static char env_from_buf[env_from_buf89,2709
+static const char *env_from;env_from90,2753
+static DCC_HEADER_BUF header;92,2783
+static u_char get_hdr(94,2814
+static  u_char	get_hdr_from_buffer(96,2881
+static void twrite(98,2971
+static int tread(99,3010
+static void scopy(100,3041
+static void log_write(101,3073
+static void log_print(102,3115
+#define LOG_CAPTION(103,3170
+#define LOG_EOL(104,3222
+int lookup_dcc_test(117,3572
+void checksum_headers_test(222,5879
+#define GET_HDR_CK(235,6199
+#undef GET_HDR_CK243,6499
+char * lookup_dcc_test2(342,8964
+#define GET_HDR_CK(394,10192
+#undef GET_HDR_CK402,10506
+usage(575,14614
+main_(588,14973
+#define GET_HDR_CK(853,20441
+#undef GET_HDR_CK861,20748
+get_hdr_from_buffer(1059,25474
+get_hdr(1185,28210
+twrite(1276,30198
+tread(1300,30581
+scopy(1321,30896
+log_write(1389,32159
+vlog_print(1412,32453
+log_print(1425,32650
+log_fin(1437,32772
+log_ck(1452,32965
+dccproc_error_msg(1462,33116
+sigterm(1538,34603
+
+/emcsvn/emc/emcspamd/trunk/src/dcc/emcdcc.c,280
+static char *rcsid rcsid1,0
+static void use_rcsid(2,79
+extern DomainPolicy gDomainPolicy;17,359
+#define REPORT_FORMAT_LINE 23,487
+#define SHORT_REPORT_LINE 24,550
+#define LONG_REPORT_LINE 25,582
+void make_dcc_report(27,637
+int get_dcc(57,1205
+double lookup_dcc(145,3075
+
+/emcsvn/emc/emcspamd/trunk/src/dcc/emcdcc.h,147
+#define __emc_dcc_h2,20
+#define DCC_MANY_SCORE 4,41
+extern const char * gProgramName;7,91
+extern int 			gDebug;8,125
+double lookup_dcc(10,148
+
+/emcsvn/emc/emcspamd/trunk/src/rbl/rbl.c,575
+static char *rcsid rcsid1,0
+static void use_rcsid(2,76
+extern CfgFile *gConfig;gConfig16,312
+#define REPORT_FORMAT_LINE 18,338
+#define SHORT_REPORT_LINE 19,401
+#define LONG_REPORT_LINE 20,433
+#define BIT_SC_SURBL 25,581
+#define BIT_WS_SURBL 26,604
+#define BIT_PHISHING 27,627
+#define BIT_OB_SURBL 28,650
+#define BIT_AB_SURBL 29,674
+#define BIT_JP	30,698
+const char *extract_top_domain(extract_top_domain32,717
+BOOL do_rbl(34,768
+void make_rbl_report(36,818
+BOOL do_host_rbl(60,1234
+BOOL do_rbl(122,2534
+BOOL do_surbl(167,3656
+double lookup_rbl(229,5346
+
+/emcsvn/emc/emcspamd/trunk/src/rbl/rbl.h,114
+#define __emc_rbl_h2,20
+double lookup_rbl(5,63
+BOOL do_host_rbl(8,157
+BOOL do_rbl(9,217
+BOOL do_surbl(10,266
+
+/emcsvn/emc/emcspamd/trunk/src/debug.c,249
+static char *rcsid rcsid1,0
+static void use_rcsid(2,78
+int gDebug[gDebug11,229
+extern char *         gMsgID;13,266
+#define DEBUG_BUFFER_LEN 15,297
+DebugLevel	gDebugLevels[gDebugLevels17,328
+void init_debug_level(36,839
+void debug(59,1325
+
+/emcsvn/emc/emcspamd/trunk/src/spam_worker.c,889
+static char *rcsid rcsid1,0
+static void use_rcsid(2,84
+extern BOOL					gSingleMode;14,283
+extern const char * 		gComAdapterName;15,312
+extern const char * 		gComAdapters[gComAdapters16,351
+extern AdapterInputHook * 	gComAdapterHooks[gComAdapterHooks17,389
+extern int 					gTotalIdle;18,436
+extern worker_slot *		gWorkers;19,464
+extern int					gMaxChildRequests;20,496
+extern int					gParentPid;21,530
+extern DomainPolicy 		gDomainPolicy;22,557
+extern CfgFile *			gConfig;23,594
+extern SpammerSettings		gSpammerSettings;24,622
+extern long					gTotalMsgSize;28,710
+extern long					gTotalUSecs;29,741
+extern long					gTotalMsgs;30,770
+BOOL						gQuitRequested 33,800
+int 						gChildIndex 34,834
+int							gCurChildRequests 35,862
+int safe_accept(37,896
+void handle_con(61,1263
+void report_child_stats(82,1721
+void spam_main(89,1942
+pid_t make_spam_worker(139,3093
+
+/emcsvn/emc/emcspamd/trunk/src/bayes/message_body.c,147
+static char *rcsid rcsid1,0
+static void use_rcsid(2,85
+GMimePart *multi_get_body multi_get_body40,1382
+GMimePart *get_body get_body104,3183
+
+/emcsvn/emc/emcspamd/trunk/src/bayes/message_body.h,111
+#define MESSAGE_BODY_H2,23
+GMimePart *multi_get_body multi_get_body4,47
+GMimePart *get_body get_body5,111
+
+/emcsvn/emc/emcspamd/trunk/src/bayes/zentimer.h,980
+#define __ZENTIMER_H__24,932
+	time_t sec;40,1203
+	unsigned short msec;41,1216
+} ztime_t;42,1238
+typedef struct _ztimer_t 44,1250
+	ztime_t start;45,1277
+	ztime_t stop;46,1293
+} ztimer_t;47,1308
+#define ZTIMER_INITIALIZER 49,1321
+#    define G_STMT_START	65,1986
+#    define G_STMT_END	66,2019
+#      define G_STMT_START	69,2098
+#      define G_STMT_END	70,2132
+#      define G_STMT_START	72,2180
+#      define G_STMT_END	73,2210
+ztime 80,2302
+ztime 90,2465
+ztime_diff 102,2711
+static ztimer_t zen_ztimer 113,2919
+#define ZenTimerStart(115,2969
+#define ZenTimerStop(116,3018
+#define ZenTimerReport(118,3067
+#define ZenTimerMTStart(131,3681
+#define ZenTimerMTStop(132,3737
+#define ZenTimerMTReport(134,3793
+#define ztime(147,4387
+#define ztime_diff(148,4404
+#define ZenTimerStart(149,4442
+#define ZenTimerStop(150,4466
+#define ZenTimerReport(151,4489
+#define ZenTimerMTStart(152,4518
+#define ZenTimerMTStop(153,4550
+#define ZenTimerMTReport(154,4581
+
+/emcsvn/emc/emcspamd/trunk/src/bayes/bayes.c,1078
+static char *rcsid rcsid1,0
+static void use_rcsid(2,78
+#define PARSE_PLAIN_LEN 24,431
+#define REPORT_FORMAT_LINE 26,474
+#define SHORT_REPORT_LINE 27,537
+#define LONG_REPORT_LINE 28,571
+extern const char * gDefaultBayesTermsSqtFile;30,624
+void dump_slist(32,672
+void dump_list(33,703
+double average_count_from_terms(34,732
+double text_html_diff(35,779
+gboolean free_hash_data(36,840
+const char *spam_sqt_file spam_sqt_file38,911
+BOOL gTermsPreloaded 40,965
+long sqlite_usecs 41,995
+Stopwatch sw;42,1018
+GHashTable * cache_terms 44,1033
+inline void insert_into_terms_cache(46,1067
+inline int lookup_terms_cache(63,1429
+void load_bayes_term_counts(87,1836
+void make_bayes_report(172,3466
+double scale_score(206,4073
+double lookup_bayes(233,4558
+gboolean free_hash_data(642,15781
+double text_html_diff(650,15898
+GList *cull_random_terms(cull_random_terms748,18045
+GSList *get_words_from_terms(get_words_from_terms930,22115
+void dump_slist(949,22464
+void dump_list(960,22695
+void emc_g_list_free(971,22941
+double average_count_from_terms(984,23147
+
+/emcsvn/emc/emcspamd/trunk/src/bayes/bayes.h,516
+#define __emc_bayes_h2,22
+#define TERM_FOUND 8,117
+#define TERM_NOT_FOUND 9,138
+#define TERM_DOESNT_EXIST 10,163
+typedef struct TermCounts 12,193
+	int ns;13,221
+	int nh;14,230
+} TermCounts;15,239
+double scale_score(17,254
+double lookup_bayes(24,394
+inline void insert_into_terms_cache(30,586
+inline BOOL lookup_terms_cache(31,660
+GList *cull_random_terms(cull_random_terms32,733
+void emc_g_list_free(33,806
+GSList *get_words_from_terms(get_words_from_terms34,841
+void load_bayes_term_counts(36,886
+
+/emcsvn/emc/emcspamd/trunk/src/bayes/parse.c,805
+static char *rcsid rcsid1,0
+static void use_rcsid(2,78
+extern Stopwatch sw;22,429
+extern GHashTable * cache_terms;28,496
+#define BUFLEN 30,530
+void printlistel(32,551
+GSList *devolve_token(devolve_token55,1038
+int term_sorter(154,3460
+int most_significant(184,3940
+int sqlite_get_tuple(202,4159
+void sqlite_get_token(250,4973
+void sqlite_get_term_counts(313,6125
+GList *sqlite_lookup_tokens(sqlite_lookup_tokens333,6410
+struct term *sqlite_get_probability(sqlite_get_probability362,7132
+GSList *parse_headers(parse_headers454,9131
+char *scrub_text(scrub_text537,11242
+GSList *parse_plain(parse_plain565,11708
+char *gettoken(gettoken745,16982
+double pw(777,17466
+double fw(797,17740
+void calculate(805,17857
+double chi2Q(929,20229
+GSList *token_vector(token_vector945,20449
+
+/emcsvn/emc/emcspamd/trunk/src/bayes/parse.h,744
+#define _PARSE_H4,38
+GSList *parse_plain(parse_plain8,75
+GSList *parse_headers(parse_headers9,143
+GSList *parse_html(parse_html10,200
+GSList *devolve_token(devolve_token11,268
+char *gettoken(gettoken14,339
+void printlistel(15,371
+int term_sorter(16,409
+int most_significant(17,460
+struct term 19,507
+	char *term;term20,521
+	char *other;other21,534
+	double p;22,548
+	int ns;23,559
+	int nh;24,568
+	double avg;25,577
+double fw(28,594
+double pw(29,626
+double chi2Q(30,667
+void calculate(31,703
+struct term *sqlite_get_probability(sqlite_get_probability33,818
+GList *sqlite_lookup_tokens(sqlite_lookup_tokens34,882
+int sqlite_get_tuple(35,955
+void sqlite_get_token(36,1002
+GSList *token_vector(token_vector37,1068
+
+/emcsvn/emc/emcspamd/trunk/src/bayes/orig-bayes.c,108
+static char *rcsid rcsid1,0
+static void use_rcsid(2,83
+double bayes(26,511
+double scale_score(171,3626
+
+/emcsvn/emc/emcspamd/trunk/src/bayes/orig-bayes.h,65
+#define BAYES_H2,16
+double bayes(6,58
+double scale_score(7,93
+
+/emcsvn/emc/emcspamd/trunk/src/rules/rules.c,1117
+static char *rcsid rcsid6,86
+static void use_rcsid(7,164
+#define OVECSIZE	31,594
+#define RULESET_INC 32,614
+#define SEARCH_TEXT 34,639
+#define SEARCH_BODY 35,661
+#define SEARCH_URI 36,683
+#define SEARCH_TAGS 37,705
+#define SEARCH_HEAD 38,727
+#define READ_BUFFER_SIZE 40,750
+extern int			gDebug[gDebug42,793
+extern int			gMatchedRules[gMatchedRules43,816
+extern int			gNumMatchedRules;44,846
+BOOL				gRulesHeaderDone 46,878
+struct spamrule *	gRuleset 47,912
+char *				gRulesetFilename 48,947
+void rule_debug(50,983
+#define REPORT_FORMAT_LINE 60,1157
+void make_rules_report(63,1231
+int show_mime(103,1854
+void rules_realloc(188,3888
+int make_pcre(214,4623
+void rules_free(261,5401
+#define REPORT_LINE_ERROR 279,5736
+int rules_read(281,5834
+void rules_global_init(380,8196
+void rules_init(405,8758
+double do_generic_match(427,9311
+double do_header_rule(485,10893
+double do_headers_rule(545,12559
+inline BOOL is_rule_simple(554,12797
+inline BOOL is_rule_icase(575,13040
+double do_simple_match(597,13347
+char *lowercase_buffer(lowercase_buffer657,14978
+double lookup_rules(678,15299
+
+/emcsvn/emc/emcspamd/trunk/src/rules/rules.h,478
+#define __spam_rule_h2,22
+#define COMPARE_CONTAINS	12,168
+#define COMPARE_DOESNT_CONTAIN	13,196
+typedef struct spamrule 15,230
+	char *shortname;shortname16,256
+	double score;17,274
+	char *search;search18,289
+	int compare_type;19,304
+	char *retext;retext20,323
+	pcre *re;re21,338
+	pcre_extra *pe;pe22,349
+	char *longname;longname23,366
+} spamrule;24,383
+void rules_global_init(26,396
+int rules_read(27,442
+void rules_init(28,507
+double lookup_rules(29,553
+
+/emcsvn/emc/emcspamd/trunk/src/specials/gif.c,100
+static char *rcsid rcsid1,0
+static void use_rcsid(2,29
+int readFunc(12,198
+int read_gif(20,374
+
+/emcsvn/emc/emcspamd/trunk/src/specials/gif.h,42
+#define EMC_GIF_H2,18
+int read_gif(3,36
+
+/emcsvn/emc/emcspamd/trunk/src/specials/uri.c,130
+static char *rcsid rcsid1,0
+static void use_rcsid(2,76
+int main(16,296
+static int php_htoi(35,532
+int php_url_decode(60,896
+
+/emcsvn/emc/emcspamd/trunk/src/specials/uri.h,44
+#define URI_H2,14
+int php_url_decode(4,29
+
+/emcsvn/emc/emcspamd/trunk/src/specials/specials.c,3979
+static char *rcsid rcsid1,0
+static void use_rcsid(2,81
+#define _GNU_SOURCE8,189
+#define OVECSIZE 40,754
+#define PCRE_OPT 41,774
+typedef struct AllowDenyList_t 43,806
+  GHashTable *global;global44,839
+  GHashTable *domain;domain45,861
+  GHashTable *user;user46,883
+} AllowDenyList;47,903
+#define WL_ERROR 54,988
+#define WL_NO_HITS 55,1012
+#define WL_HIT_ALLOW 56,1036
+#define WL_HIT_DENY 57,1060
+extern SpammerSettings gSpammerSettings;60,1086
+extern int gDebug[gDebug61,1127
+extern MYSQL mysql_sock;62,1148
+extern GHashTable *ccTLD;ccTLD63,1173
+extern const char *gDefaultTuplesSqtFile;gDefaultTuplesSqtFile65,1200
+BOOL gSpecialsHeaderDone 67,1243
+static void hash_sbl(69,1278
+int to_equals_from(71,1353
+int only_html(73,1430
+int forged_hotmail(75,1502
+int forged_yahoo(77,1579
+int base64_body(79,1649
+int html_with_null_text(81,1723
+int image_only(83,1805
+int obfuscated_words(85,1878
+int low_html_content(87,1952
+int forged_outlook_express(89,2026
+int xpriority_mismatch(91,2111
+int delay_check(93,2187
+int has_non_img_attachment(95,2257
+int has_tif_fax_attachment(97,2337
+int missing_mimeole(99,2417
+int html_no_charset(101,2506
+int random_email_test(103,2597
+int iplog(105,2690
+int multipart_text_ratio(107,2770
+int completely_blank(109,2865
+int outlook_no_msgid(111,2956
+int html_only_outlook(113,3048
+int priority_noxmailer(115,3141
+int multi_only_html(117,3234
+int forged_aol_mua(119,3324
+int no_date_field(121,3416
+int bad_mime(123,3504
+int random_text_added(125,3587
+int html_no_html(127,3678
+int text_html_info(129,3764
+int uri_sbl_match(131,3852
+int check_illegal_subject_chars(133,3939
+int suspect_msgid(135,4041
+int html_text_difference(137,4128
+int emc_black_list(139,4223
+int uri_surbl_match(141,4311
+int no_received(143,4400
+int is_gif_spam(145,4485
+int spoofed_received(147,4570
+const char *extract_top_domain(extract_top_domain150,4661
+char *mysql_quote(mysql_quote152,4712
+char *str_tolower(str_tolower153,4764
+int has_gif_attach(154,4801
+SpecialRule gSpecials[gSpecials157,4836
+#define LONG_REPORT_LINE 202,8451
+#define REPORT_FORMAT_LINE 203,8509
+char *mysql_quote(mysql_quote208,8596
+char *str_tolower(str_tolower230,8927
+void make_specials_report(256,9219
+double lookup_specials(289,9852
+GList *parse_address(parse_address350,11366
+double random_address_test(409,12384
+int random_email_test(487,13989
+int multipart_text_ratio(526,14824
+int html_only_outlook(550,15369
+int outlook_no_msgid(582,16022
+int suspect_msgid(616,16777
+int is_gif_spam(683,18094
+int has_gif_attach(714,18565
+int has_tif_attach(911,23555
+int has_attach(941,24157
+int has_tif_fax_attachment(1038,27672
+int has_non_img_attachment(1053,28040
+int delay_check(1071,28391
+int missing_mimeole(1208,31737
+int to_equals_from(1242,32496
+int html_no_charset(1268,33019
+int only_html(1307,33762
+pcre *re1 re11343,34371
+pcre *re2 re21344,34389
+int forged_yahoo(1348,34431
+int html_with_null_text(1413,35936
+int priority_noxmailer(1436,36368
+int xpriority_mismatch(1472,37271
+int forged_outlook_express(1519,38387
+int low_html_content(1567,39381
+int text_html_info(1596,39957
+int html_no_html(1635,40880
+int html_text_difference(1661,41536
+int random_text_added(1687,42090
+int obfuscated_words(1762,43913
+int completely_blank(1788,44404
+int image_only(1847,45701
+int no_date_field(1889,46562
+int bad_mime 1912,46958
+int multi_only_html(1950,47657
+int forged_aol_mua(1987,48600
+int base64_body(2029,49460
+pcre * fh_re 2074,50491
+int forged_hotmail(2078,50538
+int iplog(2124,51513
+const char *extract_top_domain(extract_top_domain2357,56955
+int is_ip(2446,58911
+int spoofed_received(2477,59282
+int no_received(2556,60929
+static void freekey(2606,61960
+static void hash_sbl(2611,62043
+static void hash_surbl(2622,62255
+int uri_dnsbl_match_string(2661,63087
+int uri_surbl_match(2731,64646
+int uri_sbl_match(2877,68230
+int check_illegal_subject_chars(2997,70773
+
+/emcsvn/emc/emcspamd/trunk/src/specials/specials.h,358
+#define __emc_specials_h2,25
+double lookup_specials(7,96
+typedef struct special_rule 14,242
+	char *shortname;shortname15,272
+	double score;16,290
+	int (*func)func17,305
+	char *description;description18,372
+} SpecialRule;19,392
+#define SPECIAL_WHITELIST 21,408
+#define SPECIAL_BAYES 23,437
+#define SPECIAL_SBL 24,461
+#define SPECIAL_DCC 25,485
+
+/emcsvn/emc/emcspamd/trunk/src/emcspamdcmd/emcspamdcmd.c,3697
+static char *rcsid rcsid1,0
+static void use_rcsid(2,79
+#define WARNINGS 39,783
+typedef struct sMailMessage 42,804
+	char *content;content43,834
+	int content_length;44,850
+	EMimeMessage *message;message45,871
+	ParsedMessageBody *body;body46,896
+	char *sender;sender47,922
+	char *recipient;recipient48,937
+	char *userid;userid49,955
+	char *domain;domain50,970
+	char *ip;ip51,985
+} MailMessage;52,996
+CfgFile *gConfig gConfig56,1076
+const char *gDefaultTuplesSqtFile gDefaultTuplesSqtFile57,1101
+GHashTable *ccTLD ccTLD58,1143
+char *	gDefaultBayesTermsSqtFile 59,1169
+BOOL gRecalcChildren 60,1210
+BOOL gEnforcePolicy 61,1240
+BOOL gInShutdown 62,1269
+int gMaxChildren 63,1295
+const char * gComAdapters[gComAdapters64,1317
+AdapterInputHook * gComAdapterHooks[gComAdapterHooks65,1356
+const char *gPolicyAdapters[gPolicyAdapters66,1405
+PolicyConfigHook * gPolicyAdapterHooks[gPolicyAdapterHooks67,1445
+const char *	gComAdapterName 68,1496
+const char *	gPolicyAdapterName 69,1533
+const char * gWhitelistAdapters[gWhitelistAdapters70,1573
+WhitelistHook * gWhitelistHooks[gWhitelistHooks71,1634
+worker_slot *	gWorkers 72,1693
+pid_t gParentPid 73,1724
+BOOL gSingleMode 74,1747
+int gMaxChildRequests 75,1773
+int gTotalIdle 76,1801
+SpammerSettings	gSpammerSettings;78,1822
+extern int gNumMatchedRules;80,1857
+extern int gMatchedRules[gMatchedRules81,1886
+extern char *gMsgID;gMsgID82,1921
+extern DomainPolicy gDomainPolicy;83,1942
+extern MYSQL mysql_sock;85,1978
+extern void emc_version(87,2004
+static int opt_version 89,2032
+static int opt_debug 90,2060
+static int opt_help 91,2086
+static char *whitelist_provider whitelist_provider93,2112
+static char *config_file config_file94,2149
+static char *rules_file rules_file95,2179
+static char *current_input_file_name current_input_file_name97,2209
+regex_t regex_mail_recipient;99,2252
+static void usage(102,2284
+static void die_if_file_not_exist(103,2305
+static void print_report(104,2363
+static void init_regexs(105,2411
+static char *get_email_recipient(get_email_recipient106,2438
+static char *get_email_sender_from_file_name(get_email_sender_from_file_name107,2487
+static char *get_email_recipient_from_file_name(get_email_recipient_from_file_name108,2556
+static void run_whitelist(110,2629
+static void run_rbl(111,2700
+static void run_dcc(112,2765
+static void run_bayes(113,2830
+static void run_specials(114,2897
+static void run_rules(115,2967
+static void message_body_free(117,3035
+static int parse_message(118,3099
+static int proccess_file(119,3221
+static void usage(121,3271
+void die_if_file_not_exist(144,4156
+void print_report(152,4418
+void init_regexs(170,4712
+static char *get_email_recipient(get_email_recipient183,5169
+static char *get_email_sender_from_file_name(get_email_sender_from_file_name213,5868
+static char *get_email_recipient_from_file_name(get_email_recipient_from_file_name231,6300
+int do_whitelist(250,6774
+static void run_whitelist(252,6894
+static void run_rbl(266,7353
+static void run_dcc(271,7468
+static void run_bayes(276,7627
+static void run_specials(282,7818
+static void run_rules(287,7979
+static void message_body_free(292,8135
+static int read_file(319,8813
+static char *message_start(message_start368,10085
+static int parse_message(382,10377
+static void free_score 473,13419
+static int proccess_file(480,13531
+			#define PCRE_OVECSIZE 600,16604
+			#undef PCRE_OVECSIZE629,17380
+int main(735,19572
+		#define opt_config_file_ret 757,20025
+		#define opt_rules_file_ret 758,20057
+		#define opt_bayes_terms_file_ret 759,20088
+		#define opt_tuples_file_ret 760,20125
+		#define opt_whitelist_provider 761,20157
+
+/emcsvn/emc/emcspamd/trunk/src/emcspamdcmd/emc_version.c,83
+static char *rcsid rcsid1,0
+static void use_rcsid(2,84
+void emc_version(10,212
+
+/emcsvn/emc/emcspamd/trunk/src/emcspamd.c,1756
+static char *rcsid rcsid1,0
+static void use_rcsid(2,81
+const char * gComAdapters[gComAdapters33,655
+AdapterInputHook * gComAdapterHooks[gComAdapterHooks34,740
+const char *gPolicyAdapters[gPolicyAdapters39,869
+PolicyConfigHook * gPolicyAdapterHooks[gPolicyAdapterHooks40,978
+const char * gWhitelistAdapters[gWhitelistAdapters43,1109
+WhitelistHook * gWhitelistHooks[gWhitelistHooks44,1185
+extern void emc_version(46,1260
+extern int		daemon_proc;49,1303
+extern int		gDebug[gDebug50,1328
+pid_t			gParentPid 52,1351
+BOOL			gSingleMode 54,1377
+BOOL			gInShutdown 56,1406
+const char *	gCfgFilename 57,1434
+const char *	gPrgName 58,1468
+CfgFile *		gConfig 59,1498
+int				gPort 60,1525
+const char *	gHostname 61,1545
+int				gMaxChildren 62,1576
+int				gMinChildren 63,1601
+int 			gIdleChildren 64,1626
+int				gCurChildren 65,1652
+const char *	gComAdapterName 66,1677
+const char *	gPolicyAdapterName 67,1714
+worker_slot *	gWorkers 68,1754
+BOOL			gEnforcePolicy 69,1785
+BOOL			gRecalcChildren 70,1816
+pid_t			gLastHarvestedChild 71,1848
+int				gLastHarvestedChildStatus 72,1881
+int				gTotalIdle 73,1919
+int				gTotalActive 74,1942
+int				gMaxChildRequests 75,1967
+const char *	gDefaultBayesTermsSqtFile 76,1998
+const char *    gDefaultTuplesSqtFile 77,2045
+socklen_t		gAddrlen;79,2092
+int				gListenfd;80,2113
+GHashTable *ccTLD ccTLD82,2132
+void showusage(84,2193
+inline 	void report_active_idle_counts(110,3583
+void parse_args(115,3718
+void parse_config(160,4550
+void * malloc_shared(229,6489
+void adjust_child_counts(254,6928
+#define TOTAL_CHILDREN 274,7270
+void enforce_child_policy(276,7373
+#define CHECK_BOOL_TRUE 410,10763
+void load_ccTLD_hash(414,10889
+void init_workers(460,12196
+int main(548,14503
+
+/emcsvn/emc/emcspamd/trunk/src/emcspamd.h,7109
+#define __emcspamd_h2,21
+#define DEFAULT_USERID 14,204
+#define DEFAULT_DOMAIN 15,237
+#define DEFAULT_CFG_FILENAME 17,271
+#define DEFAULT_COM_ADAPTER 18,326
+#define DEFAULT_POLICY_ADAPTER 19,370
+#define ASSERT(20,417
+#define ASSERT_SYS(21,509
+#define SAFE_FREE(23,605
+#define START_BREAK_FRAME 25,662
+#define END_BREAK_FRAME 26,691
+#define MIN(29,742
+#define MAX(32,794
+#define SPAM_SUMMARY_LEN 35,835
+#define MAX_DEBUG_LEVELS	38,885
+#define TLD_DEFAULT_CFG_FILENAME 41,936
+#define TLD_READ_BUFFER_SIZE 42,996
+typedef enum DebugLevelIndex 44,1031
+	DEBUG_NONE,45,1062
+	DEBUG_PROC,46,1075
+	DEBUG_CONFIG,47,1088
+	DEBUG_RBL,48,1103
+	DEBUG_DCC,49,1115
+	DEBUG_BAYES,50,1127
+	DEBUG_BAYES_EXT,51,1141
+	DEBUG_RULES,52,1159
+	DEBUG_RULES_EXT,53,1173
+	DEBUG_RULES_ALL,54,1191
+	DEBUG_SPECIALS,55,1209
+	DEBUG_SCAN,56,1226
+	DEBUG_IO,57,1239
+	DEBUG_TIMING,58,1250
+	DEBUG_REPORT,59,1265
+	DEBUG_ALL,60,1280
+} DebugLevelIndex;61,1292
+typedef struct DebugLevel_t 63,1312
+	DebugLevelIndex level;64,1342
+	char * desc;65,1366
+} DebugLevel;66,1380
+void init_debug_level(69,1466
+#define MAX_ALLOWED_CHILDREN 71,1512
+typedef int (AdapterInputHook)74,1596
+#define POLICY_RESULT_HEADER	77,1687
+#define POLICY_RESULT_BODY	78,1718
+#define POLICY_RESULT_ATTACH	79,1748
+typedef struct thresholdcfg 81,1780
+	double threshold;82,1810
+	int result;83,1829
+	int delete;84,1842
+	int tag;85,1855
+	char *tagtext;tagtext86,1865
+	char *copyto;copyto87,1881
+	char type;88,1896
+} Threshold;89,1908
+typedef struct domaincfg 91,1922
+	char *domain;domain92,1949
+	size_t max_message_size;93,1964
+	Threshold high;94,1990
+	Threshold low;95,2007
+	BOOL use_bayes;96,2023
+	double bayes_high_percent;97,2040
+	int bayes_high_score;98,2068
+	double bayes_medium_percent;99,2091
+	int bayes_medium_score;100,2121
+	double bayes_low_percent;101,2146
+	int bayes_low_score;102,2173
+	BOOL use_specials;103,2195
+	BOOL use_rbl;104,2215
+	BOOL use_dcc;105,2230
+	BOOL report_dcc;106,2245
+	BOOL use_rules;107,2263
+	char * rules_filename;108,2280
+	BOOL use_whitelist;109,2304
+	char * whitelist_provider;110,2325
+	int archive_days;111,2353
+	BOOL allow_user_settings;112,2372
+} DomainPolicy;113,2399
+int set_policy_pref 115,2416
+enum worker_status 118,2544
+enum worker_status { WACTIVE=118,2544
+enum worker_status { WACTIVE=1, WIDLE=118,2544
+typedef struct worker_slot_t 120,2588
+	pid_t pid;121,2619
+	int status;122,2631
+} worker_slot;123,2644
+#define SIG_CHILD_ACTIVE	125,2660
+#define SIG_CHILD_IDLE	126,2693
+#define SIG_COME_TO_PAPA	127,2725
+#define CHILD_IN_STARTUP	130,2760
+#define CHILD_IN_ACCEPT_WAIT	131,2788
+#define CHILD_IN_PROCESSING	132,2819
+void debug(134,2851
+void sig_die_with_children(135,2899
+void sig_child_change(136,2940
+void sig_child_die(137,2976
+void sig_return_to_papa(138,3009
+void sig_child_alarm(139,3047
+void sig_child_segv(140,3082
+typedef struct spammer_header_t 143,3147
+	char * name;144,3181
+	char * value;145,3195
+} SpammerHeader;146,3210
+typedef struct spammer_settings_t 148,3228
+	double threshold;149,3264
+	int spam_action;150,3283
+	char recipient[recipient151,3301
+	char sender[sender152,3323
+	char ip[ip153,3343
+	char msgid[msgid154,3358
+	char policy_realm[policy_realm155,3376
+} SpammerSettings;156,3401
+#define REPORT_HAS_ROOM(158,3421
+#define DONT_GENERATE_MSG 160,3520
+#define GENERATE_MSG 161,3550
+#define GENERATE_MSG_IFSPAM 162,3580
+typedef enum VariantType 165,3612
+	VT_BYTE,166,3639
+	VT_CHAR,167,3649
+	VT_SHORT,168,3659
+	VT_INT,169,3670
+	VT_LONG,170,3679
+	VT_FLOAT,171,3689
+	VT_DOUBLE,172,3700
+	VT_STRING,173,3712
+	VT_BUFFER,174,3724
+} VariantType;175,3736
+typedef struct Buffer_t 177,3752
+	long len;178,3778
+	void * data;179,3789
+} Buffer;180,3803
+typedef struct Variant_t 182,3814
+	VariantType type;183,3841
+	union val 184,3860
+		char    byte_val;185,3873
+		char    char_val;186,3893
+		short   int short_val;187,3913
+		int     int_val;188,3938
+		long    long_val;189,3957
+		float   float_val;190,3977
+		double  double_val;191,3998
+		char *  string_val;192,4020
+		Buffer  buffer_val;193,4042
+	} val;194,4064
+} Variant;195,4072
+#define IMG_COUNT_PROP 197,4084
+#define FONT_COUNT_PROP 198,4133
+#define ANCHOR_COUNT_PROP 199,4183
+#define TAG_COUNT_PROP 200,4235
+#define TOTAL_TAG_LEN_PROP 201,4284
+#define BUILT_TOKEN_COUNT_PROP 203,4338
+#define DELIM_COUNT_PROP 204,4390
+#define CHAR_COUNT_PROP 205,4436
+#define HTML_BUILT_TOKEN_COUNT_PROP 207,4482
+#define HTML_DELIM_COUNT_PROP 208,4544
+#define HTML_CHAR_COUNT_PROP 209,4600
+typedef struct ParsedMessageBody_t 211,4656
+	char * text_body;212,4693
+	size_t text_body_len;213,4712
+	int text_body_encoding;214,4735
+	char * html_body;216,4762
+	size_t html_body_len;217,4781
+	int html_body_encoding;218,4804
+	char * parsed_html_body;220,4831
+	size_t parsed_html_body_len;221,4857
+	char * parsed_html_tokens;223,4889
+	size_t parsed_html_tokens_len;224,4917
+	char * uri_tokens;226,4951
+	size_t uri_tokens_len;227,4971
+	GHashTable * props;243,5252
+} ParsedMessageBody;245,5275
+typedef struct Score_t 248,5317
+	char *rule_name;rule_name249,5342
+	double score;250,5360
+} Score;251,5375
+typedef struct spammer_results_t 254,5392
+	double	verdict;255,5427
+	const Threshold	* threshold;256,5444
+	BOOL    gen_report;257,5474
+	BOOL	report_spam_only;258,5495
+	char *  report;259,5519
+	size_t  report_len;260,5536
+	char *  cur_report_line;262,5586
+	int		gen_message;264,5645
+	int		gen_message_headers;267,5754
+	EMimeOutStream * modified_message;268,5781
+	GSList* added_headers;269,5817
+	EMimeMessage * mime_message;271,5843
+	ParsedMessageBody * message_body;272,5873
+	char spam_summary[spam_summary275,5933
+	int is_whitelist_hit;278,5993
+	GSList* scores;279,6016
+} SpammerResults;281,6041
+pid_t make_spam_worker(283,6060
+int scan_message(284,6120
+void message_body_props_add(288,6238
+void message_body_props_remove(290,6333
+BOOL message_body_props_lookup_byte 291,6413
+BOOL message_body_props_lookup_char 293,6512
+BOOL message_body_props_lookup_short 295,6612
+BOOL message_body_props_lookup_int 297,6718
+BOOL message_body_props_lookup_long 299,6816
+BOOL message_body_props_lookup_float 301,6916
+BOOL message_body_props_lookup_double 303,7018
+BOOL message_body_props_lookup_string 305,7122
+BOOL message_body_props_lookup_buffer 307,7225
+gboolean message_body_props_foreach_remove(309,7329
+void message_body_props_report(311,7420
+void free_message_body(313,7508
+void report_message_body_props(314,7568
+int format_report(315,7636
+char * reverse_address(319,7692
+int add_report_line(320,7740
+int add_header(321,7819
+void chomp(322,7891
+Variant * make_byte_variant(324,7918
+Variant * make_char_variant(325,7958
+Variant * make_short_variant(326,7999
+Variant * make_int_variant(327,8046
+Variant * make_long_variant(328,8085
+Variant * make_float_variant(329,8126
+Variant * make_double_variant(330,8169
+Variant * make_string_variant(331,8214
+Variant * make_buffer_variant(332,8259
+int init_mysql(335,8328
+typedef int (PolicyConfigHook)344,8478
+typedef int (WhitelistHook)346,8570
+
+/emcsvn/emc/emcspamd/trunk/src/policies/policysmart_options.c,236
+static char *rcsid rcsid7,84
+static void use_rcsid(8,175
+#define POLICY_NAME 18,363
+extern CfgFile *gConfig;gConfig28,541
+extern MYSQL mysql_sock;29,566
+int init_policysmart_options 31,592
+int init_policysmart_options(181,6174
+
+/emcsvn/emc/emcspamd/trunk/src/policies/policysmart_options.h,74
+#define POLICYSMART_OPTIONS_H_9,124
+int init_policysmart_options(13,179
+
+/emcsvn/emc/emcspamd/trunk/src/policies/global_policy.c,261
+static char *rcsid rcsid1,0
+static void use_rcsid(2,86
+extern CfgFile * gConfig;17,350
+void free_domain_policy(20,415
+#define CHECK_BOOL_TRUE 22,466
+#define DEFAULT_DOMAIN_SECTION 26,593
+const char * Get_domain_opt(28,650
+int init_global_policy(44,996
+
+/emcsvn/emc/emcspamd/trunk/src/policies/global_policy.h,60
+#define __global_policy_h2,26
+int init_global_policy(6,76
+
+/emcsvn/emc/emcspamd/trunk/src/policies/emc_policy.c,248
+static char *rcsid rcsid1,0
+static void use_rcsid(2,83
+#define POLICY_NAME 21,397
+extern CfgFile *gConfig;gConfig23,431
+extern MYSQL mysql_sock;25,457
+void free_domain_policy(28,521
+int init_emc_policy(30,571
+int init_emc_policy(334,9562
+
+/emcsvn/emc/emcspamd/trunk/src/policies/emc_policy.h,54
+#define __emc_policy_h2,23
+int init_emc_policy(6,70
+
+/emcsvn/emc/emcspamd/trunk/src/spammer.c,1760
+static char *rcsid rcsid1,0
+static void use_rcsid(2,80
+#define X_SPAM_STATUS_HEADER 27,525
+#define X_SPAM_SUMMARY_HEADER 28,570
+extern CfgFile * 			gConfig;30,618
+extern const char *			gPolicyAdapters[gPolicyAdapters31,647
+extern PolicyConfigHook *	gPolicyAdapterHooks[gPolicyAdapterHooks32,688
+extern const char * 		gPolicyAdapterName;33,737
+extern const char *			gWhitelistAdapters[gWhitelistAdapters34,779
+extern WhitelistHook *		gWhitelistHooks[gWhitelistHooks35,823
+#define PCRE_OVECSIZE 37,867
+char * 						gRecip 40,927
+char * 						gUserid 41,955
+char * 						gDomain 42,984
+char *                      gSender 43,1013
+char *                      gIP 44,1057
+char *                      gPolicyRealm 45,1097
+int							gNumMatchedSpecials 46,1146
+int							gNumMatchedRules 47,1181
+int							gMatchedSpecials[gMatchedSpecials48,1213
+int							gMatchedRules[gMatchedRules49,1257
+long						gTotalMsgSize 52,1328
+long						gTotalUSecs 53,1357
+long						gTotalMsgs 54,1384
+SpammerSettings				gSpammerSettings;56,1411
+char                        gReportBuffer[gReportBuffer57,1448
+char *                      gMsgID 59,1511
+extern char                 gFmtReport[gFmtReport61,1555
+MYSQL mysql_sock;66,1645
+DomainPolicy gDomainPolicy 69,1671
+#define REPORT_HEADER_LINE 71,1706
+#define REPORT_HEADER_PADDING 72,1806
+#define REPORT_SUMMARY_PREALLOC 73,1845
+#define REPORT_SUMMARY_LINE 74,1945
+#define REPORT_FOOTER_LINE 76,2013
+void make_report_header(78,2114
+void make_report_summary(111,3104
+void free_domain_policy(129,3539
+int init_domain_policy(147,3903
+int init_user_options 173,4626
+int set_policy_pref 242,6458
+int do_whitelist(343,9364
+int scan_message(377,9993
+void free_spammer_results(1048,28541
+
+/emcsvn/emc/emcspamd/trunk/src/spammer.h,144
+#define __emc_spammer_h2,24
+#define SETSIZE	4,49
+#define REPORT_BUFFER_LEN 5,70
+void free_spammer_results(12,195
+int modify_message(14,251
+
+/emcsvn/emc/emcspamd/trunk/src/espamc/espamc.c,1384
+static char *rcsid rcsid1,0
+static void use_rcsid(2,79
+typedef enum ComMode_t 26,489
+	COM_SOCKET_MODE 27,514
+	COM_FILE_MODE 28,536
+} ComMode;29,556
+#define ESPAMC_VERSION 31,568
+#define DEFAULT_TMP_DIR 33,598
+#define DEFAULT_PORT 34,629
+CfgFile *	gConfig 36,657
+char * 		gFilename 37,683
+char *		gCfgFilename 38,710
+char * 		gRecip 39,739
+char * 		gSender 40,763
+char * 		gData 41,788
+char * 		gMsgID 42,811
+BOOL		gNoHints 43,835
+int 		gEspamcDebug 44,859
+char *		gTmpDir 45,883
+char *		gPort 47,908
+char *		gHost 48,930
+char *      gMsgID 50,953
+ComMode		gComMode 52,981
+#define DEFAULT_CONFIG_FILENAME 54,1019
+#define CONTENT_LENGTH_HEADER	57,1076
+#define RECIPIENT_HEADER	59,1126
+#define SENDER_HEADER	60,1166
+#define MESSAGE_ID_HEADER	61,1201
+#define FILENAME_HEADER	62,1243
+#define ADD_HEADER_HEADER	64,1283
+#define STOP_MESSAGE_HEADER	65,1325
+#define ADD_RECIPIENT_HEADER	66,1371
+#define MODIFIED_MESSAGE_HEADER	67,1418
+#define STATUS_HEADER	69,1472
+#define CRLF 71,1508
+#define CRLF_LEN 72,1528
+#define LINE_BUFFER_SIZE	74,1559
+char gLineBuffer[gLineBuffer75,1604
+void _debug(77,1641
+void show_usage(88,1788
+int do_args(101,2066
+int do_config(179,3538
+#define TMPBUF 229,4557
+char *stdin_to_tmp(stdin_to_tmp231,4582
+char *socket_to_tmp(socket_to_tmp266,5315
+int process_response(302,6105
+int main(422,8835
+int main(545,12222
+
+/emcsvn/emc/emcspamd/trunk/src/parser/parser.c,511
+static char *rcsid rcsid1,0
+static void use_rcsid(2,79
+extern void emc_version(29,508
+char *gMsgID gMsgID33,575
+char *gDefaultBayesTermsSqtFile gDefaultBayesTermsSqtFile34,599
+#define PARSE_PLAIN_LEN 36,659
+typedef struct bayes_opt 38,703
+	int header;39,730
+	int text;40,743
+	int text_v;41,754
+	int html;42,767
+	int html_v;43,778
+	int uri;44,791
+	int tags;45,801
+} BayesOpt;46,812
+int do_bayes(48,825
+int main(50,911
+void dump_slist(276,6656
+void dump_list(277,6687
+int do_bayes(279,6717
+
+/emcsvn/emc/emcspamd/trunk/src/parser/emc_version.c,83
+static char *rcsid rcsid1,0
+static void use_rcsid(2,84
+void emc_version(10,212
+
+/emcsvn/emc/emcspamd/trunk/src/emc_version.c,83
+static char *rcsid rcsid1,0
+static void use_rcsid(2,84
+void emc_version(10,212
+
+/emcsvn/emc/emcspamd/trunk/src/utils.c,543
+static char *rcsid rcsid1,0
+static void use_rcsid(2,78
+Variant * make_byte_variant(19,371
+Variant * make_char_variant(28,542
+Variant * make_short_variant(37,714
+Variant * make_int_variant(46,894
+Variant * make_long_variant(55,1062
+Variant * make_float_variant(64,1234
+Variant * make_double_variant(73,1410
+Variant * make_string_variant(82,1590
+Variant * make_buffer_variant(91,1770
+void chomp(102,2012
+char *reverse_address(reverse_address115,2174
+int add_header(146,2679
+int add_report_line(156,2967
+int init_mysql(243,4964
+
+/emcsvn/emc/emcspamd/trunk/src/message.c,1022
+static char *rcsid rcsid1,0
+static void use_rcsid(2,80
+char gFmtReport[gFmtReport20,387
+size_t gFmtReportLen 21,429
+void message_body_props_add(26,484
+void message_body_props_remove(39,896
+BOOL message_body_props_lookup_byte 49,1158
+BOOL message_body_props_lookup_char 72,1619
+BOOL message_body_props_lookup_short 95,2081
+BOOL message_body_props_lookup_int 118,2551
+BOOL message_body_props_lookup_long 141,3009
+BOOL message_body_props_lookup_float 164,3471
+BOOL message_body_props_lookup_double 187,3937
+BOOL message_body_props_lookup_string 210,4407
+BOOL message_body_props_lookup_buffer 233,4876
+gboolean message_body_props_foreach_remove(256,5346
+#define KEY_FMT 276,5703
+void message_body_props_report(277,5731
+void free_message_body(325,6992
+void report_message_body_props(343,7473
+int format_report(359,7828
+int embed_report 389,8342
+int attach_report(437,9595
+#define HEADER_NAME_LEN 464,10390
+#define HEADER_VALUE_LEN 465,10417
+int header_report(466,10445
+int modify_message(510,11680
+
+/emcsvn/emc/emcspamd/trunk/src/signals.c,838
+static char *rcsid rcsid1,0
+static void use_rcsid(2,80
+extern BOOL             gInShutdown;16,312
+extern int              gCurChildren;17,349
+extern pid_t            gGroupPid;18,387
+extern int              gTotalIdle;19,422
+extern int              gTotalActive;20,458
+extern BOOL             gEnforcePolicy;21,496
+extern BOOL				gRecalcChildren;22,536
+extern pid_t            gLastHarvestedChild;23,568
+extern int              gLastHarvestedChildStatus;24,613
+extern worker_slot *    gWorkers;25,664
+extern int              gMaxChildren;26,698
+extern BOOL             gQuitRequested;29,757
+inline void report_active_idle_counts(32,799
+void sig_child_change(34,841
+void sig_child_die(54,1261
+void sig_child_alarm(70,1587
+void sig_return_to_papa(76,1668
+void sig_child_segv(87,1938
+void sig_die_with_children(92,1987
+
+/emcsvn/emc/emcspamd/trunk/src/protocols/spamassassin.c,1077
+static char *rcsid rcsid1,0
+static void use_rcsid(2,85
+extern int gChildIndex;24,525
+extern SpammerSettings gSpammerSettings;26,550
+extern char            gReportBuffer[gReportBuffer27,591
+#define CONTENT_LENGTH_HEADER	29,632
+#define USER_HEADER	30,681
+#define SENDER_HEADER	31,713
+#define LINE_BUFFER_SIZE	33,749
+char gLineBuffer[gLineBuffer34,794
+#define MAX_MESSAGE_SIZE	36,831
+#define CHECK_COMMAND 38,883
+#define SYMBOLS_COMMAND 39,913
+#define REPORT_COMMAND 40,947
+#define REPORT_IFSPAM_COMMAND 41,979
+#define SKIP_COMMAND 42,1025
+#define PROCESS_COMMAND 43,1053
+#define SPAMD_OK_LINE 45,1088
+enum actions 47,1135
+enum actions { CHECK,47,1135
+enum actions { CHECK, SYMBOLS,47,1135
+enum actions { CHECK, SYMBOLS, REPORT,47,1135
+enum actions { CHECK, SYMBOLS, REPORT, REPORT_IFSPAM,47,1135
+enum actions { CHECK, SYMBOLS, REPORT, REPORT_IFSPAM, SKIP,47,1135
+enum actions { CHECK, SYMBOLS, REPORT, REPORT_IFSPAM, SKIP, PROCESS 47,1135
+int gSpamAction 48,1206
+void spamassassin_process_results(50,1231
+int spam_assassin_process_request(144,3889
+
+/emcsvn/emc/emcspamd/trunk/src/protocols/spamassassin.h,70
+#define __spamassassin_h2,25
+int spam_assassin_process_request(4,51
+
+/emcsvn/emc/emcspamd/trunk/src/protocols/emcspammer.c,1465
+static char *rcsid rcsid1,0
+static void use_rcsid(2,83
+extern int gChildIndex;63,1352
+extern SpammerSettings gSpammerSettings;65,1377
+extern char            gReportBuffer[gReportBuffer66,1418
+extern DomainPolicy    gDomainPolicy;68,1459
+extern char *          gMsgID;70,1498
+extern char            gFmtReport[gFmtReport72,1530
+#define CONTENT_LENGTH_HEADER	74,1568
+#define RECIPIENT_HEADER	76,1618
+#define SENDER_HEADER	77,1658
+#define MESSAGE_ID_HEADER	78,1693
+#define FILENAME_HEADER	79,1735
+#define ADD_HEADER_HEADER	81,1775
+#define STOP_MESSAGE_HEADER	82,1817
+#define ADD_RECIPIENT_HEADER	83,1863
+#define MODIFIED_MESSAGE_HEADER	84,1910
+#define SCORE_HEADER 86,1964
+#define THRESHOLD_HEADER 87,2011
+#define IP_HEADER 89,2063
+#define QUARANTINE_HEADER 91,2110
+#define QUARANTINE_SUM_HEADER 92,2157
+#define SPAM_REPORT_HEADER 94,2213
+#define POLICY_REALM_HEADER 96,2262
+#define STATUS_HEADER	98,2309
+#define FILENAME_MSG 100,2345
+#define SOCKET_STREAM_MSG 101,2368
+#define DIR_LEN	103,2397
+#define LINE_BUFFER_SIZE	104,2451
+char gLineBuffer[gLineBuffer105,2496
+#define MAX_MESSAGE_SIZE	107,2533
+#define QUARANTINE_SUMMARY_SIZE 109,2585
+#define CRLF 111,2623
+#define CRLF_LEN 112,2643
+int handle_socket_modified_message(115,2675
+int handle_file_modified_message(132,3108
+int emcspammer_process_results(183,4223
+char * collect_socket_msg(322,8633
+char * collect_file_msg(365,9733
+int emcspammer_process_request(405,10667
+
+/emcsvn/emc/emcspamd/trunk/src/protocols/emcspammer.h,74
+#define __emcspammer_protocol_h2,32
+int emcspammer_process_request(4,65
+
+/emcsvn/emc/emcspamd/trunk/src/whitelist/whitelist.h,74
+#define __gen_whitelist_h2,26
+#define WL_MISS	4,53
+#define	WL_HIT	5,73
+
+/emcsvn/emc/emcspamd/trunk/src/whitelist/emc_whitelist.c,412
+static char *rcsid rcsid8,173
+static void use_rcsid(9,259
+extern CfgFile*    gConfig;26,537
+extern MYSQL       mysql_sock;27,565
+#define REPORT_FORMAT_LINE 29,597
+#define LONG_REPORT_LINE 30,660
+#define SHORT_REPORT_LINE 31,716
+void make_auto_whitelist_report(38,848
+char *whitelist_header(whitelist_header61,1354
+int do_emc_whitelist(102,1941
+int emc_whitelist(201,4011
+int emc_whitelist(240,4868
+
+/emcsvn/emc/emcspamd/trunk/src/whitelist/emc_whitelist.h,199
+#define __emc_whitelist_h2,26
+#define WL_NONE 7,99
+#define WL_GLOBAL 8,126
+#define WL_DOMAIN 9,153
+#define WL_USER 10,180
+#define WL_AUTO 11,207
+#define WL_IP 12,234
+int emc_whitelist(14,262

@@ -1,2 +1,2 @@
 # dot.config
-dot files
+dot files like shell env and editors

@@ -1,0 +1,156 @@
+#!/bin/sh
+#
+# Shynx v0.0
+#
+# Shell script html formatter.
+#
+# please fix me.
+#
+#   Nirva <nirva@ishiboo.com>
+
+showimage()
+{
+	ALT=`echo "$E" | sed 's/.*[aA][lL][tT]=\"\([^"]*\)\".*/\1/'`
+	if [ "x$ALT" = "x$E" ]; then
+		echo [IMAGE]
+	else
+		echo $ALT;
+	fi
+}
+
+parsehtml()
+{
+	local HTM
+while :; do
+	E=`echo "$HTM" | sed 's/^\(<[^>]*>\).*/\1/'`
+	if [ "x$E" != "x$HTM" ]; then
+		TAG=`echo "$E" | sed 's/^<\([\/1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ]*\)[^>]*>/\1/'`
+		TAG=`echo "$TAG" | tr [A-Z] [a-z]`
+		case "$TAG" in
+			"head")  ;;
+			"p")     echo;echo;;
+			"html")  ;;
+			"/html") ;;
+			"body")  ;;
+			"/body") ;;
+			"p")     echo;echo;;
+			"br")    echo;;
+			"img")   showimage;;
+			"hr")    echo;echo -----------------------------------------------------------------------------;;
+			"title") echo -n "TITLE: "; printtitle ;;
+			"/title") echo ;;
+			"pre")   echo; PRE=ON;;
+			"/pre")  echo; PRE=;;
+			"h1")    echo; H=ON;;
+			"h2")    echo; H=ON;;
+			"h3")    echo; H=ON;;
+			"h4")    echo; H=ON;;
+			"h5")    echo; H=ON;;
+			"h6")    echo; H=ON;;
+			"h7")    echo; H=ON;;
+			"/h1")   echo; H=;;
+			"/h2")   echo; H=;;
+			"/h3")   echo; H=;;
+			"/h4")   echo; H=;;
+			"/h5")   echo; H=;;
+			"/h6")   echo; H=;;
+			"/h7")   echo; H=;;
+			"table") ;;
+			"/table");;
+			"tr")	 ;;
+			"/tr")	 ;;
+			"td")	 ;;
+			"/td")	 ;;
+			"i")     ;;
+			"/i")    ;;
+			"a")     printlink;;
+			"/a")    ;;
+			*)       ;;
+		esac
+	
+		HTM=`echo "$HTM" | sed 's/^<[^>]*>\(.*\)/\1/'`
+	else 
+		E=`echo "$HTM" | sed 's/^\([^<]*\).*/\1/'`
+		echo -n "$E";
+		HTM=`echo "$HTM" | sed 's/^[^<]*\(.*\)/\1/'`
+		if [ "x$E" = "x" ]; then
+			break;
+		fi
+	fi
+done
+}
+
+printtitle()
+{
+	T=`echo "$HTM" | sed 's/<[^>]*>\([^<]*\)<[^>]*>\(.*\)/\1||\2/'`
+	TITLE=`echo "$T" | sed 's/\([^|]*\)||.*/\1/'`
+	echo -n "$TITLE"
+	HTM=`echo "$T" | sed 's/[^|]*||\(.*\)/\1/'`
+	TITLE=
+	T=
+
+}
+
+printlink()
+{
+	T=`echo "$HTM" | sed 's/<[^>]*>\([^<]*\)<[^>]*>\(.*\)/\1||\2/'`
+	LINK=`echo "$T" | sed 's/\([^|]*\)||.*/\1/'`
+	tput smso
+	echo -n "$LINK"
+	tput rmso
+	HTM=`echo "$T" | sed 's/[^|]*||\(.*\)/\1/'`
+	T=
+	LINK=
+}
+
+
+
+if [ "x$1" = "x" ]; then
+	echo  Usage: $0 URL
+fi
+
+CURRENTHOST=
+CURRENTPORT=
+CURRENTURL=
+URL=$1;
+
+SYNTREE=`echo $URL | sed 's/http:\/\/\([^/]*\)\(.*\)/\1||\2/'`
+
+if [ "x$SYNTREE" = "x$URL" ]; then
+	SYNTREE=`echo $URL | sed 's/\(.*\):\([0123456789]*\)/\1||\2/'`
+		HOST=`echo $SYNTREE | sed 's/\(.*\)||\(.*\)/\1/'`
+	PORT=80
+	#HOST=localhost
+	DIR=$SYNTREE
+else
+	HOST=`echo $SYNTREE | sed 's/\(.*\)||\(.*\)/\1/'`
+	DIR=`echo $SYNTREE | sed 's/\(.*\)||\(.*\)/\2/'`
+	SYNTREE=`echo $HOST | sed 's/\(.*\):\([0123456789]*\)/\1||\2/'`
+	if [ "x$SYNTREE" = "x$HOST" ]; then
+		PORT=80
+	else
+		PORT=`echo $SYNTREE | sed 's/\(.*\)||\(.*\)/\2/'`
+		HOST=`echo $SYNTREE | sed 's/\(.*\)||\(.*\)/\1/'`
+	fi
+fi
+if [ "x$DIR" = "x" ]; then
+	DIR=./
+fi
+
+echo host: $HOST
+echo port: $PORT
+echo dir: $DIR
+
+#echo Retriveing up http://$HOST:$PORT$DIR
+echo Retriveing up http://$HOST:$PORT
+#HTML="`echo GET $DIR | nc $HOST $PORT | tr -d \\\n`"
+HTML="`curl www.google.ca | tr -d \\\n`"
+
+#echo "$HTML"
+#echo ----------------------------------------------------------------------------------
+    if [ "x$HTML" = "x" ]; then
+		break;
+	fi
+	HTM=$HTML;
+	parsehtml;
+echo 

@@ -1,0 +1,175 @@
+<?xml version='1.0' ?>
+[% USE wrap %]
+
+<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN"
+"/usr/share/sgml/docbook/xml-dtd-4.3/docbookx.dtd"[
+]>
+<!-- -->
+<!-- $Id$ -->
+<!-- -->
+<!-- $Log$ -->
+<!-- -->
+<!-- General reminders: -->
+
+<book id="index">
+    <bookinfo>
+        <title>The Hacker's Guide for Extending and Embedding perl5</title>
+        <authorgroup>
+            <author>
+                <firstname>Shlomi</firstname>
+                <surname>Fish</surname>
+                <affiliation>
+                    <address>
+                        <email>shlomif@iglu.org.il</email>
+                    </address>
+                </affiliation>
+            </author>
+         </authorgroup>
+         <copyright>
+             <year>2007</year>
+            <holder>Shlomi Fish</holder>
+        </copyright>
+      <legalnotice>
+            <!-- Ci vis pacem -->
+            <para>
+                <!-- belum. ;-) -->
+                This document was written by Shlomi Fish and is available
+                under the terms of either the:
+            </para>
+            <orderedlist>
+                <listitem>
+                    <para>
+                        <ulink url="http://creativecommons.org/licenses/publicdomain/">The Public Domain</ulink>,
+                        as defined by the Creative Commons or your local
+                        jurisdication.
+                    </para>
+                </listitem>
+                <listitem>
+                    <para>
+                        <ulink url="http://creativecommons.org/licenses/by/3.0/">The Creative Commons Attribution License (CC-by) version 3.0</ulink>
+                        (or at your option any later version of the same
+                        license.)
+                    </para>
+                </listitem>
+                <listitem>
+                    <para>
+                        The 
+                        <ulink 
+                            url="http://www.opensource.org/licenses/mit-license.php">MIT 
+                            X11 License</ulink>.
+                    </para>
+                </listitem>
+            </orderedlist>
+        </legalnotice>
+        <revhistory>
+            <revision>
+                <revnumber>1083</revnumber>
+                <date>22 April 2007</date>
+                <authorinitials>shlomif</authorinitials>
+                <revremark>
+                    Started working on this document after forking the template
+                    of an older one.
+                </revremark>
+            </revision>
+        </revhistory>
+    </bookinfo>
+    <chapter id="introduction">
+        <title>Introduction</title>
+        <para>
+            perl5 is the name of the most popular implementation for the version
+            5 of the <ulink url="http://www.perl.org/">Perl 
+                language</ulink> as of this writing. It is open-source, written
+            in portable ANSI C, runs on many platforms, is fast (though has no 
+            JIT yet), works pretty well, and is what most people are using. (At
+            least as of April 2007)
+        </para>
+        <para>
+            However, the API that it exposes to the user, and its internals
+            are not very accessible, and badly documented, which makes
+            writing extensions for perl5 and embedding it inside other
+            programs very unpopular. Simon Cozens and Tim Jenness wrote
+            <ulink url="http://www.manning.com/jenness/">Extending 
+                and Embedding Perl</ulink> back in 2002, in an aim to remedy
+            this. However, a legitimate copy of this book is not available
+            online (although can be downloaded "illegally"), and the book
+            is somewhat out of date, and has some issues.
+        </para>
+        <para>
+            The aim of this document is to remedy this. It will provide
+            code examples, explanations, 
+            <ulink url="http://www.w3.org/Graphics/SVG/">SVG</ulink> 
+            illustrations and diagrams, and other aids in overcoming the
+            problems.
+        </para>
+        <para>
+            Furthermore this document is fully open-source and 
+            <ulink url="http://en.wikipedia.org/wiki/Public_domain">public 
+                domain</ulink>, and as such easily reusable.
+        </para>
+        <section id="audience">
+            <title>Audience and Expected Knowledge</title>
+            <para>
+                We intend this book for Perl 5 programmers who are interested
+                to learn how to write perl 5 extensions in C and other 
+                languages, who are interested to embed perl 5 in their C
+                program or who are interested to learn how it works on the
+                inside.
+            </para>
+            <para>
+                This book assumes a good to very good knowledge of Perl 5, and
+                a good to very good knowledge of ANSI C.
+            </para>
+        </section>
+    </chapter>
+    <chapter id="first_steps">
+        <title>First Steps</title>
+        <para>
+            Where do we start? From the "Hello World!" program of course. But
+            first, let's generate a skeleton.
+        </para>
+        <section id="skeleton">
+            <title>Skeleton</title>
+            <para>
+                First of all make sure you have
+                <ulink url="http://cpan.uwinnipeg.ca/dist/Module-Starter-XSimple">Module::Starter::XSimple</ulink> and
+                <ulink url="http://cpan.uwinnipeg.ca/dist/ExtUtils-CBuilder">ExtUtils::CBuilder</ulink>
+                installed. If you don't know how, please consult
+                <ulink url="http://sial.org/howto/perl/life-with-cpan/">Life
+                    with CPAN</ulink>.
+            </para>
+            <para>
+                Then do the following:
+                <programlisting>
+[% FILTER wrap(80) %]
+[% INCLUDE "examples/xsimple-beginning/screencast.txt" %]
+[% END %]
+                </programlisting>
+            </para>
+            <para>
+                What happened is that we created a skeleton for an XS
+                module, removed the boilerplate.t file, which would
+                have caused the tests to fail, built the distribution, and ran 
+                the tests, which succeeded.
+            </para>
+            <para>
+                Now what is the actual XS code?
+            </para>
+            <section id="skeleton-xs-code">
+                <title>The XS Code</title>
+                <para>
+                    The code looks like this:
+                </para>
+                <programlisting>
+[% FILTER html %]
+[% FILTER wrap(80) %]
+[% INCLUDE "examples/xsimple-beginning/XSHello.xs" %]
+[% END %]
+[% END %]
+                </programlisting>
+            </section>
+        </section>
+
+    </chapter>
+</book>    <!-- End of the article -->
+<!-- vim:ft=tt2 
+-->

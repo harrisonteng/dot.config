@@ -1,0 +1,21 @@
+;; Object big_little_edian/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "big_little_edian/"
+  :tables (list 
+   (semanticdb-table "Makefile"
+    :major-mode 'makefile-gmake-mode
+    :tags '(("CC" variable (:default-value ("gcc")) nil [1 8]) ("CFLAGS" variable (:default-value ("-g" "-Wall")) nil [26 43]) ("TAR" variable (:default-value ("big_little")) nil [43 59]) ("ALL" function (:arguments ("$(TAR)")) nil [59 81]) ("big_little" function (:arguments ("big_little.c")) nil [71 122]))
+    :file "Makefile"
+    :pointmax 122
+    )
+   (semanticdb-table "big_little.c"
+    :major-mode 'c-mode
+    :tags '(("stdio.h" include nil (dependency-file "/usr/include/stdio.h") [575 593]) ("stdlib.h" include nil (dependency-file "/usr/include/stdlib.h") [594 613]) ("checkSystem" function (:type "int") nil [665 821]) ("am_big_endian" function (:type "int") nil [823 904]) ("am_big_endian_union" function (:type "int") nil [906 1050]) ("main" function (:arguments (("argc" variable (:type "int") (reparse-symbol arg-sub-list) [1074 1083]) ("argv" variable (:pointer 1 :dereference 1 :type "char") (reparse-symbol arg-sub-list) [1083 1097])) :type "int") nil [1063 1745]))
+    :file "big_little.c"
+    :pointmax 1746
+    )
+   )
+  :file "semantic.cache"
+  :semantic-tag-version "2.0pre4"
+  :semanticdb-version "2.0pre4"
+  )
