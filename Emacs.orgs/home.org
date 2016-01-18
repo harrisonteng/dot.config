@@ -1,0 +1,20 @@
+#+STARTUP: indent
+#+ITODO: TODO(t!) INPROGRESS(p!) PENDING(e!)| DONE(d!) CANCELED(c@/!)
+#+TAGS: @my(m) @other(o) @vip(v)
+#+COLUMNS: %20ITEM %20SCHEDULED %20DEADLINE %3TODO %1PRIORITY %TAGS
+
+* 2015/08/12 13:52:44
+** TODO Iv [0/4]
+*** TODO [#B] linked_list.swap ( a-b => b-a )                         :@my:
+SCHEDULED: <2015-08-14 Fri>
+*** TODO [#C] leetcode and test codebase                           :@other:
+SCHEDULED: <2015-08-13 Thu>
+*** TODO [#A] epoll                                                    :@vip:
+SCHEDULED: <2015-08-12 Wed>
+
+* 2015/08/17 10:08:33
+** TODO Misc [1/3]
+*** TODO [#B] ink cartridge at Costco
+*** TODO [#A] Home Depot
+*** DONE [#B] asks helley about my vacation time, check adp
+CLOSED: [2015-08-17 Mon 11:02]

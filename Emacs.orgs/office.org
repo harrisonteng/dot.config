@@ -1,0 +1,2836 @@
+#+STARTUP: indent
+#+ITODO: TODO(t!) INPROGRESS(p!) PENDING(e!)| DONE(d!) CANCELED(c@/!)
+#+TAGS: @my(m) @other(o) @vip(v)
+#+COLUMNS: %60ITEM %10SCHEDULED %10DEADLINE %5TODO %1PRIORITY %4TAGS
+
+* 2015-08-04
+** DONE Questions [4/4]
+*** DONE which daemon/s need to be ipv6 ready ? only customer facing
+CLOSED: [2015-08-05 Wed 16:11]
+*** DONE CEF ? conclusion ? how often we update CEF entries ? differentiate between customers / users  per discussion with CH , confirmed
+CLOSED: [2015-08-05 Wed 10:15]
+*** DONE rbldnsd ? should we worry about it in this migration ? ( CH asked , no update yet )
+CLOSED: [2015-08-05 Wed 12:04]
+*** DONE spamd2 , make it ipv6 ready ? not customer facing so no need , right ? ( message parsing need to be IPv6 ready )
+CLOSED: [2015-08-05 Wed 16:11]
+** DONE [4/4]
+*** DONE akabeans ? who did QA ? Yifang or Pedram ? (84 customer/s without region ? is this normal)
+CLOSED: [2015-08-04 Tue 11:56]
+*** DONE keep working on CEF ? need to see question 2 above after, confirmed
+CLOSED: [2015-08-05 Wed 10:45]
+*** DONE daily training
+CLOSED: [2015-08-05 Wed 10:45]
+*** DONE MAIL-247
+CLOSED: [2015-08-05 Wed 11:01]
+
+
+* 2015/08/05 10:46:42
+** TODO Questions [1/2]
+*** DONE ask CH about the left over from yesterday
+CLOSED: [2015-08-05 Wed 17:39]
+*** TODO make sure below items are addressed:
+**** S move from golang to fm-service-blocklistd
+**** S blocklistd ( GoLang ) will be the REST server side, do we need access to musoft for API reference ? probably not, just go through the code
+**** S once above is done then add new endpoint over REST , like /scan
+**** S make sure scan portion follow the spamd protocol, eg, current response does not spit out rulename field
+**** C build a rest client to talk to blocklistd , should we make it more self-adaptive ? worth to try
+**** C follow the same logic as bulk settings:
+***** default portal version / actions
+***** store the user/customer values in user/cus_spam_classifications, text values as cef, now is always bulk
+***** CL_CEF_BULK, now it should be CL_cef_spam, need to check Server side response.
+***** if CEF gives out BULK then do we need to go through the rules still ? I dont think so ( NEED TO CONFIRM WITH CHRIS )
+** DONE Items [3/3]
+*** DONE read through blocklistd
+CLOSED: [2015-08-05 Wed 18:01]
+*** DONE add scan with right protocol
+CLOSED: [2015-08-05 Wed 18:01]
+*** DONE check the response
+CLOSED: [2015-08-07 Fri 10:41]
+
+
+* 2015/08/06 17:11:15
+** TODO Items []
+*** merge fetch_bad into develop
+
+* 2015/08/07 10:03:12
+
+** DONE Items [4/4]
+*** DONE dont forget to make sure fetcher and blocklistd are git ready ( merge into develop then new repo, already merged but need new repo )
+CLOSED: [2015-08-07 Tue 17:27]
+*** DONE write up feedback for review
+CLOSED: [2015-08-11 Tue 17:28]
+*** DONE follow up with CH for RBLdnsd
+CLOSED: [2015-08-07 Tue 17:27]
+*** DONE make sure sending out review request for blocklistd ticket
+
+CLOSED: [2015-08-07 Fri 11:58]
+
+
+* 2015/08/10 09:42:35
+** DONE Items [4/4]
+*** DONE [#B] r.FormValue
+CLOSED: [2015-08-10 Tue 17:28]
+*** DONE [#A] for all 4 usecases of CEF request, instead of run it 4 times make it 1 time with all possible fields and return as long as ANYONE OF THEM IS HIT
+CLOSED: [2015-08-10 Mon 15:38]
+*** DONE [#A] test existing spamd code
+CLOSED: [2015-08-10 Tue 16:40]
+*** DONE [#A] build cef functions
+CLOSED: [2015-08-10 Tue 17:40]
+
+* 2015/08/11 09:41:24
+** TODO Items [2/5]
+*** DONE [#B] bug re stop checking after one classification 
+CLOSED: [2015-08-11 Tue 16:09]
+*** DONE [#A] inform Ken and ponp
+CLOSED: [2015-08-11 Tue 13:27]
+*** TODO [#B] currently we put CL_ into source which is a hint that this is classification rule, ideally it should check the values from category
+*** TODO [#B] make sure there are no hard-coded ones
+*** TODO [#B] profiling check_default, check_cus and check_user level classification routines, in rules and in utils
+
+** DONE Questions [2/2]
+*** DONE do we need to make the blocklistd_req and blocklistd_res self-contained and config driven ? let's see, but now make it work first
+CLOSED: [2015-08-11 Tue 11:39]
+*** DONE cef tag is CEF-SE for now, no plan to make it CEF-ND so we can make it CEF but do NOT put it on production yet, confirmed with Chris Hyde.
+CLOSED: [2015-08-11 Tue 11:39]
+
+* 2015/08/12 09:54:14
+** TODO Items [4/6]
+*** DONE [#B] is_ham,  do we need this argu ?
+CLOSED: [2015-08-12 Wed 16:23]
+*** DONE [#A] cef bulk both hit confirm
+CLOSED: [2015-08-12 Wed 11:09]
+*** DONE [#A] bulk vs default and cef vs default, WE NEED TO CHECK DEFAULT PER CLASSIFICATIONS
+CLOSED: [2015-08-12 Wed 11:09]
+*** TODO [#B] currently we put CL_ into source which is a hint that this is classification rule, ideally it should check the values from category
+*** TODO [#B] make sure there are no hard-coded ones
+*** DONE [#B] profiling check_default, check_cus and check_user level classification routines, in rules and in utils
+CLOSED: [2015-08-12 Wed 11:10]
+
+* 2015/08/13 10:05:58
+** DONE Items [1/1]
+*** PENDING amke sure when SPAM is > high thre then stop looking for classifications ? currently it keeps going till the end, may need to confirm with Chris Hyde
+CLOSED: [2015-08-14 Fri 11:42]
+did not get a chance to ask yet so mark it as pending
+
+* 2015/08/17 10:07:50
+** TODO Items [4/5]
+*** DONE [#A] strip off empty string in the IN CLAUSE in the blocklistd so that even we have dirty data in the DB , otherwise it will cause false positive issue
+CLOSED: [2015-08-14 Fri 16:23]
+*** DONE [#A] from domain is empty then core dump
+CLOSED: [2015-08-14 Fri 14:22]
+*** TODO [#A] config driven spamd2
+*** DONE [#B] golang profiling for blocklistcd
+CLOSED: [2015-08-18 Tue 10:08]
+*** DONE [#A] Memory Leaking monitor in blocklistd
+CLOSED: [2015-08-18 Tue 10:08]
+
+* 2015/08/18 10:10:37
+** TODO Items [3/4]
+*** DONE [#C] sql escape in the scan end piont of blocklistd
+CLOSED: [2015-08-18 Tue 14:11]
+*** DONE [#B] handle UTF8 mimefrom ( CONFIRMED WITH CHRIS HYDE THAT WE WONT EXPECT NON-ASCII CHARS IN CEF ENTRY )
+CLOSED: [2015-08-18 Tue 16:14]
+*** INPROGRESS [#A] human or humandomain is NULL, what is the impact on FML rule check ?
+*** DONE [#A] make sure NON-CLASSIFICATION will always contribute the score , see pedram's phishing test email
+CLOSED: [2015-08-18 Tue 23:12]
+
+* 2015/08/19 11:21:45
+** TODO Items [0/2]
+*** TODO [#C] Discuss with Chris Hyde that the roadmap of preference in classification filters [0/3]
+**** TODO Default system wide preference could be in the config . Portal 1 and Portal 2 matters ?
+**** TODO If we need to make it cus and user level then same logic as the current ones ? CEF and BULK
+**** TODO When setting the preference, we may run into 3+ classifications , eg BULK, CEF , SOCIAL , MARKETING... then how to set preference [0/2]
+***** TODO Do we need to set preference on ONLY one classification ? eg, BULK is the only one will contribute spam score in above list
+***** TODO if above is No, then we may introduce weight to each classification ? eg, BULK is 60%, CEF is 30% and SOCIAL and MARKETING are both 5% [0/1]
+****** TODO if above is Yes,then should we differantiate above weight in different level ? I bet not, too complicated
+*** VERIFY [#A] default class setting should be inherit by user/cus level, eg, default BULK=1, but no BULK entry in cus_spam_classification, then we sitll check BULK rule
+* 2015/08/20 10:21:27
+** DONE Items [2/2]
+*** DONE [#B] AP-938, do we have the tool to generate this kind of report ?
+CLOSED: [2015-08-20 Thu 16:14]
+*** DONE jlog, got it working on my workstation
+CLOSED: [2015-08-23 Fri 10:33]
+* 2015/08/24 10:33:54
+
+** TODO Items [1/4]
+*** TODO [#A] finish the testcases of CEF
+*** DONE [#C] Jason FP/FN email, should we alter that spam rule
+CLOSED: [2015-08-24 Mon 10:54]
+*** TODO [#B] MAIL-239 ruleshit logger3
+*** TODO [#B] jlog [0/3]
+**** TODO checkpoint revisiting
+**** TODO single process performance hit
+**** TODO when init the ctx it seems we can not set the start position, it only reads from METASTORE
+
+* 2015/08/25 14:55:30
+** TODO Items [2/3]
+*** DONE [#A] fix a bug in the mimefrom
+CLOSED: [2015-08-26 Wed 10:16]
+*** DONE [#A] finish up test cases
+CLOSED: [2015-08-26 Wed 10:18]
+*** TODO [#C] when converting hash to gslist, it has to be allocated first so I put a dummy value there, is there a way to remove it or hide from the log 
+* 2015/08/26 10:25:41
+** TODO Items [2/3]
+*** DONE [#A] finish up the testcase for mimefrom and spam rules
+CLOSED: [2015-08-26 Wed 16:19]
+*** DONE [#B] left over from yesterday, dummy value needs to be removed or hide from log
+CLOSED: [2015-08-26 Wed 10:46]
+*** TODO [#A] ipv6 rbl
+
+* 2015/08/31 11:57:42
+** TODO [#A] ipv6 rbxl daemon testing
+** TODO [#A] modify spamhaus script
+** TODO [#B] modify spamd2
+* 2015/09/09 10:45:35
+** TODO Items [2/3]
+*** DONE [#B] rbldnsd sync shell
+CLOSED: [2015-09-09 Wed 17:27]
+*** DONE [#A] rbldnsd daemon installation ticket
+CLOSED: [2015-09-09 Wed 17:27]
+* 2015/09/10 10:22:15
+** TODO Items [0/2]
+*** TODO [#A] spamd2 with rbldnsd [0/2]:
+**** TODO [#A] convert from compressed form to full form
+FF01:0:0:0:0:0:0:101 is a multicast address that can be written as FF01::101.
+0:0:0:0:0:0:0:1 is a loopback address that can be written as ::1.
+**** TODO [#B] revserse the full form with dot
+*** TODO [#B] alert with firewall
+
+* 2015/09/23 10:35:36
+** TODO Items [1/3]
+*** DONE MAIL-301, how to reproduce ? dont forget to turn off policy/policyadmin/bizcontinuity
+CLOSED: [2015-09-25 Fri 16:40]
+*** TODO MAIL-235, ask SO about adding an entry in JBL.exemption
+*** TODO IPV6
+
+* 2015/09/28 10:00:53
+** DONE Items [1/1]
+*** DONE working ipv6 one
+CLOSED: [2015-09-29 Tue 11:56]
+* 2015/09/29 11:56:48
+** TODO Items [/]
+***
+* 2015/09/30 09:55:02
+** DONE Items[1/1]
+*** DONE finish 309, status-update, how to reproduce it
+CLOSED: [2015-10-02 Fri 17:43]
+* 2015/10/02 17:44:04
+** TODO ipv6 status[2/4]
+*** DONE extract ipv6 from header
+CLOSED: [2015-10-02 Fri 17:44]
+*** VERIFY extract ipv6 from body
+*** DONE parsing ipv6 in header against rbl
+CLOSED: [2015-10-02 Fri 17:45]
+*** TODO parsing ipv6 in body [0/2]
+**** TODO we did get it from body but need to reverse it to against ipv6 rbl
+**** TODO let's make sure it wont break below testcases [0/4]
+***** TODO Microsoft Server id
+***** TODO ipv6-ipv4 mapped
+***** TODO non domain/url
+***** TODO segfault
+* 2015/10/06 14:06:02
+** TODO ipv6 + spamd2 [0/2]
+*** TODO verify extracted ipv6 [0/5]
+**** TODO why do we get ipv6 against surbl ? do_surbl result is MISS on <2002:250:405:200a:cf9:4f75:fd8a:9448.multi.surbl.org.>
+**** TODO Microsoft Server id
+**** TODO ipv6-ipv4 mapped
+**** TODO non domain/url
+**** TODO segfault
+*** TODO [#E] to reverse the extracted ipv6 and send them to rbldnsd+ipv6
+* 2015/10/13 10:24:55
+** TODO Items [0/2]
+*** TODO MAIL-314 handle those testcases, may check if it is RFC compliance ?
+    per RFC :
+
+    
+   A mailbox receives mail.  It is a conceptual entity which does not
+   necessarily pertain to file storage.  For example, some sites may
+   choose to print mail on a printer and deliver the output to the
+   addressee's desk.  Normally, a mailbox is comprised of two parts: (1)
+   an optional display name that indicates the name of the recipient
+   (which could be a person or a system) that could be displayed to the
+   user of a mail application, and (2) an addr-spec address enclosed in
+   angle brackets ("<" and ">").  There is also an alternate simple form
+   of a mailbox where the addr-spec address appears alone, without the
+   recipient's name or the angle brackets.  The Internet addr-spec
+   address is described in section 3.4.1.
+
+   1. level 1:
+     a. Johndoe is ok
+     b. ===== YADA input is <"IT Support <aaa@aaa.com>" <helpdesk@spamtest.fusemail.com>> =====
+===== YADA output is #helpdesk@spamtest.fusemail.com# =====
+===== YADA input is <"IT Support <aaa@aaa.com>" <helpdesk@asos.com>> =====
+===== YADA output is #helpdesk@asos.com# =====
+     C. ===== YADA input is <" " helpdesk@spamtest.fusemail.com>> =====
+===== YADA output is #"# =====
+===== YADA input is <" " helpdesk@asos.com>> =====
+===== YADA output is #"# =====
+
++++
+
++++
+
+
+     D. WIFIPING
+===== YADA input is <"WIFI PING"> =====
+===== YADA output is #"WIFI# =====
+===== YADA input is <" " <helpdesk@asos.com>> =====
+===== YADA output is #helpdesk@asos.com# =====
+     e.===== YADA input is <"'Wulf' wulf.5@gmx.net [FORCED-MALE-NUDITY-PICS]" <blah@spamtest.fusemail.com>> =====
+===== YADA output is #blah@spamtest.fusemail.com# =====
+===== YADA input is <"'Wulf' wulf.5@gmx.net [FORCED-MALE-NUDITY-PICS]" <helpdesk@asos.com>> =====
+===== YADA output is #helpdesk@asos.com# =====
+     f. ===== YADA input is <" BDB's Employment Team" <blah@spamtest.fusemail.com>> =====
+===== YADA output is #blah@spamtest.fusemail.com# =====
+===== YADA input is <" BDB's Employment Team" <helpdesk@asos.com>> =====
+===== YADA output is #helpdesk@asos.com# =====
+     g. ===== YADA input is <<FORCED-MALE-NUDITY-PICS-noreply@yahoogroups.com>> =====
+===== YADA output is #FORCED-MALE-NUDITY-PICS-noreply@yahoogroups.com# =====
+===== YADA input is <<helpdesk@asos.com>> =====
+===== YADA output is #helpdesk@asos.com# =====
+     h. ===== YADA input is <blahblah <FORCED-MALE-NUDITY-PICS-noreply@yahoogroups.com>> =====
+===== YADA output is #FORCED-MALE-NUDITY-PICS-noreply@yahoogroups.com# =====
+===== YADA input is <blahblah <helpdesk@asos.com>> =====
+===== YADA output is #helpdesk@asos.com# =====
+     I. ===== YADA input is <ssl-check@spamtest.fusemail.com (SSL-Check)> =====
+===== YADA output is #ssl-check@spamtest.fusemail.com# =====
+===== YADA input is <<helpdesk@asos.com>> =====
+===== YADA output is #helpdesk@asos.com# =====
+[2015-10-13 14:13:21:966]: [scan]: [YADABLAH] mimefromname:             [ssl-check@spamtest.fusemail.com (SSL-Check)]
+[2015-10-13 14:13:21:966]: [scan]: [YADABLAH] replyname:                [(null)]
+     J. ===== YADA input is <ssl-check@spamtest.fusemail.com> =====
+===== YADA output is #ssl-check@spamtest.fusemail.com# =====
+===== YADA input is <<helpdesk@asos.com>> =====
+===== YADA output is #helpdesk@asos.com# =====
+[2015-10-13 14:15:34:12]: [scan]: [YADABLAH] mimefromname:             [ssl-check@spamtest.fusemail.com]
+[2015-10-13 14:15:34:12]: [scan]: [YADABLAH] replyname:                [(null)]
+     k. ===== YADA input is <"AGRO TECH CO., BSL GKH"<rodnee@spamtest.fusemail.com>> =====
+===== YADA output is #rodnee@spamtest.fusemail.com# =====
+===== YADA input is <"AGRO TECH CO., BSL GKH"<helpdesk@asos.com>> =====
+===== YADA output is #helpdesk@asos.com# =====
+[2015-10-13 14:18:50:217]: [scan]: [YADABLAH] mimefromname:             [AGRO TECH CO., BSL GKH]
+[2015-10-13 14:18:50:217]: [scan]: [YADABLAH] replyname:                [AGRO TECH CO., BSL GKH]
+     l. ===== YADA input is <"AGRO TECH CO., BSL GKH" <rodnee@spamtest.fusemail.com>> =====
+===== YADA output is #rodnee@spamtest.fusemail.com# =====
+===== YADA input is <"AGRO TECH CO., BSL GKH" <helpdesk@asos.com>> =====
+===== YADA output is #helpdesk@asos.com# =====
+[2015-10-13 14:19:48:362]: [scan]: [YADABLAH] mimefromname:             [AGRO TECH CO., BSL GKH]
+[2015-10-13 14:19:48:362]: [scan]: [YADABLAH] replyname:                [AGRO TECH CO., BSL GKH]
+     m. ===== YADA input is <<name.hidden@spamtest.fusemail.com> Name.Hidden@spamtest.fusemail.com> =====
+===== YADA output is #name.hidden@spamtest.fusemail.com# =====
+===== YADA input is <"blahblah" <helpdesk@asos.com>> =====
+===== YADA output is #helpdesk@asos.com# =====
+[2015-10-13 14:21:46:631]: [scan]: [YADABLAH] mimefromname:             [(null)]
+[2015-10-13 14:21:46:631]: [scan]: [YADABLAH] replyname:                [blahblah]
+[2015-10-13 14:21:47:194]: [rules]: [YADABLAH] dic_mimefromname_equals_replytoname: No message or replyto name or mimefrom name
+     n. ===== YADA input is <"Payment Officer Central Bank Of Nigeria."< afadf@spamtest.fusemail.com>> =====
+===== YADA output is # afadf@spamtest.fusemail.com# =====
+===== YADA input is <"Payment Officer Central Bank Of Nigeria."<helpdesk@asos.com>> =====
+===== YADA output is #helpdesk@asos.com# =====
+[2015-10-13 14:23:54:555]: [scan]: [YADABLAH] mimefromname:             [Payment Officer Central Bank Of Nigeria.]
+[2015-10-13 14:23:54:555]: [scan]: [YADABLAH] replyname:                [Payment Officer Central Bank Of Nigeria.]
+
+
+
+*** TODO IPv6, lets pick up the missing piece from last time
+
+* Todo CEF ticket [11/14]
+** DONE [#A] when BUILDING CLASSIFICATION MATRIX, MAKE SURE SECONDARY TESTCASES ARE COVERED
+CLOSED: [2015-08-31 Mon 11:57]
+
++------+---------+----------------+---------+--------------------+
+| id   | cus_num | classification | is_spam | allow_user_setting |
++------+---------+----------------+---------+--------------------+
+| 2833 | 9506448 | cef            |       1 |                  0 |
++------+---------+----------------+---------+--------------------+
+1 row in set (0.00 sec)
+
+Empty set (0.00 sec)
+
+so above one is with the new process, lookup_classification_list, with cef = 1 and witout bulk on cus, so it SHOULD TAKE VALUE FROM default of portal 1
+
+file=cef.msg
+X-SPAM-Status: NO, 12.0 / 24.0
+X-SPAM-Summary: CL_CEF-SE_CEF=6.0,CL_DHD_BULK=6.0
+file=cef_nofrom.msg
+X-SPAM-Status: NO, 12.0 / 24.0
+X-SPAM-Summary: CL_CEF-SE_CEF=6.0,CL_DHD_BULK=6.0
+file=cef_nos.msg
+X-SPAM-Status: NO, 12.0 / 24.0
+X-SPAM-Summary: CL_CEF-SE_CEF=6.0,CL_DHD_BULK=6.0
+file=ham_ip.msg
+X-SPAM-Status: NO, 0.0 / 24.0
+X-SPAM-Summary: FSO_HAM=0.0
+file=phishing.msg
+X-SPAM-Status: YES, 24.0 / 24.0
+X-SPAM-Summary: RULE_ANCHOR_DOMAIN_PHISHING=18.0,CL_CEF-SE_CEF=6.0
+file=phishing_nourl_clean.msg
+X-SPAM-Status: NO, 6.0 / 24.0
+X-SPAM-Summary: CL_CEF-SE_CEF=6.0
+file=phishing-tiny.msg
+X-SPAM-Status: YES, 30.0 / 30.0
+X-SPAM-Summary: RULE_ANCHOR_DOMAIN_PHISHING=18.0,TINY_SPAM-M=12.0,CL_CEF-SE_CEF=0.0
+file=spam_HARDSPFFAIL.msg
+X-SPAM-Status: NO, 6.0 / 24.0
+X-SPAM-Summary: CL_CEF-SE_CEF=6.0
+file=urld.msg
+X-SPAM-Status: YES, 30.0 / 30.0
+X-SPAM-Summary: RULE_ANCHOR_DOMAIN_PHISHING=18.0,TINY_SPAM-M=12.0,CL_CEF-SE_CEF=0.0,CL_DHD_BULK=0.0
+file=urld_unsub.msg
+X-SPAM-Status: YES, 36.0 / 30.0
+X-SPAM-Summary: RULE_ANCHOR_DOMAIN_PHISHING=18.0,RULE_ANCHOR_UNSUB_BULK=6.0,TINY_SPAM-M=12.0,CL_CEF-SE_CEF=0.0,CL_DHD_BULK=0.0
+file=yifang_bulk.msg
+X-SPAM-Status: YES, 24.0 / 24.0
+X-SPAM-Summary: RULE_ANCHOR_DOMAIN_PHISHING=18.0,CL_CEF-SE_CEF=6.0,CL_DHD_BULK=0.0
+
+** DONE [#A] DB side , dont forget to introduce use_cef flag, By default is 0 ? ( need to confirm with sys ops or Chris )
+CLOSED: [2015-09-09 Wed 10:37]
+*** alter table sf_dom_sub add use_cef tinyint(1) NOT NULL DEFAULT 0 after use_mdna; yes, confirmed default is 0
+** DONE [#E] S move from golang to fm-service-blocklistd
+CLOSED: [2015-08-07 Fri 12:00]
+** DONE [#A] S blocklistd ( GoLang ) will be the REST server side, do we need access to musoft for API reference ? probably not, just go through the code
+CLOSED: [2015-08-07 Fri 10:40]
+** DONE [#A] S once above is done then add new endpoint over REST , like /scan
+CLOSED: [2015-08-07 Fri 12:00]
+** DONE [#A] S make sure scan portion follow the spamd protocol, eg, current response does not spit out rulename field
+CLOSED: [2015-08-07 Fri 12:00]
+** DONE [#A] S make sure we test the add portion with r.FormValue
+CLOSED: [2015-08-07 Sat 13:49]
+** DONE [#B] S where to deploy blocklistd-regular and blocklistd-ssl
+CLOSED: [2015-08-18 Tue 17:01]
+** DONE [#A] C no ip address in the CEF list, only domain and sender [9/9]
+*** DONE [#A] WHAT IF FROM is NON-ASCII / UTF8 ? ( see 08/18 Todo item 3 )
+CLOSED: [2015-08-18 Tue 17:01]
+*** DONE check sender first
+CLOSED: [2015-08-18 Tue 10:03]
+*** DONE if sender is in the list then Hit and return
+CLOSED: [2015-08-18 Tue 10:03]
+*** DONE otherwise check sender domain, if it is in the list then Hit and return
+CLOSED: [2015-08-18 Tue 10:03]
+*** DONE if sender domain is not there then do we have Mime from ?
+CLOSED: [2015-08-18 Tue 10:03]
+*** DONE if Mime from is there and in the list then Hit and return
+CLOSED: [2015-08-18 Tue 10:03]
+*** DONE if Mime from is not there then check mime from's domain
+CLOSED: [2015-08-18 Tue 10:03]
+*** DONE if mime from's domain is in the List then Hit and return
+CLOSED: [2015-08-18 Tue 10:03]
+*** DONE if mime from's domain is Not in the list then Miss and return
+CLOSED: [2015-08-18 Tue 10:04]
+** DONE [#A] C build a rest client to talk to blocklistd , should we make it more self-adaptive ? worth to try
+CLOSED: [2015-09-09 Wed 10:37]
+** TODO [#B] profiling check_default, check_cus and check_user level classification routines, in rules and in utils
+** TODO [#A] C follow the same logic as bulk settings, all of below entries confirmed ? [6/8]
+*** DONE default portal version / actions
+CLOSED: [2015-09-09 Wed 10:37]
+*** TODO store the user/customer values in user/cus_spam_classifications, text values as cef, now is always bulk
+*** DONE CL_CEF-SE_CEF, need to check Server side response, REMEMBER this is a new classification
+CLOSED: [2015-09-09 Wed 10:37]
+*** DONE [#A] if CEF gives out BULK then do we need to go through the rules still ? YES because it is a new classification, so user/cus_spam_classification
+CLOSED: [2015-08-18 Tue 10:09]
+*** DONE [#A] do we need to cover secondary / primary address for CEF too ? like bulk ? YES
+CLOSED: [2015-09-09 Wed 10:38]
+*** DONE [#A] ALLOW/DENY check results overwrite the CEF result ? YES
+CLOSED: [2015-09-09 Wed 10:38]
+*** DONE [#B] local ham rule applies to CEF too ? same as bulk ? YES
+CLOSED: [2015-09-09 Wed 10:38]
+*** TODO [#B] default portal version / actions [2/3]
+***** TODO store the user/customer values in user/cus_spam_classifications, text values as cef, now is always bulk
+***** DONE CEF is a new classification, same as BULK. so instead of CL_RULE_BULK, it should be CL_CEF-SE_CEF. Though on tracksmart side it will take _CEF and _BULK as BULK
+CLOSED: [2015-09-09 Wed 10:38]
+***** DONE Becasue of above , CEF Hit is indentpendant of BULK Hit so classification rule will still be check , since rule could be spam still.
+CLOSED: [2015-09-09 Wed 10:38]
+** DONE [#A] Notes [2/2]
+*** DONE [#A] No ALL of the input then return MISS
+CLOSED: [2015-08-17 Mon 15:15]
+*** DONE [#A] handle @domain.com and domain.com both conditions
+CLOSED: [2015-08-17 Mon 15:15]
+** TODO Testcases [2/9]
+
+*** TODO admin@00001.wayne.dong.test.fusemail.com as portal1 and admin@00002.wayne.dong.test.fusemail.com as portal2
+*** DONE test default cef setting [6/6]
+**** DONE 001:default for all => CEF ON
+CLOSED: [2015-08-12 Wed 14:22]
+**** DONE 001:default for all => CEF OFF
+CLOSED: [2015-08-12 Wed 14:27]
+**** DONE 002:default for all => CEF ON
+CLOSED: [2015-08-12 Wed 14:22]
+**** DONE 002:default for all => CEF OFF
+CLOSED: [2015-08-12 Wed 14:27]
+**** DONE 001: regular spam
+CLOSED: [2015-08-12 Wed 15:50]
+**** DONE 002: regular ham
+CLOSED: [2015-08-12 Wed 15:50]
+*** DONE test user level cef setting [7/7]
+**** DONE 001: default cefbulk, use_cef, no cus, user: CEF ON, BULK ON
+CLOSED: [2015-08-24 Mon 13:26]
+
+file=cef.msg
+X-SPAM-Status: YES, 6.0 / 6.0
+X-SPAM-Summary: CL_DHD_BULK=6.0
+file=cef_nofrom.msg
+X-SPAM-Status: YES, 6.0 / 6.0
+X-SPAM-Summary: CL_DHD_BULK=6.0
+file=cef_nos.msg
+X-SPAM-Status: YES, 6.0 / 6.0
+X-SPAM-Summary: CL_DHD_BULK=6.0
+file=ham_ip.msg
+X-SPAM-Status: NO, 0.0 / 6.0
+X-SPAM-Summary: FSO_HAM=0.0
+file=phishing.msg
+X-SPAM-Status: YES, 18.0 / 8.0
+X-SPAM-Summary: RULE_ANCHOR_DOMAIN_PHISHING=18.0
+file=phishing_nourl_clean.msg
+X-SPAM-Status: NO, 0.0 / 6.0
+file=phishing-tiny.msg
+X-SPAM-Status: YES, 30.0 / 8.0
+X-SPAM-Summary: RULE_ANCHOR_DOMAIN_PHISHING=18.0,TINY_SPAM-M=12.0
+file=spam_HARDSPFFAIL.msg
+X-SPAM-Status: NO, 0.0 / 6.0
+file=urld.msg
+X-SPAM-Status: YES, 30.0 / 8.0
+X-SPAM-Summary: RULE_ANCHOR_DOMAIN_PHISHING=18.0,TINY_SPAM-M=12.0,CL_DHD_BULK=0.0
+file=urld_unsub.msg
+X-SPAM-Status: YES, 30.0 / 8.0
+X-SPAM-Summary: RULE_ANCHOR_DOMAIN_PHISHING=18.0,RULE_ANCHOR_UNSUB_BULK=0.0,TINY_SPAM-M=12.0,CL_DHD_BULK=0.0
+file=yifang_bulk.msg
+X-SPAM-Status: YES, 18.0 / 8.0
+X-SPAM-Summary: RULE_ANCHOR_DOMAIN_PHISHING=18.0,CL_DHD_BULK=0.0
+
+**** DONE 001: default cefbulk, use_cef, no cus, user: CEF ON, BULK OFF
+CLOSED: [2015-08-31 Mon 10:41]
+
+with entry
+
+file=cef.msg
+X-SPAM-Status: YES, 6.0 / 6.0
+X-SPAM-Summary: CL_CEF-SE_CEF=6.0,CL_DHD_BULK=0.0
+file=cef_nofrom.msg
+X-SPAM-Status: YES, 6.0 / 6.0
+X-SPAM-Summary: CL_CEF-SE_CEF=6.0,CL_DHD_BULK=0.0
+file=cef_nos.msg
+X-SPAM-Status: YES, 6.0 / 6.0
+X-SPAM-Summary: CL_CEF-SE_CEF=6.0,CL_DHD_BULK=0.0
+file=ham_ip.msg
+X-SPAM-Status: NO, 0.0 / 6.0
+X-SPAM-Summary: FSO_HAM=0.0
+file=phishing.msg
+X-SPAM-Status: YES, 18.0 / 8.0
+X-SPAM-Summary: RULE_ANCHOR_DOMAIN_PHISHING=18.0,CL_CEF-SE_CEF=0.0
+file=phishing_nourl_clean.msg
+X-SPAM-Status: YES, 6.0 / 6.0
+X-SPAM-Summary: CL_CEF-SE_CEF=6.0
+file=phishing-tiny.msg
+X-SPAM-Status: YES, 30.0 / 8.0
+X-SPAM-Summary: RULE_ANCHOR_DOMAIN_PHISHING=18.0,TINY_SPAM-M=12.0,CL_CEF-SE_CEF=0.0
+file=spam_HARDSPFFAIL.msg
+X-SPAM-Status: YES, 6.0 / 6.0
+X-SPAM-Summary: CL_CEF-SE_CEF=6.0
+file=urld.msg
+X-SPAM-Status: YES, 30.0 / 8.0
+X-SPAM-Summary: RULE_ANCHOR_DOMAIN_PHISHING=18.0,TINY_SPAM-M=12.0,CL_CEF-SE_CEF=0.0,CL_DHD_BULK=0.0
+file=yifang_bulk.msg
+X-SPAM-Status: YES, 18.0 / 8.0
+X-SPAM-Summary: RULE_ANCHOR_DOMAIN_PHISHING=18.0,CL_CEF-SE_CEF=0.0,CL_DHD_BULK=0.0
+
+without entry
+
++-------+------------------------------------------+----------------+---------+
+| id    | box_fulladdress                          | classification | is_spam |
++-------+------------------------------------------+----------------+---------+
+| 12169 | admin@00001.wayne.dong.test.fusemail.com | cef            |       1 |
++-------+------------------------------------------+----------------+---------+
+
+file=cef.msg
+X-SPAM-Status: YES, 6.0 / 6.0
+X-SPAM-Summary: CL_CEF-SE_CEF=6.0,CL_DHD_BULK=0.0
+file=cef_nofrom.msg
+X-SPAM-Status: YES, 6.0 / 6.0
+X-SPAM-Summary: CL_CEF-SE_CEF=6.0,CL_DHD_BULK=0.0
+file=cef_nos.msg
+X-SPAM-Status: YES, 6.0 / 6.0
+X-SPAM-Summary: CL_CEF-SE_CEF=6.0,CL_DHD_BULK=0.0
+file=ham_ip.msg
+X-SPAM-Status: NO, 0.0 / 6.0
+X-SPAM-Summary: FSO_HAM=0.0
+file=phishing.msg
+X-SPAM-Status: YES, 18.0 / 8.0
+X-SPAM-Summary: RULE_ANCHOR_DOMAIN_PHISHING=18.0,CL_CEF-SE_CEF=0.0
+file=phishing_nourl_clean.msg
+X-SPAM-Status: YES, 6.0 / 6.0
+X-SPAM-Summary: CL_CEF-SE_CEF=6.0
+file=phishing-tiny.msg
+X-SPAM-Status: YES, 30.0 / 8.0
+X-SPAM-Summary: RULE_ANCHOR_DOMAIN_PHISHING=18.0,TINY_SPAM-M=12.0,CL_CEF-SE_CEF=0.0
+file=spam_HARDSPFFAIL.msg
+X-SPAM-Status: YES, 6.0 / 6.0
+X-SPAM-Summary: CL_CEF-SE_CEF=6.0
+file=urld.msg
+X-SPAM-Status: YES, 30.0 / 8.0
+X-SPAM-Summary: RULE_ANCHOR_DOMAIN_PHISHING=18.0,TINY_SPAM-M=12.0,CL_CEF-SE_CEF=0.0,CL_DHD_BULK=0.0
+file=urld_unsub.msg
+X-SPAM-Status: YES, 30.0 / 8.0
+X-SPAM-Summary: RULE_ANCHOR_DOMAIN_PHISHING=18.0,RULE_ANCHOR_UNSUB_BULK=0.0,TINY_SPAM-M=12.0,CL_CEF-SE_CEF=0.0,CL_DHD_BULK=0.0
+file=yifang_bulk.msg
+file=yifang_bulk.msg
+X-SPAM-Status: YES, 18.0 / 8.0
+X-SPAM-Summary: RULE_ANCHOR_DOMAIN_PHISHING=18.0,CL_CEF-SE_CEF=0.0,CL_DHD_BULK=0.0
+
+when disabling url rules, bulk is HIT since it is portal one and no entry for bulk
+
+scripts3d [LXC] cef # RECIP='pedramtest@earth.fusemail.com' /root/spamd-test -f yifang_bulk.msg -s in9b
+X-SPAM-Status: YES, 6.0 / 4.0
+X-SPAM-Summary: CL_DHD_BULK=6.0
+
+
+**** DONE 001: default cefbulk, use_cef, no cus, user: CEF OFF, BULK OFF
+CLOSED: [2015-08-24 Mon 13:26]
+
+with entry
+
++-------+------------------------------------------+----------------+---------+
+| id    | box_fulladdress                          | classification | is_spam |
++-------+------------------------------------------+----------------+---------+
+| 12193 | admin@00001.wayne.dong.test.fusemail.com | bulk           |       0 |
+| 12169 | admin@00001.wayne.dong.test.fusemail.com | cef            |       0 |
++-------+------------------------------------------+----------------+---------+
+
+
+file=cef.msg
+X-SPAM-Status: NO, 0.0 / 6.0
+X-SPAM-Summary: CL_CEF-SE_CEF=0.0,CL_DHD_BULK=0.0
+file=cef_nofrom.msg
+X-SPAM-Status: NO, 0.0 / 6.0
+X-SPAM-Summary: CL_CEF-SE_CEF=0.0,CL_DHD_BULK=0.0
+file=cef_nos.msg
+X-SPAM-Status: NO, 0.0 / 6.0
+X-SPAM-Summary: CL_CEF-SE_CEF=0.0,CL_DHD_BULK=0.0
+file=ham_ip.msg
+X-SPAM-Status: NO, 0.0 / 6.0
+X-SPAM-Summary: FSO_HAM=0.0
+file=phishing.msg
+X-SPAM-Status: YES, 18.0 / 8.0
+X-SPAM-Summary: RULE_ANCHOR_DOMAIN_PHISHING=18.0,CL_CEF-SE_CEF=0.0
+file=phishing_nourl_clean.msg
+X-SPAM-Status: NO, 0.0 / 6.0
+X-SPAM-Summary: CL_CEF-SE_CEF=0.0
+file=phishing-tiny.msg
+X-SPAM-Status: YES, 30.0 / 8.0
+X-SPAM-Summary: RULE_ANCHOR_DOMAIN_PHISHING=18.0,TINY_SPAM-M=12.0,CL_CEF-SE_CEF=0.0
+file=spam_HARDSPFFAIL.msg
+X-SPAM-Status: NO, 0.0 / 6.0
+X-SPAM-Summary: CL_CEF-SE_CEF=0.0
+file=urld.msg
+X-SPAM-Status: YES, 30.0 / 8.0
+X-SPAM-Summary: RULE_ANCHOR_DOMAIN_PHISHING=18.0,TINY_SPAM-M=12.0,CL_CEF-SE_CEF=0.0,CL_DHD_BULK=0.0
+file=urld_unsub.msg
+X-SPAM-Status: YES, 30.0 / 8.0
+X-SPAM-Summary: RULE_ANCHOR_DOMAIN_PHISHING=18.0,RULE_ANCHOR_UNSUB_BULK=0.0,TINY_SPAM-M=12.0,CL_CEF-SE_CEF=0.0,CL_DHD_BULK=0.0
+file=yifang_bulk.msg
+X-SPAM-Status: YES, 18.0 / 8.0
+X-SPAM-Summary: RULE_ANCHOR_DOMAIN_PHISHING=18.0,CL_CEF-SE_CEF=0.0,CL_DHD_BULK=0.0
+
+
+without entries
+
+file=cef.msg
+X-SPAM-Status: YES, 6.0 / 6.0
+X-SPAM-Summary: CL_CEF-SE_CEF=6.0,CL_DHD_BULK=0.0
+file=cef_nofrom.msg
+X-SPAM-Status: YES, 6.0 / 6.0
+X-SPAM-Summary: CL_CEF-SE_CEF=6.0,CL_DHD_BULK=0.0
+file=cef_nos.msg
+X-SPAM-Status: YES, 6.0 / 6.0
+X-SPAM-Summary: CL_CEF-SE_CEF=6.0,CL_DHD_BULK=0.0
+file=ham_ip.msg
+X-SPAM-Status: NO, 0.0 / 6.0
+X-SPAM-Summary: FSO_HAM=0.0
+file=phishing.msg
+X-SPAM-Status: YES, 18.0 / 8.0
+X-SPAM-Summary: RULE_ANCHOR_DOMAIN_PHISHING=18.0,CL_CEF-SE_CEF=0.0
+file=phishing_nourl_clean.msg
+X-SPAM-Status: YES, 6.0 / 6.0
+X-SPAM-Summary: CL_CEF-SE_CEF=6.0
+file=phishing-tiny.msg
+X-SPAM-Status: YES, 30.0 / 8.0
+X-SPAM-Summary: RULE_ANCHOR_DOMAIN_PHISHING=18.0,TINY_SPAM-M=12.0,CL_CEF-SE_CEF=0.0
+file=spam_HARDSPFFAIL.msg
+X-SPAM-Status: YES, 6.0 / 6.0
+X-SPAM-Summary: CL_CEF-SE_CEF=6.0
+file=urld.msg
+X-SPAM-Status: YES, 30.0 / 8.0
+X-SPAM-Summary: RULE_ANCHOR_DOMAIN_PHISHING=18.0,TINY_SPAM-M=12.0,CL_CEF-SE_CEF=0.0,CL_DHD_BULK=0.0
+file=urld_unsub.msg
+X-SPAM-Status: YES, 30.0 / 8.0
+X-SPAM-Summary: RULE_ANCHOR_DOMAIN_PHISHING=18.0,RULE_ANCHOR_UNSUB_BULK=0.0,TINY_SPAM-M=12.0,CL_CEF-SE_CEF=0.0,CL_DHD_BULK=0.0
+file=yifang_bulk.msg
+X-SPAM-Status: YES, 18.0 / 8.0
+X-SPAM-Summary: RULE_ANCHOR_DOMAIN_PHISHING=18.0,CL_CEF-SE_CEF=0.0,CL_DHD_BULK=0.0
+
+**** DONE 001: default cefbulk, use_cef, with cus, CEF ON, BULK ON user: CEF ON, BULK ON
+CLOSED: [2015-08-24 Mon 13:31]
+
+file=cef.msg
+X-SPAM-Status: YES, 6.0 / 6.0
+X-SPAM-Summary: CL_CEF-SE_CEF=6.0,CL_DHD_BULK=0.0
+file=cef_nofrom.msg
+X-SPAM-Status: YES, 6.0 / 6.0
+X-SPAM-Summary: CL_CEF-SE_CEF=6.0,CL_DHD_BULK=0.0
+file=cef_nos.msg
+X-SPAM-Status: YES, 6.0 / 6.0
+X-SPAM-Summary: CL_CEF-SE_CEF=6.0,CL_DHD_BULK=0.0
+file=ham_ip.msg
+X-SPAM-Status: NO, 0.0 / 6.0
+X-SPAM-Summary: FSO_HAM=0.0
+file=phishing.msg
+X-SPAM-Status: YES, 18.0 / 8.0
+X-SPAM-Summary: RULE_ANCHOR_DOMAIN_PHISHING=18.0,CL_CEF-SE_CEF=0.0
+file=phishing_nourl_clean.msg
+X-SPAM-Status: YES, 6.0 / 6.0
+X-SPAM-Summary: CL_CEF-SE_CEF=6.0
+file=phishing-tiny.msg
+X-SPAM-Status: YES, 30.0 / 8.0
+X-SPAM-Summary: RULE_ANCHOR_DOMAIN_PHISHING=18.0,TINY_SPAM-M=12.0,CL_CEF-SE_CEF=0.0
+file=spam_HARDSPFFAIL.msg
+X-SPAM-Status: YES, 6.0 / 6.0
+X-SPAM-Summary: CL_CEF-SE_CEF=6.0
+file=urld.msg
+X-SPAM-Status: YES, 30.0 / 8.0
+X-SPAM-Summary: RULE_ANCHOR_DOMAIN_PHISHING=18.0,TINY_SPAM-M=12.0,CL_CEF-SE_CEF=0.0,CL_DHD_BULK=0.0
+file=urld_unsub.msg
+X-SPAM-Status: YES, 30.0 / 8.0
+X-SPAM-Summary: RULE_ANCHOR_DOMAIN_PHISHING=18.0,RULE_ANCHOR_UNSUB_BULK=0.0,TINY_SPAM-M=12.0,CL_CEF-SE_CEF=0.0,CL_DHD_BULK=0.0
+file=yifang_bulk.msg
+X-SPAM-Status: YES, 18.0 / 8.0
+X-SPAM-Summary: RULE_ANCHOR_DOMAIN_PHISHING=18.0,CL_CEF-SE_CEF=0.0,CL_DHD_BULK=0.0
+
+
+**** DONE 001: default cefbulk, use_cef, with cus, CEF ON, BULK OFF user: CEF ON, BULK OFF
+CLOSED: [2015-08-25 Tue 17:13]
+
+cus with entry
+user with entry
+
++------+---------+----------------+---------+--------------------+
+| id   | cus_num | classification | is_spam | allow_user_setting |
++------+---------+----------------+---------+--------------------+
+| 2797 | 9506448 | bulk           |       0 |                  0 |
+| 2803 | 9506448 | cef            |       1 |                  0 |
++------+---------+----------------+---------+--------------------+
+2 rows in set (0.00 sec)
+
++-------+------------------------------------------+----------------+---------+
+| id    | box_fulladdress                          | classification | is_spam |
++-------+------------------------------------------+----------------+---------+
+| 12217 | admin@00001.wayne.dong.test.fusemail.com | bulk           |       0 |
+| 12211 | admin@00001.wayne.dong.test.fusemail.com | cef            |       1 |
++-------+------------------------------------------+----------------+---------+
+
+file=cef.msg
+X-SPAM-Status: YES, 6.0 / 6.0
+X-SPAM-Summary: CL_CEF-SE_CEF=6.0,CL_DHD_BULK=0.0
+file=cef_nofrom.msg
+X-SPAM-Status: YES, 6.0 / 6.0
+X-SPAM-Summary: CL_CEF-SE_CEF=6.0,CL_DHD_BULK=0.0
+file=cef_nos.msg
+X-SPAM-Status: YES, 6.0 / 6.0
+X-SPAM-Summary: CL_CEF-SE_CEF=6.0,CL_DHD_BULK=0.0
+file=ham_ip.msg
+X-SPAM-Status: NO, 0.0 / 6.0
+X-SPAM-Summary: FSO_HAM=0.0
+file=phishing.msg
+X-SPAM-Status: YES, 18.0 / 8.0
+X-SPAM-Summary: RULE_ANCHOR_DOMAIN_PHISHING=18.0,CL_CEF-SE_CEF=0.0
+file=phishing_nourl_clean.msg
+X-SPAM-Status: YES, 6.0 / 6.0
+X-SPAM-Summary: CL_CEF-SE_CEF=6.0
+file=phishing-tiny.msg
+X-SPAM-Status: YES, 30.0 / 8.0
+X-SPAM-Summary: RULE_ANCHOR_DOMAIN_PHISHING=18.0,TINY_SPAM-M=12.0,CL_CEF-SE_CEF=0.0
+file=spam_HARDSPFFAIL.msg
+X-SPAM-Status: YES, 6.0 / 6.0
+X-SPAM-Summary: CL_CEF-SE_CEF=6.0
+file=urld.msg
+X-SPAM-Status: YES, 30.0 / 8.0
+X-SPAM-Summary: RULE_ANCHOR_DOMAIN_PHISHING=18.0,TINY_SPAM-M=12.0,CL_CEF-SE_CEF=0.0,CL_DHD_BULK=0.0
+file=urld_unsub.msg
+X-SPAM-Status: YES, 30.0 / 8.0
+X-SPAM-Summary: RULE_ANCHOR_DOMAIN_PHISHING=18.0,RULE_ANCHOR_UNSUB_BULK=0.0,TINY_SPAM-M=12.0,CL_CEF-SE_CEF=0.0,CL_DHD_BULK=0.0
+file=yifang_bulk.msg
+X-SPAM-Status: YES, 18.0 / 8.0
+X-SPAM-Summary: RULE_ANCHOR_DOMAIN_PHISHING=18.0,CL_CEF-SE_CEF=0.0,CL_DHD_BULK=0.0
+
+cus with entry
+user without entry
++------+---------+----------------+---------+--------------------+
+| id   | cus_num | classification | is_spam | allow_user_setting |
++------+---------+----------------+---------+--------------------+
+| 2839 | 9506448 | bulk           |       0 |                  0 |
+| 2833 | 9506448 | cef            |       1 |                  0 |
++------+---------+----------------+---------+--------------------+
+2 rows in set (0.00 sec)
+
++-------+------------------------------------------+----------------+---------+
+| id    | box_fulladdress                          | classification | is_spam |
++-------+------------------------------------------+----------------+---------+
+| 12289 | admin@00001.wayne.dong.test.fusemail.com | cef            |       1 |
++-------+------------------------------------------+----------------+---------+
+
+file=cef_from10.msg
+X-SPAM-Status: NO, 6.0 / 24.0
+X-SPAM-Summary: CL_CEF-SE_CEF=6.0,CL_DHD_BULK=0.0
+file=cef_from11.msg
+X-SPAM-Status: NO, 6.0 / 24.0
+X-SPAM-Summary: CL_CEF-SE_CEF=6.0,CL_DHD_BULK=0.0
+file=cef_from12.msg
+X-SPAM-Status: NO, 6.0 / 24.0
+X-SPAM-Summary: CL_CEF-SE_CEF=6.0,CL_DHD_BULK=0.0
+file=cef_from13.msg
+X-SPAM-Status: NO, 6.0 / 24.0
+X-SPAM-Summary: CL_CEF-SE_CEF=6.0,CL_DHD_BULK=0.0
+file=cef_from14.msg
+X-SPAM-Status: NO, 6.0 / 24.0
+X-SPAM-Summary: CL_CEF-SE_CEF=6.0,CL_DHD_BULK=0.0
+file=cef_from15.msg
+X-SPAM-Status: NO, 6.0 / 24.0
+X-SPAM-Summary: CL_CEF-SE_CEF=6.0,CL_DHD_BULK=0.0
+file=cef_from16.msg
+X-SPAM-Status: NO, 6.0 / 24.0
+X-SPAM-Summary: CL_CEF-SE_CEF=6.0,CL_DHD_BULK=0.0
+file=cef_from17.msg
+X-SPAM-Status: NO, 6.0 / 24.0
+X-SPAM-Summary: CL_CEF-SE_CEF=6.0,CL_DHD_BULK=0.0
+file=cef_from1.msg
+X-SPAM-Status: NO, 6.0 / 24.0
+X-SPAM-Summary: CL_CEF-SE_CEF=6.0,CL_DHD_BULK=0.0
+file=cef_from2.msg
+X-SPAM-Status: NO, 6.0 / 24.0
+X-SPAM-Summary: CL_CEF-SE_CEF=6.0,CL_DHD_BULK=0.0
+file=cef_from3.msg
+X-SPAM-Status: NO, 6.0 / 24.0
+X-SPAM-Summary: CL_CEF-SE_CEF=6.0,CL_DHD_BULK=0.0
+file=cef_from4.msg
+X-SPAM-Status: NO, 6.0 / 24.0
+X-SPAM-Summary: CL_CEF-SE_CEF=6.0,CL_DHD_BULK=0.0
+file=cef_from5.msg
+X-SPAM-Status: NO, 6.0 / 24.0
+X-SPAM-Summary: CL_CEF-SE_CEF=6.0,CL_DHD_BULK=0.0
+file=cef_from6.msg
+X-SPAM-Status: NO, 12.0 / 24.0
+X-SPAM-Summary: SURBLH=6.0,CL_CEF-SE_CEF=6.0,CL_DHD_BULK=0.0
+file=cef_from7.msg
+X-SPAM-Status: NO, 6.0 / 24.0
+X-SPAM-Summary: CL_CEF-SE_CEF=6.0,CL_DHD_BULK=0.0
+file=cef_from8.msg
+X-SPAM-Status: NO, 6.0 / 24.0
+X-SPAM-Summary: CL_CEF-SE_CEF=6.0,CL_DHD_BULK=0.0
+file=cef_from9.msg
+X-SPAM-Status: NO, 6.0 / 24.0
+X-SPAM-Summary: CL_CEF-SE_CEF=6.0,CL_DHD_BULK=0.0
+file=cef.msg
+X-SPAM-Status: NO, 6.0 / 24.0
+X-SPAM-Summary: CL_CEF-SE_CEF=6.0,CL_DHD_BULK=0.0
+file=cef_nofrom.msg
+X-SPAM-Status: NO, 6.0 / 24.0
+X-SPAM-Summary: CL_CEF-SE_CEF=6.0,CL_DHD_BULK=0.0
+file=cef_nos.msg
+X-SPAM-Status: NO, 6.0 / 24.0
+X-SPAM-Summary: CL_CEF-SE_CEF=6.0,CL_DHD_BULK=0.0
+file=ham_ip.msg
+X-SPAM-Status: NO, 0.0 / 24.0
+X-SPAM-Summary: FSO_HAM=0.0
+file=phishing.msg
+X-SPAM-Status: YES, 24.0 / 24.0
+X-SPAM-Summary: RULE_ANCHOR_DOMAIN_PHISHING=18.0,CL_CEF-SE_CEF=6.0
+file=phishing_nourl_clean.msg
+X-SPAM-Status: NO, 6.0 / 24.0
+X-SPAM-Summary: CL_CEF-SE_CEF=6.0
+file=phishing-tiny.msg
+X-SPAM-Status: YES, 30.0 / 30.0
+X-SPAM-Summary: RULE_ANCHOR_DOMAIN_PHISHING=18.0,TINY_SPAM-M=12.0,CL_CEF-SE_CEF=0.0
+file=spam_HARDSPFFAIL.msg
+X-SPAM-Status: NO, 6.0 / 24.0
+X-SPAM-Summary: CL_CEF-SE_CEF=6.0
+file=urld.msg
+X-SPAM-Status: YES, 30.0 / 30.0
+X-SPAM-Summary: RULE_ANCHOR_DOMAIN_PHISHING=18.0,TINY_SPAM-M=12.0,CL_CEF-SE_CEF=0.0,CL_DHD_BULK=0.0
+file=urld_unsub.msg
+X-SPAM-Status: YES, 30.0 / 30.0
+X-SPAM-Summary: RULE_ANCHOR_DOMAIN_PHISHING=18.0,RULE_ANCHOR_UNSUB_BULK=0.0,TINY_SPAM-M=12.0,CL_CEF-SE_CEF=0.0,CL_DHD_BULK=0.0
+file=yifang_bulk.msg
+X-SPAM-Status: YES, 24.0 / 24.0
+X-SPAM-Summary: RULE_ANCHOR_DOMAIN_PHISHING=18.0,CL_CEF-SE_CEF=6.0,CL_DHD_BULK=0.0
+
+
+cus without entry
+user with entry
+
++------+---------+----------------+---------+--------------------+
+| id   | cus_num | classification | is_spam | allow_user_setting |
++------+---------+----------------+---------+--------------------+
+| 2833 | 9506448 | cef            |       1 |                  0 |
++------+---------+----------------+---------+--------------------+
+1 row in set (0.00 sec)
+
++-------+------------------------------------------+----------------+---------+
+| id    | box_fulladdress                          | classification | is_spam |
++-------+------------------------------------------+----------------+---------+
+| 12445 | admin@00001.wayne.dong.test.fusemail.com | bulk           |       0 |
+| 12289 | admin@00001.wayne.dong.test.fusemail.com | cef            |       1 |
++-------+------------------------------------------+----------------+---------+
+
+
+file=cef_from10.msg
+X-SPAM-Status: NO, 6.0 / 24.0
+X-SPAM-Summary: CL_CEF-SE_CEF=6.0,CL_DHD_BULK=0.0
+file=cef_from11.msg
+X-SPAM-Status: NO, 6.0 / 24.0
+X-SPAM-Summary: CL_CEF-SE_CEF=6.0,CL_DHD_BULK=0.0
+file=cef_from12.msg
+X-SPAM-Status: NO, 6.0 / 24.0
+X-SPAM-Summary: CL_CEF-SE_CEF=6.0,CL_DHD_BULK=0.0
+file=cef_from13.msg
+X-SPAM-Status: NO, 6.0 / 24.0
+X-SPAM-Summary: CL_CEF-SE_CEF=6.0,CL_DHD_BULK=0.0
+file=cef_from14.msg
+X-SPAM-Status: NO, 6.0 / 24.0
+X-SPAM-Summary: CL_CEF-SE_CEF=6.0,CL_DHD_BULK=0.0
+file=cef_from15.msg
+X-SPAM-Status: NO, 6.0 / 24.0
+X-SPAM-Summary: CL_CEF-SE_CEF=6.0,CL_DHD_BULK=0.0
+file=cef_from16.msg
+X-SPAM-Status: NO, 6.0 / 24.0
+X-SPAM-Summary: CL_CEF-SE_CEF=6.0,CL_DHD_BULK=0.0
+file=cef_from17.msg
+X-SPAM-Status: NO, 6.0 / 24.0
+X-SPAM-Summary: CL_CEF-SE_CEF=6.0,CL_DHD_BULK=0.0
+file=cef_from1.msg
+X-SPAM-Status: NO, 6.0 / 24.0
+X-SPAM-Summary: CL_CEF-SE_CEF=6.0,CL_DHD_BULK=0.0
+file=cef_from2.msg
+X-SPAM-Status: NO, 6.0 / 24.0
+X-SPAM-Summary: CL_CEF-SE_CEF=6.0,CL_DHD_BULK=0.0
+file=cef_from3.msg
+X-SPAM-Status: NO, 6.0 / 24.0
+X-SPAM-Summary: CL_CEF-SE_CEF=6.0,CL_DHD_BULK=0.0
+file=cef_from4.msg
+X-SPAM-Status: NO, 6.0 / 24.0
+X-SPAM-Summary: CL_CEF-SE_CEF=6.0,CL_DHD_BULK=0.0
+file=cef_from5.msg
+X-SPAM-Status: NO, 6.0 / 24.0
+X-SPAM-Summary: CL_CEF-SE_CEF=6.0,CL_DHD_BULK=0.0
+file=cef_from6.msg
+X-SPAM-Status: NO, 12.0 / 24.0
+X-SPAM-Summary: SURBLH=6.0,CL_CEF-SE_CEF=6.0,CL_DHD_BULK=0.0
+file=cef_from7.msg
+X-SPAM-Status: NO, 6.0 / 24.0
+X-SPAM-Summary: CL_CEF-SE_CEF=6.0,CL_DHD_BULK=0.0
+file=cef_from8.msg
+X-SPAM-Status: NO, 6.0 / 24.0
+X-SPAM-Summary: CL_CEF-SE_CEF=6.0,CL_DHD_BULK=0.0
+file=cef_from9.msg
+X-SPAM-Status: NO, 6.0 / 24.0
+X-SPAM-Summary: CL_CEF-SE_CEF=6.0,CL_DHD_BULK=0.0
+file=cef.msg
+X-SPAM-Status: NO, 6.0 / 24.0
+X-SPAM-Summary: CL_CEF-SE_CEF=6.0,CL_DHD_BULK=0.0
+file=cef_nofrom.msg
+X-SPAM-Status: NO, 6.0 / 24.0
+X-SPAM-Summary: CL_CEF-SE_CEF=6.0,CL_DHD_BULK=0.0
+file=cef_nos.msg
+X-SPAM-Status: NO, 6.0 / 24.0
+X-SPAM-Summary: CL_CEF-SE_CEF=6.0,CL_DHD_BULK=0.0
+file=ham_ip.msg
+X-SPAM-Status: NO, 0.0 / 24.0
+X-SPAM-Summary: FSO_HAM=0.0
+file=phishing.msg
+X-SPAM-Status: YES, 24.0 / 24.0
+X-SPAM-Summary: RULE_ANCHOR_DOMAIN_PHISHING=18.0,CL_CEF-SE_CEF=6.0
+file=phishing_nourl_clean.msg
+X-SPAM-Status: NO, 6.0 / 24.0
+X-SPAM-Summary: CL_CEF-SE_CEF=6.0
+file=phishing-tiny.msg
+X-SPAM-Status: YES, 30.0 / 30.0
+X-SPAM-Summary: RULE_ANCHOR_DOMAIN_PHISHING=18.0,TINY_SPAM-M=12.0,CL_CEF-SE_CEF=0.0
+file=spam_HARDSPFFAIL.msg
+X-SPAM-Status: NO, 6.0 / 24.0
+X-SPAM-Summary: CL_CEF-SE_CEF=6.0
+file=urld.msg
+X-SPAM-Status: YES, 30.0 / 30.0
+X-SPAM-Summary: RULE_ANCHOR_DOMAIN_PHISHING=18.0,TINY_SPAM-M=12.0,CL_CEF-SE_CEF=0.0,CL_DHD_BULK=0.0
+file=urld_unsub.msg
+X-SPAM-Status: YES, 30.0 / 30.0
+X-SPAM-Summary: RULE_ANCHOR_DOMAIN_PHISHING=18.0,RULE_ANCHOR_UNSUB_BULK=0.0,TINY_SPAM-M=12.0,CL_CEF-SE_CEF=0.0,CL_DHD_BULK=0.0
+file=yifang_bulk.msg
+X-SPAM-Status: YES, 24.0 / 24.0
+X-SPAM-Summary: RULE_ANCHOR_DOMAIN_PHISHING=18.0,CL_CEF-SE_CEF=6.0,CL_DHD_BULK=0.0
+
+
+cus without entry
+user without entry
+
++------+---------+----------------+---------+--------------------+
+| id   | cus_num | classification | is_spam | allow_user_setting |
++------+---------+----------------+---------+--------------------+
+| 2833 | 9506448 | cef            |       1 |                  0 |
++------+---------+----------------+---------+--------------------+
+1 row in set (0.00 sec)
+
++-------+------------------------------------------+----------------+---------+
+| id    | box_fulladdress                          | classification | is_spam |
++-------+------------------------------------------+----------------+---------+
+| 12289 | admin@00001.wayne.dong.test.fusemail.com | cef            |       1 |
++-------+------------------------------------------+----------------+---------+
+
+
+file=cef_from10.msg
+X-SPAM-Status: NO, 12.0 / 24.0
+X-SPAM-Summary: CL_CEF-SE_CEF=6.0,CL_DHD_BULK=6.0
+file=cef_from11.msg
+X-SPAM-Status: NO, 12.0 / 24.0
+X-SPAM-Summary: CL_CEF-SE_CEF=6.0,CL_DHD_BULK=6.0
+file=cef_from12.msg
+X-SPAM-Status: NO, 12.0 / 24.0
+X-SPAM-Summary: CL_CEF-SE_CEF=6.0,CL_DHD_BULK=6.0
+file=cef_from13.msg
+X-SPAM-Status: NO, 12.0 / 24.0
+X-SPAM-Summary: CL_CEF-SE_CEF=6.0,CL_DHD_BULK=6.0
+file=cef_from14.msg
+X-SPAM-Status: NO, 12.0 / 24.0
+X-SPAM-Summary: CL_CEF-SE_CEF=6.0,CL_DHD_BULK=6.0
+file=cef_from15.msg
+X-SPAM-Status: NO, 12.0 / 24.0
+X-SPAM-Summary: CL_CEF-SE_CEF=6.0,CL_DHD_BULK=6.0
+file=cef_from16.msg
+X-SPAM-Status: NO, 12.0 / 24.0
+X-SPAM-Summary: CL_CEF-SE_CEF=6.0,CL_DHD_BULK=6.0
+file=cef_from17.msg
+X-SPAM-Status: NO, 12.0 / 24.0
+X-SPAM-Summary: CL_CEF-SE_CEF=6.0,CL_DHD_BULK=6.0
+file=cef_from1.msg
+X-SPAM-Status: NO, 12.0 / 24.0
+X-SPAM-Summary: CL_CEF-SE_CEF=6.0,CL_DHD_BULK=6.0
+file=cef_from2.msg
+X-SPAM-Status: NO, 12.0 / 24.0
+X-SPAM-Summary: CL_CEF-SE_CEF=6.0,CL_DHD_BULK=6.0
+file=cef_from3.msg
+X-SPAM-Status: NO, 12.0 / 24.0
+X-SPAM-Summary: CL_CEF-SE_CEF=6.0,CL_DHD_BULK=6.0
+file=cef_from4.msg
+X-SPAM-Status: NO, 12.0 / 24.0
+X-SPAM-Summary: CL_CEF-SE_CEF=6.0,CL_DHD_BULK=6.0
+file=cef_from5.msg
+X-SPAM-Status: NO, 12.0 / 24.0
+X-SPAM-Summary: CL_CEF-SE_CEF=6.0,CL_DHD_BULK=6.0
+file=cef_from6.msg
+X-SPAM-Status: NO, 18.0 / 24.0
+X-SPAM-Summary: SURBLH=6.0,CL_CEF-SE_CEF=6.0,CL_DHD_BULK=6.0
+file=cef_from7.msg
+X-SPAM-Status: NO, 12.0 / 24.0
+X-SPAM-Summary: CL_CEF-SE_CEF=6.0,CL_DHD_BULK=6.0
+file=cef_from8.msg
+X-SPAM-Status: NO, 12.0 / 24.0
+X-SPAM-Summary: CL_CEF-SE_CEF=6.0,CL_DHD_BULK=6.0
+file=cef_from9.msg
+X-SPAM-Status: NO, 12.0 / 24.0
+X-SPAM-Summary: CL_CEF-SE_CEF=6.0,CL_DHD_BULK=6.0
+file=cef.msg
+X-SPAM-Status: NO, 12.0 / 24.0
+X-SPAM-Summary: CL_CEF-SE_CEF=6.0,CL_DHD_BULK=6.0
+file=cef_nofrom.msg
+X-SPAM-Status: NO, 12.0 / 24.0
+X-SPAM-Summary: CL_CEF-SE_CEF=6.0,CL_DHD_BULK=6.0
+file=cef_nos.msg
+X-SPAM-Status: NO, 12.0 / 24.0
+X-SPAM-Summary: CL_CEF-SE_CEF=6.0,CL_DHD_BULK=6.0
+file=ham_ip.msg
+X-SPAM-Status: NO, 0.0 / 24.0
+X-SPAM-Summary: FSO_HAM=0.0
+file=phishing.msg
+X-SPAM-Status: YES, 24.0 / 24.0
+X-SPAM-Summary: RULE_ANCHOR_DOMAIN_PHISHING=18.0,CL_CEF-SE_CEF=6.0
+file=phishing_nourl_clean.msg
+X-SPAM-Status: NO, 6.0 / 24.0
+X-SPAM-Summary: CL_CEF-SE_CEF=6.0
+file=phishing-tiny.msg
+X-SPAM-Status: YES, 30.0 / 30.0
+X-SPAM-Summary: RULE_ANCHOR_DOMAIN_PHISHING=18.0,TINY_SPAM-M=12.0,CL_CEF-SE_CEF=0.0
+file=spam_HARDSPFFAIL.msg
+X-SPAM-Status: NO, 6.0 / 24.0
+X-SPAM-Summary: CL_CEF-SE_CEF=6.0
+file=urld.msg
+X-SPAM-Status: YES, 30.0 / 30.0
+X-SPAM-Summary: RULE_ANCHOR_DOMAIN_PHISHING=18.0,TINY_SPAM-M=12.0,CL_CEF-SE_CEF=0.0,CL_DHD_BULK=0.0
+file=urld_unsub.msg
+X-SPAM-Status: YES, 36.0 / 30.0
+X-SPAM-Summary: RULE_ANCHOR_DOMAIN_PHISHING=18.0,RULE_ANCHOR_UNSUB_BULK=6.0,TINY_SPAM-M=12.0,CL_CEF-SE_CEF=0.0,CL_DHD_BULK=0.0
+file=yifang_bulk.msg
+X-SPAM-Status: YES, 24.0 / 24.0
+X-SPAM-Summary: RULE_ANCHOR_DOMAIN_PHISHING=18.0,CL_CEF-SE_CEF=6.0,CL_DHD_BULK=0.0
+
+
+**** DONE 001: default cefbulk, use_cef, with cus, CEF OFF, BULK OFF user: CEF OFF, BULK OFF
+CLOSED: [2015-08-25 Tue 17:12]
++------+---------+----------------+---------+--------------------+
+| id   | cus_num | classification | is_spam | allow_user_setting |
++------+---------+----------------+---------+--------------------+
+| 2845 | 9506448 | bulk           |       0 |                  0 |
+| 2833 | 9506448 | cef            |       0 |                  0 |
++------+---------+----------------+---------+--------------------+
+2 rows in set (0.00 sec)
+
++-------+------------------------------------------+----------------+---------+
+| id    | box_fulladdress                          | classification | is_spam |
++-------+------------------------------------------+----------------+---------+
+| 12451 | admin@00001.wayne.dong.test.fusemail.com | bulk           |       0 |
+| 12289 | admin@00001.wayne.dong.test.fusemail.com | cef            |       0 |
++-------+------------------------------------------+----------------+---------+
+
+file=cef_from10.msg
+X-SPAM-Status: NO, 0.0 / 24.0
+X-SPAM-Summary: CL_CEF-SE_CEF=0.0,CL_DHD_BULK=0.0
+file=cef_from11.msg
+X-SPAM-Status: NO, 0.0 / 24.0
+X-SPAM-Summary: CL_CEF-SE_CEF=0.0,CL_DHD_BULK=0.0
+file=cef_from12.msg
+X-SPAM-Status: NO, 0.0 / 24.0
+X-SPAM-Summary: CL_CEF-SE_CEF=0.0,CL_DHD_BULK=0.0
+file=cef_from13.msg
+X-SPAM-Status: NO, 0.0 / 24.0
+X-SPAM-Summary: CL_CEF-SE_CEF=0.0,CL_DHD_BULK=0.0
+file=cef_from14.msg
+X-SPAM-Status: NO, 0.0 / 24.0
+X-SPAM-Summary: CL_CEF-SE_CEF=0.0,CL_DHD_BULK=0.0
+file=cef_from15.msg
+X-SPAM-Status: NO, 0.0 / 24.0
+X-SPAM-Summary: CL_CEF-SE_CEF=0.0,CL_DHD_BULK=0.0
+file=cef_from16.msg
+X-SPAM-Status: NO, 0.0 / 24.0
+X-SPAM-Summary: CL_CEF-SE_CEF=0.0,CL_DHD_BULK=0.0
+file=cef_from17.msg
+X-SPAM-Status: NO, 0.0 / 24.0
+X-SPAM-Summary: CL_CEF-SE_CEF=0.0,CL_DHD_BULK=0.0
+file=cef_from1.msg
+X-SPAM-Status: NO, 0.0 / 24.0
+X-SPAM-Summary: CL_CEF-SE_CEF=0.0,CL_DHD_BULK=0.0
+file=cef_from2.msg
+X-SPAM-Status: NO, 0.0 / 24.0
+X-SPAM-Summary: CL_CEF-SE_CEF=0.0,CL_DHD_BULK=0.0
+file=cef_from3.msg
+X-SPAM-Status: NO, 0.0 / 24.0
+X-SPAM-Summary: CL_CEF-SE_CEF=0.0,CL_DHD_BULK=0.0
+file=cef_from4.msg
+X-SPAM-Status: NO, 0.0 / 24.0
+X-SPAM-Summary: CL_CEF-SE_CEF=0.0,CL_DHD_BULK=0.0
+file=cef_from5.msg
+X-SPAM-Status: NO, 0.0 / 24.0
+X-SPAM-Summary: CL_CEF-SE_CEF=0.0,CL_DHD_BULK=0.0
+file=cef_from6.msg
+X-SPAM-Status: NO, 6.0 / 24.0
+X-SPAM-Summary: SURBLH=6.0,CL_CEF-SE_CEF=0.0,CL_DHD_BULK=0.0
+file=cef_from7.msg
+X-SPAM-Status: NO, 0.0 / 24.0
+X-SPAM-Summary: CL_CEF-SE_CEF=0.0,CL_DHD_BULK=0.0
+file=cef_from8.msg
+X-SPAM-Status: NO, 0.0 / 24.0
+X-SPAM-Summary: CL_CEF-SE_CEF=0.0,CL_DHD_BULK=0.0
+file=cef_from9.msg
+X-SPAM-Status: NO, 0.0 / 24.0
+X-SPAM-Summary: CL_CEF-SE_CEF=0.0,CL_DHD_BULK=0.0
+file=cef.msg
+X-SPAM-Status: NO, 0.0 / 24.0
+X-SPAM-Summary: CL_CEF-SE_CEF=0.0,CL_DHD_BULK=0.0
+file=cef_nofrom.msg
+X-SPAM-Status: NO, 0.0 / 24.0
+X-SPAM-Summary: CL_CEF-SE_CEF=0.0,CL_DHD_BULK=0.0
+file=cef_nos.msg
+X-SPAM-Status: NO, 0.0 / 24.0
+X-SPAM-Summary: CL_CEF-SE_CEF=0.0,CL_DHD_BULK=0.0
+file=ham_ip.msg
+X-SPAM-Status: NO, 0.0 / 24.0
+X-SPAM-Summary: FSO_HAM=0.0
+file=phishing.msg
+X-SPAM-Status: NO, 18.0 / 24.0
+X-SPAM-Summary: RULE_ANCHOR_DOMAIN_PHISHING=18.0,CL_CEF-SE_CEF=0.0
+file=phishing_nourl_clean.msg
+X-SPAM-Status: NO, 0.0 / 24.0
+X-SPAM-Summary: CL_CEF-SE_CEF=0.0
+file=phishing-tiny.msg
+X-SPAM-Status: YES, 30.0 / 30.0
+X-SPAM-Summary: RULE_ANCHOR_DOMAIN_PHISHING=18.0,TINY_SPAM-M=12.0,CL_CEF-SE_CEF=0.0
+file=spam_HARDSPFFAIL.msg
+X-SPAM-Status: NO, 0.0 / 24.0
+X-SPAM-Summary: CL_CEF-SE_CEF=0.0
+file=urld.msg
+X-SPAM-Status: YES, 30.0 / 30.0
+X-SPAM-Summary: RULE_ANCHOR_DOMAIN_PHISHING=18.0,TINY_SPAM-M=12.0,CL_CEF-SE_CEF=0.0,CL_DHD_BULK=0.0
+file=urld_unsub.msg
+X-SPAM-Status: YES, 30.0 / 30.0
+X-SPAM-Summary: RULE_ANCHOR_DOMAIN_PHISHING=18.0,RULE_ANCHOR_UNSUB_BULK=0.0,TINY_SPAM-M=12.0,CL_CEF-SE_CEF=0.0,CL_DHD_BULK=0.0
+file=yifang_bulk.msg
+X-SPAM-Status: NO, 18.0 / 24.0
+X-SPAM-Summary: RULE_ANCHOR_DOMAIN_PHISHING=18.0,CL_CEF-SE_CEF=0.0,CL_DHD_BULK=0.0
+
+
+**** DONE 001: default cefbulk, use_cef, with cus, CEF no entry, BULK no entry user: CEF OFF, BULK OFF, without entries
+CLOSED: [2015-08-25 Tue 17:12]
+
+file=cef_from10.msg
+X-SPAM-Status: NO, 12.0 / 24.0
+X-SPAM-Summary: CL_CEF-SE_CEF=6.0,CL_DHD_BULK=6.0
+file=cef_from11.msg
+X-SPAM-Status: NO, 12.0 / 24.0
+X-SPAM-Summary: CL_CEF-SE_CEF=6.0,CL_DHD_BULK=6.0
+file=cef_from12.msg
+X-SPAM-Status: NO, 12.0 / 24.0
+X-SPAM-Summary: CL_CEF-SE_CEF=6.0,CL_DHD_BULK=6.0
+file=cef_from13.msg
+X-SPAM-Status: NO, 12.0 / 24.0
+X-SPAM-Summary: CL_CEF-SE_CEF=6.0,CL_DHD_BULK=6.0
+file=cef_from14.msg
+X-SPAM-Status: NO, 12.0 / 24.0
+X-SPAM-Summary: CL_CEF-SE_CEF=6.0,CL_DHD_BULK=6.0
+file=cef_from15.msg
+X-SPAM-Status: NO, 12.0 / 24.0
+X-SPAM-Summary: CL_CEF-SE_CEF=6.0,CL_DHD_BULK=6.0
+file=cef_from16.msg
+X-SPAM-Status: NO, 12.0 / 24.0
+X-SPAM-Summary: CL_CEF-SE_CEF=6.0,CL_DHD_BULK=6.0
+file=cef_from17.msg
+X-SPAM-Status: NO, 12.0 / 24.0
+X-SPAM-Summary: CL_CEF-SE_CEF=6.0,CL_DHD_BULK=6.0
+file=cef_from1.msg
+X-SPAM-Status: NO, 12.0 / 24.0
+X-SPAM-Summary: CL_CEF-SE_CEF=6.0,CL_DHD_BULK=6.0
+file=cef_from2.msg
+X-SPAM-Status: NO, 12.0 / 24.0
+X-SPAM-Summary: CL_CEF-SE_CEF=6.0,CL_DHD_BULK=6.0
+file=cef_from3.msg
+X-SPAM-Status: NO, 12.0 / 24.0
+X-SPAM-Summary: CL_CEF-SE_CEF=6.0,CL_DHD_BULK=6.0
+file=cef_from4.msg
+X-SPAM-Status: NO, 12.0 / 24.0
+X-SPAM-Summary: CL_CEF-SE_CEF=6.0,CL_DHD_BULK=6.0
+file=cef_from5.msg
+X-SPAM-Status: NO, 12.0 / 24.0
+X-SPAM-Summary: CL_CEF-SE_CEF=6.0,CL_DHD_BULK=6.0
+file=cef_from6.msg
+X-SPAM-Status: NO, 18.0 / 24.0
+X-SPAM-Summary: SURBLH=6.0,CL_CEF-SE_CEF=6.0,CL_DHD_BULK=6.0
+file=cef_from7.msg
+X-SPAM-Status: NO, 12.0 / 24.0
+X-SPAM-Summary: CL_CEF-SE_CEF=6.0,CL_DHD_BULK=6.0
+file=cef_from8.msg
+X-SPAM-Status: NO, 12.0 / 24.0
+X-SPAM-Summary: CL_CEF-SE_CEF=6.0,CL_DHD_BULK=6.0
+file=cef_from9.msg
+X-SPAM-Status: NO, 12.0 / 24.0
+X-SPAM-Summary: CL_CEF-SE_CEF=6.0,CL_DHD_BULK=6.0
+file=cef.msg
+X-SPAM-Status: NO, 12.0 / 24.0
+X-SPAM-Summary: CL_CEF-SE_CEF=6.0,CL_DHD_BULK=6.0
+file=cef_nofrom.msg
+X-SPAM-Status: NO, 12.0 / 24.0
+X-SPAM-Summary: CL_CEF-SE_CEF=6.0,CL_DHD_BULK=6.0
+file=cef_nos.msg
+X-SPAM-Status: NO, 12.0 / 24.0
+X-SPAM-Summary: CL_CEF-SE_CEF=6.0,CL_DHD_BULK=6.0
+file=ham_ip.msg
+X-SPAM-Status: NO, 0.0 / 24.0
+X-SPAM-Summary: FSO_HAM=0.0
+file=phishing.msg
+X-SPAM-Status: YES, 24.0 / 24.0
+X-SPAM-Summary: RULE_ANCHOR_DOMAIN_PHISHING=18.0,CL_CEF-SE_CEF=6.0
+file=phishing_nourl_clean.msg
+X-SPAM-Status: NO, 6.0 / 24.0
+X-SPAM-Summary: CL_CEF-SE_CEF=6.0
+file=phishing-tiny.msg
+X-SPAM-Status: YES, 30.0 / 30.0
+X-SPAM-Summary: RULE_ANCHOR_DOMAIN_PHISHING=18.0,TINY_SPAM-M=12.0,CL_CEF-SE_CEF=0.0
+file=spam_HARDSPFFAIL.msg
+X-SPAM-Status: NO, 6.0 / 24.0
+X-SPAM-Summary: CL_CEF-SE_CEF=6.0
+file=urld.msg
+X-SPAM-Status: YES, 30.0 / 30.0
+X-SPAM-Summary: RULE_ANCHOR_DOMAIN_PHISHING=18.0,TINY_SPAM-M=12.0,CL_CEF-SE_CEF=0.0,CL_DHD_BULK=0.0
+file=urld_unsub.msg
+X-SPAM-Status: YES, 36.0 / 30.0
+X-SPAM-Summary: RULE_ANCHOR_DOMAIN_PHISHING=18.0,RULE_ANCHOR_UNSUB_BULK=6.0,TINY_SPAM-M=12.0,CL_CEF-SE_CEF=0.0,CL_DHD_BULK=0.0
+file=yifang_bulk.msg
+X-SPAM-Status: YES, 24.0 / 24.0
+X-SPAM-Summary: RULE_ANCHOR_DOMAIN_PHISHING=18.0,CL_CEF-SE_CEF=6.0,CL_DHD_BULK=0.0
+
+
+
+*** TODO test customer level cef setting [8/10]
+
+**** DONE 001:default all , use_cef, CEF ON, BULK ON
+CLOSED: [2015-08-31 Mon 10:41]
+WITHOUT cef ENTRY
++------+---------+----------------+---------+--------------------+
+| id   | cus_num | classification | is_spam | allow_user_setting |
++------+---------+----------------+---------+--------------------+
+| 2785 | 9506448 | bulk           |       0 |                  1 |
++------+---------+----------------+---------+--------------------+
+
+file=cef.msg
+X-SPAM-Status: YES, 6.0 / 6.0
+X-SPAM-Summary: CL_CEF-SE_CEF=6.0,CL_DHD_BULK=0.0
+file=cef_nofrom.msg
+X-SPAM-Status: YES, 6.0 / 6.0
+X-SPAM-Summary: CL_CEF-SE_CEF=6.0,CL_DHD_BULK=0.0
+file=cef_nos.msg
+X-SPAM-Status: YES, 6.0 / 6.0
+X-SPAM-Summary: CL_CEF-SE_CEF=6.0,CL_DHD_BULK=0.0
+file=ham_ip.msg
+X-SPAM-Status: NO, 0.0 / 6.0
+X-SPAM-Summary: FSO_HAM=0.0
+file=phishing.msg
+X-SPAM-Status: YES, 18.0 / 8.0
+X-SPAM-Summary: RULE_ANCHOR_DOMAIN_PHISHING=18.0,CL_CEF-SE_CEF=0.0
+file=phishing-tiny.msg
+X-SPAM-Status: YES, 30.0 / 8.0
+X-SPAM-Summary: RULE_ANCHOR_DOMAIN_PHISHING=18.0,TINY_SPAM-M=12.0,CL_CEF-SE_CEF=0.0
+file=spam_HARDSPFFAIL.msg
+X-SPAM-Status: YES, 6.0 / 6.0
+X-SPAM-Summary: CL_CEF-SE_CEF=6.0
+file=urld.msg
+X-SPAM-Status: YES, 30.0 / 8.0
+X-SPAM-Summary: RULE_ANCHOR_DOMAIN_PHISHING=18.0,TINY_SPAM-M=12.0,CL_CEF-SE_CEF=0.0,CL_DHD_BULK=0.0
+file=urld_unsub.msg
+X-SPAM-Status: YES, 30.0 / 8.0
+X-SPAM-Summary: RULE_ANCHOR_DOMAIN_PHISHING=18.0,RULE_ANCHOR_UNSUB_BULK=0.0,TINY_SPAM-M=12.0,CL_CEF-SE_CEF=0.0,CL_DHD_BULK=0.0
+file=yifang_bulk.msg
+X-SPAM-Status: YES, 18.0 / 8.0
+X-SPAM-Summary: RULE_ANCHOR_DOMAIN_PHISHING=18.0,CL_CEF-SE_CEF=0.0,CL_DHD_BULK=0.0
+
+SAME AS ABOVE BUT WITH HIGH LOWTHRE AND HIGHTHRE
+
+file=cef.msg
+X-SPAM-Status: NO, 6.0 / 34.0
+X-SPAM-Summary: CL_CEF-SE_CEF=6.0,CL_DHD_BULK=0.0
+file=cef_nofrom.msg
+X-SPAM-Status: NO, 6.0 / 34.0
+X-SPAM-Summary: CL_CEF-SE_CEF=6.0,CL_DHD_BULK=0.0
+file=cef_nos.msg
+X-SPAM-Status: NO, 6.0 / 34.0
+X-SPAM-Summary: CL_CEF-SE_CEF=6.0,CL_DHD_BULK=0.0
+file=ham_ip.msg
+X-SPAM-Status: NO, 0.0 / 34.0
+X-SPAM-Summary: FSO_HAM=0.0
+file=phishing.msg
+X-SPAM-Status: NO, 24.0 / 34.0
+X-SPAM-Summary: RULE_ANCHOR_DOMAIN_PHISHING=18.0,CL_CEF-SE_CEF=6.0
+file=phishing-tiny.msg
+X-SPAM-Status: YES, 36.0 / 36.0
+X-SPAM-Summary: RULE_ANCHOR_DOMAIN_PHISHING=18.0,TINY_SPAM-M=12.0,CL_CEF-SE_CEF=6.0
+file=spam_HARDSPFFAIL.msg
+X-SPAM-Status: NO, 6.0 / 34.0
+X-SPAM-Summary: CL_CEF-SE_CEF=6.0
+file=urld.msg
+X-SPAM-Status: YES, 36.0 / 36.0
+X-SPAM-Summary: RULE_ANCHOR_DOMAIN_PHISHING=18.0,TINY_SPAM-M=12.0,CL_CEF-SE_CEF=6.0,CL_DHD_BULK=0.0
+file=urld_unsub.msg
+X-SPAM-Status: YES, 36.0 / 36.0
+X-SPAM-Summary: RULE_ANCHOR_DOMAIN_PHISHING=18.0,RULE_ANCHOR_UNSUB_BULK=0.0,TINY_SPAM-M=12.0,CL_CEF-SE_CEF=6.0,CL_DHD_BULK=0.0
+file=yifang_bulk.msg
+X-SPAM-Status: NO, 24.0 / 34.0
+X-SPAM-Summary: RULE_ANCHOR_DOMAIN_PHISHING=18.0,CL_CEF-SE_CEF=6.0,CL_DHD_BULK=0.0
+
+
+**** DONE 001:default all , use_cef, CEF ON, BULK ON
+CLOSED: [2015-08-12 Wed 16:29]
+
+select C.portal_version,A.cus_num from aka A join customer C using (cus_num) where A.aka_domain='00001.wayne.dong.test.fusemail.com'; select spamd_version,use_cef from sf_dom_sub where aka_domain='00001.wayne.dong.t
+est.fusemail.com'; select * from cus_spam_classifications where cus_num = 9506448; select * from user_spam_classifications where box_fulladdress='admin@00001.wayne.dong.test.fusemail.com';
+change query : 
+insert into cus_spam_classifications set cus_num = 9506448, classification='bulk', is_spam=1, allow_user_setting=1; insert into cus_spam_classifications set cus_num = 9506448, classification='cef', is_spam=1, allow_
+user_setting=1;
+
+scripts3d [LXC] cef # bash test_portal1.sh in9b 1
+file=cef.msg
+X-SPAM-Status: YES, 6.0 / 6.0
+X-SPAM-Summary: CL_CEF-SE_CEF=6.0
+file=ham_ip.msg
+X-SPAM-Status: NO, 0.0 / 6.0
+X-SPAM-Summary: FSO_HAM=0.0
+file=urld.msg
+X-SPAM-Status: YES, 18.0 / 8.0
+X-SPAM-Summary: CL_CEF-SE_CEF=6.0,TINY_SPAM-M=12.0
+file=yifang_bulk.msg
+X-SPAM-Status: YES, 12.0 / 8.0
+X-SPAM-Summary: CL_CEF-SE_CEF=6.0,CL_DHD_BULK=6.0
+
+2015/08/19 13:44:48 ( PASS )
+
+scripts3d [LXC] cef # clear;bash test_portal1.sh in9b 1
+file=cef.msg
+X-SPAM-Status: YES, 6.0 / 6.0
+X-SPAM-Summary: CL_CEF-SE_CEF=6.0,CL_DHD_BULK=0.0
+file=cef_nofrom.msg
+X-SPAM-Status: YES, 6.0 / 6.0
+X-SPAM-Summary: CL_CEF-SE_CEF=6.0,CL_DHD_BULK=0.0
+file=ham_ip.msg
+X-SPAM-Status: NO, 0.0 / 6.0
+X-SPAM-Summary: FSO_HAM=0.0
+file=phishing.msg
+X-SPAM-Status: YES, 18.0 / 8.0
+X-SPAM-Summary: RULE_ANCHOR_DOMAIN_PHISHING=18.0,CL_CEF-SE_CEF=0.0
+file=phishing-tiny.msg
+X-SPAM-Status: YES, 30.0 / 8.0
+X-SPAM-Summary: RULE_ANCHOR_DOMAIN_PHISHING=18.0,TINY_SPAM-M=12.0,CL_CEF-SE_CEF=0.0
+file=spam_HARDSPFFAIL.msg
+X-SPAM-Status: YES, 6.0 / 6.0
+X-SPAM-Summary: CL_CEF-SE_CEF=6.0
+file=urld.msg
+X-SPAM-Status: YES, 30.0 / 8.0
+X-SPAM-Summary: RULE_ANCHOR_DOMAIN_PHISHING=18.0,TINY_SPAM-M=12.0,CL_CEF-SE_CEF=0.0,CL_DHD_BULK=0.0
+file=urld_unsub.msg
+X-SPAM-Status: YES, 30.0 / 8.0
+X-SPAM-Summary: RULE_ANCHOR_DOMAIN_PHISHING=18.0,RULE_ANCHOR_UNSUB_BULK=0.0,TINY_SPAM-M=12.0,CL_CEF-SE_CEF=0.0,CL_DHD_BULK=0.0
+file=yifang_bulk.msg
+X-SPAM-Status: YES, 18.0 / 8.0
+X-SPAM-Summary: RULE_ANCHOR_DOMAIN_PHISHING=18.0,CL_CEF-SE_CEF=0.0,CL_DHD_BULK=0.0
+
+
+**** DONE 001:default all , use_cef, CEF ON, BULK OFF
+CLOSED: [2015-08-12 Wed 16:51]
+change query : delete from cus_spam_classifications where cus_num = 9506448 and classification='bulk';
+
++------+---------+----------------+---------+--------------------+
+| id   | cus_num | classification | is_spam | allow_user_setting |
++------+---------+----------------+---------+--------------------+
+| 2713 | 9506448 | cef            |       1 |                  1 |
++------+---------+----------------+---------+--------------------+
+scripts3d [LXC] cef # bash test_portal1.sh in9b 1
+file=cef.msg
+X-SPAM-Status: YES, 6.0 / 6.0
+X-SPAM-Summary: CL_CEF-SE_CEF=6.0
+file=ham_ip.msg
+X-SPAM-Status: NO, 0.0 / 6.0
+X-SPAM-Summary: FSO_HAM=0.0
+file=urld.msg
+X-SPAM-Status: YES, 18.0 / 8.0
+X-SPAM-Summary: CL_CEF-SE_CEF=6.0,TINY_SPAM-M=12.0
+file=yifang_bulk.msg
+X-SPAM-Status: YES, 6.0 / 6.0
+X-SPAM-Summary: CL_CEF-SE_CEF=6.0
+
+2015/08/19 13:49:03 (pass)
+[2015-08-19 13:54:20:226]: [sharedata]: [TEST] get_classifications: did not get user setting, keep looking user and customer levels
+[2015-08-19 13:54:20:226]: [scan]: [TEST] Classification is : [BULK = 1]
+[2015-08-19 13:54:20:226]: [scan]: [TEST] Classification is : [SOCIAL = 1]
+[2015-08-19 13:54:20:226]: [scan]: [TEST] Classification is : [CEF = 1]
+
+NOTE: NO CUS LEVEL BULK BUT DEFAULT ONE HAS BULK=1 so in rule system we STILL need to check BULK
+
+testing result on 2015/08/18 ( not right )
+
+file=cef.msg
+X-SPAM-Status: YES, 6.0 / 6.0
+X-SPAM-Summary: CL_CEF-SE_CEF=6.0
+file=cef_nofrom.msg
+X-SPAM-Status: YES, 6.0 / 6.0
+X-SPAM-Summary: CL_CEF-SE_CEF=6.0
+file=ham_ip.msg
+X-SPAM-Status: NO, 0.0 / 6.0
+X-SPAM-Summary: FSO_HAM=0.0
+file=phishing.msg
+X-SPAM-Status: YES, 18.0 / 8.0
+X-SPAM-Summary: RULE_ANCHOR_DOMAIN_PHISHING=18.0,CL_CEF-SE_CEF=0.0
+file=phishing-tiny.msg
+X-SPAM-Status: YES, 30.0 / 8.0
+X-SPAM-Summary: RULE_ANCHOR_DOMAIN_PHISHING=18.0,TINY_SPAM-M=12.0,CL_CEF-SE_CEF=0.0
+file=spam_HARDSPFFAIL.msg
+X-SPAM-Status: YES, 6.0 / 6.0
+X-SPAM-Summary: CL_CEF-SE_CEF=6.0
+file=urld.msg
+X-SPAM-Status: YES, 30.0 / 8.0
+X-SPAM-Summary: RULE_ANCHOR_DOMAIN_PHISHING=18.0,TINY_SPAM-M=12.0,CL_CEF-SE_CEF=0.0
+file=urld_unsub.msg
+X-SPAM-Status: YES, 30.0 / 8.0
+X-SPAM-Summary: RULE_ANCHOR_DOMAIN_PHISHING=18.0,RULE_ANCHOR_UNSUB_BULK=0.0,TINY_SPAM-M=12.0,CL_CEF-SE_CEF=0.0
+file=yifang_bulk.msg
+X-SPAM-Status: YES, 18.0 / 8.0
+X-SPAM-Summary: RULE_ANCHOR_DOMAIN_PHISHING=18.0,CL_CEF-SE_CEF=0.0
+
+testing result on 2015/08/20 10:59:25 (right)
+
+file=cef.msg
+X-SPAM-Status: YES, 6.0 / 6.0
+X-SPAM-Summary: CL_CEF-SE_CEF=6.0,CL_DHD_BULK=0.0
+file=cef_nofrom.msg
+X-SPAM-Status: YES, 6.0 / 6.0
+X-SPAM-Summary: CL_CEF-SE_CEF=6.0,CL_DHD_BULK=0.0
+file=cef_nos.msg
+X-SPAM-Status: YES, 6.0 / 6.0
+X-SPAM-Summary: CL_CEF-SE_CEF=6.0,CL_DHD_BULK=0.0
+file=ham_ip.msg
+X-SPAM-Status: NO, 0.0 / 6.0
+X-SPAM-Summary: FSO_HAM=0.0
+file=phishing.msg
+X-SPAM-Status: YES, 18.0 / 8.0
+X-SPAM-Summary: RULE_ANCHOR_DOMAIN_PHISHING=18.0,CL_CEF-SE_CEF=0.0
+file=phishing-tiny.msg
+X-SPAM-Status: YES, 30.0 / 8.0
+X-SPAM-Summary: RULE_ANCHOR_DOMAIN_PHISHING=18.0,TINY_SPAM-M=12.0,CL_CEF-SE_CEF=0.0
+file=spam_HARDSPFFAIL.msg
+X-SPAM-Status: YES, 6.0 / 6.0
+X-SPAM-Summary: CL_CEF-SE_CEF=6.0
+file=urld.msg
+X-SPAM-Status: YES, 30.0 / 8.0
+X-SPAM-Summary: RULE_ANCHOR_DOMAIN_PHISHING=18.0,TINY_SPAM-M=12.0,CL_CEF-SE_CEF=0.0,CL_DHD_BULK=0.0
+file=urld_unsub.msg
+X-SPAM-Status: YES, 30.0 / 8.0
+X-SPAM-Summary: RULE_ANCHOR_DOMAIN_PHISHING=18.0,RULE_ANCHOR_UNSUB_BULK=0.0,TINY_SPAM-M=12.0,CL_CEF-SE_CEF=0.0,CL_DHD_BULK=0.0
+file=yifang_bulk.msg
+X-SPAM-Status: YES, 18.0 / 8.0
+X-SPAM-Summary: RULE_ANCHOR_DOMAIN_PHISHING=18.0,CL_CEF-SE_CEF=0.0,CL_DHD_BULK=0.0
+
+
++------+---------+----------------+---------+--------------------+
+| id   | cus_num | classification | is_spam | allow_user_setting |
++------+---------+----------------+---------+--------------------+
+| 2719 | 9506448 | bulk           |       0 |                  1 |
+| 2713 | 9506448 | cef            |       1 |                  1 |
++------+---------+----------------+---------+--------------------+
+
+scripts3d [LXC] cef # bash test_portal1.sh in9b 1
+file=cef.msg
+X-SPAM-Status: YES, 6.0 / 6.0
+X-SPAM-Summary: CL_CEF-SE_CEF=6.0
+file=ham_ip.msg
+X-SPAM-Status: NO, 0.0 / 6.0
+X-SPAM-Summary: FSO_HAM=0.0
+file=urld.msg
+X-SPAM-Status: YES, 18.0 / 8.0
+X-SPAM-Summary: CL_CEF-SE_CEF=6.0,TINY_SPAM-M=12.0
+file=yifang_bulk.msg
+X-SPAM-Status: NO, 0.0 / 6.0
+X-SPAM-Summary: CL_CEF-SE_CEF=0.0,CL_DHD_BULK=0.0
+
+2015/08/19 13:50:18
+[2015-08-19 13:52:13:45]: [scan]: [TEST] Classification is : [BULK = 0]
+[2015-08-19 13:52:13:45]: [scan]: [TEST] Classification is : [SOCIAL = 1]
+[2015-08-19 13:52:13:45]: [scan]: [TEST] Classification is : [CEF = 1]
+
+file=cef.msg
+X-SPAM-Status: YES, 6.0 / 6.0
+X-SPAM-Summary: CL_CEF-SE_CEF=6.0,CL_DHD_BULK=0.0
+file=cef_nofrom.msg
+X-SPAM-Status: YES, 6.0 / 6.0
+X-SPAM-Summary: CL_CEF-SE_CEF=6.0,CL_DHD_BULK=0.0
+file=ham_ip.msg
+X-SPAM-Status: NO, 0.0 / 6.0
+X-SPAM-Summary: FSO_HAM=0.0
+file=phishing.msg
+X-SPAM-Status: YES, 18.0 / 8.0
+X-SPAM-Summary: RULE_ANCHOR_DOMAIN_PHISHING=18.0,CL_CEF-SE_CEF=0.0
+file=phishing-tiny.msg
+X-SPAM-Status: YES, 30.0 / 8.0
+X-SPAM-Summary: RULE_ANCHOR_DOMAIN_PHISHING=18.0,TINY_SPAM-M=12.0,CL_CEF-SE_CEF=0.0
+file=spam_HARDSPFFAIL.msg
+X-SPAM-Status: YES, 6.0 / 6.0
+X-SPAM-Summary: CL_CEF-SE_CEF=6.0
+file=urld.msg
+X-SPAM-Status: YES, 30.0 / 8.0
+X-SPAM-Summary: RULE_ANCHOR_DOMAIN_PHISHING=18.0,TINY_SPAM-M=12.0,CL_CEF-SE_CEF=0.0,CL_DHD_BULK=0.0
+file=urld_unsub.msg
+X-SPAM-Status: YES, 30.0 / 8.0
+X-SPAM-Summary: RULE_ANCHOR_DOMAIN_PHISHING=18.0,RULE_ANCHOR_UNSUB_BULK=0.0,TINY_SPAM-M=12.0,CL_CEF-SE_CEF=0.0,CL_DHD_BULK=0.0
+file=yifang_bulk.msg
+X-SPAM-Status: YES, 18.0 / 8.0
+X-SPAM-Summary: RULE_ANCHOR_DOMAIN_PHISHING=18.0,CL_CEF-SE_CEF=0.0,CL_DHD_BULK=0.0
+
+
+
+**** DONE 001:default all , use_cef, CEF OFF, BULK OFF
+CLOSED: [2015-08-20 Thurs 11:11]
+
++------+---------+----------------+---------+--------------------+
+| id   | cus_num | classification | is_spam | allow_user_setting |
++------+---------+----------------+---------+--------------------+
+| 2719 | 9506448 | bulk           |       0 |                  1 |
+| 2713 | 9506448 | cef            |       0 |                  1 |
++------+---------+----------------+---------+--------------------+
+
+scripts3d [LXC] cef # bash test_portal1.sh in9b 1
+file=cef.msg
+X-SPAM-Status: NO, 0.0 / 6.0
+X-SPAM-Summary: CL_CEF-SE_CEF=0.0
+file=ham_ip.msg
+X-SPAM-Status: NO, 0.0 / 6.0
+X-SPAM-Summary: FSO_HAM=0.0
+file=urld.msg
+X-SPAM-Status: YES, 12.0 / 8.0
+X-SPAM-Summary: CL_CEF-SE_CEF=0.0,TINY_SPAM-M=12.0
+file=yifang_bulk.msg
+X-SPAM-Status: NO, 0.0 / 6.0
+X-SPAM-Summary: CL_CEF-SE_CEF=0.0,CL_DHD_BULK=0.0
+
+testing on 2015/08/20 11:13:17 AFTER introducting hash in rules
+
+file=cef.msg
+X-SPAM-Status: NO, 0.0 / 6.0
+X-SPAM-Summary: CL_CEF-SE_CEF=0.0,CL_DHD_BULK=0.0
+file=cef_nofrom.msg
+X-SPAM-Status: NO, 0.0 / 6.0
+X-SPAM-Summary: CL_CEF-SE_CEF=0.0,CL_DHD_BULK=0.0
+file=cef_nos.msg
+X-SPAM-Status: NO, 0.0 / 6.0
+X-SPAM-Summary: CL_CEF-SE_CEF=0.0,CL_DHD_BULK=0.0
+file=ham_ip.msg
+X-SPAM-Status: NO, 0.0 / 6.0
+X-SPAM-Summary: FSO_HAM=0.0
+file=phishing.msg
+X-SPAM-Status: YES, 18.0 / 8.0
+X-SPAM-Summary: RULE_ANCHOR_DOMAIN_PHISHING=18.0,CL_CEF-SE_CEF=0.0
+file=phishing-tiny.msg
+X-SPAM-Status: YES, 30.0 / 8.0
+X-SPAM-Summary: RULE_ANCHOR_DOMAIN_PHISHING=18.0,TINY_SPAM-M=12.0,CL_CEF-SE_CEF=0.0
+file=spam_HARDSPFFAIL.msg
+X-SPAM-Status: NO, 0.0 / 6.0
+X-SPAM-Summary: CL_CEF-SE_CEF=0.0
+file=urld.msg
+X-SPAM-Status: YES, 30.0 / 8.0
+X-SPAM-Summary: RULE_ANCHOR_DOMAIN_PHISHING=18.0,TINY_SPAM-M=12.0,CL_CEF-SE_CEF=0.0,CL_DHD_BULK=0.0
+file=urld_unsub.msg
+X-SPAM-Status: YES, 30.0 / 8.0
+X-SPAM-Summary: RULE_ANCHOR_DOMAIN_PHISHING=18.0,RULE_ANCHOR_UNSUB_BULK=0.0,TINY_SPAM-M=12.0,CL_CEF-SE_CEF=0.0,CL_DHD_BULK=0.0
+file=yifang_bulk.msg
+X-SPAM-Status: YES, 18.0 / 8.0
+X-SPAM-Summary: RULE_ANCHOR_DOMAIN_PHISHING=18.0,CL_CEF-SE_CEF=0.0,CL_DHD_BULK=0.0
+
+
+
+**** DONE 002:default all , use_cef, CEF OFF, BULK OFF
+CLOSED: [2015-08-12 Wed 17:14]
+
+select C.portal_version,A.cus_num from aka A join customer C using (cus_num) where A.aka_domain='00002.wayne.dong.test.fusemail.com'; select spamd_version,use_cef from sf_dom_sub where aka_domain='00002.wayne.dong.test.fusemail.com'; select * from cus_spam_classifications where cus_num = 9510120; select * from user_spam_classifications where box_fulladdress='admin@00002.wayne.dong.test.fusemail.com';
+
+NO ANY ENTRIES in cus and user level classifications, portal_version is 2
+
+scripts3d [LXC] cef # bash test_portal2.sh in9b 1
+file=cef.msg
+X-SPAM-Status: NO, 0.0 / 6.0
+X-SPAM-Summary: CL_CEF-SE_CEF=0.0
+file=ham_ip.msg
+X-SPAM-Status: NO, 0.0 / 6.0
+X-SPAM-Summary: FSO_HAM=0.0
+file=urld.msg
+X-SPAM-Status: YES, 12.0 / 8.0
+X-SPAM-Summary: CL_CEF-SE_CEF=0.0,TINY_SPAM-M=12.0
+file=yifang_bulk.msg
+X-SPAM-Status: NO, 0.0 / 6.0
+X-SPAM-Summary: CL_CEF-SE_CEF=0.0,CL_DHD_BULK=0.0
+
+2015/08/20 16:46:06 ( after hash path on 2015/08/19 )
+[2015-08-20 16:47:06:44]: [scan]: [TEST] Classification is : [BULK = 0]
+[2015-08-20 16:47:06:44]: [scan]: [TEST] Classification is : [SOCIAL = 0]
+[2015-08-20 16:47:06:44]: [scan]: [TEST] Classification is : [CEF = 0]
+
+
+scripts3d [LXC] cef # bash test_portal2.sh in9b 1                                                                                                                                                                                              
+file=cef.msg
+X-SPAM-Status: NO, 0.0 / 6.0
+X-SPAM-Summary: CL_CEF-SE_CEF=0.0,CL_DHD_BULK=0.0
+file=cef_nofrom.msg
+X-SPAM-Status: NO, 0.0 / 6.0
+X-SPAM-Summary: CL_CEF-SE_CEF=0.0,CL_DHD_BULK=0.0
+file=cef_nos.msg
+X-SPAM-Status: NO, 0.0 / 6.0
+X-SPAM-Summary: CL_CEF-SE_CEF=0.0,CL_DHD_BULK=0.0
+file=ham_ip.msg
+X-SPAM-Status: NO, 0.0 / 6.0
+X-SPAM-Summary: FSO_HAM=0.0
+file=phishing.msg
+X-SPAM-Status: YES, 18.0 / 8.0
+X-SPAM-Summary: RULE_ANCHOR_DOMAIN_PHISHING=18.0,CL_CEF-SE_CEF=0.0
+file=phishing-tiny.msg
+X-SPAM-Status: YES, 30.0 / 8.0
+X-SPAM-Summary: RULE_ANCHOR_DOMAIN_PHISHING=18.0,TINY_SPAM-M=12.0,CL_CEF-SE_CEF=0.0
+file=spam_HARDSPFFAIL.msg
+X-SPAM-Status: NO, 0.0 / 6.0
+X-SPAM-Summary: CL_CEF-SE_CEF=0.0
+file=urld.msg
+X-SPAM-Status: YES, 30.0 / 8.0
+X-SPAM-Summary: RULE_ANCHOR_DOMAIN_PHISHING=18.0,TINY_SPAM-M=12.0,CL_CEF-SE_CEF=0.0,CL_DHD_BULK=0.0
+file=urld_unsub.msg
+X-SPAM-Status: YES, 30.0 / 8.0
+X-SPAM-Summary: RULE_ANCHOR_DOMAIN_PHISHING=18.0,RULE_ANCHOR_UNSUB_BULK=0.0,TINY_SPAM-M=12.0,CL_CEF-SE_CEF=0.0,CL_DHD_BULK=0.0
+file=yifang_bulk.msg
+X-SPAM-Status: YES, 18.0 / 8.0
+X-SPAM-Summary: RULE_ANCHOR_DOMAIN_PHISHING=18.0,CL_CEF-SE_CEF=0.0,CL_DHD_BULK=0.0
+
+
+WITH ENTRY WITHOUT CEF
+
++------+---------+----------------+---------+--------------------+
+| id   | cus_num | classification | is_spam | allow_user_setting |
++------+---------+----------------+---------+--------------------+
+| 2725 | 9510120 | bulk           |       0 |                  1 |
+| 2731 | 9510120 | cef            |       0 |                  1 |
++------+---------+----------------+---------+--------------------+
+
+scripts3d [LXC] cef # bash test_portal2.sh in9b 1
+file=cef.msg
+X-SPAM-Status: NO, 0.0 / 6.0
+file=ham_ip.msg
+X-SPAM-Status: NO, 0.0 / 6.0
+X-SPAM-Summary: FSO_HAM=0.0
+file=urld.msg
+X-SPAM-Status: YES, 12.0 / 8.0
+X-SPAM-Summary: TINY_SPAM-M=12.0
+file=yifang_bulk.msg
+X-SPAM-Status: NO, 0.0 / 6.0
+X-SPAM-Summary: CL_DHD_BULK=0.0
+
+2015/08/20 16:51:18 ( after hash patch on 08/19 )
+
+file=cef.msg
+X-SPAM-Status: NO, 0.0 / 6.0
+X-SPAM-Summary: CL_CEF-SE_CEF=0.0,CL_DHD_BULK=0.0
+file=cef_nofrom.msg
+X-SPAM-Status: NO, 0.0 / 6.0
+X-SPAM-Summary: CL_CEF-SE_CEF=0.0,CL_DHD_BULK=0.0
+file=cef_nos.msg
+X-SPAM-Status: NO, 0.0 / 6.0
+X-SPAM-Summary: CL_CEF-SE_CEF=0.0,CL_DHD_BULK=0.0
+file=ham_ip.msg
+X-SPAM-Status: NO, 0.0 / 6.0
+X-SPAM-Summary: FSO_HAM=0.0
+file=phishing.msg
+X-SPAM-Status: YES, 18.0 / 8.0
+X-SPAM-Summary: RULE_ANCHOR_DOMAIN_PHISHING=18.0,CL_CEF-SE_CEF=0.0
+file=phishing-tiny.msg
+X-SPAM-Status: YES, 30.0 / 8.0
+X-SPAM-Summary: RULE_ANCHOR_DOMAIN_PHISHING=18.0,TINY_SPAM-M=12.0,CL_CEF-SE_CEF=0.0
+file=spam_HARDSPFFAIL.msg
+X-SPAM-Status: NO, 0.0 / 6.0
+X-SPAM-Summary: CL_CEF-SE_CEF=0.0
+file=urld.msg
+X-SPAM-Status: YES, 30.0 / 8.0
+X-SPAM-Summary: RULE_ANCHOR_DOMAIN_PHISHING=18.0,TINY_SPAM-M=12.0,CL_CEF-SE_CEF=0.0,CL_DHD_BULK=0.0
+file=urld_unsub.msg
+X-SPAM-Status: YES, 30.0 / 8.0
+X-SPAM-Summary: RULE_ANCHOR_DOMAIN_PHISHING=18.0,RULE_ANCHOR_UNSUB_BULK=0.0,TINY_SPAM-M=12.0,CL_CEF-SE_CEF=0.0,CL_DHD_BULK=0.0
+file=yifang_bulk.msg
+X-SPAM-Status: YES, 18.0 / 8.0
+X-SPAM-Summary: RULE_ANCHOR_DOMAIN_PHISHING=18.0,CL_CEF-SE_CEF=0.0,CL_DHD_BULK=0.0
+
+
+
+**** DONE 002:default all , use_cef, CEF ON, BULK ON
+CLOSED: [2015-08-12 Wed 17:31]
+
++------+---------+----------------+---------+--------------------+
+| id   | cus_num | classification | is_spam | allow_user_setting |
++------+---------+----------------+---------+--------------------+
+| 2725 | 9510120 | bulk           |       1 |                  1 |
+| 2731 | 9510120 | cef            |       1 |                  1 |
++------+---------+----------------+---------+--------------------+
+
+scripts3d [LXC] cef # bash test_portal2.sh in9b 1
+file=cef.msg
+X-SPAM-Status: YES, 6.0 / 6.0
+X-SPAM-Summary: CL_CEF-SE_CEF=6.0
+file=ham_ip.msg
+X-SPAM-Status: NO, 0.0 / 6.0
+X-SPAM-Summary: FSO_HAM=0.0
+file=urld.msg
+X-SPAM-Status: YES, 18.0 / 8.0
+X-SPAM-Summary: CL_CEF-SE_CEF=6.0,TINY_SPAM-M=12.0
+file=yifang_bulk.msg
+X-SPAM-Status: YES, 12.0 / 8.0
+X-SPAM-Summary: CL_CEF-SE_CEF=6.0,CL_DHD_BULK=6.0
+
+2015/08/21 11:16:32 ( after patch about that hash )
+
+file=cef.msg
+X-SPAM-Status: YES, 6.0 / 6.0
+X-SPAM-Summary: CL_CEF-SE_CEF=6.0,CL_DHD_BULK=0.0
+file=cef_nofrom.msg
+X-SPAM-Status: YES, 6.0 / 6.0
+X-SPAM-Summary: CL_CEF-SE_CEF=6.0,CL_DHD_BULK=0.0
+file=cef_nos.msg
+X-SPAM-Status: YES, 6.0 / 6.0
+X-SPAM-Summary: CL_CEF-SE_CEF=6.0,CL_DHD_BULK=0.0
+file=ham_ip.msg
+X-SPAM-Status: NO, 0.0 / 6.0
+X-SPAM-Summary: FSO_HAM=0.0
+file=phishing.msg
+X-SPAM-Status: YES, 18.0 / 8.0
+X-SPAM-Summary: RULE_ANCHOR_DOMAIN_PHISHING=18.0,CL_CEF-SE_CEF=0.0
+file=phishing-tiny.msg
+X-SPAM-Status: YES, 30.0 / 8.0
+X-SPAM-Summary: RULE_ANCHOR_DOMAIN_PHISHING=18.0,TINY_SPAM-M=12.0,CL_CEF-SE_CEF=0.0
+file=spam_HARDSPFFAIL.msg
+X-SPAM-Status: YES, 6.0 / 6.0
+X-SPAM-Summary: CL_CEF-SE_CEF=6.0
+file=urld.msg
+X-SPAM-Status: YES, 30.0 / 8.0
+X-SPAM-Summary: RULE_ANCHOR_DOMAIN_PHISHING=18.0,TINY_SPAM-M=12.0,CL_CEF-SE_CEF=0.0,CL_DHD_BULK=0.0
+file=urld_unsub.msg
+X-SPAM-Status: YES, 30.0 / 8.0
+X-SPAM-Summary: RULE_ANCHOR_DOMAIN_PHISHING=18.0,RULE_ANCHOR_UNSUB_BULK=0.0,TINY_SPAM-M=12.0,CL_CEF-SE_CEF=0.0,CL_DHD_BULK=0.0
+file=yifang_bulk.msg
+X-SPAM-Status: YES, 18.0 / 8.0
+X-SPAM-Summary: RULE_ANCHOR_DOMAIN_PHISHING=18.0,CL_CEF-SE_CEF=0.0,CL_DHD_BULK=0.0
+
+
+**** DONE 002:default all , use_cef, CEF ON, BULK OFF
+CLOSED: [2015-08-12 Wed 17:33]
+
++------+---------+----------------+---------+--------------------+
+| id   | cus_num | classification | is_spam | allow_user_setting |
++------+---------+----------------+---------+--------------------+
+| 2725 | 9510120 | bulk           |       0 |                  1 |
+| 2731 | 9510120 | cef            |       1 |                  1 |
++------+---------+----------------+---------+--------------------+
+
+scripts3d [LXC] cef # bash test_portal2.sh in9b 1
+file=cef.msg
+X-SPAM-Status: YES, 6.0 / 6.0
+X-SPAM-Summary: CL_CEF-SE_CEF=6.0
+file=ham_ip.msg
+X-SPAM-Status: NO, 0.0 / 6.0
+X-SPAM-Summary: FSO_HAM=0.0
+file=urld.msg
+X-SPAM-Status: YES, 18.0 / 8.0
+X-SPAM-Summary: CL_CEF-SE_CEF=6.0,TINY_SPAM-M=12.0
+file=yifang_bulk.msg
+X-SPAM-Status: NO, 0.0 / 6.0
+X-SPAM-Summary: CL_CEF-SE_CEF=0.0,CL_DHD_BULK=0.0
+
+2015/08/21 11:21:35 ( after patch of that hash )
+file=cef.msg
+X-SPAM-Status: YES, 6.0 / 6.0
+X-SPAM-Summary: CL_CEF-SE_CEF=6.0,CL_DHD_BULK=0.0
+file=cef_nofrom.msg
+X-SPAM-Status: YES, 6.0 / 6.0
+X-SPAM-Summary: CL_CEF-SE_CEF=6.0,CL_DHD_BULK=0.0
+file=cef_nos.msg
+X-SPAM-Status: YES, 6.0 / 6.0
+X-SPAM-Summary: CL_CEF-SE_CEF=6.0,CL_DHD_BULK=0.0
+file=ham_ip.msg
+X-SPAM-Status: NO, 0.0 / 6.0
+X-SPAM-Summary: FSO_HAM=0.0
+file=phishing.msg
+X-SPAM-Status: YES, 18.0 / 8.0
+X-SPAM-Summary: RULE_ANCHOR_DOMAIN_PHISHING=18.0,CL_CEF-SE_CEF=0.0
+file=phishing-tiny.msg
+X-SPAM-Status: YES, 30.0 / 8.0
+X-SPAM-Summary: RULE_ANCHOR_DOMAIN_PHISHING=18.0,TINY_SPAM-M=12.0,CL_CEF-SE_CEF=0.0
+file=spam_HARDSPFFAIL.msg
+X-SPAM-Status: YES, 6.0 / 6.0
+X-SPAM-Summary: CL_CEF-SE_CEF=6.0
+file=urld.msg
+X-SPAM-Status: YES, 30.0 / 8.0
+X-SPAM-Summary: RULE_ANCHOR_DOMAIN_PHISHING=18.0,TINY_SPAM-M=12.0,CL_CEF-SE_CEF=0.0,CL_DHD_BULK=0.0
+file=urld_unsub.msg
+X-SPAM-Status: YES, 30.0 / 8.0
+X-SPAM-Summary: RULE_ANCHOR_DOMAIN_PHISHING=18.0,RULE_ANCHOR_UNSUB_BULK=0.0,TINY_SPAM-M=12.0,CL_CEF-SE_CEF=0.0,CL_DHD_BULK=0.0
+file=yifang_bulk.msg
+X-SPAM-Status: YES, 18.0 / 8.0
+X-SPAM-Summary: RULE_ANCHOR_DOMAIN_PHISHING=18.0,CL_CEF-SE_CEF=0.0,CL_DHD_BULK=0.0
+
+
+with low as 20 and high as 24
+
+file=cef.msg
+X-SPAM-Status: NO, 6.0 / 20.0
+X-SPAM-Summary: CL_CEF-SE_CEF=6.0,CL_DHD_BULK=0.0
+file=cef_nofrom.msg
+X-SPAM-Status: NO, 6.0 / 20.0
+X-SPAM-Summary: CL_CEF-SE_CEF=6.0,CL_DHD_BULK=0.0
+file=cef_nos.msg
+X-SPAM-Status: NO, 6.0 / 20.0
+X-SPAM-Summary: CL_CEF-SE_CEF=6.0,CL_DHD_BULK=0.0
+file=ham_ip.msg
+X-SPAM-Status: NO, 0.0 / 20.0
+X-SPAM-Summary: FSO_HAM=0.0
+file=phishing.msg
+X-SPAM-Status: YES, 24.0 / 24.0
+X-SPAM-Summary: RULE_ANCHOR_DOMAIN_PHISHING=18.0,CL_CEF-SE_CEF=6.0
+file=phishing-tiny.msg
+X-SPAM-Status: YES, 30.0 / 24.0
+X-SPAM-Summary: RULE_ANCHOR_DOMAIN_PHISHING=18.0,TINY_SPAM-M=12.0,CL_CEF-SE_CEF=0.0
+file=spam_HARDSPFFAIL.msg
+X-SPAM-Status: NO, 6.0 / 20.0
+X-SPAM-Summary: CL_CEF-SE_CEF=6.0
+file=urld.msg
+X-SPAM-Status: YES, 30.0 / 24.0
+X-SPAM-Summary: RULE_ANCHOR_DOMAIN_PHISHING=18.0,TINY_SPAM-M=12.0,CL_CEF-SE_CEF=0.0,CL_DHD_BULK=0.0
+file=urld_unsub.msg
+X-SPAM-Status: YES, 30.0 / 24.0
+X-SPAM-Summary: RULE_ANCHOR_DOMAIN_PHISHING=18.0,RULE_ANCHOR_UNSUB_BULK=0.0,TINY_SPAM-M=12.0,CL_CEF-SE_CEF=0.0,CL_DHD_BULK=0.0
+file=yifang_bulk.msg
+X-SPAM-Status: YES, 24.0 / 24.0
+X-SPAM-Summary: RULE_ANCHOR_DOMAIN_PHISHING=18.0,CL_CEF-SE_CEF=6.0,CL_DHD_BULK=0.0
+
+scripts3d [LXC] cef # SENDER='1dog@house.com' RECIP='admin@00002.wayne.dong.test.fusemail.com' /root/spamd-test -f yifang_bulk.msg -s in9b
+X-SPAM-Status: NO, 18.0 / 20.0
+X-SPAM-Summary: RULE_ANCHOR_DOMAIN_PHISHING=18.0,CL_DHD_BULK=0.0
+
+
+WITHOUT CEF setting on
++------+---------+----------------+---------+--------------------+
+| id   | cus_num | classification | is_spam | allow_user_setting |
++------+---------+----------------+---------+--------------------+
+| 2725 | 9510120 | bulk           |       0 |                  1 |
+| 2731 | 9510120 | cef            |       1 |                  1 |
++------+---------+----------------+---------+--------------------+
+
+scripts3d [LXC] cef # bash test_portal2.sh in9b 1
+file=cef.msg
+X-SPAM-Status: NO, 0.0 / 6.0
+file=ham_ip.msg
+X-SPAM-Status: NO, 0.0 / 6.0
+X-SPAM-Summary: FSO_HAM=0.0
+file=urld.msg
+X-SPAM-Status: YES, 12.0 / 8.0
+X-SPAM-Summary: TINY_SPAM-M=12.0
+file=yifang_bulk.msg
+X-SPAM-Status: NO, 0.0 / 6.0
+X-SPAM-Summary: CL_DHD_BULK=0.0
+
+2015/08/21 11:32:51 ( after patch of hash )
+
+file=cef.msg
+X-SPAM-Status: NO, 0.0 / 34.0
+X-SPAM-Summary: CL_DHD_BULK=0.0
+file=cef_nofrom.msg
+X-SPAM-Status: NO, 0.0 / 34.0
+X-SPAM-Summary: CL_DHD_BULK=0.0
+file=cef_nos.msg
+X-SPAM-Status: NO, 0.0 / 34.0
+X-SPAM-Summary: CL_DHD_BULK=0.0
+file=ham_ip.msg
+X-SPAM-Status: NO, 0.0 / 34.0
+X-SPAM-Summary: FSO_HAM=0.0
+file=phishing.msg
+X-SPAM-Status: NO, 18.0 / 34.0
+X-SPAM-Summary: RULE_ANCHOR_DOMAIN_PHISHING=18.0
+file=phishing-tiny.msg
+X-SPAM-Status: NO, 30.0 / 34.0
+X-SPAM-Summary: RULE_ANCHOR_DOMAIN_PHISHING=18.0,TINY_SPAM-M=12.0
+file=spam_HARDSPFFAIL.msg
+X-SPAM-Status: NO, 0.0 / 34.0
+file=urld.msg
+X-SPAM-Status: NO, 30.0 / 34.0
+X-SPAM-Summary: RULE_ANCHOR_DOMAIN_PHISHING=18.0,TINY_SPAM-M=12.0,CL_DHD_BULK=0.0
+file=urld_unsub.msg
+X-SPAM-Status: NO, 30.0 / 34.0
+X-SPAM-Summary: RULE_ANCHOR_DOMAIN_PHISHING=18.0,RULE_ANCHOR_UNSUB_BULK=0.0,TINY_SPAM-M=12.0,CL_DHD_BULK=0.0
+file=yifang_bulk.msg
+X-SPAM-Status: NO, 18.0 / 34.0
+X-SPAM-Summary: RULE_ANCHOR_DOMAIN_PHISHING=18.0,CL_DHD_BULK=0.0
+
+WITHOUT CEF ENTRY with cef turned on
+
++------+---------+----------------+---------+--------------------+
+| id   | cus_num | classification | is_spam | allow_user_setting |
++------+---------+----------------+---------+--------------------+
+| 2725 | 9510120 | bulk           |       0 |                  1 |
++------+---------+----------------+---------+--------------------+
+
+file=cef.msg
+X-SPAM-Status: NO, 0.0 / 34.0
+X-SPAM-Summary: CL_CEF-SE_CEF=0.0,CL_DHD_BULK=0.0
+file=cef_nofrom.msg
+X-SPAM-Status: NO, 0.0 / 34.0
+X-SPAM-Summary: CL_CEF-SE_CEF=0.0,CL_DHD_BULK=0.0
+file=cef_nos.msg
+X-SPAM-Status: NO, 0.0 / 34.0
+X-SPAM-Summary: CL_CEF-SE_CEF=0.0,CL_DHD_BULK=0.0
+file=ham_ip.msg
+X-SPAM-Status: NO, 0.0 / 34.0
+X-SPAM-Summary: FSO_HAM=0.0
+file=phishing.msg
+X-SPAM-Status: NO, 18.0 / 34.0
+X-SPAM-Summary: RULE_ANCHOR_DOMAIN_PHISHING=18.0,CL_CEF-SE_CEF=0.0
+file=phishing-tiny.msg
+X-SPAM-Status: NO, 30.0 / 34.0
+X-SPAM-Summary: RULE_ANCHOR_DOMAIN_PHISHING=18.0,TINY_SPAM-M=12.0,CL_CEF-SE_CEF=0.0
+file=spam_HARDSPFFAIL.msg
+X-SPAM-Status: NO, 0.0 / 34.0
+X-SPAM-Summary: CL_CEF-SE_CEF=0.0
+file=urld.msg
+X-SPAM-Status: NO, 30.0 / 34.0
+X-SPAM-Summary: RULE_ANCHOR_DOMAIN_PHISHING=18.0,TINY_SPAM-M=12.0,CL_CEF-SE_CEF=0.0,CL_DHD_BULK=0.0
+file=urld_unsub.msg
+X-SPAM-Status: NO, 30.0 / 34.0
+X-SPAM-Summary: RULE_ANCHOR_DOMAIN_PHISHING=18.0,RULE_ANCHOR_UNSUB_BULK=0.0,TINY_SPAM-M=12.0,CL_CEF-SE_CEF=0.0,CL_DHD_BULK=0.0
+file=yifang_bulk.msg
+X-SPAM-Status: NO, 18.0 / 34.0
+X-SPAM-Summary: RULE_ANCHOR_DOMAIN_PHISHING=18.0,CL_CEF-SE_CEF=0.0,CL_DHD_BULK=0.0
+
+
+**** DONE 002:default all , use_cef, CEF OFF, BULK ON
+CLOSED: [2015-08-12 Wed 17:37]
+
++------+---------+----------------+---------+--------------------+
+| id   | cus_num | classification | is_spam | allow_user_setting |
++------+---------+----------------+---------+--------------------+
+| 2725 | 9510120 | bulk           |       1 |                  1 |
+| 2731 | 9510120 | cef            |       0 |                  1 |
++------+---------+----------------+---------+--------------------+
+
+scripts3d [LXC] cef # bash test_portal2.sh in9b 1
+file=cef.msg
+X-SPAM-Status: NO, 0.0 / 6.0
+X-SPAM-Summary: CL_CEF-SE_CEF=0.0
+file=ham_ip.msg
+X-SPAM-Status: NO, 0.0 / 6.0
+X-SPAM-Summary: FSO_HAM=0.0
+file=urld.msg
+X-SPAM-Status: YES, 12.0 / 8.0
+X-SPAM-Summary: CL_CEF-SE_CEF=0.0,TINY_SPAM-M=12.0
+file=yifang_bulk.msg
+X-SPAM-Status: YES, 6.0 / 6.0
+X-SPAM-Summary: CL_CEF-SE_CEF=0.0,CL_DHD_BULK=6.0
+
+2015/08/21 11:44:09 ( after hash patch )
+file=cef.msg
+X-SPAM-Status: NO, 6.0 / 34.0
+X-SPAM-Summary: CL_CEF-SE_CEF=0.0,CL_DHD_BULK=6.0
+file=cef_nofrom.msg
+X-SPAM-Status: NO, 6.0 / 34.0
+X-SPAM-Summary: CL_CEF-SE_CEF=0.0,CL_DHD_BULK=6.0
+file=cef_nos.msg
+X-SPAM-Status: NO, 6.0 / 34.0
+X-SPAM-Summary: CL_CEF-SE_CEF=0.0,CL_DHD_BULK=6.0
+file=ham_ip.msg
+X-SPAM-Status: NO, 0.0 / 34.0
+X-SPAM-Summary: FSO_HAM=0.0
+file=phishing.msg
+X-SPAM-Status: NO, 18.0 / 34.0
+X-SPAM-Summary: RULE_ANCHOR_DOMAIN_PHISHING=18.0,CL_CEF-SE_CEF=0.0
+file=phishing-tiny.msg
+X-SPAM-Status: NO, 30.0 / 34.0
+X-SPAM-Summary: RULE_ANCHOR_DOMAIN_PHISHING=18.0,TINY_SPAM-M=12.0,CL_CEF-SE_CEF=0.0
+file=spam_HARDSPFFAIL.msg
+X-SPAM-Status: NO, 0.0 / 34.0
+X-SPAM-Summary: CL_CEF-SE_CEF=0.0
+file=urld.msg
+X-SPAM-Status: YES, 36.0 / 36.0
+X-SPAM-Summary: RULE_ANCHOR_DOMAIN_PHISHING=18.0,TINY_SPAM-M=12.0,CL_CEF-SE_CEF=0.0,CL_DHD_BULK=6.0
+file=urld_unsub.msg
+X-SPAM-Status: YES, 36.0 / 36.0
+X-SPAM-Summary: RULE_ANCHOR_DOMAIN_PHISHING=18.0,RULE_ANCHOR_UNSUB_BULK=6.0,TINY_SPAM-M=12.0,CL_CEF-SE_CEF=0.0,CL_DHD_BULK=0.0
+file=yifang_bulk.msg
+X-SPAM-Status: NO, 24.0 / 34.0
+X-SPAM-Summary: RULE_ANCHOR_DOMAIN_PHISHING=18.0,CL_CEF-SE_CEF=0.0,CL_DHD_BULK=6.0
+
+
+WITHOUT CEF use_cef = 0
+
+scripts3d [LXC] cef # bash test_portal2.sh in9b 1
+file=cef.msg
+X-SPAM-Status: NO, 0.0 / 6.0
+file=ham_ip.msg
+X-SPAM-Status: NO, 0.0 / 6.0
+X-SPAM-Summary: FSO_HAM=0.0
+file=urld.msg
+X-SPAM-Status: YES, 12.0 / 8.0
+X-SPAM-Summary: TINY_SPAM-M=12.0
+file=yifang_bulk.msg
+X-SPAM-Status: YES, 6.0 / 6.0
+X-SPAM-Summary: CL_DHD_BULK=6.0
+
+2015/08/21 13:47:24 ( after hash patch )
+
+file=cef.msg
+X-SPAM-Status: NO, 6.0 / 34.0
+X-SPAM-Summary: CL_DHD_BULK=6.0
+file=cef_nofrom.msg
+X-SPAM-Status: NO, 6.0 / 34.0
+X-SPAM-Summary: CL_DHD_BULK=6.0
+file=cef_nos.msg
+X-SPAM-Status: NO, 6.0 / 34.0
+X-SPAM-Summary: CL_DHD_BULK=6.0
+file=ham_ip.msg
+X-SPAM-Status: NO, 0.0 / 34.0
+X-SPAM-Summary: FSO_HAM=0.0
+file=phishing.msg
+X-SPAM-Status: NO, 18.0 / 34.0
+X-SPAM-Summary: RULE_ANCHOR_DOMAIN_PHISHING=18.0
+file=phishing-tiny.msg
+X-SPAM-Status: NO, 30.0 / 34.0
+X-SPAM-Summary: RULE_ANCHOR_DOMAIN_PHISHING=18.0,TINY_SPAM-M=12.0
+file=spam_HARDSPFFAIL.msg
+X-SPAM-Status: NO, 0.0 / 34.0
+file=urld.msg
+X-SPAM-Status: YES, 36.0 / 36.0
+X-SPAM-Summary: RULE_ANCHOR_DOMAIN_PHISHING=18.0,TINY_SPAM-M=12.0,CL_DHD_BULK=6.0
+file=urld_unsub.msg
+X-SPAM-Status: YES, 36.0 / 36.0
+X-SPAM-Summary: RULE_ANCHOR_DOMAIN_PHISHING=18.0,RULE_ANCHOR_UNSUB_BULK=6.0,TINY_SPAM-M=12.0,CL_DHD_BULK=0.0
+file=yifang_bulk.msg
+X-SPAM-Status: NO, 24.0 / 34.0
+X-SPAM-Summary: RULE_ANCHOR_DOMAIN_PHISHING=18.0,CL_DHD_BULK=6.0
+
+
+**** TODO 001: regular spam
+**** TODO 002: regular ham
+
+*** TODO test secondary / primary address cef setting
+
+admin@ is the primary and harrisontest@ is the secondary
+
++------+---------+----------------+---------+--------------------+
+| id   | cus_num | classification | is_spam | allow_user_setting |
++------+---------+----------------+---------+--------------------+
+| 2797 | 9506448 | bulk           |       1 |                  0 |
+| 2803 | 9506448 | cef            |       1 |                  0 |
++------+---------+----------------+---------+--------------------+
+2 rows in set (0.00 sec)
+
++-------+------------------------------------------+----------------+---------+
+| id    | box_fulladdress                          | classification | is_spam |
++-------+------------------------------------------+----------------+---------+
+| 12217 | admin@00001.wayne.dong.test.fusemail.com | bulk           |       1 |
+| 12211 | admin@00001.wayne.dong.test.fusemail.com | cef            |       1 |
++-------+------------------------------------------+----------------+---------+
+
+with load:6 and high:8
+
+file=cef.msg
+X-SPAM-Status: YES, 6.0 / 6.0
+X-SPAM-Summary: CL_CEF-SE_CEF=6.0,CL_DHD_BULK=0.0
+file=cef_nofrom.msg
+X-SPAM-Status: YES, 6.0 / 6.0
+X-SPAM-Summary: CL_CEF-SE_CEF=6.0,CL_DHD_BULK=0.0
+file=cef_nos.msg
+X-SPAM-Status: YES, 6.0 / 6.0
+X-SPAM-Summary: CL_CEF-SE_CEF=6.0,CL_DHD_BULK=0.0
+file=ham_ip.msg
+X-SPAM-Status: NO, 0.0 / 6.0
+X-SPAM-Summary: FSO_HAM=0.0
+file=phishing.msg
+X-SPAM-Status: YES, 18.0 / 8.0
+X-SPAM-Summary: RULE_ANCHOR_DOMAIN_PHISHING=18.0,CL_CEF-SE_CEF=0.0
+file=phishing_nourl_clean.msg
+X-SPAM-Status: YES, 6.0 / 6.0
+X-SPAM-Summary: CL_CEF-SE_CEF=6.0
+file=phishing-tiny.msg
+X-SPAM-Status: YES, 30.0 / 8.0
+X-SPAM-Summary: RULE_ANCHOR_DOMAIN_PHISHING=18.0,TINY_SPAM-M=12.0,CL_CEF-SE_CEF=0.0
+file=spam_HARDSPFFAIL.msg
+X-SPAM-Status: YES, 6.0 / 6.0
+X-SPAM-Summary: CL_CEF-SE_CEF=6.0
+file=urld.msg
+X-SPAM-Status: YES, 30.0 / 8.0
+X-SPAM-Summary: RULE_ANCHOR_DOMAIN_PHISHING=18.0,TINY_SPAM-M=12.0,CL_CEF-SE_CEF=0.0,CL_DHD_BULK=0.0
+file=urld_unsub.msg
+X-SPAM-Status: YES, 30.0 / 8.0
+X-SPAM-Summary: RULE_ANCHOR_DOMAIN_PHISHING=18.0,RULE_ANCHOR_UNSUB_BULK=0.0,TINY_SPAM-M=12.0,CL_CEF-SE_CEF=0.0,CL_DHD_BULK=0.0
+file=yifang_bulk.msg
+X-SPAM-Status: YES, 18.0 / 8.0
+X-SPAM-Summary: RULE_ANCHOR_DOMAIN_PHISHING=18.0,CL_CEF-SE_CEF=0.0,CL_DHD_BULK=0.0
+
+
+with low:24 and high:30
+
+file=cef.msg
+X-SPAM-Status: NO, 12.0 / 24.0
+X-SPAM-Summary: CL_CEF-SE_CEF=6.0,CL_DHD_BULK=6.0
+file=cef_nofrom.msg
+X-SPAM-Status: NO, 12.0 / 24.0
+X-SPAM-Summary: CL_CEF-SE_CEF=6.0,CL_DHD_BULK=6.0
+file=cef_nos.msg
+X-SPAM-Status: NO, 12.0 / 24.0
+X-SPAM-Summary: CL_CEF-SE_CEF=6.0,CL_DHD_BULK=6.0
+file=ham_ip.msg
+X-SPAM-Status: NO, 0.0 / 24.0
+X-SPAM-Summary: FSO_HAM=0.0
+file=phishing.msg
+X-SPAM-Status: YES, 24.0 / 24.0
+X-SPAM-Summary: RULE_ANCHOR_DOMAIN_PHISHING=18.0,CL_CEF-SE_CEF=6.0
+file=phishing_nourl_clean.msg
+X-SPAM-Status: NO, 6.0 / 24.0
+X-SPAM-Summary: CL_CEF-SE_CEF=6.0
+file=phishing-tiny.msg
+X-SPAM-Status: YES, 30.0 / 30.0
+X-SPAM-Summary: RULE_ANCHOR_DOMAIN_PHISHING=18.0,TINY_SPAM-M=12.0,CL_CEF-SE_CEF=0.0
+file=spam_HARDSPFFAIL.msg
+X-SPAM-Status: NO, 6.0 / 24.0
+X-SPAM-Summary: CL_CEF-SE_CEF=6.0
+file=urld.msg
+X-SPAM-Status: YES, 30.0 / 30.0
+X-SPAM-Summary: RULE_ANCHOR_DOMAIN_PHISHING=18.0,TINY_SPAM-M=12.0,CL_CEF-SE_CEF=0.0,CL_DHD_BULK=0.0
+file=urld_unsub.msg
+X-SPAM-Status: YES, 36.0 / 30.0
+X-SPAM-Summary: RULE_ANCHOR_DOMAIN_PHISHING=18.0,RULE_ANCHOR_UNSUB_BULK=6.0,TINY_SPAM-M=12.0,CL_CEF-SE_CEF=0.0,CL_DHD_BULK=0.0
+file=yifang_bulk.msg
+X-SPAM-Status: YES, 24.0 / 24.0
+X-SPAM-Summary: RULE_ANCHOR_DOMAIN_PHISHING=18.0,CL_CEF-SE_CEF=6.0,CL_DHD_BULK=0.0
+
+with cus setting to be 0 on both and user setting of primary setting to be 1 on both
+
++------+---------+----------------+---------+--------------------+
+| id   | cus_num | classification | is_spam | allow_user_setting |
++------+---------+----------------+---------+--------------------+
+| 2797 | 9506448 | bulk           |       0 |                  0 |
+| 2803 | 9506448 | cef            |       0 |                  0 |
++------+---------+----------------+---------+--------------------+
+2 rows in set (0.00 sec)
+
++-------+------------------------------------------+----------------+---------+
+| id    | box_fulladdress                          | classification | is_spam |
++-------+------------------------------------------+----------------+---------+
+| 12217 | admin@00001.wayne.dong.test.fusemail.com | bulk           |       1 |
+| 12211 | admin@00001.wayne.dong.test.fusemail.com | cef            |       1 |
++-------+------------------------------------------+----------------+---------+
+
+file=cef.msg
+X-SPAM-Status: NO, 12.0 / 24.0
+X-SPAM-Summary: CL_CEF-SE_CEF=6.0,CL_DHD_BULK=6.0
+file=cef_nofrom.msg
+X-SPAM-Status: NO, 12.0 / 24.0
+X-SPAM-Summary: CL_CEF-SE_CEF=6.0,CL_DHD_BULK=6.0
+file=cef_nos.msg
+X-SPAM-Status: NO, 12.0 / 24.0
+X-SPAM-Summary: CL_CEF-SE_CEF=6.0,CL_DHD_BULK=6.0
+file=ham_ip.msg
+X-SPAM-Status: NO, 0.0 / 24.0
+X-SPAM-Summary: FSO_HAM=0.0
+file=phishing.msg
+X-SPAM-Status: YES, 24.0 / 24.0
+X-SPAM-Summary: RULE_ANCHOR_DOMAIN_PHISHING=18.0,CL_CEF-SE_CEF=6.0
+file=phishing_nourl_clean.msg
+X-SPAM-Status: NO, 6.0 / 24.0
+X-SPAM-Summary: CL_CEF-SE_CEF=6.0
+file=phishing-tiny.msg
+X-SPAM-Status: YES, 30.0 / 30.0
+X-SPAM-Summary: RULE_ANCHOR_DOMAIN_PHISHING=18.0,TINY_SPAM-M=12.0,CL_CEF-SE_CEF=0.0
+file=spam_HARDSPFFAIL.msg
+X-SPAM-Status: NO, 6.0 / 24.0
+X-SPAM-Summary: CL_CEF-SE_CEF=6.0
+file=urld.msg
+X-SPAM-Status: YES, 30.0 / 30.0
+X-SPAM-Summary: RULE_ANCHOR_DOMAIN_PHISHING=18.0,TINY_SPAM-M=12.0,CL_CEF-SE_CEF=0.0,CL_DHD_BULK=0.0
+file=urld_unsub.msg
+X-SPAM-Status: YES, 36.0 / 30.0
+X-SPAM-Summary: RULE_ANCHOR_DOMAIN_PHISHING=18.0,RULE_ANCHOR_UNSUB_BULK=6.0,TINY_SPAM-M=12.0,CL_CEF-SE_CEF=0.0,CL_DHD_BULK=0.0
+file=yifang_bulk.msg
+X-SPAM-Status: YES, 24.0 / 24.0
+X-SPAM-Summary: RULE_ANCHOR_DOMAIN_PHISHING=18.0,CL_CEF-SE_CEF=6.0,CL_DHD_BULK=0.0
+
+with cus setting to be 0 on both (NO ENTRIES) and user setting of primary setting to be 1 on both
+
++-------+------------------------------------------+----------------+---------+
+| id    | box_fulladdress                          | classification | is_spam |
++-------+------------------------------------------+----------------+---------+
+| 12217 | admin@00001.wayne.dong.test.fusemail.com | bulk           |       1 |
+| 12211 | admin@00001.wayne.dong.test.fusemail.com | cef            |       1 |
++-------+------------------------------------------+----------------+---------+
+
+file=cef.msg
+X-SPAM-Status: NO, 12.0 / 24.0
+X-SPAM-Summary: CL_CEF-SE_CEF=6.0,CL_DHD_BULK=6.0
+file=cef_nofrom.msg
+X-SPAM-Status: NO, 12.0 / 24.0
+X-SPAM-Summary: CL_CEF-SE_CEF=6.0,CL_DHD_BULK=6.0
+file=cef_nos.msg
+X-SPAM-Status: NO, 12.0 / 24.0
+X-SPAM-Summary: CL_CEF-SE_CEF=6.0,CL_DHD_BULK=6.0
+file=ham_ip.msg
+X-SPAM-Status: NO, 0.0 / 24.0
+X-SPAM-Summary: FSO_HAM=0.0
+file=phishing.msg
+X-SPAM-Status: YES, 24.0 / 24.0
+X-SPAM-Summary: RULE_ANCHOR_DOMAIN_PHISHING=18.0,CL_CEF-SE_CEF=6.0
+file=phishing_nourl_clean.msg
+X-SPAM-Status: NO, 6.0 / 24.0
+X-SPAM-Summary: CL_CEF-SE_CEF=6.0
+file=phishing-tiny.msg
+X-SPAM-Status: YES, 30.0 / 30.0
+X-SPAM-Summary: RULE_ANCHOR_DOMAIN_PHISHING=18.0,TINY_SPAM-M=12.0,CL_CEF-SE_CEF=0.0
+file=spam_HARDSPFFAIL.msg
+X-SPAM-Status: NO, 6.0 / 24.0
+X-SPAM-Summary: CL_CEF-SE_CEF=6.0
+file=urld.msg
+X-SPAM-Status: YES, 30.0 / 30.0
+X-SPAM-Summary: RULE_ANCHOR_DOMAIN_PHISHING=18.0,TINY_SPAM-M=12.0,CL_CEF-SE_CEF=0.0,CL_DHD_BULK=0.0
+file=urld_unsub.msg
+X-SPAM-Status: YES, 36.0 / 30.0
+X-SPAM-Summary: RULE_ANCHOR_DOMAIN_PHISHING=18.0,RULE_ANCHOR_UNSUB_BULK=6.0,TINY_SPAM-M=12.0,CL_CEF-SE_CEF=0.0,CL_DHD_BULK=0.0
+file=yifang_bulk.msg
+X-SPAM-Status: YES, 24.0 / 24.0
+X-SPAM-Summary: RULE_ANCHOR_DOMAIN_PHISHING=18.0,CL_CEF-SE_CEF=6.0,CL_DHD_BULK=0.0
+
+with cus setting to be 0 on both (NO ENTRIES) and user setting of primary setting to be 0 on both ( NO ENTRIES )
+
+Empty set (0.00 sec)
+
+Empty set (0.00 sec)
+
+BELOW is right since we use default portal1 setting
+
+file=cef.msg
+X-SPAM-Status: NO, 12.0 / 24.0
+X-SPAM-Summary: CL_CEF-SE_CEF=6.0,CL_DHD_BULK=6.0
+file=cef_nofrom.msg
+X-SPAM-Status: NO, 12.0 / 24.0
+X-SPAM-Summary: CL_CEF-SE_CEF=6.0,CL_DHD_BULK=6.0
+file=cef_nos.msg
+X-SPAM-Status: NO, 12.0 / 24.0
+X-SPAM-Summary: CL_CEF-SE_CEF=6.0,CL_DHD_BULK=6.0
+file=ham_ip.msg
+X-SPAM-Status: NO, 0.0 / 24.0
+X-SPAM-Summary: FSO_HAM=0.0
+file=phishing.msg
+X-SPAM-Status: YES, 24.0 / 24.0
+X-SPAM-Summary: RULE_ANCHOR_DOMAIN_PHISHING=18.0,CL_CEF-SE_CEF=6.0
+file=phishing_nourl_clean.msg
+X-SPAM-Status: NO, 6.0 / 24.0
+X-SPAM-Summary: CL_CEF-SE_CEF=6.0
+file=phishing-tiny.msg
+X-SPAM-Status: YES, 30.0 / 30.0
+X-SPAM-Summary: RULE_ANCHOR_DOMAIN_PHISHING=18.0,TINY_SPAM-M=12.0,CL_CEF-SE_CEF=0.0
+file=spam_HARDSPFFAIL.msg
+X-SPAM-Status: NO, 6.0 / 24.0
+X-SPAM-Summary: CL_CEF-SE_CEF=6.0
+file=urld.msg
+X-SPAM-Status: YES, 30.0 / 30.0
+X-SPAM-Summary: RULE_ANCHOR_DOMAIN_PHISHING=18.0,TINY_SPAM-M=12.0,CL_CEF-SE_CEF=0.0,CL_DHD_BULK=0.0
+file=urld_unsub.msg
+X-SPAM-Status: YES, 36.0 / 30.0
+X-SPAM-Summary: RULE_ANCHOR_DOMAIN_PHISHING=18.0,RULE_ANCHOR_UNSUB_BULK=6.0,TINY_SPAM-M=12.0,CL_CEF-SE_CEF=0.0,CL_DHD_BULK=0.0
+file=yifang_bulk.msg
+X-SPAM-Status: YES, 24.0 / 24.0
+X-SPAM-Summary: RULE_ANCHOR_DOMAIN_PHISHING=18.0,CL_CEF-SE_CEF=6.0,CL_DHD_BULK=0.0
+
+with cus setting to be 1 on both  and user setting of primary setting to be 0 on both
+
++------+---------+----------------+---------+--------------------+
+| id   | cus_num | classification | is_spam | allow_user_setting |
++------+---------+----------------+---------+--------------------+
+| 2815 | 9506448 | bulk           |       1 |                  0 |
+| 2809 | 9506448 | cef            |       1 |                  0 |
++------+---------+----------------+---------+--------------------+
+2 rows in set (0.00 sec)
+
++-------+------------------------------------------+----------------+---------+
+| id    | box_fulladdress                          | classification | is_spam |
++-------+------------------------------------------+----------------+---------+
+| 12247 | admin@00001.wayne.dong.test.fusemail.com | bulk           |       0 |
+| 12253 | admin@00001.wayne.dong.test.fusemail.com | cef            |       0 |
++-------+------------------------------------------+----------------+---------+
+
+file=cef.msg
+X-SPAM-Status: NO, 0.0 / 24.0
+X-SPAM-Summary: CL_CEF-SE_CEF=0.0,CL_DHD_BULK=0.0
+file=cef_nofrom.msg
+X-SPAM-Status: NO, 0.0 / 24.0
+X-SPAM-Summary: CL_CEF-SE_CEF=0.0,CL_DHD_BULK=0.0
+file=cef_nos.msg
+X-SPAM-Status: NO, 0.0 / 24.0
+X-SPAM-Summary: CL_CEF-SE_CEF=0.0,CL_DHD_BULK=0.0
+file=ham_ip.msg
+X-SPAM-Status: NO, 0.0 / 24.0
+X-SPAM-Summary: FSO_HAM=0.0
+file=phishing.msg
+X-SPAM-Status: NO, 18.0 / 24.0
+X-SPAM-Summary: RULE_ANCHOR_DOMAIN_PHISHING=18.0,CL_CEF-SE_CEF=0.0
+file=phishing_nourl_clean.msg
+X-SPAM-Status: NO, 0.0 / 24.0
+X-SPAM-Summary: CL_CEF-SE_CEF=0.0
+file=phishing-tiny.msg
+X-SPAM-Status: YES, 30.0 / 30.0
+X-SPAM-Summary: RULE_ANCHOR_DOMAIN_PHISHING=18.0,TINY_SPAM-M=12.0,CL_CEF-SE_CEF=0.0
+file=spam_HARDSPFFAIL.msg
+X-SPAM-Status: NO, 0.0 / 24.0
+X-SPAM-Summary: CL_CEF-SE_CEF=0.0
+file=urld.msg
+X-SPAM-Status: YES, 30.0 / 30.0
+X-SPAM-Summary: RULE_ANCHOR_DOMAIN_PHISHING=18.0,TINY_SPAM-M=12.0,CL_CEF-SE_CEF=0.0,CL_DHD_BULK=0.0
+file=urld_unsub.msg
+X-SPAM-Status: YES, 30.0 / 30.0
+X-SPAM-Summary: RULE_ANCHOR_DOMAIN_PHISHING=18.0,RULE_ANCHOR_UNSUB_BULK=0.0,TINY_SPAM-M=12.0,CL_CEF-SE_CEF=0.0,CL_DHD_BULK=0.0
+file=yifang_bulk.msg
+X-SPAM-Status: NO, 18.0 / 24.0
+X-SPAM-Summary: RULE_ANCHOR_DOMAIN_PHISHING=18.0,CL_CEF-SE_CEF=0.0,CL_DHD_BULK=0.0
+
+with cus setting to be 1 on both  and user setting of primary setting to be 0 on both ( WITHOUT )
+
++------+---------+----------------+---------+--------------------+
+| id   | cus_num | classification | is_spam | allow_user_setting |
++------+---------+----------------+---------+--------------------+
+| 2815 | 9506448 | bulk           |       1 |                  0 |
+| 2809 | 9506448 | cef            |       1 |                  0 |
++------+---------+----------------+---------+--------------------+
+2 rows in set (0.00 sec)
+
+Empty set (0.00 sec)
+
+file=cef.msg
+X-SPAM-Status: NO, 12.0 / 24.0
+X-SPAM-Summary: CL_CEF-SE_CEF=6.0,CL_DHD_BULK=6.0
+file=cef_nofrom.msg
+X-SPAM-Status: NO, 12.0 / 24.0
+X-SPAM-Summary: CL_CEF-SE_CEF=6.0,CL_DHD_BULK=6.0
+file=cef_nos.msg
+X-SPAM-Status: NO, 12.0 / 24.0
+X-SPAM-Summary: CL_CEF-SE_CEF=6.0,CL_DHD_BULK=6.0
+file=ham_ip.msg
+X-SPAM-Status: NO, 0.0 / 24.0
+X-SPAM-Summary: FSO_HAM=0.0
+file=phishing.msg
+X-SPAM-Status: YES, 24.0 / 24.0
+X-SPAM-Summary: RULE_ANCHOR_DOMAIN_PHISHING=18.0,CL_CEF-SE_CEF=6.0
+file=phishing_nourl_clean.msg
+X-SPAM-Status: NO, 6.0 / 24.0
+X-SPAM-Summary: CL_CEF-SE_CEF=6.0
+file=phishing-tiny.msg
+X-SPAM-Status: YES, 30.0 / 30.0
+X-SPAM-Summary: RULE_ANCHOR_DOMAIN_PHISHING=18.0,TINY_SPAM-M=12.0,CL_CEF-SE_CEF=0.0
+file=spam_HARDSPFFAIL.msg
+X-SPAM-Status: NO, 6.0 / 24.0
+X-SPAM-Summary: CL_CEF-SE_CEF=6.0
+file=urld.msg
+X-SPAM-Status: YES, 30.0 / 30.0
+X-SPAM-Summary: RULE_ANCHOR_DOMAIN_PHISHING=18.0,TINY_SPAM-M=12.0,CL_CEF-SE_CEF=0.0,CL_DHD_BULK=0.0
+file=urld_unsub.msg
+X-SPAM-Status: YES, 36.0 / 30.0
+X-SPAM-Summary: RULE_ANCHOR_DOMAIN_PHISHING=18.0,RULE_ANCHOR_UNSUB_BULK=6.0,TINY_SPAM-M=12.0,CL_CEF-SE_CEF=0.0,CL_DHD_BULK=0.0
+file=yifang_bulk.msg
+X-SPAM-Status: YES, 24.0 / 24.0
+X-SPAM-Summary: RULE_ANCHOR_DOMAIN_PHISHING=18.0,CL_CEF-SE_CEF=6.0,CL_DHD_BULK=0.0
+
+
+no entries on user and cus, but with secondary as cef is_spam 0 and primary is portal version 1
+
++--------------------------------+
+| === next is primary check ==== |
++--------------------------------+
+| === next is primary check ==== |
++--------------------------------+
+1 row in set (0.00 sec)
+
++-------+-------------------------------------------------+----------------+---------+
+| id    | box_fulladdress                                 | classification | is_spam |
++-------+-------------------------------------------------+----------------+---------+
+| 12457 | harrisontest@00001.wayne.dong.test.fusemail.com | cef            |       0 |
++-------+-------------------------------------------------+----------------+---------+
+1 row in set (0.00 sec)
+
++-----------------------------------+
+| --- next is secondary check ----- |
++-----------------------------------+
+| --- next is secondary check ----- |
++-----------------------------------+
+1 row in set (0.00 sec)
+
++-------------------------------------------------+----------------+---------+
+| box_fulladdress                                 | classification | is_spam |
++-------------------------------------------------+----------------+---------+
+| harrisontest@00001.wayne.dong.test.fusemail.com | cef            |       0 |
++-------------------------------------------------+----------------+---------+
+
+file=cef_from10.msg
+X-SPAM-Status: NO, 6.0 / 24.0
+X-SPAM-Summary: CL_CEF-SE_CEF=0.0,CL_DHD_BULK=6.0
+file=cef_from11.msg
+X-SPAM-Status: NO, 6.0 / 24.0
+X-SPAM-Summary: CL_CEF-SE_CEF=0.0,CL_DHD_BULK=6.0
+file=cef_from12.msg
+X-SPAM-Status: NO, 6.0 / 24.0
+X-SPAM-Summary: CL_CEF-SE_CEF=0.0,CL_DHD_BULK=6.0
+file=cef_from13.msg
+X-SPAM-Status: NO, 6.0 / 24.0
+X-SPAM-Summary: CL_CEF-SE_CEF=0.0,CL_DHD_BULK=6.0
+file=cef_from14.msg
+X-SPAM-Status: NO, 6.0 / 24.0
+X-SPAM-Summary: CL_CEF-SE_CEF=0.0,CL_DHD_BULK=6.0
+file=cef_from15.msg
+X-SPAM-Status: NO, 6.0 / 24.0
+X-SPAM-Summary: CL_CEF-SE_CEF=0.0,CL_DHD_BULK=6.0
+file=cef_from16.msg
+X-SPAM-Status: NO, 6.0 / 24.0
+X-SPAM-Summary: CL_CEF-SE_CEF=0.0,CL_DHD_BULK=6.0
+file=cef_from17.msg
+X-SPAM-Status: NO, 6.0 / 24.0
+X-SPAM-Summary: CL_CEF-SE_CEF=0.0,CL_DHD_BULK=6.0
+file=cef_from1.msg
+X-SPAM-Status: NO, 6.0 / 24.0
+X-SPAM-Summary: CL_CEF-SE_CEF=0.0,CL_DHD_BULK=6.0
+file=cef_from2.msg
+X-SPAM-Status: NO, 6.0 / 24.0
+X-SPAM-Summary: CL_CEF-SE_CEF=0.0,CL_DHD_BULK=6.0
+file=cef_from3.msg
+X-SPAM-Status: NO, 6.0 / 24.0
+X-SPAM-Summary: CL_CEF-SE_CEF=0.0,CL_DHD_BULK=6.0
+file=cef_from4.msg
+X-SPAM-Status: NO, 6.0 / 24.0
+X-SPAM-Summary: CL_CEF-SE_CEF=0.0,CL_DHD_BULK=6.0
+file=cef_from5.msg
+X-SPAM-Status: NO, 6.0 / 24.0
+X-SPAM-Summary: CL_CEF-SE_CEF=0.0,CL_DHD_BULK=6.0
+file=cef_from6.msg
+X-SPAM-Status: NO, 12.0 / 24.0
+X-SPAM-Summary: SURBLH=6.0,CL_CEF-SE_CEF=0.0,CL_DHD_BULK=6.0
+file=cef_from7.msg
+X-SPAM-Status: NO, 6.0 / 24.0
+X-SPAM-Summary: CL_CEF-SE_CEF=0.0,CL_DHD_BULK=6.0
+file=cef_from8.msg
+X-SPAM-Status: NO, 6.0 / 24.0
+X-SPAM-Summary: CL_CEF-SE_CEF=0.0,CL_DHD_BULK=6.0
+file=cef_from9.msg
+X-SPAM-Status: NO, 6.0 / 24.0
+X-SPAM-Summary: CL_CEF-SE_CEF=0.0,CL_DHD_BULK=6.0
+file=cef.msg
+X-SPAM-Status: NO, 6.0 / 24.0
+X-SPAM-Summary: CL_CEF-SE_CEF=0.0,CL_DHD_BULK=6.0
+file=cef_nofrom.msg
+X-SPAM-Status: NO, 6.0 / 24.0
+X-SPAM-Summary: CL_CEF-SE_CEF=0.0,CL_DHD_BULK=6.0
+file=cef_nos.msg
+X-SPAM-Status: NO, 6.0 / 24.0
+X-SPAM-Summary: CL_CEF-SE_CEF=0.0,CL_DHD_BULK=6.0
+file=ham_ip.msg
+X-SPAM-Status: NO, 0.0 / 24.0
+X-SPAM-Summary: FSO_HAM=0.0
+file=phishing.msg
+X-SPAM-Status: NO, 18.0 / 24.0
+X-SPAM-Summary: RULE_ANCHOR_DOMAIN_PHISHING=18.0,CL_CEF-SE_CEF=0.0
+file=phishing_nourl_clean.msg
+X-SPAM-Status: NO, 0.0 / 24.0
+X-SPAM-Summary: CL_CEF-SE_CEF=0.0
+file=phishing-tiny.msg
+X-SPAM-Status: YES, 30.0 / 30.0
+X-SPAM-Summary: RULE_ANCHOR_DOMAIN_PHISHING=18.0,TINY_SPAM-M=12.0,CL_CEF-SE_CEF=0.0
+file=spam_HARDSPFFAIL.msg
+X-SPAM-Status: NO, 0.0 / 24.0
+X-SPAM-Summary: CL_CEF-SE_CEF=0.0
+file=urld.msg
+X-SPAM-Status: YES, 30.0 / 30.0
+X-SPAM-Summary: RULE_ANCHOR_DOMAIN_PHISHING=18.0,TINY_SPAM-M=12.0,CL_CEF-SE_CEF=0.0,CL_DHD_BULK=0.0
+file=urld_unsub.msg
+X-SPAM-Status: YES, 36.0 / 30.0
+X-SPAM-Summary: RULE_ANCHOR_DOMAIN_PHISHING=18.0,RULE_ANCHOR_UNSUB_BULK=6.0,TINY_SPAM-M=12.0,CL_CEF-SE_CEF=0.0,CL_DHD_BULK=0.0
+file=yifang_bulk.msg
+X-SPAM-Status: YES, 24.0 / 24.0
+X-SPAM-Summary: RULE_ANCHOR_DOMAIN_PHISHING=18.0,CL_CEF-SE_CEF=0.0,CL_DHD_BULK=6.0
+
+
+*** TODO test secondary / primary address cef setting ( WAIT for Pedram finish , he does include 1 secondary of 2 primary testcases )
+domain is earth.fusemail.com and cus_num is 9559009
+harrisoncef1 is not a mailbox
+harrisoncef2 is a mailbox
+harrisoncef1 is the secondary of harrisoncef and harrisondef
+harrisoncef2 is the secondary of harrisondef
+(aka.local) [akabeans]> select threshold_low, threshold_high, use_cef, todelete_high, todelete_low from sf_dom_sub where aka_domain = 'earth.fusemail.com';                                                                            
++---------------+----------------+---------+---------------+--------------+
+| threshold_low | threshold_high | use_cef | todelete_high | todelete_low |
++---------------+----------------+---------+---------------+--------------+
+|           4.0 |            8.0 |       1 |             1 |            1 |
++---------------+----------------+---------+---------------+--------------+
+
+No user level settings for cef, cef1 and cef2
+**** TODO harrisoncef is bulk on and cef off ( with entry )
+(aka.local) [akabeans]> select * from cus_spam_classifications where cus_num = 9559009;
++------+---------+----------------+---------+--------------------+
+| id   | cus_num | classification | is_spam | allow_user_setting |
++------+---------+----------------+---------+--------------------+
+| 1111 | 9559009 | bulk           |       1 |                  1 |
+| 1142 | 9559009 | cef            |       0 |                  1 |
++------+---------+----------------+---------+--------------------+
+
+
+
+**** TODO harrisoncef is bulk on and cef off ( without entry )
+**** TODO harrisoncef is bulk off ( with entry ) and cef on
+**** TODO harrisoncef is bulk off ( without entry ) and cef on
+**** TODO with multi parents
+
+[akabeans]> select * from cus_spam_classifications where cus_num = 9559009;
++------+---------+----------------+---------+--------------------+
+| id   | cus_num | classification | is_spam | allow_user_setting |
++------+---------+----------------+---------+--------------------+
+| 1111 | 9559009 | bulk           |       1 |                  1 |
+| 1142 | 9559009 | cef            |       0 |                  1 |
++------+---------+----------------+---------+--------------------+
+
+
+(aka.local) [akabeans]> select * from user_spam_classifications where box_fulladdress='harrisoncef@earth.fusemail.com';
++------+--------------------------------+----------------+---------+
+| id   | box_fulladdress                | classification | is_spam |
++------+--------------------------------+----------------+---------+
+| 3272 | harrisoncef@earth.fusemail.com | bulk           |       0 |
+| 3302 | harrisoncef@earth.fusemail.com | cef            |       1 |
++------+--------------------------------+----------------+---------+
+2 rows in set (0.00 sec)
+
+(aka.local) [akabeans]> select * from user_spam_classifications where box_fulladdress='harrisondef@earth.fusemail.com';                                                                                                                       
++------+--------------------------------+----------------+---------+
+| id   | box_fulladdress                | classification | is_spam |
++------+--------------------------------+----------------+---------+
+| 3332 | harrisondef@earth.fusemail.com | bulk           |       1 |
+| 3362 | harrisondef@earth.fusemail.com | cef            |       0 |
++------+--------------------------------+----------------+---------+
+
+(aka.local) [akabeans]> select * from user_spam_classifications where box_fulladdress='harrisoncef1@earth.fusemail.com';
+Empty set (0.00 sec)
+
+
+testing the cef1
+
+before patch , > 2
+[2015-08-31 12:57:14:495]: [scan]: [YADABLAH] classification [BULK] is_spam [1]
+[2015-08-31 12:57:14:495]: [scan]: [YADABLAH] classification [SOCIAL] is_spam [0]
+[2015-08-31 12:57:14:495]: [scan]: [YADABLAH] classification [CEF] is_spam [0]
+
+
+scripts3d [LXC] cef # MSGID=YADABLAH RECIP='harrisoncef1@earth.fusemail.com' /root/spamd-test -f yifang_bulk.msg -s in9b                                                                                                                       
+X-SPAM-Status: YES, 6.0 / 4.0
+X-SPAM-Summary: CL_DHD_BULK=6.0
+
+after patch , >=2
+
+===== query is <SELECT COUNT(1) FROM spamcentral.aliases WHERE alias = 'harrisoncef1@earth.fusemail.com' GROUP BY alias HAVING COUNT(*) >= 2> =======
+===== num of rows is <1> =======
+[2015-08-31 13:33:19:355]: [sharedata]: [YADABLAH] get_user_settings : 1+ primary addresses with box_fulladdress [harrisoncef1@earth.fusemail.com], skip
+[2015-08-31 13:33:19:355]: [sharedata]: [YADABLAH] get_classifications: no user level setting, use cus or default settings
+[2015-08-31 13:33:19:355]: [scan]: [YADABLAH] Classification is : [BULK = 1]
+[2015-08-31 13:33:19:355]: [scan]: [YADABLAH] Classification is : [SOCIAL = 0]
+[2015-08-31 13:33:19:355]: [scan]: [YADABLAH] Classification is : [CEF = 1]
+
+scripts3d [LXC] cef # MSGID=YADABLAH RECIP='harrisoncef1@earth.fusemail.com' /root/spamd-test -f yifang_bulk.msg -s in9b
+X-SPAM-Status: YES, 6.0 / 4.0
+X-SPAM-Summary: CL_DHD_BULK=6.0
+
+
+
+
+
+*** TODO make sure CEF Hit then BULK Hit again , do NOT bypass
+*** TODO E2E including message logs
+*** TODO just like bulk as ham, when CEF as ham, still process but NO SPAM SCORE
+
+
+* 2015/11/09 10:49:23 
+** TODO Items [0/4]
+*** TODO MAIL-337 , new spear phishing rules
+*** TODO MAIL-265, confirm with Dylan about fetcher and modify it to expire the deprecated ones
+*** TODO daily FP review
+*** TODO VBA Rest Server
+
+* IPv6 ticket
+** MIG-47 (Checker , Checkbatch with IPv6 support)
+** TODO MAIL-191 (integration ipv6 in rbldnsd and emcspamd2) [2/3]
+*** TODO does not extract ipv6 address with below in the text body:
+  http://totalsupplyco.com/czdnmhbi/oxvghoxejelcysbuuz.kqqvyudpwsgzkm
+
+  2001:250:405:200a:cf9:4f75:fd8a:9447
+
+ ==== YADA before loop ===
+==== YADA get url from find_urls : <http://totalsupplyco.com/czdnmhbi/oxvghoxejelcysbuuz.kqqvyudpwsgzkm> ====
+==== YADA     anchr url in find_urls : <http://totalsupplyco.com/czdnmhbi/oxvghoxejelcysbuuz.kqqvyudpwsgzkm> ====
+==== YADA     anchr text in find_urls : <> ====
+==== YADA get url from find_urls : <cazzahen@yahoo.com> ====
+==== YADA     anchr url in find_urls : <cazzahen@yahoo.com> ====
+==== YADA     anchr text in find_urls : <> ====
+==== YADA get url from find_urls : <mott@btconnect.com> ====
+==== YADA     anchr url in find_urls : <mott@btconnect.com> ====
+==== YADA     anchr text in find_urls : <> ====
+==== YADA after loop ===
+
+if you replace ipv6 with http://2001:250:405:200a:cf9:4f75:fd8a:9447/afaffad, then:
+
+==== YADA     anchr text in find_urls : <> ====
+==== YADA get url from find_urls : <http://2001:250:405:200a:cf9:4f75:fd8a:9447/afaffad> ====
+==== YADA     anchr url in find_urls : <http://2001:250:405:200a:cf9:4f75:fd8a:9447/afaffad> ====
+
+if you put 1.2.3.4 in the body then it will NOT be extract either with production image
+
+
+*** DONE should not extract below in the body, note below is in the email thread:
+CLOSED: [2015-10-05 Mon 14:56]
+
+Received: from 1Yssv7-00044j-VR by out4c.electric.net with emc1-ok (Exim 4.=
+84)
+        (envelope-from <ithelp@gcu.ac.uk>)
+        id 1Yssv7-00045i-WF
+        for Weissmee@edgehill.ac.uk; Thu, 14 May 2015 06:11:25 -0700
+Received: by emcmailer; Thu, 14 May 2015 06:11:25 -0700
+Received: from [193.62.224.71] (helo=3DITSEHUB1.enterprise.gcal.ac.uk)
+        by out4c.electric.net with esmtps (TLSv1:RC4-MD5:128)
+        (Exim 4.84)
+        (envelope-from <ithelp@gcu.ac.uk>)
+        id 1Yssv7-00044j-VR
+        for Weissmee@edgehill.ac.uk; Thu, 14 May 2015 06:11:25 -0700
+Received: from ITSEMBXCLUS.enterprise.gcal.ac.uk
+ ([fe80:0000:0000:0000:19cc:b8e3:177.173.188.238]) by
+ ITSEHUB1.enterprise.gcal.ac.uk ([193.62.224.71]) with mapi; Thu, 14 May 20=
+15
+ 14:11:26 +0100
+From: "*   IT Helpdesk" <ithelp@gcu.ac.uk>
+To: "'Weissmee@edgehill.ac.uk'" <Weissmee@edgehill.ac.uk>
+Date: Thu, 14 May 2015 14:11:25 +0100
+Subject: GCU, Call ZE140177 (Call complete)
+Thread-Topic: GCU, Call ZE140177 (Call complete)
+Thread-Index: AdCOR3tUBKL7UyTARp2Hv+Zk8osYdg=3D=3D
+Message-ID: <5F2D077497474841A81B2CF06DCE189D0D79388CDC@ITSEMBXCLUS.enterpr=
+ise.gcal.ac.uk>
+
+*** DONE microsoft server id in the header should NOT be extracted:
+CLOSED: [2015-10-05 Mon 14:59]
+
+Received: from BN1AFFO11FD032.protection.gbl (2a01:111:f400:7c10::125) by
+ BY1PR0201CA0037.outlook.office365.com (2a01:111:e400:4814::47) with Microsoft
+ SMTP Server (TLS) id 15.0.1015.19 via Frontend Transport; Wed, 27 Aug 2014
+ 23:29:46 +0000
+Received: from smtp.news.smithmicro.com (208.66.207.179) by
+ BN1AFFO11FD032.mail.protection.outlook.com (10.58.52.186) with Microsoft SMTP
+ Server id 15.0.1010.11 via Frontend Transport; Wed, 27 Aug 2014 23:29:46
+ +0000
+
+
+
+** MAIL-190 (ipv6 support with rbldnsd)
+** MAIL-254 (modify spamhaus sync script to include ipv6 zone files)
+** MAIL-262 (RBLx.electric.net needs to be ipv6 ready)
+** MAIL-250 (FML check against IPv6 address need to be processed properly)
+** MAIL-251 (IPv6 on outbound needs to work in the same way as IPv4 when it comes to spam filtering)
+** MAIL-252 (URL with IPv6 needs to be extracted properly when sending to urld)
+
+* TODO Jlog notes [/]
+** can jlog keep the entries that are consumed by the subscribe ? like what mysql binlog does ?
+** can jlog do what logrotate does ?
+
+* TODO alert
+** (GetCustomer) | checkBatch --force && produceNSQ
+*** GetCustomer : SELECT host_name, port, coalesce(NULLIF(region_code, NULL), 'none') AS region_code FROM akabeans.aka A LEFT JOIN akabeans.site_host USING(site_num) LEFT JOIN akabeans.customer c ON (c.cus_num = A.cus_num) LEFT JOIN akabeans.region r ON (c.region_num = r.region_num) LEFT JOIN configurable_alerts.customer_alert CC ON (CC.cus_num = A.cus_num) WHERE host_name IS NOT NULL AND CC.description = 'FirewallError'
+*** DONE produceNSQ [3/3]: 
+**** DONE Get desired customers' *last check result* in ip_check ( need to do A and MX and if MX resolves to hostname/s then we need to resolve those hostnames too )
+CLOSED: [2015-09-15 Tue 16:16]
+**** DONE store above result in the tmp file
+CLOSED: [2015-09-15 Tue 16:16]
+**** DONE Get *check result* again and compare with the tmp file
+CLOSED: [2015-09-15 Tue 16:16]
+
+* Notes of bug scrubbing ticket:
+ 1. (Low) MAIL-114 holding server written in Perl for new domain but portal has no such functions, could be hooked in to delivery agent ( MAIL-245 )
+2. MAIL-185
+3. MAIL-347 ( portal and ui )
+4. MAIL-240 ( my ticket , medium ) BACKLOG
+5. MAIL-214 ( my ticket , low ) BACKLOG
+6. 79 my low BACKLOG
+7. AP-1238 (logger3)
+8. MAIL-265 ( fetcher )
+9. MAIL-230 ( YAN close )
+
+====
+1. MAIL-353
+2. MAIL-34
+
+
+
+* 2015/12/10 11:18:57
+** DONE Items [3/3]
+*** DONE [#A] James's report ticket
+    CLOSED: [2015-12-10 Thu 15:20] DEADLINE: <2015-12-10 Thu>
+*** DONE [#C] does sbl check aginst IP only ? how's current vote group working ?
+    DEADLINE: <2015-12-10 Thu>
+*** DONE [#A] [2/2] vDNA for Jack's email (LETs FOCUS ON the algorithm, not the detail in the vDNA)
+CLOSED: [2015-12-11 Fri 10:01]
+**** DONE Questions [6/6]
+***** DONE Do we need to install ecelerity to evaluate the vDNA ? I guess not
+CLOSED: [2015-12-11 Fri 10:01]
+***** DONE What is mDNA in ecelerity.conf ? 
+CLOSED: [2015-12-11 Fri 10:01]
+***** DONE may we have ecelerity production config ? I see nowhere in the ecelerity.conf can specify the server by repo config
+CLOSED: [2015-12-11 Fri 10:02]
+***** DONE in ec_vdna/build.sh, /opt/ecelerity/bin/ecxs seems the tool to build the vdna_scan c code, so is vdna_scan.c is the core component of vDNA ? if so we have to get ecelerity or at least ecxs to build it , right ?
+CLOSED: [2015-12-11 Fri 10:02]
+***** DONE in the installation (ec_send_to_lab) we have sudo git clone git@gitlab.comendosystems.com:marut/ec-misc.git, but where is it in vdna git repo on fusemail side ?
+CLOSED: [2015-12-11 Fri 10:02]
+***** DONE in the installation of ecelerity, it mentioned sieve variable, is this sieve the scripting language in ecelerity ? if so , what is its role in vDNA ?
+CLOSED: [2015-12-11 Fri 10:02]
+**** DONE Notes [/]
+CLOSED: [2015-12-11 Fri 10:02]
+
+
+* 2015/12/11 10:25:55
+** TODO Items [0/3]
+*** TODO [#D] libunrar , verify
+DEADLINE: <2015-12-11 Fri> SCHEDULED: <2015-12-11 Fri>
+*** TODO [#A] Questions about vDNA [2/3]
+**** TODO where is the learning code ? I dont see any perl scripts there, or maybe we just need to 
+**** DONE check what marcro does now ( mailer_{spool, virus, spam, spammega} spit from {cf, virus agent, espamc} respectively ) the inbound_emcmailer comes from logger3
+CLOSED: [2015-12-11 Fri 14:47]
+**** DONE Where is GChecksumType defined ? ( this prototype comes from glib function, check manual there )
+CLOSED: [2015-12-11 Fri 14:46]
+*** TODO [#A] Notes [0/3]
+**** TODO blocklistd now under the name of vDNA checker, now is the time to finish it up!!
+**** TODO Felix's ticket, out3c stucked up ? ( see the tmux session , probably due to the msg itself )
+**** TODO wrap up the spamd2 code to consolidate the incoming integration of vba checker
+
+* 2015/12/15 10:26:05
+** TODO Items [0/4]
+*** TODO [#E] Felix's ticket, out3c stucked up ? ( see the tmux session , probably due to the msg itself ) , BOUNCED TO felix since I am still waiting for the file
+*** TODO [#A] blocklistd now under the name of vDNA checker, now is the time to finish it up!!
+*** TODO [#B] learning code
+*** TODO [#B] mail-346, FP
+** Notes
+*** 1. so I'd probably go with the following: local DC based redis cache for 'good' checksums, 'bad' ones get written to redis and NSQ so we can distribute them
+*** 2. current vDNA wont check office type, wont check image file and will ONLY check exe and APK, office one is the one for VBA , but does VBA feed checksum to vDNA ? or checksum of macro or checksum of the file ?
+*** 3. {rule:"ZBL", category:"SPAM", content:"somespamurl.com"}, this is the format Chris Hyde wants
+*** 4. (localhost) [tracker]> select checksum, sum(is_virus) as numv, count(*) as total from virus_checksum20151118 group by checksum having numv > 0 and numv != total;
+*** 5. what is below query :
+{
+(localhost) [tracker]> select * from ids.virus_name_id where id = 8826;
++------+-----------------+
+| id   | name            |
++------+-----------------+
+| 8826 | Troj/DocDrop-FK |
++------+-----------------+
+1 row in set (0.01 sec)
+}
+*** 6. so the first thing that comes to mind is that query I just ran - that should run every day now, so that we have a 'score' so to speak ... then when we implement something like vDNA we should see that score come down if we are being effective...
+{
+(localhost) [tracker]> select sender from virus_checksum20151118 where checksum = '03b586718129785480eb4ed37e9781d2042374683d75bdbfff495017ae7b3060';
+}
+
+*** 7. know much about graph databases? I'm thinking something like that where we can define connections and link this data together might be more appropriate than a straight relational setup
+*** 8. conclusion from Miheala:
+{
+Based on what we have discussed, we have the following list of things we need to look at:
+add whitelisting functionality
+add MIME parsing logic
+-- TNEF Outlook mail format should also be taken into account
+considering the following example output FuseMail expects:
+{rule:"OBFUSCATEDFUNCTIONS", category:"SPAM", content:"abs(), chr()"}
+and the possible output we can get out of olevba:
+{'type': 'Suspicious', 'description': 'May write to a file (if combined with Open)', 'keyword': 'Write'}
+{'type': 'VBA string', 'description': '(Chr$(77) & Chr$(83) & Chr$(88) & Chr$(77) & Chr$(76) & Chr$(50) & Chr$(46) & Chr$(88) & Chr$(77) & Chr$(76) & Chr$(72) & Chr$(84) & Chr$(84) & Chr$(80))', 'keyword': 'MSXML2.XMLHTTP'}
+-- create a mapping between the rule and, where possible, the description used by olevba to group the different patterns it searches for. Right now, there are 42 such possible different descriptions.
+-- in those cases where the description is actually encoded text, use the type value instead. This would lead to 4 possible values (VBA string, Hex String, Base64 String and Dridex String)
+Redis caching of file signature and data used to create the (now more explicit) reply. (Within the same Data Center, the Redis instances should sync their data).
+add NSQ support for sending metadata useful for creating long term statistics in MySQL. Synchronizing MySQL data across different Data Centers could be problematic
+Other notes we need to take into account:
+mails having (possibly encrypted) archives. How would handle them? It would probably not be that important at this stage, but we still need to take this into account. One option would be that the password guesser is used so that the file is extracted and then instead of submitting the mail to the VBA Checker, you'd just submit the file.
+mails containing MHTML files: currently we have some logic inside CMC to have it send such files to the VBA Checker. Based on what we have seen so far, there isn't a large enough probability to see this case in the wild, so it would probably be OK to leave this for a later stage.
+}
+*** TODO 9. https://www.flowdock.com/app/fusemail/nordics-security/threads/6yPy6FDMbhtOpN-ICPQ7ACCLVil mail-parsing new branch from llya
+
+* 2015/12/23 10:00:59
+** TODO Items [2/4]
+*** DONE finish reading mime docs
+CLOSED: [2015-12-23 Wed 15:23]
+*** DONE [#A] give parser a shot within 30 mins period
+CLOSED: [2015-12-23 Wed 15:23]
+*** TODO [#B] give yaml a shot to see if it can do belows:
+    1. a.yaml , sequence , a= item1, item2, item3 ( expression ? maybe )
+    2. item1.yaml, input = { "":"" , "":"" }, output = { "":"", "":""}
+*** TODO [#C] VDNA learning part can take adavantage of above 
+
+* 2016/01/05 10:32:11
+** TODO Notes
+*** 1. ip.fre, sender.fre, other elements
+*** 2. incoming message is clean and each of above elements.score is 0, if the checksum is determined as Virus then each of these elements's hint +1. for the new checksum , does the elements around this new checksum is >=1 if so then this checksum is suspicious
+*** 3. let's build a udp server to get a. update b. return learning result
+** TODO Items [0/1]
+*** TODO 
