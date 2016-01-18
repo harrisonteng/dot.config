@@ -1,0 +1,7 @@
+#mkdir blah-blah-blah
+#cd M-. ( auto complete blah-blah-blah)
+#
+#C-n find next in the history
+#C-p find previous in the history
+set	completion-ignore-case	on
+set	completion-prefix-display-length	2

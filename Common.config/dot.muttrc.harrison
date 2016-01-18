@@ -1,0 +1,18 @@
+auto_view text/html
+alternative_order text/plain text/enriched text/html
+set mbox_type=Maildir
+set folder="/home/harrison/muttmsgs"
+set mbox= +Inbox
+set spoolfile= +Inbox 
+macro index,pager P  "<save-message>=Tfp<enter>"  "mark message as Train as fp"
+macro index,pager N  "<save-message>=Tfn<enter>"  "mark message as Train as fn"
+macro index,pager R  "<save-message>=Rule<enter>"  "mark message as Rule"
+macro index,pager F  "<save-message>=Fml<enter>"  "mark message as Fml"
+macro index,pager O  "<save-message>=Other<enter>"  "mark message as Other"
+macro index,pager I  "<save-message>=Ip<enter>"  "mark message as Ip"
+macro index,pager B  "<save-message>=Bulk<enter>"  "mark message as Bulk"
+macro index,pager p  "<save-message>=Personal<enter>"  "mark message as clean as personal"
+macro index,pager b  "<save-message>=Bounce<enter>"  "mark message as clean as bounce"
+macro index,pager s  "<save-message>=System<enter>"  "mark message as clean as system"
+macro index,pager m  "<save-message>=Cloudmarkfp<enter>"  "mark message as FP of cloudmark"
+macro index,pager n  "<save-message>=Mdnafp<enter>"  "mark message as FP of mdna"
