@@ -1,0 +1,9 @@
+harrison@harrison-desktop $ ps -ef |grep python
+harrison  1797  1782  0 11:30 ?        00:00:03 /usr/bin/python /usr/share/ibus/ui/gtk/main.py
+harrison  2117     1  0 11:31 ?        00:00:00 /usr/bin/python /usr/bin/zeitgeist-daemon
+harrison  2277  1752  0 11:31 ?        00:00:01 /usr/bin/python /usr/share/system-config-printer/applet.py
+harrison  2288     1  0 11:31 ?        00:00:04 /usr/bin/python /usr/lib/ubuntuone-client/ubuntuone-syncdaemon
+root      2472     1  0 11:32 ?        00:00:00 /usr/bin/python /usr/lib/system-service/system-service-d
+harrison  5923  5833  0 12:19 ?        00:00:03 /usr/bin/python /usr/bin/duplicity restore --restore-time=2011-12-13T19:49:43Z --force u1+http://deja-dup/harrison-desktop /home/harrison/testBackup --verbosity=9 --gpg-options=--no-use-agent --archive-dir=/home/harrison/.cache/deja-dup --log-fd=22
+harrison  5944     1  0 12:24 ?        00:00:00 /usr/bin/python /usr/lib/ubuntu-sso-client/ubuntu-sso-login
+harrison  5975  2158  0 12:26 pts/0    00:00:00 grep python

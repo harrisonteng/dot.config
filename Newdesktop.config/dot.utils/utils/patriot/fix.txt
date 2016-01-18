@@ -1,0 +1,96 @@
+http://blog.christophersmart.com/2010/10/22/realtek-usb-wireless-on-linux-fedora/
+
+Realtek USB Wireless on Linux (Fedora)
+Published on 22 October, 2010 in Fedora and FOSS. 13 Comments
+Tags: 8188, 8191, linux, n, realtek, usb, wireless.
+When John needed wireless for his computer at home, he bought (probably on my recommendation) a Billion 3011N – a USB wireless N device with the Realtek 8191S(U) chipset. On the box it said that it supported Linux, so I figured it was a pretty safe bet (surely that means there’s a stable driver in the mainline kernel, right?).
+
+Turns out, no. The device has horrible support under Linux and it’s a super pain. The driver disk that came with the box does have a Linux driver, but it doesn’t always compile against the kernel and then there are configuration issues and a custom wpaconfig is required.
+
+Gah.
+
+So John bought another USB wireless dongle.
+
+Anyway, so now I need a USB wireless dongle for my machine and I asked John to buy one of his spare ones from him (he has four or five). He gave me the afore mentioned Billion device. I plugged it into my Fedora 13 box, but it didn’t know much about it. So then I downloaded the open source driver from Realtek, compiled it and loaded the module. The system hard-locked – even Magic Keys couldn’t save it.
+
+I shelved it for a while, until a bloke called Terry Polzin on the Fedora list today posted a request for help with getting a Realtek 8188S(U) working. I replied saying that I had a similar device and shared my experiences.
+
+I told him that there is a driver in staging which supports the device, but unlike Ubuntu, Fedora only ships quality working drivers by default, so no staging drivers are included. It’s easy enough to get them though, just add the RPMFusion Free repository and install their kmod-staging package which (as the name might give away) includes the staging drivers for the current kernel.
+
+Once you have that installed, the r8192s_usb module can be loaded, but the device still needs external (presumably proprietary) firmware to work. Fortunately, although the driver available from Realtek does not include it, it was included on the disk, and is also available in the Billion driver from their website. So, once you have put the firmware in the right place, the device just works.
+
+Here are the steps to get it working (you will need to have RPMFusion enabled, and run these as root).
+
+yum install kmod-staging unzip
+depmod -a
+wget http://au.billion.com/downloads/3011N/3011N_Linux_Driver.zip
+unzip -j 3011N_Linux_Driver.zip "*rtl8192sfw.bin" -d RTL8192SU
+mv RTL8192SU /lib/firmware/
+
+Now, plug in your device and check that the module and firmware have been loaded, using dmesg. You should see something like this:
+
+usb 1-2.3: new high speed USB device using ehci_hcd and address 16
+usb 1-2.3: New USB device found, idVendor=0bda, idProduct=8172
+usb 1-2.3: New USB device strings: Mfr=1, Product=2, SerialNumber=3
+usb 1-2.3: SerialNumber: 00e04c000001
+==>ep_num:4, in_ep_num:1, out_ep_num:3
+==>RtInPipes:3
+==>RtOutPipes:4 6 13
+==>txqueue_to_outpipemap for BK, BE, VI, VO, HCCA, TXCMD, MGNT, HIGH, BEACON:
+1 1 0 0 2 2 2 2 2
+Dot11d_Init()
+rtl819xU: --->FirmwareDownload92S()
+
+usb 1-2.3: firmware: requesting RTL8192SU/rtl8192sfw.bin
+rtl819xU:signature:8192, version:902b, size:30, imemsize:7408, sram size:9688
+
+rtl819xU:--->FirmwareDownloadCode()
+
+rtl819xU:--->FirmwareCheckReady(): LoadStaus(1),
+rtl819xU:<---FirmwareCheckReady(): LoadFWStatus(1), rtStatus(0)
+
+rtl819xU:--->FirmwareDownloadCode()
+
+rtl819xU:--->FirmwareCheckReady(): LoadStaus(2),
+rtl819xU:-->FirmwareEnableCPU()
+
+rtl819xU:IMEM Ready after CPU has refilled.
+
+rtl819xU:<--FirmwareEnableCPU(): rtStatus(0x0)
+
+rtl819xU:<---FirmwareCheckReady(): LoadFWStatus(2), rtStatus(0)
+
+rtl819xU:--->FirmwareDownloadCode()
+
+rtl819xU:--->FirmwareCheckReady(): LoadStaus(3),
+rtl819xU:DMEM code download success, CPUStatus(0x3f)
+
+rtl819xU:Polling Load Firmware ready, CPUStatus(ff)
+
+rtl819xU:FirmwareCheckReady(): Current RCR settings(0x157e20e)
+
+rtl819xU:<---FirmwareCheckReady(): LoadFWStatus(3), rtStatus(0)
+
+rtl819xU:Firmware Download Success!!
+
+ADDRCONF(NETDEV_UP): wlan0: link is not ready
+=====>rtl8192SU_link_change 1
+<=====rtl8192SU_link_change 2
+
+Now, you should have a wireless device and network interface, which you can check with iwconfig and ifconfig -a.
+
+wlan0 802.11b/g/n Mode:Managed Frequency=2.422 GHz
+Access Point: Not-Associated Bit Rate:130 Mb/s
+Retry min limit:7 RTS thr:off Fragment thr:off
+Power Management:off
+Link Quality=0/100 Signal level=0 dBm Noise level=0 dBm
+Rx invalid nwid:0 Rx invalid crypt:0 Rx invalid frag:0
+Tx excessive retries:0 Invalid misc:0 Missed beacon:0
+
+And that's it. The device should now work with NetworkManager, etc.
+
+The main downside here (apart from the obvious) is that you will be relying on RPMFusion to build an updated kmod-staging version when you get a Fedora kernel update. Sometimes this might not happen before you get your kernel, so when you reboot, you lose your wireless (because there's no driver). If so, boot to your older kernel for a while, or build the driver yourself, or create an akmod instead of kmod.
+
+Ubuntu users should be able to just put the firmware in the right place, as their kernel ships with the unstable drivers by default.
+
+-c

@@ -1,0 +1,35 @@
+SET Week_1 1
+SET Week_2 8
+SET Week_3 15
+SET Week_4 22
+FSET _last(mo) "1 " + MON((mo%12)+1)+" --7"
+FSET _trig() TRIGGER(TRIGDATE())
+FSET _back(days) TRIGGER(TODAY()-days)
+SET SaveTrig $NumTrig
+SET easter EASTERDATE(YEAR(TODAY()))
+REM Jan 1 +5 MSG New Years Day %b
+REM Mon Jan [Week_3] +5 MSG (US)Martin Luther King - Day %b
+REM Feb 2 +5 MSG (US)Ground hog day %b
+REM Feb 14 +5 MSG Valentines Day %b
+REM mon feb [Week_3] +5 MSG (US)Presidents Day %b
+REM Mar 17 +5 MSG St Patricks Day %b
+REM Sun Mar 8 ++5 MSG Daylight Saving Time starts %b
+REM [TRIGGER(easter)] MSG Easter Sunday %b
+REM Apr 1 +5 MSG April Fools Day %b
+REM Apr 22 +14 MSG Earth Day %b
+REM 5 may +5 MSG Cinco De Mayo %b
+REM Sun May [Week_2] +7 MSG Mother's Day %b
+REM mon Jun 1 -7 +5 MSG (US)Memorial Day %b
+REM Jun 14 +5 MSG (US)Flag Day %b
+REM Sun Jun [Week_3] +7 MSG Father's Day %b
+REM Jul 1 +7 MSG (CA)Canada Day %b
+REM Jul 4 +7 MSG (US)Independence Day %b
+REM Mon sep [Week_1] +5 MSG Labor Day %b
+REM Mon Oct [Week_2] +5 MSG %"Columbus Day%" %b
+REM Oct 31 +7 MSG Halloween %b
+REM SUN Nov 1 ++5 MSG Daylight Saving Time ends %b
+REM thu nov [Week_4] +7 MSG Thanksgiving Day %b
+REM Nov 11 +5 MSG Veterans Day %b
+REM Dec 24 MSG Christmas Eve %b
+REM Dec 25 +25 MSG Christmas %b
+REM Dec 31 MSG New Year's Eve %b

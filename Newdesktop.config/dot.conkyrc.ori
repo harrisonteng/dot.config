@@ -1,0 +1,118 @@
+ # -- Conky settings -- #
+    background no
+    update_interval 4
+
+    cpu_avg_samples 2
+    net_avg_samples 2
+
+    override_utf8_locale yes
+
+    double_buffer yes
+    no_buffers yes
+
+    text_buffer_size 2048
+    imlib_cache_size 0
+
+    # -- Window specifications -- #
+
+    own_window yes
+    own_window_type override
+    own_window_transparent no
+    own_window_hints undecorate,sticky,skip_taskbar,skip_pager,below
+
+    border_inner_margin 0
+    border_outer_margin 0
+
+    minimum_size 310 310
+    maximum_width 370
+
+    alignment tr
+    gap_x 30
+    gap_y 50
+
+    # -- Graphics settings -- #
+    draw_shades no
+    draw_outline no
+    draw_borders no
+    draw_graph_borders yes
+
+    # -- Text settings -- #
+    use_xft yes
+    xftfont MaiandraGD:size=10
+    xftalpha 0.4
+
+    uppercase no
+
+    default_color 8b8b8b
+
+         TEXT
+#${voffset 30}${font Helvetica LT Std :style=Condensed:size=60}${color black}${goto 40}${time %H}${goto 140}${color 434343}${time %M}${font Helvetica LT Std :size=16:style=condensed}${color 808080}${goto 230}${time %S}
+#${voffset 55}${color white}${font Helvetica LT Std :size=8}${alignr 230}${time %A},${time %e}  ${time %B}  ${time %G}
+#${voffset -45}${goto 22}${font Helvetica LT Std :size=8}${color whitesmoke}${execi 600 conkyForecast --location=CAXX0518 --datatype=CN --refetch}
+#${font Helvetica LT Std :size=8}${color white}${goto 24}${execi 1800 conkyForecast --location=CAXX0518 --datatype=CT}${voffset -10}${goto 200}${font Helvetica LT Std :size=25}${color d4d4d4}${execi 1800 conkyForecast --location=CAXX0518 -u --datatype=HT}
+#${voffset 35}${font Helvetica LT Std :size=8}${color white}${goto 25}${execi 600 conkyForecast --location=CAXX0518 --datatype=HT -u --startday=1}/${color white}${execi 600 conkyForecast --location=CAXX0518 --datatype=LT -u --startday=1}${font Helvetica LT Std :size=8}${color white}${goto 70}${execi 600 conkyForecast --location=CAXX0518 --datatype=HT -u --startday=2}/${color white}${execi 600 conkyForecast --location=CAXX0518 --datatype=LT -u --startday=2}${font Helvetica LT Std :size=8}${color white}${goto 115}${execi 600 conkyForecast --location=CAXX0518 --datatype=HT -u --startday=3}/${color white}${execi 600 conkyForecast --location=CAXX0518 --datatype=LT -u --startday=3}${font Helvetica LT Std :size=8}${color white}${goto 160}${execi 600 conkyForecast --location=CAXX0518 --datatype=HT -u --startday=4}/${color white}${execi 600 conkyForecast --location=CAXX0518 --datatype=LT -u --startday=4}${font Helvetica LT Std :size=8}${color white}${goto 205}${execi 600 conkyForecast --location=CAXX0518 --datatype=HT -u --startday=5}/${color white}${execi 600 conkyForecast --location=CAXX0518 --datatype=LT -u --startday=5}
+#${font Helvetica LT Std :size=8}${color orange}${goto 25}${execi 600 conkyForecast --location=CAXX0518 --datatype=DW --shortweekday --startday=1}${font Helvetica LT Std :size=8}${color orange}${goto 70}${execi 600 conkyForecast --location=CAXX0518 --datatype=DW --shortweekday --startday=2}${font Helvetica LT Std :size=8}${color orange}${goto 115}${execi 600 conkyForecast --location=CAXX0518 --datatype=DW --shortweekday --startday=3}${font Helvetica LT Std :size=8}${color orange}${goto 160}${execi 600 conkyForecast --location=CAXX0518 --datatype=DW --shortweekday --startday=4}
+#${voffset -10}${font Helvetica LT Std :size=8}${color orange}${goto 205}${execi 600 conkyForecast --location=CAXX0518 --datatype=DW --shortweekday --startday=5}
+#${voffset -23}${font Helvetica LT Std :size=8}${color white}${goto 205}${execi 600 conkyForecast --location=CAXX0518 --datatype=HT -u --startday=5}/${color white}${execi 600 conkyForecast --location=CAXX0518 --datatype=LT -u --startday=5}
+#${image ~/.images/base.png -p 12,30 -s 250x150}
+#${image ~/.images/base.png -p 12,190 -s 250x40}
+#${image ~/.images/flip_bg.png -p 30,10 -s 110x110}
+#${image ~/.images/flip_bg.png -p 130,10 -s 100x110}
+#${execpi 600 conkyForecast --location=CAXX0518 --template=~/.vreme.template}
+#${color white}SYSTEM ${hr 1}${color}
+
+${color darkgrey}Uptime:${color pink} $uptime ${color darkgrey} Load: ${if_match ${loadavg 1} > 2}${color red}${else}${if_match ${loadavg 1} > 1}${color yellow}${else}${color pink}${endif}${endif} ${loadavg 1} ${color darkgrey} Processes:${color pink} $processes ($running_processes running)
+
+${color darkgrey}CPU:${color pink} ${alignr} ${execi 1000 cat /proc/cpuinfo | grep 'model name' | cut -c 13-39 |uniq} ${freq} MHz
+
+${color darkgrey}Ram:${color pink} $mem / $memmax ${alignr}${if_match ${memperc} > 80}${color red}${else}${color0}${endif}${memperc}% used ${membar 3,100}
+${color lightblue}${execi 120 sudo /home/harrison/.conky/getRambyProgram.sh}
+
+${color darkgrey}Swap:${color pink} $swap / $swapmax ${alignr}${if_match ${swapperc} > 80}${color red}${else}${color0}${endif}${swapperc}% used ${swapbar 3,100}
+
+${color darkgrey}Highest ${alignr} CPU% MEM%
+
+${color grey}CPU 1 ${color darkgrey}${top name 1}${color pink}$alignr${top cpu 1}${top mem 1}
+${color grey}CPU 2 ${color darkgrey}${top name 2}${color pink}$alignr${top cpu 2}${top mem 2}
+${color grey}CPU 3 ${color darkgrey}${top name 3}${color pink}$alignr${top cpu 3}${top mem 3}
+${color grey}Ram 1 ${color darkgrey}${top_mem name 1}${color pink}$alignr${top_mem cpu 1}${top_mem mem 1}
+${color grey}Ram 2 ${color darkgrey}${top_mem name 2}${color pink}$alignr${top_mem cpu 2}${top_mem mem 2}
+${color grey}Ram 3 ${color darkgrey}${top_mem name 3}${color pink}$alignr${top_mem cpu 3}${top_mem mem 3}
+
+${color white}FILESYSTEM INFO ${hr 1}${color}
+
+${color darkgrey} /(${fs_type /}) : ${color pink}${fs_used /}/${fs_size /} ${alignr}${if_match ${fs_used_perc /} > 85}${color red}${else}${color0}${endif}${fs_used_perc /}% used ${fs_bar 3,100 /}
+
+${color white}DISK INFO ${hr 1}${color}
+
+ ${color darkgrey}${diskiograph /dev/sda2 15,360 78af78 a3a3a3}
+ ${color darkgrey}Disk I/O:${color pink} ${diskio /dev/sda2} ${color darkgrey}Write:${color pink} ${diskio_write /dev/sda2}${color darkgrey} Read:${color pink}${diskio_read /dev/sda2}${color darkgrey} Total:${color pink}${diskio /dev/sda2}
+
+${color white}NET INFO ${hr 1}${color}
+
+${if_up p4p1}${voffset -3}${color}p4p1: ${color0}Down:${color yellow1}${downspeed p4p1}/s${color0}${goto 190}${alignr}Up:${color OrangeRed1} ${upspeed p4p1}/s
+ ${color9}${downspeedgraph p4p1 15,180 000000 91ec31} ${color9}${upspeedgraph p4p1 15,180 000000 ec3131}${endif}
+
+${if_up tun0}${voffset -3}${color}tun0: ${color0}Down:${color yellow1}${downspeed tun0}/s${color0}${goto 190}${alignr}Up:${color OrangeRed1}${upspeed tun0}/s
+ ${color9}${downspeedgraph tun0 15,180 000000 91ec31} ${color9}${upspeedgraph tun0 15,180 000000 ec3131}${endif}
+${if_up p4p1}${color darkgrey}internal : ${color pink}${addr p4p1}${endif}${if_up tun0}${alignr}${color darkgrey}internal : ${color pink}${addr tun0}${endif}
+${if_up p4p1}${color darkgrey} external : ${color pink}${execi 600 bash ~/.conky/getExtip.sh}${if_gw}${alignr}${color darkgrey}gateway : ${color pink}${gw_ip}${endif}
+ ${color darkgrey}dns : ${color pink}${nameserver}${endif}
+
+${color darkgrey}Netstat Info :
+${color pink}${execi 30 bash ~/.conky/isDDOS.sh}
+
+${color darkgrey}SSH connections : ${color pink}${tcp_portmon 22 22 count}  ${color darkgrey}Connections in : ${color pink}${tcp_portmon 1 32767 count} ${color darkgrey} Connections out : ${color pink}${tcp_portmon 32768 61000 count} ${color darkgrey} Total : ${color pink}${tcp_portmon 1 65535 count}
+
+${if_match ${tcp_portmon 1 32767 count} < 1}
+${voffset -53}
+${else}
+ ${color darkgrey}Inbound Connection ${alignr} Local Service/Port
+
+ ${color darkgrey} ${tcp_portmon 1 32767 rhost 0} ${alignr}${color pink} ${tcp_portmon 1 32767 lservice 0}
+ ${color darkgrey} ${tcp_portmon 1 32767 rhost 1} ${alignr}${color pink} ${tcp_portmon 1 32767 lservice 1}
+ ${color darkgrey} ${tcp_portmon 1 32767 rhost 2} ${alignr}${color pink} ${tcp_portmon 1 32767 lservice 2}
+ ${color darkgrey} ${tcp_portmon 1 32767 rhost 3} ${alignr}${color pink} ${tcp_portmon 1 32767 lservice 3}
+ ${color darkgrey} ${tcp_portmon 1 32767 rhost 4} ${alignr}${color pink} ${tcp_portmon 1 32767 lservice 4}
+ ${color darkgrey} ${tcp_portmon 1 32767 rhost 5} ${alignr}${color pink} ${tcp_portmon 1 32767 lservice 5}
+${endif}

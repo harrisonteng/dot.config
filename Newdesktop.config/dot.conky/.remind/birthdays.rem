@@ -1,0 +1,2 @@
+FSET _yr_num(yr) ORD(YEAR(TRIGDATE()) - yr)
+REM March 25 MSG Jenny' [_yr_num(2011)] birthday

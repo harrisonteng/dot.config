@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<note>
+
+<to>George</to>
+<from>John</from>
+<heading>Reminder</heading>
+<body>Don't forget the meeting!</body>
+<info>
+  
+<info1>lv1</info1>
+<info2>
+    <tel>010888888</tel>
+    <addr>
+    beijing
+   
+    </addr>
+   
+</info2>
+</info>
+
+<to2>Mary</to2>
+</note>

@@ -1,0 +1,11 @@
+#get file name without suffix , to get last par then ${file##*.}
+scripts3d [LXC] plusoneservices.com # ls *.CLOUDMARK |while read file ;do
+f=${file%.*};if ls $f.*|grep -v CLOUDMARK >/dev/null;then echo -n ;else echo
+"f=$f";fi ;done
+f=1Z6aEn-00010D-5x
+f=1Z6f1D-0005bQ-3f
+f=1Z6qwE-00075N-4i
+scripts3d [LXC] plusoneservices.com # ls
+1Z6ady-0004RX-3E                 1Z6e4P-00057d-5O.CLOUDMARK
+1Z6ety-0006fZ-4M.CLOUDMARK       1Z6eyA-0000Z7-6R.DBL
+1Z6fNK-0000ev-6F.CLOUDMARK       1Z6jp4-0000JL-3M.RULE_DHRW_SPAM

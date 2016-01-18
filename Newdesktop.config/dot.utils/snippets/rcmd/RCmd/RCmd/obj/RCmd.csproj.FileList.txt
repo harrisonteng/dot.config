@@ -1,0 +1,16 @@
+obj\Release\ResolveAssemblyReference.cache
+bin\Release\RCmd.exe
+bin\Release\RCmd.pdb
+obj\Release\RCmd.exe
+obj\Release\RCmd.pdb
+bin\Debug\RCmd.exe
+bin\Debug\RCmd.pdb
+obj\Debug\ResolveAssemblyReference.cache
+obj\Debug\RCmd.exe
+obj\Debug\RCmd.pdb
+bin\Release\DiffieHellman.dll
+bin\Release\Org.Mentalis.Security.dll
+bin\Release\Tamir.SharpSSH.dll
+bin\Debug\DiffieHellman.dll
+bin\Debug\Org.Mentalis.Security.dll
+bin\Debug\Tamir.SharpSSH.dll

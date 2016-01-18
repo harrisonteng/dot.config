@@ -1,0 +1,52 @@
+escape ^xa
+#bindkey ^[< prev
+#bindkey ^[> next
+
+#Ctrl-right arrow
+bindkey ^[[1;5C next
+#Ctrl-left arrow
+bindkey ^[[1;5D prev 
+
+bind f eval "caption splitonly" "hardstatus ignore"
+bind F eval "caption always"    "hardstatus alwayslastline"
+
+#default windows
+#screen -t temcsvn 0 temcsvn
+#screen -t heston 1 sbtn
+#screen -t v0mx14 2 sbtn
+#screen -t mx1mirror 3 sbtn
+#screen -t mx1slave 4 sbtn
+#screen -t razor 5 srazor
+#screen -t bh64 6 sbtn
+#screen -t bh32 7 sbtn
+#screen -t mfuse1s1 8 sbtn
+
+vbell off  ##turn off visual-bell
+shell -${SHELL}  ##gives a login shell
+defscrollback 30000  ##sets scrollback buffer
+autodetach on  ##autodetach when terminal disconnects
+term vt100 ##set $TERM to xterm after screen generation
+
+defmonitor on
+activity "%c activity -> %n%f %t"
+sorendition =s Yk
+msgwait 3
+
+shelltitle "$ |idle"  ##you need to tweak your PS1 to get the running command in the title
+
+termcapinfo xterm ti@:te@  ##allows scrollbar to inherit current window data
+termcapinfo xterm-color ti@:te@
+
+attrcolor i "+b"  ##allow SecureCRT and possibly other terminal emulators show bright colors as bright colors (by using bold attributes)
+
+caption always "%{= bb}%{+b w}%n | %= ANY"
+#caption always "%{rk}%H %{wk}%n %{gk}%c %{yk}%M%d %{wk}%?%-Lw%?%{bw}%n* %f %t%?(%u)%?%{wk}%?%+Lw%?"
+#caption always '%{= kg}[%L=%{+u b} %=%{-u W}%?%-Lw%?%45L>%{Y}(%n*%f %t)%?(%u)%?%{W}%+Lw%{+u b} %=%-1=%{-u g}]'  ##windowlist
+
+hardstatus on
+#hardstatus string "%{.bW}%-w%{.rW}%n %t%{-}%+w %=%{..G} %H %{..Y} %m/%d %C%a "
+hardstatus string "%-Lw%{= BW}%50>%n%f* %t%{-}%+Lw%<  %=%{..R} %H  %{G}%Y-%m-%d %C%a"
+#hardstatus alwayslastline '%L>%{= wk}[c=screen|d=detatch|K=kill]%=[<esc>=copy|<]>=paste]%=[H=log|h=hardcopy]%=[S=split|Q=only|X=remove|<tab>=focus]%=[?=help]%=%-18=%{= kG}[%H %m/%d %C%a]' 
+#
+#my screen password :password 2times then ]
+password UWz8Sm1jwKyVE

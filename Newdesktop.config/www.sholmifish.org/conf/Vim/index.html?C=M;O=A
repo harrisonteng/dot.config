@@ -1,0 +1,36 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+ <head>
+  <title>Index of /open-source/projects/conf/vim/current/conf/Vim</title>
+ </head>
+ <body>
+<h1>Index of /open-source/projects/conf/vim/current/conf/Vim</h1>
+<table><tr><th><img src="/icons/blank.gif" alt="[ICO]"></th><th><a href="?C=N;O=A">Name</a></th><th><a href="?C=M;O=D">Last modified</a></th><th><a href="?C=S;O=A">Size</a></th><th><a href="?C=D;O=A">Description</a></th></tr><tr><th colspan="5"><hr></th></tr>
+<tr><td valign="top"><img src="/icons/back.gif" alt="[DIR]"></td><td><a href="/open-source/projects/conf/vim/current/conf/">Parent Directory</a></td><td>&nbsp;</td><td align="right">  - </td></tr>
+<tr><td valign="top"><img src="/icons/folder.gif" alt="[DIR]"></td><td><a href="docbook/">docbook/</a></td><td align="right">22-Sep-2009 09:08  </td><td align="right">  - </td></tr>
+<tr><td valign="top"><img src="/icons/folder.gif" alt="[DIR]"></td><td><a href="old/">old/</a></td><td align="right">22-Sep-2009 09:08  </td><td align="right">  - </td></tr>
+<tr><td valign="top"><img src="/icons/folder.gif" alt="[DIR]"></td><td><a href="php/">php/</a></td><td align="right">22-Sep-2009 09:08  </td><td align="right">  - </td></tr>
+<tr><td valign="top"><img src="/icons/folder.gif" alt="[DIR]"></td><td><a href="texts/">texts/</a></td><td align="right">22-Sep-2009 09:08  </td><td align="right">  - </td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="Lineup.vim">Lineup.vim</a></td><td align="right">22-Sep-2009 09:13  </td><td align="right">2.0K</td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="REJECTS.vim">REJECTS.vim</a></td><td align="right">22-Sep-2009 09:13  </td><td align="right">2.3K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="ack.vim">ack.vim</a></td><td align="right">22-Sep-2009 09:13  </td><td align="right">366 </td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="amazon-asin.vim">amazon-asin.vim</a></td><td align="right">22-Sep-2009 09:13  </td><td align="right">205 </td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="diary.vim">diary.vim</a></td><td align="right">22-Sep-2009 09:13  </td><td align="right">178 </td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="gimp-dev.vim">gimp-dev.vim</a></td><td align="right">22-Sep-2009 09:13  </td><td align="right">2.0K</td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="hebrew.vim">hebrew.vim</a></td><td align="right">22-Sep-2009 09:13  </td><td align="right">5.4K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="kernel.vim">kernel.vim</a></td><td align="right">22-Sep-2009 09:13  </td><td align="right"> 56 </td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="mit-x11.vim">mit-x11.vim</a></td><td align="right">22-Sep-2009 09:13  </td><td align="right">161 </td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="perl-test-manage-bak1.vim">perl-test-manage-bak1.vim</a></td><td align="right">22-Sep-2009 09:13  </td><td align="right">555 </td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="perl-test-manage-bak2.vim">perl-test-manage-bak2.vim</a></td><td align="right">22-Sep-2009 09:13  </td><td align="right">1.9K</td></tr>
+<tr><td valign="top"><img src="/icons/p.gif" alt="[   ]"></td><td><a href="perl-test-manage-helper.pl">perl-test-manage-helper.pl</a></td><td align="right">22-Sep-2009 09:13  </td><td align="right">760 </td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="perl-test-manage.vim">perl-test-manage.vim</a></td><td align="right">22-Sep-2009 09:13  </td><td align="right">1.1K</td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="range-search.vim">range-search.vim</a></td><td align="right">22-Sep-2009 09:13  </td><td align="right">549 </td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="refactor-quadp.vim">refactor-quadp.vim</a></td><td align="right">22-Sep-2009 09:13  </td><td align="right">203 </td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="svn-dev.vim">svn-dev.vim</a></td><td align="right">22-Sep-2009 09:13  </td><td align="right">2.0K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="tt2.vim">tt2.vim</a></td><td align="right">22-Sep-2009 09:13  </td><td align="right">7.3K</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="tt2html.vim">tt2html.vim</a></td><td align="right">22-Sep-2009 09:13  </td><td align="right">290 </td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="xmms.vim">xmms.vim</a></td><td align="right">22-Sep-2009 09:13  </td><td align="right">551 </td></tr>
+<tr><th colspan="5"><hr></th></tr>
+</table>
+<address>Apache/2.2.3 (CentOS) Server at www.shlomifish.org Port 80</address>
+</body></html>
