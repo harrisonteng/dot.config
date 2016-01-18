@@ -1,0 +1,45 @@
+sudo aptitude -y update
+cd ~/.
+pwd
+cd projects/
+cd repository/
+cd emc
+cd bitbucket
+cd fm-utility-golang/
+find . -name "*.go" -print > cscope.files
+ctags -L cscope.files
+ctags -e -L cscope.files
+less ~/.vimrc
+cscope -ub -i cscope.files
+which gocode
+source ~/.bashrc
+which gocode
+ls ~/.gocode.local
+ls ~/.bashrc.local
+cd ..
+grep cscope ~/.emacs
+cd ../
+less ~/.emacs
+cd ~/.orgs
+cd ~/.myorgs
+cd ~
+ls -dl */
+ls -alt
+ls -al 
+ls -al |grep '-\>'
+ls -al
+ln -fs ~/Dropbox/orgs .orgs
+less ~/.emacs
+sudo aptitude -y update
+sudo aptitude -y update
+sudo aptitude -y full-upgrade
+ssh harrison.teng@bastion3a
+ls
+ssh harrison.teng@bastion3ai
+ls
+ls -al
+go build -o test mime-extractor.go 
+ls -al
+./test -f 1.msg -o dump
+grep -R "Message was not MIME encoded" *
+ssh harrison.teng@bastion9a

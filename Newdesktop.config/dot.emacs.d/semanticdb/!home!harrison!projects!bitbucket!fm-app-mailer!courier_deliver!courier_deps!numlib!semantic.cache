@@ -1,0 +1,18 @@
+;; Object numlib/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "numlib/"
+  :tables
+  (list
+    (semanticdb-table "Makefile.am"
+      :major-mode 'makefile-automake-mode
+      :tags 
+        '( ("noinst_LIBRARIES" variable (:default-value ("libnumlib.a")) nil [103 132])
+            ("libnumlib_a_SOURCES" variable (:default-value ("numlib.h" "strhinot.c" "strhpidt.c" "strhtimet.c" "strgidt.c" "strinot.c" "strofft.c" "strpidt.c" "strsize.c" "strsizet.c" "strtimet.c" "struidt.c")) nil [133 281]))          
+      :file "Makefile.am"
+      :pointmax 281
+      :fsize 280
+      :lastmodtime '(21731 35447 846521 375000)
+      :unmatched-syntax nil))
+  :file "!home!harrison!projects!bitbucket!fm-app-mailer!courier_deliver!courier_deps!numlib!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2")

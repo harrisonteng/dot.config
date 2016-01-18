@@ -1,0 +1,62 @@
+#! /bin/sh
+# $Id: install-sh,v 1.6 2002/11/06 15:09:16 ukai Exp $
+
+set -e
+
+while :
+do
+  case $1 in
+  -m)
+    mode=$2
+    shift; shift
+    ;;
+  -s)
+    if [ -n "$STRIP" ]; then
+      strip=$STRIP
+    else
+      strip=strip
+    fi
+    shift;
+    ;;
+  -o) owner=$2
+      shift; shift
+      ;;
+  -g) group=$2
+      shift; shift
+      ;;
+  -*)
+    shift
+    ;;
+  *)
+    break
+  esac
+done
+
+if [ $# -lt 2 ]; then
+  echo "usage: $0 [-m mode] [-s] file1 file2"
+  exit 1
+fi
+
+file=$1
+if [ -d $2 ]; then
+  dest=$2/$file
+else
+  dest=$2
+fi
+
+if [ -f $dest ]; then
+  rm -f $dest
+fi
+cp $file $dest
+if [ -n "$strip" ]; then
+  $strip $dest
+fi
+if [ -n "$owner" ]; then
+  chown $owner $dest
+fi
+if [ -n "$group" ]; then
+  chgrp $group $dest
+fi
+if [ -n "$mode" ]; then
+  chmod $mode $dest
+fi

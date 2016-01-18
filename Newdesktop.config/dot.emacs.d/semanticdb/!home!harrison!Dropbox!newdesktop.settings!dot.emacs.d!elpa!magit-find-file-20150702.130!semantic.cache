@@ -1,0 +1,16 @@
+;; Object magit-find-file-20150702.130/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "magit-find-file-20150702.130/"
+  :tables
+  (list
+    (semanticdb-table "magit-find-file-autoloads.el"
+      :major-mode 'emacs-lisp-mode
+      :tags nil
+      :file "magit-find-file-autoloads.el"
+      :pointmax 303
+      :fsize 594
+      :lastmodtime '(21920 14731 986874 270000)
+      :unmatched-syntax nil))
+  :file "!home!harrison!Dropbox!newdesktop.settings!dot.emacs.d!elpa!magit-find-file-20150702.130!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2")

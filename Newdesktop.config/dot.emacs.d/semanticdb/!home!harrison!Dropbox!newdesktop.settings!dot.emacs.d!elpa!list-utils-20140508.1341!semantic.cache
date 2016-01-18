@@ -1,0 +1,16 @@
+;; Object list-utils-20140508.1341/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "list-utils-20140508.1341/"
+  :tables
+  (list
+    (semanticdb-table "list-utils-autoloads.el"
+      :major-mode 'emacs-lisp-mode
+      :tags nil
+      :file "list-utils-autoloads.el"
+      :pointmax 293
+      :fsize 16027
+      :lastmodtime '(21803 20863 614484 492000)
+      :unmatched-syntax nil))
+  :file "!home!harrison!Dropbox!newdesktop.settings!dot.emacs.d!elpa!list-utils-20140508.1341!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2")

@@ -1,0 +1,16 @@
+;; Object logito-20120225.1255/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "logito-20120225.1255/"
+  :tables
+  (list
+    (semanticdb-table "logito-autoloads.el"
+      :major-mode 'emacs-lisp-mode
+      :tags nil
+      :file "logito-autoloads.el"
+      :pointmax 285
+      :fsize 363
+      :lastmodtime '(21780 18014 970145 153000)
+      :unmatched-syntax nil))
+  :file "!home!harrison!Dropbox!newdesktop.settings!dot.emacs.d!elpa!logito-20120225.1255!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2")

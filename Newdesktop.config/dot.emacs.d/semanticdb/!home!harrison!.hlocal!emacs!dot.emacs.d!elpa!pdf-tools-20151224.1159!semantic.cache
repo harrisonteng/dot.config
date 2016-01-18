@@ -1,0 +1,16 @@
+;; Object pdf-tools-20151224.1159/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "pdf-tools-20151224.1159/"
+  :tables
+  (list
+    (semanticdb-table "pdf-tools-autoloads.el"
+      :major-mode 'emacs-lisp-mode
+      :tags nil
+      :file "pdf-tools-autoloads.el"
+      :pointmax 291
+      :fsize 12784
+      :lastmodtime '(22146 49648 235496 367000)
+      :unmatched-syntax nil))
+  :file "!home!harrison!.hlocal!emacs!dot.emacs.d!elpa!pdf-tools-20151224.1159!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2")

@@ -1,0 +1,72 @@
+;; Object build/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "build/"
+  :tables
+  (list
+    (semanticdb-table "Makefile.am"
+      :major-mode 'makefile-automake-mode
+      :tags 
+        '( ("bindir" variable (:default-value ("$(prefix)/bin")) nil [1 22])
+            ("DEFS" variable (:default-value ("@DEFS@" "-DBUILD_DATE=\\\"`$(date_path) +\"%Y-%m-%dT%H:%M:%S\"`\\\"" "-DBUILD_USER=\\\"`$(id_path) -un`@`$(hostname_path)`\\\"")) nil [23 146])
+            ("bin_PROGRAMS" variable (:default-value ("emcspamd2")) nil [204 227])
+            ("EXTRA_DIST" variable (:default-value ("../data/spamipdomainlog.sqt" "../data/tuples.sqt" "../data/emcspamd2.conf" "../data/spam.cf")) nil [228 325])
+            ("etcmailconfdir" variable (:default-value ("/etc/mail")) nil [326 351])
+            ("mailconfdir" variable (:default-value ("/mail")) nil [351 369])
+            ("mailconf_DATA_check" variable (:default-value ("../data/spamipdomainlog.sqt" "../data/tuples.sqt" "../data/spam.cf")) nil [567 650])
+            ("etcmailconf_DATA_check" variable (:default-value ("../data/emcspamd2.conf")) nil [650 696])
+            ("install-data-local" function nil nil [696 1775])
+            ("COMMON_CFLAGS" variable (:default-value ("-Wall" "-I.." "-I." "-I../src" "-I../src/protocols" "-I../src/policies" "-I../src/dcc" "-I../src/rbl" "-I../src/dbl" "-I../src/rules" "-I../src/bayes" "-I../src/specials" "-I../src/whitelist" "-I/usr/local/emc/include" "-I/usr/local/include" "$(CFLAGS)")) nil [1776 2019])
+            ("COMMON_LDADD" variable nil nil [2020 2034])
+            ("emcspamd2_LDFLAGS" variable (:default-value ("-L/usr/local/emc/lib")) nil [2035 2074])
+            ("emcspamd2_LDADD" variable (:default-value ("$(COMMON_LDADD)" "$(LIBS)" "-lemcbase" "-lemime" "-lgobject-2.0" "-ljson" "-lcurl")) nil [2074 2161])
+            ("emcspamd2_CFLAGS" variable (:default-value ("$(COMMON_CFLAGS)")) nil [2161 2195])
+            ("DCC_SRCS" variable (:default-value ("../src/dcc/emcdcc.c")) nil [2483 2512])
+            ("DCC_HDRS" variable (:default-value ("../src/dcc/emcdcc.h")) nil [2512 2541])
+            ("RBL_SRCS" variable (:default-value ("../src/rbl/rbl.c")) nil [2542 2568])
+            ("RBL_HDRS" variable (:default-value ("../src/rbl/rbl.h")) nil [2568 2594])
+            ("BLOCKLIST_SRCS" variable (:default-value ("../src/blocklist/blocklist.c")) nil [2595 2639])
+            ("BLOCKLIST_HDRS" variable (:default-value ("../src/blocklist/blocklist.h")) nil [2639 2683])
+            ("DBL_SRCS" variable (:default-value ("../src/dbl/dbl.c" "../src/dbl/name_lookup.c")) nil [2684 2735])
+            ("DBL_HDRS" variable (:default-value ("../src/dbl/dbl.h" "../src/dbl/name_lookup.h")) nil [2735 2786])
+            ("BAYES_SRCS" variable (:default-value ("../src/bayes/bayes.c" "../src/bayes/parse.c")) nil [2787 2840])
+            ("BAYES_HDRS" variable (:default-value ("../src/bayes/bayes.h" "../src/bayes/parse.h")) nil [2840 2893])
+            ("CLAM_SRCS" variable (:default-value ("../src/clamav/clamav_filter.c")) nil [2894 2934])
+            ("CLAM_HDRS" variable (:default-value ("../src/clamav/clamav_filter.h")) nil [2934 2974])
+            ("MDNA_SRCS" variable (:default-value ("../src/mdna/mdna_filter.c")) nil [2975 3011])
+            ("MDNA_HDRS" variable (:default-value ("../src/mdna/mdna_filter.h")) nil [3011 3047])
+            ("CLOUDMARK_SRCS" variable (:default-value ("../src/cloudmark/cloudmark_filter.c")) nil [3048 3099])
+            ("CLOUDMARK_HDRS" variable (:default-value ("../src/cloudmark/cloudmark_filter.h")) nil [3099 3150])
+            ("PCRE_RULES_SRCS" variable (:default-value ("../src/rules/rules.c")) nil [3151 3188])
+            ("PCRE_RULES_HDRS" variable (:default-value ("../src/rules/rules.h")) nil [3188 3225])
+            ("SPECIALS_SRCS" variable (:default-value ("../src/specials/specials.c" "../src/specials/uri.c" "../src/specials/gif.c")) nil [3226 3311])
+            ("SPECIALS_HDRS" variable (:default-value ("../src/specials/specials.h" "../src/specials/uri.h")) nil [3311 3374])
+            ("POLICY_SRCS" variable (:default-value ("../src/policies/global_policy.c" "../src/policies/emc_policy.c" "../src/policies/policysmart_options.c")) nil [3375 3486])
+            ("POLICY_HDRS" variable (:default-value ("../src/policies/global_policy.h" "../src/policies/emc_policy.h" "../src/policies/policysmart_options.h")) nil [3486 3597])
+            ("PROTOCOLS_SRCS" variable (:default-value ("../src/protocols/spamassassin.c" "../src/protocols/emcspammer.c")) nil [3598 3675])
+            ("PROTOCOLS_HDRS" variable (:default-value ("../src/protocols/spamassassin.h" "../src/protocols/emcspammer.h")) nil [3675 3752])
+            ("WHITELIST_SRCS" variable (:default-value ("../src/whitelist/emc_whitelist.c")) nil [3753 3801])
+            ("WHITELIST_HDRS" variable (:default-value ("../src/whitelist/whitelist.h" "../src/whitelist/emc_whitelist.h")) nil [3801 3878])
+            ("PARSER_SRCS" variable (:default-value ("../src/html_parser/parser.c" "../src/html_parser/domain_extract.c" "../src/html_parser/str_utils.c")) nil [3879 3986])
+            ("PARSER_HDRS" variable (:default-value ("../src/html_parser/parser.h" "../src/html_parser/domain_extract.h" "../src/html_parser/str_utils.h")) nil [3986 4093])
+            ("ENCODING_SRCS" variable (:default-value ("../src/encodings/to_utf8.c")) nil [4094 4135])
+            ("ENCODING_HDRS" variable (:default-value ("../src/encodings/to_utf8.h")) nil [4135 4176])
+            ("DOMAIN_BLOCKLIST_SRCS" variable (:default-value ("../src/domain_blocklist/find_registered_domain.c")) nil [4177 4248])
+            ("DOMAIN_BLOCKLIST_HDRS" variable (:default-value ("../src/domain_blocklist/find_registered_domain.h")) nil [4248 4319])
+            ("REST_LOOKUP_SRCS" variable (:default-value ("../src/rest_lookup/rest_lookup.c")) nil [4320 4370])
+            ("REST_LOOKUP_HDRS" variable (:default-value ("../src/rest_lookup/rest_lookup.h")) nil [4370 4420])
+            ("CEF_LOOKUP_SRCS" variable (:default-value ("../src/cef/cef.c")) nil [4421 4454])
+            ("CEF_LOOKUP_HDRS" variable (:default-value ("../src/cef/cef.h")) nil [4454 4487])
+            ("SHAREDATA_SRCS" variable (:default-value ("../src/sharedata/sharedata.c")) nil [4488 4532])
+            ("SHAREDATA_HDRS" variable (:default-value ("../src/sharedata/sharedata.h")) nil [4532 4576])
+            ("X_emcspamd2_SOURCES" variable (:default-value ("$(WHITELIST_SRCS)" "$(PROTOCOLS_SRCS)" "$(POLICY_SRCS)" "$(SPECIALS_SRCS)" "$(DCC_SRCS)" "$(RBL_SRCS)" "$(BLOCKLIST_SRCS)" "$(DBL_SRCS)" "$(PCRE_RULES_SRCS)" "$(BAYES_SRCS)" "$(PARSER_SRCS)" "$(DOMAIN_BLOCKLIST_SRCS)" "$(ENCODING_SRCS)" "$(CLAM_SRCS)" "$(MDNA_SRCS)" "$(CLOUDMARK_SRCS)" "$(REST_LOOKUP_SRCS)" "$(SHAREDATA_SRCS)" "$(CEF_LOOKUP_SRCS)" "../src/emcspamd.c" "../src/debug.c" "../src/signals.c" "../src/spam_worker.c" "../src/spammer.c" "../src/message.c" "../src/utils.c")) nil [4821 5288])
+            ("emcspamd2_SOURCES" variable (:default-value ("$(X_emcspamd2_SOURCES)" "../src/emc_version.c")) nil [5288 5350])
+            ("emcspamd2-emc_version." function (:arguments ("$(X_emcspamd2_SOURCES)")) nil [5350 5406])
+            ("noinst_HEADERS" variable (:default-value ("../src/emcspamd.h" "../src/spammer.h" "$(DCC_HDRS)" "$(RBL_HDRS)" "$(BLOCKLIST_HDRS)" "$(DBL_HDRS)" "$(PCRE_RULES_HDRS)" "$(BAYES_HDRS)" "$(CLAM_HDRS)" "$(MDNA_HDRS)" "$(CLOUDMARK_HDRS)" "$(PROTOCOLS_HDRS)" "$(POLICY_HDRS)" "$(SPECIALS_HDRS)" "$(WHITELIST_HDRS)" "$(PARSER_HDRS)" "$(DOMAIN_BLOCKLIST_HDRS)" "$(REST_LOOKUP_HRDS)" "$(SHAREDATA_HDRS)" "$(CEF_LOOKUP_HDRS)")) nil [5633 5983]))          
+      :file "Makefile.am"
+      :pointmax 5983
+      :fsize 5982
+      :lastmodtime '(22156 18869 695421 836000)
+      :unmatched-syntax nil))
+  :file "!home!harrison!projects!repository!emc!bitbucket!fm-service-spamfilter-emcspamd2!build!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2")

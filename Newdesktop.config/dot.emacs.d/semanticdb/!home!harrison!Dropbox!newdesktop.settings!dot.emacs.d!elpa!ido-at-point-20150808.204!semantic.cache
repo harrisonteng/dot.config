@@ -1,0 +1,16 @@
+;; Object ido-at-point-20150808.204/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "ido-at-point-20150808.204/"
+  :tables
+  (list
+    (semanticdb-table "ido-at-point-autoloads.el"
+      :major-mode 'emacs-lisp-mode
+      :tags nil
+      :file "ido-at-point-autoloads.el"
+      :pointmax 297
+      :fsize 961
+      :lastmodtime '(21960 54324 163388 466000)
+      :unmatched-syntax nil))
+  :file "!home!harrison!Dropbox!newdesktop.settings!dot.emacs.d!elpa!ido-at-point-20150808.204!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2")

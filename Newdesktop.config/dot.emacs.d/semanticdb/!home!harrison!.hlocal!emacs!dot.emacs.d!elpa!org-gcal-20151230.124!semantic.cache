@@ -1,0 +1,16 @@
+;; Object org-gcal-20151230.124/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "org-gcal-20151230.124/"
+  :tables
+  (list
+    (semanticdb-table "org-gcal-autoloads.el"
+      :major-mode 'emacs-lisp-mode
+      :tags nil
+      :file "org-gcal-autoloads.el"
+      :pointmax 289
+      :fsize 369
+      :lastmodtime '(22154 45231 395434 331000)
+      :unmatched-syntax nil))
+  :file "!home!harrison!.hlocal!emacs!dot.emacs.d!elpa!org-gcal-20151230.124!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2")

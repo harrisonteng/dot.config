@@ -1,0 +1,47 @@
+;; Object unicode/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "unicode/"
+  :tables
+  (list
+    (semanticdb-table "Makefile.am"
+      :major-mode 'makefile-automake-mode
+      :tags 
+        '( ("noinst_SCRIPTS" variable (:default-value ("mkiso8859.pl" "mkkoi8r.pl" "mkibm864.pl" "big5.pl" "gb2312.pl" "update.sh" "mkultcase.pl" "unicodefilter.pl" "charsetlist.pl" "mkiso8859.pl" "mkkoi8r.pl")) nil [96 250])
+            ("noinst_PROGRAMS" variable (:default-value ("unicode-info")) nil [250 279])
+            ("unicode_info_SOURCES" variable (:default-value ("unicodeinfo.c")) nil [280 315])
+            ("unicode_info_DEPENDENCIES" variable (:default-value ("libunicode.a")) nil [315 354])
+            ("unicode_info_LDADD" variable (:default-value ("libunicode.a")) nil [354 386])
+            ("update-www" function nil nil [387 568])
+            ("update-www-unicode" function nil nil [569 688])
+            ("update-www-iso8859" function nil nil [689 884])
+            ("update-www-koi8r" function nil nil [885 1010])
+            ("update-www-windows" function nil nil [1011 1242])
+            ("update-www-dos" function nil nil [1243 1468])
+            ("update-www-eastasia" function nil nil [1469 1601])
+            ("ISO8859CFILES" variable (:default-value ("iso88591.c" "iso88592.c" "iso88593.c" "iso88594.c" "iso88595.c" "iso88596.c" "iso88597.c" "iso88598.c" "iso88599.c" "iso885910.c" "iso885913.c" "iso885914.c" "iso885915.c")) nil [1602 1767])
+            ("WINDOWSCFILES" variable (:default-value ("windows1250.c" "windows1251.c" "windows1252.c" "windows1253.c" "windows1254.c" "windows1255.c" "windows1256.c" "windows1257.c" "windows1258.c" "windows874.c")) nil [1768 1925])
+            ("IBMCFILES" variable (:default-value ("ibm437.c" "ibm775.c" "ibm850.c" "ibm852.c" "ibm855.c" "ibm857.c" "ibm860.c" "ibm861.c" "ibm862.c" "ibm863.c" "ibm864.c" "ibm865.c" "ibm866.c" "ibm869.c")) nil [1926 2065])
+            ("noinst_LIBRARIES" variable (:default-value ("libunicode.a")) nil [2066 2096])
+            ("libunicode_a_SOURCES" variable (:default-value ("unicode.h" "iso8859.c" "windows874u.c" "unicode.c" "unicode2.c" "iso8859_convert.c" "ibm864convert.c" "utf7imap.c" "xtest.c" "unicode_ultcase.c" "utf8.c" "utf8_chset.c" "koi8r.c" "unicode_ultcasetab.c" "$(ISO8859CFILES)" "$(WINDOWSCFILES)" "$(IBMCFILES)" "big5.c" "big5.h" "gb2312.c" "gb2312.h")) nil [2097 2397])
+            ("libunicode_a_LIBADD" variable (:default-value ("charsetlist.o")) nil [2398 2432])
+            ("libunicode_a_DEPENDENCIES" variable (:default-value ("charsetlist.o")) nil [2432 2472])
+            ("EXTRA_DIST" variable (:default-value ("$(noinst_SCRIPTS)" "$(ISO8859CFILES)" "charsetlist.txt")) nil [2473 2535])
+            ("charsetlist.c" function (:arguments ("charsetlist.txt" "charsetlist.pl" "Makefile" "../../../config.status")) nil [2536 2764])
+            ("MAKEISO8859CFILES" variable (:default-value ("dummy")) nil [2783 2807])
+            ("MAKEKOIR8" variable (:default-value ("dummy")) nil [2807 2823])
+            ("update-csrc" function nil nil [2824 2985])
+            ("$(ISO8859CFILES)" function (:arguments ("UnicodeData.txt" "mkiso8859.pl")) nil [2986 3423])
+            ("$(WINDOWSCFILES)" function (:arguments ("UnicodeData.txt" "mkiso8859.pl")) nil [3424 3856])
+            ("$(IBMCFILES)" function (:arguments ("UnicodeData.txt" "mkiso8859.pl" "mkibm864.pl")) nil [3857 4280])
+            ("$(MAKEKOIR8)" function (:arguments ("UnicodeData.txt" "mkkoi8r.pl")) nil [4281 4360])
+            ("unicode_ultcasetab.c" function (:arguments ("UnicodeData.txt" "mkultcase.pl")) nil [4361 4465])
+            ("big5.h" function (:arguments ("big5.txt" "big5.pl")) nil [4466 4525])
+            ("gb2312.h" function (:arguments ("gb2312.txt" "gb2312.pl")) nil [4526 4595]))          
+      :file "Makefile.am"
+      :pointmax 4601
+      :fsize 4600
+      :lastmodtime '(21731 35447 854521 375000)
+      :unmatched-syntax nil))
+  :file "!home!harrison!projects!bitbucket!fm-app-mailer!courier_deliver!courier_deps!unicode!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2")

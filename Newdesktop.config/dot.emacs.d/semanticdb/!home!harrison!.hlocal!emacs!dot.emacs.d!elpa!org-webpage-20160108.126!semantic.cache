@@ -1,0 +1,16 @@
+;; Object org-webpage-20160108.126/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "org-webpage-20160108.126/"
+  :tables
+  (list
+    (semanticdb-table "org-webpage-autoloads.el"
+      :major-mode 'emacs-lisp-mode
+      :tags nil
+      :file "org-webpage-autoloads.el"
+      :pointmax 295
+      :fsize 573
+      :lastmodtime '(22159 62871 319243 861000)
+      :unmatched-syntax nil))
+  :file "!home!harrison!.hlocal!emacs!dot.emacs.d!elpa!org-webpage-20160108.126!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2")

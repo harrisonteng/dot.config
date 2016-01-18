@@ -1,0 +1,16 @@
+;; Object alert-20151018.912/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "alert-20151018.912/"
+  :tables
+  (list
+    (semanticdb-table "alert-autoloads.el"
+      :major-mode 'emacs-lisp-mode
+      :tags nil
+      :file "alert-autoloads.el"
+      :pointmax 283
+      :fsize 3720
+      :lastmodtime '(22053 7931 951546 752000)
+      :unmatched-syntax nil))
+  :file "!home!harrison!.hlocal!emacs!dot.emacs.d!elpa!alert-20151018.912!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2")

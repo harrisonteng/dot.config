@@ -1,0 +1,16 @@
+;; Object org-vcard-20151213.2222/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "org-vcard-20151213.2222/"
+  :tables
+  (list
+    (semanticdb-table "org-vcard-autoloads.el"
+      :major-mode 'emacs-lisp-mode
+      :tags nil
+      :file "org-vcard-autoloads.el"
+      :pointmax 291
+      :fsize 1622
+      :lastmodtime '(22127 1153 334115 451000)
+      :unmatched-syntax nil))
+  :file "!home!harrison!.hlocal!emacs!dot.emacs.d!elpa!org-vcard-20151213.2222!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2")

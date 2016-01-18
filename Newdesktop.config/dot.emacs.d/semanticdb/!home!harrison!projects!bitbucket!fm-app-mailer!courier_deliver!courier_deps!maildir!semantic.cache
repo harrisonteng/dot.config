@@ -1,0 +1,52 @@
+;; Object maildir/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "maildir/"
+  :tables
+  (list
+    (semanticdb-table "Makefile.am"
+      :major-mode 'makefile-automake-mode
+      :tags 
+        '( ("noinst_LIBRARIES" variable (:default-value ("libmaildir.a")) nil [102 132])
+            ("AM_CFLAGS" variable (:default-value ("\"-I..\"")) nil [133 150])
+            ("DOCS" variable (:default-value ("deliverquota.html.in" "deliverquota.8.in" "maildirmake.html.in" "maildirmake.1.in" "maildirquota.html" "maildirquota.7")) nil [164 282])
+            ("BUILT_SOURCES" variable (:default-value ("maildirsharedrc.h" "maildirfilterconfig.h" "quotawarnmsg.h" "mailbot.h" "autoresponsequota.h" "$(DOCS)")) nil [289 399])
+            ("noinst_DATA" variable (:default-value ("deliverquota.html" "maildirmake.html" "deliverquota.8" "maildirmake.1")) nil [413 489])
+            ("libmaildir_a_SOURCES" variable (:default-value ("autoresponse.c" "autoresponse.h" "maildircache.c" "maildircache.h" "maildircreate.c" "maildircreate.h" "maildircreateh.c" "maildirfilename.c" "maildirgetnew.c" "maildirfilter.c" "maildirfilter2.c" "maildirfilter.h" "maildirfiltertypelist.h" "maildirflags.c" "maildirmkdir.c" "maildirgetquota.c" "maildirgetquota.h" "maildiropen.c" "maildirparsequota.c" "maildirpath.c" "maildirpurgetmp.c" "maildirmisc.h" "maildirshared.c" "maildirshared2.c" "maildirdelfolder.c" "maildirquota.c" "maildirquota.h" "maildirrequota.c" "maildirrequota.h")) nil [496 1023])
+            ("noinst_PROGRAMS" variable (:default-value ("deliverquota")) nil [1024 1083])
+            ("deliverquota_SOURCES" variable (:default-value ("deliverquota.c")) nil [1084 1120])
+            ("deliverquota_DEPENDENCIES" variable (:default-value ("libmaildir.a" "../rfc822/librfc822.a" "../numlib/libnumlib.a")) nil [1120 1209])
+            ("deliverquota_LDADD" variable (:default-value ("libmaildir.a" "../rfc822/librfc822.a" "../numlib/libnumlib.a")) nil [1209 1285])
+            ("maildirmake_SOURCES" variable (:default-value ("maildirmake.c")) nil [1286 1320])
+            ("maildirmake_DEPENDENCIES" variable (:default-value ("libmaildir.a" "../numlib/libnumlib.a")) nil [1320 1380])
+            ("maildirmake_LDADD" variable (:default-value ("libmaildir.a" "../numlib/libnumlib.a")) nil [1380 1433])
+            ("testmaildirfilter_SOURCES" variable (:default-value ("maildirfiltertypelist.h" "testmaildirfilter.c")) nil [1434 1504])
+            ("testmaildirfilter_DEPENDENCIES" variable (:default-value ("libmaildir.a" "../numlib/libnumlib.a")) nil [1504 1570])
+            ("testmaildirfilter_LDADD" variable (:default-value ("libmaildir.a" "../numlib/libnumlib.a")) nil [1570 1629])
+            ("EXTRA_DIST" variable (:default-value ("README.maildirquota.html" "README.maildirquota.txt" "README.maildirfilter.html" "README.sharedfolders.html" "README.sharedfolders.txt" "testsuite" "testsuite.txt" "quotawarnmsg" "$(DOCS)")) nil [1630 1821])
+            ("HTML2TXT" variable (:default-value ("`which lynx 2>/dev/null && echo \"lynx -dump -nolist\" && exit; echo \"links -dump\"`")) nil [1822 1913])
+            ("README.maildirquota.txt" function (:arguments ("README.maildirquota.html")) nil [1914 2027])
+            ("README.sharedfolders.txt" function (:arguments ("README.sharedfolders.html")) nil [2028 2145])
+            ("mailbot.h" function (:arguments ("$(top_builddir)/config.status")) nil [2146 2234])
+            ("maildirsharedrc.h" function (:arguments ("$(top_builddir)/config.status")) nil [2235 2365])
+            ("maildirfilterconfig.h" function (:arguments ("$(top_builddir)/config.status")) nil [2366 2514])
+            ("autoresponsequota.h" function (:arguments ("$(top_builddir)/config.status")) nil [2515 2656])
+            ("quotawarnmsg.h" function (:arguments ("$(top_builddir)/config.status")) nil [2657 2777])
+            ("test" function nil nil [2778 2850])
+            ("deliverquota.html.in" function (:arguments ("deliverquota.sgml" "../docbook/sgml2html")) nil [2864 2986])
+            ("deliverquota.8.in" function (:arguments ("deliverquota.sgml" "../docbook/sgml2html")) nil [2987 3102])
+            ("maildirmake.html.in" function (:arguments ("maildirmake.sgml" "../docbook/sgml2html")) nil [3103 3221])
+            ("maildirmake.1.in" function (:arguments ("maildirmake.sgml" "../docbook/sgml2html")) nil [3222 3333])
+            ("maildirquota.html" function (:arguments ("maildirquota.sgml" "../docbook/sgml2html")) nil [3334 3450])
+            ("maildirquota.7" function (:arguments ("maildirquota.sgml" "../docbook/sgml2man")) nil [3451 3559])
+            ("deliverquota.html" function (:arguments ("deliverquota.html.in")) nil [3560 3672])
+            ("deliverquota.8" function (:arguments ("deliverquota.8.in")) nil [3673 3779])
+            ("maildirmake.html" function (:arguments ("maildirmake.html.in")) nil [3780 3890])
+            ("maildirmake.1" function (:arguments ("maildirmake.1.in")) nil [3891 3995]))          
+      :file "Makefile.am"
+      :pointmax 4045
+      :fsize 4044
+      :lastmodtime '(21731 35447 842521 375000)
+      :unmatched-syntax '((punctuation 4043 . 4044) (symbol 4031 . 4043) (bol 4031 . 4031))))
+  :file "!home!harrison!projects!bitbucket!fm-app-mailer!courier_deliver!courier_deps!maildir!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2")

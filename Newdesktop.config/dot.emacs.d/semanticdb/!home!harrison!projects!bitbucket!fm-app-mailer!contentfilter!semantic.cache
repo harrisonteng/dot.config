@@ -1,0 +1,25 @@
+;; Object contentfilter/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "contentfilter/"
+  :tables
+  (list
+    (semanticdb-table "Makefile.am"
+      :major-mode 'makefile-automake-mode
+      :tags 
+        '( ("agents_execdir" variable (:default-value ("$(prefix)/agents")) nil [1 35])
+            ("DEFS" variable (:default-value ("@DEFS@" "-DBUILD_DATE=\\\"`$(date_path) +\"%Y-%m-%dT%H:%M:%S\"`\\\"" "-DBUILD_USER=\\\"`$(id_path) -un`@`$(hostname_path)`\\\"")) nil [36 159])
+            ("agents_exec_PROGRAMS" variable (:default-value ("contentfilter")) nil [354 389])
+            ("contentfilter_SOURCES" variable (:default-value ("contentfilter.c" "filter_action.c" "rule_set.c" "action_set.c" "../emclib/emc_services.c" "filter_rule.c" "cf_debugging.c" "database.c" "msg_template.c" "cf_common.c" "parser.c" "../cidr.c" "../hash.c" "../logger.c" "../common.c" "../g_mime_common.c" "../config.c" "../utils.c" "file_aparser.c" "data_match.c" "mail_security.c" "../espamc/whitelist.c" "../emclib/emime.c" "../emclib/estring.c" "../emclib/realmtree.c" "../emclib/echecksum.c" "../emclib/elog.c" "../emclib/estdio.c" "../quarantine/quarantine.c" "../vaultsmart/vaultsmart.c" "nxjson.c")) nil [585 1190])
+            ("contentfilter_CPPFLAGS" variable (:default-value ("-I/usr/local/include")) nil [1481 1525])
+            ("contentfilter_LDFLAGS" variable (:default-value ("-Wl,-export-dynamic" "-L/usr/local/lib")) nil [1525 1584])
+            ("contentfilter_LDADD" variable (:default-value ("-lemcbase" "-lglib-2.0" "-lgmime-2.0" "-lgobject-2.0" "-ldomainkeys" "-lresolv" "-ldomainkeys" "-lmagic" "-lssl" "-lcrypto" "-lcurl" "-ljson")) nil [1584 1723])
+            ("install-exec-hook" function nil nil [1908 2143])
+            ("uninstall-hook" function nil nil [2324 2530]))          
+      :file "Makefile.am"
+      :pointmax 2530
+      :fsize 2529
+      :lastmodtime '(21731 35447 750521 373000)
+      :unmatched-syntax '((shell-command 2527 . 2529) (bol 2526 . 2526))))
+  :file "!home!harrison!projects!bitbucket!fm-app-mailer!contentfilter!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2")

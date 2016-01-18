@@ -1,0 +1,16 @@
+;; Object magit-filenotify-20150125.1456/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "magit-filenotify-20150125.1456/"
+  :tables
+  (list
+    (semanticdb-table "magit-filenotify-autoloads.el"
+      :major-mode 'emacs-lisp-mode
+      :tags nil
+      :file "magit-filenotify-autoloads.el"
+      :pointmax 305
+      :fsize 593
+      :lastmodtime '(21780 18021 762145 50000)
+      :unmatched-syntax nil))
+  :file "!home!harrison!Dropbox!newdesktop.settings!dot.emacs.d!elpa!magit-filenotify-20150125.1456!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2")

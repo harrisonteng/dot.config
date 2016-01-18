@@ -1,0 +1,503 @@
+;; Object openssl/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "openssl/"
+  :tables
+  (list
+    (semanticdb-table "aes.h"
+      :major-mode 'c-mode
+      :tags 
+        '( ("HEADER_AES_H" variable (:constant-flag t) nil [2549 2561])
+            ("openssl/opensslconf.h" include (:system-flag t) nil [2563 2595])
+            ("stddef.h" include (:system-flag t) nil [2651 2670])
+            ("AES_ENCRYPT" variable (:constant-flag t) nil [2680 2691])
+            ("AES_DECRYPT" variable (:constant-flag t) nil [2702 2713])
+            ("AES_MAXNR" variable (:constant-flag t) nil [2831 2840])
+            ("AES_BLOCK_SIZE" variable (:constant-flag t) nil [2852 2866])
+            ("AES_unwrap_key" function
+               (:typemodifiers ("extern" "\"C\"")
+                :type "int"
+                :arguments 
+                  ( ("key" variable
+                       (:pointer 1
+                        :type ("AES_KEY" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [5340 5353])
+                    ("iv" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "unsigned char")
+                        (reparse-symbol arg-sub-list) [5354 5378])
+                    ("out" variable
+                       (:pointer 1
+                        :type "unsigned char")
+                        (reparse-symbol arg-sub-list) [5381 5400])
+                    ("in" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "unsigned char")
+                        (reparse-symbol arg-sub-list) [5403 5427])
+                    ("inlen" variable (:type "unsigned int") (reparse-symbol arg-sub-list) [5428 5447]))                  
+                :prototype-flag t)
+                (reparse-symbol extern-c-contents) [5321 5448])
+            ("AES_wrap_key" function
+               (:typemodifiers ("extern" "\"C\"")
+                :type "int"
+                :arguments 
+                  ( ("key" variable
+                       (:pointer 1
+                        :type ("AES_KEY" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [5212 5225])
+                    ("iv" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "unsigned char")
+                        (reparse-symbol arg-sub-list) [5226 5250])
+                    ("out" variable
+                       (:pointer 1
+                        :type "unsigned char")
+                        (reparse-symbol arg-sub-list) [5253 5272])
+                    ("in" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "unsigned char")
+                        (reparse-symbol arg-sub-list) [5275 5299])
+                    ("inlen" variable (:type "unsigned int") (reparse-symbol arg-sub-list) [5300 5319]))                  
+                :prototype-flag t)
+                (reparse-symbol extern-c-contents) [5195 5320])
+            ("AES_bi_ige_encrypt" function
+               (:typemodifiers ("extern" "\"C\"")
+                :type "void"
+                :arguments 
+                  ( ("in" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "unsigned char")
+                        (reparse-symbol arg-sub-list) [5041 5065])
+                    ("out" variable
+                       (:pointer 1
+                        :type "unsigned char")
+                        (reparse-symbol arg-sub-list) [5066 5085])
+                    ("length" variable (:type ("size_t" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [5089 5103])
+                    ("key" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type ("AES_KEY" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [5104 5123])
+                    ("key2" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type ("AES_KEY" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [5127 5147])
+                    ("ivec" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "unsigned char")
+                        (reparse-symbol arg-sub-list) [5148 5174])
+                    ("enc" variable
+                       (:constant-flag t
+                        :type "int")
+                        (reparse-symbol arg-sub-list) [5178 5192]))                  
+                :prototype-flag t)
+                (reparse-symbol extern-c-contents) [5017 5193])
+            ("AES_ige_encrypt" function
+               (:typemodifiers ("extern" "\"C\"")
+                :type "void"
+                :arguments 
+                  ( ("in" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "unsigned char")
+                        (reparse-symbol arg-sub-list) [4847 4871])
+                    ("out" variable
+                       (:pointer 1
+                        :type "unsigned char")
+                        (reparse-symbol arg-sub-list) [4872 4891])
+                    ("length" variable (:type ("size_t" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [4899 4913])
+                    ("key" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type ("AES_KEY" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [4914 4933])
+                    ("ivec" variable
+                       (:pointer 1
+                        :type "unsigned char")
+                        (reparse-symbol arg-sub-list) [4941 4961])
+                    ("enc" variable
+                       (:constant-flag t
+                        :type "int")
+                        (reparse-symbol arg-sub-list) [4962 4976]))                  
+                :prototype-flag t)
+                (reparse-symbol extern-c-contents) [4826 4977])
+            ("AES_ctr128_encrypt" function
+               (:typemodifiers ("extern" "\"C\"")
+                :type "void"
+                :arguments 
+                  ( ("in" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "unsigned char")
+                        (reparse-symbol arg-sub-list) [4606 4630])
+                    ("out" variable
+                       (:pointer 1
+                        :type "unsigned char")
+                        (reparse-symbol arg-sub-list) [4631 4650])
+                    ("length" variable (:type ("size_t" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [4652 4666])
+                    ("key" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type ("AES_KEY" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [4667 4686])
+                    ("ivec" variable
+                       (:dereference 1
+                        :type "unsigned char")
+                        (reparse-symbol arg-sub-list) [4688 4723])
+                    ("ecount_buf" variable
+                       (:dereference 1
+                        :type "unsigned char")
+                        (reparse-symbol arg-sub-list) [4725 4766])
+                    ("num" variable
+                       (:pointer 1
+                        :type "unsigned int")
+                        (reparse-symbol arg-sub-list) [4768 4786]))                  
+                :prototype-flag t)
+                (reparse-symbol extern-c-contents) [4582 4787])
+            ("AES_ofb128_encrypt" function
+               (:typemodifiers ("extern" "\"C\"")
+                :type "void"
+                :arguments 
+                  ( ("in" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "unsigned char")
+                        (reparse-symbol arg-sub-list) [4468 4492])
+                    ("out" variable
+                       (:pointer 1
+                        :type "unsigned char")
+                        (reparse-symbol arg-sub-list) [4493 4512])
+                    ("length" variable (:type ("size_t" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [4514 4528])
+                    ("key" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type ("AES_KEY" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [4529 4548])
+                    ("ivec" variable
+                       (:pointer 1
+                        :type "unsigned char")
+                        (reparse-symbol arg-sub-list) [4550 4570])
+                    ("num" variable
+                       (:pointer 1
+                        :type "int")
+                        (reparse-symbol arg-sub-list) [4571 4580]))                  
+                :prototype-flag t)
+                (reparse-symbol extern-c-contents) [4444 4581])
+            ("AES_cfb8_encrypt" function
+               (:typemodifiers ("extern" "\"C\"")
+                :type "void"
+                :arguments 
+                  ( ("in" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "unsigned char")
+                        (reparse-symbol arg-sub-list) [4315 4339])
+                    ("out" variable
+                       (:pointer 1
+                        :type "unsigned char")
+                        (reparse-symbol arg-sub-list) [4340 4359])
+                    ("length" variable (:type ("size_t" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [4361 4375])
+                    ("key" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type ("AES_KEY" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [4376 4395])
+                    ("ivec" variable
+                       (:pointer 1
+                        :type "unsigned char")
+                        (reparse-symbol arg-sub-list) [4397 4417])
+                    ("num" variable
+                       (:pointer 1
+                        :type "int")
+                        (reparse-symbol arg-sub-list) [4418 4427])
+                    ("enc" variable
+                       (:constant-flag t
+                        :type "int")
+                        (reparse-symbol arg-sub-list) [4428 4442]))                  
+                :prototype-flag t)
+                (reparse-symbol extern-c-contents) [4293 4443])
+            ("AES_cfb1_encrypt" function
+               (:typemodifiers ("extern" "\"C\"")
+                :type "void"
+                :arguments 
+                  ( ("in" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "unsigned char")
+                        (reparse-symbol arg-sub-list) [4164 4188])
+                    ("out" variable
+                       (:pointer 1
+                        :type "unsigned char")
+                        (reparse-symbol arg-sub-list) [4189 4208])
+                    ("length" variable (:type ("size_t" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [4210 4224])
+                    ("key" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type ("AES_KEY" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [4225 4244])
+                    ("ivec" variable
+                       (:pointer 1
+                        :type "unsigned char")
+                        (reparse-symbol arg-sub-list) [4246 4266])
+                    ("num" variable
+                       (:pointer 1
+                        :type "int")
+                        (reparse-symbol arg-sub-list) [4267 4276])
+                    ("enc" variable
+                       (:constant-flag t
+                        :type "int")
+                        (reparse-symbol arg-sub-list) [4277 4291]))                  
+                :prototype-flag t)
+                (reparse-symbol extern-c-contents) [4142 4292])
+            ("AES_cfb128_encrypt" function
+               (:typemodifiers ("extern" "\"C\"")
+                :type "void"
+                :arguments 
+                  ( ("in" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "unsigned char")
+                        (reparse-symbol arg-sub-list) [4013 4037])
+                    ("out" variable
+                       (:pointer 1
+                        :type "unsigned char")
+                        (reparse-symbol arg-sub-list) [4038 4057])
+                    ("length" variable (:type ("size_t" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [4059 4073])
+                    ("key" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type ("AES_KEY" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [4074 4093])
+                    ("ivec" variable
+                       (:pointer 1
+                        :type "unsigned char")
+                        (reparse-symbol arg-sub-list) [4095 4115])
+                    ("num" variable
+                       (:pointer 1
+                        :type "int")
+                        (reparse-symbol arg-sub-list) [4116 4125])
+                    ("enc" variable
+                       (:constant-flag t
+                        :type "int")
+                        (reparse-symbol arg-sub-list) [4126 4140]))                  
+                :prototype-flag t)
+                (reparse-symbol extern-c-contents) [3989 4141])
+            ("AES_cbc_encrypt" function
+               (:typemodifiers ("extern" "\"C\"")
+                :type "void"
+                :arguments 
+                  ( ("in" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "unsigned char")
+                        (reparse-symbol arg-sub-list) [3870 3894])
+                    ("out" variable
+                       (:pointer 1
+                        :type "unsigned char")
+                        (reparse-symbol arg-sub-list) [3895 3914])
+                    ("length" variable (:type ("size_t" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [3916 3930])
+                    ("key" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type ("AES_KEY" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [3931 3950])
+                    ("ivec" variable
+                       (:pointer 1
+                        :type "unsigned char")
+                        (reparse-symbol arg-sub-list) [3952 3972])
+                    ("enc" variable
+                       (:constant-flag t
+                        :type "int")
+                        (reparse-symbol arg-sub-list) [3973 3987]))                  
+                :prototype-flag t)
+                (reparse-symbol extern-c-contents) [3849 3988])
+            ("AES_ecb_encrypt" function
+               (:typemodifiers ("extern" "\"C\"")
+                :type "void"
+                :arguments 
+                  ( ("in" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "unsigned char")
+                        (reparse-symbol arg-sub-list) [3767 3791])
+                    ("out" variable
+                       (:pointer 1
+                        :type "unsigned char")
+                        (reparse-symbol arg-sub-list) [3792 3811])
+                    ("key" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type ("AES_KEY" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [3813 3832])
+                    ("enc" variable
+                       (:constant-flag t
+                        :type "int")
+                        (reparse-symbol arg-sub-list) [3833 3847]))                  
+                :prototype-flag t)
+                (reparse-symbol extern-c-contents) [3746 3848])
+            ("AES_decrypt" function
+               (:typemodifiers ("extern" "\"C\"")
+                :type "void"
+                :arguments 
+                  ( ("in" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "unsigned char")
+                        (reparse-symbol arg-sub-list) [3678 3702])
+                    ("out" variable
+                       (:pointer 1
+                        :type "unsigned char")
+                        (reparse-symbol arg-sub-list) [3703 3722])
+                    ("key" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type ("AES_KEY" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [3724 3743]))                  
+                :prototype-flag t)
+                (reparse-symbol extern-c-contents) [3661 3744])
+            ("AES_encrypt" function
+               (:typemodifiers ("extern" "\"C\"")
+                :type "void"
+                :arguments 
+                  ( ("in" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "unsigned char")
+                        (reparse-symbol arg-sub-list) [3594 3618])
+                    ("out" variable
+                       (:pointer 1
+                        :type "unsigned char")
+                        (reparse-symbol arg-sub-list) [3619 3638])
+                    ("key" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type ("AES_KEY" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [3640 3659]))                  
+                :prototype-flag t)
+                (reparse-symbol extern-c-contents) [3577 3660])
+            ("private_AES_set_decrypt_key" function
+               (:typemodifiers ("extern" "\"C\"")
+                :type "int"
+                :arguments 
+                  ( ("userKey" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "unsigned char")
+                        (reparse-symbol arg-sub-list) [3514 3543])
+                    ("bits" variable
+                       (:constant-flag t
+                        :type "int")
+                        (reparse-symbol arg-sub-list) [3544 3559])
+                    ("key" variable
+                       (:pointer 1
+                        :type ("AES_KEY" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [3561 3574]))                  
+                :prototype-flag t)
+                (reparse-symbol extern-c-contents) [3482 3575])
+            ("private_AES_set_encrypt_key" function
+               (:typemodifiers ("extern" "\"C\"")
+                :type "int"
+                :arguments 
+                  ( ("userKey" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "unsigned char")
+                        (reparse-symbol arg-sub-list) [3420 3449])
+                    ("bits" variable
+                       (:constant-flag t
+                        :type "int")
+                        (reparse-symbol arg-sub-list) [3450 3465])
+                    ("key" variable
+                       (:pointer 1
+                        :type ("AES_KEY" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [3467 3480]))                  
+                :prototype-flag t)
+                (reparse-symbol extern-c-contents) [3388 3481])
+            ("AES_set_decrypt_key" function
+               (:typemodifiers ("extern" "\"C\"")
+                :type "int"
+                :arguments 
+                  ( ("userKey" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "unsigned char")
+                        (reparse-symbol arg-sub-list) [3325 3354])
+                    ("bits" variable
+                       (:constant-flag t
+                        :type "int")
+                        (reparse-symbol arg-sub-list) [3355 3370])
+                    ("key" variable
+                       (:pointer 1
+                        :type ("AES_KEY" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [3372 3385]))                  
+                :prototype-flag t)
+                (reparse-symbol extern-c-contents) [3301 3386])
+            ("AES_set_encrypt_key" function
+               (:typemodifiers ("extern" "\"C\"")
+                :type "int"
+                :arguments 
+                  ( ("userKey" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "unsigned char")
+                        (reparse-symbol arg-sub-list) [3239 3268])
+                    ("bits" variable
+                       (:constant-flag t
+                        :type "int")
+                        (reparse-symbol arg-sub-list) [3269 3284])
+                    ("key" variable
+                       (:pointer 1
+                        :type ("AES_KEY" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [3286 3299]))                  
+                :prototype-flag t)
+                (reparse-symbol extern-c-contents) [3215 3300])
+            ("AES_options" function
+               (:typemodifiers ("extern" "\"C\"")
+                :type "char"
+                :arguments 
+                  ( ("" variable (:type "void") (reparse-symbol arg-sub-list) [3207 3212]))                  
+                :constant-flag t
+                :pointer 1
+                :prototype-flag t)
+                (reparse-symbol extern-c-contents) [3183 3213])
+            ("AES_KEY" type
+               (:typemodifiers ("extern" "\"C\"")
+                :type "typedef"
+                :typedef ("aes_key_st" type
+                     (:prototype t
+                      :type "struct")
+                      nil nil))
+                (reparse-symbol extern-c-contents) [3147 3181])
+            ("aes_key_st" type
+               (:typemodifiers ("extern" "\"C\"")
+                :type "struct"
+                :members 
+                  ( ("rd_key" variable
+                       (:dereference 1
+                        :type "unsigned int")
+                        (reparse-symbol classsubparts) [3080 3120])
+                    ("rounds" variable (:type "int") (reparse-symbol classsubparts) [3132 3143]))                  )
+                (reparse-symbol extern-c-contents) [2988 3146]))          
+      :file "aes.h"
+      :pointmax 5508
+      :fsize 5507
+      :lastmodtime '(21680 5682 0 0)
+      :unmatched-syntax nil
+      :lexical-table 
+        '(("AES_DECRYPT" . ((number "0" 2714 . 2715)))
+          ("HEADER_AES_H")
+          ("AES_MAXNR" . ((number "14" 2841 . 2843)))
+          ("AES_ENCRYPT" . ((number "1" 2692 . 2693)))
+          ("AES_BLOCK_SIZE" . ((number "16" 2867 . 2869)))
+          )
+)
+)
+  :file "!usr!include!openssl!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2")

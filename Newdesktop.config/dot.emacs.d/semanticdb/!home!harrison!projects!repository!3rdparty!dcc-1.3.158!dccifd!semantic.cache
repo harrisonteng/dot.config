@@ -1,0 +1,1237 @@
+;; Object dccifd/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "dccifd/"
+  :tables
+  (list
+    (semanticdb-table "dccifd.c"
+      :major-mode 'c-mode
+      :tags 
+        '( ("dcc_defs.h" include nil nil [1935 1956])
+            ("dccif.h" include nil nil [1957 1975])
+            ("dcc_paths.h" include nil nil [1976 1998])
+            ("cmn_defs.h" include nil nil [1999 2020])
+            ("signal.h" include (:system-flag t) nil [2021 2040])
+            ("stopping" variable
+               (:typemodifiers ("static")
+                :type "int")
+                nil [2043 2063])
+            ("MAX_SMTP_LINE" variable (:constant-flag t) nil [2073 2086])
+            ("use_ipv46" variable
+               (:typemodifiers ("static")
+                :default-value "DCC_GETH_DEF"
+                :type ("DCC_GETH" type (:type "class") nil nil))
+                nil [2088 2129])
+            ("ipv4_works" variable
+               (:typemodifiers ("static")
+                :type ("u_char" type (:type "class") nil nil))
+                nil [2130 2155])
+            ("ipv6_works" variable
+               (:typemodifiers ("static")
+                :type ("u_char" type (:type "class") nil nil))
+                nil [2156 2181])
+            ("listen_addr" variable
+               (:pointer 1
+                :typemodifiers ("static")
+                :type "char")
+                nil [2255 2280])
+            ("listen_family" variable
+               (:typemodifiers ("static")
+                :type ("sa_family_t" type (:type "class") nil nil))
+                nil [2281 2314])
+            ("listen_sun" variable
+               (:typemodifiers ("static")
+                :type ("sockaddr_un" type
+                     (:prototype t
+                      :type "struct")
+                      nil nil))
+                nil [2315 2352])
+            ("lhost" variable
+               (:dereference 1
+                :typemodifiers ("static")
+                :type "char")
+                nil [2354 2388])
+            ("lport" variable
+               (:typemodifiers ("static")
+                :type ("in_port_t" type (:type "class") nil nil))
+                nil [2389 2412])
+            ("rhost" variable
+               (:pointer 1
+                :typemodifiers ("static")
+                :constant-flag t
+                :type "char")
+                nil [2413 2438])
+            ("rrange" variable
+               (:typemodifiers ("static")
+                :type ("DCC_IP_RANGE" type (:type "class") nil nil))
+                nil [2439 2466])
+            ("listen_soc" variable
+               (:typemodifiers ("static")
+                :default-value "-1"
+                :type ("DCC_SOCKET" type (:type "class") nil nil))
+                nil [2467 2501])
+            ("proxy_out_family" variable
+               (:typemodifiers ("static")
+                :type ("sa_family_t" type (:type "class") nil nil))
+                nil [2535 2571])
+            ("proxy_out_sun" variable
+               (:typemodifiers ("static")
+                :type ("sockaddr_un" type
+                     (:prototype t
+                      :type "struct")
+                      nil nil))
+                nil [2572 2612])
+            ("proxy_out_host" variable
+               (:dereference 1
+                :typemodifiers ("static")
+                :type "char")
+                nil [2613 2658])
+            ("proxy_out_port" variable
+               (:typemodifiers ("static")
+                :type ("in_port_t" type (:type "class") nil nil))
+                nil [2659 2691])
+            ("proxy_out_su" variable
+               (:typemodifiers ("static")
+                :type ("DCC_SOCKU" type (:type "class") nil nil))
+                nil [2692 2722])
+            ("rundir" variable
+               (:pointer 1
+                :typemodifiers ("static")
+                :constant-flag t
+                :default-value "DCC_RUNDIR"
+                :type "char")
+                nil [2724 2763])
+            ("pidpath" variable
+               (:typemodifiers ("static")
+                :type ("DCC_PATH" type (:type "class") nil nil))
+                nil [2764 2788])
+            ("background" variable
+               (:typemodifiers ("static")
+                :default-value "1"
+                :type ("u_char" type (:type "class") nil nil))
+                nil [2845 2874])
+            ("proxy" variable
+               (:typemodifiers ("static")
+                :type ("u_char" type (:type "class") nil nil))
+                nil [2876 2896])
+            ("can_discard_1" variable
+               (:default-value "1"
+                :type ("u_char" type (:type "class") nil nil))
+                nil [3114 3139])
+            ("can_reject_1" variable
+               (:default-value "0"
+                :type ("u_char" type (:type "class") nil nil))
+                nil [3191 3215])
+            ("uses_reject_msg" variable
+               (:default-value "0"
+                :type ("u_char" type (:type "class") nil nil))
+                nil [3275 3302])
+            ("IN_BC" type
+               (:typedef ("" type
+                     (:members 
+                        ( ("base" variable
+                             (:pointer 1
+                              :type "char")
+                              (reparse-symbol classsubparts) [3389 3400])
+                          ("in" variable
+                             (:pointer 1
+                              :type "char")
+                              (reparse-symbol classsubparts) [3405 3414])
+                          ("out" variable
+                             (:pointer 1
+                              :type "char")
+                              (reparse-symbol classsubparts) [3419 3429])
+                          ("next_line" variable
+                             (:pointer 1
+                              :type "char")
+                              (reparse-symbol classsubparts) [3434 3450])
+                          ("size" variable (:type "int") (reparse-symbol classsubparts) [3455 3465])
+                          ("line_len" variable (:type "int") (reparse-symbol classsubparts) [3470 3484])
+                          ("socp" variable
+                             (:pointer 1
+                              :type "int")
+                              (reparse-symbol classsubparts) [3489 3500]))                        
+                      :type "struct")
+                      nil nil)
+                :type "typedef")
+                nil [3336 3509])
+            ("OUT_BC" type
+               (:typedef ("" type
+                     (:members 
+                        ( ("base" variable
+                             (:pointer 1
+                              :type "char")
+                              (reparse-symbol classsubparts) [3563 3574])
+                          ("in" variable
+                             (:pointer 1
+                              :type "char")
+                              (reparse-symbol classsubparts) [3579 3588])
+                          ("len" variable (:type "int") (reparse-symbol classsubparts) [3593 3602])
+                          ("size" variable (:type "int") (reparse-symbol classsubparts) [3607 3617])
+                          ("socp" variable
+                             (:pointer 1
+                              :type "int")
+                              (reparse-symbol classsubparts) [3622 3633]))                        
+                      :type "struct")
+                      nil nil)
+                :type "typedef")
+                nil [3510 3643])
+            ("work" type
+               (:members 
+                  ( ("proxy_in_soc" variable (:type "int") (reparse-symbol classsubparts) [3670 3688])
+                    ("proxy_in_su" variable (:type ("DCC_SOCKU" type (:type "class") nil nil)) (reparse-symbol classsubparts) [3693 3717])
+                    ("proxy_out_soc" variable (:type "int") (reparse-symbol classsubparts) [3722 3741])
+                    ("buf1" variable
+                       (:dereference 1
+                        :type "char")
+                        (reparse-symbol classsubparts) [3746 3770])
+                    ("buf2" variable
+                       (:dereference 1
+                        :type "char")
+                        (reparse-symbol classsubparts) [3808 3832])
+                    ("buf3" variable
+                       (:dereference 1
+                        :type "char")
+                        (reparse-symbol classsubparts) [3837 3853])
+                    ("buf4" variable
+                       (:dereference 1
+                        :type "char")
+                        (reparse-symbol classsubparts) [3858 3874])
+                    ("cw" variable (:type ("CMN_WORK" type (:type "class") nil nil)) (reparse-symbol classsubparts) [3879 3894])
+                    ("smtp_state" variable (:type ("" type
+                         (:members 
+                            ( ("SMTP_ST_START" variable
+                                 (:constant-flag t
+                                  :type "int")
+                                  (reparse-symbol enumsubparts) [3907 3921])
+                              ("SMTP_ST_HELO" variable
+                                 (:constant-flag t
+                                  :type "int")
+                                  (reparse-symbol enumsubparts) [3946 3959])
+                              ("SMTP_ST_TRANS" variable
+                                 (:constant-flag t
+                                  :type "int")
+                                  (reparse-symbol enumsubparts) [4000 4014])
+                              ("SMTP_ST_RCPT" variable
+                                 (:constant-flag t
+                                  :type "int")
+                                  (reparse-symbol enumsubparts) [4039 4052])
+                              ("SMTP_ST_ERROR" variable
+                                 (:constant-flag t
+                                  :type "int")
+                                  (reparse-symbol enumsubparts) [4075 4136]))                            
+                          :type "enum")
+                          nil nil)) (reparse-symbol classsubparts) [3899 4148])
+                    ("WORK_ZERO" variable (:constant-flag t) (reparse-symbol classsubparts) [4224 4233])
+                    ("fwd" variable
+                       (:pointer 1
+                        :type ("work" type
+                             (:prototype t
+                              :type "struct")
+                              nil nil))
+                        (reparse-symbol classsubparts) [4242 4259])
+                    ("msg_rd" variable (:type ("IN_BC" type (:type "class") nil nil)) (reparse-symbol classsubparts) [4264 4283])
+                    ("msg_wt" variable (:type ("OUT_BC" type (:type "class") nil nil)) (reparse-symbol classsubparts) [4318 4337])
+                    ("reply_in" variable (:type ("IN_BC" type (:type "class") nil nil)) (reparse-symbol classsubparts) [4372 4393])
+                    ("reply_out" variable (:type ("OUT_BC" type (:type "class") nil nil)) (reparse-symbol classsubparts) [4427 4449])
+                    ("total_hdrs" variable (:type "int") (reparse-symbol classsubparts) [4483 4508])
+                    ("cr_hdrs" variable (:type "int") (reparse-symbol classsubparts) [4483 4508])
+                    ("parse_rcvd_num" variable (:type "int") (reparse-symbol classsubparts) [4513 4533])
+                    ("dfgs" variable (:type ("u_int" type (:type "class") nil nil)) (reparse-symbol classsubparts) [4577 4594])
+                    ("DFG_WORK_LOCK" variable (:constant-flag t) (reparse-symbol classsubparts) [4612 4625])
+                    ("DFG_MISSING_BODY" variable (:constant-flag t) (reparse-symbol classsubparts) [4675 4691])
+                    ("DFG_MTA_BODY" variable (:constant-flag t) (reparse-symbol classsubparts) [4746 4758])
+                    ("DFG_MTA_HEADER" variable (:constant-flag t) (reparse-symbol classsubparts) [4813 4827])
+                    ("DFG_MTA_CKSUMS" variable (:constant-flag t) (reparse-symbol classsubparts) [4890 4904])
+                    ("DFG_SEEN_HDR" variable (:constant-flag t) (reparse-symbol classsubparts) [4971 4983])
+                    ("DFG_XCLIENT_NAME" variable (:constant-flag t) (reparse-symbol classsubparts) [5038 5054])
+                    ("DFG_XCLIENT_ADDR" variable (:constant-flag t) (reparse-symbol classsubparts) [5108 5124])
+                    ("DFG_XCLIENT_HELO" variable (:constant-flag t) (reparse-symbol classsubparts) [5183 5199])
+                    ("DFG_RECYCLE" variable (:constant-flag t) (reparse-symbol classsubparts) [5252 5263]))                  
+                :type "struct")
+                nil [3644 5382])
+            ("WORK" type
+               (:typedef ("work" type (:type "struct") nil nil)
+                :type "typedef")
+                nil [3644 5382])
+            ("work_free" variable
+               (:pointer 1
+                :typemodifiers ("static")
+                :type ("WORK" type (:type "class") nil nil))
+                nil [5433 5456])
+            ("FILES_PER_JOB" variable (:constant-flag t) nil [5762 5775])
+            ("max_max_work" variable
+               (:default-value "MAX_SELECT_WORK"
+                :type "int")
+                nil [5780 5815])
+            ("user_domain" type
+               (:members 
+                  ( ("fwd" variable
+                       (:pointer 1
+                        :type ("user_domain" type
+                             (:prototype t
+                              :type "struct")
+                              nil nil))
+                        (reparse-symbol classsubparts) [5851 5875])
+                    ("nm" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol classsubparts) [5880 5895])
+                    ("len" variable (:type "int") (reparse-symbol classsubparts) [5900 5909])
+                    ("wildcard" variable (:type ("u_char" type (:type "class") nil nil)) (reparse-symbol classsubparts) [5914 5930]))                  
+                :type "struct")
+                nil [5818 5945])
+            ("USER_DOMAIN" type
+               (:typedef ("user_domain" type (:type "struct") nil nil)
+                :type "typedef")
+                nil [5818 5945])
+            ("user_domains" variable
+               (:pointer 1
+                :typemodifiers ("static")
+                :type ("USER_DOMAIN" type (:type "class") nil nil))
+                nil [5946 5979])
+            ("hostname" variable
+               (:dereference 1
+                :typemodifiers ("static")
+                :default-value "\"@\""
+                :type "char")
+                nil [5980 6025])
+            ("MAX_MTA_DELAY" variable (:constant-flag t) nil [6121 6134])
+            ("sigterm" function
+               (:prototype-flag t
+                :typemodifiers ("static")
+                :arguments 
+                  ( ("" variable (:type "int") (reparse-symbol arg-sub-list) [6169 6173]))                  
+                :type "void")
+                nil [6149 6174])
+            ("setstack" function
+               (:prototype-flag t
+                :typemodifiers ("static")
+                :arguments 
+                  ( ("" variable
+                       (:pointer 1
+                        :type ("pthread_attr_t" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [6196 6213]))                  
+                :type "void")
+                nil [6175 6214])
+            ("set_soc" function
+               (:prototype-flag t
+                :typemodifiers ("static")
+                :arguments 
+                  ( ("" variable (:type ("DCC_EMSG" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [6237 6246])
+                    ("" variable (:type "int") (reparse-symbol arg-sub-list) [6247 6251])
+                    ("" variable (:type ("sa_family_t" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [6252 6264])
+                    ("" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [6265 6278]))                  
+                :type ("u_char" type (:type "class") nil nil))
+                nil [6215 6279])
+            ("bind_listen" function
+               (:prototype-flag t
+                :typemodifiers ("static")
+                :arguments 
+                  ( ("" variable (:type "void") (reparse-symbol arg-sub-list) [6304 6309]))                  
+                :type "void")
+                nil [6280 6310])
+            ("close_listen_soc" function
+               (:prototype-flag t
+                :typemodifiers ("static")
+                :arguments 
+                  ( ("" variable (:type "void") (reparse-symbol arg-sub-list) [6340 6345]))                  
+                :type "void")
+                nil [6311 6346])
+            ("unlink_listen_sun" function
+               (:prototype-flag t
+                :typemodifiers ("static")
+                :arguments 
+                  ( ("" variable (:type "void") (reparse-symbol arg-sub-list) [6377 6382]))                  
+                :type "void")
+                nil [6347 6383])
+            ("job_start" function
+               (:prototype-flag t
+                :pointer 1
+                :arguments 
+                  ( ("" variable
+                       (:pointer 1
+                        :type "void")
+                        (reparse-symbol arg-sub-list) [6417 6424]))                  
+                :type ("DCC_NORET" type (:type "class") nil nil))
+                nil [6396 6425])
+            ("job_close" function
+               (:prototype-flag t
+                :typemodifiers ("static")
+                :arguments 
+                  ( ("" variable
+                       (:pointer 1
+                        :type ("WORK" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [6448 6455]))                  
+                :type "void")
+                nil [6426 6456])
+            ("job_exit" function
+               (:prototype-flag t
+                :arguments 
+                  ( ("" variable
+                       (:pointer 1
+                        :type ("WORK" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [6488 6495]))                  
+                :type ("DCC_NORET" type (:type "class") nil nil))
+                nil [6469 6496])
+            ("msg_truncated" function
+               (:prototype-flag t
+                :arguments 
+                  ( ("" variable
+                       (:pointer 1
+                        :type ("WORK" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [6533 6540]))                  
+                :type ("DCC_NORET" type (:type "class") nil nil))
+                nil [6509 6541])
+            ("proxy_abort" function
+               (:prototype-flag t
+                :typemodifiers ("static")
+                :arguments 
+                  ( ("" variable
+                       (:pointer 1
+                        :type ("WORK" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [6566 6573])
+                    ("" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [6574 6587]))                  
+                :type "void")
+                nil [6542 6588])
+            ("add_work" function
+               (:prototype-flag t
+                :typemodifiers ("static")
+                :arguments 
+                  ( ("" variable (:type "int") (reparse-symbol arg-sub-list) [6610 6614]))                  
+                :type "void")
+                nil [6589 6615])
+            ("usage" function
+               (:typemodifiers ("static")
+                :arguments 
+                  ( ("barg" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [6636 6653])
+                    ("bvar" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [6654 6671]))                  
+                :type "void")
+                nil [6618 7459])
+            ("main" function
+               (:arguments 
+                  ( ("argc" variable (:type "int") (reparse-symbol arg-sub-list) [7471 7480])
+                    ("argv" variable
+                       (:pointer 2
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [7481 7493]))                  
+                :type "int")
+                nil [7462 18850])
+            ("setstack" function
+               (:typemodifiers ("static")
+                :arguments 
+                  ( ("attr" variable
+                       (:pointer 1
+                        :type ("pthread_attr_t" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [18875 18896]))                  
+                :type "void")
+                nil [18854 19778])
+            ("unlink_listen_sun" function
+               (:typemodifiers ("static")
+                :arguments 
+                  ( ("" variable (:type "void") (reparse-symbol arg-sub-list) [19812 19817]))                  
+                :type "void")
+                nil [19782 20044])
+            ("bind_unix_listen" function
+               (:typemodifiers ("static")
+                :arguments 
+                  ( ("" variable (:type "void") (reparse-symbol arg-sub-list) [20077 20082]))                  
+                :type "void")
+                nil [20048 22287])
+            ("bind_tcp_listen" function
+               (:typemodifiers ("static")
+                :arguments 
+                  ( ("" variable (:type "void") (reparse-symbol arg-sub-list) [22319 22324]))                  
+                :type "void")
+                nil [22291 24632])
+            ("set_soc" function
+               (:typemodifiers ("static")
+                :arguments 
+                  ( ("emsg" variable (:type ("DCC_EMSG" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [24658 24672])
+                    ("s" variable (:type "int") (reparse-symbol arg-sub-list) [24673 24679])
+                    ("family" variable (:type ("sa_family_t" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [24680 24699])
+                    ("sname" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [24700 24718]))                  
+                :type ("u_char" type (:type "class") nil nil))
+                nil [24636 25471])
+            ("bind_listen" function
+               (:typemodifiers ("static")
+                :arguments 
+                  ( ("" variable (:type "void") (reparse-symbol arg-sub-list) [25499 25504]))                  
+                :type "void")
+                nil [25475 26038])
+            ("soc_read" function
+               (:typemodifiers ("static")
+                :arguments 
+                  ( ("wp" variable
+                       (:pointer 1
+                        :type ("WORK" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [26098 26107])
+                    ("bc" variable
+                       (:pointer 1
+                        :type ("IN_BC" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [26108 26118]))                  
+                :type ("u_char" type (:type "class") nil nil))
+                nil [26042 27271])
+            ("msg_read_line" function
+               (:typemodifiers ("static")
+                :arguments 
+                  ( ("wp" variable
+                       (:pointer 1
+                        :type ("WORK" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [27386 27395])
+                    ("bc" variable
+                       (:pointer 1
+                        :type ("IN_BC" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [27396 27406]))                  
+                :type ("u_char" type (:type "class") nil nil))
+                nil [27324 27746])
+            ("buf_write_flush" function
+               (:typemodifiers ("static")
+                :arguments 
+                  ( ("wp" variable
+                       (:pointer 1
+                        :type ("WORK" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [27778 27787])
+                    ("bc" variable
+                       (:pointer 1
+                        :type ("OUT_BC" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [27788 27799]))                  
+                :type "void")
+                nil [27750 28638])
+            ("buf_write" function
+               (:typemodifiers ("static")
+                :arguments 
+                  ( ("wp" variable
+                       (:pointer 1
+                        :type ("WORK" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [28664 28673])
+                    ("bc" variable
+                       (:pointer 1
+                        :type ("OUT_BC" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [28674 28685])
+                    ("buf" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "void")
+                        (reparse-symbol arg-sub-list) [28686 28702])
+                    ("len" variable (:type ("u_int" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [28703 28713]))                  
+                :type "void")
+                nil [28642 29034])
+            ("buf_write_ck" function
+               (:typemodifiers ("static")
+                :arguments 
+                  ( ("wp" variable
+                       (:pointer 1
+                        :type ("WORK" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [29063 29072])
+                    ("buf" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [29073 29089])
+                    ("buf_len" variable (:type ("u_int" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [29090 29104]))                  
+                :type "void")
+                nil [29038 29151])
+            ("tmp_write" function
+               (:typemodifiers ("static")
+                :arguments 
+                  ( ("wp" variable
+                       (:pointer 1
+                        :type ("WORK" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [29177 29186])
+                    ("buf" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "void")
+                        (reparse-symbol arg-sub-list) [29187 29203])
+                    ("len" variable (:type "int") (reparse-symbol arg-sub-list) [29204 29212]))                  
+                :type "void")
+                nil [29155 29322])
+            ("tmp_read" function
+               (:typemodifiers ("static")
+                :arguments 
+                  ( ("wp" variable
+                       (:pointer 1
+                        :type ("WORK" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [29346 29355])
+                    ("buf" variable
+                       (:pointer 1
+                        :type "void")
+                        (reparse-symbol arg-sub-list) [29356 29366])
+                    ("len" variable (:type "int") (reparse-symbol arg-sub-list) [29367 29375]))                  
+                :type "int")
+                nil [29326 29592])
+            ("tmp_read_msg_in" function
+               (:typemodifiers ("static")
+                :arguments 
+                  ( ("wp" variable
+                       (:pointer 1
+                        :type ("WORK" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [29670 29679]))                  
+                :type "int")
+                nil [29643 30007])
+            ("add_work" function
+               (:typemodifiers ("static")
+                :arguments 
+                  ( ("i" variable (:type "int") (reparse-symbol arg-sub-list) [30059 30065]))                  
+                :type "void")
+                nil [30038 30311])
+            ("work_clean" function
+               (:arguments 
+                  ( ("" variable (:type "void") (reparse-symbol arg-sub-list) [30331 30336]))                  
+                :type "void")
+                nil [30315 30614])
+            ("job_close" function
+               (:typemodifiers ("static")
+                :arguments 
+                  ( ("wp" variable
+                       (:pointer 1
+                        :type ("WORK" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [30640 30649]))                  
+                :type "void")
+                nil [30618 31547])
+            ("job_exit" function
+               (:arguments 
+                  ( ("wp" variable
+                       (:pointer 1
+                        :type ("WORK" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [31582 31591]))                  
+                :type ("DCC_NORET" type (:type "class") nil nil))
+                nil [31563 31719])
+            ("mta_write" function
+               (:typemodifiers ("static")
+                :arguments 
+                  ( ("wp" variable
+                       (:pointer 1
+                        :type ("WORK" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [31814 31823])
+                    ("end" variable
+                       (:pointer 1
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [31824 31834]))                  
+                :type "void")
+                nil [31792 31976])
+            ("hdrs_copy" function
+               (:typemodifiers ("static")
+                :arguments 
+                  ( ("wp" variable
+                       (:pointer 1
+                        :type ("WORK" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [32056 32065]))                  
+                :type "void")
+                nil [32034 34235])
+            ("add_hdr" function
+               (:typemodifiers ("static")
+                :arguments 
+                  ( ("wp0" variable
+                       (:pointer 1
+                        :type "void")
+                        (reparse-symbol arg-sub-list) [34259 34269])
+                    ("buf" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [34270 34286])
+                    ("buf_len" variable (:type ("u_int" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [34287 34301]))                  
+                :type "void")
+                nil [34239 34366])
+            ("body_copy" function
+               (:typemodifiers ("static")
+                :arguments 
+                  ( ("wp" variable
+                       (:pointer 1
+                        :type ("WORK" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [34392 34401]))                  
+                :type "void")
+                nil [34370 35235])
+            ("close_listen_soc" function
+               (:typemodifiers ("static")
+                :arguments 
+                  ( ("" variable (:type "void") (reparse-symbol arg-sub-list) [35268 35273]))                  
+                :type "void")
+                nil [35239 35513])
+            ("sigterm" function
+               (:typemodifiers ("static")
+                :arguments 
+                  ( ("sig" variable (:type "int") (reparse-symbol arg-sub-list) [35567 35575]))                  
+                :type "void")
+                nil [35547 35736])
+            ("user_reject_discard" function
+               (:arguments 
+                  ( ("cwp" variable
+                       (:pointer 1
+                        :type ("CMN_WORK" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [35765 35779])
+                    ("RCPT_ST" variable (:type ("DCC_UNUSED" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [35780 35800])
+                    ("" variable (:type ("rcpt_st" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [35800 35808]))                  
+                :type "void")
+                nil [35740 36147])
+            ("get_helo" function
+               (:typemodifiers ("static")
+                :arguments 
+                  ( ("wp" variable
+                       (:pointer 1
+                        :type ("WORK" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [36172 36181])
+                    ("vp" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [36182 36197])
+                    ("len" variable (:type "int") (reparse-symbol arg-sub-list) [36198 36206]))                  
+                :type "void")
+                nil [36151 36527])
+            ("get_hdr" function
+               (:typemodifiers ("static")
+                :arguments 
+                  ( ("wp" variable
+                       (:pointer 1
+                        :type ("WORK" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [36719 36728]))                  
+                :type ("u_char" type (:type "class") nil nil))
+                nil [36659 39761])
+            ("get_hdrs" function
+               (:typemodifiers ("static")
+                :arguments 
+                  ( ("wp" variable
+                       (:pointer 1
+                        :type ("WORK" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [39786 39795]))                  
+                :type "void")
+                nil [39765 42807])
+            ("get_sender" function
+               (:typemodifiers ("static")
+                :arguments 
+                  ( ("wp" variable
+                       (:pointer 1
+                        :type ("WORK" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [42945 42954]))                  
+                :type "void")
+                nil [42922 43078])
+            ("get_body" function
+               (:typemodifiers ("static")
+                :arguments 
+                  ( ("wp" variable
+                       (:pointer 1
+                        :type ("WORK" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [43140 43149]))                  
+                :type ("u_char" type (:type "class") nil nil))
+                nil [43082 48308])
+            ("ascii_read_line" function
+               (:typemodifiers ("static")
+                :arguments 
+                  ( ("wp" variable
+                       (:pointer 1
+                        :type ("WORK" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [48572 48581]))                  
+                :type "int")
+                nil [48515 48851])
+            ("ascii_opt_str" function
+               (:typemodifiers ("static")
+                :arguments 
+                  ( ("wp" variable
+                       (:pointer 1
+                        :type ("WORK" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [49046 49055])
+                    ("st" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [49056 49071])
+                    ("stlen" variable (:type "int") (reparse-symbol arg-sub-list) [49072 49082]))                  
+                :type ("u_char" type (:type "class") nil nil))
+                nil [48996 49709])
+            ("check_addr" function
+               (:typemodifiers ("static")
+                :arguments 
+                  ( ("wp" variable
+                       (:pointer 1
+                        :type ("WORK" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [49763 49772])
+                    ("addrp" variable
+                       (:pointer 2
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [49777 49796])
+                    ("addr_lenp" variable
+                       (:pointer 1
+                        :type "int")
+                        (reparse-symbol arg-sub-list) [49797 49812])
+                    ("userp" variable
+                       (:pointer 2
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [49817 49836])
+                    ("user_lenp" variable
+                       (:pointer 1
+                        :type "int")
+                        (reparse-symbol arg-sub-list) [49837 49852]))                  
+                :type ("u_char" type (:type "class") nil nil))
+                nil [49713 52037])
+            ("set_rcpt" function
+               (:pointer 1
+                :typemodifiers ("static")
+                :arguments 
+                  ( ("wp" variable
+                       (:pointer 1
+                        :type ("WORK" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [52098 52107])
+                    ("rcpt" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [52110 52127])
+                    ("rcpt_len" variable (:type "int") (reparse-symbol arg-sub-list) [52128 52141])
+                    ("user" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [52144 52161])
+                    ("user_len" variable (:type "int") (reparse-symbol arg-sub-list) [52162 52175]))                  
+                :type ("RCPT_ST" type (:type "class") nil nil))
+                nil [52072 52609])
+            ("get_ascii_rcpts" function
+               (:typemodifiers ("static")
+                :arguments 
+                  ( ("wp" variable
+                       (:pointer 1
+                        :type ("WORK" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [52709 52718]))                  
+                :type "void")
+                nil [52681 54055])
+            ("ascii_done" function
+               (:arguments 
+                  ( ("wp" variable
+                       (:pointer 1
+                        :type ("WORK" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [54215 54224])
+                    ("result_char" variable (:type ("DCCIF_RESULT_CHAR" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [54225 54255]))                  
+                :type ("DCC_NORET" type (:type "class") nil nil))
+                nil [54194 55886])
+            ("ascii_job" function
+               (:arguments 
+                  ( ("wp" variable
+                       (:pointer 1
+                        :type ("WORK" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [55976 55985]))                  
+                :type ("DCC_NORET" type (:type "class") nil nil))
+                nil [55956 61750])
+            ("SMTP_REPLY_221" variable (:constant-flag t) nil [61762 61776])
+            ("SMTP_REPLY_220" variable (:constant-flag t) nil [61818 61832])
+            ("SMTP_REPLY_250_DATA" variable (:constant-flag t) nil [61867 61886])
+            ("SMTP_REPLY_250_RSET" variable (:constant-flag t) nil [61916 61935])
+            ("SMTP_REPLY_250_HELO" variable (:constant-flag t) nil [61965 61984])
+            ("SMTP_REPLY_250_POSTFIX" variable (:constant-flag t) nil [62014 62036])
+            ("SMTP_REPLY_250_RCPT" variable (:constant-flag t) nil [62079 62098])
+            ("SMTP_REPLY_250_MAIL" variable (:constant-flag t) nil [62133 62152])
+            ("SMTP_REPLY_350" variable (:constant-flag t) nil [62184 62198])
+            ("SMTP_REPLY_452_WLIST" variable (:constant-flag t) nil [62235 62255])
+            ("SMTP_REPLY_452_2MANY" variable (:constant-flag t) nil [62300 62320])
+            ("SMTP_REPLY_500" variable (:constant-flag t) nil [62365 62379])
+            ("SMTP_REPLY_501_NO_ARG" variable (:constant-flag t) nil [62429 62450])
+            ("SMTP_REPLY_501_BAD_ARG" variable (:constant-flag t) nil [62499 62521])
+            ("SMTP_REPLY_501_RCPT" variable (:constant-flag t) nil [62570 62589])
+            ("SMTP_REPLY_501_POSTFIX" variable (:constant-flag t) nil [62643 62665])
+            ("SMTP_REPLY_503_DATA" variable (:constant-flag t) nil [62724 62743])
+            ("SMTP_REPLY_503" variable (:constant-flag t) nil [62781 62795])
+            ("SMTP_DEBUG_TRACE" variable (:constant-flag t) nil [62846 62862])
+            ("smtp_trace" function
+               (:typemodifiers ("static")
+                :arguments 
+                  ( ("wp" variable
+                       (:pointer 1
+                        :type ("WORK" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [62890 62899])
+                    ("type" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [62900 62917])
+                    ("buf" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [62918 62934])
+                    ("len" variable (:type "int") (reparse-symbol arg-sub-list) [62935 62943]))                  
+                :type "void")
+                nil [62867 63176])
+            ("smtp_send_reply" function
+               (:typemodifiers ("static")
+                :arguments 
+                  ( ("wp" variable
+                       (:pointer 1
+                        :type ("WORK" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [63274 63283])
+                    ("reply" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [63284 63302])
+                    ("len" variable (:type "int") (reparse-symbol arg-sub-list) [63303 63311]))                  
+                :type "void")
+                nil [63246 63490])
+            ("SMTP_REPLY" variable (:constant-flag t) nil [63500 63510])
+            ("smtp_reply_error" function
+               (:typemodifiers ("static")
+                :arguments 
+                  ( ("wp" variable
+                       (:pointer 1
+                        :type ("WORK" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [63600 63609])
+                    ("reply" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [63610 63628])
+                    ("len" variable (:type "int") (reparse-symbol arg-sub-list) [63629 63637]))                  
+                :type "void")
+                nil [63571 63889])
+            ("SMTP_ERROR" variable (:constant-flag t) nil [63899 63909])
+            ("VERB_SMTP" type
+               (:typedef ("" type
+                     (:members 
+                        ( ("SMTP_VERB_ERR" variable
+                             (:constant-flag t
+                              :type "int")
+                              (reparse-symbol enumsubparts) [64020 64034])
+                          ("SMTP_VERB_UNREC" variable
+                             (:constant-flag t
+                              :type "int")
+                              (reparse-symbol enumsubparts) [64059 64075])
+                          ("SMTP_VERB_RSET" variable
+                             (:constant-flag t
+                              :type "int")
+                              (reparse-symbol enumsubparts) [64109 64124])
+                          ("SMTP_VERB_HELO" variable
+                             (:constant-flag t
+                              :type "int")
+                              (reparse-symbol enumsubparts) [64129 64144])
+                          ("SMTP_VERB_XCLIENT" variable
+                             (:constant-flag t
+                              :type "int")
+                              (reparse-symbol enumsubparts) [64149 64167])
+                          ("SMTP_VERB_XFORWARD" variable
+                             (:constant-flag t
+                              :type "int")
+                              (reparse-symbol enumsubparts) [64198 64217])
+                          ("SMTP_VERB_MAIL" variable
+                             (:constant-flag t
+                              :type "int")
+                              (reparse-symbol enumsubparts) [64248 64263])
+                          ("SMTP_VERB_RCPT" variable
+                             (:constant-flag t
+                              :type "int")
+                              (reparse-symbol enumsubparts) [64286 64301])
+                          ("SMTP_VERB_DATA" variable
+                             (:constant-flag t
+                              :type "int")
+                              (reparse-symbol enumsubparts) [64322 64337])
+                          ("SMTP_VERB_QUIT" variable
+                             (:constant-flag t
+                              :type "int")
+                              (reparse-symbol enumsubparts) [64342 64358]))                        
+                      :type "enum")
+                      nil nil)
+                :type "typedef")
+                nil [64001 64369])
+            ("PT" type
+               (:typedef ("" type
+                     (:members 
+                        ( ("str" variable
+                             (:pointer 1
+                              :constant-flag t
+                              :type "char")
+                              (reparse-symbol classsubparts) [64391 64407])
+                          ("str_len" variable (:type "int") (reparse-symbol classsubparts) [64412 64425])
+                          ("parm" variable
+                             (:pointer 1
+                              :constant-flag t
+                              :type "char")
+                              (reparse-symbol classsubparts) [64430 64447])
+                          ("parm_len" variable (:type "int") (reparse-symbol classsubparts) [64452 64466])
+                          ("verb" variable (:type ("VERB_SMTP" type (:type "class") nil nil)) (reparse-symbol classsubparts) [64471 64486])
+                          ("arg_required" variable (:type ("u_char" type (:type "class") nil nil)) (reparse-symbol classsubparts) [64491 64511]))                        
+                      :type "struct")
+                      nil nil)
+                :type "typedef")
+                nil [64370 64517])
+            ("pt" variable
+               (:dereference 1
+                :default-value "{
+#define PT_M(s,p,v,r) {s,LITZ(s),p,LITZ(p),SMTP_VERB_##v,r}
+    PT_M(\"HELO\",\"\", HELO, 1),
+    PT_M(\"EHLO\",\"\", HELO, 1),
+    PT_M(\"Mail\",\"From:\", MAIL, 1),
+    PT_M(\"Rcpt\",\"To:\", RCPT, 1),
+    PT_M(\"DATA\",\"\", DATA, 0),
+    PT_M(\"XFORWARD\",\"\", XFORWARD, 1),
+    PT_M(\"XCLIENT\",\"\", XCLIENT, 1),
+    PT_M(\"RSET\",\"\", RSET, 0),
+    PT_M(\"QUIT\",\"\", QUIT, 0),
+#undef PT_M
+}"
+                :type ("PT" type (:type "class") nil nil))
+                nil [64518 64896])
+            ("RESP_DIGIT" variable (:constant-flag t) nil [64906 64916])
+            ("get_smtp_verb" function
+               (:typemodifiers ("static")
+                :arguments 
+                  ( ("wp" variable
+                       (:pointer 1
+                        :type ("WORK" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [64979 64988])
+                    ("ppp" variable
+                       (:pointer 2
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [64996 65013])
+                    ("pep" variable
+                       (:pointer 2
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [65052 65069]))                  
+                :type ("VERB_SMTP" type (:type "class") nil nil))
+                nil [64948 66415])
+            ("proxy_rset" function
+               (:typemodifiers ("static")
+                :arguments 
+                  ( ("wp" variable
+                       (:pointer 1
+                        :type ("WORK" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [66487 66496]))                  
+                :type "void")
+                nil [66464 67287])
+            ("proxy_abort" function
+               (:typemodifiers ("static")
+                :arguments 
+                  ( ("wp" variable
+                       (:pointer 1
+                        :type ("WORK" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [67353 67362])
+                    ("log_msg" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [67363 67383]))                  
+                :type "void")
+                nil [67329 68250])
+            ("msg_truncated" function
+               (:arguments 
+                  ( ("wp" variable
+                       (:pointer 1
+                        :type ("WORK" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [68321 68330]))                  
+                :type ("DCC_NORET" type (:type "class") nil nil))
+                nil [68297 68467])
+            ("smtp_pass_line" function
+               (:typemodifiers ("static")
+                :arguments 
+                  ( ("wp" variable
+                       (:pointer 1
+                        :type ("WORK" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [68558 68567]))                  
+                :type "void")
+                nil [68531 68879])
+            ("smtp_get_resp" function
+               (:typemodifiers ("static")
+                :arguments 
+                  ( ("wp" variable
+                       (:pointer 1
+                        :type ("WORK" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [68945 68954])
+                    ("pass" variable (:type ("u_char" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [68962 68974])
+                    ("logbuf" variable
+                       (:pointer 1
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [69008 69021])
+                    ("logbuflen" variable (:type "int") (reparse-symbol arg-sub-list) [69054 69068]))                  
+                :type "int")
+                nil [68883 70515])
+            ("smtp_pass_cmd" function
+               (:typemodifiers ("static")
+                :arguments 
+                  ( ("wp" variable
+                       (:pointer 1
+                        :type ("WORK" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [70766 70775])
+                    ("reply" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [70783 70801])
+                    ("reply_len" variable (:type "int") (reparse-symbol arg-sub-list) [70846 70860])
+                    ("logbuf" variable
+                       (:pointer 1
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [70898 70911])
+                    ("logbuflen" variable (:type "int") (reparse-symbol arg-sub-list) [70947 70961]))                  
+                :type ("u_char" type (:type "class") nil nil))
+                nil [70708 71429])
+            ("SMTP_PASS_CMD" variable (:constant-flag t) nil [71439 71452])
+            ("smtp_xpostfix" function
+               (:typemodifiers ("static")
+                :arguments 
+                  ( ("wp" variable
+                       (:pointer 1
+                        :type ("WORK" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [71773 71782])
+                    ("verb" variable (:type ("VERB_SMTP" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [71790 71805])
+                    ("parm" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [71851 71868]))                  
+                :type "void")
+                nil [71747 73965])
+            ("get_smtp_rcpt" function
+               (:typemodifiers ("static")
+                :arguments 
+                  ( ("wp" variable
+                       (:pointer 1
+                        :type ("WORK" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [74071 74080])
+                    ("path" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [74088 74105])
+                    ("epath" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [74113 74131]))                  
+                :type ("u_char" type (:type "class") nil nil))
+                nil [74002 75755])
+            ("smtp_data_abort" function
+               (:typemodifiers ("static")
+                :arguments 
+                  ( ("wp" variable
+                       (:pointer 1
+                        :type ("WORK" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [75787 75796]))                  
+                :type "void")
+                nil [75759 76483])
+            ("smtp_trans_reject" function
+               (:typemodifiers ("static")
+                :arguments 
+                  ( ("wp" variable
+                       (:pointer 1
+                        :type ("WORK" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [76581 76590]))                  
+                :type "void")
+                nil [76551 77320])
+            ("smtp_temp_fail" function
+               (:arguments 
+                  ( ("wp" variable
+                       (:pointer 1
+                        :type ("WORK" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [77361 77370]))                  
+                :type ("DCC_NORET" type (:type "class") nil nil))
+                nil [77336 77470])
+            ("smtp_data_send" function
+               (:pointer 1
+                :typemodifiers ("static")
+                :constant-flag t
+                :arguments 
+                  ( ("wp" variable
+                       (:pointer 1
+                        :type ("WORK" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [77571 77580]))                  
+                :type "char")
+                nil [77536 79180])
+            ("smtp_data" function
+               (:typemodifiers ("static")
+                :arguments 
+                  ( ("wp" variable
+                       (:pointer 1
+                        :type ("WORK" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [79206 79215]))                  
+                :type "void")
+                nil [79184 81253])
+            ("proxy_job" function
+               (:arguments 
+                  ( ("wp" variable
+                       (:pointer 1
+                        :type ("WORK" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [81334 81343]))                  
+                :type ("DCC_NORET" type (:type "class") nil nil))
+                nil [81314 87251])
+            ("job_start" function
+               (:arguments 
+                  ( ("wp0" variable
+                       (:pointer 1
+                        :type "void")
+                        (reparse-symbol arg-sub-list) [87328 87338]))                  
+                :type ("DCC_NORET" type (:type "class") nil nil))
+                nil [87308 87480]))          
+      :file "dccifd.c"
+      :pointmax 87481
+      :fsize 87480
+      :lastmodtime '(21474 16158 0 0)
+      :unmatched-syntax '((punctuation 87306 . 87307) (VOID 87301 . 87305) (STATIC 87294 . 87300) (VOID 81309 . 81313) (STATIC 81302 . 81308) (VOID 77331 . 77335) (STATIC 77324 . 77330) (VOID 68292 . 68296) (STATIC 68285 . 68291) (VOID 55951 . 55955) (STATIC 55944 . 55950) (VOID 54189 . 54193) (STATIC 54182 . 54188) (punctuation 35799 . 35800) (VOID 31558 . 31562) (STATIC 31551 . 31557) (VOID 6504 . 6508) (STATIC 6497 . 6503) (VOID 6464 . 6468) (STATIC 6457 . 6463) (VOID 6391 . 6395) (STATIC 6384 . 6390) (punctuation 2842 . 2843) (string 2833 . 2842) (symbol 2819 . 2833) (punctuation 2817 . 2818) (symbol 2808 . 2816) (punctuation 2807 . 2808) (CHAR 2802 . 2806) (CONST 2796 . 2801) (STATIC 2789 . 2795))
+      :lexical-table 
+        '(("SMTP_REPLY_250_DATA" . ((string "\"250 dccifd mail ok\"" 61887 . 61907)))
+          ("SMTP_REPLY_250_RCPT" . ((string "\"250 dccifd Recipient ok\"" 62099 . 62124)))
+          ("SMTP_REPLY_250_MAIL" . ((string "\"250 dccifd Sender ok\"" 62153 . 62175)))
+          ("SMTP_REPLY_501_NO_ARG" . ((string "\"501 5.5.4 dccifd command arg required\"" 62451 . 62490)))
+          ("SMTP_REPLY_501_RCPT" . ((string "\"501 5.5.2 dccifd RCPT command syntax error\"" 62590 . 62634)))
+          ("SMTP_REPLY_503" . ((string "\"503 5.0.0 bad dccifd command sequence\"" 62797 . 62836)))
+          ("SMTP_REPLY" (spp-arg-list ("r") 63510 . 63513) . ((symbol "smtp_send_reply" 63514 . 63529) (semantic-list "(wp,SMTP_REPLY_##r,LITZ(SMTP_REPLY_##r))" 63529 . 63569)))
+          ("DFG_MISSING_BODY" . ((number "0x0002" 4694 . 4700)))
+          ("SMTP_REPLY_452_2MANY" . ((string "\"452 4.5.3 \"" 62321 . 62333) (symbol "DCC_XHDR_TOO_MANY_RCPTS" 62333 . 62356)))
+          ("SMTP_REPLY_220" . ((string "\"220 dccifd proxy ready\"" 61834 . 61858)))
+          ("MAX_SMTP_LINE")
+          ("SMTP_REPLY_221" . ((string "\"221 dccifd closing connection\"" 61778 . 61809)))
+          ("SMTP_DEBUG_TRACE" . ((number "3" 62863 . 62864)))
+          ("SMTP_REPLY_250_HELO" . ((string "\"250 dccifd HELO ok\"" 61985 . 62005)))
+          ("WORK_ZERO" . ((symbol "fwd" 4234 . 4237)))
+          ("SMTP_REPLY_503_DATA" . ((string "\"503 5.0.0 dccifd need RCPT\"" 62744 . 62772)))
+          ("MAX_MTA_DELAY" . ((semantic-list "(10*60+5)" 6137 . 6146)))
+          ("DFG_XCLIENT_HELO" . ((number "0x0100" 5202 . 5208)))
+          ("SMTP_REPLY_250_RSET" . ((string "\"250 dccifd RSET ok\"" 61936 . 61956)))
+          ("SMTP_REPLY_350" . ((string "\"354 Enter mail to dccifd\"" 62200 . 62226)))
+          ("SMTP_ERROR" (spp-arg-list ("r") 63909 . 63912) . ((symbol "smtp_reply_error" 63913 . 63929) (semantic-list "(wp,SMTP_REPLY_##r,LITZ(SMTP_REPLY_##r))" 63929 . 63969)))
+          ("DFG_MTA_HEADER" . ((number "0x0008" 4832 . 4838)))
+          ("DFG_MTA_CKSUMS" . ((number "0x0010" 4909 . 4915)))
+          ("DFG_XCLIENT_NAME" . ((number "0x0040" 5057 . 5063)))
+          ("DFG_XCLIENT_ADDR" . ((number "0x0080" 5127 . 5133)))
+          ("SMTP_REPLY_500" . ((string "\"500 5.0.0 dccifd command unrecognized\"" 62381 . 62420)))
+          ("SMTP_REPLY_501_BAD_ARG" . ((string "\"501 5.5.1 dccifd command unrecognized\"" 62522 . 62561)))
+          ("SMTP_PASS_CMD" (spp-arg-list ("r") 71452 . 71455) . ((symbol "smtp_pass_cmd" 71456 . 71469) (semantic-list "(wp,SMTP_REPLY_##r,LITZ(SMTP_REPLY_##r), \\
+				       0, 0)" 71469 . 71528)))
+          ("DFG_WORK_LOCK" . ((number "0x0001" 4630 . 4636)))
+          ("DFG_RECYCLE" . ((semantic-list "(DFG_WORK_LOCK | DFG_MTA_BODY		\\
+			      | DFG_XCLIENT_NAME | DFG_XCLIENT_ADDR	\\
+			      | DFG_XCLIENT_HELO)" 5264 . 5374)))
+          ("FILES_PER_JOB" . ((number "4" 5778 . 5779)))
+          ("SMTP_REPLY_250_POSTFIX" . ((string "\"250 dccifd Postfix extension ok\"" 62037 . 62070)))
+          ("SMTP_REPLY_452_WLIST" . ((string "\"452 4.5.3 \"" 62256 . 62268) (symbol "DCC_XHDR_INCOMPAT_WLIST" 62268 . 62291)))
+          ("SMTP_REPLY_501_POSTFIX" . ((string "\"501 5.5.2 dccifd Postfix extension syntax error\"" 62666 . 62715)))
+          ("DFG_SEEN_HDR" . ((number "0x0020" 4988 . 4994)))
+          ("RESP_DIGIT" (spp-arg-list ("c") 64916 . 64919) . ((semantic-list "((c) >= '0' && (c) <= '9')" 64920 . 64946)))
+          ("DFG_MTA_BODY" . ((number "0x0004" 4763 . 4769)))
+          )
+))
+  :file "!home!harrison!projects!repository!3rdparty!dcc-1.3.158!dccifd!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2")

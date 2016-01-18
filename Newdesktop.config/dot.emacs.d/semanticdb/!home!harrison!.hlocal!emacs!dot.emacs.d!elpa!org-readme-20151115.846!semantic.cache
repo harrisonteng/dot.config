@@ -1,0 +1,16 @@
+;; Object org-readme-20151115.846/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "org-readme-20151115.846/"
+  :tables
+  (list
+    (semanticdb-table "org-readme-autoloads.el"
+      :major-mode 'emacs-lisp-mode
+      :tags nil
+      :file "org-readme-autoloads.el"
+      :pointmax 293
+      :fsize 1638
+      :lastmodtime '(22090 5917 820669 741000)
+      :unmatched-syntax nil))
+  :file "!home!harrison!.hlocal!emacs!dot.emacs.d!elpa!org-readme-20151115.846!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2")

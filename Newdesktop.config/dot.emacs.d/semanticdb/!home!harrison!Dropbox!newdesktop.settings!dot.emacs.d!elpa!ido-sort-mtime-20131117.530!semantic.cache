@@ -1,0 +1,16 @@
+;; Object ido-sort-mtime-20131117.530/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "ido-sort-mtime-20131117.530/"
+  :tables
+  (list
+    (semanticdb-table "ido-sort-mtime-autoloads.el"
+      :major-mode 'emacs-lisp-mode
+      :tags nil
+      :file "ido-sort-mtime-autoloads.el"
+      :pointmax 301
+      :fsize 1274
+      :lastmodtime '(21803 20860 98528 693000)
+      :unmatched-syntax nil))
+  :file "!home!harrison!Dropbox!newdesktop.settings!dot.emacs.d!elpa!ido-sort-mtime-20131117.530!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2")

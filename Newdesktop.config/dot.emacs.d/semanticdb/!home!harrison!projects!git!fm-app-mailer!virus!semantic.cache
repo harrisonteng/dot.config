@@ -1,0 +1,37 @@
+;; Object virus/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "virus/"
+  :tables (list 
+   (semanticdb-table "Makefile.am"
+    :major-mode 'makefile-automake-mode
+    :tags 
+        '( ("AUTOMAKE_OPTIONS" variable (:default-value ("foreign")) nil [1 26])
+            ("agents_execdir" variable (:default-value ("@prefix@/agents")) nil [27 58])
+            ("decomposedir" variable (:default-value ("/data1/mail/virusqueue")) nil [58 94])
+            ("jaildir" variable (:default-value ("@prefix@/virus/virus_jail")) nil [94 128])
+            ("parsejaildir" variable (:default-value ("@prefix@/virus/virus_parse_jail")) nil [128 173])
+            ("strippeddir" variable (:default-value ("@prefix@/virus/virus_stripped")) nil [173 215])
+            ("virustmpdir" variable (:default-value ("@prefix@/virus/virus_tmp_messages")) nil [215 261])
+            ("agents_exec_PROGRAMS" variable (:default-value ("virus")) nil [262 289])
+            ("noinst_HEADERS" variable (:default-value ("filters.h" "mcfg.h" "virus.h" "../exim_q.h")) nil [289 341])
+            ("virus_SOURCES" variable (:default-value ("main.c" "../hash.c" "../common.c" "../g_mime_common.c" "../config.c" "../mcfg.c" "../logger.c" "default_filter.c" "norton_filter.c" "tnef.c" "clamav_filter.c" "zerohour_filter.c" "savdid_filter.c" "../exim_q.c" "../utils.c")) nil [341 550])
+            ("virus_LDFLAGS" variable (:default-value ("-Wall" "-Wl,-export-dynamic" "-g")) nil [550 593])
+            ("virus_LDADD" variable (:default-value ("-lemcbase" "-lgmime-2.0" "-lglib-2.0" "-lgobject-2.0" "-lcrypt" "-lssl" "-lcrypto")) nil [593 675])
+            ("decompose_DATA" variable nil nil [676 692])
+            ("jail_DATA" variable nil nil [692 703])
+            ("parsejail_DATA" variable nil nil [703 719])
+            ("stripped_DATA" variable nil nil [719 734])
+            ("virustmp_DATA" variable nil nil [734 749])
+            ("install-exec-hook" function nil nil [750 953])
+            ("uninstall-hook" function nil nil [954 1108]))          
+    :file "Makefile.am"
+    :pointmax 1108
+    :fsize 1107
+    :lastmodtime '(21723 53485 908739 769000)
+    :unmatched-syntax '((shell-command 971 . 1107) (bol 970 . 970))
+    )
+   )
+  :file "!home!harrison!projects!git!fm-app-mailer!virus!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2"
+  )

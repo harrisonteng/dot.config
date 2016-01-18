@@ -1,0 +1,36 @@
+;; Object reference/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "reference/"
+  :tables
+  (list
+    (semanticdb-table "Makefile.am"
+      :major-mode 'makefile-automake-mode
+      :tags 
+        '( ("DOC_MODULE_VERSION" variable (:default-value ("$(GMIME_MAJOR_VERSION).$(GMIME_MINOR_VERSION)")) nil [86 153])
+            ("DOC_MODULE" variable (:default-value ("gmime")) nil [153 172])
+            ("DOC_MAIN_SGML_FILE" variable (:default-value ("gmime-docs.sgml")) nil [200 237])
+            ("DOC_SOURCE_DIR" variable (:default-value ("$(top_srcdir)/gmime")) nil [313 350])
+            ("HTML_DIR" variable (:default-value ("$(datadir)/gtk-doc/html")) nil [351 386])
+            ("HTML_IMAGES" variable nil nil [424 439])
+            ("SCAN_OPTIONS" variable (:default-value ("--deprecated-guards=\"GMIME_DISABLE_DEPRECATED\"")) nil [481 543])
+            ("SCANGOBJ_OPTIONS" variable (:default-value ("--type-init-func=\"g_mime_init (0)\"")) nil [587 639])
+            ("MKDB_OPTIONS" variable (:default-value ("--sgml-mode" "--output-format=xml" "--ignore-files=trio")) nil [681 748])
+            ("INCLUDES" variable (:default-value ("-I$(top_srcdir)" "-I$(top_builddir)" "-I$(top_builddir)/gmime" "$(GLIB_CFLAGS)")) nil [849 947])
+            ("GTKDOC_LIBS" variable (:default-value ("$(top_builddir)/util/libutil.la")) nil [948 1078])
+            ("content_files" variable (:default-value ("building.sgml" "changes-2.0.sgml" "changes-2.2.sgml" "changes-2.4.sgml" "changes-2.6.sgml" "compiling.sgml" "data-wrappers.sgml" "filters.sgml" "question_index.sgml" "resources.sgml" "streams.sgml" "tree_index.sgml")) nil [1141 1405])
+            ("HFILE_GLOB" variable (:default-value ("$(top_srcdir)/gmime/*.h")) nil [1430 1465])
+            ("CFILE_GLOB" variable (:default-value ("$(top_srcdir)/gmime/*.c")) nil [1465 1500])
+            ("IGNORE_HFILES" variable (:default-value ("gmime-charset-map-private.h" "gmime-table-private.h" "gmime-parse-utils.h" "gmime-common.h" "gmime-events.h")) nil [1540 1678])
+            ("FIXXREF_OPTIONS" variable nil nil [1722 1741])
+            ("$(top_srcdir)/gtk-doc.make" include nil nil [1742 1777])
+            ("EXTRA_DIST" variable (:default-value ("$(DOC_MODULE)-docs.sgml" "gmime.hierarchy")) nil [1806 1871])
+            ("BUILT_EXTRA_DIST" variable nil nil [1872 1892])
+            ("dist-hook-local" function (:arguments ("$(BUILT_EXTRA_DIST)")) nil [1893 2087]))          
+      :file "Makefile.am"
+      :pointmax 2087
+      :fsize 2086
+      :lastmodtime '(21560 30358 182185 270000)
+      :unmatched-syntax '((shell-command 1931 . 2086) (bol 1930 . 1930))))
+  :file "!home!harrison!projects!gmime!docs!reference!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2")

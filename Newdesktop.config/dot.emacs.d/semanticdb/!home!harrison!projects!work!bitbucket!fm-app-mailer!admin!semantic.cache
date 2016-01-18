@@ -1,0 +1,21 @@
+;; Object admin/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "admin/"
+  :tables
+  (list
+    (semanticdb-table "Makefile.am"
+      :major-mode 'makefile-automake-mode
+      :tags 
+        '( ("mailer_execdir" variable (:default-value ("$(prefix)/bin")) nil [1 30])
+            ("mailer_exec_PROGRAMS" variable (:default-value ("emcqueue")) nil [31 61])
+            ("emcqueue_SOURCES" variable (:default-value ("emcqueue.c" "../hash.c" "../common.c" "../config.c" "../mcfg.c" "../logger.c")) nil [61 145])
+            ("emcqueue_LDFLAGS" variable (:default-value ("-Wl,-export-dynamic")) nil [145 182])
+            ("emcqueue_LDADD" variable (:default-value ("-lgmime-2.0" "-lglib-2.0" "-lgobject-2.0")) nil [182 234]))          
+      :file "Makefile.am"
+      :pointmax 234
+      :fsize 233
+      :lastmodtime '(21742 20804 0 0)
+      :unmatched-syntax nil))
+  :file "!home!harrison!projects!work!bitbucket!fm-app-mailer!admin!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2")

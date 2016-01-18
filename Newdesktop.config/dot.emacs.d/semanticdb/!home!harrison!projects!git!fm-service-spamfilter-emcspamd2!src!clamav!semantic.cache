@@ -1,0 +1,48 @@
+;; Object clamav/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "clamav/"
+  :tables
+  (list
+    (semanticdb-table "clamav_filter.h"
+      :major-mode 'c-mode
+      :tags 
+        '( ("__clamav_filter_h" variable (:constant-flag t) nil [35 52])
+            ("stdio.h" include (:system-flag t) nil [54 72])
+            ("stdlib.h" include (:system-flag t) nil [73 92])
+            ("unistd.h" include (:system-flag t) nil [93 112])
+            ("emcspamd.h" include nil nil [113 134])
+            ("libemime.h" include (:system-flag t) nil [135 156])
+            ("lookup_clamav" function
+               (:prototype-flag t
+                :arguments 
+                  ( ("mime_message" variable
+                       (:pointer 1
+                        :type ("EMimeMessage" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [186 214])
+                    ("body" variable
+                       (:pointer 1
+                        :type ("ParsedMessageBody" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [223 248])
+                    ("domain_policy" variable
+                       (:pointer 1
+                        :type ("DomainPolicy" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [257 286])
+                    ("results" variable
+                       (:pointer 1
+                        :type ("SpammerResults" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [295 320])
+                    ("always_flag" variable (:type ("BOOL" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [323 340]))                  
+                :type ("BOOL" type (:type "class") nil nil))
+                nil [158 341]))          
+      :file "clamav_filter.h"
+      :pointmax 374
+      :fsize 373
+      :lastmodtime '(21723 54067 396750 685000)
+      :unmatched-syntax nil
+      :lexical-table 
+        '(("__clamav_filter_h")
+          )
+))
+  :file "!home!harrison!projects!git!fm-service-spamfilter-emcspamd2!src!clamav!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2")

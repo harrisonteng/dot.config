@@ -1,0 +1,25 @@
+;; Object bcastbnc/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "bcastbnc/"
+  :tables (list 
+   (semanticdb-table "Makefile.am"
+    :major-mode 'makefile-automake-mode
+    :tags 
+        '( ("agents_execdir" variable (:default-value ("$(prefix)/agents")) nil [1 35])
+            ("agents_exec_PROGRAMS" variable (:default-value ("bcastbnc")) nil [36 66])
+            ("bcastbnc_SOURCES" variable (:default-value ("bcastbnc.c" "../hash.c" "../common.c" "../config.c" "../mcfg.c" "../logger.c")) nil [66 150])
+            ("bcastbnc_LDADD" variable (:default-value ("-lemcbase" "-lglib-2.0")) nil [150 186])
+            ("bcastbnc_LDFLAGS" variable (:default-value ("-Wl,-export-dynamic")) nil [186 223])
+            ("install-exec-hook" function nil nil [224 359])
+            ("uninstall-hook" function nil nil [360 464]))          
+    :file "Makefile.am"
+    :pointmax 464
+    :fsize 463
+    :lastmodtime '(21696 16167 470341 608000)
+    :unmatched-syntax '((shell-command 377 . 463) (bol 376 . 376))
+    )
+   )
+  :file "!home!harrison!projects!git!fm-app-mailer!bcastbnc!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2"
+  )

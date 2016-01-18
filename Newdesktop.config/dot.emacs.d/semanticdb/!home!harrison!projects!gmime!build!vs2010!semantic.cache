@@ -1,0 +1,21 @@
+;; Object vs2010/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "vs2010/"
+  :tables
+  (list
+    (semanticdb-table "Makefile.am"
+      :major-mode 'makefile-automake-mode
+      :tags 
+        '( ("EXTRA_DIST" variable (:default-value ("config-win32.h.in" "config-win32.h" "gmime.vcxproj" "uuencode.vcxproj" "uudecode.vcxproj" "gmime.sln" "basic-example.vcxproj" "imap-example.vcxproj" "test-headers.vcxproj" "test-streams.vcxproj" "test-iconv.vcxproj" "test-mime.vcxproj" ...)) nil [60 378]))          
+      :file "Makefile.am"
+      :pointmax 378
+      :fsize 377
+      :lastmodtime '(21560 30358 182185 270000)
+      :unmatched-syntax nil)
+    (semanticdb-table "unistd.h"
+      :file "unistd.h"
+      :fsize 672
+      :lastmodtime '(21560 30358 182185 270000)))
+  :file "!home!harrison!projects!gmime!build!vs2010!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2")

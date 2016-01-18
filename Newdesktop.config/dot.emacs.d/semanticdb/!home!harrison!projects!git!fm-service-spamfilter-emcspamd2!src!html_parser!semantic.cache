@@ -1,0 +1,114 @@
+;; Object html_parser/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "html_parser/"
+  :tables
+  (list
+    (semanticdb-table "parser.h"
+      :major-mode 'c-mode
+      :tags 
+        '( ("_html_parser_h_" variable (:constant-flag t) nil [60 75])
+            ("glib.h" include (:system-flag t) nil [76 93])
+            ("emcspamd.h" include (:system-flag t) nil [94 115])
+            ("str_utils.h" include nil nil [116 138])
+            ("../emcspamd.h" include nil nil [139 163])
+            ("Parsed_HTML_Message_t" type
+               (:members 
+                  ( ("plaintext" variable
+                       (:pointer 1
+                        :type ("GString" type (:type "class") nil nil))
+                        (reparse-symbol classsubparts) [600 619])
+                    ("tags" variable
+                       (:pointer 1
+                        :type ("GList" type (:type "class") nil nil))
+                        (reparse-symbol classsubparts) [624 636])
+                    ("uris" variable
+                       (:pointer 1
+                        :type ("GList" type (:type "class") nil nil))
+                        (reparse-symbol classsubparts) [641 653])
+                    ("fullurl_anchor" variable
+                       (:pointer 1
+                        :type ("GSList" type (:type "class") nil nil))
+                        (reparse-symbol classsubparts) [658 681]))                  
+                :type "struct")
+                nil [557 704])
+            ("Parsed_HTML_Message" type
+               (:typedef ("Parsed_HTML_Message_t" type (:type "struct") nil nil)
+                :type "typedef")
+                nil [557 704])
+            ("parse_html" function
+               (:prototype-flag t
+                :arguments 
+                  ( ("parsed_body" variable
+                       (:pointer 1
+                        :type ("ParsedMessageBody" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [721 752]))                  
+                :type "int")
+                nil [706 753])
+            ("find_inline_links" function
+               (:prototype-flag t
+                :pointer 1
+                :arguments 
+                  ( ("text_body" variable
+                       (:pointer 1
+                        :type ("GString" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [781 800]))                  
+                :type ("GString" type (:type "class") nil nil))
+                nil [754 801])
+            ("find_full_urls" function
+               (:prototype-flag t
+                :pointer 1
+                :arguments 
+                  ( ("text_body" variable
+                       (:pointer 1
+                        :type ("GString" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [826 845]))                  
+                :type ("GString" type (:type "class") nil nil))
+                nil [802 846]))          
+      :file "parser.h"
+      :pointmax 855
+      :fsize 854
+      :lastmodtime '(21723 54068 4750 697000)
+      :unmatched-syntax nil
+      :lexical-table 
+        '(("_html_parser_h_")
+          )
+)
+    (semanticdb-table "str_utils.h"
+      :major-mode 'c-mode
+      :tags 
+        '( ("_STR_UTILS_H_" variable (:constant-flag t) nil [31 44])
+            ("glib.h" include (:system-flag t) nil [45 62])
+            ("g_string_free_full" function
+               (:prototype-flag t
+                :arguments 
+                  ( ("str" variable (:type ("gpointer" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [88 101]))                  
+                :type "void")
+                nil [64 102])
+            ("URL_Anchortext_t" type
+               (:members 
+                  ( ("fullurl" variable
+                       (:pointer 1
+                        :type ("GString" type (:type "class") nil nil))
+                        (reparse-symbol classsubparts) [142 159])
+                    ("anchortext" variable
+                       (:pointer 1
+                        :type ("GString" type (:type "class") nil nil))
+                        (reparse-symbol classsubparts) [164 184]))                  
+                :type "struct")
+                nil [104 202])
+            ("URL_Anchortext" type
+               (:typedef ("URL_Anchortext_t" type (:type "struct") nil nil)
+                :type "typedef")
+                nil [104 202]))          
+      :file "str_utils.h"
+      :pointmax 213
+      :fsize 212
+      :lastmodtime '(21723 54068 4750 697000)
+      :unmatched-syntax nil
+      :lexical-table 
+        '(("_STR_UTILS_H_")
+          )
+))
+  :file "!home!harrison!projects!git!fm-service-spamfilter-emcspamd2!src!html_parser!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2")

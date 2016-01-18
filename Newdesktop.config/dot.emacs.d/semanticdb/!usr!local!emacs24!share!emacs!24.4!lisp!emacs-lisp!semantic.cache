@@ -1,0 +1,104 @@
+;; Object emacs-lisp/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "emacs-lisp/"
+  :tables
+  (list
+    (semanticdb-table "byte-run.el.gz"
+      :major-mode 'emacs-lisp-mode
+      :tags 
+        '( ("macro-declaration-function" variable (:default-value (function macro-declaration-function)) nil [1239 1571])
+            ("defalias" code nil nil [1573 2715])
+            ("defun-declarations-alist" variable (:default-value (list (list (quote advertised-calling-convention) (function (lambda (f _args arglist when) (list (quote set-advertised-calling-convention) (list (quote quote) f) (list (quote quote) arglist) (list (quote quote) when))))) (list (quote obsolete) (function (lambda (f _args new-name when) (list (quote make-obsolete) (list (quote quote) f) (list (quote quote) new-name) (list (quote quote) when))))) (list (quote compiler-macro) (function (lambda (f args compiler-function) (\` (eval-and-compile (put (quote (\, f)) (quote compiler-macro) (\, (if (eq (car-safe compiler-function) (quote lambda)) (\` (lambda (\, (append (cadr compiler-function) args)) (\,@ (cddr compiler-function)))) (\` (function (\, compiler-function))))))))))) (list (quote doc-string) (function (lambda (f _args pos) (list (quote put) (list (quote quote) f) (quote (quote doc-string-elt)) (list (quote quote) pos))))) (list (quote indent) (function (lambda (f _args val) (list (quote put) (list (quote quote) f) (quote (quote lisp-indent-function)) (list (quote quote) val))))))) nil [2912 4524])
+            ("macro-declarations-alist" variable (:default-value (cons (list (quote debug) (function (lambda (name _args spec) (list (quote progn) :autoload-end (list (quote put) (list (quote quote) name) (quote (quote edebug-form-spec)) (list (quote quote) spec)))))) defun-declarations-alist)) nil [4526 5153])
+            ("put" code nil nil [5155 5188])
+            ("put" code nil nil [5189 5228])
+            ("defalias" code nil nil [5229 6948])
+            ("defun" function (:arguments ("name" "arglist" "docstring" "body")) nil [6997 9374])
+            ("fset" code nil nil [9480 9501])
+            ("defsubst" function (:arguments ("name" "arglist" "body")) nil [10512 10983])
+            ("advertised-signature-table" variable (:default-value (make-hash-table :test (quote eq) :weakness (quote key))) nil [10985 11063])
+            ("set-advertised-calling-convention" function (:arguments ("function" "signature" "_when")) nil [11065 11435])
+            ("make-obsolete" function (:arguments ("obsolete-name" "current-name" "when")) nil [11437 12330])
+            ("define-obsolete-function-alias" function (:arguments ("obsolete-name" "current-name" "when" "docstring")) nil [12332 13149])
+            ("make-obsolete-variable" function (:arguments ("obsolete-name" "current-name" "when" "access-type")) nil [13151 13982])
+            ("define-obsolete-variable-alias" function (:arguments ("obsolete-name" "current-name" "when" "docstring")) nil [13985 15680])
+            ("define-obsolete-face-alias" function (:arguments ("obsolete-face" "current-face" "when")) nil [16010 16396])
+            ("dont-compile" function (:arguments ("body")) nil [16398 16707])
+            ("eval-when-compile" function (:arguments ("body")) nil [16950 17311])
+            ("eval-and-compile" function (:arguments ("body")) nil [17313 17691])
+            ("with-no-warnings" function (:arguments ("body")) nil [17693 17901])
+            ("make-obsolete-variable" code nil nil [19196 19305])
+            ("make-obsolete" code nil nil [19306 19397]))          
+      :file "byte-run.el.gz"
+      :pointmax 19425
+      :fsize 5834
+      :lastmodtime '(21291 53104 0 0)
+      :unmatched-syntax nil)
+    (semanticdb-table "timer.el.gz"
+      :major-mode 'emacs-lisp-mode
+      :tags 
+        '( ("cl-lib" include nil nil [1046 1063])
+            ("cl-defstruct" code nil nil [1066 1818])
+            ("timerp" function (:arguments ("object")) nil [1820 1925])
+            ("timer--check" function (:arguments ("timer")) nil [1927 2032])
+            ("timer--time-setter" function (:arguments ("timer" "time")) nil [2034 2468])
+            ("timer--time" function (:arguments ("timer")) nil [2494 2680])
+            ("timer-set-time" function (:arguments ("timer" "time" "delta")) nil [2682 3077])
+            ("timer-set-idle-time" function (:arguments ("timer" "secs" "repeat")) nil [3079 3578])
+            ("timer-next-integral-multiple-of-time" function (:arguments ("time" "secs")) nil [3580 4585])
+            ("timer-relative-time" function (:arguments ("time" "secs" "usecs" "psecs")) nil [4587 5028])
+            ("timer--time-less-p" function (:arguments ("t1" "t2")) nil [5030 5172])
+            ("timer-inc-time" function (:arguments ("timer" "secs" "usecs" "psecs")) nil [5174 5506])
+            ("timer-set-time-with-usecs" function (:arguments ("timer" "time" "usecs" "delta")) nil [5508 6161])
+            ("timer-set-function" function (:arguments ("timer" "function" "args")) nil [6163 6393])
+            ("timer--activate" function (:arguments ("timer" "triggered-p" "reuse-cell" "idle")) nil [6396 7395])
+            ("timer-activate" function (:arguments ("timer" "triggered-p" "reuse-cell")) nil [7397 7913])
+            ("timer-activate-when-idle" function (:arguments ("timer" "dont-wait" "reuse-cell")) nil [7915 8793])
+            ("defalias" code nil nil [8795 8836])
+            ("cancel-timer" function (:arguments ("timer")) nil [8838 9042])
+            ("cancel-timer-internal" function (:arguments ("timer")) nil [9044 9466])
+            ("cancel-function-timers" function
+               (:user-visible-flag t
+                :arguments ("function"))
+                nil [9468 10006])
+            ("timer-event-last" variable nil nil [10055 10113])
+            ("timer-event-last-1" variable nil nil [10114 10182])
+            ("timer-event-last-2" variable nil nil [10183 10252])
+            ("timer-max-repeats" variable (:default-value 10) nil [10254 10631])
+            ("timer-until" function (:arguments ("timer" "time")) nil [10633 10890])
+            ("timer-event-handler" function (:arguments ("timer")) nil [10892 13826])
+            ("timeout-event-p" function (:arguments ("event")) nil [13889 14013])
+            ("declare-function" code nil nil [14017 14068])
+            ("run-at-time" function
+               (:user-visible-flag t
+                :arguments ("time" "repeat" "function" "args"))
+                nil [14070 16363])
+            ("run-with-timer" function
+               (:user-visible-flag t
+                :arguments ("secs" "repeat" "function" "args"))
+                nil [16365 16851])
+            ("add-timeout" function (:arguments ("secs" "function" "object" "repeat")) nil [16853 17157])
+            ("run-with-idle-timer" function
+               (:user-visible-flag t
+                :arguments ("secs" "repeat" "function" "args"))
+                nil [17159 18310])
+            ("with-timeout-timers" variable nil nil [18313 18416])
+            ("with-timeout" function (:arguments ("list" "body")) nil [18418 19897])
+            ("with-timeout-suspend" function nil nil [19899 20362])
+            ("with-timeout-unsuspend" function (:arguments ("timer-spec-list")) nil [20364 20707])
+            ("y-or-n-p-with-timeout" function (:arguments ("prompt" "seconds" "default-value")) nil [20709 20949])
+            ("timer-duration-words" variable
+               (:constant-flag t
+                :default-value (list (cons "microsec" 1e-06) (cons "microsecond" 1e-06) (cons "millisec" 0.001) (cons "millisecond" 0.001) (cons "sec" 1) (cons "second" 1) (cons "min" 60) (cons "minute" 60) (cons "hour" (* 60 60)) (cons "day" (* 24 60 60)) (cons "week" (* 7 24 60 60)) (cons "fortnight" (* 14 24 60 60)) (cons "month" (* 30 24 60 60)) (cons "year" (* 365.25 24 60 60))))
+                nil [20952 21468])
+            ("timer-duration" function (:arguments ("string")) nil [21470 22172])
+            ("internal-timer-start-idle" function nil nil [22174 22401])
+            ("timer" package nil nil [22404 22420]))          
+      :file "timer.el.gz"
+      :pointmax 22445
+      :fsize 7169
+      :lastmodtime '(21369 13852 0 0)
+      :unmatched-syntax '((close-paren 1063 . 1064) (symbol 1028 . 1045) (open-paren 1027 . 1028))))
+  :file "!usr!local!emacs24!share!emacs!24.4!lisp!emacs-lisp!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2")

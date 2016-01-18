@@ -1,0 +1,27 @@
+;; Object tagliner/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "tagliner/"
+  :tables (list 
+   (semanticdb-table "Makefile.am"
+    :major-mode 'makefile-automake-mode
+    :tags 
+        '( ("AUTOMAKE_OPTIONS" variable (:default-value ("foreign")) nil [1 26])
+            ("agents_execdir" variable (:default-value ("$(prefix)/agents")) nil [27 59])
+            ("noinst_HEADERS" variable (:default-value ("hyperlink.h" "message_body.h" "sql.h")) nil [60 108])
+            ("agents_exec_PROGRAMS" variable (:default-value ("tagger")) nil [109 137])
+            ("tagger_SOURCES" variable (:default-value ("tagger.c" "message_body.c" "sql.c" "../hash.c" "../mcfg.c" "../logger.c" "../common.c" "../config.c")) nil [137 238])
+            ("tagger_LDFLAGS" variable (:default-value ("-Wl,-export-dynamic")) nil [238 273])
+            ("tagger_LDADD" variable (:default-value ("-lgmime-2.0" "-lglib-2.0" "-lgobject-2.0")) nil [273 323])
+            ("install-exec-hook" function nil nil [324 451])
+            ("uninstall-hook" function nil nil [452 552]))          
+    :file "Makefile.am"
+    :pointmax 552
+    :fsize 551
+    :lastmodtime '(21696 16167 602341 610000)
+    :unmatched-syntax '((shell-command 469 . 551) (bol 468 . 468))
+    )
+   )
+  :file "!home!harrison!projects!git!fm-app-mailer!tagliner!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2"
+  )

@@ -1,0 +1,33 @@
+;; Object go-complete-20151015.228/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "go-complete-20151015.228/"
+  :tables
+  (list
+    (semanticdb-table "go-complete-autoloads.el"
+      :major-mode 'emacs-lisp-mode
+      :tags nil
+      :file "go-complete-autoloads.el"
+      :pointmax 295
+      :fsize 536
+      :lastmodtime '(22047 56255 37071 870000)
+      :unmatched-syntax nil)
+    (semanticdb-table "go-complete.el"
+      :major-mode 'emacs-lisp-mode
+      :tags 
+        '( ("cl-lib" include nil nil [1324 1341])
+            ("go-complete-gocode-command" variable (:default-value "gocode") nil [1343 1466])
+            ("go-complete-run-gocode" function nil nil [1468 2163])
+            ("go-complete-char-at" function (:arguments ("string" "index")) nil [2165 2297])
+            ("go-complete-args-commas" function (:arguments ("string")) nil [2299 2957])
+            ("go-complete-make-completion" function (:arguments ("string")) nil [2959 3370])
+            ("go-complete-make-completion-list" function (:arguments ("buffer")) nil [3372 3957])
+            ("go-complete-at-point" function (:user-visible-flag t) nil [3974 4424])
+            ("go-complete" package nil nil [4426 4448]))          
+      :file "go-complete.el"
+      :pointmax 4478
+      :fsize 4477
+      :lastmodtime '(22047 56254 933071 868000)
+      :unmatched-syntax nil))
+  :file "!home!harrison!.hlocal!emacs!dot.emacs.d!elpa!go-complete-20151015.228!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2")

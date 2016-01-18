@@ -1,0 +1,17 @@
+;; Object vs2008/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "vs2008/"
+  :tables
+  (list
+    (semanticdb-table "Makefile.am"
+      :major-mode 'makefile-automake-mode
+      :tags 
+        '( ("EXTRA_DIST" variable (:default-value ("config-win32.h.in" "config-win32.h" "gmime.vcproj" "uuencode.vcproj" "uudecode.vcproj" "gmime.sln" "basic-example.vcproj" "imap-example.vcproj" "test-headers.vcproj" "test-streams.vcproj" "test-iconv.vcproj" "test-mime.vcproj" ...)) nil [60 370]))          
+      :file "Makefile.am"
+      :pointmax 370
+      :fsize 369
+      :lastmodtime '(21560 30358 178185 270000)
+      :unmatched-syntax nil))
+  :file "!home!harrison!projects!gmime!build!vs2008!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2")

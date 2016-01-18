@@ -1,0 +1,10 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =8
+let g:netrw_dirhist_1='/emcsvn/invoice_system/trunk/service/GetBillableCustomer'
+let g:netrw_dirhist_2='/home/harrison/projects/poc/unifiedbilling/bin/pdfs'
+let g:netrw_dirhist_3='/home/harrison/projects/poc/unifiedbilling/bin/pdfs/2013-08/m4organic'
+let g:netrw_dirhist_4='/home/harrison/projects/poc/unifiedbilling/bin'
+let g:netrw_dirhist_5='/home/harrison/projects/poc/unifiedbilling/bin/pdfs/2013-09'
+let g:netrw_dirhist_6='/home/harrison/projects/poc/unifiedbilling/bin/pdfs/2013-09/M4'
+let g:netrw_dirhist_7='/usr/local/src/harrison/src_spamd'
+let g:netrw_dirhist_8='/usr/local/src/harrison/src_spamd/trunk'

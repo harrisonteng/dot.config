@@ -1,0 +1,661 @@
+;; Object dcc/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "dcc/"
+  :tables
+  (list
+    (semanticdb-table "dccproc.c"
+      :major-mode 'c-mode
+      :tags 
+        '( ("rcsid" variable
+               (:pointer 1
+                :typemodifiers ("static")
+                :default-value "\"$Id$\""
+                :type "char")
+                nil [938 966])
+            ("use_rcsid" function
+               (:typemodifiers ("static")
+                :arguments 
+                  ( ("" variable (:type "void") (reparse-symbol arg-sub-list) [989 994]))                  
+                :type "void")
+                nil [967 1024])
+            ("dcc_ck.h" include (:system-flag t) nil [1098 1117])
+            ("dcc_xhdr.h" include (:system-flag t) nil [1118 1139])
+            ("dcc_paths.h" include (:system-flag t) nil [1140 1162])
+            ("dcc_heap_debug.h" include (:system-flag t) nil [1163 1190])
+            ("signal.h" include (:system-flag t) nil [1193 1212])
+            ("arpa/inet.h" include (:system-flag t) nil [1240 1262])
+            ("emcdcc.h" include (:system-flag t) nil [1287 1306])
+            ("emcspamd.h" include (:system-flag t) nil [1307 1328])
+            ("dcc_emsg" variable
+               (:typemodifiers ("static")
+                :type ("DCC_EMSG" type (:type "class") nil nil))
+                nil [1331 1356])
+            ("homedir" variable
+               (:pointer 1
+                :typemodifiers ("static")
+                :constant-flag t
+                :type "char")
+                nil [1358 1385])
+            ("mapfile_nm" variable
+               (:pointer 1
+                :typemodifiers ("static")
+                :constant-flag t
+                :default-value "DCC_MAP_NM_DEF"
+                :type "char")
+                nil [1386 1433])
+            ("logdir" variable
+               (:pointer 1
+                :typemodifiers ("static")
+                :constant-flag t
+                :type "char")
+                nil [1435 1461])
+            ("log_nm" variable
+               (:typemodifiers ("static")
+                :type ("DCC_PATH" type (:type "class") nil nil))
+                nil [1462 1485])
+            ("lfd" variable
+               (:typemodifiers ("static")
+                :default-value "-1"
+                :type "int")
+                nil [1486 1506])
+            ("logging" variable
+               (:typemodifiers ("static")
+                :default-value "1"
+                :type ("u_char" type (:type "class") nil nil))
+                nil [1507 1533])
+            ("honor" variable
+               (:typemodifiers ("static")
+                :type ("u_char" type (:type "class") nil nil))
+                nil [1574 1594])
+            ("tmpdir" variable
+               (:pointer 1
+                :typemodifiers ("static")
+                :constant-flag t
+                :type "char")
+                nil [1596 1622])
+            ("tfile_nm" variable
+               (:typemodifiers ("static")
+                :type ("DCC_PATH" type (:type "class") nil nil))
+                nil [1623 1648])
+            ("tfd" variable
+               (:typemodifiers ("static")
+                :default-value "-1"
+                :type "int")
+                nil [1649 1669])
+            ("tfd_rewound" variable
+               (:typemodifiers ("static")
+                :type ("u_char" type (:type "class") nil nil))
+                nil [1670 1696])
+            ("hdrs_len" variable
+               (:typemodifiers ("static")
+                :type "int")
+                nil [1697 1727])
+            ("body_len" variable
+               (:typemodifiers ("static")
+                :type "int")
+                nil [1697 1727])
+            ("seen_hdr" variable
+               (:typemodifiers ("static")
+                :type ("u_char" type (:type "class") nil nil))
+                nil [1728 1751])
+            ("targets" variable
+               (:typemodifiers ("static")
+                :default-value "1"
+                :type ("DCC_TGTS" type (:type "class") nil nil))
+                nil [1753 1781])
+            ("targets_set" variable
+               (:typemodifiers ("static")
+                :type ("u_char" type (:type "class") nil nil))
+                nil [1782 1808])
+            ("total_hdrs" variable
+               (:typemodifiers ("static")
+                :type "int")
+                nil [1809 1840])
+            ("cr_hdrs" variable
+               (:typemodifiers ("static")
+                :type "int")
+                nil [1809 1840])
+            ("white_nm" variable
+               (:pointer 1
+                :typemodifiers ("static")
+                :constant-flag t
+                :type "char")
+                nil [1842 1870])
+            ("ifile_nm" variable
+               (:pointer 1
+                :typemodifiers ("static")
+                :constant-flag t
+                :default-value "\"stdin\""
+                :type "char")
+                nil [1871 1931])
+            ("ofile_nm" variable
+               (:pointer 1
+                :typemodifiers ("static")
+                :constant-flag t
+                :default-value "\"stdout\""
+                :type "char")
+                nil [1871 1931])
+            ("ifile" variable
+               (:pointer 1
+                :typemodifiers ("static")
+                :type ("FILE" type (:type "class") nil nil))
+                nil [1932 1959])
+            ("ofile" variable
+               (:pointer 1
+                :typemodifiers ("static")
+                :type ("FILE" type (:type "class") nil nil))
+                nil [1932 1959])
+            ("cmn_wf" variable
+               (:typemodifiers ("static")
+                :type ("DCC_WF" type (:type "class") nil nil))
+                nil [1961 1982])
+            ("ctxt" variable
+               (:pointer 1
+                :typemodifiers ("static")
+                :type ("DCC_CLNT_CTXT" type (:type "class") nil nil))
+                nil [1983 2010])
+            ("xhdr" variable
+               (:dereference 1
+                :typemodifiers ("static")
+                :type "char")
+                nil [2011 2072])
+            ("xhdr_len" variable
+               (:typemodifiers ("static")
+                :type "int")
+                nil [2073 2093])
+            ("add_xhdr" variable
+               (:typemodifiers ("static")
+                :type ("u_char" type (:type "class") nil nil))
+                nil [2094 2117])
+            ("query_only" variable
+               (:typemodifiers ("static")
+                :type ("u_char" type (:type "class") nil nil))
+                nil [2156 2181])
+            ("cksums_only" variable
+               (:typemodifiers ("static")
+                :type ("u_char" type (:type "class") nil nil))
+                nil [2182 2208])
+            ("x_dcc_only" variable
+               (:typemodifiers ("static")
+                :type ("u_char" type (:type "class") nil nil))
+                nil [2238 2263])
+            ("fake_envelope" variable
+               (:typemodifiers ("static")
+                :type ("u_char" type (:type "class") nil nil))
+                nil [2300 2328])
+            ("std_received" variable
+               (:typemodifiers ("static")
+                :type ("u_char" type (:type "class") nil nil))
+                nil [2360 2387])
+            ("cks" variable
+               (:typemodifiers ("static")
+                :type ("DCC_GOT_CKS" type (:type "class") nil nil))
+                nil [2429 2452])
+            ("wtgts" variable
+               (:typemodifiers ("static")
+                :type ("DCC_CKS_WTGTS" type (:type "class") nil nil))
+                nil [2453 2480])
+            ("clnt_name_buf" variable
+               (:dereference 1
+                :typemodifiers ("static")
+                :type "char")
+                nil [2481 2525])
+            ("clnt_str_buf" variable
+               (:dereference 1
+                :typemodifiers ("static")
+                :type "char")
+                nil [2544 2587])
+            ("clnt_str" variable
+               (:pointer 1
+                :typemodifiers ("static")
+                :constant-flag t
+                :type "char")
+                nil [2588 2616])
+            ("clnt_addr" variable
+               (:typemodifiers ("static")
+                :type ("in6_addr" type
+                     (:prototype t
+                      :type "struct")
+                      nil nil))
+                nil [2617 2650])
+            ("env_from_buf" variable
+               (:dereference 1
+                :typemodifiers ("static")
+                :type "char")
+                nil [2652 2695])
+            ("env_from" variable
+               (:pointer 1
+                :typemodifiers ("static")
+                :constant-flag t
+                :type "char")
+                nil [2696 2724])
+            ("header" variable
+               (:typemodifiers ("static")
+                :type ("DCC_HEADER_BUF" type (:type "class") nil nil))
+                nil [2726 2755])
+            ("get_hdr" function
+               (:prototype-flag t
+                :typemodifiers ("static")
+                :arguments 
+                  ( ("" variable
+                       (:pointer 1
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [2779 2786])
+                    ("" variable (:type "int") (reparse-symbol arg-sub-list) [2787 2791]))                  
+                :type ("u_char" type (:type "class") nil nil))
+                nil [2757 2792])
+            ("get_hdr_from_buffer" function
+               (:prototype-flag t
+                :typemodifiers ("static")
+                :arguments 
+                  ( ("inout_msgbuf" variable
+                       (:pointer 2
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [2862 2889])
+                    ("buf" variable
+                       (:pointer 1
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [2890 2900])
+                    ("buflen" variable (:type "int") (reparse-symbol arg-sub-list) [2901 2912]))                  
+                :type ("u_char" type (:type "class") nil nil))
+                nil [2824 2913])
+            ("twrite" function
+               (:prototype-flag t
+                :typemodifiers ("static")
+                :arguments 
+                  ( ("" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "void")
+                        (reparse-symbol arg-sub-list) [2933 2946])
+                    ("" variable (:type "int") (reparse-symbol arg-sub-list) [2947 2951]))                  
+                :type "void")
+                nil [2914 2952])
+            ("tread" function
+               (:prototype-flag t
+                :typemodifiers ("static")
+                :arguments 
+                  ( ("" variable
+                       (:pointer 1
+                        :type "void")
+                        (reparse-symbol arg-sub-list) [2970 2977])
+                    ("" variable (:type "int") (reparse-symbol arg-sub-list) [2978 2982]))                  
+                :type "int")
+                nil [2953 2983])
+            ("scopy" function
+               (:prototype-flag t
+                :typemodifiers ("static")
+                :arguments 
+                  ( ("" variable (:type "int") (reparse-symbol arg-sub-list) [3002 3006])
+                    ("" variable (:type ("u_char" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [3007 3014]))                  
+                :type "void")
+                nil [2984 3015])
+            ("log_write" function
+               (:prototype-flag t
+                :typemodifiers ("static")
+                :arguments 
+                  ( ("" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "void")
+                        (reparse-symbol arg-sub-list) [3038 3051])
+                    ("" variable (:type "int") (reparse-symbol arg-sub-list) [3052 3056]))                  
+                :type "void")
+                nil [3016 3057])
+            ("PATTRIB" function
+               (:prototype-flag t
+                :type "int")
+                nil [3099 3112])
+            ("LOG_CAPTION" variable (:constant-flag t) nil [3121 3132])
+            ("LOG_EOL" variable (:constant-flag t) nil [3173 3180])
+            ("log_fin" function
+               (:prototype-flag t
+                :typemodifiers ("static")
+                :arguments 
+                  ( ("" variable (:type "void") (reparse-symbol arg-sub-list) [3221 3226]))                  
+                :type "void")
+                nil [3201 3227])
+            ("log_ck" function
+               (:prototype-flag t
+                :typemodifiers ("static")
+                :arguments 
+                  ( ("" variable
+                       (:pointer 1
+                        :type "void")
+                        (reparse-symbol arg-sub-list) [3247 3254])
+                    ("" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "void")
+                        (reparse-symbol arg-sub-list) [3255 3268])
+                    ("" variable (:type ("u_int" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [3269 3275]))                  
+                :type "void")
+                nil [3228 3276])
+            ("PATTRIB" function
+               (:prototype-flag t
+                :type "int")
+                nil [3326 3339])
+            ("sigterm" function
+               (:prototype-flag t
+                :typemodifiers ("static")
+                :arguments 
+                  ( ("" variable (:type "int") (reparse-symbol arg-sub-list) [3360 3364]))                  
+                :type "void")
+                nil [3340 3365])
+            ("checksum_headers" function
+               (:prototype-flag t
+                :arguments 
+                  ( ("msgp" variable
+                       (:pointer 2
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [3390 3410]))                  
+                :type "void")
+                nil [3367 3411])
+            ("msg_ck" function
+               (:typemodifiers ("static")
+                :arguments 
+                  ( ("arg" variable
+                       (:pointer 1
+                        :type "void")
+                        (reparse-symbol arg-sub-list) [3432 3449])
+                    ("" variable (:type ("UATTRIB" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [3442 3450])
+                    ("buf" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "void")
+                        (reparse-symbol arg-sub-list) [3451 3467])
+                    ("buf_len" variable (:type ("u_int" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [3468 3482]))                  
+                :type "void")
+                nil [3413 3513])
+            ("lookup_dcc_test" function
+               (:arguments 
+                  ( ("msgbuf" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [3536 3556])
+                    ("msglen" variable (:type "long") (reparse-symbol arg-sub-list) [3557 3570]))                  
+                :type "int")
+                nil [3515 5820])
+            ("checksum_headers_test" function
+               (:arguments 
+                  ( ("msgp" variable
+                       (:pointer 2
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [5850 5870]))                  
+                :type "void")
+                nil [5822 8905])
+            ("lookup_dcc_test2" function
+               (:pointer 1
+                :arguments 
+                  ( ("msgbuf" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [8932 8952])
+                    ("msglen" variable (:type "long") (reparse-symbol arg-sub-list) [8953 8965])
+                    ("score" variable
+                       (:pointer 1
+                        :type "int")
+                        (reparse-symbol arg-sub-list) [8966 8979]))                  
+                :type "char")
+                nil [8907 14533])
+            ("usage" function
+               (:arguments 
+                  ( ("" variable (:type "void") (reparse-symbol arg-sub-list) [14563 14568]))                  
+                :type ("NRATTRIB" type (:type "class") nil nil))
+                nil [14548 14901])
+            ("main_" function
+               (:arguments 
+                  ( ("argc" variable (:type "int") (reparse-symbol arg-sub-list) [14922 14931])
+                    ("argv" variable
+                       (:pointer 2
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [14932 14944]))                  
+                :type ("NRATTRIB" type (:type "class") nil nil))
+                nil [14907 25330])
+            ("get_hdr_from_buffer" function
+               (:typemodifiers ("static")
+                :arguments 
+                  ( ("inout_msgbuf" variable
+                       (:pointer 2
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [25438 25465])
+                    ("buf" variable
+                       (:pointer 1
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [25466 25476])
+                    ("buflen" variable (:type "int") (reparse-symbol arg-sub-list) [25477 25488]))                  
+                :type ("u_char" type (:type "class") nil nil))
+                nil [25364 28066])
+            ("get_hdr" function
+               (:typemodifiers ("static")
+                :arguments 
+                  ( ("buf" variable
+                       (:pointer 1
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [28161 28171])
+                    ("buflen" variable (:type "int") (reparse-symbol arg-sub-list) [28172 28183]))                  
+                :type ("u_char" type (:type "class") nil nil))
+                nil [28100 30125])
+            ("twrite" function
+               (:typemodifiers ("static")
+                :arguments 
+                  ( ("buf" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "void")
+                        (reparse-symbol arg-sub-list) [30148 30164])
+                    ("len" variable (:type "int") (reparse-symbol arg-sub-list) [30165 30173]))                  
+                :type "void")
+                nil [30129 30509])
+            ("tread" function
+               (:typemodifiers ("static")
+                :arguments 
+                  ( ("buf" variable
+                       (:pointer 1
+                        :type "void")
+                        (reparse-symbol arg-sub-list) [30530 30540])
+                    ("len" variable (:type "int") (reparse-symbol arg-sub-list) [30541 30549]))                  
+                :type "int")
+                nil [30513 30771])
+            ("scopy" function
+               (:typemodifiers ("static")
+                :arguments 
+                  ( ("total_len" variable (:type "int") (reparse-symbol arg-sub-list) [30845 30859])
+                    ("complain" variable (:type ("u_char" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [30907 30923]))                  
+                :type "void")
+                nil [30827 32086])
+            ("log_write" function
+               (:typemodifiers ("static")
+                :arguments 
+                  ( ("buf" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "void")
+                        (reparse-symbol arg-sub-list) [32112 32128])
+                    ("len" variable (:type "int") (reparse-symbol arg-sub-list) [32129 32137]))                  
+                :type "void")
+                nil [32090 32380])
+            ("vlog_print" function
+               (:typemodifiers ("static")
+                :arguments 
+                  ( ("p" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [32407 32421])
+                    ("args" variable (:type ("va_list" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [32422 32435]))                  
+                :type "void")
+                nil [32384 32577])
+            ("log_print" function
+               (:typemodifiers ("static")
+                :arguments 
+                  ( ("p" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [32603 32617])
+                    ("..." variable (:type "vararg") (reparse-symbol arg-sub-list) [32618 32622]))                  
+                :type "void")
+                nil [32581 32699])
+            ("log_fin" function
+               (:typemodifiers ("static")
+                :arguments 
+                  ( ("" variable (:type "void") (reparse-symbol arg-sub-list) [32723 32728]))                  
+                :type "void")
+                nil [32703 32892])
+            ("log_ck" function
+               (:typemodifiers ("static")
+                :arguments 
+                  ( ("arg" variable
+                       (:pointer 1
+                        :type "void")
+                        (reparse-symbol arg-sub-list) [32915 32932])
+                    ("" variable (:type ("UATTRIB" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [32925 32933])
+                    ("buf" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "void")
+                        (reparse-symbol arg-sub-list) [32934 32950])
+                    ("buf_len" variable (:type ("u_int" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [32951 32965]))                  
+                :type "void")
+                nil [32896 33043])
+            ("dccproc_error_msg" function
+               (:typemodifiers ("static")
+                :arguments 
+                  ( ("p" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [33077 33091])
+                    ("..." variable (:type "vararg") (reparse-symbol arg-sub-list) [33092 33096]))                  
+                :type "void")
+                nil [33047 33309])
+            ("sigterm" function
+               (:typemodifiers ("static")
+                :arguments 
+                  ( ("sig" variable (:type "int") (reparse-symbol arg-sub-list) [34554 34562]))                  
+                :type "void")
+                nil [34534 34591]))          
+      :file "dccproc.c"
+      :pointmax 34592
+      :fsize 34591
+      :lastmodtime '(22156 18869 703421 836000)
+      :unmatched-syntax '((INT 14903 . 14906) (VOID 14543 . 14547) (STATIC 14536 . 14542) (number 3336 . 3337) (number 3334 . 3335) (semantic-list 3306 . 3325) (symbol 3289 . 3306) (VOID 3284 . 3288) (STATIC 3277 . 3283) (number 3109 . 3110) (number 3107 . 3108) (semantic-list 3079 . 3098) (symbol 3070 . 3079) (VOID 3065 . 3069) (STATIC 3058 . 3064))
+      :lexical-table 
+        '(("LOG_EOL" (spp-arg-list nil 3180 . 3182) . ((symbol "LOG_CAPTION" 3183 . 3194) (semantic-list "(\"\\n\")" 3194 . 3200)))
+          ("LOG_CAPTION" (spp-arg-list ("s") 3132 . 3135) . 
+              ((symbol "log_write" 3136 . 3145) (semantic-list "((s), sizeof(s)-1)" 3145 . 3163) (punctuation ";" 3163 . 3164)))
+          )
+)
+    (semanticdb-table "emcdcc.h"
+      :file "emcdcc.h"
+      :fsize 299
+      :lastmodtime '(22156 18869 703421 836000))
+    (semanticdb-table "emcdcc.c"
+      :major-mode 'c-mode
+      :tags 
+        '( ("rcsid" variable
+               (:pointer 1
+                :typemodifiers ("static")
+                :default-value "\"$Id$\""
+                :type "char")
+                nil [1 29])
+            ("use_rcsid" function
+               (:typemodifiers ("static")
+                :arguments 
+                  ( ("" variable (:type "void") (reparse-symbol arg-sub-list) [52 57]))                  
+                :type "void")
+                nil [30 87])
+            ("stdlib.h" include (:system-flag t) nil [138 157])
+            ("stdio.h" include (:system-flag t) nil [158 176])
+            ("signal.h" include (:system-flag t) nil [177 196])
+            ("arpa/inet.h" include (:system-flag t) nil [224 246])
+            ("emcspamd.h" include nil nil [248 269])
+            ("emcdcc.h" include nil nil [270 289])
+            ("dccif.h" include nil nil [290 308])
+            ("gDomainPolicy" variable
+               (:typemodifiers ("extern")
+                :type ("DomainPolicy" type (:type "class") nil nil))
+                nil [310 344])
+            ("round" variable (:constant-flag t) nil [446 451])
+            ("REPORT_FORMAT_LINE" variable (:constant-flag t) nil [504 522])
+            ("SHORT_REPORT_LINE" variable (:constant-flag t) nil [567 584])
+            ("LONG_REPORT_LINE" variable (:constant-flag t) nil [599 615])
+            ("make_dcc_report" function
+               (:arguments 
+                  ( ("results" variable
+                       (:pointer 1
+                        :type ("SpammerResults" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [668 693])
+                    ("score" variable (:type "double") (reparse-symbol arg-sub-list) [694 708]))                  
+                :type "void")
+                nil [646 1078])
+            ("get_dcc" function
+               (:pointer 1
+                :arguments 
+                  ( ("msgbuf" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [1203 1223])
+                    ("msglen" variable (:type "long") (reparse-symbol arg-sub-list) [1224 1236])
+                    ("sender" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [1237 1256])
+                    ("recipient" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [1257 1279])
+                    ("is_rulechecker" variable (:type "int") (reparse-symbol arg-sub-list) [1280 1299]))                  
+                :type "char")
+                nil [1187 4189])
+            ("lookup_dcc" function
+               (:pointer 1
+                :arguments 
+                  ( ("msgbuf" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [4209 4229])
+                    ("msglen" variable (:type "long") (reparse-symbol arg-sub-list) [4230 4242])
+                    ("results" variable
+                       (:pointer 1
+                        :type ("SpammerResults" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [4243 4268])
+                    ("sender" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [4269 4288])
+                    ("recipient" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [4289 4311])
+                    ("is_rulechecker" variable (:type "int") (reparse-symbol arg-sub-list) [4312 4331]))                  
+                :type "char")
+                nil [4191 4703]))          
+      :file "emcdcc.c"
+      :pointmax 4705
+      :fsize 4704
+      :lastmodtime '(22156 18869 703421 836000)
+      :unmatched-syntax nil
+      :lexical-table 
+        '(("REPORT_FORMAT_LINE" . ((string "\"SPAM: %s %-15.15s (%5.1f %s) [%s]\"" 523 . 558)))
+          ("SHORT_REPORT_LINE" . ((string "\"DCC\"" 585 . 590)))
+          ("round" (spp-arg-list ("x") 451 . 454) . ((semantic-list "((x)>=0?(long)((x)+0.5):(long)((x)-0.5))" 455 . 495)))
+          ("LONG_REPORT_LINE" . ((string "\"Distributed Checksum Score\"" 616 . 644)))
+          )
+))
+  :file "!home!harrison!projects!repository!emc!bitbucket!fm-service-spamfilter-emcspamd2!src!dcc!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2")

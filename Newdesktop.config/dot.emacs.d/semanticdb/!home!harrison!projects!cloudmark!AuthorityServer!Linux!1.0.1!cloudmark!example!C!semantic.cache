@@ -1,0 +1,1015 @@
+;; Object C/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "C/"
+  :tables
+  (list
+    (semanticdb-table "client_example.c"
+      :major-mode 'c-mode
+      :tags 
+        '( ("stdio.h" include (:system-flag t) nil [328 346])
+            ("string.h" include (:system-flag t) nil [347 366])
+            ("stdlib.h" include (:system-flag t) nil [367 386])
+            ("curl/curl.h" include (:system-flag t) nil [387 409])
+            ("mbox_subs.h" include nil nil [410 432])
+            ("json_parser.h" include nil nil [433 457])
+            ("g_raw_output" variable
+               (:default-value "0"
+                :type "int")
+                nil [491 512])
+            ("g_pp_raw_output" variable
+               (:default-value "0"
+                :type "int")
+                nil [569 593])
+            ("g_ip" variable
+               (:pointer 1
+                :default-value "NULL"
+                :type "char")
+                nil [657 675])
+            ("g_mbox_file" variable
+               (:pointer 1
+                :default-value "NULL"
+                :type "char")
+                nil [740 765])
+            ("g_score_message_func" variable
+               (:pointer 1
+                :type "char")
+                nil [827 854])
+            ("g_analysis_file" variable
+               (:pointer 1
+                :default-value "NULL"
+                :type "char")
+                nil [904 933])
+            ("response_buffer" type
+               (:members 
+                  ( ("allocated" variable (:type ("size_t" type (:type "class") nil nil)) (reparse-symbol classsubparts) [1512 1530])
+                    ("buffer" variable
+                       (:pointer 1
+                        :type "char")
+                        (reparse-symbol classsubparts) [1559 1574]))                  
+                :type "struct")
+                nil [1475 1627])
+            ("response_buffer_t" type
+               (:typedef ("response_buffer" type (:type "struct") nil nil)
+                :type "typedef")
+                nil [1475 1627])
+            ("response_callback" function
+               (:arguments 
+                  ( ("ptr" variable
+                       (:pointer 1
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [2212 2222])
+                    ("size" variable (:type ("size_t" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [2223 2235])
+                    ("nmemb" variable (:type ("size_t" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [2236 2249])
+                    ("userdata" variable
+                       (:pointer 1
+                        :type "void")
+                        (reparse-symbol arg-sub-list) [2250 2265]))                  
+                :type ("size_t" type (:type "class") nil nil))
+                nil [2187 2725])
+            ("new_response_buf" function
+               (:pointer 1
+                :type ("response_buffer_t" type (:type "class") nil nil))
+                nil [2848 2959])
+            ("release_response_buf" function
+               (:arguments 
+                  ( ("buf" variable
+                       (:pointer 1
+                        :type ("response_buffer_t" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [3159 3182]))                  
+                :type "void")
+                nil [3133 3253])
+            ("release_response_buf_string" function
+               (:pointer 1
+                :arguments 
+                  ( ("buf" variable
+                       (:pointer 1
+                        :type ("response_buffer_t" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [3745 3768]))                  
+                :type "char")
+                nil [3711 3927])
+            ("formargs" type
+               (:members 
+                  ( ("formpost" variable
+                       (:pointer 1
+                        :type ("curl_httppost" type
+                             (:prototype t
+                              :type "struct")
+                              nil nil))
+                        (reparse-symbol classsubparts) [4295 4326])
+                    ("lastpost" variable
+                       (:pointer 1
+                        :type ("curl_httppost" type
+                             (:prototype t
+                              :type "struct")
+                              nil nil))
+                        (reparse-symbol classsubparts) [4363 4394]))                  
+                :type "struct")
+                nil [4265 4433])
+            ("formargs_t" type
+               (:typedef ("formargs" type (:type "struct") nil nil)
+                :type "typedef")
+                nil [4265 4433])
+            ("new_formargs" function
+               (:pointer 1
+                :type ("formargs_t" type (:type "class") nil nil))
+                nil [4542 4628])
+            ("release_formargs" function
+               (:arguments 
+                  ( ("args" variable
+                       (:pointer 1
+                        :type ("formargs_t" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [4800 4817]))                  
+                :type "void")
+                nil [4778 4872])
+            ("form_addarg" function
+               (:arguments 
+                  ( ("args" variable
+                       (:pointer 1
+                        :type ("formargs_t" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [5216 5233])
+                    ("name" variable
+                       (:pointer 1
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [5234 5245])
+                    ("value" variable
+                       (:pointer 1
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [5246 5257]))                  
+                :type ("CURLFORMcode" type (:type "class") nil nil))
+                nil [5191 5418])
+            ("do_GET_request" function
+               (:arguments 
+                  ( ("curl" variable
+                       (:pointer 1
+                        :type ("CURL" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [6260 6271])
+                    ("url" variable
+                       (:pointer 1
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [6272 6282])
+                    ("req" variable
+                       (:pointer 1
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [6283 6293])
+                    ("args" variable
+                       (:pointer 2
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [6294 6306])
+                    ("respstr" variable
+                       (:pointer 2
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [6307 6322]))                  
+                :type ("CURLcode" type (:type "class") nil nil))
+                nil [6236 7921])
+            ("do_POST_request" function
+               (:arguments 
+                  ( ("curl" variable
+                       (:pointer 1
+                        :type ("CURL" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [8466 8477])
+                    ("url" variable
+                       (:pointer 1
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [8478 8488])
+                    ("req" variable
+                       (:pointer 1
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [8489 8499])
+                    ("args" variable
+                       (:pointer 1
+                        :type ("formargs_t" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [8500 8517])
+                    ("respstr" variable
+                       (:pointer 2
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [8518 8533]))                  
+                :type ("CURLcode" type (:type "class") nil nil))
+                nil [8441 9859])
+            ("check_JSON_response" function
+               (:arguments 
+                  ( ("obj" variable
+                       (:pointer 1
+                        :type ("JSON_Object_t" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [10261 10280]))                  
+                :type "int")
+                nil [10237 11358])
+            ("print_raw_response" function
+               (:arguments 
+                  ( ("func" variable
+                       (:pointer 1
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [11700 11711])
+                    ("response" variable
+                       (:pointer 1
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [11712 11727]))                  
+                :type "void")
+                nil [11676 12183])
+            ("do_ping" function
+               (:arguments 
+                  ( ("curl" variable
+                       (:pointer 1
+                        :type ("CURL" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [12584 12595])
+                    ("host" variable
+                       (:pointer 1
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [12596 12607]))                  
+                :type ("CURLcode" type (:type "class") nil nil))
+                nil [12567 13448])
+            ("do_max_message_size" function
+               (:arguments 
+                  ( ("curl" variable
+                       (:pointer 1
+                        :type ("CURL" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [13705 13716])
+                    ("host" variable
+                       (:pointer 1
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [13717 13728]))                  
+                :type ("CURLcode" type (:type "class") nil nil))
+                nil [13676 14917])
+            ("do_licensing_info" function
+               (:arguments 
+                  ( ("curl" variable
+                       (:pointer 1
+                        :type ("CURL" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [15164 15175])
+                    ("host" variable
+                       (:pointer 1
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [15176 15187]))                  
+                :type ("CURLcode" type (:type "class") nil nil))
+                nil [15137 16782])
+            ("do_microupdate_versions" function
+               (:arguments 
+                  ( ("curl" variable
+                       (:pointer 1
+                        :type ("CURL" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [17058 17069])
+                    ("host" variable
+                       (:pointer 1
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [17070 17081]))                  
+                :type ("CURLcode" type (:type "class") nil nil))
+                nil [17025 18706])
+            ("do_supported_attributes" function
+               (:arguments 
+                  ( ("curl" variable
+                       (:pointer 1
+                        :type ("CURL" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [18978 18989])
+                    ("host" variable
+                       (:pointer 1
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [18990 19001]))                  
+                :type ("CURLcode" type (:type "class") nil nil))
+                nil [18945 20995])
+            ("do_runtime_information" function
+               (:arguments 
+                  ( ("curl" variable
+                       (:pointer 1
+                        :type ("CURL" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [21257 21268])
+                    ("host" variable
+                       (:pointer 1
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [21269 21280]))                  
+                :type ("CURLcode" type (:type "class") nil nil))
+                nil [21225 22902])
+            ("do_score_ip" function
+               (:arguments 
+                  ( ("curl" variable
+                       (:pointer 1
+                        :type ("CURL" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [23415 23426])
+                    ("host" variable
+                       (:pointer 1
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [23427 23438])
+                    ("ip" variable
+                       (:pointer 1
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [23439 23448]))                  
+                :type ("CURLcode" type (:type "class") nil nil))
+                nil [23394 24604])
+            ("do_score_analysis" function
+               (:arguments 
+                  ( ("curl" variable
+                       (:pointer 1
+                        :type ("CURL" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [24909 24920])
+                    ("host" variable
+                       (:pointer 1
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [24921 24932])
+                    ("analysis" variable
+                       (:pointer 1
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [24933 24948]))                  
+                :type ("CURLcode" type (:type "class") nil nil))
+                nil [24882 26162])
+            ("do_score_general" function
+               (:arguments 
+                  ( ("curl" variable
+                       (:pointer 1
+                        :type ("CURL" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [26919 26930])
+                    ("host" variable
+                       (:pointer 1
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [26931 26942])
+                    ("func" variable
+                       (:pointer 1
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [26943 26954])
+                    ("rfc822" variable
+                       (:pointer 1
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [26960 26973])
+                    ("helo_domain" variable
+                       (:pointer 1
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [26974 26992])
+                    ("mail_from" variable
+                       (:pointer 1
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [26993 27009])
+                    ("receipt_to" variable
+                       (:pointer 1
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [27010 27027])
+                    ("connip" variable
+                       (:pointer 1
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [27028 27041]))                  
+                :type ("CURLcode" type (:type "class") nil nil))
+                nil [26893 28656])
+            ("usage" function (:type "void") nil [28836 28966])
+            ("main" function
+               (:arguments 
+                  ( ("argc" variable (:type "int") (reparse-symbol arg-sub-list) [29114 29123])
+                    ("argv" variable
+                       (:pointer 2
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [29124 29136]))                  
+                :type "int")
+                nil [29105 32614]))          
+      :file "client_example.c"
+      :pointmax 32615
+      :fsize 32614
+      :lastmodtime '(21753 62280 0 0)
+      :unmatched-syntax nil)
+    (semanticdb-table "mbox_subs.h"
+      :major-mode 'c-mode
+      :tags 
+        '( ("__MBOX_SUBS_H__" variable (:constant-flag t) nil [220 235])
+            ("stddef.h" include (:system-flag t) nil [237 256])
+            ("string.h" include (:system-flag t) nil [257 276])
+            ("rfc822_mail" type
+               (:members 
+                  ( ("mail_text" variable
+                       (:pointer 1
+                        :type "char")
+                        (reparse-symbol classsubparts) [339 355])
+                    ("from" variable
+                       (:pointer 1
+                        :type "char")
+                        (reparse-symbol classsubparts) [394 405])
+                    ("body_offset" variable (:type ("ptrdiff_t" type (:type "class") nil nil)) (reparse-symbol classsubparts) [452 474])
+                    ("mail_size" variable (:type ("size_t" type (:type "class") nil nil)) (reparse-symbol classsubparts) [542 559]))                  
+                :type "struct")
+                nil [306 627])
+            ("mail_t" type
+               (:typedef ("rfc822_mail" type (:type "struct") nil nil)
+                :type "typedef")
+                nil [306 627])
+            ("new_mail" function
+               (:prototype-flag t
+                :pointer 1
+                :type ("mail_t" type (:type "class") nil nil))
+                nil [670 689])
+            ("free_mail" function
+               (:prototype-flag t
+                :arguments 
+                  ( ("mail" variable
+                       (:pointer 1
+                        :type ("mail_t" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [740 753]))                  
+                :type "void")
+                nil [725 754])
+            ("get_header" function
+               (:prototype-flag t
+                :pointer 1
+                :arguments 
+                  ( ("mail" variable
+                       (:pointer 1
+                        :type ("mail_t" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [835 848])
+                    ("header" variable
+                       (:pointer 1
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [849 862]))                  
+                :type "char")
+                nil [818 863])
+            ("mbox" type
+               (:members 
+                  ( ("file" variable
+                       (:pointer 1
+                        :type ("FILE" type (:type "class") nil nil))
+                        (reparse-symbol classsubparts) [917 928])
+                    ("from_line" variable
+                       (:pointer 1
+                        :type "char")
+                        (reparse-symbol classsubparts) [967 983])
+                    ("done" variable (:type "int") (reparse-symbol classsubparts) [1029 1039])
+                    ("last_line_empty" variable (:type "int") (reparse-symbol classsubparts) [1085 1106]))                  
+                :type "struct")
+                nil [891 1161])
+            ("mbox_t" type
+               (:typedef ("mbox" type (:type "struct") nil nil)
+                :type "typedef")
+                nil [891 1161])
+            ("new_mbox" function
+               (:prototype-flag t
+                :pointer 1
+                :arguments 
+                  ( ("mbox_path" variable
+                       (:pointer 1
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [1228 1244]))                  
+                :type ("mbox_t" type (:type "class") nil nil))
+                nil [1211 1245])
+            ("free_mbox" function
+               (:prototype-flag t
+                :arguments 
+                  ( ("mbox" variable
+                       (:pointer 1
+                        :type ("mbox_t" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [1292 1305]))                  
+                :type "void")
+                nil [1277 1306])
+            ("next_mail" function
+               (:prototype-flag t
+                :pointer 1
+                :arguments 
+                  ( ("mbox" variable
+                       (:pointer 1
+                        :type ("mbox_t" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [1376 1389]))                  
+                :type ("mail_t" type (:type "class") nil nil))
+                nil [1358 1390]))          
+      :file "mbox_subs.h"
+      :pointmax 1420
+      :fsize 1419
+      :lastmodtime '(21753 62280 0 0)
+      :unmatched-syntax nil
+      :lexical-table 
+        '(("__MBOX_SUBS_H__")
+          )
+)
+    (semanticdb-table "json_parser.h"
+      :major-mode 'c-mode
+      :tags 
+        '( ("__JSON_PARSER_H__" variable (:constant-flag t) nil [264 281])
+            ("stddef.h" include (:system-flag t) nil [283 302])
+            ("stdlib.h" include (:system-flag t) nil [303 322])
+            ("stdio.h" include (:system-flag t) nil [323 341])
+            ("unistd.h" include (:system-flag t) nil [342 361])
+            ("JSON_Type" type
+               (:typedef ("" type
+                     (:members 
+                        ( ("JSON_TYPE_NULL" variable
+                             (:constant-flag t
+                              :type "int")
+                              (reparse-symbol enumsubparts) [498 513])
+                          ("JSON_TYPE_STRING" variable
+                             (:constant-flag t
+                              :type "int")
+                              (reparse-symbol enumsubparts) [518 535])
+                          ("JSON_TYPE_NUMBER" variable
+                             (:constant-flag t
+                              :type "int")
+                              (reparse-symbol enumsubparts) [540 557])
+                          ("JSON_TYPE_BOOL" variable
+                             (:constant-flag t
+                              :type "int")
+                              (reparse-symbol enumsubparts) [562 577])
+                          ("JSON_TYPE_OBJECT" variable
+                             (:constant-flag t
+                              :type "int")
+                              (reparse-symbol enumsubparts) [582 599])
+                          ("JSON_TYPE_ARRAY" variable
+                             (:constant-flag t
+                              :type "int")
+                              (reparse-symbol enumsubparts) [604 620])
+                          ("JSON_TYPE_ERROR" variable
+                             (:constant-flag t
+                              :type "int")
+                              (reparse-symbol enumsubparts) [625 642]))                        
+                      :type "enum")
+                      nil nil)
+                :type "typedef")
+                nil [479 652])
+            ("JSON_Object" type
+               (:prototype t
+                :type "struct")
+                nil [654 673])
+            ("JSON_Array" type
+               (:prototype t
+                :type "struct")
+                nil [674 692])
+            ("JSON_Value_t" type
+               (:typedef ("" type
+                     (:members 
+                        ( ("type" variable (:type ("JSON_Type" type (:type "class") nil nil)) (reparse-symbol classsubparts) [878 895])
+                          ("u" variable (:type ("" type
+                               (:members 
+                                  ( ("string" variable
+                                       (:pointer 1
+                                        :type "char")
+                                        (reparse-symbol classsubparts) [968 996])
+                                    ("number" variable (:type "float") (reparse-symbol classsubparts) [1036 1063])
+                                    ("obj" variable
+                                       (:pointer 1
+                                        :type ("JSON_Object" type
+                                             (:prototype t
+                                              :type "struct")
+                                              nil nil))
+                                        (reparse-symbol classsubparts) [1104 1129])
+                                    ("array" variable
+                                       (:pointer 1
+                                        :type ("JSON_Array" type
+                                             (:prototype t
+                                              :type "struct")
+                                              nil nil))
+                                        (reparse-symbol classsubparts) [1172 1199]))                                  
+                                :type "union")
+                                nil nil)) (reparse-symbol classsubparts) [952 1239]))                        
+                      :type "struct")
+                      nil nil)
+                :type "typedef")
+                nil [857 1254])
+            ("JSON_Pair_t" type
+               (:typedef ("" type
+                     (:members 
+                        ( ("name" variable
+                             (:pointer 1
+                              :type "char")
+                              (reparse-symbol classsubparts) [1421 1441])
+                          ("value" variable
+                             (:pointer 1
+                              :type ("JSON_Value_t" type (:type "class") nil nil))
+                              (reparse-symbol classsubparts) [1471 1492]))                        
+                      :type "struct")
+                      nil nil)
+                :type "typedef")
+                nil [1400 1531])
+            ("JSON_Object" type
+               (:members 
+                  ( ("pairs" variable
+                       (:pointer 2
+                        :type ("JSON_Pair_t" type (:type "class") nil nil))
+                        (reparse-symbol classsubparts) [1648 1672])
+                    ("num_pairs" variable (:type ("size_t" type (:type "class") nil nil)) (reparse-symbol classsubparts) [1705 1731]))                  
+                :type "struct")
+                nil [1615 1776])
+            ("JSON_Object_t" type
+               (:typedef ("JSON_Object" type (:type "struct") nil nil)
+                :type "typedef")
+                nil [1615 1776])
+            ("JSON_Array" type
+               (:members 
+                  ( ("values" variable
+                       (:pointer 2
+                        :type ("JSON_Value_t" type (:type "class") nil nil))
+                        (reparse-symbol classsubparts) [1885 1910])
+                    ("num_values" variable (:type ("size_t" type (:type "class") nil nil)) (reparse-symbol classsubparts) [1943 1970]))                  
+                :type "struct")
+                nil [1853 2013])
+            ("JSON_Array_t" type
+               (:typedef ("JSON_Array" type (:type "struct") nil nil)
+                :type "typedef")
+                nil [1853 2013])
+            ("ParseJSONObject" function
+               (:prototype-flag t
+                :pointer 1
+                :arguments 
+                  ( ("strptr" variable
+                       (:pointer 2
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [2091 2105]))                  
+                :type ("JSON_Object_t" type (:type "class") nil nil))
+                nil [2060 2106])
+            ("FreeJSONObject" function
+               (:prototype-flag t
+                :arguments 
+                  ( ("obj" variable
+                       (:pointer 1
+                        :type ("JSON_Object_t" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [2158 2177]))                  
+                :type "void")
+                nil [2138 2178])
+            ("DisplayJSONObject" function
+               (:prototype-flag t
+                :arguments 
+                  ( ("f" variable
+                       (:pointer 1
+                        :type ("FILE" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [2246 2254])
+                    ("obj" variable
+                       (:pointer 1
+                        :type ("JSON_Object_t" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [2255 2274]))                  
+                :type "void")
+                nil [2223 2275])
+            ("DisplayJSONValue" function
+               (:prototype-flag t
+                :arguments 
+                  ( ("f" variable
+                       (:pointer 1
+                        :type ("FILE" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [2341 2349])
+                    ("v" variable
+                       (:pointer 1
+                        :type ("JSON_Value_t" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [2350 2366]))                  
+                :type "void")
+                nil [2319 2367])
+            ("Find" function
+               (:prototype-flag t
+                :pointer 1
+                :arguments 
+                  ( ("obj" variable
+                       (:pointer 1
+                        :type ("JSON_Object_t" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [2434 2453])
+                    ("name" variable
+                       (:pointer 1
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [2454 2465]))                  
+                :type ("JSON_Value_t" type (:type "class") nil nil))
+                nil [2415 2466])
+            ("GetPairFromObject" function
+               (:prototype-flag t
+                :pointer 1
+                :arguments 
+                  ( ("obj" variable
+                       (:pointer 1
+                        :type ("JSON_Object_t" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [2555 2574])
+                    ("idx" variable (:type "unsigned int") (reparse-symbol arg-sub-list) [2575 2588]))                  
+                :type ("JSON_Pair_t" type (:type "class") nil nil))
+                nil [2524 2589])
+            ("GetValueFromArray" function
+               (:prototype-flag t
+                :pointer 1
+                :arguments 
+                  ( ("arr" variable
+                       (:pointer 1
+                        :type ("JSON_Array_t" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [2678 2696])
+                    ("idx" variable (:type "unsigned int") (reparse-symbol arg-sub-list) [2697 2710]))                  
+                :type ("JSON_Value_t" type (:type "class") nil nil))
+                nil [2646 2711]))          
+      :file "json_parser.h"
+      :pointmax 2742
+      :fsize 2741
+      :lastmodtime '(21753 62280 0 0)
+      :unmatched-syntax nil
+      :lexical-table 
+        '(("__JSON_PARSER_H__")
+          )
+)
+    (semanticdb-table "json_parser.c"
+      :major-mode 'c-mode
+      :tags 
+        '( ("ctype.h" include (:system-flag t) nil [33 51])
+            ("string.h" include (:system-flag t) nil [52 71])
+            ("json_parser.h" include nil nil [72 96])
+            ("ParseJSONArray" function
+               (:prototype-flag t
+                :pointer 1
+                :typemodifiers ("static")
+                :arguments 
+                  ( ("strptr" variable
+                       (:pointer 2
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [161 175]))                  
+                :type ("JSON_Array_t" type (:type "class") nil nil))
+                nil [125 176])
+            ("FreeJSONValue" function
+               (:prototype-flag t
+                :typemodifiers ("static")
+                :arguments 
+                  ( ("v" variable
+                       (:pointer 1
+                        :type ("JSON_Value_t" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [203 219]))                  
+                :type "void")
+                nil [177 220])
+            ("FreeJSONPair" function
+               (:prototype-flag t
+                :typemodifiers ("static")
+                :arguments 
+                  ( ("p" variable
+                       (:pointer 1
+                        :type ("JSON_Pair_t" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [246 261]))                  
+                :type "void")
+                nil [221 262])
+            ("FreeJSONArray" function
+               (:prototype-flag t
+                :typemodifiers ("static")
+                :arguments 
+                  ( ("obj" variable
+                       (:pointer 1
+                        :type ("JSON_Array_t" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [289 307]))                  
+                :type "void")
+                nil [263 308])
+            ("DisplayObject" function
+               (:prototype-flag t
+                :typemodifiers ("static")
+                :arguments 
+                  ( ("f" variable
+                       (:pointer 1
+                        :type ("FILE" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [335 343])
+                    ("obj" variable
+                       (:pointer 1
+                        :type ("JSON_Object_t" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [344 363])
+                    ("offset" variable (:type "int") (reparse-symbol arg-sub-list) [364 375]))                  
+                :type "void")
+                nil [309 376])
+            ("DisplayPair" function
+               (:prototype-flag t
+                :typemodifiers ("static")
+                :arguments 
+                  ( ("f" variable
+                       (:pointer 1
+                        :type ("FILE" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [401 408])
+                    ("p" variable
+                       (:pointer 1
+                        :type ("JSON_Pair_t" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [409 424])
+                    ("offset" variable (:type "int") (reparse-symbol arg-sub-list) [425 436]))                  
+                :type "void")
+                nil [377 437])
+            ("DisplayValue" function
+               (:prototype-flag t
+                :typemodifiers ("static")
+                :arguments 
+                  ( ("f" variable
+                       (:pointer 1
+                        :type ("FILE" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [463 471])
+                    ("v" variable
+                       (:pointer 1
+                        :type ("JSON_Value_t" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [472 488])
+                    ("offset" variable (:type "int") (reparse-symbol arg-sub-list) [489 500]))                  
+                :type "void")
+                nil [438 501])
+            ("DisplayArray" function
+               (:prototype-flag t
+                :typemodifiers ("static")
+                :arguments 
+                  ( ("f" variable
+                       (:pointer 1
+                        :type ("FILE" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [527 535])
+                    ("a" variable
+                       (:pointer 1
+                        :type ("JSON_Array_t" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [536 552])
+                    ("offset" variable (:type "int") (reparse-symbol arg-sub-list) [553 564]))                  
+                :type "void")
+                nil [502 565])
+            ("ParseJSONString" function
+               (:pointer 1
+                :typemodifiers ("static")
+                :arguments 
+                  ( ("strptr" variable
+                       (:pointer 2
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [1009 1023]))                  
+                :type "char")
+                nil [980 1694])
+            ("ParseJSONNumber" function
+               (:typemodifiers ("static")
+                :arguments 
+                  ( ("strptr" variable
+                       (:pointer 2
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [1952 1966]))                  
+                :type "double")
+                nil [1922 2023])
+            ("ParseJSONValue" function
+               (:pointer 1
+                :typemodifiers ("static")
+                :arguments 
+                  ( ("strptr" variable
+                       (:pointer 2
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [2287 2301]))                  
+                :type ("JSON_Value_t" type (:type "class") nil nil))
+                nil [2251 3963])
+            ("ParseJSONPair" function
+               (:pointer 1
+                :typemodifiers ("static")
+                :arguments 
+                  ( ("strptr" variable
+                       (:pointer 2
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [4204 4218]))                  
+                :type ("JSON_Pair_t" type (:type "class") nil nil))
+                nil [4170 5044])
+            ("ParseJSONObject" function
+               (:pointer 1
+                :arguments 
+                  ( ("strptr" variable
+                       (:pointer 2
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [5548 5562]))                  
+                :type ("JSON_Object_t" type (:type "class") nil nil))
+                nil [5517 7594])
+            ("ParseJSONArray" function
+               (:pointer 1
+                :typemodifiers ("static")
+                :arguments 
+                  ( ("strptr" variable
+                       (:pointer 2
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [7955 7969]))                  
+                :type ("JSON_Array_t" type (:type "class") nil nil))
+                nil [7919 10027])
+            ("FreeJSONValue" function
+               (:arguments 
+                  ( ("v" variable
+                       (:pointer 1
+                        :type ("JSON_Value_t" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [10160 10176]))                  
+                :type "void")
+                nil [10141 10456])
+            ("FreeJSONPair" function
+               (:typemodifiers ("static")
+                :arguments 
+                  ( ("p" variable
+                       (:pointer 1
+                        :type ("JSON_Pair_t" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [10591 10606]))                  
+                :type "void")
+                nil [10566 10702])
+            ("FreeJSONObject" function
+               (:arguments 
+                  ( ("obj" variable
+                       (:pointer 1
+                        :type ("JSON_Object_t" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [10838 10857]))                  
+                :type "void")
+                nil [10818 11033])
+            ("FreeJSONArray" function
+               (:typemodifiers ("static")
+                :arguments 
+                  ( ("a" variable
+                       (:pointer 1
+                        :type ("JSON_Array_t" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [11172 11188]))                  
+                :type "void")
+                nil [11146 11358])
+            ("DisplayJSONValue" function
+               (:arguments 
+                  ( ("f" variable
+                       (:pointer 1
+                        :type ("FILE" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [11517 11525])
+                    ("v" variable
+                       (:pointer 1
+                        :type ("JSON_Value_t" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [11526 11542]))                  
+                :type "void")
+                nil [11495 11575])
+            ("DisplayJSONObject" function
+               (:arguments 
+                  ( ("f" variable
+                       (:pointer 1
+                        :type ("FILE" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [11738 11746])
+                    ("obj" variable
+                       (:pointer 1
+                        :type ("JSON_Object_t" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [11747 11766]))                  
+                :type "void")
+                nil [11715 11801])
+            ("DisplayObject" function
+               (:typemodifiers ("static")
+                :arguments 
+                  ( ("f" variable
+                       (:pointer 1
+                        :type ("FILE" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [12174 12182])
+                    ("obj" variable
+                       (:pointer 1
+                        :type ("JSON_Object_t" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [12183 12202])
+                    ("offset" variable (:type "int") (reparse-symbol arg-sub-list) [12203 12214]))                  
+                :type "void")
+                nil [12148 12646])
+            ("DisplayArray" function
+               (:arguments 
+                  ( ("f" variable
+                       (:pointer 1
+                        :type ("FILE" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [13005 13013])
+                    ("a" variable
+                       (:pointer 1
+                        :type ("JSON_Array_t" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [13014 13030])
+                    ("offset" variable (:type "int") (reparse-symbol arg-sub-list) [13031 13042]))                  
+                :type "void")
+                nil [12987 13566])
+            ("DisplayPair" function
+               (:typemodifiers ("static")
+                :arguments 
+                  ( ("f" variable
+                       (:pointer 1
+                        :type ("FILE" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [13928 13935])
+                    ("p" variable
+                       (:pointer 1
+                        :type ("JSON_Pair_t" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [13936 13951])
+                    ("offset" variable (:type "int") (reparse-symbol arg-sub-list) [13952 13963]))                  
+                :type "void")
+                nil [13904 14113])
+            ("DisplayValue" function
+               (:typemodifiers ("static")
+                :arguments 
+                  ( ("f" variable
+                       (:pointer 1
+                        :type ("FILE" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [14479 14487])
+                    ("v" variable
+                       (:pointer 1
+                        :type ("JSON_Value_t" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [14488 14504])
+                    ("offset" variable (:type "int") (reparse-symbol arg-sub-list) [14505 14516]))                  
+                :type "void")
+                nil [14454 15254])
+            ("Find" function
+               (:pointer 1
+                :arguments 
+                  ( ("obj" variable
+                       (:pointer 1
+                        :type ("JSON_Object_t" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [15582 15601])
+                    ("name" variable
+                       (:pointer 1
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [15602 15613]))                  
+                :type ("JSON_Value_t" type (:type "class") nil nil))
+                nil [15563 15802])
+            ("DeepFind" function
+               (:pointer 1
+                :arguments 
+                  ( ("obj" variable
+                       (:pointer 1
+                        :type ("JSON_Object_t" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [16402 16421])
+                    ("name" variable
+                       (:pointer 1
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [16422 16433]))                  
+                :type ("JSON_Value_t" type (:type "class") nil nil))
+                nil [16379 16879])
+            ("GetPairFromObject" function
+               (:pointer 1
+                :arguments 
+                  ( ("obj" variable
+                       (:pointer 1
+                        :type ("JSON_Object_t" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [17117 17136])
+                    ("idx" variable (:type "unsigned int") (reparse-symbol arg-sub-list) [17137 17150]))                  
+                :type ("JSON_Pair_t" type (:type "class") nil nil))
+                nil [17086 17212])
+            ("GetValueFromArray" function
+               (:pointer 1
+                :arguments 
+                  ( ("arr" variable
+                       (:pointer 1
+                        :type ("JSON_Array_t" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [17450 17468])
+                    ("idx" variable (:type "unsigned int") (reparse-symbol arg-sub-list) [17469 17482]))                  
+                :type ("JSON_Value_t" type (:type "class") nil nil))
+                nil [17418 17546]))          
+      :file "json_parser.c"
+      :pointmax 17549
+      :fsize 17548
+      :lastmodtime '(21753 62280 0 0)
+      :unmatched-syntax nil))
+  :file "!home!harrison!projects!cloudmark!AuthorityServer!Linux!1.0.1!cloudmark!example!C!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2")

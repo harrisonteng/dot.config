@@ -1,0 +1,16 @@
+;; Object go-eldoc-20151028.10/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "go-eldoc-20151028.10/"
+  :tables
+  (list
+    (semanticdb-table "go-eldoc-autoloads.el"
+      :major-mode 'emacs-lisp-mode
+      :tags nil
+      :file "go-eldoc-autoloads.el"
+      :pointmax 289
+      :fsize 523
+      :lastmodtime '(22065 4332 550526 495000)
+      :unmatched-syntax nil))
+  :file "!home!harrison!.hlocal!emacs!dot.emacs.d!elpa!go-eldoc-20151028.10!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2")

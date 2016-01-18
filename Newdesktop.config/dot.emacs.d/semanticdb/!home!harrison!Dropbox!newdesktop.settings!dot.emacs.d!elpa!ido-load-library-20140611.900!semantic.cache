@@ -1,0 +1,16 @@
+;; Object ido-load-library-20140611.900/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "ido-load-library-20140611.900/"
+  :tables
+  (list
+    (semanticdb-table "ido-load-library-autoloads.el"
+      :major-mode 'emacs-lisp-mode
+      :tags nil
+      :file "ido-load-library-autoloads.el"
+      :pointmax 305
+      :fsize 1420
+      :lastmodtime '(21803 20866 742445 168000)
+      :unmatched-syntax nil))
+  :file "!home!harrison!Dropbox!newdesktop.settings!dot.emacs.d!elpa!ido-load-library-20140611.900!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2")

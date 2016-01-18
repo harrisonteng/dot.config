@@ -1,0 +1,16 @@
+;; Object ido-occasional-20150214.448/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "ido-occasional-20150214.448/"
+  :tables
+  (list
+    (semanticdb-table "ido-occasional-autoloads.el"
+      :major-mode 'emacs-lisp-mode
+      :tags nil
+      :file "ido-occasional-autoloads.el"
+      :pointmax 301
+      :fsize 586
+      :lastmodtime '(21803 20862 190502 393000)
+      :unmatched-syntax nil))
+  :file "!home!harrison!Dropbox!newdesktop.settings!dot.emacs.d!elpa!ido-occasional-20150214.448!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2")

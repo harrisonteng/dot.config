@@ -1,0 +1,94 @@
+((("Debugf" .
+   [1 0 0 0 0 0])
+  ("Error" .
+   [5 0 0 0 0])
+  ("buf" .
+   [1 0 0])
+  ("p" .
+   [2])
+  ("str" .
+   [2 0 0])
+  ("string" .
+   [6 0 0 0 0 0])
+  ("get" .
+   [1 0 0])
+  ("Name" .
+   [1 0 0 0])
+  ("getEmailParts" .
+   [1 0 0 0 0 0 0 1 3 0 0 0 0])
+  ("mf" .
+   [1 0])
+  ("_" .
+   [9])
+  ("address" .
+   [5 0 0 0 0 0 0])
+  ("rt" .
+   [1 0])
+  ("err" .
+   [3 0 0])
+  ("nil" .
+   [1 0 0])
+  ("s" .
+   [1])
+  ("isDCCMany" .
+   [1 0 0 0 0 0 0 0 0])
+  ("int" .
+   [1 0 0])
+  ("to" .
+   [3 0])
+  ("Msg_recipient" .
+   [0 0 0 0 0 0 1 0 0 0 0 0 0])
+  ("Dictionaries" .
+   [1 0 0 0 0 0 0 0 0 0 0 0])
+  ("setMimeFromNameEqualsReplyToName" .
+   [0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("Exp_mimefromnameequalsreplytoname" .
+   [0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("g" .
+   [1])
+  ("Msg_mimefrom" .
+   [0 0 0 0 0 0 0 1 0 0 0 0])
+  ("Msg" .
+   [1 0 0])
+  ("Msg_replyto" .
+   [0 0 0 0 0 0 0 1 0 0 0])
+  ("len" .
+   [3 0 0])
+  ("mimefromname" .
+   [2 0 0 0 0 0 0 0 0 0 0 0])
+  ("replytoname" .
+   [2 0 0 0 0 0 0 0 0 0 0])
+  ("ToLower" .
+   [2 0 0 0 0 0 0])
+  ("ReplyTo" .
+   [2 0 0 0 0 0 0])
+  ("headermap" .
+   [2 0 0 0 0 0 0 0 0])
+  ("mimefromaddress" .
+   [0 0 0 0 0 0 0 0 1 0 0 0 0 0 0])
+  ("xenvfromaddress" .
+   [0 0 0 0 0 0 0 0 1 0 0 0 0 0 0])
+  ("recipient" .
+   [1 0 0 0 0 0 0 0 0])
+  ("recipientaddress" .
+   [0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0])
+  ("replyto" .
+   [1 0 0 0 0 0 0])
+  ("replytoaddress" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("Println" .
+   [6 0 0 0 0 0 0])
+  ("Errorf" .
+   [1 0 0 0 0 0])
+  ("Printf" .
+   [1 0 0 0 0 0])
+  ("log" .
+   [1 0 0])
+  ("Info" .
+   [7 0 0 0])
+  ("Infof" .
+   [2 0 0 0 0])
+  ("Exit" .
+   [1 0 0 0])
+  ("Writer" .
+   [0 1 0 0 0 0])))

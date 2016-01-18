@@ -1,0 +1,16 @@
+;; Object multi-term-20150220.1320/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "multi-term-20150220.1320/"
+  :tables
+  (list
+    (semanticdb-table "multi-term-autoloads.el"
+      :major-mode 'emacs-lisp-mode
+      :tags nil
+      :file "multi-term-autoloads.el"
+      :pointmax 293
+      :fsize 1318
+      :lastmodtime '(21753 14744 427245 97000)
+      :unmatched-syntax nil))
+  :file "!home!harrison!Dropbox!newdesktop.settings!dot.emacs.d!elpa!multi-term-20150220.1320!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2")

@@ -1,0 +1,16 @@
+;; Object deferred-20160109.2046/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "deferred-20160109.2046/"
+  :tables
+  (list
+    (semanticdb-table "deferred-autoloads.el"
+      :major-mode 'emacs-lisp-mode
+      :tags nil
+      :file "deferred-autoloads.el"
+      :pointmax 289
+      :fsize 369
+      :lastmodtime '(22163 60360 283212 879000)
+      :unmatched-syntax nil))
+  :file "!home!harrison!.hlocal!emacs!dot.emacs.d!elpa!deferred-20160109.2046!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2")

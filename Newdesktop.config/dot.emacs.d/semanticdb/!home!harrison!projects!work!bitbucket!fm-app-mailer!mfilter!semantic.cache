@@ -1,0 +1,27 @@
+;; Object mfilter/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "mfilter/"
+  :tables
+  (list
+    (semanticdb-table "Makefile.am"
+      :major-mode 'makefile-automake-mode
+      :tags 
+        '( ("AUTOMAKE_OPTIONS" variable (:default-value ("foreign")) nil [1 26])
+            ("agents_execdir" variable (:default-value ("@prefix@/agents")) nil [27 58])
+            ("mfiltertmpdir" variable (:default-value ("@prefix@/msgfilter/msgfilter_tmp")) nil [58 105])
+            ("agents_exec_PROGRAMS" variable (:default-value ("msgfilter")) nil [106 137])
+            ("noinst_HEADERS" variable (:default-value ("mfilter.h")) nil [137 162])
+            ("msgfilter_SOURCES" variable (:default-value ("mfilter.c" "../hash.c" "../common.c" "../config.c" "../mcfg.c" "../logger.c" "../utils.c")) nil [162 257])
+            ("msgfilter_LDADD" variable (:default-value ("-lemcbase" "-lgmime-2.0" "-lglib-2.0" "-lgobject-2.0" "-lcrypt")) nil [257 328])
+            ("msgfilter_LDFLAGS" variable (:default-value ("-Wl,-export-dynamic")) nil [328 366])
+            ("mfiltertmp_DATA" variable nil nil [367 384])
+            ("install-exec-hook" function nil nil [385 518])
+            ("uninstall-hook" function nil nil [519 621]))          
+      :file "Makefile.am"
+      :pointmax 621
+      :fsize 620
+      :lastmodtime '(21742 20805 0 0)
+      :unmatched-syntax '((shell-command 536 . 620) (bol 535 . 535))))
+  :file "!home!harrison!projects!work!bitbucket!fm-app-mailer!mfilter!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2")

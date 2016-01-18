@@ -1,0 +1,21 @@
+;; Object sized/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "sized/"
+  :tables
+  (list
+    (semanticdb-table "Makefile.am"
+      :major-mode 'makefile-automake-mode
+      :tags 
+        '( ("AUTOMAKE_OPTIONS" variable (:default-value ("foreign")) nil [1 26])
+            ("SUBDIRS" variable (:default-value ("build")) nil [26 40])
+            ("DEPLOY_FROM" variable (:default-value ("/var/tmp/deploy")) nil [40 68])
+            ("spotless" function (:arguments ("distclean")) nil [69 256])
+            ("deploy" function nil nil [451 745]))          
+      :file "Makefile.am"
+      :pointmax 745
+      :fsize 744
+      :lastmodtime '(21173 48315 0 0)
+      :unmatched-syntax '((shell-command 723 . 744) (bol 722 . 722))))
+  :file "!home!harrison!projects!repository!emc!sized!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2")

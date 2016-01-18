@@ -1,0 +1,20 @@
+;; Object util/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "util/"
+  :tables
+  (list
+    (semanticdb-table "Makefile.am"
+      :major-mode 'makefile-automake-mode
+      :tags 
+        '( ("SUBDIRS" variable (:default-value (".")) nil [60 72])
+            ("noinst_LTLIBRARIES" variable (:default-value ("libutil.la")) nil [73 105])
+            ("INCLUDES" variable (:default-value ("-I$(top_srcdir)" "$(VERSION_FLAGS)" "-DG_LOG_DOMAIN=\\\"util\\\"" "$(GMIME_CFLAGS)" "$(GLIB_CFLAGS)")) nil [106 224])
+            ("libutil_la_SOURCES" variable (:default-value ("cache.c" "cache.h" "gtrie.c" "gtrie.h" "list.c" "list.h" "md5-utils.c" "md5-utils.h" "url-scanner.c" "url-scanner.h")) nil [225 400]))          
+      :file "Makefile.am"
+      :pointmax 401
+      :fsize 400
+      :lastmodtime '(21560 30358 210185 271000)
+      :unmatched-syntax nil))
+  :file "!home!harrison!projects!gmime!util!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2")

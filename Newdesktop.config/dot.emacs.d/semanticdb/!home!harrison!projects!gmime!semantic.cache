@@ -1,0 +1,31 @@
+;; Object gmime/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "gmime/"
+  :tables
+  (list
+    (semanticdb-table "Makefile.am"
+      :major-mode 'makefile-automake-mode
+      :tags 
+        '( ("ACLOCAL_AMFLAGS" variable (:default-value ("-I" "m4")) nil [60 84])
+            ("SUBDIRS" variable (:default-value ("m4" "build" "util" "gmime")) nil [85 115])
+            ("SUBDIRS" variable (:default-value ("mono")) nil [131 147])
+            ("SUBDIRS" variable (:default-value ("tests" "docs")) nil [154 176])
+            ("SUBDIRS" variable (:default-value ("examples")) nil [196 216])
+            ("SUBDIRS" variable (:default-value ("tools" ".")) nil [223 242])
+            ("DISTCHECK_CONFIGURE_FLAGS" variable (:default-value ("--enable-gtk-doc" "--enable-introspection")) nil [286 354])
+            ("DISTCLEANFILES" variable (:default-value ("iconv-detect.h" "gmime-$(GMIME_API_VERSION).pc" "config.lt" "doltcompile" "doltlibtool")) nil [355 451])
+            ("EXTRA_DIST" variable (:default-value ("PORTING" "gmime.pc.in" "gmime.spec.in" "iconv-detect.c" "zentimer.h" "gtk-doc.make")) nil [452 573])
+            ("BUILD_EXTRA_DIST" variable (:default-value ("gmime.spec")) nil [574 610])
+            ("pkgconfigdir" variable (:default-value ("$(libdir)/pkgconfig")) nil [611 646])
+            ("pkgconfig_DATA" variable (:default-value ("gmime-$(GMIME_API_VERSION).pc")) nil [646 693])
+            ("$(pkgconfig_DATA)" function (:arguments ("config.status")) nil [694 727])
+            ("dist-hook" function (:arguments ("$(BUILD_EXTRA_DIST)")) nil [728 933])
+            ("gmime-" function (:arguments ("gmime.pc")) nil [934 1018]))          
+      :file "Makefile.am"
+      :pointmax 1018
+      :fsize 1017
+      :lastmodtime '(21560 30358 178185 270000)
+      :unmatched-syntax '((shell-command 975 . 1017) (bol 974 . 974) (symbol 181 . 195) (punctuation 180 . 181) (IF 177 . 179) (bol 177 . 177))))
+  :file "!home!harrison!projects!gmime!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2")

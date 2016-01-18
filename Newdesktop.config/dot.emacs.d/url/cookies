@@ -1,0 +1,29 @@
+;; Emacs-W3 HTTP cookies file
+;; Automatically generated file!!! DO NOT EDIT!!!
+
+(setq url-cookie-storage
+ '((".golang-book.com"
+  [url-cookie "__cfduid" "dc0c2f4285994d6f3eae943613474d1441437153729" "16 Jul 16 17:22:09 [GMT]" "/" ".golang-book.com" nil]
+  [url-cookie "HttpOnly" nil "16 Jul 16 17:22:09 [GMT]" "/" ".golang-book.com" nil])
+ (".medium.com"
+  [url-cookie "HttpOnly" nil "11 Jan 17 01:08:30 [GMT]" "/" ".medium.com" nil]
+  [url-cookie "__cfduid" "d01a1259b8b190827afa54ae3338976171452560910" "11 Jan 17 01:08:30 [GMT]" "/" ".medium.com" nil])
+ (".stackoverflow.com"
+  [url-cookie "prov" "fccde15e-81cc-45a0-a0fe-40a351afd79e" "01-Jan-2055 00:00:00.00 GMT" "/" ".stackoverflow.com" nil]
+  [url-cookie "HttpOnly" nil "01-Jan-2055 00:00:00.00 GMT" "/" ".stackoverflow.com" nil]
+  [url-cookie "__cfduid" "d4bbc5331cd7fa8e6909aa7eb6dca1a931452191096" "06 Jan 17 18:24:56 [GMT]" "/" ".stackoverflow.com" nil]))
+)
+(setq url-cookie-secure-storage
+ '((".github.com"
+  [url-cookie "HttpOnly" nil "Tue, 17 Jul 2035 21:46:37 -0000" "/" ".github.com" t]
+  [url-cookie "logged_in" "no" "Tue, 17 Jul 2035 21:46:37 -0000" "/" ".github.com" t])
+ (".medium.com"
+  [url-cookie "sid" "1:XTgnq/VqQOidP+4oOzFhlrSglnN68GPw+s3xam1NsMHSOBtCDcPqU8FaKBeH9TC0" "Wed, 11 Jan 2017 01:08:30 GMT" "/" ".medium.com" t]
+  [url-cookie "httponly" nil "Wed, 11 Jan 2017 01:08:30 GMT" "/" ".medium.com" t]
+  [url-cookie "uid" "lo_b0bd5c6d6e88" "Wed, 11 Jan 2017 01:08:30 GMT" "/" ".medium.com" t]))
+)
+
+;; Local Variables:
+;; version-control: never
+;; no-byte-compile: t
+;; End:

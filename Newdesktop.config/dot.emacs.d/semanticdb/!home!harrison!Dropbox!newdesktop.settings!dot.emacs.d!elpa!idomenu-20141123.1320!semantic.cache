@@ -1,0 +1,16 @@
+;; Object idomenu-20141123.1320/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "idomenu-20141123.1320/"
+  :tables
+  (list
+    (semanticdb-table "idomenu-autoloads.el"
+      :major-mode 'emacs-lisp-mode
+      :tags nil
+      :file "idomenu-autoloads.el"
+      :pointmax 287
+      :fsize 515
+      :lastmodtime '(21803 20854 930593 663000)
+      :unmatched-syntax nil))
+  :file "!home!harrison!Dropbox!newdesktop.settings!dot.emacs.d!elpa!idomenu-20141123.1320!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2")

@@ -1,0 +1,23 @@
+;; Object listserv/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "listserv/"
+  :tables
+  (list
+    (semanticdb-table "Makefile.am"
+      :major-mode 'makefile-automake-mode
+      :tags 
+        '( ("agents_execdir" variable (:default-value ("$(prefix)/agents")) nil [1 35])
+            ("agents_exec_PROGRAMS" variable (:default-value ("listserv")) nil [36 66])
+            ("listserv_SOURCES" variable (:default-value ("listserv.c" "../hash.c" "../common.c" "../config.c" "../mcfg.c" "../logger.c")) nil [67 151])
+            ("listserv_LDADD" variable (:default-value ("-lemcbase" "-lglib-2.0" "-lcrypt")) nil [151 195])
+            ("listserv_LDFLAGS" variable (:default-value ("-Wl,-export-dynamic")) nil [195 232])
+            ("install-exec-hook" function nil nil [233 369])
+            ("uninstall-hook" function nil nil [370 474]))          
+      :file "Makefile.am"
+      :pointmax 474
+      :fsize 473
+      :lastmodtime '(21742 20805 0 0)
+      :unmatched-syntax '((shell-command 387 . 473) (bol 386 . 386))))
+  :file "!home!harrison!projects!work!bitbucket!fm-app-mailer!listserv!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2")

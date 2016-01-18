@@ -1,0 +1,285 @@
+;; Object go-mode-20151226.1224/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "go-mode-20151226.1224/"
+  :tables
+  (list
+    (semanticdb-table "go-mode-autoloads.el"
+      :major-mode 'emacs-lisp-mode
+      :tags nil
+      :file "go-mode-autoloads.el"
+      :pointmax 3034
+      :fsize 3075
+      :lastmodtime '(22146 49693 567496 361000)
+      :unmatched-syntax nil)
+    (semanticdb-table "go-mode.el"
+      :major-mode 'emacs-lisp-mode
+      :tags 
+        '( ("cl" include nil nil [405 418])
+            ("etags" include nil nil [419 435])
+            ("ffap" include nil nil [436 451])
+            ("find-file" include nil nil [452 472])
+            ("ring" include nil nil [473 488])
+            ("url" include nil nil [489 503])
+            ("go--xemacs-p" function nil nil [1359 1407])
+            ("go--delete-whole-line" function (:arguments ("arg")) nil [1409 2475])
+            ("if" code nil nil [2620 2688])
+            ("if" code nil nil [2864 2989])
+            ("go--old-completion-list-style" function (:arguments ("list")) nil [2991 3077])
+            ("if" code nil nil [3182 3518])
+            ("go--regexp-enclose-in-symbol" function (:arguments ("s")) nil [3520 3992])
+            ("go-goto-opening-parenthesis" function (:arguments ("_legacy-unused")) nil [3994 4389])
+            ("go-dangling-operators-regexp" variable
+               (:constant-flag t
+                :default-value "[^-]-\\|[^+]\\+\\|[/*&><.=|^]")
+                nil [4392 4463])
+            ("go-identifier-regexp" variable
+               (:constant-flag t
+                :default-value "[[:word:][:multibyte:]]+")
+                nil [4464 4522])
+            ("go-type-name-no-prefix-regexp" variable
+               (:constant-flag t
+                :default-value "\\(?:[[:word:][:multibyte:]]+\\.\\)?[[:word:][:multibyte:]]+")
+                nil [4523 4626])
+            ("go-qualified-identifier-regexp" variable
+               (:constant-flag t
+                :default-value (concat go-identifier-regexp "\\." go-identifier-regexp))
+                nil [4627 4725])
+            ("go-label-regexp" variable
+               (:constant-flag t
+                :default-value go-identifier-regexp)
+                nil [4726 4773])
+            ("go-type-regexp" variable
+               (:constant-flag t
+                :default-value "[[:word:][:multibyte:]*]+")
+                nil [4774 4827])
+            ("go-func-regexp" variable
+               (:constant-flag t
+                :default-value (concat (go--regexp-enclose-in-symbol "func") "\\s *\\(" go-identifier-regexp "\\)"))
+                nil [4828 4938])
+            ("go-func-meth-regexp" variable
+               (:constant-flag t
+                :default-value (concat (go--regexp-enclose-in-symbol "func") "\\s *\\(?:(\\s *" "\\(" go-identifier-regexp "\\s +\\)?" go-type-regexp "\\s *)\\s *\\)?\\(" go-identifier-regexp "\\)("))
+                nil [4939 5293])
+            ("go-builtins" variable
+               (:constant-flag t
+                :default-value (quote ("append" "cap" "close" "complex" "copy" "delete" "imag" "len" "make" "new" "panic" "print" "println" "real" "recover")))
+                nil [5295 5535])
+            ("go-mode-keywords" variable
+               (:constant-flag t
+                :default-value (quote ("break" "default" "func" "interface" "select" "case" "defer" "go" "map" "struct" "chan" "else" "goto" "package" "switch" "const" "fallthrough" "if" "range" "type" "continue" "for" "import" "return" "var")))
+                nil [5537 5916])
+            ("go-constants" variable
+               (:constant-flag t
+                :default-value (quote ("nil" "true" "false" "iota")))
+                nil [5918 5972])
+            ("go-type-name-regexp" variable
+               (:constant-flag t
+                :default-value (concat "\\(?:[*(]\\)*\\(\\(?:" go-identifier-regexp "\\.\\)?" go-identifier-regexp "\\)"))
+                nil [5973 6094])
+            ("go--font-lock-func-param-num-groups" variable
+               (:constant-flag t
+                :default-value 16)
+                nil [6204 6253])
+            ("go-dangling-cache" variable nil nil [6255 6281])
+            ("go-godoc-history" variable nil nil [6282 6311])
+            ("go--coverage-current-file-name" variable nil nil [6312 6351])
+            ("go" customgroup (:user-visible-flag t) nil [6353 6487])
+            ("go-cover" customgroup (:user-visible-flag t) nil [6489 6558])
+            ("go-fontify-function-calls" variable (:default-value t) nil [6560 6687])
+            ("go-mode-hook" variable nil nil [6689 6774])
+            ("go-command" variable (:default-value "go") nil [6776 7074])
+            ("gofmt-command" variable (:default-value "gofmt") nil [7076 7252])
+            ("gofmt-show-errors" variable (:default-value (quote buffer)) nil [7254 7708])
+            ("godef-command" variable (:default-value "godef") nil [7710 7797])
+            ("go-other-file-alist" variable (:default-value (quote (("_test\\.go\\'" (".go")) ("\\.go\\'" ("_test.go"))))) nil [7799 8034])
+            ("go--kill-new-message" function (:arguments ("url")) nil [8036 8158])
+            ("go-play-browse-function" variable (:default-value (quote go--kill-new-message)) nil [8160 8520])
+            ("go-coverage-display-buffer-func" variable (:default-value (quote display-buffer-reuse-window)) nil [8522 8744])
+            ("go-coverage-untracked" variable
+               (:default-value (quote ((t (:foreground "#505050"))))
+                :type "face")
+                nil [8746 8867])
+            ("go-coverage-0" variable
+               (:default-value (quote ((t (:foreground "#c00000"))))
+                :type "face")
+                nil [8869 8983])
+            ("go-coverage-1" variable
+               (:default-value (quote ((t (:foreground "#808080"))))
+                :type "face")
+                nil [8984 9110])
+            ("go-coverage-2" variable
+               (:default-value (quote ((t (:foreground "#748c83"))))
+                :type "face")
+                nil [9111 9237])
+            ("go-coverage-3" variable
+               (:default-value (quote ((t (:foreground "#689886"))))
+                :type "face")
+                nil [9238 9364])
+            ("go-coverage-4" variable
+               (:default-value (quote ((t (:foreground "#5ca489"))))
+                :type "face")
+                nil [9365 9491])
+            ("go-coverage-5" variable
+               (:default-value (quote ((t (:foreground "#50b08c"))))
+                :type "face")
+                nil [9492 9618])
+            ("go-coverage-6" variable
+               (:default-value (quote ((t (:foreground "#44bc8f"))))
+                :type "face")
+                nil [9619 9745])
+            ("go-coverage-7" variable
+               (:default-value (quote ((t (:foreground "#38c892"))))
+                :type "face")
+                nil [9746 9872])
+            ("go-coverage-8" variable
+               (:default-value (quote ((t (:foreground "#2cd495"))))
+                :type "face")
+                nil [9873 10054])
+            ("go-coverage-9" variable
+               (:default-value (quote ((t (:foreground "#20e098"))))
+                :type "face")
+                nil [10055 10181])
+            ("go-coverage-10" variable
+               (:default-value (quote ((t (:foreground "#14ec9b"))))
+                :type "face")
+                nil [10182 10310])
+            ("go-coverage-covered" variable
+               (:default-value (quote ((t (:foreground "#2cd495"))))
+                :type "face")
+                nil [10311 10428])
+            ("go-mode-syntax-table" variable (:default-value (let ((st (make-syntax-table))) (modify-syntax-entry 43 "." st) (modify-syntax-entry 45 "." st) (modify-syntax-entry 37 "." st) (modify-syntax-entry 38 "." st) (modify-syntax-entry 124 "." st) (modify-syntax-entry 94 "." st) (modify-syntax-entry 33 "." st) (modify-syntax-entry 61 "." st) (modify-syntax-entry 60 "." st) (modify-syntax-entry 62 "." st) (modify-syntax-entry 47 (if (go--xemacs-p) ". 1456" ". 124b") st) (modify-syntax-entry 42 ". 23" st) (modify-syntax-entry 10 "> b" st) (modify-syntax-entry 34 "\"" st) (modify-syntax-entry 39 "\"" st) (modify-syntax-entry 96 "\"" st) (modify-syntax-entry 92 "\\" st) (modify-syntax-entry 95 "w" st) st)) nil [10430 11376])
+            ("go--build-font-lock-keywords" function nil nil [11378 14265])
+            ("go--font-lock-syntactic-keywords" variable
+               (:constant-flag t
+                :default-value (quote ((go--match-raw-string-literal (1 (7 . 96)) (2 (15)) (3 (7 . 96))))))
+                nil [14300 14606])
+            ("go-mode-map" variable (:default-value (let ((m (make-sparse-keymap))) (define-key m "}" (function go-mode-insert-and-indent)) (define-key m ")" (function go-mode-insert-and-indent)) (define-key m "," (function go-mode-insert-and-indent)) (define-key m ":" (function go-mode-insert-and-indent)) (define-key m "=" (function go-mode-insert-and-indent)) (define-key m (kbd "C-c C-a") (function go-import-add)) (define-key m (kbd "C-c C-j") (function godef-jump)) (define-key m (kbd "C-x 4 C-c C-j") (function godef-jump-other-window)) (define-key m (kbd "C-c C-d") (function godef-describe)) m)) nil [14608 15197])
+            ("easy-menu-define" code nil nil [15199 15891])
+            ("go-mode-insert-and-indent" function
+               (:user-visible-flag t
+                :arguments ("key"))
+                nil [15893 16128])
+            ("go-paren-level" function nil nil [16130 16181])
+            ("go-in-string-or-comment-p" function nil nil [16183 16247])
+            ("go-in-string-p" function nil nil [16249 16302])
+            ("go-in-comment-p" function nil nil [16304 16358])
+            ("go-goto-beginning-of-string-or-comment" function nil nil [16360 16449])
+            ("go--backward-irrelevant" function (:arguments ("stop-at-string")) nil [16451 17457])
+            ("go--buffer-narrowed-p" function nil nil [17459 17609])
+            ("go--match-raw-string-literal" function (:arguments ("end")) nil [17611 18124])
+            ("go-previous-line-has-dangling-op-p" function nil nil [18126 18657])
+            ("go--at-function-definition" function nil nil [18659 19537])
+            ("go--indentation-for-opening-parenthesis" function nil nil [19539 20040])
+            ("go-indentation-at-point" function nil nil [20042 21089])
+            ("go-mode-indent-line" function nil nil [21091 21915])
+            ("go-beginning-of-defun" function (:arguments ("count")) nil [21917 22654])
+            ("go-end-of-defun" function nil nil [22656 23438])
+            ("go--find-enclosing-parentheses" function (:arguments ("position")) nil [23440 24357])
+            ("go--search-next-comma" function (:arguments ("end")) nil [24359 24848])
+            ("go--looking-at-keyword" function nil nil [24850 24996])
+            ("go--match-func" function (:arguments ("end")) nil [24998 25745])
+            ("go--match-func-type-names" function (:arguments ("end")) nil [25747 26518])
+            ("go--parameter-list-type" function (:arguments ("end")) nil [26520 27257])
+            ("go--opt-dotdotdot-regexp" variable
+               (:constant-flag t
+                :default-value "\\(?:\\.\\.\\.\\)?")
+                nil [27259 27315])
+            ("go--parameter-type-regexp" variable
+               (:constant-flag t
+                :default-value (concat go--opt-dotdotdot-regexp "[[:space:]*
+]*\\(" go-type-name-no-prefix-regexp "\\)[[:space:]
+]*\\([,)]\\|\\'\\)"))
+                nil [27316 27475])
+            ("go--func-type-in-parameter-list-regexp" variable
+               (:constant-flag t
+                :default-value (concat go--opt-dotdotdot-regexp "[[:space:]*
+]*\\(" (go--regexp-enclose-in-symbol "func") "\\)"))
+                nil [27476 27626])
+            ("go--match-parameters-common" function (:arguments ("identifier-regexp" "end")) nil [27628 28521])
+            ("go--match-parameters-with-identifier-list" function (:arguments ("end")) nil [28523 28667])
+            ("go--match-parameters-without-identifier-list" function (:arguments ("end")) nil [28669 28766])
+            ("go--filter-match-data" function (:arguments ("regions" "end")) nil [28768 29476])
+            ("go--make-match-data" function (:arguments ("regions")) nil [29478 29796])
+            ("go--match-parameter-list" function (:arguments ("end")) nil [29798 31192])
+            ("go--match-function-result" function (:arguments ("end")) nil [31194 31774])
+            ("define-derived-mode" code nil nil [31791 35901])
+            ("add-to-list" code nil nil [35918 35975])
+            ("go--apply-rcs-patch" function (:arguments ("patch-buffer")) nil [35977 37818])
+            ("gofmt" function (:user-visible-flag t) nil [37820 39305])
+            ("gofmt--process-errors" function (:arguments ("filename" "tmpfile" "errbuf")) nil [39308 39892])
+            ("gofmt--kill-error-buffer" function (:arguments ("errbuf")) nil [39894 40046])
+            ("gofmt-before-save" function (:user-visible-flag t) nil [40063 40398])
+            ("godoc--read-query" function nil nil [40400 41147])
+            ("godoc--get-buffer" function (:arguments ("query")) nil [41149 41451])
+            ("godoc--buffer-sentinel" function (:arguments ("proc" "event")) nil [41453 41966])
+            ("define-derived-mode" code nil nil [41968 42086])
+            ("godoc" function
+               (:user-visible-flag t
+                :arguments ("query"))
+                nil [42103 42444])
+            ("godoc-at-point" function
+               (:user-visible-flag t
+                :arguments ("point"))
+                nil [42446 43452])
+            ("go-goto-imports" function (:user-visible-flag t) nil [43454 44668])
+            ("go-play-buffer" function (:user-visible-flag t) nil [44670 44812])
+            ("go-play-region" function
+               (:user-visible-flag t
+                :arguments ("start" "end"))
+                nil [44814 45910])
+            ("go-download-play" function
+               (:user-visible-flag t
+                :arguments ("url"))
+                nil [45927 46646])
+            ("go-propertize-syntax" function (:arguments ("start" "end")) nil [46648 46865])
+            ("go-import-add" function
+               (:user-visible-flag t
+                :arguments ("arg" "import"))
+                nil [46867 48643])
+            ("go-root-and-paths" function nil nil [48645 48932])
+            ("go--string-prefix-p" function (:arguments ("s1" "s2" "ignore-case")) nil [48934 49190])
+            ("go--directory-dirs" function (:arguments ("dir")) nil [49192 49775])
+            ("go-packages" function nil nil [49778 50520])
+            ("go-unused-imports-lines" function nil nil [50522 51894])
+            ("go-remove-unused-imports" function
+               (:user-visible-flag t
+                :arguments ("arg"))
+                nil [51896 52802])
+            ("godef--find-file-line-column" function (:arguments ("specifier" "other-window")) nil [52804 53645])
+            ("godef--call" function (:arguments ("point")) nil [53647 54802])
+            ("godef--successful-p" function (:arguments ("output")) nil [54804 55079])
+            ("godef--error" function (:arguments ("output")) nil [55081 55253])
+            ("godef-describe" function
+               (:user-visible-flag t
+                :arguments ("point"))
+                nil [55255 55653])
+            ("godef-jump" function
+               (:user-visible-flag t
+                :arguments ("point" "other-window"))
+                nil [55655 56139])
+            ("godef-jump-other-window" function (:arguments ("point")) nil [56141 56223])
+            ("go--goto-line" function (:arguments ("line")) nil [56225 56306])
+            ("go--line-column-to-point" function (:arguments ("line" "column")) nil [56308 56441])
+            ("go--covered" type
+               (:members ("start-line" "start-column" "end-line" "end-column" "covered" "count")
+                :type "struct")
+                nil [56443 56526])
+            ("go--coverage-file" function nil nil [56528 56805])
+            ("go--coverage-origin-buffer" function nil nil [56807 56936])
+            ("go--coverage-face" function (:arguments ("count" "divisor")) nil [56938 57611])
+            ("go--coverage-make-overlay" function (:arguments ("range" "divisor")) nil [57613 58314])
+            ("go--coverage-clear-overlays" function nil nil [58316 58576])
+            ("go--coverage-parse-file" function (:arguments ("coverage-file" "file-name")) nil [58578 59848])
+            ("go-coverage" function
+               (:user-visible-flag t
+                :arguments ("coverage-file"))
+                nil [59850 61404])
+            ("go-mode" package nil nil [61406 61424]))          
+      :file "go-mode.el"
+      :pointmax 61451
+      :fsize 61451
+      :lastmodtime '(22146 49693 487496 361000)
+      :unmatched-syntax nil))
+  :file "!home!harrison!.hlocal!emacs!dot.emacs.d!elpa!go-mode-20151226.1224!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2")

@@ -1,0 +1,16 @@
+;; Object org-trello-20151213.736/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "org-trello-20151213.736/"
+  :tables
+  (list
+    (semanticdb-table "org-trello-autoloads.el"
+      :major-mode 'emacs-lisp-mode
+      :tags nil
+      :file "org-trello-autoloads.el"
+      :pointmax 293
+      :fsize 5181
+      :lastmodtime '(22127 1155 250115 487000)
+      :unmatched-syntax nil))
+  :file "!home!harrison!.hlocal!emacs!dot.emacs.d!elpa!org-trello-20151213.736!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2")

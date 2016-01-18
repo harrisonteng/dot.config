@@ -1,0 +1,18 @@
+;; Object docs/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "docs/"
+  :tables
+  (list
+    (semanticdb-table "Makefile.am"
+      :major-mode 'makefile-automake-mode
+      :tags 
+        '( ("SUBDIRS" variable (:default-value ("reference" "tutorial")) nil [60 89])
+            ("EXTRA_DIST" variable (:default-value ("gtkdocs_fix")) nil [90 115]))          
+      :file "Makefile.am"
+      :pointmax 115
+      :fsize 114
+      :lastmodtime '(21560 30358 182185 270000)
+      :unmatched-syntax nil))
+  :file "!home!harrison!projects!gmime!docs!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2")

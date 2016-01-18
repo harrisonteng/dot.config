@@ -1,0 +1,221 @@
+;; Object examples/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "examples/"
+  :tables
+  (list
+    (semanticdb-table "getopt.c"
+      :major-mode 'c-mode
+      :tags 
+        '( ("_NO_PROTO" variable (:constant-flag t) nil [1257 1266])
+            ("stdio.h" include (:system-flag t) nil [1498 1516])
+            ("string.h" include (:system-flag t) nil [1517 1536])
+            ("GETOPT_INTERFACE_VERSION" variable (:constant-flag t) nil [2060 2084])
+            ("gnu-versions.h" include (:system-flag t) nil [2145 2171])
+            ("stdlib.h" include (:system-flag t) nil [2526 2546])
+            ("unistd.h" include (:system-flag t) nil [2547 2567])
+            ("_" variable (:constant-flag t) nil [2927 2928])
+            ("getopt.h" include nil nil [3642 3661])
+            ("optarg" variable
+               (:pointer 1
+                :default-value "NULL"
+                :type "char")
+                nil [3910 3930])
+            ("optind" variable
+               (:default-value "1"
+                :type "int")
+                nil [4468 4483])
+            ("__getopt_initialized" variable
+               (:default-value "0"
+                :type "int")
+                nil [4640 4669])
+            ("nextchar" variable
+               (:pointer 1
+                :typemodifiers ("static")
+                :type "char")
+                nil [4953 4975])
+            ("opterr" variable
+               (:default-value "1"
+                :type "int")
+                nil [5067 5082])
+            ("optopt" variable
+               (:default-value "'?'"
+                :type "int")
+                nil [5250 5267])
+            ("ordering" variable
+               (:typemodifiers ("static")
+                :type ("" type
+                     (:members 
+                        ( ("REQUIRE_ORDER" variable
+                             (:constant-flag t
+                              :type "int")
+                              (reparse-symbol enumsubparts) [6676 6690])
+                          ("PERMUTE" variable
+                             (:constant-flag t
+                              :type "int")
+                              (reparse-symbol enumsubparts) [6691 6699])
+                          ("RETURN_IN_ORDER" variable
+                             (:constant-flag t
+                              :type "int")
+                              (reparse-symbol enumsubparts) [6700 6717]))                        
+                      :type "enum")
+                      nil nil))
+                nil [6660 6727])
+            ("posixly_correct" variable
+               (:pointer 1
+                :typemodifiers ("static")
+                :type "char")
+                nil [6783 6812])
+            ("string.h" include (:system-flag t) nil [7040 7060])
+            ("my_index" variable (:constant-flag t) nil [7070 7078])
+            ("first_nonopt" variable
+               (:typemodifiers ("static")
+                :type "int")
+                nil [8242 8266])
+            ("last_nonopt" variable
+               (:typemodifiers ("static")
+                :type "int")
+                nil [8267 8290])
+            ("SWAP_FLAGS" variable (:constant-flag t) nil [9556 9566])
+            ("exchange" function
+               (:prototype-flag t
+                :typemodifiers ("static")
+                :arguments 
+                  ( ("" variable
+                       (:pointer 2
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [10101 10109]))                  
+                :type "void")
+                nil [10079 10110])
+            ("exchange" function
+               (:typemodifiers ("static")
+                :arguments 
+                  ( ("argv" variable
+                       (:pointer 2
+                        :type "char")
+                        nil nil))                  
+                :type "void")
+                nil [10119 12380])
+            ("_getopt_initialize" function
+               (:prototype-flag t
+                :pointer 1
+                :typemodifiers ("static")
+                :constant-flag t
+                :arguments 
+                  ( ("" variable (:type "int") (reparse-symbol arg-sub-list) [12520 12524])
+                    ("" variable
+                       (:pointer 2
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [12525 12539])
+                    ("" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [12540 12553]))                  
+                :type "char")
+                nil [12481 12554])
+            ("_getopt_initialize" function
+               (:pointer 1
+                :typemodifiers ("static")
+                :constant-flag t
+                :arguments 
+                  ( ("argc" variable (:type "int") nil nil)
+                    ("argv" variable
+                       (:pointer 2
+                        :type "char")
+                        nil nil)
+                    ("optstring" variable
+                       (:pointer 1
+                        :type "char")
+                        nil nil))                  
+                :type "char")
+                nil [12562 14228])
+            ("_getopt_internal" function
+               (:arguments 
+                  ( ("argc" variable (:type "int") nil nil)
+                    ("argv" variable
+                       (:pointer 2
+                        :type "char")
+                        nil nil)
+                    ("optstring" variable
+                       (:pointer 1
+                        :type "char")
+                        nil nil)
+                    ("longopts" variable
+                       (:pointer 1
+                        :type ("option" type
+                             (:prototype t
+                              :type "struct")
+                              nil nil))
+                        nil nil)
+                    ("longind" variable
+                       (:pointer 1
+                        :type "int")
+                        nil nil)
+                    ("long_only" variable (:type "int") nil nil))                  
+                :type "int")
+                nil [16973 28687])
+            ("getopt" function
+               (:arguments 
+                  ( ("argc" variable (:type "int") nil nil)
+                    ("argv" variable
+                       (:pointer 2
+                        :type "char")
+                        nil nil)
+                    ("optstring" variable
+                       (:pointer 1
+                        :type "char")
+                        nil nil))                  
+                :type "int")
+                nil [28689 28904]))          
+      :file "getopt.c"
+      :pointmax 30100
+      :fsize 30099
+      :lastmodtime '(21560 30358 182185 270000)
+      :unmatched-syntax nil
+      :lexical-table 
+        '(("GETOPT_INTERFACE_VERSION" . ((number "2" 2085 . 2086)))
+          ("_" (spp-arg-list ("msgid") 2928 . 2935) . ((semantic-list "(msgid)" 2936 . 2943)))
+          ("SWAP_FLAGS" (spp-arg-list ("ch1" "ch2") 9566 . 9576))
+          ("_NO_PROTO")
+          ("my_index" . ((symbol "strchr" 7079 . 7085)))
+          )
+)
+    (semanticdb-table "Makefile.am"
+      :major-mode 'makefile-automake-mode
+      :tags 
+        '( ("SUBDIRS" variable (:default-value (".")) nil [60 72])
+            ("extra_DIST" variable (:default-value ("README")) nil [73 93])
+            ("INCLUDES" variable (:default-value ("-I$(top_srcdir)" "$(GMIME_CFLAGS)" "$(GLIB_CFLAGS)")) nil [94 152])
+            ("noinst_PROGRAMS" variable (:default-value ("basic-example")) nil [153 216])
+            ("DEPS" variable (:default-value ("$(top_builddir)/util/libutil.la" "$(top_builddir)/gmime/libgmime-$(GMIME_API_VERSION).la")) nil [217 324])
+            ("LDADDS" variable (:default-value ("$(top_builddir)/util/libutil.la" "$(top_builddir)/gmime/libgmime-$(GMIME_API_VERSION).la" "$(GLIB_LIBS)")) nil [325 450])
+            ("GETOPT_SOURCES" variable nil nil [468 485])
+            ("GETOPT_SOURCES" variable (:default-value ("getopt.c" "getopt.h" "getopt1.c")) nil [490 535])
+            ("basic_example_SOURCES" variable (:default-value ("basic-example.c")) nil [542 582])
+            ("basic_example_LDFLAGS" variable nil nil [582 607])
+            ("basic_example_DEPENDENCIES" variable (:default-value ("$(DEPS)")) nil [607 644])
+            ("basic_example_LDADD" variable (:default-value ("$(LDADDS)")) nil [644 676])
+            ("imap_example_SOURCES" variable (:default-value ("imap-example.c")) nil [677 715])
+            ("imap_example_LDFLAGS" variable nil nil [715 739])
+            ("imap_example_DEPENDENCIES" variable (:default-value ("$(DEPS)")) nil [739 775])
+            ("imap_example_LDADD" variable (:default-value ("$(LDADDS)")) nil [775 806])
+            ("uuencode_SOURCES" variable (:default-value ("$(GETOPT_SOURCES)" "uuencode.c")) nil [807 855])
+            ("uuencode_LDFLAGS" variable nil nil [855 875])
+            ("uuencode_DEPENDENCIES" variable (:default-value ("$(DEPS)")) nil [875 907])
+            ("uuencode_LDADD" variable (:default-value ("$(LDADDS)")) nil [907 934])
+            ("uudecode_SOURCES" variable (:default-value ("$(GETOPT_SOURCES)" "uudecode.c")) nil [935 983])
+            ("uudecode_LDFLAGS" variable nil nil [983 1003])
+            ("uudecode_DEPENDENCIES" variable (:default-value ("$(DEPS)")) nil [1003 1035])
+            ("uudecode_LDADD" variable (:default-value ("$(LDADDS)")) nil [1035 1062]))          
+      :file "Makefile.am"
+      :pointmax 1062
+      :fsize 1061
+      :lastmodtime '(21560 30358 182185 270000)
+      :unmatched-syntax nil)
+    (semanticdb-table "getopt.h"
+      :file "getopt.h"
+      :fsize 4589
+      :lastmodtime '(21560 30358 182185 270000)))
+  :file "!home!harrison!projects!gmime!examples!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2")

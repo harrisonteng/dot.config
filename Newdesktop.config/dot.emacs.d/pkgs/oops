@@ -1,0 +1,239 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="gbk" xml:lang="gbk">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gbk" />
+<meta http-equiv="content-language" content="gbk" />
+<script type="text/javascript" src="/js/common.js?15"></script>
+<link rel="stylesheet" type="text/css" href="/css/common.css?16" media="screen" />
+<meta name="author" content="海词网" />
+<meta name="copyright" content="Copyright 2003-2009 海词网所有" /> 
+<link rel="icon" href="/favicon.ico" type="/image/x-icon" />
+<link rel="shortcut icon" href="/favicon.ico" type="/image/x-icon" />
+<link rel="search" type="application/opensearchdescription+xml" href="/opensearch_desc.xml" title="Dict.CN 海词" />
+<title>search的英语解释词典意思 - Dict.CN 海词</title>
+<script type="text/javascript" src="/adjs.php"></script>
+<meta name="keywords" content="search , 在线词典, 在线翻译, 英语, 解释, 翻译, 单词" />
+<meta name="description" content="search 的翻译结果：n. 搜寻,探究; v. 搜寻,探求,调查. 以上单词、翻译、解释、双语例句、英文例句由海量词典Dict.CN提供。" />
+</head>
+<body bgcolor=#ffffff>
+<div id="top">
+	<div class="logo"><a href="http://dict.cn/" title="海词,在线词典,在线翻译"><img src="/imgs/logo.gif" alt="dict.cn"/></a></div>
+	<div class="nav"> 
+		<table style="width:100%;" cellpadding="0" cellspacing="0"> 
+			<tr class="nn_bg"> 
+				<td> 
+					<div class="nn_barL"><a href="/" class="nn_isSelect">词典</a>&nbsp;|&nbsp;<a href="/fy/">翻译</a>&nbsp;|&nbsp;<a href="/ketang/">课堂</a>&nbsp;|&nbsp;<a href="/scb/">生词本</a>&nbsp;|&nbsp;<a href="/bdc/">背单词</a>&nbsp;|&nbsp;<a href="/kuaile/news.html">快乐英语</a>&nbsp;|&nbsp;<a href="/ef/" style="color:#F7722A;font-weight:bold;">每日英语</a>&nbsp;|&nbsp;<a href="http://bbs.dict.cn/">论坛</a>&nbsp;|&nbsp;<a href="http://home.dict.cn/">家园</a></div> 
+				</td> 
+				<td align="right"><div class="nn_sb ">		<a href="/login.php?url=%2Fsearch.htm" class="nn_login">登录</a>&nbsp;&nbsp;<a href="http://home.dict.cn/do.php?ac=register" class="nn_register">注册</a>
+	<a href="#" class="nn_logout" onclick="addFavorite()">收藏</a> <a href="#" class="nn_logout" onclick="this.blur();Report('report', '');return false;">意见</a></div>
+				</td> 
+			</tr> 
+			<tr> 
+				<td colspan="2" style="height:44px;">
+					<form action="/search.php" name="f" onsubmit="return qs(0);">
+					<table width="100%"> 
+						<tr>
+							<td width="30" style="color:#999" align="right">输入: </td>
+							<td width="310">					<input name="q" type="text" class="nn_txtInput" autocomplete='off' onmouseover="this.focus()" onfocus="this.select()" accesskey="c" value="search" /></td> 
+							<td width="80"> 
+								<select class="nn_sel" onchange="setengine(this.options[this.selectedIndex].value)"> 
+									<option selected="selected" value="d">Dict.cn</option> 
+									<option value="g">Google</option> 
+									<option value="b">Baidu</option> 
+								</select> 
+							</td> 
+							<td><button type="submit" value="true">搜 索</button></td> 
+							<td align="right"> 
+								<a href="http://dict.cn/" class="nn_rn1" id="huaci_status">划词翻译</a> 
+								<a href="#" class="nn_rn2" onclick="window.open('/compact.php?q=search','compactwin','height=500, width=386, top=100, left='+(((window.screen.width)?(window.screen.width):800)*2/3)+', toolbar=no, menubar=no, scrollbars=yes, resizable=yes,location=no, status=no',true);return false;">简洁模式</a> 
+								<a class="nn_rn4" href="http://bbs.dict.cn/forumdisplay.php?fid=2">求助词友</a>
+							</td> 
+						</tr> 
+					</table>
+					</form>
+				</td> 
+			</tr> 
+		</table> 
+	</div>
+
+		<div class="clear"></div>
+				<div class="top_text_ad"><iframe src="/ok/top.php?type=text"  width="960" height="25" frameborder="0" border="0" marginwidth="0" marginheight="0" scrolling="no" allowTransparency="true"></iframe></div>
+			</div>
+<script language="javascript" type="text/javascript">sf();</script>
+	<div id="middle">
+		<div class="middle_right">
+
+			<div class="middle_right_left">
+				<div class="boxm_m">
+					<div class="boxm_t">
+						<div class="boxm_b">
+							<div class="mutti"><object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="http://fpdownload.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,0,0" width="1" height="1" id="recite" align="absmiddle"> 
+<param name="allowScriptAccess" value="sameDomain" /> 
+<param name="movie" value="/imgs/dict.swf" /><param name="quality" value="high" /><embed src="/imgs/dict.swf" quality="high" width="1" height="1" name="recite" align="absmiddle" allowScriptAccess="sameDomain" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" /> 
+</object>
+<table><tr>
+<td>
+<h1>search</h1>
+</td>
+<td> &nbsp; <span class="pronounce">[s&#601;:t&#643;]</span> &nbsp; <a href="javascript:return false;" onMouseOver="ssplay('CZZxB')" onClick="ssplay('CZZxB');return false;" onMouseOut="ssstop()"><img src="/imgs/audio.gif" border="0"></a> &nbsp; <a href='javascript:dictAdd("search")' title='添加 search 到我的生词本'><img src='/imgs/addscb.gif' alt='添加到生词本' /></a></td>
+</tr></table>
+<div class="mut_jies"><strong>n. 搜寻,探究<br />v. 搜寻,探求,调查</strong></div>
+<div><div class="more rel"><nobr><a href="http://www.google.cn/search?q=search&complete=1&hl=zh-CN" target="_blank">查找<span style="color:green">search</span>相关网页</a> <a href='http://images.google.com/images?q=search' target='_blank'>查看<span style="color:green">search</span>图片</a> <a href="#" onclick="this.blur();tMenu(event);return !1" class=gb3>更多相关内容<small>&#9660;</small></a><div id=gbi> <a href='http://www.baidu.com/baidu?tn=jimfan_pg&word=search' target='_blank' class=gb2>查找百度网页</a> <a href='http://image.baidu.com/i?tn=baiduimage&ct=201326592&lm=-1&cl=2&word=search' target='_blank' class=gb2>查看百度图片</a> <a href='http://en.wikipedia.org/wiki/search' target='_blank' class=gb2>查看维基百科</a> <a href='http://www.m-w.com/dictionary/search' target='_blank' class=gb2>查询韦氏词典</a> <a href='http://www.ldoceonline.com/dictionary/search' target='_blank' class=gb2>查询朗文词典</a> <a href='http://dictionary.cambridge.org/results.asp?dict=A&searchword=search' target='_blank' class=gb2>查询剑桥辞典</a> </div></nobr> </div></div><div>
+<h3>例句与用法:</h3>
+<ol class="mut_ol">
+<li>Where's the newspaper?' <span class="mut_lvs">Search</span> me, I haven't seen it.' <a href="javascript:return false;" onClick="ssplay('qHJyMA');return false;" onMouseOver="ssplay('qHJyMA')" onMouseOut="ssstop()"><img src="/imgs/audio.gif" border="0"></a>
+<div>｀报纸在哪儿呢?＇｀不知道, 我没看见.＇</div>
+</li>
+<li>I want to <span class="mut_lvs">search</span> out an old school friend. <a href="javascript:return false;" onClick="ssplay('nWSzSH');return false;" onMouseOver="ssplay('nWSzSH')" onMouseOut="ssstop()"><img src="/imgs/audio.gif" border="0"></a>
+<div>我想寻找我的一个老同学。</div>
+</li>
+<li>Scientists are still <span class="mut_lvs">searching</span> for a cure to the common cold. <a href="javascript:return false;" onClick="ssplay('xl5yXU');return false;" onMouseOver="ssplay('xl5yXU')" onMouseOut="ssstop()"><img src="/imgs/audio.gif" border="0"></a>
+<div>科学家仍在寻求治疗感冒的方法。</div>
+</li>
+<li>They <span class="mut_lvs">searched</span> the woods for the little boy. <a href="javascript:return false;" onClick="ssplay('8EBymL');return false;" onMouseOver="ssplay('8EBymL')" onMouseOut="ssstop()"><img src="/imgs/audio.gif" border="0"></a>
+<div>他们在森林中搜寻到了那个小男孩。</div>
+</li>
+<li>We did a computer <span class="mut_lvs">search</span> for all the hyphenated words. <a href="javascript:return false;" onClick="ssplay('nGNyp3');return false;" onMouseOver="ssplay('nGNyp3')" onMouseOut="ssstop()"><img src="/imgs/audio.gif" border="0"></a>
+<div>我们用电脑查找所有用连字符连接的词。</div>
+</li>
+</ol></div>
+	<div style="padding:0 0 10px 7px;"><a href="/ketang/basic/5-1.htm" style="color:#34AE35;text-decoration:underline;padding:8px;" target="_blank">去了解动词的不规则形式</a> <a href="/ketang/basic/4-2.htm" style="color:#34AE35;text-decoration:underline;padding:8px;" target="_blank">去了解中英文的度量衡转换</a> <a href="/ketang/yufa/11-29.htm" style="color:#34AE35;text-decoration:underline;padding:8px;" target="_blank">去参加动词的时态语态练习</a></div>
+	<div>
+<h3>词形变化:</h3>
+<div class="more">名词:<i>searcher</i> 动词过去式:<i>searched</i> 过去分词:<i>searched</i> 现在分词:<i>searching</i> 第三人称单数:<i>searches</i> 形容词:<i>searchable</i> </div>
+</div>
+<h3>英英解释:</h3><div><h4 class="mut_h3s">名词 search:</h4>
+<ol class="mut_ol">
+<li>the activity of looking thoroughly in order to find something or someone</li>
+<div class="ty">同义词：<a href="/hunt.htm">hunt</a>, <a href="/hunting.htm">hunting</a></div>
+<li>an investigation seeking answers</li>
+<li>an operation that determines whether one or more of a set of items has a specified property</li>
+<div class="ty">同义词：<a href="/lookup.htm">lookup</a></div>
+<li>the examination of alternative hypotheses</li>
+<li>boarding and inspecting a ship on the high seas</li>
+</ol>
+<h4 class="mut_h3s">动词 search:</h4>
+<ol class="mut_ol">
+<li>try to locate or discover, or try to establish the existence of</li>
+<div class="ty">同义词：<a href="/seek.htm">seek</a>, <a href="/look-for.htm">look for</a></div>
+<li>search or seek</li>
+<div class="ty">同义词：<a href="/look.htm">look</a></div>
+<li>inquire into</li>
+<div class="ty">同义词：<a href="/research.htm">research</a>, <a href="/explore.htm">explore</a></div>
+<li>subject to a search</li>
+</ol>
+</div><div>
+<h3>互动百科:</h3>
+<div class='more'><span style='color:green;font-weight:bold;font-size:14px;'>search: </span>现代人应该掌握的三个厉害的工具是搜索(<span style='color:green'>search</span>)、计算机、英语。... <a href=/ok/hd2.php?q=search target='_blank'>详情&raquo;</a></div>
+</div>
+<div class="jiaru_s"><a href="javascript:dictAdd('search')" title='添加 search 到我的生词本'><img src='/imgs/jisc.gif' alt='添加生词' /></a></div>							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="middle_right_right"><div class="picad" id="picad_slot" name="picad_slot"></div>
+			<div id="ali_slot"></div>
+			</div>
+		</div>
+		<div class="middle_left">
+			<div id="mid_left_div_slot">
+			</div>
+<div class="boxl_m">
+	<div class="boxl_t">
+		<div class="boxl_b">
+			<h3 class="boxl_title">海词推荐</h3>
+			<div class="boxl_div" style="text-align:left;line-height:24px;">
+	<a href="/kuaile/08/n-1208.html" style="color:gray;padding-top:0px;">爱的诠释：小小的爱，温暖—3</a>
+		<br />
+	<a href="/kuaile/52/n-1052.html" style="color:gray;padding-top:8px;">改正工作坏习惯</a>
+		<br />
+	<a href="/ef/talk.htm?id=0" style="color:gray;padding-top:8px;">你最喜爱的食物</a>
+		<br />
+	<a href="/ketang/vocabulary/4-5.htm" style="padding-top:8px;">分类词汇：中国小吃</a>
+		<br />
+	<a href="/ef/talk.htm?id=1" style="color:gray;padding-top:8px;">体验别种生活方式</a>
+		<br />
+	<a href="/ketang/basic/2-4.htm" style="padding-top:8px;">英文在数学表达式中的应用</a>
+		<br />
+			</div>
+			<div>&nbsp;</div>
+		</div>
+	</div>
+</div>
+
+<div class="boxl_m">
+<div class="boxl_t">
+<div class="boxl_b"><h3 class="boxl_title">英语学习</h3><div style="width:195px;padding:8px 3px 8px 8px;"><table width="195" border="0" cellspacing="0" cellpadding="0"><tr><td colspan="2" style="font-weight: bold;color:gray;">生活英语</td></tr><tr><td height="75" width="75" rowspan="4"><img src="/ef/lifestyle.jpg"></td><td height="20">．<a href="/ef/talk.htm?id=3" target="_blank" style="color:gray">巧用英语谈论时事</a></td></tr><tr><td height="20">．<a href="/ef/talk.htm?id=4" target="_blank" style="color:gray">测试你的英语水平</a></td></tr><tr><td height="20">．<a href="/ef/talk.htm?id=5" target="_blank">恋爱英语必杀句</a></td></tr><tr><td height="20">．<a href="/ef/talk.htm?id=6" target="_blank" style="color:gray">英孚千万奖学金</a></td></tr></table></div>
+<div style="width:195px;padding:2px 3px 8px 8px;"><table width="195" border="0" cellspacing="0" cellpadding="0"><tr><td colspan="2" style="font-weight: bold;color:gray;">商务英语</td></tr><tr><td height="75" width="75" rowspan="4"><img src="/ef/bizstyle.jpg"></td><td height="20">．<a href="/ef/talk.htm?id=7" target="_blank" style="color:gray">更有效学习英语</a></td></tr><tr><td height="20">．<a href="/ef/talk.htm?id=8" target="_blank">职场应急手册</a></td></tr><tr><td height="20">．<a href="/ef/talk.htm?id=9" target="_blank" style="color:gray">在职场鹤立鸡群？</a></td></tr><tr><td height="20">．<a href="/ef/talk.htm?id=10" target="_blank" style="color:gray">成功金领秘诀</a></td></tr></table></div>
+<div class="clear"></div></div></div></div>
+
+			<div class="boxl_m">
+	<div class="boxl_t">
+		<div class="boxl_b">
+			<h3 class="boxl_title">查词历史</h3>
+			<div class="boxl_div" style="text-align:left;padding-left:35px;padding-top:0px;">
+					<ol class="boxl_uls">
+<li><a href="/search.htm" class='g' style='display:inline;'>search</a></li></ol>
+<a href='/history/' class='b' target='_blank'>查看全部</a> &nbsp; <a href='/scb/?import=history' class='b' target='_blank'>导入全部</a>			</div>
+			<div>&nbsp;</div>
+		</div>
+	</div>
+</div>
+		</div>
+		<div class="clear"></div>
+	</div>
+	<div id="bottom">
+		<div class="linea"><a href="/foot/ad.htm">广告联系</a> - <a href="/foot/about.htm">关于我们</a> - <a href="/foot/privacy.htm">隐私保护</a> - <a href="/foot/feature.htm">特色功能</a> - <a href="/foot/help.htm">工具使用</a> - <a href="/foot/promote.htm">推荐海词</a></div>
+		<div class="lineb">&copy;2003-2009 <a href="http://dict.cn/">海词词典</a>(Dict.CN) - 自2003年11月27日开始服务</div>
+	</div>
+<script src="/hc/" type="text/javascript"></script>
+<script language="javascript" type="text/javascript">
+//sethtml("mid_left_div_slot",gen_push_box() );
+
+</script>
+<script language="JavaScript">var picad = set_search_picad();</script>
+<div id="alimaa" name="alimaa" style="display:hidden"><script type="text/JavaScript"> 
+alimama_pid="mm_12257773_1577689_4495157"; 
+alimama_titlecolor="0000FF"; 
+alimama_descolor ="000000"; 
+alimama_bgcolor="FFFFFF"; 
+alimama_bordercolor="E6E6E6"; 
+alimama_linkcolor="008000"; 
+alimama_bottomcolor="FFFFFF"; 
+alimama_anglesize="0"; 
+alimama_bgpic="0"; 
+alimama_icon="0"; 
+alimama_sizecode="23"; 
+alimama_width=160; 
+alimama_height=600; 
+alimama_type=2; 
+</script> 
+<script src="http://a.alimama.cn/inf.js" type=text/javascript> 
+</script></div>
+<script type="text/JavaScript"> 
+alimama_pid="mm_12257773_1577689_6094749"; 
+alimama_titlecolor="0000FF"; 
+alimama_descolor ="000000"; 
+alimama_bgcolor="FFFFFF"; 
+alimama_bordercolor="E6E6E6"; 
+alimama_linkcolor="008000"; 
+alimama_bottomcolor="FFFFFF"; 
+alimama_anglesize="0"; 
+alimama_bgpic="0"; 
+alimama_icon="0"; 
+alimama_sizecode="11"; 
+alimama_width=760; 
+alimama_height=90; 
+alimama_type="e"; 
+</script> 
+<script src="http://a.alimama.cn/inf.js" type=text/javascript> 
+</script>
+<script language="JavaScript">var adhide =getObj("alimaa"); sethtml("ali_slot",adhide.innerHTML);adhide.parentNode.removeChild(adhide);</script>
+<script src="http://www.google-analytics.com/urchin.js" type="text/javascript"></script>
+<script type="text/javascript">
+_uacct = "UA-138041-2";
+urchinTracker();
+</script>
+<script src="http://analytics.datamaster.com.cn/dma.js?48ad178ecf6f1" type="text/javascript"></script>
+</body>
+</html>

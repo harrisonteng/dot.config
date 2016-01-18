@@ -1,0 +1,16 @@
+;; Object org-pdfview-20151125.1344/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "org-pdfview-20151125.1344/"
+  :tables
+  (list
+    (semanticdb-table "org-pdfview-autoloads.el"
+      :major-mode 'emacs-lisp-mode
+      :tags nil
+      :file "org-pdfview-autoloads.el"
+      :pointmax 295
+      :fsize 386
+      :lastmodtime '(22108 42620 969341 176000)
+      :unmatched-syntax nil))
+  :file "!home!harrison!.hlocal!emacs!dot.emacs.d!elpa!org-pdfview-20151125.1344!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2")

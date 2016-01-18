@@ -1,0 +1,18 @@
+;; Object tools/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "tools/"
+  :tables
+  (list
+    (semanticdb-table "Makefile.am"
+      :major-mode 'makefile-automake-mode
+      :tags 
+        '( ("SUBDIRS" variable (:default-value (".")) nil [60 72])
+            ("EXTRA_DIST" variable (:default-value ("gmime-port-2-2-to-2-4.sh" "gmime-port-2-4-to-2-6.sh")) nil [73 137]))          
+      :file "Makefile.am"
+      :pointmax 137
+      :fsize 136
+      :lastmodtime '(21560 30358 210185 271000)
+      :unmatched-syntax nil))
+  :file "!home!harrison!projects!gmime!tools!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2")

@@ -1,0 +1,16 @@
+;; Object seq-1.11/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "seq-1.11/"
+  :tables
+  (list
+    (semanticdb-table "seq-autoloads.el"
+      :major-mode 'emacs-lisp-mode
+      :tags nil
+      :file "seq-autoloads.el"
+      :pointmax 279
+      :fsize 354
+      :lastmodtime '(22163 60634 519212 847000)
+      :unmatched-syntax nil))
+  :file "!home!harrison!.hlocal!emacs!dot.emacs.d!elpa!seq-1.11!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2")

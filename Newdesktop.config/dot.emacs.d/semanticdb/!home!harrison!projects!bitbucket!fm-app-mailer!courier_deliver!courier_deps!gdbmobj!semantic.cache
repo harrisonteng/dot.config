@@ -1,0 +1,28 @@
+;; Object gdbmobj/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "gdbmobj/"
+  :tables
+  (list
+    (semanticdb-table "Makefile.am"
+      :major-mode 'makefile-automake-mode
+      :tags 
+        '( ("LIBGDBMSOURCES" variable (:default-value ("gdbmobj.h" "gdbmobj.c" "gdbmobj2.c" "gdbmobj3.c")) nil [103 160])
+            ("TESTGDBMSOURCES" variable (:default-value ("testgdbm.C")) nil [160 187])
+            ("noinst_LIBRARIES" variable (:default-value ("libgdbmobj.a")) nil [204 234])
+            ("noinst_PROGRAMS" variable (:default-value ("testgdbm")) nil [234 259])
+            ("libgdbmobj_a_SOURCES" variable (:default-value ("$(LIBGDBMSOURCES)")) nil [260 299])
+            ("testgdbm_SOURCES" variable (:default-value ("$(TESTGDBMSOURCES)")) nil [299 335])
+            ("testgdbm_DEPENDENCIES" variable (:default-value ("libgdbmobj.a")) nil [336 371])
+            ("testgdbm_LDADD" variable (:default-value ("libgdbmobj.a" "@LIBGDBM@")) nil [371 409])
+            ("test" function nil nil [410 472])
+            ("noinst_SCRIPTS" variable (:default-value ("notfound")) nil [478 502])
+            ("notfound" function nil nil [503 522])
+            ("EXTRA_DIST" variable (:default-value ("$(LIBGDBMSOURCES)" "$(TESTGDBMSOURCES)" "testsuite" "testsuite.txt")) nil [530 602]))          
+      :file "Makefile.am"
+      :pointmax 602
+      :fsize 601
+      :lastmodtime '(21731 35447 842521 375000)
+      :unmatched-syntax nil))
+  :file "!home!harrison!projects!bitbucket!fm-app-mailer!courier_deliver!courier_deps!gdbmobj!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2")

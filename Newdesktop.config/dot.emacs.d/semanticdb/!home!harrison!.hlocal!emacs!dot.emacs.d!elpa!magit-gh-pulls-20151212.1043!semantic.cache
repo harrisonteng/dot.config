@@ -1,0 +1,16 @@
+;; Object magit-gh-pulls-20151212.1043/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "magit-gh-pulls-20151212.1043/"
+  :tables
+  (list
+    (semanticdb-table "magit-gh-pulls-autoloads.el"
+      :major-mode 'emacs-lisp-mode
+      :tags nil
+      :file "magit-gh-pulls-autoloads.el"
+      :pointmax 301
+      :fsize 681
+      :lastmodtime '(22127 1177 810115 910000)
+      :unmatched-syntax nil))
+  :file "!home!harrison!.hlocal!emacs!dot.emacs.d!elpa!magit-gh-pulls-20151212.1043!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2")

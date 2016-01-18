@@ -1,0 +1,16 @@
+;; Object persistent-soft-20150223.1053/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "persistent-soft-20150223.1053/"
+  :tables
+  (list
+    (semanticdb-table "persistent-soft-autoloads.el"
+      :major-mode 'emacs-lisp-mode
+      :tags nil
+      :file "persistent-soft-autoloads.el"
+      :pointmax 303
+      :fsize 2042
+      :lastmodtime '(21803 20865 134465 383000)
+      :unmatched-syntax nil))
+  :file "!home!harrison!Dropbox!newdesktop.settings!dot.emacs.d!elpa!persistent-soft-20150223.1053!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2")

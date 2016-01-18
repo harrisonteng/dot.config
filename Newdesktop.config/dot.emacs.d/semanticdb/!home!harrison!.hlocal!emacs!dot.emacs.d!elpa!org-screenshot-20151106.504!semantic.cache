@@ -1,0 +1,16 @@
+;; Object org-screenshot-20151106.504/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "org-screenshot-20151106.504/"
+  :tables
+  (list
+    (semanticdb-table "org-screenshot-autoloads.el"
+      :major-mode 'emacs-lisp-mode
+      :tags nil
+      :file "org-screenshot-autoloads.el"
+      :pointmax 301
+      :fsize 1485
+      :lastmodtime '(22080 59914 334779 857000)
+      :unmatched-syntax nil))
+  :file "!home!harrison!.hlocal!emacs!dot.emacs.d!elpa!org-screenshot-20151106.504!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2")

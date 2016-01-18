@@ -1,0 +1,16 @@
+;; Object gh-20150905.1027/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "gh-20150905.1027/"
+  :tables
+  (list
+    (semanticdb-table "gh-autoloads.el"
+      :major-mode 'emacs-lisp-mode
+      :tags nil
+      :file "gh-autoloads.el"
+      :pointmax 277
+      :fsize 4079
+      :lastmodtime '(21999 3424 282416 411000)
+      :unmatched-syntax nil))
+  :file "!home!harrison!Dropbox!newdesktop.settings!dot.emacs.d!elpa!gh-20150905.1027!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2")

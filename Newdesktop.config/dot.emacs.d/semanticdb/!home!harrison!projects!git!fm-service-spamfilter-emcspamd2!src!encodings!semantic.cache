@@ -1,0 +1,43 @@
+;; Object encodings/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "encodings/"
+  :tables
+  (list
+    (semanticdb-table "to_utf8.h"
+      :major-mode 'c-mode
+      :tags 
+        '( ("_to_utf8_h_" variable (:constant-flag t) nil [29 40])
+            ("emcspamd.h" include (:system-flag t) nil [41 62])
+            ("text_to_utf8" function
+               (:prototype-flag t
+                :pointer 1
+                :arguments 
+                  ( ("" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [242 255])
+                    ("" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [256 269])
+                    ("" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [270 283]))                  
+                :type "char")
+                nil [221 284]))          
+      :file "to_utf8.h"
+      :pointmax 293
+      :fsize 292
+      :lastmodtime '(21723 54068 4750 697000)
+      :unmatched-syntax nil
+      :lexical-table 
+        '(("_to_utf8_h_")
+          )
+))
+  :file "!home!harrison!projects!git!fm-service-spamfilter-emcspamd2!src!encodings!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2")

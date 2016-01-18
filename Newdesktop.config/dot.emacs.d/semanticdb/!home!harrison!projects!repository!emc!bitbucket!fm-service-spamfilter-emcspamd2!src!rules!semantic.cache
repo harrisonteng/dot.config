@@ -1,0 +1,1496 @@
+;; Object rules/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "rules/"
+  :tables
+  (list
+    (semanticdb-table "rules.c"
+      :major-mode 'c-mode
+      :tags 
+        '( ("rcsid" variable
+               (:pointer 1
+                :typemodifiers ("static")
+                :default-value "\"$Id$\""
+                :type "char")
+                nil [87 115])
+            ("_GNU_SOURCE" variable (:constant-flag t) nil [174 185])
+            ("stdio.h" include (:system-flag t) nil [186 204])
+            ("unistd.h" include (:system-flag t) nil [205 224])
+            ("sys/types.h" include (:system-flag t) nil [225 247])
+            ("sys/stat.h" include (:system-flag t) nil [248 269])
+            ("pcre.h" include (:system-flag t) nil [270 287])
+            ("sysexits.h" include (:system-flag t) nil [288 309])
+            ("glib.h" include (:system-flag t) nil [310 327])
+            ("string.h" include (:system-flag t) nil [328 347])
+            ("ctype.h" include (:system-flag t) nil [348 366])
+            ("assert.h" include (:system-flag t) nil [367 386])
+            ("regex.h" include (:system-flag t) nil [387 405])
+            ("mysql/mysql.h" include (:system-flag t) nil [406 430])
+            ("emcspamd.h" include (:system-flag t) nil [455 476])
+            ("rules.h" include (:system-flag t) nil [477 495])
+            ("libemime.h" include (:system-flag t) nil [525 546])
+            ("libemcbase.h" include (:system-flag t) nil [547 570])
+            ("name_lookup.h" include nil nil [571 595])
+            ("../domain_blocklist/find_registered_domain.h" include nil nil [597 652])
+            ("OVECSIZE" variable (:constant-flag t) nil [662 670])
+            ("RULESET_INC" variable (:constant-flag t) nil [682 693])
+            ("SEARCH_HEAD" variable (:constant-flag t) nil [707 718])
+            ("SEARCH_BODY" variable (:constant-flag t) nil [729 740])
+            ("SEARCH_DICTIONARY" variable (:constant-flag t) nil [751 768])
+            ("IS_HAM_RULE" variable (:constant-flag t) nil [780 791])
+            ("IS_SPAM_RULE" variable (:constant-flag t) nil [803 815])
+            ("IS_LOCAL_HAM_RULE" variable (:constant-flag t) nil [827 844])
+            ("CUSTOMIZED_HAM" variable (:constant-flag t) nil [855 869])
+            ("CUSTOMIZED_SPAM" variable (:constant-flag t) nil [881 896])
+            ("HAM_RULE_CLASS" variable (:constant-flag t) nil [908 922])
+            ("SPAM_HIGH_RULE_CLASS" variable (:constant-flag t) nil [938 958])
+            ("SPAM_MEDIUM_RULE_CLASS" variable (:constant-flag t) nil [977 999])
+            ("SPAM_LOW_RULE_CLASS" variable (:constant-flag t) nil [1018 1037])
+            ("LOCAL_HAM_RULE_CLASS" variable (:constant-flag t) nil [1056 1076])
+            ("LOCALHAM" variable (:constant-flag t) nil [1097 1105])
+            ("GLOBALHAM" variable (:constant-flag t) nil [1125 1134])
+            ("DEFAULT_CUS_RULE" variable (:constant-flag t) nil [1150 1166])
+            ("PLACEHOLDER_CLASS_RULE" variable (:constant-flag t) nil [1186 1208])
+            ("READ_BUFFER_SIZE" variable (:constant-flag t) nil [1223 1239])
+            ("SMALL_LEN" variable (:constant-flag t) nil [1266 1275])
+            ("gDebug" variable
+               (:dereference 1
+                :typemodifiers ("extern")
+                :type "int")
+                nil [1280 1302])
+            ("gMatchedRules" variable
+               (:dereference 1
+                :typemodifiers ("extern")
+                :type "int")
+                nil [1303 1332])
+            ("gNumMatchedRules" variable
+               (:typemodifiers ("extern")
+                :type "int")
+                nil [1333 1363])
+            ("gConfig" variable
+               (:pointer 1
+                :typemodifiers ("extern")
+                :type ("CfgFile" type (:type "class") nil nil))
+                nil [1364 1391])
+            ("mysql_sock" variable
+               (:typemodifiers ("extern")
+                :type ("MYSQL" type (:type "class") nil nil))
+                nil [1392 1422])
+            ("gDNSServer" variable
+               (:pointer 1
+                :typemodifiers ("extern")
+                :type "char")
+                nil [1423 1447])
+            ("mysql_sock_rules" variable (:type ("MYSQL" type (:type "class") nil nil)) nil [1449 1472])
+            ("gRuleSetList" variable
+               (:pointer 1
+                :default-value "NULL"
+                :type ("GSList" type (:type "class") nil nil))
+                nil [1474 1502])
+            ("ruleset_cap_hit_display" variable
+               (:pointer 1
+                :default-value "NULL"
+                :type "char")
+                nil [1503 1540])
+            ("gRulesHeaderDone" variable
+               (:default-value "FALSE"
+                :type ("BOOL" type (:type "class") nil nil))
+                nil [1543 1576])
+            ("gRuleset" variable
+               (:pointer 1
+                :default-value "NULL"
+                :type ("spamrule" type
+                     (:prototype t
+                      :type "struct")
+                      nil nil))
+                nil [1577 1626])
+            ("gRulesetFilename" variable
+               (:pointer 1
+                :default-value "NULL"
+                :type "char")
+                nil [1627 1661])
+            ("DEFAULT_BULK_SPAM_PORTAL1" variable (:constant-flag t) nil [1671 1696])
+            ("DEFAULT_BULK_SPAM_PORTAL2" variable (:constant-flag t) nil [1710 1735])
+            ("dic_message_size" function
+               (:prototype-flag t
+                :pointer 1
+                :arguments 
+                  ( ("data_source" variable
+                       (:pointer 1
+                        :type ("rule_dic_data_source" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [1765 1799]))                  
+                :type "char")
+                nil [1742 1800])
+            ("dic_html_message_body_size" function
+               (:prototype-flag t
+                :pointer 1
+                :arguments 
+                  ( ("data_source" variable
+                       (:pointer 1
+                        :type ("rule_dic_data_source" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [1834 1868]))                  
+                :type "char")
+                nil [1801 1869])
+            ("dic_text_message_body_size" function
+               (:prototype-flag t
+                :pointer 1
+                :arguments 
+                  ( ("data_source" variable
+                       (:pointer 1
+                        :type ("rule_dic_data_source" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [1903 1937]))                  
+                :type "char")
+                nil [1870 1938])
+            ("dic_dcc_score" function
+               (:prototype-flag t
+                :pointer 1
+                :arguments 
+                  ( ("data_source" variable
+                       (:pointer 1
+                        :type ("rule_dic_data_source" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [1959 1993]))                  
+                :type "char")
+                nil [1939 1994])
+            ("dic_uri" function
+               (:prototype-flag t
+                :pointer 1
+                :arguments 
+                  ( ("data_source" variable
+                       (:pointer 1
+                        :type ("rule_dic_data_source" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [2009 2043]))                  
+                :type "char")
+                nil [1995 2045])
+            ("dic_image_numbers" function
+               (:prototype-flag t
+                :pointer 1
+                :arguments 
+                  ( ("data_source" variable
+                       (:pointer 1
+                        :type ("rule_dic_data_source" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [2070 2104]))                  
+                :type "char")
+                nil [2046 2105])
+            ("dic_DKIM_authed" function
+               (:prototype-flag t
+                :pointer 1
+                :arguments 
+                  ( ("data_source" variable
+                       (:pointer 1
+                        :type ("rule_dic_data_source" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [2128 2162]))                  
+                :type "char")
+                nil [2106 2163])
+            ("dic_SPF_validated" function
+               (:prototype-flag t
+                :pointer 1
+                :arguments 
+                  ( ("data_source" variable
+                       (:pointer 1
+                        :type ("rule_dic_data_source" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [2188 2222]))                  
+                :type "char")
+                nil [2164 2223])
+            ("dic_mimefromname_equals_replytoname" function
+               (:prototype-flag t
+                :pointer 1
+                :arguments 
+                  ( ("data_source" variable
+                       (:pointer 1
+                        :type ("rule_dic_data_source" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [2266 2300]))                  
+                :type "char")
+                nil [2224 2301])
+            ("dic_mimefrom_equals_replyto" function
+               (:prototype-flag t
+                :pointer 1
+                :arguments 
+                  ( ("data_source" variable
+                       (:pointer 1
+                        :type ("rule_dic_data_source" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [2336 2370]))                  
+                :type "char")
+                nil [2302 2371])
+            ("dic_todomain_equals_fromdomain" function
+               (:prototype-flag t
+                :pointer 1
+                :arguments 
+                  ( ("data_source" variable
+                       (:pointer 1
+                        :type ("rule_dic_data_source" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [2409 2443]))                  
+                :type "char")
+                nil [2372 2444])
+            ("dic_todomain_equals_mimefromdomain" function
+               (:prototype-flag t
+                :pointer 1
+                :arguments 
+                  ( ("data_source" variable
+                       (:pointer 1
+                        :type ("rule_dic_data_source" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [2486 2520]))                  
+                :type "char")
+                nil [2445 2521])
+            ("dic_replytodomain_equals_xenvfromdomain" function
+               (:prototype-flag t
+                :pointer 1
+                :arguments 
+                  ( ("data_source" variable
+                       (:pointer 1
+                        :type ("rule_dic_data_source" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [2568 2602]))                  
+                :type "char")
+                nil [2522 2603])
+            ("dic_replytodomain_equals_mimefromdomain" function
+               (:prototype-flag t
+                :pointer 1
+                :arguments 
+                  ( ("data_source" variable
+                       (:pointer 1
+                        :type ("rule_dic_data_source" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [2650 2684]))                  
+                :type "char")
+                nil [2604 2685])
+            ("dic_replytotlddomain_equals_xenvfromtlddomain" function
+               (:prototype-flag t
+                :pointer 1
+                :arguments 
+                  ( ("data_source" variable
+                       (:pointer 1
+                        :type ("rule_dic_data_source" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [2738 2772]))                  
+                :type "char")
+                nil [2686 2773])
+            ("dic_replytotlddomain_equals_mimefromtlddomain" function
+               (:prototype-flag t
+                :pointer 1
+                :arguments 
+                  ( ("data_source" variable
+                       (:pointer 1
+                        :type ("rule_dic_data_source" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [2826 2860]))                  
+                :type "char")
+                nil [2774 2861])
+            ("dic_senderdomain_equals_mimefromdomain" function
+               (:prototype-flag t
+                :pointer 1
+                :arguments 
+                  ( ("data_source" variable
+                       (:pointer 1
+                        :type ("rule_dic_data_source" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [2907 2941]))                  
+                :type "char")
+                nil [2862 2942])
+            ("dic_sender_equals_mimefrom" function
+               (:prototype-flag t
+                :pointer 1
+                :arguments 
+                  ( ("data_source" variable
+                       (:pointer 1
+                        :type ("rule_dic_data_source" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [2976 3010]))                  
+                :type "char")
+                nil [2943 3011])
+            ("dic_url_numbers" function
+               (:prototype-flag t
+                :pointer 1
+                :arguments 
+                  ( ("data_source" variable
+                       (:pointer 1
+                        :type ("rule_dic_data_source" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [3034 3068]))                  
+                :type "char")
+                nil [3012 3069])
+            ("dic_uniq_url_numbers" function
+               (:prototype-flag t
+                :pointer 1
+                :arguments 
+                  ( ("data_source" variable
+                       (:pointer 1
+                        :type ("rule_dic_data_source" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [3097 3131]))                  
+                :type "char")
+                nil [3070 3132])
+            ("dic_sender_domain" function
+               (:prototype-flag t
+                :pointer 1
+                :arguments 
+                  ( ("data_source" variable
+                       (:pointer 1
+                        :type ("rule_dic_data_source" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [3157 3191]))                  
+                :type "char")
+                nil [3133 3192])
+            ("dic_recipient_domain" function
+               (:prototype-flag t
+                :pointer 1
+                :arguments 
+                  ( ("data_source" variable
+                       (:pointer 1
+                        :type ("rule_dic_data_source" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [3220 3254]))                  
+                :type "char")
+                nil [3193 3255])
+            ("dic_dcc_reputation" function
+               (:prototype-flag t
+                :pointer 1
+                :arguments 
+                  ( ("data_source" variable
+                       (:pointer 1
+                        :type ("rule_dic_data_source" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [3281 3315]))                  
+                :type "char")
+                nil [3256 3316])
+            ("dic_attach_number" function
+               (:prototype-flag t
+                :pointer 1
+                :arguments 
+                  ( ("data_source" variable
+                       (:pointer 1
+                        :type ("rule_dic_data_source" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [3341 3375]))                  
+                :type "char")
+                nil [3317 3377])
+            ("dic_attach_size" function
+               (:prototype-flag t
+                :pointer 1
+                :arguments 
+                  ( ("data_source" variable
+                       (:pointer 1
+                        :type ("rule_dic_data_source" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [3400 3434]))                  
+                :type "char")
+                nil [3378 3436])
+            ("dic_attach_type" function
+               (:prototype-flag t
+                :pointer 1
+                :arguments 
+                  ( ("data_source" variable
+                       (:pointer 1
+                        :type ("rule_dic_data_source" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [3459 3493]))                  
+                :type "char")
+                nil [3437 3494])
+            ("dic_FCrDNSed" function
+               (:prototype-flag t
+                :pointer 1
+                :arguments 
+                  ( ("data_source" variable
+                       (:pointer 1
+                        :type ("rule_dic_data_source" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [3515 3549]))                  
+                :type "char")
+                nil [3495 3550])
+            ("dic_FML_senderdomain" function
+               (:prototype-flag t
+                :pointer 1
+                :arguments 
+                  ( ("data_source" variable
+                       (:pointer 1
+                        :type ("rule_dic_data_source" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [3579 3613]))                  
+                :type "char")
+                nil [3551 3614])
+            ("dic_FML_fromdomain" function
+               (:prototype-flag t
+                :pointer 1
+                :arguments 
+                  ( ("data_source" variable
+                       (:pointer 1
+                        :type ("rule_dic_data_source" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [3641 3675]))                  
+                :type "char")
+                nil [3615 3676])
+            ("dic_FML_revdnsdomain" function
+               (:prototype-flag t
+                :pointer 1
+                :arguments 
+                  ( ("data_source" variable
+                       (:pointer 1
+                        :type ("rule_dic_data_source" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [3705 3739]))                  
+                :type "char")
+                nil [3677 3740])
+            ("dic_FML_xoriginip" function
+               (:prototype-flag t
+                :pointer 1
+                :arguments 
+                  ( ("data_source" variable
+                       (:pointer 1
+                        :type ("rule_dic_data_source" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [3766 3800]))                  
+                :type "char")
+                nil [3741 3801])
+            ("dic_revdns_xoriginip" function
+               (:prototype-flag t
+                :pointer 1
+                :arguments 
+                  ( ("data_source" variable
+                       (:pointer 1
+                        :type ("rule_dic_data_source" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [3830 3864]))                  
+                :type "char")
+                nil [3802 3865])
+            ("get_cus_num" function
+               (:prototype-flag t
+                :arguments 
+                  ( ("message" variable
+                       (:pointer 1
+                        :type ("EMimeMessage" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [3882 3904]))                  
+                :type "int")
+                nil [3866 3905])
+            ("get_customized_rule_type" function
+               (:prototype-flag t
+                :arguments 
+                  ( ("ruleset_id" variable (:type "int") (reparse-symbol arg-sub-list) [3935 3950])
+                    ("cus_classification_list" variable
+                       (:pointer 1
+                        :type ("GSList" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [3951 3983]))                  
+                :type "int")
+                nil [3906 3984])
+            ("get_cus_classification_list" function
+               (:prototype-flag t
+                :pointer 1
+                :arguments 
+                  ( ("message" variable
+                       (:pointer 1
+                        :type ("EMimeMessage" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [4021 4043])
+                    ("dom" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [4044 4060])
+                    ("class_hash" variable
+                       (:pointer 1
+                        :type ("GHashTable" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [4061 4084]))                  
+                :type ("GSList" type (:type "class") nil nil))
+                nil [3985 4085])
+            ("get_default_cus_classification_list" function
+               (:prototype-flag t
+                :pointer 1
+                :arguments 
+                  ( ("message" variable
+                       (:pointer 1
+                        :type ("EMimeMessage" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [4130 4152])
+                    ("domain" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [4153 4171]))                  
+                :type ("GSList" type (:type "class") nil nil))
+                nil [4086 4172])
+            ("get_user_classification_list" function
+               (:prototype-flag t
+                :pointer 1
+                :arguments 
+                  ( ("message" variable
+                       (:pointer 1
+                        :type ("EMimeMessage" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [4210 4232])
+                    ("box_fulladdress" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [4233 4261])
+                    ("class_hash" variable
+                       (:pointer 1
+                        :type ("GHashTable" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [4262 4285]))                  
+                :type ("GSList" type (:type "class") nil nil))
+                nil [4173 4286])
+            ("get_classification_list" function
+               (:prototype-flag t
+                :pointer 1
+                :arguments 
+                  ( ("class_hash" variable
+                       (:pointer 1
+                        :type ("GHashTable" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [4319 4342]))                  
+                :type ("GSList" type (:type "class") nil nil))
+                nil [4287 4343])
+            ("host_from_ip" function
+               (:prototype-flag t
+                :pointer 1
+                :arguments 
+                  ( ("ip_str" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [4363 4382]))                  
+                :type "char")
+                nil [4344 4383])
+            ("gDictionarySpec" variable
+               (:dereference 1
+                :default-value "{
+    {\"MessageSize\", dic_message_size, \"Message Size\", NULL},
+    {\"HTMLMessageBodySize\", dic_html_message_body_size, \"HTML Message Body Size\", NULL},
+    {\"TEXTMessageBodySize\", dic_text_message_body_size, \"TEXT Message Body Size\", NULL},
+    {\"DCCScore\", dic_dcc_score, \"DCC Result\", NULL},
+    //{\"URI\", dic_uri, \"URL List\", NULL},
+    {\"NumofImages\", dic_image_numbers, \"Image Numbers\", NULL},
+    {\"DKIMauthed\", dic_DKIM_authed, \"DKIM Authed\", NULL},
+    {\"MimeFromNameEqualsReplyToName\", dic_mimefromname_equals_replytoname, \"MimeFrom Name Equals ReplyTo Name\", NULL},
+    {\"MimeFromEqualsReplyTo\", dic_mimefrom_equals_replyto, \"MimeFrom Equals to ReplyTo\"},
+    {\"ToDomainEqualsFromDomain\", dic_todomain_equals_fromdomain, \"To Domain Equals From Domain\", NULL},
+    {\"ReplyToDomainEqualsXenvFromDomain\", dic_replytodomain_equals_xenvfromdomain, \"ReplyTo Domain Equals XEnvFrom Domain\", NULL},
+    {\"ReplyToDomainEqualsMimeFromDomain\", dic_replytodomain_equals_mimefromdomain, \"ReplyTo Domain Equals MimeFrom Domain\", NULL},
+    {\"ReplyToTLDDomainEqualsXenvFromTLDDomain\", dic_replytotlddomain_equals_xenvfromtlddomain, \"ReplyTo TLD Domain Equals XEnvFrom TLD Domain\", NULL},
+    {\"ReplyToTLDDomainEqualsMimeFromTLDDomain\", dic_replytotlddomain_equals_mimefromtlddomain, \"ReplyTo TLD Domain Equals MimeFrom TLD Domain\", NULL},
+    {\"ToDomainEqualsMimeFromDomain\", dic_todomain_equals_mimefromdomain, \"To Domain Equals From Domain\", NULL},
+    {\"SenderDomainEqualsMimeFromDomain\", dic_senderdomain_equals_mimefromdomain, \"Sender Domain Equals MimeFrom Domain\", NULL},
+    {\"SenderEqualsMimeFrom\", dic_sender_equals_mimefrom, \"Sender Address Equals Mime From\", NULL},
+    {\"SPFvalidated\", dic_SPF_validated, \"SPF Validated\", NULL},
+    {\"NumofURLs\", dic_url_numbers, \"URL Numbers\", NULL},
+    {\"NumofUniqURLs\", dic_uniq_url_numbers, \"UNIQ URL Numbers\", NULL},
+    {\"SenderDomain\", dic_sender_domain, \"Sender Domain\", NULL},
+    {\"RecipientDomain\", dic_recipient_domain, \"Recipient Domain\", NULL},
+    {\"DCCReputation\", dic_dcc_reputation, \"DCC Reputation\", NULL},
+    {\"AttachmentNumber\", dic_attach_number, \"Attachment Number\", NULL},
+    {\"AttachmentSize\", dic_attach_size, \"Attachment Size\", NULL},
+    {\"AttachmentType\", dic_attach_type, \"Attachment Type\", NULL},
+    {\"FCrDNSed\", dic_FCrDNSed, \"FCrDNS\", NULL},
+    {\"FMLSenderDomain\", dic_FML_senderdomain, \"Fusemail Sender Domain lookup\", NULL},
+    {\"FMLFromDomain\", dic_FML_fromdomain, \"Fusemail From Address Domain lookup\", NULL},
+    {\"FMLRevDNSDomain\", dic_FML_revdnsdomain, \"Fusemail RevDNS Domain lookup\", NULL},
+    {\"FMLXoriginIP\", dic_FML_xoriginip, \"Fusemail X-Origin-IP lookup\", NULL},
+    {\"RevDNSofXoriginIP\", dic_revdns_xoriginip, \"RevDNS of Xorigin IP\", NULL},
+    { 0, 0, 0, 0},
+}"
+                :type ("rule_dictionary" type (:type "class") nil nil))
+                nil [4385 7180])
+            ("gDictionaryHash" variable
+               (:pointer 1
+                :default-value "NULL"
+                :type ("GHashTable" type (:type "class") nil nil))
+                nil [7182 7217])
+            ("free_rule_node" function
+               (:prototype-flag t
+                :typemodifiers ("static")
+                :arguments 
+                  ( ("node" variable
+                       (:pointer 1
+                        :type ("rule" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [7248 7259]))                  
+                :type "void")
+                nil [7220 7260])
+            ("result_spot_check" function
+               (:prototype-flag t
+                :arguments 
+                  ( ("rule_hit" variable (:type ("BOOL" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [7283 7297])
+                    ("rset_op" variable
+                       (:pointer 1
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [7298 7312])
+                    ("ret" variable
+                       (:pointer 1
+                        :type ("BOOL" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [7313 7323]))                  
+                :type "int")
+                nil [7261 7324])
+            ("lookup_rule" function
+               (:prototype-flag t
+                :arguments 
+                  ( ("rule_node" variable
+                       (:pointer 1
+                        :type ("rule" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [7345 7361])
+                    ("message" variable
+                       (:pointer 1
+                        :type ("EMimeMessage" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [7363 7385])
+                    ("body" variable
+                       (:pointer 1
+                        :type ("ParsedMessageBody" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [7387 7411])
+                    ("results" variable
+                       (:pointer 1
+                        :type ("SpammerResults" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [7413 7437]))                  
+                :type ("BOOL" type (:type "class") nil nil))
+                nil [7326 7438])
+            ("lookup_rule_set" function
+               (:prototype-flag t
+                :arguments 
+                  ( ("rset" variable
+                       (:pointer 1
+                        :type ("rule_set" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [7463 7478])
+                    ("message" variable
+                       (:pointer 1
+                        :type ("EMimeMessage" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [7480 7502])
+                    ("body" variable
+                       (:pointer 1
+                        :type ("ParsedMessageBody" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [7504 7528])
+                    ("results" variable
+                       (:pointer 1
+                        :type ("SpammerResults" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [7530 7554]))                  
+                :type ("BOOL" type (:type "class") nil nil))
+                nil [7440 7555])
+            ("lookup_rules" function
+               (:prototype-flag t
+                :arguments 
+                  ( ("hit_data" variable
+                       (:pointer 2
+                        :type ("GSList" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [7577 7595])
+                    ("message" variable
+                       (:pointer 1
+                        :type ("EMimeMessage" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [7597 7619])
+                    ("body" variable
+                       (:pointer 1
+                        :type ("ParsedMessageBody" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [7621 7645])
+                    ("results" variable
+                       (:pointer 1
+                        :type ("SpammerResults" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [7647 7671])
+                    ("spam_rule" variable (:type "int") (reparse-symbol arg-sub-list) [7673 7687])
+                    ("always_flag" variable (:type ("BOOL" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [7689 7706])
+                    ("is_rulechecker" variable (:type ("BOOL" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [7708 7728])
+                    ("rule_name" variable
+                       (:pointer 2
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [7730 7747])
+                    ("class_name" variable
+                       (:pointer 2
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [7749 7767]))                  
+                :type "void")
+                nil [7557 7768])
+            ("rule_debug" function
+               (:arguments 
+                  ( ("rule" variable
+                       (:pointer 1
+                        :type ("spamrule" type
+                             (:prototype t
+                              :type "struct")
+                              nil nil))
+                        (reparse-symbol arg-sub-list) [7786 7808]))                  
+                :type "void")
+                nil [7770 7958])
+            ("REPORT_FORMAT_LINE" variable (:constant-flag t) nil [7968 7986])
+            ("REPORT_HIT_FORMAT_LINE" variable (:constant-flag t) nil [8006 8028])
+            ("make_rules_report" function
+               (:arguments 
+                  ( ("results" variable
+                       (:pointer 1
+                        :type ("SpammerResults" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [8072 8096])
+                    ("msg" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [8098 8114]))                  
+                :type "void")
+                nil [8047 8447])
+            ("show_mime" function
+               (:arguments 
+                  ( ("level" variable (:type "int") (reparse-symbol arg-sub-list) [8463 8473])
+                    ("mime" variable
+                       (:pointer 1
+                        :type ("mailmime" type
+                             (:prototype t
+                              :type "struct")
+                              nil nil))
+                        (reparse-symbol arg-sub-list) [8474 8496]))                  
+                :type "int")
+                nil [8449 10485])
+            ("make_pcre" function
+               (:arguments 
+                  ( ("retext" variable
+                       (:pointer 1
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [10501 10514])
+                    ("re" variable
+                       (:pointer 2
+                        :type ("pcre" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [10515 10525])
+                    ("pe" variable
+                       (:pointer 2
+                        :type ("pcre_extra" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [10526 10542]))                  
+                :type "int")
+                nil [10487 11300])
+            ("REPORT_LINE_ERROR" variable (:constant-flag t) nil [11310 11327])
+            ("build_rule_node" function
+               (:pointer 1
+                :typemodifiers ("static")
+                :arguments 
+                  ( ("row" variable (:type ("MYSQL_ROW" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [11502 11516]))                  
+                :type ("rule" type (:type "class") nil nil))
+                nil [11472 12186])
+            ("free_rule_node" function
+               (:typemodifiers ("static")
+                :arguments 
+                  ( ("node" variable
+                       (:pointer 1
+                        :type ("rule" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [12216 12227]))                  
+                :type "void")
+                nil [12188 12365])
+            ("build_rule_set_stub" function
+               (:pointer 1
+                :typemodifiers ("static")
+                :arguments 
+                  ( ("row" variable (:type ("MYSQL_ROW" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [12770 12784]))                  
+                :type ("rule_set" type (:type "class") nil nil))
+                nil [12731 13516])
+            ("append_rule_to_rule_set" function
+               (:typemodifiers ("static")
+                :arguments 
+                  ( ("rset" variable
+                       (:pointer 1
+                        :type ("rule_set" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [13702 13717])
+                    ("row" variable (:type ("MYSQL_ROW" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [13718 13732]))                  
+                :type "void")
+                nil [13666 13879])
+            ("append_subset_to_parent" function
+               (:typemodifiers ("static")
+                :arguments 
+                  ( ("parent" variable
+                       (:pointer 1
+                        :type ("rule_set" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [13974 13991])
+                    ("node" variable
+                       (:pointer 1
+                        :type ("rule_set" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [13992 14007]))                  
+                :type "void")
+                nil [13937 14073])
+            ("display_rule_msg" function
+               (:typemodifiers ("static")
+                :arguments 
+                  ( ("results" variable
+                       (:pointer 1
+                        :type ("SpammerResults" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [14104 14128])
+                    ("msg" variable
+                       (:pointer 1
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [14129 14139])
+                    ("is_rulechecker" variable (:type ("BOOL" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [14140 14160]))                  
+                :type "void")
+                nil [14075 14325])
+            ("display_rule_set" function
+               (:typemodifiers ("static")
+                :arguments 
+                  ( ("rset" variable
+                       (:pointer 1
+                        :type ("rule_set" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [14450 14465])
+                    ("level" variable (:type "int") (reparse-symbol arg-sub-list) [14466 14476])
+                    ("results" variable
+                       (:pointer 1
+                        :type ("SpammerResults" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [14477 14501])
+                    ("is_rulechecker" variable (:type ("BOOL" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [14502 14522]))                  
+                :type "void")
+                nil [14421 15765])
+            ("display_rule_set_list" function
+               (:typemodifiers ("static")
+                :arguments 
+                  ( ("rule_set_list" variable
+                       (:pointer 1
+                        :type ("GSList" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [15801 15823])
+                    ("is_rulechecker" variable (:type ("BOOL" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [15824 15844]))                  
+                :type "void")
+                nil [15767 16137])
+            ("load_rules" function
+               (:typemodifiers ("static")
+                :arguments 
+                  ( ("mysql_sock" variable
+                       (:pointer 1
+                        :type ("MYSQL" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [16272 16290])
+                    ("rset" variable
+                       (:pointer 1
+                        :type ("rule_set" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [16291 16306]))                  
+                :type "void")
+                nil [16249 17181])
+            ("load_sub_rule_sets" function
+               (:typemodifiers ("static")
+                :arguments 
+                  ( ("mysql_sock" variable
+                       (:pointer 1
+                        :type ("MYSQL" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [17359 17377])
+                    ("rset" variable
+                       (:pointer 1
+                        :type ("rule_set" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [17378 17393]))                  
+                :type "void")
+                nil [17328 18673])
+            ("load_root_rule_sets" function
+               (:pointer 1
+                :typemodifiers ("static")
+                :arguments 
+                  ( ("mysql_sock" variable
+                       (:pointer 1
+                        :type ("MYSQL" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [18801 18819])
+                    ("ruleset_id" variable (:type "int") (reparse-symbol arg-sub-list) [18820 18835]))                  
+                :type ("GSList" type (:type "class") nil nil))
+                nil [18766 20335])
+            ("build_classification" function
+               (:pointer 1
+                :typemodifiers ("static")
+                :arguments 
+                  ( ("row" variable (:type ("MYSQL_ROW" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [20386 20400]))                  
+                :type ("cus_classification" type (:type "class") nil nil))
+                nil [20337 20616])
+            ("rule_sock_mysql_init" function (:type "int") nil [20618 21629])
+            ("rules_global_init" function
+               (:arguments 
+                  ( ("ruleset_id" variable (:type "int") (reparse-symbol arg-sub-list) [21653 21668])
+                    ("is_rulechecker" variable (:type ("BOOL" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [21669 21689]))                  
+                :type "int")
+                nil [21631 22092])
+            ("do_int_compare" function
+               (:arguments 
+                  ( ("val" variable (:type "int") (reparse-symbol arg-sub-list) [22114 22122])
+                    ("rule_node" variable
+                       (:pointer 1
+                        :type ("rule" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [22123 22139])
+                    ("results" variable
+                       (:pointer 1
+                        :type ("SpammerResults" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [22140 22164]))                  
+                :type ("BOOL" type (:type "class") nil nil))
+                nil [22094 22680])
+            ("do_regex_match" function
+               (:arguments 
+                  ( ("buffer" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [22702 22721])
+                    ("len" variable (:type "int") (reparse-symbol arg-sub-list) [22722 22730])
+                    ("rule" variable
+                       (:pointer 1
+                        :type ("rule" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [22731 22742])
+                    ("results" variable
+                       (:pointer 1
+                        :type ("SpammerResults" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [22744 22768]))                  
+                :type ("BOOL" type (:type "class") nil nil))
+                nil [22682 23959])
+            ("do_header_rule" function
+               (:arguments 
+                  ( ("message" variable
+                       (:pointer 1
+                        :type ("EMimeMessage" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [23981 24003])
+                    ("rule" variable
+                       (:pointer 1
+                        :type ("rule" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [24004 24015])
+                    ("results" variable
+                       (:pointer 1
+                        :type ("SpammerResults" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [24017 24041]))                  
+                :type ("BOOL" type (:type "class") nil nil))
+                nil [23961 24362])
+            ("do_headers_rule" function
+               (:arguments 
+                  ( ("message" variable
+                       (:pointer 1
+                        :type ("EMimeMessage" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [24385 24407])
+                    ("rule" variable
+                       (:pointer 1
+                        :type ("rule" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [24408 24419])
+                    ("results" variable
+                       (:pointer 1
+                        :type ("SpammerResults" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [24421 24445]))                  
+                :type ("BOOL" type (:type "class") nil nil))
+                nil [24364 24598])
+            ("do_dictionary_rule" function
+               (:arguments 
+                  ( ("dic_value" variable
+                       (:pointer 1
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [24624 24640])
+                    ("rule" variable
+                       (:pointer 1
+                        :type ("rule" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [24641 24652])
+                    ("results" variable
+                       (:pointer 1
+                        :type ("SpammerResults" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [24654 24678]))                  
+                :type ("BOOL" type (:type "class") nil nil))
+                nil [24600 25135])
+            ("is_rule_simple" function
+               (:typemodifiers ("inline")
+                :arguments 
+                  ( ("rule" variable
+                       (:pointer 1
+                        :type ("rule" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [25164 25175]))                  
+                :type ("BOOL" type (:type "class") nil nil))
+                nil [25137 25397])
+            ("is_rule_icase" function
+               (:typemodifiers ("inline")
+                :arguments 
+                  ( ("rule" variable
+                       (:pointer 1
+                        :type ("rule" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [25425 25436]))                  
+                :type ("BOOL" type (:type "class") nil nil))
+                nil [25399 25730])
+            ("rset_clear_last_run_result" function
+               (:arguments 
+                  ( ("rset" variable
+                       (:pointer 1
+                        :type ("rule_set" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [25764 25779]))                  
+                :type "void")
+                nil [25732 26186])
+            ("clear_last_run_result" function (:type "void") nil [26188 26379])
+            ("build_rule_fields_dictionary" function
+               (:arguments 
+                  ( ("data_source" variable
+                       (:pointer 1
+                        :type ("rule_dic_data_source" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [26415 26449])
+                    ("is_rulechecker" variable (:type ("BOOL" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [26450 26470]))                  
+                :type ("BOOL" type (:type "class") nil nil))
+                nil [26381 27152])
+            ("lookup_ham_rules" function
+               (:arguments 
+                  ( ("hit_data" variable
+                       (:pointer 2
+                        :type ("GSList" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [27270 27288])
+                    ("message" variable
+                       (:pointer 1
+                        :type ("EMimeMessage" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [27290 27312])
+                    ("body" variable
+                       (:pointer 1
+                        :type ("ParsedMessageBody" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [27314 27338])
+                    ("results" variable
+                       (:pointer 1
+                        :type ("SpammerResults" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [27340 27364])
+                    ("always_flag" variable (:type ("BOOL" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [27366 27383])
+                    ("is_rulechecker" variable (:type ("BOOL" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [27385 27405])
+                    ("global_or_local" variable (:type "int") (reparse-symbol arg-sub-list) [27407 27427])
+                    ("rtn" variable
+                       (:pointer 1
+                        :type "int")
+                        (reparse-symbol arg-sub-list) [27429 27438]))                  
+                :type "void")
+                nil [27246 28352])
+            ("lookup_spam_rules" function
+               (:arguments 
+                  ( ("hit_data" variable
+                       (:pointer 2
+                        :type ("GSList" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [28379 28397])
+                    ("message" variable
+                       (:pointer 1
+                        :type ("EMimeMessage" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [28399 28421])
+                    ("body" variable
+                       (:pointer 1
+                        :type ("ParsedMessageBody" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [28423 28447])
+                    ("results" variable
+                       (:pointer 1
+                        :type ("SpammerResults" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [28449 28473])
+                    ("always_flag" variable (:type ("BOOL" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [28475 28492])
+                    ("is_rulechecker" variable (:type ("BOOL" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [28494 28514]))                  
+                :type "void")
+                nil [28354 29168])
+            ("lookup_rules" function
+               (:arguments 
+                  ( ("hit_data" variable
+                       (:pointer 2
+                        :type ("GSList" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [29191 29209])
+                    ("message" variable
+                       (:pointer 1
+                        :type ("EMimeMessage" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [29211 29233])
+                    ("body" variable
+                       (:pointer 1
+                        :type ("ParsedMessageBody" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [29235 29259])
+                    ("results" variable
+                       (:pointer 1
+                        :type ("SpammerResults" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [29261 29285])
+                    ("expected_type" variable (:type "int") (reparse-symbol arg-sub-list) [29287 29305])
+                    ("always_flag" variable (:type ("BOOL" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [29307 29324])
+                    ("is_rulechecker" variable (:type ("BOOL" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [29326 29346])
+                    ("rule_name" variable
+                       (:pointer 2
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [29348 29365])
+                    ("class_name" variable
+                       (:pointer 2
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [29367 29385]))                  
+                :type "void")
+                nil [29171 30264])
+            ("lookup_classification_rules" function
+               (:arguments 
+                  ( ("class_hash" variable
+                       (:pointer 1
+                        :type ("GHashTable" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [30301 30324])
+                    ("hit_data" variable
+                       (:pointer 2
+                        :type ("GSList" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [30326 30344])
+                    ("message" variable
+                       (:pointer 1
+                        :type ("EMimeMessage" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [30347 30369])
+                    ("body" variable
+                       (:pointer 1
+                        :type ("ParsedMessageBody" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [30372 30396])
+                    ("results" variable
+                       (:pointer 1
+                        :type ("SpammerResults" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [30399 30423])
+                    ("always_flag" variable (:type ("BOOL" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [30426 30443])
+                    ("is_rulechecker" variable (:type ("BOOL" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [30446 30466])
+                    ("rtn" variable
+                       (:pointer 1
+                        :type "int")
+                        (reparse-symbol arg-sub-list) [30469 30478])
+                    ("ignore_class_pts" variable (:type ("BOOL" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [30481 30503]))                  
+                :type "void")
+                nil [30266 32568])
+            ("result_spot_check" function
+               (:arguments 
+                  ( ("rule_hit" variable (:type ("BOOL" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [32651 32665])
+                    ("rset_op" variable
+                       (:pointer 1
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [32666 32680])
+                    ("ret" variable
+                       (:pointer 1
+                        :type ("BOOL" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [32681 32691]))                  
+                :type "int")
+                nil [32629 33117])
+            ("lookup_rule_set" function
+               (:arguments 
+                  ( ("rset" variable
+                       (:pointer 1
+                        :type ("rule_set" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [33142 33157])
+                    ("message" variable
+                       (:pointer 1
+                        :type ("EMimeMessage" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [33159 33181])
+                    ("body" variable
+                       (:pointer 1
+                        :type ("ParsedMessageBody" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [33183 33207])
+                    ("results" variable
+                       (:pointer 1
+                        :type ("SpammerResults" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [33209 33233]))                  
+                :type ("BOOL" type (:type "class") nil nil))
+                nil [33119 35355])
+            ("lookup_rule" function
+               (:arguments 
+                  ( ("rule_node" variable
+                       (:pointer 1
+                        :type ("rule" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [35376 35392])
+                    ("message" variable
+                       (:pointer 1
+                        :type ("EMimeMessage" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [35394 35416])
+                    ("body" variable
+                       (:pointer 1
+                        :type ("ParsedMessageBody" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [35418 35442])
+                    ("results" variable
+                       (:pointer 1
+                        :type ("SpammerResults" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [35444 35468]))                  
+                :type ("BOOL" type (:type "class") nil nil))
+                nil [35357 37572])
+            ("get_customized_rule_type" function
+               (:arguments 
+                  ( ("ruleset_id" variable (:type "int") (reparse-symbol arg-sub-list) [37603 37618])
+                    ("cus_classification_list" variable
+                       (:pointer 1
+                        :type ("GSList" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [37619 37651]))                  
+                :type "int")
+                nil [37574 37692])
+            ("hash_itr_add_item" function
+               (:arguments 
+                  ( ("key" variable (:type ("gpointer" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [37717 37730])
+                    ("value" variable (:type ("gpointer" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [37731 37746])
+                    ("user_data" variable
+                       (:pointer 2
+                        :type ("gpointer" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [37747 37768]))                  
+                :type "void")
+                nil [37694 38024])
+            ("get_classification_list" function
+               (:pointer 1
+                :arguments 
+                  ( ("class_hash" variable
+                       (:pointer 1
+                        :type ("GHashTable" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [38058 38081]))                  
+                :type ("GSList" type (:type "class") nil nil))
+                nil [38026 38807])
+            ("get_default_spam_setting" function
+               (:arguments 
+                  ( ("domain" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [38896 38915]))                  
+                :type "int")
+                nil [38867 40250])
+            ("dic_message_size" function
+               (:pointer 1
+                :arguments 
+                  ( ("data_source" variable
+                       (:pointer 1
+                        :type ("rule_dic_data_source" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [40319 40353]))                  
+                :type "char")
+                nil [40295 40964])
+            ("dic_html_message_body_size" function
+               (:pointer 1
+                :arguments 
+                  ( ("data_source" variable
+                       (:pointer 1
+                        :type ("rule_dic_data_source" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [41072 41106]))                  
+                :type "char")
+                nil [41038 41530])
+            ("dic_text_message_body_size" function
+               (:pointer 1
+                :arguments 
+                  ( ("data_source" variable
+                       (:pointer 1
+                        :type ("rule_dic_data_source" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [41638 41672]))                  
+                :type "char")
+                nil [41604 42102])
+            ("dic_dcc_score" function
+               (:pointer 1
+                :arguments 
+                  ( ("data_source" variable
+                       (:pointer 1
+                        :type ("rule_dic_data_source" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [42148 42182]))                  
+                :type "char")
+                nil [42127 42541])
+            ("dic_dcc_reputation" function
+               (:pointer 1
+                :arguments 
+                  ( ("data_source" variable
+                       (:pointer 1
+                        :type ("rule_dic_data_source" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [42617 42651]))                  
+                :type "char")
+                nil [42591 43028])
+            ("dic_image_numbers" function
+               (:pointer 1
+                :arguments 
+                  ( ("data_source" variable
+                       (:pointer 1
+                        :type ("rule_dic_data_source" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [43155 43189]))                  
+                :type "char")
+                nil [43130 43515])
+            ("dic_attach_number" function
+               (:pointer 1
+                :arguments 
+                  ( ("data_source" variable
+                       (:pointer 1
+                        :type ("rule_dic_data_source" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [43577 43611]))                  
+                :type "char")
+                nil [43553 43738])
+            ("dic_attach_size" function
+               (:pointer 1
+                :arguments 
+                  ( ("data_source" variable
+                       (:pointer 1
+                        :type ("rule_dic_data_source" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [43796 43830]))                  
+                :type "char")
+                nil [43774 43956])
+            ("dic_attach_type" function
+               (:pointer 1
+                :arguments 
+                  ( ("data_source" variable
+                       (:pointer 1
+                        :type ("rule_dic_data_source" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [43980 44014]))                  
+                :type "char")
+                nil [43958 44111])
+            ("dic_DKIM_authed" function
+               (:pointer 1
+                :arguments 
+                  ( ("data_source" variable
+                       (:pointer 1
+                        :type ("rule_dic_data_source" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [44272 44306]))                  
+                :type "char")
+                nil [44249 45633])
+            ("dic_FCrDNSed" function
+               (:pointer 1
+                :arguments 
+                  ( ("data_source" variable
+                       (:pointer 1
+                        :type ("rule_dic_data_source" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [45907 45941]))                  
+                :type "char")
+                nil [45887 46832])
+            ("dic_FML_senderdomain" function
+               (:pointer 1
+                :arguments 
+                  ( ("data_source" variable
+                       (:pointer 1
+                        :type ("rule_dic_data_source" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [46899 46933]))                  
+                :type "char")
+                nil [46871 47848])
+            ("dic_FML_fromdomain" function
+               (:pointer 1
+                :arguments 
+                  ( ("data_source" variable
+                       (:pointer 1
+                        :type ("rule_dic_data_source" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [47913 47947]))                  
+                :type "char")
+                nil [47887 48841])
+            ("dic_mimefromname_equals_replytoname" function
+               (:pointer 1
+                :arguments 
+                  ( ("data_source" variable
+                       (:pointer 1
+                        :type ("rule_dic_data_source" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [48936 48970]))                  
+                :type "char")
+                nil [48894 49618])
+            ("dic_mimefrom_equals_replyto" function
+               (:pointer 1
+                :arguments 
+                  ( ("data_source" variable
+                       (:pointer 1
+                        :type ("rule_dic_data_source" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [49711 49745]))                  
+                :type "char")
+                nil [49677 50303])
+            ("dic_todomain_equals_fromdomain" function
+               (:pointer 1
+                :arguments 
+                  ( ("data_source" variable
+                       (:pointer 1
+                        :type ("rule_dic_data_source" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [50396 50430]))                  
+                :type "char")
+                nil [50359 51485])
+            ("dic_senderdomain_equals_mimefromdomain" function
+               (:pointer 1
+                :arguments 
+                  ( ("data_source" variable
+                       (:pointer 1
+                        :type ("rule_dic_data_source" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [51584 51618]))                  
+                :type "char")
+                nil [51539 52557])
+            ("dic_todomain_equals_mimefromdomain" function
+               (:pointer 1
+                :arguments 
+                  ( ("data_source" variable
+                       (:pointer 1
+                        :type ("rule_dic_data_source" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [52651 52685]))                  
+                :type "char")
+                nil [52610 53551])
+            ("dic_replytodomain_equals_xenvfromdomain" function
+               (:pointer 1
+                :arguments 
+                  ( ("data_source" variable
+                       (:pointer 1
+                        :type ("rule_dic_data_source" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [53655 53689]))                  
+                :type "char")
+                nil [53609 54337])
+            ("dic_replytotlddomain_equals_xenvfromtlddomain" function
+               (:pointer 1
+                :arguments 
+                  ( ("data_source" variable
+                       (:pointer 1
+                        :type ("rule_dic_data_source" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [54473 54507]))                  
+                :type "char")
+                nil [54421 55401])
+            ("dic_replytodomain_equals_mimefromdomain" function
+               (:pointer 1
+                :arguments 
+                  ( ("data_source" variable
+                       (:pointer 1
+                        :type ("rule_dic_data_source" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [55503 55537]))                  
+                :type "char")
+                nil [55457 56188])
+            ("dic_replytotlddomain_equals_mimefromtlddomain" function
+               (:pointer 1
+                :arguments 
+                  ( ("data_source" variable
+                       (:pointer 1
+                        :type ("rule_dic_data_source" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [56322 56356]))                  
+                :type "char")
+                nil [56270 57259])
+            ("dic_sender_equals_mimefrom" function
+               (:pointer 1
+                :arguments 
+                  ( ("data_source" variable
+                       (:pointer 1
+                        :type ("rule_dic_data_source" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [57334 57368]))                  
+                :type "char")
+                nil [57301 57922])
+            ("dic_SPF_validated" function
+               (:pointer 1
+                :arguments 
+                  ( ("data_source" variable
+                       (:pointer 1
+                        :type ("rule_dic_data_source" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [58171 58205]))                  
+                :type "char")
+                nil [58146 59338])
+            ("dic_url_numbers" function
+               (:pointer 1
+                :arguments 
+                  ( ("data_source" variable
+                       (:pointer 1
+                        :type ("rule_dic_data_source" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [59391 59425]))                  
+                :type "char")
+                nil [59368 59977])
+            ("dic_uniq_url_numbers" function
+               (:pointer 1
+                :arguments 
+                  ( ("data_source" variable
+                       (:pointer 1
+                        :type ("rule_dic_data_source" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [60040 60074]))                  
+                :type "char")
+                nil [60012 60919])
+            ("dic_sender_domain" function
+               (:pointer 1
+                :arguments 
+                  ( ("data_source" variable
+                       (:pointer 1
+                        :type ("rule_dic_data_source" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [61004 61038]))                  
+                :type "char")
+                nil [60980 61336])
+            ("dic_recipient_domain" function
+               (:pointer 1
+                :arguments 
+                  ( ("data_source" variable
+                       (:pointer 1
+                        :type ("rule_dic_data_source" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [61426 61460]))                  
+                :type "char")
+                nil [61399 61776])
+            ("dic_revdns_xoriginip" function
+               (:pointer 1
+                :arguments 
+                  ( ("data_source" variable
+                       (:pointer 1
+                        :type ("rule_dic_data_source" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [61857 61891]))                  
+                :type "char")
+                nil [61829 62250])
+            ("dic_FML_revdnsdomain" function
+               (:pointer 1
+                :arguments 
+                  ( ("data_source" variable
+                       (:pointer 1
+                        :type ("rule_dic_data_source" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [62335 62369]))                  
+                :type "char")
+                nil [62307 63406])
+            ("dic_FML_xoriginip" function
+               (:pointer 1
+                :arguments 
+                  ( ("data_source" variable
+                       (:pointer 1
+                        :type ("rule_dic_data_source" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [63492 63526]))                  
+                :type "char")
+                nil [63467 64502]))          
+      :file "rules.c"
+      :pointmax 64503
+      :fsize 64504
+      :lastmodtime '(22156 18870 303421 836000)
+      :unmatched-syntax nil
+      :lexical-table 
+        '(("CUSTOMIZED_SPAM" . ((number "2" 898 . 899)))
+          ("REPORT_FORMAT_LINE" . ((string "\"SPAM: %s\"" 7987 . 7997)))
+          ("REPORT_LINE_ERROR" . ((symbol "sys_msg" 11328 . 11335) (semantic-list "(\"rules_read: line [%ld] contains invalid spam rule.\", linenum)" 11335 . 11398)))
+          ("_GNU_SOURCE")
+          ("OVECSIZE" . ((number "30" 671 . 673)))
+          ("SPAM_MEDIUM_RULE_CLASS" . ((string "\"SPAM-M\"" 1001 . 1009)))
+          ("GLOBALHAM" . ((string "\"HAM\"" 1135 . 1140)))
+          ("SEARCH_DICTIONARY" . ((number "3" 770 . 771)))
+          ("IS_SPAM_RULE" . ((number "1" 817 . 818)))
+          ("SPAM_LOW_RULE_CLASS" . ((string "\"SPAM-L\"" 1039 . 1047)))
+          ("SMALL_LEN" . ((number "64" 1276 . 1278)))
+          ("LOCAL_HAM_RULE_CLASS" . ((string "\"LOCALHAM\"" 1077 . 1087)))
+          ("IS_LOCAL_HAM_RULE" . ((number "2" 845 . 846)))
+          ("HAM_RULE_CLASS" . ((string "\"HAM\"" 924 . 929)))
+          ("RULESET_INC" . ((number "100" 694 . 697)))
+          ("CUSTOMIZED_HAM" . ((number "1" 871 . 872)))
+          ("DEFAULT_CUS_RULE" . ((string "\"DEFAULT\"" 1167 . 1176)))
+          ("SEARCH_BODY" . ((number "2" 741 . 742)))
+          ("SPAM_HIGH_RULE_CLASS" . ((string "\"SPAM-H\"" 960 . 968)))
+          ("LOCALHAM" . ((string "\"LOCALHAM\"" 1106 . 1116)))
+          ("READ_BUFFER_SIZE" . 
+              ((number "1024" 1240 . 1244) (punctuation "*" 1245 . 1246) (number "4" 1246 . 1247)))
+          ("DEFAULT_BULK_SPAM_PORTAL1" . ((number "1" 1700 . 1701)))
+          ("DEFAULT_BULK_SPAM_PORTAL2" . ((number "0" 1739 . 1740)))
+          ("REPORT_HIT_FORMAT_LINE" . ((string "\"SPAM: %s\\t%s%\"" 8029 . 8044)))
+          ("SEARCH_HEAD" . ((number "1" 719 . 720)))
+          ("IS_HAM_RULE" . ((number "0" 793 . 794)))
+          ("PLACEHOLDER_CLASS_RULE" . ((string "\"CL\"" 1209 . 1213)))
+          )
+)
+    (semanticdb-table "rules.h"
+      :file "rules.h"
+      :fsize 2901
+      :lastmodtime '(22156 18870 303421 836000)))
+  :file "!home!harrison!projects!repository!emc!bitbucket!fm-service-spamfilter-emcspamd2!src!rules!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2")

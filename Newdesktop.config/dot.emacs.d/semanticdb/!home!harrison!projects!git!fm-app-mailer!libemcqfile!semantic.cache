@@ -1,0 +1,58 @@
+;; Object libemcqfile/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "libemcqfile/"
+  :tables (list 
+   (semanticdb-table "Makefile.am"
+    :major-mode 'makefile-automake-mode
+    :tags 
+        '( ("qlib_execdir" variable (:default-value ("$(prefix)/lib")) nil [1 28])
+            ("qlib_exec_PROGRAMS" variable (:default-value ("libemcqfile.so")) nil [29 63])
+            ("noinst_HEADERS" variable (:default-value ("libemcqfile.h")) nil [63 92])
+            ("libemcqfile_so_SOURCES" variable (:default-value ("main.c" "../utils.c" "../config.c" "../mcfg.c" "../hash.c" "../common.c" "../logger.c" "qentry.c" "alist.c" "misc.c" "libcommon.c" "message.c" "fdb.c" "aentry.c" "header.c" "hint.c" "external.c" "hosted.c" "build.c" "admin.c" "../forwarding/forwarding.c" "../quarantine/quarantine.c" "../emclib/estring.c" "../emclib/emime.c" "../emclib/elog.c" "../emclib/echecksum.c" "../emclib/estdio.c")) nil [92 458])
+            ("libemcqfile_so_CFLAGS" variable (:default-value ("-fPIC" "-g")) nil [458 489])
+            ("libemcqfile_so_LDADD" variable (:default-value ("-L/usr/local/lib" "-lemcbase")) nil [489 537])
+            ("libemcqfile_so_LDFLAGS" variable (:default-value ("-shared" "-nostartfiles")) nil [537 582])
+            ("noinst_PROGRAMS" variable (:default-value ("libemcqfile.so")) nil [583 680])
+            ("qe_tester_SOURCES" variable (:default-value ("qe_tester.c")) nil [681 711])
+            ("qe_tester_CFLAGS" variable (:default-value ("-g")) nil [711 731])
+            ("qe_tester_LDFLAGS" variable (:default-value ("-L.")) nil [731 754])
+            ("qe_tester_LDADD" variable (:default-value ("-lemcqfile")) nil [754 783])
+            ("compactdb_SOURCES" variable (:default-value ("compactdb.c" "../config.c")) nil [784 826])
+            ("compactdb_CFLAGS" variable (:default-value ("-g")) nil [826 846])
+            ("compactdb_LDFLAGS" variable (:default-value ("-L.")) nil [846 870])
+            ("compactdb_LDADD" variable (:default-value ("-lemcqfile")) nil [870 899])
+            ("fdumper_SOURCES" variable (:default-value ("fdumper.c" "../config.c")) nil [900 938])
+            ("fdumper_CFLAGS" variable (:default-value ("-g")) nil [938 956])
+            ("fdumper_LDFLAGS" variable (:default-value ("-L.")) nil [956 977])
+            ("fdumper_LDADD" variable (:default-value ("-lemcqfile")) nil [977 1004])
+            ("hinter" variable (:default-value ("hinter.c" "../config.c")) nil [1005 1033])
+            ("hinter_CFLAGS" variable (:default-value ("-g")) nil [1033 1050])
+            ("hinter_LDFLAGS" variable (:default-value ("-L.")) nil [1050 1070])
+            ("hinter_LDADD" variable (:default-value ("-lemcqfile")) nil [1070 1094])
+            ("initdb_SOURCES" variable (:default-value ("initdb.c")) nil [1095 1119])
+            ("initdb_CFLAGS" variable (:default-value ("-g")) nil [1119 1136])
+            ("initdb_LDFLAGS" variable (:default-value ("-L.")) nil [1136 1156])
+            ("initdb_LDADD" variable (:default-value ("-lemcqfile" "-L.")) nil [1156 1185])
+            ("tester_SOURCES" variable (:default-value ("tester.c")) nil [1186 1210])
+            ("tester_CFLAGS" variable (:default-value ("-g")) nil [1210 1227])
+            ("tester_LDFLAGS" variable (:default-value ("-L.")) nil [1227 1247])
+            ("tester_LDADD" variable (:default-value ("-lemcqfile")) nil [1247 1272])
+            ("sherlock_SOURCES" variable (:default-value ("sherlock.c")) nil [1273 1301])
+            ("sherlock_CFLAGS" variable (:default-value ("-g")) nil [1301 1320])
+            ("sherlock_LDFLAGS" variable (:default-value ("-L.")) nil [1320 1342])
+            ("sherlock_LDADD" variable (:default-value ("-lemcqfile")) nil [1342 1368])
+            ("fdelete_SOURCES" variable (:default-value ("fdelete.c")) nil [1369 1395])
+            ("fdelete_CFLAGS" variable (:default-value ("-g")) nil [1395 1413])
+            ("fdelete_LDFLAGS" variable (:default-value ("-L.")) nil [1413 1433])
+            ("fdelete_LDADD" variable (:default-value ("-lemcqfile")) nil [1433 1458]))          
+    :file "Makefile.am"
+    :pointmax 1459
+    :fsize 1458
+    :lastmodtime '(21696 16167 598341 610000)
+    :unmatched-syntax 'nil
+    )
+   )
+  :file "!home!harrison!projects!git!fm-app-mailer!libemcqfile!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2"
+  )

@@ -1,0 +1,18 @@
+;; Object fm-service-spamfilter-emcspamd2/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "fm-service-spamfilter-emcspamd2/"
+  :tables
+  (list
+    (semanticdb-table "Makefile.am"
+      :major-mode 'makefile-automake-mode
+      :tags 
+        '( ("AUTOMAKE_OPTIONS" variable (:default-value ("foreign")) nil [1 26])
+            ("SUBDIRS" variable (:default-value ("build")) nil [26 40]))          
+      :file "Makefile.am"
+      :pointmax 41
+      :fsize 40
+      :lastmodtime '(21860 53246 0 0)
+      :unmatched-syntax nil))
+  :file "!home!harrison!projects!repository!emc!bitbucket!fm-service-spamfilter-emcspamd2!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2")

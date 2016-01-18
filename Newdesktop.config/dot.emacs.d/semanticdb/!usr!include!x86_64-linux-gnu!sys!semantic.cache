@@ -1,0 +1,2164 @@
+;; Object sys/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "sys/"
+  :tables
+  (list
+    (semanticdb-table "cdefs.h"
+      :major-mode 'c-mode
+      :tags 
+        '( ("_SYS_CDEFS_H" variable (:constant-flag t) nil [819 831])
+            ("features.h" include (:system-flag t) nil [908 930])
+            ("__LEAF" variable (:constant-flag t) nil [1581 1587])
+            ("__LEAF_ATTR" variable (:constant-flag t) nil [1598 1609])
+            ("__THROW" variable (:constant-flag t) nil [2342 2349])
+            ("__THROWNL" variable (:constant-flag t) nil [2361 2370])
+            ("__NTH" variable (:constant-flag t) nil [2382 2387])
+            ("__P" variable (:constant-flag t) nil [2719 2722])
+            ("__PMT" variable (:constant-flag t) nil [2742 2747])
+            ("__CONCAT" variable (:constant-flag t) nil [2873 2881])
+            ("__STRING" variable (:constant-flag t) nil [2902 2910])
+            ("__ptr_t" variable (:constant-flag t) nil [2996 3003])
+            ("__long_double_t" variable (:constant-flag t) nil [3019 3034])
+            ("__BEGIN_DECLS" variable (:constant-flag t) nil [3147 3160])
+            ("__END_DECLS" variable (:constant-flag t) nil [3183 3194])
+            ("__BEGIN_NAMESPACE_STD" variable (:constant-flag t) nil [4072 4093])
+            ("__END_NAMESPACE_STD" variable (:constant-flag t) nil [4103 4122])
+            ("__USING_NAMESPACE_STD" variable (:constant-flag t) nil [4132 4153])
+            ("__BEGIN_NAMESPACE_C99" variable (:constant-flag t) nil [4169 4190])
+            ("__END_NAMESPACE_C99" variable (:constant-flag t) nil [4200 4219])
+            ("__USING_NAMESPACE_C99" variable (:constant-flag t) nil [4229 4250])
+            ("__bos" variable (:constant-flag t) nil [4298 4303])
+            ("__bos0" variable (:constant-flag t) nil [4370 4376])
+            ("__fortify_function" variable (:constant-flag t) nil [4421 4439])
+            ("__warndecl" variable (:constant-flag t) nil [4775 4785])
+            ("__warnattr" variable (:constant-flag t) nil [4830 4840])
+            ("__errordecl" variable (:constant-flag t) nil [4855 4866])
+            ("__flexarr" variable (:constant-flag t) nil [5079 5088])
+            ("__REDIRECT" variable (:constant-flag t) nil [5824 5834])
+            ("__REDIRECT_NTH" variable (:constant-flag t) nil [5925 5939])
+            ("__REDIRECT_NTHNL" variable (:constant-flag t) nil [6025 6041])
+            ("__ASMNAME" variable (:constant-flag t) nil [6347 6356])
+            ("__ASMNAME2" variable (:constant-flag t) nil [6416 6426])
+            ("__attribute_malloc__" variable (:constant-flag t) nil [7199 7219])
+            ("__attribute_alloc_size__" variable (:constant-flag t) nil [7474 7498])
+            ("__attribute_pure__" variable (:constant-flag t) nil [7839 7857])
+            ("__attribute_const__" variable (:constant-flag t) nil [8046 8065])
+            ("__attribute_used__" variable (:constant-flag t) nil [8457 8475])
+            ("__attribute_noinline__" variable (:constant-flag t) nil [8514 8536])
+            ("__attribute_deprecated__" variable (:constant-flag t) nil [8712 8736])
+            ("__attribute_format_arg__" variable (:constant-flag t) nil [9280 9304])
+            ("__attribute_format_strfmon__" variable (:constant-flag t) nil [9692 9720])
+            ("__nonnull" variable (:constant-flag t) nil [9948 9957])
+            ("__attribute_warn_unused_result__" variable (:constant-flag t) nil [10303 10335])
+            ("__always_inline" variable (:constant-flag t) nil [10561 10576])
+            ("__attribute_artificial__" variable (:constant-flag t) nil [10835 10859])
+            ("__extern_inline" variable (:constant-flag t) nil [11251 11266])
+            ("__extern_always_inline" variable (:constant-flag t) nil [11326 11348])
+            ("__restrict_arr" variable (:constant-flag t) nil [12571 12585])
+            ("__glibc_unlikely" variable (:constant-flag t) nil [12867 12883])
+            ("__glibc_likely" variable (:constant-flag t) nil [12928 12942])
+            ("bits/wordsize.h" include (:system-flag t) nil [13068 13094])
+            ("__LDBL_REDIR1" variable (:constant-flag t) nil [14027 14040])
+            ("__LDBL_REDIR" variable (:constant-flag t) nil [14081 14093])
+            ("__LDBL_REDIR1_NTH" variable (:constant-flag t) nil [14127 14144])
+            ("__LDBL_REDIR_NTH" variable (:constant-flag t) nil [14193 14209])
+            ("__LDBL_REDIR_DECL" variable (:constant-flag t) nil [14251 14268])
+            ("__REDIRECT_LDBL" variable (:constant-flag t) nil [14304 14319])
+            ("__REDIRECT_NTH_LDBL" variable (:constant-flag t) nil [14382 14401]))          
+      :file "cdefs.h"
+      :pointmax 14504
+      :fsize 14503
+      :lastmodtime '(21741 65047 0 0)
+      :unmatched-syntax nil
+      :lexical-table 
+        '(("__LEAF_ATTR")
+          ("__ASMNAME" (spp-arg-list ("cname") 6356 . 6363) . ((symbol "__ASMNAME2" 6365 . 6375) (semantic-list "(__USER_LABEL_PREFIX__, cname)" 6376 . 6406)))
+          ("__LDBL_REDIR_DECL" (spp-arg-list ("name") 14268 . 14274))
+          ("__REDIRECT_LDBL" (spp-arg-list ("name" "proto" "alias") 14319 . 14339) . ((symbol "__REDIRECT" 14340 . 14350) (semantic-list "(name, proto, alias)" 14351 . 14371)))
+          ("__THROWNL")
+          ("__warndecl" (spp-arg-list ("name" "msg") 4785 . 4796) . 
+              ((EXTERN "extern" 4797 . 4803) (VOID "void" 4804 . 4808) (symbol "name" 4809 . 4813) (semantic-list "(void)" 4814 . 4820)))
+          ("__flexarr" . ((semantic-list "[0]" 5089 . 5092)))
+          ("__nonnull" (spp-arg-list ("params") 9957 . 9965))
+          ("__LDBL_REDIR_NTH" (spp-arg-list ("name" "proto") 14209 . 14222) . 
+              ((symbol "name" 14223 . 14227) (symbol "proto" 14228 . 14233) (symbol "__THROW" 14234 . 14241)))
+          ("__NTH" (spp-arg-list ("fct") 2387 . 2392) . ((symbol "fct" 2393 . 2396)))
+          ("__errordecl" (spp-arg-list ("name" "msg") 4866 . 4877) . 
+              ((EXTERN "extern" 4878 . 4884) (VOID "void" 4885 . 4889) (symbol "name" 4890 . 4894) (semantic-list "(void)" 4895 . 4901)))
+          ("__long_double_t" . ((LONG "long" 3036 . 3040) (DOUBLE "double" 3041 . 3047)))
+          ("__REDIRECT" (spp-arg-list ("name" "proto" "alias") 5834 . 5854) . 
+              ((symbol "name" 5855 . 5859) (symbol "proto" 5860 . 5865) (symbol "__asm__" 5866 . 5873) (semantic-list "(__ASMNAME (#alias))" 5874 . 5894)))
+          ("__REDIRECT_NTHNL" (spp-arg-list ("name" "proto" "alias") 6041 . 6061) . 
+              ((symbol "name" 6069 . 6073) (symbol "proto" 6074 . 6079) (symbol "__THROWNL" 6080 . 6089) (symbol "__asm__" 6090 . 6097) (semantic-list "(__ASMNAME (#alias))" 6098 . 6118)))
+          ("__END_DECLS" . ((close-paren "}" 3195 . 3196)))
+          ("__bos0" (spp-arg-list ("ptr") 4376 . 4381) . ((symbol "__builtin_object_size" 4382 . 4403) (semantic-list "(ptr, 0)" 4404 . 4412)))
+          ("__attribute_pure__")
+          ("__LDBL_REDIR1_NTH" (spp-arg-list ("name" "proto" "alias") 14144 . 14164) . 
+              ((symbol "name" 14165 . 14169) (symbol "proto" 14170 . 14175) (symbol "__THROW" 14176 . 14183)))
+          ("__STRING" (spp-arg-list ("x") 2910 . 2913) . ((punctuation "#" 2914 . 2915) (symbol "x" 2915 . 2916)))
+          ("__attribute_alloc_size__" (spp-arg-list ("params") 7498 . 7506))
+          ("__attribute_noinline__")
+          ("__bos" (spp-arg-list ("ptr") 4303 . 4308) . ((symbol "__builtin_object_size" 4309 . 4330) (semantic-list "(ptr, __USE_FORTIFY_LEVEL > 1)" 4331 . 4361)))
+          ("__attribute_const__")
+          ("__attribute_warn_unused_result__")
+          ("__attribute_artificial__")
+          ("__LDBL_REDIR1" (spp-arg-list ("name" "proto" "alias") 14040 . 14060) . ((symbol "name" 14061 . 14065) (symbol "proto" 14066 . 14071)))
+          ("_SYS_CDEFS_H" . ((number "1" 832 . 833)))
+          ("__ptr_t" . ((VOID "void" 3004 . 3008) (punctuation "*" 3009 . 3010)))
+          ("__warnattr" (spp-arg-list ("msg") 4840 . 4845))
+          ("__attribute_used__" . ((symbol "__attribute__" 8476 . 8489) (semantic-list "((__unused__))" 8490 . 8504)))
+          ("__REDIRECT_NTH_LDBL" (spp-arg-list ("name" "proto" "alias") 14401 . 14421) . ((symbol "__REDIRECT_NTH" 14426 . 14440) (semantic-list "(name, proto, alias)" 14441 . 14461)))
+          ("__LEAF")
+          ("__THROW")
+          ("__CONCAT" (spp-arg-list ("x" "y") 2881 . 2886) . ((spp-symbol-merge ((symbol "x" 2887 . 2888) (symbol "y" 2892 . 2893)) 2887 . 2893)))
+          ("__BEGIN_DECLS" . 
+              ((EXTERN "extern" 3161 . 3167) (string "\"C\"" 3168 . 3171) (semantic-list "{" 3172 . 3173)))
+          ("__USING_NAMESPACE_C99" (spp-arg-list ("name") 4250 . 4256))
+          ("__always_inline" . ((symbol "__inline" 10577 . 10585)))
+          ("__BEGIN_NAMESPACE_C99")
+          ("__END_NAMESPACE_C99")
+          ("__fortify_function" . ((symbol "__extern_always_inline" 4440 . 4462) (symbol "__attribute_artificial__" 4463 . 4487)))
+          ("__attribute_deprecated__")
+          ("__attribute_format_strfmon__" (spp-arg-list ("a" "b") 9720 . 9725))
+          ("__glibc_unlikely" (spp-arg-list ("cond") 12883 . 12889) . ((symbol "__builtin_expect" 12890 . 12906) (semantic-list "((cond), 0)" 12907 . 12918)))
+          ("__P" (spp-arg-list ("args") 2722 . 2728) . ((symbol "args" 2729 . 2733)))
+          ("__PMT" (spp-arg-list ("args") 2747 . 2753) . ((symbol "args" 2754 . 2758)))
+          ("__USING_NAMESPACE_STD" (spp-arg-list ("name") 4153 . 4159))
+          ("__ASMNAME2" (spp-arg-list ("prefix" "cname") 6426 . 6441) . 
+              ((symbol "__STRING" 6442 . 6450) (semantic-list "(prefix)" 6451 . 6459) (symbol "cname" 6460 . 6465)))
+          ("__attribute_malloc__")
+          ("__attribute_format_arg__" (spp-arg-list ("x") 9304 . 9307))
+          ("__extern_always_inline" . 
+              ((EXTERN "extern" 11353 . 11359) (symbol "__always_inline" 11360 . 11375) (symbol "__attribute__" 11376 . 11389) (semantic-list "((__gnu_inline__))" 11390 . 11408)))
+          ("__restrict_arr")
+          ("__BEGIN_NAMESPACE_STD")
+          ("__END_NAMESPACE_STD")
+          ("__REDIRECT_NTH" (spp-arg-list ("name" "proto" "alias") 5939 . 5959) . 
+              ((symbol "name" 5967 . 5971) (symbol "proto" 5972 . 5977) (symbol "__THROW" 5978 . 5985) (symbol "__asm__" 5986 . 5993) (semantic-list "(__ASMNAME (#alias))" 5994 . 6014)))
+          ("__extern_inline" . 
+              ((EXTERN "extern" 11267 . 11273) (symbol "__inline" 11274 . 11282) (symbol "__attribute__" 11283 . 11296) (semantic-list "((__gnu_inline__))" 11297 . 11315)))
+          ("__glibc_likely" (spp-arg-list ("cond") 12942 . 12948) . ((symbol "__builtin_expect" 12949 . 12965) (semantic-list "((cond), 1)" 12966 . 12977)))
+          ("__LDBL_REDIR" (spp-arg-list ("name" "proto") 14093 . 14106) . ((symbol "name" 14107 . 14111) (symbol "proto" 14112 . 14117)))
+          )
+)
+    (semanticdb-table "stat.h"
+      :major-mode 'c-mode
+      :tags 
+        '( ("_SYS_STAT_H" variable (:constant-flag t) nil [883 894])
+            ("features.h" include (:system-flag t) nil [898 919])
+            ("bits/types.h" include (:system-flag t) nil [921 944])
+            ("__need_time_t" variable (:constant-flag t) nil [1139 1152])
+            ("__need_timespec" variable (:constant-flag t) nil [1219 1234])
+            ("time.h" include (:system-flag t) nil [1243 1261])
+            ("dev_t" type
+               (:typedef ("__dev_t" type (:type "class") nil nil)
+                :type "typedef")
+                nil [1465 1487])
+            ("__dev_t_defined" variable (:constant-flag t) nil [1498 1513])
+            ("gid_t" type
+               (:typedef ("__gid_t" type (:type "class") nil nil)
+                :type "typedef")
+                nil [1548 1570])
+            ("__gid_t_defined" variable (:constant-flag t) nil [1581 1596])
+            ("ino_t" type
+               (:typedef ("__ino_t" type (:type "class") nil nil)
+                :type "typedef")
+                nil [1661 1683])
+            ("__ino_t_defined" variable (:constant-flag t) nil [1736 1751])
+            ("mode_t" type
+               (:typedef ("__mode_t" type (:type "class") nil nil)
+                :type "typedef")
+                nil [1787 1811])
+            ("__mode_t_defined" variable (:constant-flag t) nil [1822 1838])
+            ("nlink_t" type
+               (:typedef ("__nlink_t" type (:type "class") nil nil)
+                :type "typedef")
+                nil [1875 1901])
+            ("__nlink_t_defined" variable (:constant-flag t) nil [1912 1929])
+            ("off_t" type
+               (:typedef ("__off_t" type (:type "class") nil nil)
+                :type "typedef")
+                nil [1994 2016])
+            ("__off_t_defined" variable (:constant-flag t) nil [2069 2084])
+            ("uid_t" type
+               (:typedef ("__uid_t" type (:type "class") nil nil)
+                :type "typedef")
+                nil [2119 2141])
+            ("__uid_t_defined" variable (:constant-flag t) nil [2152 2167])
+            ("blkcnt_t" type
+               (:typedef ("__blkcnt_t" type (:type "class") nil nil)
+                :type "typedef")
+                nil [2275 2303])
+            ("__blkcnt_t_defined" variable (:constant-flag t) nil [2362 2380])
+            ("blksize_t" type
+               (:typedef ("__blksize_t" type (:type "class") nil nil)
+                :type "typedef")
+                nil [2419 2449])
+            ("__blksize_t_defined" variable (:constant-flag t) nil [2460 2479])
+            ("C" extern nil nil [2509 2522])
+            ("bits/stat.h" include (:system-flag t) nil [2524 2546])
+            ("S_IFMT" variable (:constant-flag t) nil [2624 2630])
+            ("S_IFDIR" variable (:constant-flag t) nil [2650 2657])
+            ("S_IFCHR" variable (:constant-flag t) nil [2677 2684])
+            ("S_IFBLK" variable (:constant-flag t) nil [2704 2711])
+            ("S_IFREG" variable (:constant-flag t) nil [2731 2738])
+            ("__S_ISTYPE" variable (:constant-flag t) nil [3046 3056])
+            ("S_ISDIR" variable (:constant-flag t) nil [3110 3117])
+            ("S_ISCHR" variable (:constant-flag t) nil [3163 3170])
+            ("S_ISBLK" variable (:constant-flag t) nil [3216 3223])
+            ("S_ISREG" variable (:constant-flag t) nil [3269 3276])
+            ("S_ISLNK" variable (:constant-flag t) nil [3525 3532])
+            ("S_ISSOCK" variable (:constant-flag t) nil [3743 3751])
+            ("S_ISUID" variable (:constant-flag t) nil [4229 4236])
+            ("S_ISGID" variable (:constant-flag t) nil [4288 4295])
+            ("S_ISVTX" variable (:constant-flag t) nil [4497 4504])
+            ("S_IRUSR" variable (:constant-flag t) nil [4531 4538])
+            ("S_IWUSR" variable (:constant-flag t) nil [4579 4586])
+            ("S_IXUSR" variable (:constant-flag t) nil [4629 4636])
+            ("S_IRWXU" variable (:constant-flag t) nil [4722 4729])
+            ("S_IREAD" variable (:constant-flag t) nil [4817 4824])
+            ("S_IWRITE" variable (:constant-flag t) nil [4842 4850])
+            ("S_IEXEC" variable (:constant-flag t) nil [4868 4875])
+            ("S_IRGRP" variable (:constant-flag t) nil [4900 4907])
+            ("S_IWGRP" variable (:constant-flag t) nil [4953 4960])
+            ("S_IXGRP" variable (:constant-flag t) nil [5007 5014])
+            ("S_IRWXG" variable (:constant-flag t) nil [5105 5112])
+            ("S_IROTH" variable (:constant-flag t) nil [5137 5144])
+            ("S_IWOTH" variable (:constant-flag t) nil [5191 5198])
+            ("S_IXOTH" variable (:constant-flag t) nil [5246 5253])
+            ("S_IRWXO" variable (:constant-flag t) nil [5346 5353])
+            ("ACCESSPERMS" variable (:constant-flag t) nil [5438 5449])
+            ("ALLPERMS" variable (:constant-flag t) nil [5496 5504])
+            ("DEFFILEMODE" variable (:constant-flag t) nil [5575 5586])
+            ("S_BLKSIZE" variable (:constant-flag t) nil [5656 5665])
+            ("stat" function
+               (:prototype-flag t
+                :typemodifiers ("extern")
+                :arguments 
+                  ( ("__file" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [5816 5846])
+                    ("__buf" variable
+                       (:pointer 1
+                        :type ("stat" type
+                             (:prototype t
+                              :type "struct")
+                              nil nil))
+                        (reparse-symbol arg-sub-list) [5850 5880]))                  
+                :type "int")
+                nil [5799 5908])
+            ("fstat" function
+               (:prototype-flag t
+                :typemodifiers ("extern")
+                :arguments 
+                  ( ("__fd" variable (:type "int") (reparse-symbol arg-sub-list) [6052 6061])
+                    ("__buf" variable
+                       (:pointer 1
+                        :type ("stat" type
+                             (:prototype t
+                              :type "struct")
+                              nil nil))
+                        (reparse-symbol arg-sub-list) [6062 6081]))                  
+                :type "int")
+                nil [6034 6106])
+            ("stat64" function
+               (:prototype-flag t
+                :typemodifiers ("extern")
+                :arguments 
+                  ( ("__file" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [6481 6511])
+                    ("__buf" variable
+                       (:pointer 1
+                        :type ("stat64" type
+                             (:prototype t
+                              :type "struct")
+                              nil nil))
+                        (reparse-symbol arg-sub-list) [6517 6549]))                  
+                :type "int")
+                nil [6462 6577])
+            ("fstat64" function
+               (:prototype-flag t
+                :typemodifiers ("extern")
+                :arguments 
+                  ( ("__fd" variable (:type "int") (reparse-symbol arg-sub-list) [6598 6607])
+                    ("__buf" variable
+                       (:pointer 1
+                        :type ("stat64" type
+                             (:prototype t
+                              :type "struct")
+                              nil nil))
+                        (reparse-symbol arg-sub-list) [6608 6629]))                  
+                :type "int")
+                nil [6578 6654])
+            ("fstatat" function
+               (:prototype-flag t
+                :typemodifiers ("extern")
+                :arguments 
+                  ( ("__fd" variable (:type "int") (reparse-symbol arg-sub-list) [6885 6894])
+                    ("__file" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [6895 6925])
+                    ("__buf" variable
+                       (:pointer 1
+                        :type ("stat" type
+                             (:prototype t
+                              :type "struct")
+                              nil nil))
+                        (reparse-symbol arg-sub-list) [6932 6962])
+                    ("__flag" variable (:type "int") (reparse-symbol arg-sub-list) [6963 6974]))                  
+                :type "int")
+                nil [6865 7007])
+            ("fstatat64" function
+               (:prototype-flag t
+                :typemodifiers ("extern")
+                :arguments 
+                  ( ("__fd" variable (:type "int") (reparse-symbol arg-sub-list) [7319 7328])
+                    ("__file" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [7329 7359])
+                    ("__buf" variable
+                       (:pointer 1
+                        :type ("stat64" type
+                             (:prototype t
+                              :type "struct")
+                              nil nil))
+                        (reparse-symbol arg-sub-list) [7368 7400])
+                    ("__flag" variable (:type "int") (reparse-symbol arg-sub-list) [7401 7412]))                  
+                :type "int")
+                nil [7297 7445])
+            ("lstat" function
+               (:prototype-flag t
+                :typemodifiers ("extern")
+                :arguments 
+                  ( ("__file" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [7696 7726])
+                    ("__buf" variable
+                       (:pointer 1
+                        :type ("stat" type
+                             (:prototype t
+                              :type "struct")
+                              nil nil))
+                        (reparse-symbol arg-sub-list) [7731 7761]))                  
+                :type "int")
+                nil [7678 7789])
+            ("lstat64" function
+               (:prototype-flag t
+                :typemodifiers ("extern")
+                :arguments 
+                  ( ("__file" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [8062 8092])
+                    ("__buf" variable
+                       (:pointer 1
+                        :type ("stat64" type
+                             (:prototype t
+                              :type "struct")
+                              nil nil))
+                        (reparse-symbol arg-sub-list) [8099 8131]))                  
+                :type "int")
+                nil [8042 8164])
+            ("chmod" function
+               (:prototype-flag t
+                :typemodifiers ("extern")
+                :arguments 
+                  ( ("__file" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [8316 8335])
+                    ("__mode" variable (:type ("__mode_t" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [8336 8352]))                  
+                :type "int")
+                nil [8298 8382])
+            ("lchmod" function
+               (:prototype-flag t
+                :typemodifiers ("extern")
+                :arguments 
+                  ( ("__file" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [8560 8579])
+                    ("__mode" variable (:type ("__mode_t" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [8580 8596]))                  
+                :type "int")
+                nil [8541 8626])
+            ("fchmod" function
+               (:prototype-flag t
+                :typemodifiers ("extern")
+                :arguments 
+                  ( ("__fd" variable (:type "int") (reparse-symbol arg-sub-list) [8769 8778])
+                    ("__mode" variable (:type ("__mode_t" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [8779 8795]))                  
+                :type "int")
+                nil [8750 8804])
+            ("fchmodat" function
+               (:prototype-flag t
+                :typemodifiers ("extern")
+                :arguments 
+                  ( ("__fd" variable (:type "int") (reparse-symbol arg-sub-list) [8941 8950])
+                    ("__file" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [8951 8970])
+                    ("__mode" variable (:type ("__mode_t" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [8971 8987])
+                    ("__flag" variable (:type "int") (reparse-symbol arg-sub-list) [8995 9006]))                  
+                :type "int")
+                nil [8920 9042])
+            ("umask" function
+               (:prototype-flag t
+                :typemodifiers ("extern")
+                :arguments 
+                  ( ("__mask" variable (:type ("__mode_t" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [9198 9214]))                  
+                :type ("__mode_t" type (:type "class") nil nil))
+                nil [9175 9223])
+            ("getumask" function
+               (:prototype-flag t
+                :typemodifiers ("extern")
+                :arguments 
+                  ( ("" variable (:type "void") (reparse-symbol arg-sub-list) [9381 9386]))                  
+                :type ("__mode_t" type (:type "class") nil nil))
+                nil [9355 9395])
+            ("mkdir" function
+               (:prototype-flag t
+                :typemodifiers ("extern")
+                :arguments 
+                  ( ("__path" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [9491 9510])
+                    ("__mode" variable (:type ("__mode_t" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [9511 9527]))                  
+                :type "int")
+                nil [9473 9557])
+            ("mkdirat" function
+               (:prototype-flag t
+                :typemodifiers ("extern")
+                :arguments 
+                  ( ("__fd" variable (:type "int") (reparse-symbol arg-sub-list) [9755 9764])
+                    ("__path" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [9765 9784])
+                    ("__mode" variable (:type ("__mode_t" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [9785 9801]))                  
+                :type "int")
+                nil [9735 9831])
+            ("mknod" function
+               (:prototype-flag t
+                :typemodifiers ("extern")
+                :arguments 
+                  ( ("__path" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [10135 10154])
+                    ("__mode" variable (:type ("__mode_t" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [10155 10171])
+                    ("__dev" variable (:type ("__dev_t" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [10172 10186]))                  
+                :type "int")
+                nil [10117 10216])
+            ("mknodat" function
+               (:prototype-flag t
+                :typemodifiers ("extern")
+                :arguments 
+                  ( ("__fd" variable (:type "int") (reparse-symbol arg-sub-list) [10439 10448])
+                    ("__path" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [10449 10468])
+                    ("__mode" variable (:type ("__mode_t" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [10469 10485])
+                    ("__dev" variable (:type ("__dev_t" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [10492 10506]))                  
+                :type "int")
+                nil [10419 10531])
+            ("mkfifo" function
+               (:prototype-flag t
+                :typemodifiers ("extern")
+                :arguments 
+                  ( ("__path" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [10632 10651])
+                    ("__mode" variable (:type ("__mode_t" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [10652 10668]))                  
+                :type "int")
+                nil [10613 10698])
+            ("mkfifoat" function
+               (:prototype-flag t
+                :typemodifiers ("extern")
+                :arguments 
+                  ( ("__fd" variable (:type "int") (reparse-symbol arg-sub-list) [10893 10902])
+                    ("__path" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [10903 10922])
+                    ("__mode" variable (:type ("__mode_t" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [10923 10939]))                  
+                :type "int")
+                nil [10872 10969])
+            ("utimensat" function
+               (:prototype-flag t
+                :typemodifiers ("extern")
+                :arguments 
+                  ( ("__fd" variable (:type "int") (reparse-symbol arg-sub-list) [11109 11118])
+                    ("__path" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [11119 11138])
+                    ("__times" variable
+                       (:dereference 1
+                        :constant-flag t
+                        :type ("timespec" type
+                             (:prototype t
+                              :type "struct")
+                              nil nil))
+                        (reparse-symbol arg-sub-list) [11147 11180])
+                    ("__flags" variable (:type "int") (reparse-symbol arg-sub-list) [11189 11201]))                  
+                :type "int")
+                nil [11087 11231])
+            ("futimens" function
+               (:prototype-flag t
+                :typemodifiers ("extern")
+                :arguments 
+                  ( ("__fd" variable (:type "int") (reparse-symbol arg-sub-list) [11361 11370])
+                    ("__times" variable
+                       (:dereference 1
+                        :constant-flag t
+                        :type ("timespec" type
+                             (:prototype t
+                              :type "struct")
+                              nil nil))
+                        (reparse-symbol arg-sub-list) [11371 11404]))                  
+                :type "int")
+                nil [11340 11413])
+            ("_STAT_VER" variable (:constant-flag t) nil [12355 12364])
+            ("_MKNOD_VER" variable (:constant-flag t) nil [12402 12412])
+            ("__fxstat" function
+               (:prototype-flag t
+                :typemodifiers ("extern")
+                :arguments 
+                  ( ("__ver" variable (:type "int") (reparse-symbol arg-sub-list) [12521 12531])
+                    ("__fildes" variable (:type "int") (reparse-symbol arg-sub-list) [12532 12545])
+                    ("__stat_buf" variable
+                       (:pointer 1
+                        :type ("stat" type
+                             (:prototype t
+                              :type "struct")
+                              nil nil))
+                        (reparse-symbol arg-sub-list) [12546 12570]))                  
+                :type "int")
+                nil [12500 12600])
+            ("__xstat" function
+               (:prototype-flag t
+                :typemodifiers ("extern")
+                :arguments 
+                  ( ("__ver" variable (:type "int") (reparse-symbol arg-sub-list) [12621 12631])
+                    ("__filename" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [12632 12655])
+                    ("__stat_buf" variable
+                       (:pointer 1
+                        :type ("stat" type
+                             (:prototype t
+                              :type "struct")
+                              nil nil))
+                        (reparse-symbol arg-sub-list) [12662 12686]))                  
+                :type "int")
+                nil [12601 12714])
+            ("__lxstat" function
+               (:prototype-flag t
+                :typemodifiers ("extern")
+                :arguments 
+                  ( ("__ver" variable (:type "int") (reparse-symbol arg-sub-list) [12736 12746])
+                    ("__filename" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [12747 12770])
+                    ("__stat_buf" variable
+                       (:pointer 1
+                        :type ("stat" type
+                             (:prototype t
+                              :type "struct")
+                              nil nil))
+                        (reparse-symbol arg-sub-list) [12778 12802]))                  
+                :type "int")
+                nil [12715 12830])
+            ("__fxstatat" function
+               (:prototype-flag t
+                :typemodifiers ("extern")
+                :arguments 
+                  ( ("__ver" variable (:type "int") (reparse-symbol arg-sub-list) [12854 12864])
+                    ("__fildes" variable (:type "int") (reparse-symbol arg-sub-list) [12865 12878])
+                    ("__filename" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [12879 12902])
+                    ("__stat_buf" variable
+                       (:pointer 1
+                        :type ("stat" type
+                             (:prototype t
+                              :type "struct")
+                              nil nil))
+                        (reparse-symbol arg-sub-list) [12912 12936])
+                    ("__flag" variable (:type "int") (reparse-symbol arg-sub-list) [12937 12948]))                  
+                :type "int")
+                nil [12831 12981])
+            ("__fxstat64" function
+               (:prototype-flag t
+                :typemodifiers ("extern")
+                :arguments 
+                  ( ("__ver" variable (:type "int") (reparse-symbol arg-sub-list) [13770 13780])
+                    ("__fildes" variable (:type "int") (reparse-symbol arg-sub-list) [13781 13794])
+                    ("__stat_buf" variable
+                       (:pointer 1
+                        :type ("stat64" type
+                             (:prototype t
+                              :type "struct")
+                              nil nil))
+                        (reparse-symbol arg-sub-list) [13795 13821]))                  
+                :type "int")
+                nil [13747 13851])
+            ("__xstat64" function
+               (:prototype-flag t
+                :typemodifiers ("extern")
+                :arguments 
+                  ( ("__ver" variable (:type "int") (reparse-symbol arg-sub-list) [13874 13884])
+                    ("__filename" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [13885 13908])
+                    ("__stat_buf" variable
+                       (:pointer 1
+                        :type ("stat64" type
+                             (:prototype t
+                              :type "struct")
+                              nil nil))
+                        (reparse-symbol arg-sub-list) [13917 13943]))                  
+                :type "int")
+                nil [13852 13971])
+            ("__lxstat64" function
+               (:prototype-flag t
+                :typemodifiers ("extern")
+                :arguments 
+                  ( ("__ver" variable (:type "int") (reparse-symbol arg-sub-list) [13995 14005])
+                    ("__filename" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [14006 14029])
+                    ("__stat_buf" variable
+                       (:pointer 1
+                        :type ("stat64" type
+                             (:prototype t
+                              :type "struct")
+                              nil nil))
+                        (reparse-symbol arg-sub-list) [14039 14065]))                  
+                :type "int")
+                nil [13972 14093])
+            ("__fxstatat64" function
+               (:prototype-flag t
+                :typemodifiers ("extern")
+                :arguments 
+                  ( ("__ver" variable (:type "int") (reparse-symbol arg-sub-list) [14119 14129])
+                    ("__fildes" variable (:type "int") (reparse-symbol arg-sub-list) [14130 14143])
+                    ("__filename" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [14144 14167])
+                    ("__stat_buf" variable
+                       (:pointer 1
+                        :type ("stat64" type
+                             (:prototype t
+                              :type "struct")
+                              nil nil))
+                        (reparse-symbol arg-sub-list) [14172 14198])
+                    ("__flag" variable (:type "int") (reparse-symbol arg-sub-list) [14199 14210]))                  
+                :type "int")
+                nil [14094 14243])
+            ("__xmknod" function
+               (:prototype-flag t
+                :typemodifiers ("extern")
+                :arguments 
+                  ( ("__ver" variable (:type "int") (reparse-symbol arg-sub-list) [14272 14282])
+                    ("__path" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [14283 14302])
+                    ("__mode" variable (:type ("__mode_t" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [14303 14319])
+                    ("__dev" variable
+                       (:pointer 1
+                        :type ("__dev_t" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [14327 14342]))                  
+                :type "int")
+                nil [14251 14370])
+            ("__xmknodat" function
+               (:prototype-flag t
+                :typemodifiers ("extern")
+                :arguments 
+                  ( ("__ver" variable (:type "int") (reparse-symbol arg-sub-list) [14395 14405])
+                    ("__fd" variable (:type "int") (reparse-symbol arg-sub-list) [14406 14415])
+                    ("__path" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [14416 14435])
+                    ("__mode" variable (:type ("__mode_t" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [14445 14461])
+                    ("__dev" variable
+                       (:pointer 1
+                        :type ("__dev_t" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [14462 14477]))                  
+                :type "int")
+                nil [14372 14510]))          
+      :file "stat.h"
+      :pointmax 16547
+      :fsize 16546
+      :lastmodtime '(21741 65046 0 0)
+      :unmatched-syntax '((close-paren "}" 16508 . 16519) (number "1" 1066 . 1078) (symbol 1058 . 1065) (punctuation 1056 . 1057) (punctuation 1055 . 1056))
+      :lexical-table 
+        '(("S_IWUSR" . ((symbol "__S_IWRITE" 4587 . 4597)))
+          ("S_IXGRP" . ((semantic-list "(S_IXUSR >> 3)" 5015 . 5029)))
+          ("ACCESSPERMS" . ((semantic-list "(S_IRWXU|S_IRWXG|S_IRWXO)" 5450 . 5475)))
+          ("__S_ISTYPE" (spp-arg-list ("mode" "mask") 3056 . 3068) . ((semantic-list "(((mode) & __S_IFMT) == (mask))" 3069 . 3100)))
+          ("S_ISVTX" . ((symbol "__S_ISVTX" 4505 . 4514)))
+          ("S_IXUSR" . ((symbol "__S_IEXEC" 4637 . 4646)))
+          ("ALLPERMS" . ((semantic-list "(S_ISUID|S_ISGID|S_ISVTX|S_IRWXU|S_IRWXG|S_IRWXO)" 5505 . 5554)))
+          ("__need_time_t")
+          ("__gid_t_defined")
+          ("__mode_t_defined")
+          ("__off_t_defined")
+          ("S_ISUID" . ((symbol "__S_ISUID" 4237 . 4246)))
+          ("S_IREAD" . ((symbol "S_IRUSR" 4825 . 4832)))
+          ("S_IEXEC" . ((symbol "S_IXUSR" 4876 . 4883)))
+          ("S_IRWXG" . ((semantic-list "(S_IRWXU >> 3)" 5113 . 5127)))
+          ("S_IWOTH" . ((semantic-list "(S_IWGRP >> 3)" 5199 . 5213)))
+          ("__uid_t_defined")
+          ("S_IFBLK" . ((symbol "__S_IFBLK" 2712 . 2721)))
+          ("S_ISBLK" (spp-arg-list ("mode") 3223 . 3229) . ((symbol "__S_ISTYPE" 3231 . 3241) (semantic-list "((mode), __S_IFBLK)" 3241 . 3260)))
+          ("S_IRWXU" . ((semantic-list "(__S_IREAD|__S_IWRITE|__S_IEXEC)" 4730 . 4762)))
+          ("S_IXOTH" . ((semantic-list "(S_IXGRP >> 3)" 5254 . 5268)))
+          ("DEFFILEMODE" . ((semantic-list "(S_IRUSR|S_IWUSR|S_IRGRP|S_IWGRP|S_IROTH|S_IWOTH)" 5587 . 5636)))
+          ("S_BLKSIZE" . ((number "512" 5666 . 5669)))
+          ("_MKNOD_VER" . ((number "0" 12413 . 12414)))
+          ("__dev_t_defined")
+          ("__ino_t_defined")
+          ("S_ISSOCK" (spp-arg-list ("mode") 3751 . 3757) . ((number "0" 3758 . 3759)))
+          ("S_IFREG" . ((symbol "__S_IFREG" 2739 . 2748)))
+          ("S_ISREG" (spp-arg-list ("mode") 3276 . 3282) . ((symbol "__S_ISTYPE" 3284 . 3294) (semantic-list "((mode), __S_IFREG)" 3294 . 3313)))
+          ("S_IRGRP" . ((semantic-list "(S_IRUSR >> 3)" 4908 . 4922)))
+          ("__nlink_t_defined")
+          ("S_IFDIR" . ((symbol "__S_IFDIR" 2658 . 2667)))
+          ("S_ISDIR" (spp-arg-list ("mode") 3117 . 3123) . ((symbol "__S_ISTYPE" 3125 . 3135) (semantic-list "((mode), __S_IFDIR)" 3135 . 3154)))
+          ("S_ISGID" . ((symbol "__S_ISGID" 4296 . 4305)))
+          ("S_IRUSR" . ((symbol "__S_IREAD" 4539 . 4548)))
+          ("S_IWRITE" . ((symbol "S_IWUSR" 4851 . 4858)))
+          ("S_IFMT" . ((symbol "__S_IFMT" 2632 . 2640)))
+          ("S_IFCHR" . ((symbol "__S_IFCHR" 2685 . 2694)))
+          ("S_ISCHR" (spp-arg-list ("mode") 3170 . 3176) . ((symbol "__S_ISTYPE" 3178 . 3188) (semantic-list "((mode), __S_IFCHR)" 3188 . 3207)))
+          ("__need_timespec")
+          ("__blkcnt_t_defined")
+          ("S_ISLNK" (spp-arg-list ("mode") 3532 . 3538) . ((number "0" 3540 . 3541)))
+          ("_SYS_STAT_H" . ((number "1" 895 . 896)))
+          ("__blksize_t_defined")
+          ("_STAT_VER" . ((number "0" 12365 . 12366)))
+          ("S_IWGRP" . ((semantic-list "(S_IWUSR >> 3)" 4961 . 4975)))
+          ("S_IROTH" . ((semantic-list "(S_IRGRP >> 3)" 5145 . 5159)))
+          ("S_IRWXO" . ((semantic-list "(S_IRWXG >> 3)" 5354 . 5368)))
+          )
+)
+    (semanticdb-table "types.h"
+      :major-mode 'c-mode
+      :tags 
+        '( ("_SYS_TYPES_H" variable (:constant-flag t) nil [892 904])
+            ("features.h" include (:system-flag t) nil [908 929])
+            ("C" extern nil nil [931 944])
+            ("bits/types.h" include (:system-flag t) nil [946 969])
+            ("u_char" type
+               (:typedef ("__u_char" type (:type "class") nil nil)
+                :type "typedef")
+                nil [1014 1038])
+            ("u_short" type
+               (:typedef ("__u_short" type (:type "class") nil nil)
+                :type "typedef")
+                nil [1039 1065])
+            ("u_int" type
+               (:typedef ("__u_int" type (:type "class") nil nil)
+                :type "typedef")
+                nil [1066 1088])
+            ("u_long" type
+               (:typedef ("__u_long" type (:type "class") nil nil)
+                :type "typedef")
+                nil [1089 1113])
+            ("quad_t" type
+               (:typedef ("__quad_t" type (:type "class") nil nil)
+                :type "typedef")
+                nil [1114 1138])
+            ("u_quad_t" type
+               (:typedef ("__u_quad_t" type (:type "class") nil nil)
+                :type "typedef")
+                nil [1139 1167])
+            ("fsid_t" type
+               (:typedef ("__fsid_t" type (:type "class") nil nil)
+                :type "typedef")
+                nil [1168 1192])
+            ("__u_char_defined" variable (:constant-flag t) nil [1203 1219])
+            ("loff_t" type
+               (:typedef ("__loff_t" type (:type "class") nil nil)
+                :type "typedef")
+                nil [1236 1260])
+            ("ino_t" type
+               (:typedef ("__ino_t" type (:type "class") nil nil)
+                :type "typedef")
+                nil [1315 1337])
+            ("__ino_t_defined" variable (:constant-flag t) nil [1387 1402])
+            ("ino64_t" type
+               (:typedef ("__ino64_t" type (:type "class") nil nil)
+                :type "typedef")
+                nil [1470 1496])
+            ("__ino64_t_defined" variable (:constant-flag t) nil [1506 1523])
+            ("dev_t" type
+               (:typedef ("__dev_t" type (:type "class") nil nil)
+                :type "typedef")
+                nil [1556 1578])
+            ("__dev_t_defined" variable (:constant-flag t) nil [1588 1603])
+            ("gid_t" type
+               (:typedef ("__gid_t" type (:type "class") nil nil)
+                :type "typedef")
+                nil [1636 1658])
+            ("__gid_t_defined" variable (:constant-flag t) nil [1668 1683])
+            ("mode_t" type
+               (:typedef ("__mode_t" type (:type "class") nil nil)
+                :type "typedef")
+                nil [1717 1741])
+            ("__mode_t_defined" variable (:constant-flag t) nil [1751 1767])
+            ("nlink_t" type
+               (:typedef ("__nlink_t" type (:type "class") nil nil)
+                :type "typedef")
+                nil [1802 1828])
+            ("__nlink_t_defined" variable (:constant-flag t) nil [1838 1855])
+            ("uid_t" type
+               (:typedef ("__uid_t" type (:type "class") nil nil)
+                :type "typedef")
+                nil [1888 1910])
+            ("__uid_t_defined" variable (:constant-flag t) nil [1920 1935])
+            ("off_t" type
+               (:typedef ("__off_t" type (:type "class") nil nil)
+                :type "typedef")
+                nil [1997 2019])
+            ("__off_t_defined" variable (:constant-flag t) nil [2069 2084])
+            ("off64_t" type
+               (:typedef ("__off64_t" type (:type "class") nil nil)
+                :type "typedef")
+                nil [2152 2178])
+            ("__off64_t_defined" variable (:constant-flag t) nil [2188 2205])
+            ("pid_t" type
+               (:typedef ("__pid_t" type (:type "class") nil nil)
+                :type "typedef")
+                nil [2238 2260])
+            ("__pid_t_defined" variable (:constant-flag t) nil [2270 2285])
+            ("id_t" type
+               (:typedef ("__id_t" type (:type "class") nil nil)
+                :type "typedef")
+                nil [2401 2421])
+            ("__id_t_defined" variable (:constant-flag t) nil [2431 2445])
+            ("ssize_t" type
+               (:typedef ("__ssize_t" type (:type "class") nil nil)
+                :type "typedef")
+                nil [2480 2506])
+            ("__ssize_t_defined" variable (:constant-flag t) nil [2516 2533])
+            ("daddr_t" type
+               (:typedef ("__daddr_t" type (:type "class") nil nil)
+                :type "typedef")
+                nil [2586 2612])
+            ("caddr_t" type
+               (:typedef ("__caddr_t" type (:type "class") nil nil)
+                :type "typedef")
+                nil [2613 2639])
+            ("__daddr_t_defined" variable (:constant-flag t) nil [2650 2667])
+            ("key_t" type
+               (:typedef ("__key_t" type (:type "class") nil nil)
+                :type "typedef")
+                nil [2760 2782])
+            ("__key_t_defined" variable (:constant-flag t) nil [2792 2807])
+            ("__need_clock_t" variable (:constant-flag t) nil [2875 2889])
+            ("__need_time_t" variable (:constant-flag t) nil [2905 2918])
+            ("__need_timer_t" variable (:constant-flag t) nil [2927 2941])
+            ("__need_clockid_t" variable (:constant-flag t) nil [2950 2966])
+            ("time.h" include (:system-flag t) nil [2967 2984])
+            ("useconds_t" type
+               (:typedef ("__useconds_t" type (:type "class") nil nil)
+                :type "typedef")
+                nil [3035 3067])
+            ("__useconds_t_defined" variable (:constant-flag t) nil [3078 3098])
+            ("suseconds_t" type
+               (:typedef ("__suseconds_t" type (:type "class") nil nil)
+                :type "typedef")
+                nil [3138 3172])
+            ("__suseconds_t_defined" variable (:constant-flag t) nil [3183 3204])
+            ("__need_size_t" variable (:constant-flag t) nil [3229 3242])
+            ("stddef.h" include (:system-flag t) nil [3243 3262])
+            ("ulong" type
+               (:typedef ("unsigned long int")
+                :type "typedef")
+                nil [3326 3358])
+            ("ushort" type
+               (:typedef ("unsigned short int")
+                :type "typedef")
+                nil [3359 3393])
+            ("uint" type
+               (:typedef ("unsigned int")
+                :type "typedef")
+                nil [3394 3420])
+            ("__intN_t" variable (:constant-flag t) nil [4241 4249])
+            ("__u_intN_t" variable (:constant-flag t) nil [4329 4339])
+            ("__int8_t_defined" variable (:constant-flag t) nil [4458 4474])
+            ("8_t" type
+               (:typedef ("int")
+                :type "typedef")
+                nil [4475 4496])
+            ("16_t" type
+               (:typedef ("int")
+                :type "typedef")
+                nil [4497 4519])
+            ("32_t" type
+               (:typedef ("int")
+                :type "typedef")
+                nil [4520 4542])
+            ("64_t" type
+               (:typedef ("int")
+                :type "typedef")
+                nil [4543 4565])
+            ("u_int8_t" type
+               (:typedef ("unsigned int")
+                :type "typedef")
+                nil [4575 4598])
+            ("u_int16_t" type
+               (:typedef ("unsigned int")
+                :type "typedef")
+                nil [4599 4623])
+            ("u_int32_t" type
+               (:typedef ("unsigned int")
+                :type "typedef")
+                nil [4624 4648])
+            ("u_int64_t" type
+               (:typedef ("unsigned int")
+                :type "typedef")
+                nil [4649 4673])
+            ("register_t" type
+               (:typedef ("int")
+                :type "typedef")
+                nil [4675 4736])
+            ("__BIT_TYPES_DEFINED__" variable (:constant-flag t) nil [4840 4861])
+            ("endian.h" include (:system-flag t) nil [4945 4965])
+            ("sys/select.h" include (:system-flag t) nil [5033 5057])
+            ("sys/sysmacros.h" include (:system-flag t) nil [5107 5134])
+            ("blksize_t" type
+               (:typedef ("__blksize_t" type (:type "class") nil nil)
+                :type "typedef")
+                nil [5251 5281])
+            ("__blksize_t_defined" variable (:constant-flag t) nil [5291 5310])
+            ("blkcnt_t" type
+               (:typedef ("__blkcnt_t" type (:type "class") nil nil)
+                :type "typedef")
+                nil [5427 5455])
+            ("__blkcnt_t_defined" variable (:constant-flag t) nil [5511 5529])
+            ("fsblkcnt_t" type
+               (:typedef ("__fsblkcnt_t" type (:type "class") nil nil)
+                :type "typedef")
+                nil [5568 5600])
+            ("__fsblkcnt_t_defined" variable (:constant-flag t) nil [5652 5672])
+            ("fsfilcnt_t" type
+               (:typedef ("__fsfilcnt_t" type (:type "class") nil nil)
+                :type "typedef")
+                nil [5711 5743])
+            ("__fsfilcnt_t_defined" variable (:constant-flag t) nil [5795 5815])
+            ("blkcnt64_t" type
+               (:typedef ("__blkcnt64_t" type (:type "class") nil nil)
+                :type "typedef")
+                nil [6296 6328])
+            ("fsblkcnt64_t" type
+               (:typedef ("__fsblkcnt64_t" type (:type "class") nil nil)
+                :type "typedef")
+                nil [6376 6412])
+            ("fsfilcnt64_t" type
+               (:typedef ("__fsfilcnt64_t" type (:type "class") nil nil)
+                :type "typedef")
+                nil [6454 6490])
+            ("bits/pthreadtypes.h" include (:system-flag t) nil [6628 6659]))          
+      :file "types.h"
+      :pointmax 6706
+      :fsize 6705
+      :lastmodtime '(21741 65046 0 0)
+      :unmatched-syntax '((close-paren "}" 6668 . 6679) (symbol 5231 . 5250) (symbol 5223 . 5230) (punctuation 5222 . 5223) (punctuation 5220 . 5221) (punctuation 5219 . 5220) (symbol 2386 . 2400) (symbol 2378 . 2385) (punctuation 2377 . 2378) (punctuation 2375 . 2376) (punctuation 2374 . 2375))
+      :lexical-table 
+        '(("__pid_t_defined")
+          ("__need_clockid_t")
+          ("__int8_t_defined")
+          ("__fsblkcnt_t_defined")
+          ("__useconds_t_defined")
+          ("__intN_t" (spp-arg-list ("N" "MODE") 4249 . 4258) . 
+              ((TYPEDEF "typedef" 4263 . 4270) (INT "int" 4271 . 4274) (spp-symbol-merge ((spp-symbol-merge ((INT "int" 4275 . 4278) (symbol "N" 4280 . 4281)) 4275 . 4281) (symbol "_t" 4283 . 4285)) 4275 . 4285) (symbol "__attribute__" 4286 . 4299) (semantic-list "((__mode__ (MODE)))" 4300 . 4319)))
+          ("__need_clock_t")
+          ("__off64_t_defined")
+          ("__need_time_t")
+          ("__u_intN_t" (spp-arg-list ("N" "MODE") 4339 . 4348) . 
+              ((TYPEDEF "typedef" 4353 . 4360) (UNSIGNED "unsigned" 4361 . 4369) (INT "int" 4370 . 4373) (spp-symbol-merge ((spp-symbol-merge ((symbol "u_int" 4374 . 4379) (symbol "N" 4381 . 4382)) 4374 . 4382) (symbol "_t" 4384 . 4386)) 4374 . 4386) (symbol "__attribute__" 4387 . 4400) (semantic-list "((__mode__ (MODE)))" 4401 . 4420)))
+          ("__BIT_TYPES_DEFINED__" . ((number "1" 4862 . 4863)))
+          ("__gid_t_defined")
+          ("__mode_t_defined")
+          ("__off_t_defined")
+          ("__uid_t_defined")
+          ("__ino_t_defined")
+          ("__dev_t_defined")
+          ("__daddr_t_defined")
+          ("__fsfilcnt_t_defined")
+          ("__need_size_t")
+          ("__ino64_t_defined")
+          ("__nlink_t_defined")
+          ("__ssize_t_defined")
+          ("__u_char_defined")
+          ("__key_t_defined")
+          ("__blkcnt_t_defined")
+          ("__suseconds_t_defined")
+          ("__blksize_t_defined")
+          ("_SYS_TYPES_H" . ((number "1" 905 . 906)))
+          ("__id_t_defined")
+          ("__need_timer_t")
+          )
+)
+    (semanticdb-table "wait.h"
+      :major-mode 'c-mode
+      :tags 
+        '( ("_SYS_WAIT_H" variable (:constant-flag t) nil [893 904])
+            ("features.h" include (:system-flag t) nil [908 929])
+            ("C" extern nil nil [931 944])
+            ("signal.h" include (:system-flag t) nil [946 965])
+            ("bits/waitflags.h" include (:system-flag t) nil [1197 1225])
+            ("__WAIT_INT" variable (:constant-flag t) nil [1564 1574])
+            ("__WAIT_STATUS" variable (:constant-flag t) nil [1938 1951])
+            ("__WAIT_STATUS_DEFN" variable (:constant-flag t) nil [1970 1988])
+            ("bits/waitstatus.h" include (:system-flag t) nil [2417 2446])
+            ("WEXITSTATUS" variable (:constant-flag t) nil [2457 2468])
+            ("WTERMSIG" variable (:constant-flag t) nil [2522 2530])
+            ("WSTOPSIG" variable (:constant-flag t) nil [2581 2589])
+            ("WIFEXITED" variable (:constant-flag t) nil [2640 2649])
+            ("WIFSIGNALED" variable (:constant-flag t) nil [2701 2712])
+            ("WIFSTOPPED" variable (:constant-flag t) nil [2766 2776])
+            ("WCOREFLAG" variable (:constant-flag t) nil [2985 2994])
+            ("WCOREDUMP" variable (:constant-flag t) nil [3017 3026])
+            ("W_EXITCODE" variable (:constant-flag t) nil [3078 3088])
+            ("W_STOPCODE" variable (:constant-flag t) nil [3132 3142])
+            ("wait" function
+               (:prototype-flag t
+                :typemodifiers ("extern")
+                :arguments 
+                  ( ("__stat_loc" variable
+                       (:pointer 1
+                        :type "void")
+                        (reparse-symbol arg-sub-list) [3418 3443]))                  
+                :type ("__pid_t" type (:type "class") nil nil))
+                nil [3397 3444])
+            ("WAIT_ANY" variable (:constant-flag t) nil [3541 3549])
+            ("WAIT_MYPGRP" variable (:constant-flag t) nil [3584 3595])
+            ("waitpid" function
+               (:prototype-flag t
+                :typemodifiers ("extern")
+                :arguments 
+                  ( ("__pid" variable (:type ("__pid_t" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [4415 4429])
+                    ("__stat_loc" variable
+                       (:pointer 1
+                        :type "int")
+                        (reparse-symbol arg-sub-list) [4430 4446])
+                    ("__options" variable (:type "int") (reparse-symbol arg-sub-list) [4447 4461]))                  
+                :type ("__pid_t" type (:type "class") nil nil))
+                nil [4391 4462])
+            ("bits/types.h" include (:system-flag t) nil [4560 4585])
+            ("id_t" type
+               (:typedef ("__id_t" type (:type "class") nil nil)
+                :type "typedef")
+                nil [4586 4606])
+            ("__id_t_defined" variable (:constant-flag t) nil [4617 4631])
+            ("__need_siginfo_t" variable (:constant-flag t) nil [4650 4666])
+            ("bits/siginfo.h" include (:system-flag t) nil [4667 4693])
+            ("waitid" function
+               (:prototype-flag t
+                :typemodifiers ("extern")
+                :arguments 
+                  ( ("__idtype" variable (:type ("idtype_t" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [5257 5275])
+                    ("__id" variable (:type ("__id_t" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [5276 5288])
+                    ("__infop" variable
+                       (:pointer 1
+                        :type ("siginfo_t" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [5289 5308])
+                    ("__options" variable (:type "int") (reparse-symbol arg-sub-list) [5314 5328]))                  
+                :type "int")
+                nil [5238 5329])
+            ("rusage" type
+               (:prototype t
+                :type "struct")
+                nil [5529 5543])
+            ("wait3" function
+               (:prototype-flag t
+                :typemodifiers ("extern")
+                :arguments 
+                  ( ("__stat_loc" variable
+                       (:pointer 1
+                        :type "void")
+                        (reparse-symbol arg-sub-list) [5888 5913])
+                    ("__options" variable (:type "int") (reparse-symbol arg-sub-list) [5914 5928])
+                    ("__usage" variable
+                       (:pointer 1
+                        :type ("rusage" type
+                             (:prototype t
+                              :type "struct")
+                              nil nil))
+                        (reparse-symbol arg-sub-list) [5937 5961]))                  
+                :type ("__pid_t" type (:type "class") nil nil))
+                nil [5866 5972])
+            ("wait4" function
+               (:prototype-flag t
+                :typemodifiers ("extern")
+                :arguments 
+                  ( ("__pid" variable (:type ("__pid_t" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [6076 6090])
+                    ("__stat_loc" variable
+                       (:pointer 1
+                        :type "void")
+                        (reparse-symbol arg-sub-list) [6091 6116])
+                    ("__options" variable (:type "int") (reparse-symbol arg-sub-list) [6117 6131])
+                    ("__usage" variable
+                       (:pointer 1
+                        :type ("rusage" type
+                             (:prototype t
+                              :type "struct")
+                              nil nil))
+                        (reparse-symbol arg-sub-list) [6140 6163]))                  
+                :type ("__pid_t" type (:type "class") nil nil))
+                nil [6054 6174]))          
+      :file "wait.h"
+      :pointmax 6238
+      :fsize 6237
+      :lastmodtime '(21741 65046 0 0)
+      :unmatched-syntax '((close-paren "}" 6200 . 6211))
+      :lexical-table 
+        '(("__need_siginfo_t")
+          ("W_STOPCODE" (spp-arg-list ("sig") 3142 . 3147) . ((symbol "__W_STOPCODE" 3148 . 3160) (semantic-list "(sig)" 3161 . 3166)))
+          ("WAIT_ANY" . ((semantic-list "(-1)" 3550 . 3554)))
+          ("__WAIT_STATUS_DEFN" . ((VOID "void" 1989 . 1993) (punctuation "*" 1994 . 1995)))
+          ("__WAIT_INT" (spp-arg-list ("status") 1574 . 1582) . ((semantic-list "(*(const int *) &(status))" 1583 . 1609)))
+          ("__WAIT_STATUS" . ((VOID "void" 1952 . 1956) (punctuation "*" 1957 . 1958)))
+          ("WIFEXITED" (spp-arg-list ("status") 2649 . 2657) . ((symbol "__WIFEXITED" 2658 . 2669) (semantic-list "(__WAIT_INT (status))" 2670 . 2691)))
+          ("WCOREDUMP" (spp-arg-list ("status") 3026 . 3034) . ((symbol "__WCOREDUMP" 3035 . 3046) (semantic-list "(__WAIT_INT (status))" 3047 . 3068)))
+          ("WAIT_MYPGRP" . ((number "0" 3596 . 3597)))
+          ("WEXITSTATUS" (spp-arg-list ("status") 2468 . 2476) . ((symbol "__WEXITSTATUS" 2477 . 2490) (semantic-list "(__WAIT_INT (status))" 2491 . 2512)))
+          ("WSTOPSIG" (spp-arg-list ("status") 2589 . 2597) . ((symbol "__WSTOPSIG" 2598 . 2608) (semantic-list "(__WAIT_INT (status))" 2609 . 2630)))
+          ("_SYS_WAIT_H" . ((number "1" 905 . 906)))
+          ("WIFSIGNALED" (spp-arg-list ("status") 2712 . 2720) . ((symbol "__WIFSIGNALED" 2721 . 2734) (semantic-list "(__WAIT_INT (status))" 2735 . 2756)))
+          ("WIFSTOPPED" (spp-arg-list ("status") 2776 . 2784) . ((symbol "__WIFSTOPPED" 2785 . 2797) (semantic-list "(__WAIT_INT (status))" 2798 . 2819)))
+          ("WTERMSIG" (spp-arg-list ("status") 2530 . 2538) . ((symbol "__WTERMSIG" 2539 . 2549) (semantic-list "(__WAIT_INT (status))" 2550 . 2571)))
+          ("WCOREFLAG" . ((symbol "__WCOREFLAG" 2996 . 3007)))
+          ("W_EXITCODE" (spp-arg-list ("ret" "sig") 3088 . 3098) . ((symbol "__W_EXITCODE" 3099 . 3111) (semantic-list "(ret, sig)" 3112 . 3122)))
+          ("__id_t_defined")
+          )
+)
+    (semanticdb-table "time.h"
+      :major-mode 'c-mode
+      :tags 
+        '( ("_SYS_TIME_H" variable (:constant-flag t) nil [818 829])
+            ("features.h" include (:system-flag t) nil [833 854])
+            ("bits/types.h" include (:system-flag t) nil [856 879])
+            ("__need_time_t" variable (:constant-flag t) nil [888 901])
+            ("time.h" include (:system-flag t) nil [902 919])
+            ("__need_timeval" variable (:constant-flag t) nil [928 942])
+            ("bits/time.h" include (:system-flag t) nil [943 965])
+            ("sys/select.h" include (:system-flag t) nil [967 990])
+            ("suseconds_t" type
+               (:typedef ("__suseconds_t" type (:type "class") nil nil)
+                :type "typedef")
+                nil [1022 1056])
+            ("__suseconds_t_defined" variable (:constant-flag t) nil [1066 1087])
+            ("C" extern nil nil [1097 1110])
+            ("TIMEVAL_TO_TIMESPEC" variable (:constant-flag t) nil [1215 1234])
+            ("TIMESPEC_TO_TIMEVAL" variable (:constant-flag t) nil [1426 1445])
+            ("timezone" type
+               (:members 
+                  ( ("tz_minuteswest" variable (:type "int") (reparse-symbol classsubparts) [1774 1793])
+                    ("tz_dsttime" variable (:type "int") (reparse-symbol classsubparts) [1827 1842]))                  
+                :type "struct")
+                nil [1750 1889])
+            ("__timezone_ptr_t" type
+               (:typedef ("timezone" type
+                     (:prototype t
+                      :type "struct")
+                      nil nil)
+                :pointer 1
+                :type "typedef")
+                nil [1891 1944])
+            ("gettimeofday" function
+               (:prototype-flag t
+                :typemodifiers ("extern")
+                :arguments 
+                  ( ("__tv" variable
+                       (:pointer 1
+                        :type ("timeval" type
+                             (:prototype t
+                              :type "struct")
+                              nil nil))
+                        (reparse-symbol arg-sub-list) [2315 2347])
+                    ("__tz" variable (:type ("__timezone_ptr_t" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [2352 2374]))                  
+                :type "int")
+                nil [2290 2399])
+            ("settimeofday" function
+               (:prototype-flag t
+                :typemodifiers ("extern")
+                :arguments 
+                  ( ("__tv" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type ("timeval" type
+                             (:prototype t
+                              :type "struct")
+                              nil nil))
+                        (reparse-symbol arg-sub-list) [2550 2577])
+                    ("__tz" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type ("timezone" type
+                             (:prototype t
+                              :type "struct")
+                              nil nil))
+                        (reparse-symbol arg-sub-list) [2582 2610]))                  
+                :type "int")
+                nil [2525 2624])
+            ("adjtime" function
+               (:prototype-flag t
+                :typemodifiers ("extern")
+                :arguments 
+                  ( ("__delta" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type ("timeval" type
+                             (:prototype t
+                              :type "struct")
+                              nil nil))
+                        (reparse-symbol arg-sub-list) [2887 2917])
+                    ("__olddelta" variable
+                       (:pointer 1
+                        :type ("timeval" type
+                             (:prototype t
+                              :type "struct")
+                              nil nil))
+                        (reparse-symbol arg-sub-list) [2924 2951]))                  
+                :type "int")
+                nil [2867 2960])
+            ("__itimer_which" type
+               (:members 
+                  ( ("ITIMER_REAL" variable
+                       (:constant-flag t
+                        :default-value (3117 3118)
+                        :type "int")
+                        (reparse-symbol enumsubparts) [3103 3118])
+                    ("ITIMER_VIRTUAL" variable
+                       (:constant-flag t
+                        :default-value (3231 3232)
+                        :type "int")
+                        (reparse-symbol enumsubparts) [3214 3232])
+                    ("ITIMER_PROF" variable
+                       (:constant-flag t
+                        :default-value (3408 3409)
+                        :type "int")
+                        (reparse-symbol enumsubparts) [3394 3409]))                  
+                :type "enum")
+                nil [3039 3446])
+            ("itimerval" type
+               (:members 
+                  ( ("it_interval" variable (:type ("timeval" type
+                         (:prototype t
+                          :type "struct")
+                          nil nil)) (reparse-symbol classsubparts) [3638 3665])
+                    ("it_value" variable (:type ("timeval" type
+                         (:prototype t
+                          :type "struct")
+                          nil nil)) (reparse-symbol classsubparts) [3716 3740]))                  
+                :type "struct")
+                nil [3549 3745])
+            ("__itimer_which_t" type
+               (:typedef ("int")
+                :type "typedef")
+                nil [3977 4006])
+            ("getitimer" function
+               (:prototype-flag t
+                :typemodifiers ("extern")
+                :arguments 
+                  ( ("__which" variable (:type ("__itimer_which_t" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [4132 4157])
+                    ("__value" variable
+                       (:pointer 1
+                        :type ("itimerval" type
+                             (:prototype t
+                              :type "struct")
+                              nil nil))
+                        (reparse-symbol arg-sub-list) [4166 4192]))                  
+                :type "int")
+                nil [4110 4201])
+            ("setitimer" function
+               (:prototype-flag t
+                :typemodifiers ("extern")
+                :arguments 
+                  ( ("__which" variable (:type ("__itimer_which_t" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [4366 4391])
+                    ("__new" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type ("itimerval" type
+                             (:prototype t
+                              :type "struct")
+                              nil nil))
+                        (reparse-symbol arg-sub-list) [4400 4441])
+                    ("__old" variable
+                       (:pointer 1
+                        :type ("itimerval" type
+                             (:prototype t
+                              :type "struct")
+                              nil nil))
+                        (reparse-symbol arg-sub-list) [4450 4485]))                  
+                :type "int")
+                nil [4344 4494])
+            ("utimes" function
+               (:prototype-flag t
+                :typemodifiers ("extern")
+                :arguments 
+                  ( ("__file" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [4707 4726])
+                    ("__tvp" variable
+                       (:dereference 1
+                        :constant-flag t
+                        :type ("timeval" type
+                             (:prototype t
+                              :type "struct")
+                              nil nil))
+                        (reparse-symbol arg-sub-list) [4727 4757]))                  
+                :type "int")
+                nil [4688 4787])
+            ("lutimes" function
+               (:prototype-flag t
+                :typemodifiers ("extern")
+                :arguments 
+                  ( ("__file" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [4887 4906])
+                    ("__tvp" variable
+                       (:dereference 1
+                        :constant-flag t
+                        :type ("timeval" type
+                             (:prototype t
+                              :type "struct")
+                              nil nil))
+                        (reparse-symbol arg-sub-list) [4907 4937]))                  
+                :type "int")
+                nil [4867 4967])
+            ("futimes" function
+               (:prototype-flag t
+                :typemodifiers ("extern")
+                :arguments 
+                  ( ("__fd" variable (:type "int") (reparse-symbol arg-sub-list) [5067 5076])
+                    ("__tvp" variable
+                       (:dereference 1
+                        :constant-flag t
+                        :type ("timeval" type
+                             (:prototype t
+                              :type "struct")
+                              nil nil))
+                        (reparse-symbol arg-sub-list) [5077 5107]))                  
+                :type "int")
+                nil [5047 5116])
+            ("futimesat" function
+               (:prototype-flag t
+                :typemodifiers ("extern")
+                :arguments 
+                  ( ("__fd" variable (:type "int") (reparse-symbol arg-sub-list) [5372 5381])
+                    ("__file" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [5382 5401])
+                    ("__tvp" variable
+                       (:dereference 1
+                        :constant-flag t
+                        :type ("timeval" type
+                             (:prototype t
+                              :type "struct")
+                              nil nil))
+                        (reparse-symbol arg-sub-list) [5410 5440]))                  
+                :type "int")
+                nil [5350 5449])
+            ("timerisset" variable (:constant-flag t) nil [5587 5597])
+            ("timerclear" variable (:constant-flag t) nil [5646 5656])
+            ("timercmp" variable (:constant-flag t) nil [5708 5716])
+            ("timeradd" variable (:constant-flag t) nil [5882 5890])
+            ("timersub" variable (:constant-flag t) nil [6262 6270]))          
+      :file "time.h"
+      :pointmax 6667
+      :fsize 6666
+      :lastmodtime '(21741 65045 0 0)
+      :unmatched-syntax '((close-paren "}" 6630 . 6641) (spp-macro-def 3418 . 3429) (spp-macro-def 3242 . 3256) (spp-macro-def 3128 . 3139))
+      :lexical-table 
+        '(("TIMEVAL_TO_TIMESPEC" (spp-arg-list ("tv" "ts") 1234 . 1242) . ((semantic-list "{                                   \\
+	(ts)->tv_sec = (tv)->tv_sec;                                    \\
+	(ts)->tv_nsec = (tv)->tv_usec * 1000;                           \\
+}" 1243 . 1416)))
+          ("ITIMER_PROF" . ((symbol "ITIMER_PROF" 3430 . 3441)))
+          ("__need_time_t")
+          ("timeradd" (spp-arg-list ("a" "b" "result") 5890 . 5904) . 
+              ((DO "do" 5920 . 5922) (semantic-list "{									      \\
+    (result)->tv_sec = (a)->tv_sec + (b)->tv_sec;			      \\
+    (result)->tv_usec = (a)->tv_usec + (b)->tv_usec;			      \\
+    if ((result)->tv_usec >= 1000000)					      \\
+      {									      \\
+	++(result)->tv_sec;						      \\
+	(result)->tv_usec -= 1000000;					      \\
+      }									      \\
+  }" 5923 . 6242) (WHILE "while" 6243 . 6248) (semantic-list "(0)" 6249 . 6252)))
+          ("timerisset" (spp-arg-list ("tvp") 5597 . 5602) . ((semantic-list "((tvp)->tv_sec || (tvp)->tv_usec)" 5603 . 5636)))
+          ("_SYS_TIME_H" . ((number "1" 830 . 831)))
+          ("__need_timeval")
+          ("timersub" (spp-arg-list ("a" "b" "result") 6270 . 6284) . 
+              ((DO "do" 6300 . 6302) (semantic-list "{									      \\
+    (result)->tv_sec = (a)->tv_sec - (b)->tv_sec;			      \\
+    (result)->tv_usec = (a)->tv_usec - (b)->tv_usec;			      \\
+    if ((result)->tv_usec < 0) {					      \\
+      --(result)->tv_sec;						      \\
+      (result)->tv_usec += 1000000;					      \\
+    }									      \\
+  }" 6303 . 6601) (WHILE "while" 6602 . 6607) (semantic-list "(0)" 6608 . 6611)))
+          ("ITIMER_REAL" . ((symbol "ITIMER_REAL" 3140 . 3151)))
+          ("TIMESPEC_TO_TIMEVAL" (spp-arg-list ("tv" "ts") 1445 . 1453) . ((semantic-list "{                                   \\
+	(tv)->tv_sec = (ts)->tv_sec;                                    \\
+	(tv)->tv_usec = (ts)->tv_nsec / 1000;                           \\
+}" 1454 . 1627)))
+          ("timerclear" (spp-arg-list ("tvp") 5656 . 5661) . ((semantic-list "((tvp)->tv_sec = (tvp)->tv_usec = 0)" 5662 . 5698)))
+          ("timercmp" (spp-arg-list ("a" "b" "CMP") 5716 . 5727) . ((semantic-list "(((a)->tv_sec == (b)->tv_sec) ? 					      \\
+   ((a)->tv_usec CMP (b)->tv_usec) : 					      \\
+   ((a)->tv_sec CMP (b)->tv_sec))" 5744 . 5872)))
+          ("__suseconds_t_defined")
+          ("ITIMER_VIRTUAL" . ((symbol "ITIMER_VIRTUAL" 3257 . 3271)))
+          )
+)
+    (semanticdb-table "select.h"
+      :major-mode 'c-mode
+      :tags 
+        '( ("_SYS_SELECT_H" variable (:constant-flag t) nil [969 982])
+            ("features.h" include (:system-flag t) nil [986 1007])
+            ("bits/types.h" include (:system-flag t) nil [1054 1077])
+            ("bits/select.h" include (:system-flag t) nil [1110 1134])
+            ("bits/sigset.h" include (:system-flag t) nil [1159 1183])
+            ("__sigset_t_defined" variable (:constant-flag t) nil [1221 1239])
+            ("sigset_t" type
+               (:typedef ("__sigset_t" type (:type "class") nil nil)
+                :type "typedef")
+                nil [1240 1268])
+            ("__need_time_t" variable (:constant-flag t) nil [1342 1355])
+            ("__need_timespec" variable (:constant-flag t) nil [1364 1379])
+            ("time.h" include (:system-flag t) nil [1380 1397])
+            ("__need_timeval" variable (:constant-flag t) nil [1406 1420])
+            ("bits/time.h" include (:system-flag t) nil [1421 1443])
+            ("suseconds_t" type
+               (:typedef ("__suseconds_t" type (:type "class") nil nil)
+                :type "typedef")
+                nil [1475 1509])
+            ("__suseconds_t_defined" variable (:constant-flag t) nil [1519 1540])
+            ("__fd_mask" type
+               (:typedef ("long int")
+                :type "typedef")
+                nil [1612 1639])
+            ("__NFDBITS" variable (:constant-flag t) nil [1795 1804])
+            ("__FD_ELT" variable (:constant-flag t) nil [1844 1852])
+            ("__FD_MASK" variable (:constant-flag t) nil [1882 1891])
+            ("fd_set" type
+               (:typedef ("" type
+                     (:members 
+                        ( ("fds_bits" variable
+                             (:dereference 1
+                              :type ("__fd_mask" type (:type "class") nil nil))
+                              (reparse-symbol classsubparts) [2118 2163])
+                          ("__FDS_BITS" variable (:constant-flag t) (reparse-symbol classsubparts) [2173 2183]))                        
+                      :type "struct")
+                      nil nil)
+                :type "typedef")
+                nil [1971 2328])
+            ("FD_SETSIZE" variable (:constant-flag t) nil [2393 2403])
+            ("fd_mask" type
+               (:typedef ("__fd_mask" type (:type "class") nil nil)
+                :type "typedef")
+                nil [2502 2528])
+            ("NFDBITS" variable (:constant-flag t) nil [2614 2621])
+            ("FD_SET" variable (:constant-flag t) nil [2685 2691])
+            ("FD_CLR" variable (:constant-flag t) nil [2734 2740])
+            ("FD_ISSET" variable (:constant-flag t) nil [2783 2791])
+            ("FD_ZERO" variable (:constant-flag t) nil [2836 2843])
+            ("C" extern nil nil [2874 2887])
+            ("select" function
+               (:prototype-flag t
+                :typemodifiers ("extern")
+                :arguments 
+                  ( ("__nfds" variable (:type "int") (reparse-symbol arg-sub-list) [3340 3351])
+                    ("__readfds" variable
+                       (:pointer 1
+                        :type ("fd_set" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [3352 3381])
+                    ("__writefds" variable
+                       (:pointer 1
+                        :type ("fd_set" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [3387 3417])
+                    ("__exceptfds" variable
+                       (:pointer 1
+                        :type ("fd_set" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [3423 3454])
+                    ("__timeout" variable
+                       (:pointer 1
+                        :type ("timeval" type
+                             (:prototype t
+                              :type "struct")
+                              nil nil))
+                        (reparse-symbol arg-sub-list) [3460 3497]))                  
+                :type "int")
+                nil [3321 3498])
+            ("pselect" function
+               (:prototype-flag t
+                :typemodifiers ("extern")
+                :arguments 
+                  ( ("__nfds" variable (:type "int") (reparse-symbol arg-sub-list) [3787 3798])
+                    ("__readfds" variable
+                       (:pointer 1
+                        :type ("fd_set" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [3799 3828])
+                    ("__writefds" variable
+                       (:pointer 1
+                        :type ("fd_set" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [3835 3865])
+                    ("__exceptfds" variable
+                       (:pointer 1
+                        :type ("fd_set" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [3872 3903])
+                    ("__timeout" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type ("timespec" type
+                             (:prototype t
+                              :type "struct")
+                              nil nil))
+                        (reparse-symbol arg-sub-list) [3910 3954])
+                    ("__sigmask" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type ("__sigset_t" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [3961 4000]))                  
+                :type "int")
+                nil [3767 4001]))          
+      :file "select.h"
+      :pointmax 4194
+      :fsize 4193
+      :lastmodtime '(21741 65048 0 0)
+      :unmatched-syntax '((close-paren "}" 4155 . 4166))
+      :lexical-table 
+        '(("FD_ZERO" (spp-arg-list ("fdsetp") 2843 . 2851) . ((symbol "__FD_ZERO" 2853 . 2862) (semantic-list "(fdsetp)" 2863 . 2871)))
+          ("_SYS_SELECT_H" . ((number "1" 983 . 984)))
+          ("__need_time_t")
+          ("__NFDBITS" . ((semantic-list "(8 * (int) sizeof (__fd_mask))" 1805 . 1835)))
+          ("FD_ISSET" (spp-arg-list ("fd" "fdsetp") 2791 . 2803) . ((symbol "__FD_ISSET" 2804 . 2814) (semantic-list "(fd, fdsetp)" 2815 . 2827)))
+          ("__FDS_BITS" (spp-arg-list ("set") 2183 . 2188) . ((semantic-list "((set)->fds_bits)" 2189 . 2206)))
+          ("FD_SET" (spp-arg-list ("fd" "fdsetp") 2691 . 2703) . ((symbol "__FD_SET" 2704 . 2712) (semantic-list "(fd, fdsetp)" 2713 . 2725)))
+          ("__FD_ELT" (spp-arg-list ("d") 1852 . 1855) . ((semantic-list "((d) / __NFDBITS)" 1856 . 1873)))
+          ("__need_timeval")
+          ("NFDBITS" . ((symbol "__NFDBITS" 2623 . 2632)))
+          ("FD_CLR" (spp-arg-list ("fd" "fdsetp") 2740 . 2752) . ((symbol "__FD_CLR" 2753 . 2761) (semantic-list "(fd, fdsetp)" 2762 . 2774)))
+          ("__need_timespec")
+          ("__suseconds_t_defined")
+          ("__sigset_t_defined")
+          ("__FD_MASK" (spp-arg-list ("d") 1891 . 1894) . ((semantic-list "((__fd_mask) 1 << ((d) % __NFDBITS))" 1895 . 1931)))
+          ("FD_SETSIZE" . ((symbol "__FD_SETSIZE" 2405 . 2417)))
+          )
+)
+    (semanticdb-table "sysmacros.h"
+      :major-mode 'c-mode
+      :tags 
+        '( ("_SYS_SYSMACROS_H" variable (:constant-flag t) nil [874 890])
+            ("features.h" include (:system-flag t) nil [894 915])
+            ("C" extern nil nil [917 930])
+            ("gnu_dev_major" function
+               (:prototype-flag t
+                :typemodifiers ("extern")
+                :arguments 
+                  ( ("" variable (:type "unsigned long long") (reparse-symbol arg-sub-list) [981 1003])
+                    ("__dev" variable (:type "int") (reparse-symbol arg-sub-list) [1000 1010]))                  
+                :type "unsigned int")
+                nil [946 1044])
+            ("gnu_dev_minor" function
+               (:prototype-flag t
+                :typemodifiers ("extern")
+                :arguments 
+                  ( ("" variable (:type "unsigned long long") (reparse-symbol arg-sub-list) [1094 1116])
+                    ("__dev" variable (:type "int") (reparse-symbol arg-sub-list) [1113 1123]))                  
+                :type "unsigned int")
+                nil [1059 1157])
+            ("gnu_dev_makedev" function
+               (:prototype-flag t
+                :arguments 
+                  ( ("__major" variable (:type "unsigned int") (reparse-symbol arg-sub-list) [1219 1240])
+                    ("__minor" variable (:type "unsigned int") (reparse-symbol arg-sub-list) [1253 1274]))                  
+                :type "long int")
+                nil [1193 1308])
+            ("major" variable (:constant-flag t) nil [2126 2131])
+            ("minor" variable (:constant-flag t) nil [2165 2170])
+            ("makedev" variable (:constant-flag t) nil [2204 2211]))          
+      :file "sysmacros.h"
+      :pointmax 2279
+      :fsize 2278
+      :lastmodtime '(21741 65046 0 0)
+      :unmatched-syntax '((close-paren "}" 2047 . 2058) (LONG 1188 . 1192) (UNSIGNED 1179 . 1187) (EXTERN 1172 . 1178) (symbol 1158 . 1171) (symbol 1045 . 1058) (symbol 932 . 945))
+      :lexical-table 
+        '(("_SYS_SYSMACROS_H" . ((number "1" 891 . 892)))
+          ("major" (spp-arg-list ("dev") 2131 . 2136) . ((symbol "gnu_dev_major" 2137 . 2150) (semantic-list "(dev)" 2151 . 2156)))
+          ("makedev" (spp-arg-list ("maj" "min") 2211 . 2221) . ((symbol "gnu_dev_makedev" 2222 . 2237) (semantic-list "(maj, min)" 2238 . 2248)))
+          ("minor" (spp-arg-list ("dev") 2170 . 2175) . ((symbol "gnu_dev_minor" 2176 . 2189) (semantic-list "(dev)" 2190 . 2195)))
+          )
+)
+    (semanticdb-table "signal.h"
+      :file "signal.h"
+      :fsize 20
+      :lastmodtime '(21741 65040 0 0))
+    (semanticdb-table "ucontext.h"
+      :major-mode 'c-mode
+      :tags 
+        '( ("_SYS_UCONTEXT_H" variable (:constant-flag t) nil [822 837])
+            ("features.h" include (:system-flag t) nil [841 862])
+            ("signal.h" include (:system-flag t) nil [863 882])
+            ("bits/sigcontext.h" include (:system-flag t) nil [983 1011])
+            ("greg_t" variable (:type "long int") nil [1093 1109])
+            ("NGREG" variable (:constant-flag t) nil [1155 1160])
+            ("gregset_t" type
+               (:typedef ("greg_t" type (:type "class") nil nil)
+                :type "typedef")
+                nil [1209 1241])
+            ("" type
+               (:members 
+                  ( ("REG_R8" variable
+                       (:constant-flag t
+                        :default-value (1335 1336)
+                        :type "int")
+                        (reparse-symbol enumsubparts) [1326 1336])
+                    ("REG_R9" variable
+                       (:constant-flag t
+                        :type "int")
+                        (reparse-symbol enumsubparts) [1364 1371])
+                    ("REG_R10" variable
+                       (:constant-flag t
+                        :type "int")
+                        (reparse-symbol enumsubparts) [1398 1406])
+                    ("REG_R11" variable
+                       (:constant-flag t
+                        :type "int")
+                        (reparse-symbol enumsubparts) [1434 1442])
+                    ("REG_R12" variable
+                       (:constant-flag t
+                        :type "int")
+                        (reparse-symbol enumsubparts) [1470 1478])
+                    ("REG_R13" variable
+                       (:constant-flag t
+                        :type "int")
+                        (reparse-symbol enumsubparts) [1506 1514])
+                    ("REG_R14" variable
+                       (:constant-flag t
+                        :type "int")
+                        (reparse-symbol enumsubparts) [1542 1550])
+                    ("REG_R15" variable
+                       (:constant-flag t
+                        :type "int")
+                        (reparse-symbol enumsubparts) [1578 1586])
+                    ("REG_RDI" variable
+                       (:constant-flag t
+                        :type "int")
+                        (reparse-symbol enumsubparts) [1614 1622])
+                    ("REG_RSI" variable
+                       (:constant-flag t
+                        :type "int")
+                        (reparse-symbol enumsubparts) [1650 1658])
+                    ("REG_RBP" variable
+                       (:constant-flag t
+                        :type "int")
+                        (reparse-symbol enumsubparts) [1686 1694])
+                    ("REG_RBX" variable
+                       (:constant-flag t
+                        :type "int")
+                        (reparse-symbol enumsubparts) [1722 1730])
+                    ("REG_RDX" variable
+                       (:constant-flag t
+                        :type "int")
+                        (reparse-symbol enumsubparts) [1758 1766])
+                    ("REG_RAX" variable
+                       (:constant-flag t
+                        :type "int")
+                        (reparse-symbol enumsubparts) [1794 1802])
+                    ("REG_RCX" variable
+                       (:constant-flag t
+                        :type "int")
+                        (reparse-symbol enumsubparts) [1830 1838])
+                    ("REG_RSP" variable
+                       (:constant-flag t
+                        :type "int")
+                        (reparse-symbol enumsubparts) [1866 1874])
+                    ("REG_RIP" variable
+                       (:constant-flag t
+                        :type "int")
+                        (reparse-symbol enumsubparts) [1902 1910])
+                    ("REG_EFL" variable
+                       (:constant-flag t
+                        :type "int")
+                        (reparse-symbol enumsubparts) [1938 1946])
+                    ("REG_CSGSFS" variable
+                       (:constant-flag t
+                        :type "int")
+                        (reparse-symbol enumsubparts) [1974 1985])
+                    ("REG_ERR" variable
+                       (:constant-flag t
+                        :type "int")
+                        (reparse-symbol enumsubparts) [2062 2070])
+                    ("REG_TRAPNO" variable
+                       (:constant-flag t
+                        :type "int")
+                        (reparse-symbol enumsubparts) [2098 2109])
+                    ("REG_OLDMASK" variable
+                       (:constant-flag t
+                        :type "int")
+                        (reparse-symbol enumsubparts) [2143 2155])
+                    ("REG_CR2" variable
+                       (:constant-flag t
+                        :type "int")
+                        (reparse-symbol enumsubparts) [2191 2215]))                  
+                :type "enum")
+                nil [1317 2226])
+            ("_libc_fpxreg" type
+               (:members 
+                  ( ("significand" variable
+                       (:dereference 1
+                        :type "unsigned short int")
+                        (reparse-symbol classsubparts) [2259 2293])
+                    ("exponent" variable (:type "unsigned short int") (reparse-symbol classsubparts) [2296 2324])
+                    ("padding" variable
+                       (:dereference 1
+                        :type "unsigned short int")
+                        (reparse-symbol classsubparts) [2327 2357]))                  
+                :type "struct")
+                nil [2235 2360])
+            ("_libc_xmmreg" type
+               (:members 
+                  ( ("element" variable
+                       (:dereference 1
+                        :type ("__uint32_t" type (:type "class") nil nil))
+                        (reparse-symbol classsubparts) [2386 2408]))                  
+                :type "struct")
+                nil [2362 2411])
+            ("_libc_fpstate" type
+               (:members 
+                  ( ("cwd" variable (:type ("__uint16_t" type (:type "class") nil nil)) (reparse-symbol classsubparts) [2469 2485])
+                    ("swd" variable (:type ("__uint16_t" type (:type "class") nil nil)) (reparse-symbol classsubparts) [2488 2504])
+                    ("ftw" variable (:type ("__uint16_t" type (:type "class") nil nil)) (reparse-symbol classsubparts) [2507 2523])
+                    ("fop" variable (:type ("__uint16_t" type (:type "class") nil nil)) (reparse-symbol classsubparts) [2526 2542])
+                    ("rip" variable (:type ("__uint64_t" type (:type "class") nil nil)) (reparse-symbol classsubparts) [2545 2561])
+                    ("rdp" variable (:type ("__uint64_t" type (:type "class") nil nil)) (reparse-symbol classsubparts) [2564 2580])
+                    ("mxcsr" variable (:type ("__uint32_t" type (:type "class") nil nil)) (reparse-symbol classsubparts) [2583 2601])
+                    ("mxcr_mask" variable (:type ("__uint32_t" type (:type "class") nil nil)) (reparse-symbol classsubparts) [2604 2626])
+                    ("_st" variable
+                       (:dereference 1
+                        :type ("_libc_fpxreg" type
+                             (:prototype t
+                              :type "struct")
+                              nil nil))
+                        (reparse-symbol classsubparts) [2629 2656])
+                    ("_xmm" variable
+                       (:dereference 1
+                        :type ("_libc_xmmreg" type
+                             (:prototype t
+                              :type "struct")
+                              nil nil))
+                        (reparse-symbol classsubparts) [2659 2688])
+                    ("padding" variable
+                       (:dereference 1
+                        :type ("__uint32_t" type (:type "class") nil nil))
+                        (reparse-symbol classsubparts) [2691 2715]))                  
+                :type "struct")
+                nil [2413 2718])
+            ("fpregset_t" type
+               (:typedef ("_libc_fpstate" type
+                     (:prototype t
+                      :type "struct")
+                      nil nil)
+                :pointer 1
+                :type "typedef")
+                nil [2764 2805])
+            ("mcontext_t" type
+               (:typedef ("" type
+                     (:members 
+                        ( ("gregs" variable (:type ("gregset_t" type (:type "class") nil nil)) (reparse-symbol classsubparts) [2880 2896])
+                          ("fpregs" variable (:type ("fpregset_t" type (:type "class") nil nil)) (reparse-symbol classsubparts) [2943 2961])
+                          ("__reserved1" variable
+                             (:dereference 1
+                              :type "unsigned long long")
+                              (reparse-symbol classsubparts) [2980 3015]))                        
+                      :type "struct")
+                      nil nil)
+                :type "typedef")
+                nil [2857 3029])
+            ("ucontext" type
+               (:members 
+                  ( ("uc_flags" variable (:type "unsigned long int") (reparse-symbol classsubparts) [3089 3116])
+                    ("uc_link" variable
+                       (:pointer 1
+                        :type ("ucontext" type
+                             (:prototype t
+                              :type "struct")
+                              nil nil))
+                        (reparse-symbol classsubparts) [3121 3146])
+                    ("uc_stack" variable (:type ("stack_t" type (:type "class") nil nil)) (reparse-symbol classsubparts) [3151 3168])
+                    ("uc_mcontext" variable (:type ("mcontext_t" type (:type "class") nil nil)) (reparse-symbol classsubparts) [3173 3196])
+                    ("uc_sigmask" variable (:type ("__sigset_t" type (:type "class") nil nil)) (reparse-symbol classsubparts) [3201 3223])
+                    ("__fpregs_mem" variable (:type ("_libc_fpstate" type
+                         (:prototype t
+                          :type "struct")
+                          nil nil)) (reparse-symbol classsubparts) [3228 3262]))                  
+                :type "struct")
+                nil [3057 3278])
+            ("ucontext_t" type
+               (:typedef ("ucontext" type (:type "struct") nil nil)
+                :type "typedef")
+                nil [3057 3278]))          
+      :file "ucontext.h"
+      :pointmax 5386
+      :fsize 5385
+      :lastmodtime '(21741 65041 0 0)
+      :unmatched-syntax '((symbol 2966 . 2979) (spp-macro-def 2208 . 2215) (spp-macro-def 2165 . 2176) (spp-macro-def 2119 . 2129) (spp-macro-def 2080 . 2087) (spp-macro-def 2038 . 2048) (spp-macro-def 1956 . 1963) (spp-macro-def 1920 . 1927) (spp-macro-def 1884 . 1891) (spp-macro-def 1848 . 1855) (spp-macro-def 1812 . 1819) (spp-macro-def 1776 . 1783) (spp-macro-def 1740 . 1747) (spp-macro-def 1704 . 1711) (spp-macro-def 1668 . 1675) (spp-macro-def 1632 . 1639) (spp-macro-def 1596 . 1603) (spp-macro-def 1560 . 1567) (spp-macro-def 1524 . 1531) (spp-macro-def 1488 . 1495) (spp-macro-def 1452 . 1459) (spp-macro-def 1416 . 1423) (spp-macro-def 1381 . 1387) (spp-macro-def 1347 . 1353) (LONG 1088 . 1092) (TYPEDEF 1080 . 1087) (symbol 1066 . 1079))
+      :lexical-table 
+        '(("REG_RDX" . ((symbol "REG_RDX" 1784 . 1791)))
+          ("REG_R8" . ((symbol "REG_R8" 1355 . 1361)))
+          ("REG_R9" . ((symbol "REG_R9" 1389 . 1395)))
+          ("REG_RSI" . ((symbol "REG_RSI" 1676 . 1683)))
+          ("REG_RAX" . ((symbol "REG_RAX" 1820 . 1827)))
+          ("REG_TRAPNO" . ((symbol "REG_TRAPNO" 2130 . 2140)))
+          ("REG_R10" . ((symbol "REG_R10" 1424 . 1431)))
+          ("REG_RBX" . ((symbol "REG_RBX" 1748 . 1755)))
+          ("REG_RIP" . ((symbol "REG_RIP" 1928 . 1935)))
+          ("REG_EFL" . ((symbol "REG_EFL" 1964 . 1971)))
+          ("REG_OLDMASK" . ((symbol "REG_OLDMASK" 2177 . 2188)))
+          ("NGREG" . ((number "23" 1161 . 1163)))
+          ("REG_R11" . ((symbol "REG_R11" 1460 . 1467)))
+          ("REG_R12" . ((symbol "REG_R12" 1496 . 1503)))
+          ("_SYS_UCONTEXT_H" . ((number "1" 838 . 839)))
+          ("REG_R13" . ((symbol "REG_R13" 1532 . 1539)))
+          ("REG_RCX" . ((symbol "REG_RCX" 1856 . 1863)))
+          ("REG_CSGSFS" . ((symbol "REG_CSGSFS" 2049 . 2059)))
+          ("REG_ERR" . ((symbol "REG_ERR" 2088 . 2095)))
+          ("REG_R14" . ((symbol "REG_R14" 1568 . 1575)))
+          ("REG_RDI" . ((symbol "REG_RDI" 1640 . 1647)))
+          ("REG_RSP" . ((symbol "REG_RSP" 1892 . 1899)))
+          ("REG_R15" . ((symbol "REG_R15" 1604 . 1611)))
+          ("REG_RBP" . ((symbol "REG_RBP" 1712 . 1719)))
+          ("REG_CR2" . ((symbol "REG_CR2" 2216 . 2223)))
+          )
+)
+    (semanticdb-table "uio.h"
+      :major-mode 'c-mode
+      :tags 
+        '( ("_SYS_UIO_H" variable (:constant-flag t) nil [817 827])
+            ("features.h" include (:system-flag t) nil [831 852])
+            ("sys/types.h" include (:system-flag t) nil [854 876])
+            ("C" extern nil nil [878 891])
+            ("bits/uio.h" include (:system-flag t) nil [934 955])
+            ("readv" function
+               (:prototype-flag t
+                :typemodifiers ("extern")
+                :arguments 
+                  ( ("__fd" variable (:type "int") (reparse-symbol arg-sub-list) [1372 1381])
+                    ("__iovec" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type ("iovec" type
+                             (:prototype t
+                              :type "struct")
+                              nil nil))
+                        (reparse-symbol arg-sub-list) [1382 1410])
+                    ("__count" variable (:type "int") (reparse-symbol arg-sub-list) [1411 1423]))                  
+                :type ("ssize_t" type (:type "class") nil nil))
+                nil [1350 1432])
+            ("writev" function
+               (:prototype-flag t
+                :typemodifiers ("extern")
+                :arguments 
+                  ( ("__fd" variable (:type "int") (reparse-symbol arg-sub-list) [1843 1852])
+                    ("__iovec" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type ("iovec" type
+                             (:prototype t
+                              :type "struct")
+                              nil nil))
+                        (reparse-symbol arg-sub-list) [1853 1881])
+                    ("__count" variable (:type "int") (reparse-symbol arg-sub-list) [1882 1894]))                  
+                :type ("ssize_t" type (:type "class") nil nil))
+                nil [1820 1903])
+            ("preadv" function
+               (:prototype-flag t
+                :typemodifiers ("extern")
+                :arguments 
+                  ( ("__fd" variable (:type "int") (reparse-symbol arg-sub-list) [2433 2442])
+                    ("__iovec" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type ("iovec" type
+                             (:prototype t
+                              :type "struct")
+                              nil nil))
+                        (reparse-symbol arg-sub-list) [2443 2471])
+                    ("__count" variable (:type "int") (reparse-symbol arg-sub-list) [2472 2484])
+                    ("__offset" variable (:type ("__off_t" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [2494 2511]))                  
+                :type ("ssize_t" type (:type "class") nil nil))
+                nil [2410 2518])
+            ("pwritev" function
+               (:prototype-flag t
+                :typemodifiers ("extern")
+                :arguments 
+                  ( ("__fd" variable (:type "int") (reparse-symbol arg-sub-list) [2997 3006])
+                    ("__iovec" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type ("iovec" type
+                             (:prototype t
+                              :type "struct")
+                              nil nil))
+                        (reparse-symbol arg-sub-list) [3007 3035])
+                    ("__count" variable (:type "int") (reparse-symbol arg-sub-list) [3036 3048])
+                    ("__offset" variable (:type ("__off_t" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [3052 3069]))                  
+                :type ("ssize_t" type (:type "class") nil nil))
+                nil [2973 3076])
+            ("preadv64" function
+               (:prototype-flag t
+                :typemodifiers ("extern")
+                :arguments 
+                  ( ("__fd" variable (:type "int") (reparse-symbol arg-sub-list) [3978 3987])
+                    ("__iovec" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type ("iovec" type
+                             (:prototype t
+                              :type "struct")
+                              nil nil))
+                        (reparse-symbol arg-sub-list) [3988 4016])
+                    ("__count" variable (:type "int") (reparse-symbol arg-sub-list) [4017 4029])
+                    ("__offset" variable (:type ("__off64_t" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [4034 4053]))                  
+                :type ("ssize_t" type (:type "class") nil nil))
+                nil [3953 4060])
+            ("pwritev64" function
+               (:prototype-flag t
+                :typemodifiers ("extern")
+                :arguments 
+                  ( ("__fd" variable (:type "int") (reparse-symbol arg-sub-list) [4541 4550])
+                    ("__iovec" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type ("iovec" type
+                             (:prototype t
+                              :type "struct")
+                              nil nil))
+                        (reparse-symbol arg-sub-list) [4551 4579])
+                    ("__count" variable (:type "int") (reparse-symbol arg-sub-list) [4580 4592])
+                    ("__offset" variable (:type ("__off64_t" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [4598 4617]))                  
+                :type ("ssize_t" type (:type "class") nil nil))
+                nil [4515 4624]))          
+      :file "uio.h"
+      :pointmax 4691
+      :fsize 4690
+      :lastmodtime '(21741 65047 0 0)
+      :unmatched-syntax '((close-paren "}" 4655 . 4666))
+      :lexical-table 
+        '(("_SYS_UIO_H" . ((number "1" 828 . 829)))
+          )
+)
+    (semanticdb-table "syslog.h"
+      :major-mode 'c-mode
+      :tags 
+        '( ("_SYS_SYSLOG_H" variable (:constant-flag t) nil [1679 1692])
+            ("features.h" include (:system-flag t) nil [1696 1717])
+            ("__need___va_list" variable (:constant-flag t) nil [1726 1742])
+            ("stdarg.h" include (:system-flag t) nil [1743 1762])
+            ("bits/syslog-path.h" include (:system-flag t) nil [1800 1829])
+            ("LOG_EMERG" variable (:constant-flag t) nil [2208 2217])
+            ("LOG_ALERT" variable (:constant-flag t) nil [2253 2262])
+            ("LOG_CRIT" variable (:constant-flag t) nil [2312 2320])
+            ("LOG_ERR" variable (:constant-flag t) nil [2357 2364])
+            ("LOG_WARNING" variable (:constant-flag t) nil [2399 2410])
+            ("LOG_NOTICE" variable (:constant-flag t) nil [2446 2456])
+            ("LOG_INFO" variable (:constant-flag t) nil [2506 2514])
+            ("LOG_DEBUG" variable (:constant-flag t) nil [2545 2554])
+            ("LOG_PRIMASK" variable (:constant-flag t) nil [2593 2604])
+            ("LOG_PRI" variable (:constant-flag t) nil [2692 2699])
+            ("LOG_MAKEPRI" variable (:constant-flag t) nil [2731 2742])
+            ("LOG_KERN" variable (:constant-flag t) nil [3488 3496])
+            ("LOG_USER" variable (:constant-flag t) nil [3534 3542])
+            ("LOG_MAIL" variable (:constant-flag t) nil [3591 3599])
+            ("LOG_DAEMON" variable (:constant-flag t) nil [3633 3643])
+            ("LOG_AUTH" variable (:constant-flag t) nil [3680 3688])
+            ("LOG_SYSLOG" variable (:constant-flag t) nil [3742 3752])
+            ("LOG_LPR" variable (:constant-flag t) nil [3815 3822])
+            ("LOG_NEWS" variable (:constant-flag t) nil [3868 3876])
+            ("LOG_UUCP" variable (:constant-flag t) nil [3921 3929])
+            ("LOG_CRON" variable (:constant-flag t) nil [3966 3974])
+            ("LOG_AUTHPRIV" variable (:constant-flag t) nil [4009 4021])
+            ("LOG_FTP" variable (:constant-flag t) nil [4086 4093])
+            ("LOG_LOCAL0" variable (:constant-flag t) nil [4183 4193])
+            ("LOG_LOCAL1" variable (:constant-flag t) nil [4239 4249])
+            ("LOG_LOCAL2" variable (:constant-flag t) nil [4295 4305])
+            ("LOG_LOCAL3" variable (:constant-flag t) nil [4351 4361])
+            ("LOG_LOCAL4" variable (:constant-flag t) nil [4407 4417])
+            ("LOG_LOCAL5" variable (:constant-flag t) nil [4463 4473])
+            ("LOG_LOCAL6" variable (:constant-flag t) nil [4519 4529])
+            ("LOG_LOCAL7" variable (:constant-flag t) nil [4575 4585])
+            ("LOG_NFACILITIES" variable (:constant-flag t) nil [4632 4647])
+            ("LOG_FACMASK" variable (:constant-flag t) nil [4694 4705])
+            ("LOG_FAC" variable (:constant-flag t) nil [4783 4790])
+            ("LOG_MASK" variable (:constant-flag t) nil [5601 5609])
+            ("LOG_UPTO" variable (:constant-flag t) nil [5665 5673])
+            ("LOG_PID" variable (:constant-flag t) nil [5874 5881])
+            ("LOG_CONS" variable (:constant-flag t) nil [5932 5940])
+            ("LOG_ODELAY" variable (:constant-flag t) nil [6000 6010])
+            ("LOG_NDELAY" variable (:constant-flag t) nil [6072 6082])
+            ("LOG_NOWAIT" variable (:constant-flag t) nil [6119 6129])
+            ("LOG_PERROR" variable (:constant-flag t) nil [6190 6200])
+            ("C" extern nil nil [6235 6248])
+            ("closelog" function
+               (:prototype-flag t
+                :typemodifiers ("extern")
+                :arguments 
+                  ( ("" variable (:type "void") (reparse-symbol arg-sub-list) [6421 6426]))                  
+                :type "void")
+                nil [6399 6427])
+            ("openlog" function
+               (:prototype-flag t
+                :typemodifiers ("extern")
+                :arguments 
+                  ( ("__ident" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [6584 6604])
+                    ("__option" variable (:type "int") (reparse-symbol arg-sub-list) [6605 6618])
+                    ("__facility" variable (:type "int") (reparse-symbol arg-sub-list) [6619 6634]))                  
+                :type "void")
+                nil [6563 6635])
+            ("setlogmask" function
+               (:prototype-flag t
+                :typemodifiers ("extern")
+                :arguments 
+                  ( ("__mask" variable (:type "int") (reparse-symbol arg-sub-list) [6691 6702]))                  
+                :type "int")
+                nil [6668 6711])
+            ("syslog" function
+               (:prototype-flag t
+                :typemodifiers ("extern")
+                :arguments 
+                  ( ("__pri" variable (:type "int") (reparse-symbol arg-sub-list) [6895 6905])
+                    ("__fmt" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [6906 6924])
+                    ("..." variable (:type "vararg") (reparse-symbol arg-sub-list) [6925 6929]))                  
+                :type "void")
+                nil [6875 6983])
+            ("vsyslog" function
+               (:prototype-flag t
+                :typemodifiers ("extern")
+                :arguments 
+                  ( ("__pri" variable (:type "int") (reparse-symbol arg-sub-list) [7337 7347])
+                    ("__fmt" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [7348 7366])
+                    ("__ap" variable (:type ("__gnuc_va_list" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [7367 7387]))                  
+                :type "void")
+                nil [7316 7441]))          
+      :file "syslog.h"
+      :pointmax 7702
+      :fsize 7701
+      :lastmodtime '(21741 65048 0 0)
+      :unmatched-syntax '((close-paren "}" 7663 . 7674))
+      :lexical-table 
+        '(("LOG_LOCAL7" . ((semantic-list "(23<<3)" 4586 . 4593)))
+          ("LOG_EMERG" . ((number "0" 2218 . 2219)))
+          ("LOG_ALERT" . ((number "1" 2263 . 2264)))
+          ("LOG_UPTO" (spp-arg-list ("pri") 5673 . 5678) . ((semantic-list "((1 << ((pri)+1)) - 1)" 5679 . 5701)))
+          ("_SYS_SYSLOG_H" . ((number "1" 1693 . 1694)))
+          ("LOG_PRI" (spp-arg-list ("p") 2699 . 2702) . ((semantic-list "((p) & LOG_PRIMASK)" 2703 . 2722)))
+          ("LOG_MAKEPRI" (spp-arg-list ("fac" "pri") 2742 . 2752) . ((semantic-list "((fac) | (pri))" 2753 . 2768)))
+          ("LOG_KERN" . ((semantic-list "(0<<3)" 3497 . 3503)))
+          ("LOG_DAEMON" . ((semantic-list "(3<<3)" 3644 . 3650)))
+          ("LOG_PERROR" . ((number "0x20" 6201 . 6205)))
+          ("LOG_ERR" . ((number "3" 2366 . 2367)))
+          ("LOG_NOTICE" . ((number "5" 2457 . 2458)))
+          ("LOG_FTP" . ((semantic-list "(11<<3)" 4095 . 4102)))
+          ("LOG_WARNING" . ((number "4" 2411 . 2412)))
+          ("LOG_PRIMASK" . ((number "0x07" 2605 . 2609)))
+          ("LOG_MAIL" . ((semantic-list "(2<<3)" 3600 . 3606)))
+          ("LOG_NFACILITIES" . ((number "24" 4648 . 4650)))
+          ("LOG_FACMASK" . ((number "0x03f8" 4706 . 4712)))
+          ("LOG_ODELAY" . ((number "0x04" 6011 . 6015)))
+          ("LOG_AUTH" . ((semantic-list "(4<<3)" 3689 . 3695)))
+          ("LOG_LOCAL0" . ((semantic-list "(16<<3)" 4194 . 4201)))
+          ("LOG_NOWAIT" . ((number "0x10" 6130 . 6134)))
+          ("LOG_INFO" . ((number "6" 2515 . 2516)))
+          ("LOG_LOCAL1" . ((semantic-list "(17<<3)" 4250 . 4257)))
+          ("LOG_MASK" (spp-arg-list ("pri") 5609 . 5614) . ((semantic-list "(1 << (pri))" 5615 . 5627)))
+          ("LOG_LPR" . ((semantic-list "(6<<3)" 3824 . 3830)))
+          ("LOG_LOCAL2" . ((semantic-list "(18<<3)" 4306 . 4313)))
+          ("LOG_UUCP" . ((semantic-list "(8<<3)" 3930 . 3936)))
+          ("LOG_LOCAL3" . ((semantic-list "(19<<3)" 4362 . 4369)))
+          ("LOG_PID" . ((number "0x01" 5883 . 5887)))
+          ("LOG_NDELAY" . ((number "0x08" 6083 . 6087)))
+          ("LOG_AUTHPRIV" . ((semantic-list "(10<<3)" 4022 . 4029)))
+          ("LOG_LOCAL4" . ((semantic-list "(20<<3)" 4418 . 4425)))
+          ("LOG_DEBUG" . ((number "7" 2555 . 2556)))
+          ("LOG_CRON" . ((semantic-list "(9<<3)" 3975 . 3981)))
+          ("LOG_LOCAL5" . ((semantic-list "(21<<3)" 4474 . 4481)))
+          ("LOG_FAC" (spp-arg-list ("p") 4790 . 4793) . ((semantic-list "(((p) & LOG_FACMASK) >> 3)" 4794 . 4820)))
+          ("__need___va_list")
+          ("LOG_CRIT" . ((number "2" 2321 . 2322)))
+          ("LOG_USER" . ((semantic-list "(1<<3)" 3543 . 3549)))
+          ("LOG_SYSLOG" . ((semantic-list "(5<<3)" 3753 . 3759)))
+          ("LOG_NEWS" . ((semantic-list "(7<<3)" 3877 . 3883)))
+          ("LOG_LOCAL6" . ((semantic-list "(22<<3)" 4530 . 4537)))
+          ("LOG_CONS" . ((number "0x02" 5941 . 5945)))
+          )
+))
+  :file "!usr!include!x86_64-linux-gnu!sys!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2")

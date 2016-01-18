@@ -1,0 +1,2279 @@
+;; Object json-c/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "json-c/"
+  :tables
+  (list
+    (semanticdb-table "json.h"
+      :major-mode 'c-mode
+      :tags 
+        '( ("_json_h_" variable (:constant-flag t) nil [395 403])
+            ("json_c_version.h" include (:typemodifiers ("extern" "\"C\"")) (reparse-symbol extern-c-contents) [635 662])
+            ("json_object_iterator.h" include (:typemodifiers ("extern" "\"C\"")) (reparse-symbol extern-c-contents) [601 634])
+            ("json_tokener.h" include (:typemodifiers ("extern" "\"C\"")) (reparse-symbol extern-c-contents) [575 600])
+            ("json_object.h" include (:typemodifiers ("extern" "\"C\"")) (reparse-symbol extern-c-contents) [550 574])
+            ("json_util.h" include (:typemodifiers ("extern" "\"C\"")) (reparse-symbol extern-c-contents) [527 549])
+            ("arraylist.h" include (:typemodifiers ("extern" "\"C\"")) (reparse-symbol extern-c-contents) [504 526])
+            ("linkhash.h" include (:typemodifiers ("extern" "\"C\"")) (reparse-symbol extern-c-contents) [482 503])
+            ("debug.h" include (:typemodifiers ("extern" "\"C\"")) (reparse-symbol extern-c-contents) [463 481])
+            ("bits.h" include (:typemodifiers ("extern" "\"C\"")) (reparse-symbol extern-c-contents) [445 462]))          
+      :file "json.h"
+      :pointmax 700
+      :fsize 699
+      :lastmodtime '(21390 9404 0 0)
+      :unmatched-syntax nil
+      :lexical-table 
+        '(("_json_h_")
+          )
+)
+    (semanticdb-table "json_c_version.h"
+      :major-mode 'c-mode
+      :tags 
+        '( ("_json_c_version_h_" variable (:constant-flag t) nil [227 245])
+            ("JSON_C_MAJOR_VERSION" variable (:constant-flag t) nil [255 275])
+            ("JSON_C_MINOR_VERSION" variable (:constant-flag t) nil [286 306])
+            ("JSON_C_MICRO_VERSION" variable (:constant-flag t) nil [318 338])
+            ("JSON_C_VERSION_NUM" variable (:constant-flag t) nil [350 368])
+            ("JSON_C_VERSION" variable (:constant-flag t) nil [521 535])
+            ("json_c_version" function
+               (:prototype-flag t
+                :pointer 1
+                :constant-flag t
+                :arguments 
+                  ( ("" variable (:type "void") (reparse-symbol arg-sub-list) [574 579]))                  
+                :type "char")
+                nil [547 580])
+            ("json_c_version_num" function
+               (:prototype-flag t
+                :arguments 
+                  ( ("" variable (:type "void") (reparse-symbol arg-sub-list) [633 638]))                  
+                :type "int")
+                nil [610 639]))          
+      :file "json_c_version.h"
+      :pointmax 685
+      :fsize 684
+      :lastmodtime '(21390 9404 0 0)
+      :unmatched-syntax nil
+      :lexical-table 
+        '(("JSON_C_VERSION" . ((string "\"0.11.99\"" 536 . 545)))
+          ("JSON_C_MAJOR_VERSION" . ((number "0" 276 . 277)))
+          ("JSON_C_MICRO_VERSION" . ((number "99" 339 . 341)))
+          ("JSON_C_MINOR_VERSION" . ((number "11" 307 . 309)))
+          ("_json_c_version_h_")
+          ("JSON_C_VERSION_NUM" . ((semantic-list "((JSON_C_MAJOR_VERSION << 16) | \\
+                            (JSON_C_MINOR_VERSION << 8) | \\
+                            JSON_C_MICRO_VERSION)" 369 . 512)))
+          )
+)
+    (semanticdb-table "json_object_iterator.h"
+      :major-mode 'c-mode
+      :tags 
+        '( ("JSON_OBJECT_ITERATOR_H" variable (:constant-flag t) nil [715 737])
+            ("stddef.h" include (:system-flag t) nil [739 758])
+            ("json_object_iter_equal" function
+               (:typemodifiers ("extern" "\"C\"")
+                :type ("json_bool" type (:type "class") nil nil)
+                :arguments 
+                  ( ("iter1" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type ("json_object_iterator" type
+                             (:prototype t
+                              :type "struct")
+                              nil nil))
+                        (reparse-symbol arg-sub-list) [8012 8053])
+                    ("iter2" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type ("json_object_iterator" type
+                             (:prototype t
+                              :type "struct")
+                              nil nil))
+                        (reparse-symbol arg-sub-list) [8077 8118]))                  
+                :prototype-flag t)
+                (reparse-symbol extern-c-contents) [7979 8119])
+            ("json_object_iter_peek_value" function
+               (:typemodifiers ("extern" "\"C\"")
+                :type ("json_object" type
+                     (:prototype t
+                      :type "struct")
+                      nil nil)
+                :arguments 
+                  ( ("iter" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type ("json_object_iterator" type
+                             (:prototype t
+                              :type "struct")
+                              nil nil))
+                        (reparse-symbol arg-sub-list) [6722 6762]))                  
+                :pointer 1
+                :prototype-flag t)
+                (reparse-symbol extern-c-contents) [6674 6763])
+            ("json_object_iter_peek_name" function
+               (:typemodifiers ("extern" "\"C\"")
+                :type "char"
+                :arguments 
+                  ( ("iter" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type ("json_object_iterator" type
+                             (:prototype t
+                              :type "struct")
+                              nil nil))
+                        (reparse-symbol arg-sub-list) [5810 5850]))                  
+                :constant-flag t
+                :pointer 1
+                :prototype-flag t)
+                (reparse-symbol extern-c-contents) [5771 5851])
+            ("json_object_iter_next" function
+               (:typemodifiers ("extern" "\"C\"")
+                :type "void"
+                :arguments 
+                  ( ("iter" variable
+                       (:pointer 1
+                        :type ("json_object_iterator" type
+                             (:prototype t
+                              :type "struct")
+                              nil nil))
+                        (reparse-symbol arg-sub-list) [5146 5180]))                  
+                :prototype-flag t)
+                (reparse-symbol extern-c-contents) [5119 5181])
+            ("json_object_iter_end" function
+               (:typemodifiers ("extern" "\"C\"")
+                :type ("json_object_iterator" type
+                     (:prototype t
+                      :type "struct")
+                      nil nil)
+                :arguments 
+                  ( ("obj" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type ("json_object" type
+                             (:prototype t
+                              :type "struct")
+                              nil nil))
+                        (reparse-symbol arg-sub-list) [4403 4433]))                  
+                :prototype-flag t)
+                (reparse-symbol extern-c-contents) [4354 4434])
+            ("json_object_iter_begin" function
+               (:typemodifiers ("extern" "\"C\"")
+                :type ("json_object_iterator" type
+                     (:prototype t
+                      :type "struct")
+                      nil nil)
+                :arguments 
+                  ( ("obj" variable
+                       (:pointer 1
+                        :type ("json_object" type
+                             (:prototype t
+                              :type "struct")
+                              nil nil))
+                        (reparse-symbol arg-sub-list) [3055 3079]))                  
+                :prototype-flag t)
+                (reparse-symbol extern-c-contents) [3004 3080])
+            ("json_object_iter_init_default" function
+               (:typemodifiers ("extern" "\"C\"")
+                :type ("json_object_iterator" type
+                     (:prototype t
+                      :type "struct")
+                      nil nil)
+                :arguments 
+                  ( ("" variable (:type "void") (reparse-symbol arg-sub-list) [1985 1990]))                  
+                :prototype-flag t)
+                (reparse-symbol extern-c-contents) [1927 1991])
+            ("json_object" type
+               (:typemodifiers ("extern" "\"C\"")
+                :type "struct"
+                :prototype t)
+                (reparse-symbol extern-c-contents) [1160 1179])
+            ("json_object_iterator" type
+               (:typemodifiers ("extern" "\"C\"")
+                :type "struct"
+                :members 
+                  ( ("opaque_" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "void")
+                        (reparse-symbol classsubparts) [1061 1081]))                  )
+                (reparse-symbol extern-c-contents) [1027 1084])
+            ("json_object_iter_info_" type
+               (:typemodifiers ("extern" "\"C\"")
+                :type "struct"
+                :prototype t)
+                (reparse-symbol extern-c-contents) [868 898]))          
+      :file "json_object_iterator.h"
+      :pointmax 8188
+      :fsize 8187
+      :lastmodtime '(21390 9373 0 0)
+      :unmatched-syntax nil
+      :lexical-table 
+        '(("JSON_OBJECT_ITERATOR_H")
+          )
+)
+    (semanticdb-table "json_tokener.h"
+      :major-mode 'c-mode
+      :tags 
+        '( ("_json_tokener_h_" variable (:constant-flag t) nil [348 364])
+            ("stddef.h" include (:system-flag t) nil [366 385])
+            ("json_object.h" include nil nil [386 410])
+            ("json_tokener_parse_ex" function
+               (:type ("json_object" type
+                     (:prototype t
+                      :type "struct")
+                      nil nil)
+                :arguments 
+                  ( ("tok" variable
+                       (:pointer 1
+                        :type ("json_tokener" type
+                             (:prototype t
+                              :type "struct")
+                              nil nil))
+                        (reparse-symbol arg-sub-list) [6923 6948])
+                    ("str" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [6956 6972])
+                    ("len" variable (:type "int") (reparse-symbol arg-sub-list) [6973 6981]))                  
+                :typemodifiers ("extern" "\"C\"" "extern")
+                :pointer 1
+                :prototype-flag t)
+                (reparse-symbol extern-c-contents) [6874 6982])
+            ("json_tokener_set_flags" function
+               (:type "void"
+                :arguments 
+                  ( ("tok" variable
+                       (:pointer 1
+                        :type ("json_tokener" type
+                             (:prototype t
+                              :type "struct")
+                              nil nil))
+                        (reparse-symbol arg-sub-list) [3950 3975])
+                    ("flags" variable (:type "int") (reparse-symbol arg-sub-list) [3976 3986]))                  
+                :typemodifiers ("extern" "\"C\"" "extern")
+                :prototype-flag t)
+                (reparse-symbol extern-c-contents) [3915 3987])
+            ("json_tokener_parse_verbose" function
+               (:type ("json_object" type
+                     (:prototype t
+                      :type "struct")
+                      nil nil)
+                :arguments 
+                  ( ("str" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [3804 3820])
+                    ("error" variable
+                       (:pointer 1
+                        :type ("json_tokener_error" type (:type "enum") nil nil))
+                        (reparse-symbol arg-sub-list) [3821 3852]))                  
+                :typemodifiers ("extern" "\"C\"" "extern")
+                :pointer 1
+                :prototype-flag t)
+                (reparse-symbol extern-c-contents) [3750 3853])
+            ("json_tokener_parse" function
+               (:type ("json_object" type
+                     (:prototype t
+                      :type "struct")
+                      nil nil)
+                :arguments 
+                  ( ("str" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [3732 3748]))                  
+                :typemodifiers ("extern" "\"C\"" "extern")
+                :pointer 1
+                :prototype-flag t)
+                (reparse-symbol extern-c-contents) [3686 3749])
+            ("json_tokener_reset" function
+               (:type "void"
+                :arguments 
+                  ( ("tok" variable
+                       (:pointer 1
+                        :type ("json_tokener" type
+                             (:prototype t
+                              :type "struct")
+                              nil nil))
+                        (reparse-symbol arg-sub-list) [3659 3684]))                  
+                :typemodifiers ("extern" "\"C\"" "extern")
+                :prototype-flag t)
+                (reparse-symbol extern-c-contents) [3628 3685])
+            ("json_tokener_free" function
+               (:type "void"
+                :arguments 
+                  ( ("tok" variable
+                       (:pointer 1
+                        :type ("json_tokener" type
+                             (:prototype t
+                              :type "struct")
+                              nil nil))
+                        (reparse-symbol arg-sub-list) [3601 3626]))                  
+                :typemodifiers ("extern" "\"C\"" "extern")
+                :prototype-flag t)
+                (reparse-symbol extern-c-contents) [3571 3627])
+            ("json_tokener_new_ex" function
+               (:type ("json_tokener" type
+                     (:prototype t
+                      :type "struct")
+                      nil nil)
+                :arguments 
+                  ( ("depth" variable (:type "int") (reparse-symbol arg-sub-list) [3559 3569]))                  
+                :typemodifiers ("extern" "\"C\"" "extern")
+                :pointer 1
+                :prototype-flag t)
+                (reparse-symbol extern-c-contents) [3511 3570])
+            ("json_tokener_new" function
+               (:type ("json_tokener" type
+                     (:prototype t
+                      :type "struct")
+                      nil nil)
+                :arguments 
+                  ( ("" variable (:type "void") (reparse-symbol arg-sub-list) [3504 3509]))                  
+                :typemodifiers ("extern" "\"C\"" "extern")
+                :pointer 1
+                :prototype-flag t)
+                (reparse-symbol extern-c-contents) [3459 3510])
+            ("json_tokener_get_error" function
+               (:typemodifiers ("extern" "\"C\"")
+                :type ("json_tokener_error" type (:type "enum") nil nil)
+                :arguments 
+                  ( ("tok" variable
+                       (:pointer 1
+                        :type ("json_tokener" type
+                             (:prototype t
+                              :type "struct")
+                              nil nil))
+                        (reparse-symbol arg-sub-list) [3431 3456]))                  
+                :prototype-flag t)
+                (reparse-symbol extern-c-contents) [3384 3457])
+            ("json_tokener_errors" variable
+               (:type "char"
+                :constant-flag t
+                :typemodifiers ("extern" "\"C\"" "extern")
+                :dereference 1
+                :pointer 1)
+                (reparse-symbol extern-c-contents) [3038 3079])
+            ("json_tokener_error_desc" function
+               (:typemodifiers ("extern" "\"C\"")
+                :type "char"
+                :arguments 
+                  ( ("jerr" variable (:type ("json_tokener_error" type (:type "enum") nil nil)) (reparse-symbol arg-sub-list) [2862 2891]))                  
+                :constant-flag t
+                :pointer 1
+                :prototype-flag t)
+                (reparse-symbol extern-c-contents) [2826 2892])
+            ("JSON_TOKENER_STRICT" variable
+               (:typemodifiers ("extern" "\"C\"")
+                :constant-flag t)
+                (reparse-symbol extern-c-contents) [2582 2601])
+            ("json_tokener" type
+               (:typemodifiers ("extern" "\"C\"")
+                :type "struct"
+                :members 
+                  ( ("str" variable
+                       (:pointer 1
+                        :type "char")
+                        (reparse-symbol classsubparts) [2058 2068])
+                    ("pb" variable
+                       (:pointer 1
+                        :type ("printbuf" type
+                             (:prototype t
+                              :type "struct")
+                              nil nil))
+                        (reparse-symbol classsubparts) [2071 2091])
+                    ("max_depth" variable (:type "int") (reparse-symbol classsubparts) [2094 2147])
+                    ("depth" variable (:type "int") (reparse-symbol classsubparts) [2094 2147])
+                    ("is_double" variable (:type "int") (reparse-symbol classsubparts) [2094 2147])
+                    ("st_pos" variable (:type "int") (reparse-symbol classsubparts) [2094 2147])
+                    ("char_offset" variable (:type "int") (reparse-symbol classsubparts) [2094 2147])
+                    ("err" variable (:type ("json_tokener_error" type (:type "enum") nil nil)) (reparse-symbol classsubparts) [2150 2178])
+                    ("ucs_char" variable (:type "unsigned int") (reparse-symbol classsubparts) [2181 2203])
+                    ("quote_char" variable (:type "char") (reparse-symbol classsubparts) [2206 2222])
+                    ("stack" variable
+                       (:pointer 1
+                        :type ("json_tokener_srec" type
+                             (:prototype t
+                              :type "struct")
+                              nil nil))
+                        (reparse-symbol classsubparts) [2225 2257])
+                    ("flags" variable (:type "int") (reparse-symbol classsubparts) [2260 2270]))                  )
+                (reparse-symbol extern-c-contents) [2034 2273])
+            ("JSON_TOKENER_DEFAULT_DEPTH" variable
+               (:typemodifiers ("extern" "\"C\"")
+                :constant-flag t)
+                (reparse-symbol extern-c-contents) [2003 2029])
+            ("json_tokener_srec" type
+               (:typemodifiers ("extern" "\"C\"")
+                :type "struct"
+                :members 
+                  ( ("state" variable (:type ("json_tokener_state" type (:type "enum") nil nil)) (reparse-symbol classsubparts) [1865 1908])
+                    ("saved_state" variable (:type ("json_tokener_state" type (:type "enum") nil nil)) (reparse-symbol classsubparts) [1865 1908])
+                    ("obj" variable
+                       (:pointer 1
+                        :type ("json_object" type
+                             (:prototype t
+                              :type "struct")
+                              nil nil))
+                        (reparse-symbol classsubparts) [1911 1935])
+                    ("current" variable
+                       (:pointer 1
+                        :type ("json_object" type
+                             (:prototype t
+                              :type "struct")
+                              nil nil))
+                        (reparse-symbol classsubparts) [1938 1966])
+                    ("obj_field_name" variable
+                       (:pointer 1
+                        :type "char")
+                        (reparse-symbol classsubparts) [1969 1990]))                  )
+                (reparse-symbol extern-c-contents) [1836 1993])
+            ("json_tokener_state" type
+               (:typemodifiers ("extern" "\"C\"")
+                :type "enum"
+                :members 
+                  ( ("json_tokener_state_eatws" variable
+                       (:constant-flag t
+                        :type "int")
+                        (reparse-symbol enumsubparts) [1025 1050])
+                    ("json_tokener_state_start" variable
+                       (:constant-flag t
+                        :type "int")
+                        (reparse-symbol enumsubparts) [1053 1078])
+                    ("json_tokener_state_finish" variable
+                       (:constant-flag t
+                        :type "int")
+                        (reparse-symbol enumsubparts) [1081 1107])
+                    ("json_tokener_state_null" variable
+                       (:constant-flag t
+                        :type "int")
+                        (reparse-symbol enumsubparts) [1110 1134])
+                    ("json_tokener_state_comment_start" variable
+                       (:constant-flag t
+                        :type "int")
+                        (reparse-symbol enumsubparts) [1137 1170])
+                    ("json_tokener_state_comment" variable
+                       (:constant-flag t
+                        :type "int")
+                        (reparse-symbol enumsubparts) [1173 1200])
+                    ("json_tokener_state_comment_eol" variable
+                       (:constant-flag t
+                        :type "int")
+                        (reparse-symbol enumsubparts) [1203 1234])
+                    ("json_tokener_state_comment_end" variable
+                       (:constant-flag t
+                        :type "int")
+                        (reparse-symbol enumsubparts) [1237 1268])
+                    ("json_tokener_state_string" variable
+                       (:constant-flag t
+                        :type "int")
+                        (reparse-symbol enumsubparts) [1271 1297])
+                    ("json_tokener_state_string_escape" variable
+                       (:constant-flag t
+                        :type "int")
+                        (reparse-symbol enumsubparts) [1300 1333])
+                    ("json_tokener_state_escape_unicode" variable
+                       (:constant-flag t
+                        :type "int")
+                        (reparse-symbol enumsubparts) [1336 1370])
+                    ("json_tokener_state_boolean" variable
+                       (:constant-flag t
+                        :type "int")
+                        (reparse-symbol enumsubparts) [1373 1400])
+                    ("json_tokener_state_number" variable
+                       (:constant-flag t
+                        :type "int")
+                        (reparse-symbol enumsubparts) [1403 1429])
+                    ("json_tokener_state_array" variable
+                       (:constant-flag t
+                        :type "int")
+                        (reparse-symbol enumsubparts) [1432 1457])
+                    ("json_tokener_state_array_add" variable
+                       (:constant-flag t
+                        :type "int")
+                        (reparse-symbol enumsubparts) [1460 1489])
+                    ("json_tokener_state_array_sep" variable
+                       (:constant-flag t
+                        :type "int")
+                        (reparse-symbol enumsubparts) [1492 1521])
+                    ("json_tokener_state_object_field_start" variable
+                       (:constant-flag t
+                        :type "int")
+                        (reparse-symbol enumsubparts) [1524 1562])
+                    ("json_tokener_state_object_field" variable
+                       (:constant-flag t
+                        :type "int")
+                        (reparse-symbol enumsubparts) [1565 1597])
+                    ("json_tokener_state_object_field_end" variable
+                       (:constant-flag t
+                        :type "int")
+                        (reparse-symbol enumsubparts) [1600 1636])
+                    ("json_tokener_state_object_value" variable
+                       (:constant-flag t
+                        :type "int")
+                        (reparse-symbol enumsubparts) [1639 1671])
+                    ("json_tokener_state_object_value_add" variable
+                       (:constant-flag t
+                        :type "int")
+                        (reparse-symbol enumsubparts) [1674 1710])
+                    ("json_tokener_state_object_sep" variable
+                       (:constant-flag t
+                        :type "int")
+                        (reparse-symbol enumsubparts) [1713 1743])
+                    ("json_tokener_state_array_after_sep" variable
+                       (:constant-flag t
+                        :type "int")
+                        (reparse-symbol enumsubparts) [1746 1781])
+                    ("json_tokener_state_object_field_start_after_sep" variable
+                       (:constant-flag t
+                        :type "int")
+                        (reparse-symbol enumsubparts) [1784 1833]))                  )
+                (reparse-symbol extern-c-contents) [997 1834])
+            ("json_tokener_error" type
+               (:typemodifiers ("extern" "\"C\"")
+                :type "enum"
+                :members 
+                  ( ("json_tokener_success" variable
+                       (:constant-flag t
+                        :type "int")
+                        (reparse-symbol enumsubparts) [480 501])
+                    ("json_tokener_continue" variable
+                       (:constant-flag t
+                        :type "int")
+                        (reparse-symbol enumsubparts) [504 526])
+                    ("json_tokener_error_depth" variable
+                       (:constant-flag t
+                        :type "int")
+                        (reparse-symbol enumsubparts) [529 554])
+                    ("json_tokener_error_parse_eof" variable
+                       (:constant-flag t
+                        :type "int")
+                        (reparse-symbol enumsubparts) [557 586])
+                    ("json_tokener_error_parse_unexpected" variable
+                       (:constant-flag t
+                        :type "int")
+                        (reparse-symbol enumsubparts) [589 625])
+                    ("json_tokener_error_parse_null" variable
+                       (:constant-flag t
+                        :type "int")
+                        (reparse-symbol enumsubparts) [628 658])
+                    ("json_tokener_error_parse_boolean" variable
+                       (:constant-flag t
+                        :type "int")
+                        (reparse-symbol enumsubparts) [661 694])
+                    ("json_tokener_error_parse_number" variable
+                       (:constant-flag t
+                        :type "int")
+                        (reparse-symbol enumsubparts) [697 729])
+                    ("json_tokener_error_parse_array" variable
+                       (:constant-flag t
+                        :type "int")
+                        (reparse-symbol enumsubparts) [732 763])
+                    ("json_tokener_error_parse_object_key_name" variable
+                       (:constant-flag t
+                        :type "int")
+                        (reparse-symbol enumsubparts) [766 807])
+                    ("json_tokener_error_parse_object_key_sep" variable
+                       (:constant-flag t
+                        :type "int")
+                        (reparse-symbol enumsubparts) [810 850])
+                    ("json_tokener_error_parse_object_value_sep" variable
+                       (:constant-flag t
+                        :type "int")
+                        (reparse-symbol enumsubparts) [853 895])
+                    ("json_tokener_error_parse_string" variable
+                       (:constant-flag t
+                        :type "int")
+                        (reparse-symbol enumsubparts) [898 930])
+                    ("json_tokener_error_parse_comment" variable
+                       (:constant-flag t
+                        :type "int")
+                        (reparse-symbol enumsubparts) [933 966])
+                    ("json_tokener_error_size" variable
+                       (:constant-flag t
+                        :type "int")
+                        (reparse-symbol enumsubparts) [969 994]))                  )
+                (reparse-symbol extern-c-contents) [452 995]))          
+      :file "json_tokener.h"
+      :pointmax 7020
+      :fsize 7019
+      :lastmodtime '(21390 9404 0 0)
+      :unmatched-syntax nil
+      :lexical-table 
+        '(("JSON_TOKENER_STRICT" . ((number "0x01" 2603 . 2607)))
+          ("_json_tokener_h_")
+          ("JSON_TOKENER_DEFAULT_DEPTH" . ((number "32" 2030 . 2032)))
+          )
+)
+    (semanticdb-table "json_object.h"
+      :major-mode 'c-mode
+      :tags 
+        '( ("_json_object_h_" variable (:constant-flag t) nil [410 425])
+            ("json_inttypes.h" include nil nil [427 453])
+            ("json_object_get_string_len" function
+               (:type "int"
+                :arguments 
+                  ( ("obj" variable
+                       (:pointer 1
+                        :type ("json_object" type
+                             (:prototype t
+                              :type "struct")
+                              nil nil))
+                        (reparse-symbol arg-sub-list) [19687 19711]))                  
+                :typemodifiers ("extern" "\"C\"" "extern")
+                :prototype-flag t)
+                (reparse-symbol extern-c-contents) [19649 19712])
+            ("json_object_get_string" function
+               (:type "char"
+                :arguments 
+                  ( ("obj" variable
+                       (:pointer 1
+                        :type ("json_object" type
+                             (:prototype t
+                              :type "struct")
+                              nil nil))
+                        (reparse-symbol arg-sub-list) [19427 19451]))                  
+                :constant-flag t
+                :typemodifiers ("extern" "\"C\"" "extern")
+                :pointer 1
+                :prototype-flag t)
+                (reparse-symbol extern-c-contents) [19385 19452])
+            ("json_object_new_string_len" function
+               (:type ("json_object" type
+                     (:prototype t
+                      :type "struct")
+                      nil nil)
+                :arguments 
+                  ( ("s" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [18989 19003])
+                    ("len" variable (:type "int") (reparse-symbol arg-sub-list) [19004 19012]))                  
+                :typemodifiers ("extern" "\"C\"" "extern")
+                :pointer 1
+                :prototype-flag t)
+                (reparse-symbol extern-c-contents) [18935 19013])
+            ("json_object_new_string" function
+               (:type ("json_object" type
+                     (:prototype t
+                      :type "struct")
+                      nil nil)
+                :arguments 
+                  ( ("s" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [18918 18932]))                  
+                :typemodifiers ("extern" "\"C\"" "extern")
+                :pointer 1
+                :prototype-flag t)
+                (reparse-symbol extern-c-contents) [18868 18933])
+            ("json_object_get_double" function
+               (:type "double"
+                :arguments 
+                  ( ("obj" variable
+                       (:pointer 1
+                        :type ("json_object" type
+                             (:prototype t
+                              :type "struct")
+                              nil nil))
+                        (reparse-symbol arg-sub-list) [18592 18616]))                  
+                :typemodifiers ("extern" "\"C\"" "extern")
+                :prototype-flag t)
+                (reparse-symbol extern-c-contents) [18555 18617])
+            ("json_object_new_double" function
+               (:type ("json_object" type
+                     (:prototype t
+                      :type "struct")
+                      nil nil)
+                :arguments 
+                  ( ("d" variable (:type "double") (reparse-symbol arg-sub-list) [17478 17487]))                  
+                :typemodifiers ("extern" "\"C\"" "extern")
+                :pointer 1
+                :prototype-flag t)
+                (reparse-symbol extern-c-contents) [17428 17488])
+            ("json_object_get_int64" function
+               (:type ("int64_t" type (:type "class") nil nil)
+                :arguments 
+                  ( ("obj" variable
+                       (:pointer 1
+                        :type ("json_object" type
+                             (:prototype t
+                              :type "struct")
+                              nil nil))
+                        (reparse-symbol arg-sub-list) [17235 17259]))                  
+                :typemodifiers ("extern" "\"C\"" "extern")
+                :prototype-flag t)
+                (reparse-symbol extern-c-contents) [17198 17260])
+            ("json_object_get_int" function
+               (:type ("int32_t" type (:type "class") nil nil)
+                :arguments 
+                  ( ("obj" variable
+                       (:pointer 1
+                        :type ("json_object" type
+                             (:prototype t
+                              :type "struct")
+                              nil nil))
+                        (reparse-symbol arg-sub-list) [16688 16712]))                  
+                :typemodifiers ("extern" "\"C\"" "extern")
+                :prototype-flag t)
+                (reparse-symbol extern-c-contents) [16653 16713])
+            ("json_object_new_int64" function
+               (:type ("json_object" type
+                     (:prototype t
+                      :type "struct")
+                      nil nil)
+                :arguments 
+                  ( ("i" variable (:type ("int64_t" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [16069 16079]))                  
+                :typemodifiers ("extern" "\"C\"" "extern")
+                :pointer 1
+                :prototype-flag t)
+                (reparse-symbol extern-c-contents) [16020 16080])
+            ("json_object_new_int" function
+               (:type ("json_object" type
+                     (:prototype t
+                      :type "struct")
+                      nil nil)
+                :arguments 
+                  ( ("i" variable (:type ("int32_t" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [15873 15883]))                  
+                :typemodifiers ("extern" "\"C\"" "extern")
+                :pointer 1
+                :prototype-flag t)
+                (reparse-symbol extern-c-contents) [15826 15884])
+            ("json_object_get_boolean" function
+               (:type ("json_bool" type (:type "class") nil nil)
+                :arguments 
+                  ( ("obj" variable
+                       (:pointer 1
+                        :type ("json_object" type
+                             (:prototype t
+                              :type "struct")
+                              nil nil))
+                        (reparse-symbol arg-sub-list) [15503 15527]))                  
+                :typemodifiers ("extern" "\"C\"" "extern")
+                :prototype-flag t)
+                (reparse-symbol extern-c-contents) [15462 15528])
+            ("json_object_new_boolean" function
+               (:type ("json_object" type
+                     (:prototype t
+                      :type "struct")
+                      nil nil)
+                :arguments 
+                  ( ("b" variable (:type ("json_bool" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [14985 14997]))                  
+                :typemodifiers ("extern" "\"C\"" "extern")
+                :pointer 1
+                :prototype-flag t)
+                (reparse-symbol extern-c-contents) [14934 14998])
+            ("json_object_array_get_idx" function
+               (:type ("json_object" type
+                     (:prototype t
+                      :type "struct")
+                      nil nil)
+                :arguments 
+                  ( ("obj" variable
+                       (:pointer 1
+                        :type ("json_object" type
+                             (:prototype t
+                              :type "struct")
+                              nil nil))
+                        (reparse-symbol arg-sub-list) [14693 14717])
+                    ("idx" variable (:type "int") (reparse-symbol arg-sub-list) [14729 14737]))                  
+                :typemodifiers ("extern" "\"C\"" "extern")
+                :pointer 1
+                :prototype-flag t)
+                (reparse-symbol extern-c-contents) [14640 14738])
+            ("json_object_array_put_idx" function
+               (:type "int"
+                :arguments 
+                  ( ("obj" variable
+                       (:pointer 1
+                        :type ("json_object" type
+                             (:prototype t
+                              :type "struct")
+                              nil nil))
+                        (reparse-symbol arg-sub-list) [14327 14351])
+                    ("idx" variable (:type "int") (reparse-symbol arg-sub-list) [14352 14360])
+                    ("val" variable
+                       (:pointer 1
+                        :type ("json_object" type
+                             (:prototype t
+                              :type "struct")
+                              nil nil))
+                        (reparse-symbol arg-sub-list) [14370 14394]))                  
+                :typemodifiers ("extern" "\"C\"" "extern")
+                :prototype-flag t)
+                (reparse-symbol extern-c-contents) [14290 14395])
+            ("json_object_array_add" function
+               (:type "int"
+                :arguments 
+                  ( ("obj" variable
+                       (:pointer 1
+                        :type ("json_object" type
+                             (:prototype t
+                              :type "struct")
+                              nil nil))
+                        (reparse-symbol arg-sub-list) [13565 13589])
+                    ("val" variable
+                       (:pointer 1
+                        :type ("json_object" type
+                             (:prototype t
+                              :type "struct")
+                              nil nil))
+                        (reparse-symbol arg-sub-list) [13595 13619]))                  
+                :typemodifiers ("extern" "\"C\"" "extern")
+                :prototype-flag t)
+                (reparse-symbol extern-c-contents) [13532 13620])
+            ("json_object_array_sort" function
+               (:type "void"
+                :arguments 
+                  ( ("jso" variable
+                       (:pointer 1
+                        :type ("json_object" type
+                             (:prototype t
+                              :type "struct")
+                              nil nil))
+                        (reparse-symbol arg-sub-list) [13075 13099])
+                    ("sort_fn" function
+                       (:function-pointer t
+                        :arguments 
+                          ( ("" variable
+                               (:pointer 1
+                                :constant-flag t
+                                :type "void")
+                                (reparse-symbol arg-sub-list) [13114 13127])
+                            ("" variable
+                               (:pointer 1
+                                :constant-flag t
+                                :type "void")
+                                (reparse-symbol arg-sub-list) [13128 13141]))                          
+                        :type "int")
+                        nil nil))                  
+                :typemodifiers ("extern" "\"C\"" "extern")
+                :prototype-flag t)
+                (reparse-symbol extern-c-contents) [13040 13143])
+            ("json_object_array_length" function
+               (:type "int"
+                :arguments 
+                  ( ("obj" variable
+                       (:pointer 1
+                        :type ("json_object" type
+                             (:prototype t
+                              :type "struct")
+                              nil nil))
+                        (reparse-symbol arg-sub-list) [12789 12813]))                  
+                :typemodifiers ("extern" "\"C\"" "extern")
+                :prototype-flag t)
+                (reparse-symbol extern-c-contents) [12753 12814])
+            ("json_object_get_array" function
+               (:type ("array_list" type
+                     (:prototype t
+                      :type "struct")
+                      nil nil)
+                :arguments 
+                  ( ("obj" variable
+                       (:pointer 1
+                        :type ("json_object" type
+                             (:prototype t
+                              :type "struct")
+                              nil nil))
+                        (reparse-symbol arg-sub-list) [12604 12628]))                  
+                :typemodifiers ("extern" "\"C\"" "extern")
+                :pointer 1
+                :prototype-flag t)
+                (reparse-symbol extern-c-contents) [12556 12629])
+            ("json_object_new_array" function
+               (:type ("json_object" type
+                     (:prototype t
+                      :type "struct")
+                      nil nil)
+                :arguments 
+                  ( ("" variable (:type "void") (reparse-symbol arg-sub-list) [12417 12422]))                  
+                :typemodifiers ("extern" "\"C\"" "extern")
+                :pointer 1
+                :prototype-flag t)
+                (reparse-symbol extern-c-contents) [12368 12423])
+            ("json_object_object_foreachC" variable
+               (:typemodifiers ("extern" "\"C\"")
+                :constant-flag t)
+                (reparse-symbol extern-c-contents) [11991 12018])
+            ("json_object_object_foreach" variable
+               (:typemodifiers ("extern" "\"C\"")
+                :constant-flag t)
+                (reparse-symbol extern-c-contents) [11313 11339])
+            ("json_object_object_del" function
+               (:type "void"
+                :arguments 
+                  ( ("obj" variable
+                       (:pointer 1
+                        :type ("json_object" type
+                             (:prototype t
+                              :type "struct")
+                              nil nil))
+                        (reparse-symbol arg-sub-list) [10273 10297])
+                    ("key" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [10298 10314]))                  
+                :typemodifiers ("extern" "\"C\"" "extern")
+                :prototype-flag t)
+                (reparse-symbol extern-c-contents) [10238 10315])
+            ("json_object_object_get_ex" function
+               (:type ("json_bool" type (:type "class") nil nil)
+                :arguments 
+                  ( ("obj" variable
+                       (:pointer 1
+                        :type ("json_object" type
+                             (:prototype t
+                              :type "struct")
+                              nil nil))
+                        (reparse-symbol arg-sub-list) [9757 9781])
+                    ("key" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [9790 9806])
+                    ("value" variable
+                       (:pointer 2
+                        :type ("json_object" type
+                             (:prototype t
+                              :type "struct")
+                              nil nil))
+                        (reparse-symbol arg-sub-list) [9857 9884]))                  
+                :typemodifiers ("extern" "\"C\"" "extern")
+                :prototype-flag t)
+                (reparse-symbol extern-c-contents) [9714 9885])
+            ("json_object_object_get" function
+               (:type ("json_object" type
+                     (:prototype t
+                      :type "struct")
+                      nil nil)
+                :arguments 
+                  ( ("obj" variable
+                       (:pointer 1
+                        :type ("json_object" type
+                             (:prototype t
+                              :type "struct")
+                              nil nil))
+                        (reparse-symbol arg-sub-list) [8864 8888])
+                    ("key" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [8897 8913]))                  
+                :typemodifiers ("extern" "\"C\"" "extern")
+                :pointer 1
+                :prototype-flag t)
+                (reparse-symbol extern-c-contents) [8814 8914])
+            ("json_object_object_add" function
+               (:type "void"
+                :arguments 
+                  ( ("obj" variable
+                       (:pointer 1
+                        :type ("json_object" type
+                             (:prototype t
+                              :type "struct")
+                              nil nil))
+                        (reparse-symbol arg-sub-list) [7799 7823])
+                    ("key" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [7824 7840])
+                    ("val" variable
+                       (:pointer 1
+                        :type ("json_object" type
+                             (:prototype t
+                              :type "struct")
+                              nil nil))
+                        (reparse-symbol arg-sub-list) [7848 7872]))                  
+                :typemodifiers ("extern" "\"C\"" "extern")
+                :prototype-flag t)
+                (reparse-symbol extern-c-contents) [7764 7873])
+            ("json_object_object_length" function
+               (:type "int"
+                :arguments 
+                  ( ("obj" variable
+                       (:pointer 1
+                        :type ("json_object" type
+                             (:prototype t
+                              :type "struct")
+                              nil nil))
+                        (reparse-symbol arg-sub-list) [6930 6954]))                  
+                :typemodifiers ("extern" "\"C\"" "extern")
+                :prototype-flag t)
+                (reparse-symbol extern-c-contents) [6893 6955])
+            ("json_object_get_object" function
+               (:type ("lh_table" type
+                     (:prototype t
+                      :type "struct")
+                      nil nil)
+                :arguments 
+                  ( ("obj" variable
+                       (:pointer 1
+                        :type ("json_object" type
+                             (:prototype t
+                              :type "struct")
+                              nil nil))
+                        (reparse-symbol arg-sub-list) [6738 6762]))                  
+                :typemodifiers ("extern" "\"C\"" "extern")
+                :pointer 1
+                :prototype-flag t)
+                (reparse-symbol extern-c-contents) [6691 6763])
+            ("json_object_new_object" function
+               (:type ("json_object" type
+                     (:prototype t
+                      :type "struct")
+                      nil nil)
+                :arguments 
+                  ( ("" variable (:type "void") (reparse-symbol arg-sub-list) [6553 6558]))                  
+                :typemodifiers ("extern" "\"C\"" "extern")
+                :pointer 1
+                :prototype-flag t)
+                (reparse-symbol extern-c-contents) [6503 6559])
+            ("json_object_set_serializer" function
+               (:typemodifiers ("extern" "\"C\"")
+                :type "void"
+                :arguments 
+                  ( ("jso" variable
+                       (:pointer 1
+                        :type ("json_object" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [5820 5837])
+                    ("to_string_func" variable (:type ("json_object_to_json_string_fn" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [5839 5884])
+                    ("userdata" variable
+                       (:pointer 1
+                        :type "void")
+                        (reparse-symbol arg-sub-list) [5886 5901])
+                    ("user_delete" variable
+                       (:pointer 1
+                        :type ("json_object_delete_fn" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [5903 5938]))                  
+                :prototype-flag t)
+                (reparse-symbol extern-c-contents) [5788 5939])
+            ("json_object_to_json_string_ext" function
+               (:type "char"
+                :arguments 
+                  ( ("obj" variable
+                       (:pointer 1
+                        :type ("json_object" type
+                             (:prototype t
+                              :type "struct")
+                              nil nil))
+                        (reparse-symbol arg-sub-list) [4581 4605])
+                    ("flags" variable (:type "int") (reparse-symbol arg-sub-list) [4606 4616]))                  
+                :constant-flag t
+                :typemodifiers ("extern" "\"C\"" "extern")
+                :pointer 1
+                :prototype-flag t)
+                (reparse-symbol extern-c-contents) [4531 4617])
+            ("json_object_to_json_string" function
+               (:type "char"
+                :arguments 
+                  ( ("obj" variable
+                       (:pointer 1
+                        :type ("json_object" type
+                             (:prototype t
+                              :type "struct")
+                              nil nil))
+                        (reparse-symbol arg-sub-list) [4305 4329]))                  
+                :constant-flag t
+                :typemodifiers ("extern" "\"C\"" "extern")
+                :pointer 1
+                :prototype-flag t)
+                (reparse-symbol extern-c-contents) [4259 4330])
+            ("json_object_get_type" function
+               (:type ("json_type" type (:type "enum") nil nil)
+                :arguments 
+                  ( ("obj" variable
+                       (:pointer 1
+                        :type ("json_object" type
+                             (:prototype t
+                              :type "struct")
+                              nil nil))
+                        (reparse-symbol arg-sub-list) [4037 4061]))                  
+                :typemodifiers ("extern" "\"C\"" "extern")
+                :prototype-flag t)
+                (reparse-symbol extern-c-contents) [3994 4062])
+            ("json_object_is_type" function
+               (:type "int"
+                :arguments 
+                  ( ("obj" variable
+                       (:pointer 1
+                        :type ("json_object" type
+                             (:prototype t
+                              :type "struct")
+                              nil nil))
+                        (reparse-symbol arg-sub-list) [3557 3581])
+                    ("type" variable (:type ("json_type" type (:type "enum") nil nil)) (reparse-symbol arg-sub-list) [3582 3602]))                  
+                :typemodifiers ("extern" "\"C\"" "extern")
+                :prototype-flag t)
+                (reparse-symbol extern-c-contents) [3526 3603])
+            ("json_object_put" function
+               (:typemodifiers ("extern" "\"C\"")
+                :type "int"
+                :arguments 
+                  ( ("obj" variable
+                       (:pointer 1
+                        :type ("json_object" type
+                             (:prototype t
+                              :type "struct")
+                              nil nil))
+                        (reparse-symbol arg-sub-list) [3207 3231]))                  
+                :prototype-flag t)
+                (reparse-symbol extern-c-contents) [3187 3232])
+            ("json_object_get" function
+               (:type ("json_object" type
+                     (:prototype t
+                      :type "struct")
+                      nil nil)
+                :arguments 
+                  ( ("obj" variable
+                       (:pointer 1
+                        :type ("json_object" type
+                             (:prototype t
+                              :type "struct")
+                              nil nil))
+                        (reparse-symbol arg-sub-list) [2882 2906]))                  
+                :typemodifiers ("extern" "\"C\"" "extern")
+                :pointer 1
+                :prototype-flag t)
+                (reparse-symbol extern-c-contents) [2839 2907])
+            ("json_type" type
+               (:typemodifiers ("extern" "\"C\"")
+                :type "typedef"
+                :typedef ("json_type" type (:type "enum") nil nil))
+                (reparse-symbol extern-c-contents) [2414 2656])
+            ("json_type" type
+               (:typemodifiers ("extern" "\"C\"")
+                :type "enum"
+                :members 
+                  ( ("json_type_null" variable
+                       (:constant-flag t
+                        :type "int")
+                        (reparse-symbol enumsubparts) [2511 2526])
+                    ("json_type_boolean" variable
+                       (:constant-flag t
+                        :type "int")
+                        (reparse-symbol enumsubparts) [2529 2547])
+                    ("json_type_double" variable
+                       (:constant-flag t
+                        :type "int")
+                        (reparse-symbol enumsubparts) [2550 2567])
+                    ("json_type_int" variable
+                       (:constant-flag t
+                        :type "int")
+                        (reparse-symbol enumsubparts) [2570 2584])
+                    ("json_type_object" variable
+                       (:constant-flag t
+                        :type "int")
+                        (reparse-symbol enumsubparts) [2587 2604])
+                    ("json_type_array" variable
+                       (:constant-flag t
+                        :type "int")
+                        (reparse-symbol enumsubparts) [2607 2623])
+                    ("json_type_string" variable
+                       (:constant-flag t
+                        :type "int")
+                        (reparse-symbol enumsubparts) [2626 2643]))                  )
+                (reparse-symbol extern-c-contents) [2414 2656])
+            ("json_object_to_json_string_fn" function
+               (:typemodifiers ("extern" "\"C\"")
+                :type "int"
+                :arguments 
+                  ( ("jso" variable
+                       (:pointer 1
+                        :type ("json_object" type
+                             (:prototype t
+                              :type "struct")
+                              nil nil))
+                        (reparse-symbol arg-sub-list) [2296 2320])
+                    ("pb" variable
+                       (:pointer 1
+                        :type ("printbuf" type
+                             (:prototype t
+                              :type "struct")
+                              nil nil))
+                        (reparse-symbol arg-sub-list) [2327 2347])
+                    ("level" variable (:type "int") (reparse-symbol arg-sub-list) [2354 2364])
+                    ("flags" variable (:type "int") (reparse-symbol arg-sub-list) [2371 2381]))                  
+                :prototype-flag t)
+                (reparse-symbol extern-c-contents) [2260 2382])
+            ("json_object_delete_fn" function
+               (:typemodifiers ("extern" "\"C\"")
+                :type "void"
+                :arguments 
+                  ( ("jso" variable
+                       (:pointer 1
+                        :type ("json_object" type
+                             (:prototype t
+                              :type "struct")
+                              nil nil))
+                        (reparse-symbol arg-sub-list) [2124 2148])
+                    ("userdata" variable
+                       (:pointer 1
+                        :type "void")
+                        (reparse-symbol arg-sub-list) [2149 2164]))                  
+                :prototype-flag t)
+                (reparse-symbol extern-c-contents) [2095 2165])
+            ("json_tokener" type
+               (:typemodifiers ("extern" "\"C\"")
+                :type "typedef"
+                :typedef ("json_tokener" type
+                     (:prototype t
+                      :type "struct")
+                      nil nil))
+                (reparse-symbol extern-c-contents) [1962 2003])
+            ("json_object_iter" type
+               (:typemodifiers ("extern" "\"C\"")
+                :type "typedef"
+                :typedef ("json_object_iter" type
+                     (:prototype t
+                      :type "struct")
+                      nil nil))
+                (reparse-symbol extern-c-contents) [1912 1961])
+            ("json_object" type
+               (:typemodifiers ("extern" "\"C\"")
+                :type "typedef"
+                :typedef ("json_object" type
+                     (:prototype t
+                      :type "struct")
+                      nil nil))
+                (reparse-symbol extern-c-contents) [1872 1911])
+            ("array_list" type
+               (:typemodifiers ("extern" "\"C\"")
+                :type "typedef"
+                :typedef ("array_list" type
+                     (:prototype t
+                      :type "struct")
+                      nil nil))
+                (reparse-symbol extern-c-contents) [1834 1871])
+            ("lh_table" type
+               (:typemodifiers ("extern" "\"C\"")
+                :type "typedef"
+                :typedef ("lh_table" type
+                     (:prototype t
+                      :type "struct")
+                      nil nil))
+                (reparse-symbol extern-c-contents) [1800 1833])
+            ("printbuf" type
+               (:typemodifiers ("extern" "\"C\"")
+                :type "typedef"
+                :typedef ("printbuf" type
+                     (:prototype t
+                      :type "struct")
+                      nil nil))
+                (reparse-symbol extern-c-contents) [1766 1799])
+            ("json_bool" type
+               (:typemodifiers ("extern" "\"C\"")
+                :type "typedef"
+                :typedef ("int"))
+                (reparse-symbol extern-c-contents) [1743 1765])
+            ("json_object_iter" type
+               (:typemodifiers ("extern" "\"C\"")
+                :type "struct"
+                :members 
+                  ( ("key" variable
+                       (:pointer 1
+                        :type "char")
+                        (reparse-symbol classsubparts) [1640 1650])
+                    ("val" variable
+                       (:pointer 1
+                        :type ("json_object" type
+                             (:prototype t
+                              :type "struct")
+                              nil nil))
+                        (reparse-symbol classsubparts) [1652 1676])
+                    ("entry" variable
+                       (:pointer 1
+                        :type ("lh_entry" type
+                             (:prototype t
+                              :type "struct")
+                              nil nil))
+                        (reparse-symbol classsubparts) [1678 1701]))                  )
+                (reparse-symbol extern-c-contents) [1613 1704])
+            ("json_hex_chars" variable
+               (:type "char"
+                :constant-flag t
+                :typemodifiers ("extern" "\"C\"" "extern")
+                :pointer 1)
+                (reparse-symbol extern-c-contents) [1527 1561])
+            ("json_number_chars" variable
+               (:type "char"
+                :constant-flag t
+                :typemodifiers ("extern" "\"C\"" "extern")
+                :pointer 1)
+                (reparse-symbol extern-c-contents) [1489 1526])
+            ("TRUE" variable
+               (:typemodifiers ("extern" "\"C\"")
+                :constant-flag t)
+                (reparse-symbol extern-c-contents) [1468 1472])
+            ("FALSE" variable
+               (:typemodifiers ("extern" "\"C\"")
+                :constant-flag t)
+                (reparse-symbol extern-c-contents) [1426 1431])
+            ("JSON_C_TO_STRING_NOZERO" variable
+               (:typemodifiers ("extern" "\"C\"")
+                :constant-flag t)
+                (reparse-symbol extern-c-contents) [1369 1392])
+            ("JSON_C_TO_STRING_PRETTY" variable
+               (:typemodifiers ("extern" "\"C\"")
+                :constant-flag t)
+                (reparse-symbol extern-c-contents) [1269 1292])
+            ("JSON_C_TO_STRING_SPACED" variable
+               (:typemodifiers ("extern" "\"C\"")
+                :constant-flag t)
+                (reparse-symbol extern-c-contents) [966 989])
+            ("JSON_C_TO_STRING_PLAIN" variable
+               (:typemodifiers ("extern" "\"C\"")
+                :constant-flag t)
+                (reparse-symbol extern-c-contents) [724 746])
+            ("JSON_OBJECT_DEF_HASH_ENTRIES" variable
+               (:typemodifiers ("extern" "\"C\"")
+                :constant-flag t)
+                (reparse-symbol extern-c-contents) [503 531]))          
+      :file "json_object.h"
+      :pointmax 19750
+      :fsize 19749
+      :lastmodtime '(21390 9404 0 0)
+      :unmatched-syntax '((TYPEDEF 2252 . 2259) (TYPEDEF 2087 . 2094))
+      :lexical-table 
+        '(("_json_object_h_")
+          ("JSON_C_TO_STRING_PRETTY" . ((semantic-list "(1<<1)" 1297 . 1303)))
+          ("json_object_object_foreachC" (spp-arg-list ("obj" "iter") 12018 . 12028) . ((FOR "for" 12032 . 12035) (semantic-list "(iter.entry = json_object_get_object(obj)->head; (iter.entry ? (iter.key = (char*)iter.entry->k, iter.val = (struct json_object*)iter.entry->v, iter.entry) : 0); iter.entry = iter.entry->next)" 12035 . 12227)))
+          ("TRUE" . ((semantic-list "((json_bool)1)" 1473 . 1487)))
+          ("json_object_object_foreach" (spp-arg-list ("obj" "key" "val") 11339 . 11352) . 
+              ((CHAR "char" 11356 . 11360) (punctuation "*" 11361 . 11362) (symbol "key" 11362 . 11365) (punctuation ";" 11365 . 11366) (STRUCT "struct" 11369 . 11375) (symbol "json_object" 11376 . 11387) (punctuation "*" 11388 . 11389) (symbol "val" 11389 . 11392) (punctuation ";" 11392 . 11393) (STRUCT "struct" 11397 . 11403) (symbol "lh_entry" 11404 . 11412) (punctuation "*" 11413 . 11414) (spp-symbol-merge ((symbol "entry" 11414 . 11419) (symbol "key" 11423 . 11426)) 11414 . 11426) (punctuation ";" 11426 . 11427) (STRUCT "struct" 11431 . 11437) (symbol "lh_entry" 11438 . 11446) (punctuation "*" 11447 . 11448) (spp-symbol-merge ((symbol "entry_next" 11448 . 11458) (symbol "key" 11462 . 11465)) 11448 . 11465) (punctuation "=" 11466 . 11467) (symbol "NULL" 11468 . 11472) (punctuation ";" 11472 . 11473) (FOR "for" 11477 . 11480) (semantic-list "(entry ## key = json_object_get_object(obj)->head; \\
+		(entry ## key ? ( \\
+			key = (char*)entry ## key->k, \\
+			val = (struct json_object*)entry ## key->v, \\
+			entry_next ## key = entry ## key->next, \\
+			entry ## key) : 0); \\
+		entry ## key = entry_next ## key)" 11480 . 11744)))
+          ("FALSE" . ((semantic-list "((json_bool)0)" 1432 . 1446)))
+          ("JSON_OBJECT_DEF_HASH_ENTRIES" . ((number "16" 532 . 534)))
+          ("JSON_C_TO_STRING_SPACED" . ((semantic-list "(1<<0)" 994 . 1000)))
+          ("JSON_C_TO_STRING_PLAIN" . ((number "0" 752 . 753)))
+          ("JSON_C_TO_STRING_NOZERO" . ((semantic-list "(1<<2)" 1397 . 1403)))
+          )
+)
+    (semanticdb-table "json_util.h"
+      :major-mode 'c-mode
+      :tags 
+        '( ("_json_util_h_" variable (:constant-flag t) nil [341 354])
+            ("json_object.h" include nil nil [356 380])
+            ("json_type_to_name" function
+               (:type "char"
+                :arguments 
+                  ( ("o_type" variable (:type ("json_type" type (:type "enum") nil nil)) (reparse-symbol arg-sub-list) [974 996]))                  
+                :constant-flag t
+                :typemodifiers ("extern" "\"C\"" "extern")
+                :pointer 1
+                :prototype-flag t)
+                (reparse-symbol extern-c-contents) [937 997])
+            ("json_parse_double" function
+               (:type "int"
+                :arguments 
+                  ( ("buf" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [804 820])
+                    ("retval" variable
+                       (:pointer 1
+                        :type "double")
+                        (reparse-symbol arg-sub-list) [821 836]))                  
+                :typemodifiers ("extern" "\"C\"" "extern")
+                :prototype-flag t)
+                (reparse-symbol extern-c-contents) [775 837])
+            ("json_parse_int64" function
+               (:type "int"
+                :arguments 
+                  ( ("buf" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [740 756])
+                    ("retval" variable
+                       (:pointer 1
+                        :type ("int64_t" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [757 773]))                  
+                :typemodifiers ("extern" "\"C\"" "extern")
+                :prototype-flag t)
+                (reparse-symbol extern-c-contents) [712 774])
+            ("json_object_to_file_ext" function
+               (:type "int"
+                :arguments 
+                  ( ("filename" variable
+                       (:pointer 1
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [659 674])
+                    ("obj" variable
+                       (:pointer 1
+                        :type ("json_object" type
+                             (:prototype t
+                              :type "struct")
+                              nil nil))
+                        (reparse-symbol arg-sub-list) [675 699])
+                    ("flags" variable (:type "int") (reparse-symbol arg-sub-list) [700 710]))                  
+                :typemodifiers ("extern" "\"C\"" "extern")
+                :prototype-flag t)
+                (reparse-symbol extern-c-contents) [624 711])
+            ("json_object_to_file" function
+               (:type "int"
+                :arguments 
+                  ( ("filename" variable
+                       (:pointer 1
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [582 597])
+                    ("obj" variable
+                       (:pointer 1
+                        :type ("json_object" type
+                             (:prototype t
+                              :type "struct")
+                              nil nil))
+                        (reparse-symbol arg-sub-list) [598 622]))                  
+                :typemodifiers ("extern" "\"C\"" "extern")
+                :prototype-flag t)
+                (reparse-symbol extern-c-contents) [551 623])
+            ("json_object_from_file" function
+               (:type ("json_object" type
+                     (:prototype t
+                      :type "struct")
+                      nil nil)
+                :arguments 
+                  ( ("filename" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [528 549]))                  
+                :typemodifiers ("extern" "\"C\"" "extern")
+                :pointer 1
+                :prototype-flag t)
+                (reparse-symbol extern-c-contents) [479 550])
+            ("JSON_FILE_BUF_SIZE" variable
+               (:typemodifiers ("extern" "\"C\"")
+                :constant-flag t)
+                (reparse-symbol extern-c-contents) [430 448]))          
+      :file "json_util.h"
+      :pointmax 1035
+      :fsize 1034
+      :lastmodtime '(21390 9404 0 0)
+      :unmatched-syntax nil
+      :lexical-table 
+        '(("JSON_FILE_BUF_SIZE" . ((number "4096" 449 . 453)))
+          ("_json_util_h_")
+          )
+)
+    (semanticdb-table "arraylist.h"
+      :major-mode 'c-mode
+      :tags 
+        '( ("_arraylist_h_" variable (:constant-flag t) nil [341 354])
+            ("array_list_sort" function
+               (:type "void"
+                :arguments 
+                  ( ("arr" variable
+                       (:pointer 1
+                        :type ("array_list" type
+                             (:prototype t
+                              :type "struct")
+                              nil nil))
+                        (reparse-symbol arg-sub-list) [986 1009])
+                    ("compar" function
+                       (:function-pointer t
+                        :arguments 
+                          ( ("" variable
+                               (:pointer 1
+                                :constant-flag t
+                                :type "void")
+                                (reparse-symbol arg-sub-list) [1023 1036])
+                            ("" variable
+                               (:pointer 1
+                                :constant-flag t
+                                :type "void")
+                                (reparse-symbol arg-sub-list) [1037 1050]))                          
+                        :type "int")
+                        nil nil))                  
+                :typemodifiers ("extern" "\"C\"" "extern")
+                :prototype-flag t)
+                (reparse-symbol extern-c-contents) [958 1052])
+            ("array_list_length" function
+               (:type "int"
+                :arguments 
+                  ( ("al" variable
+                       (:pointer 1
+                        :type ("array_list" type
+                             (:prototype t
+                              :type "struct")
+                              nil nil))
+                        (reparse-symbol arg-sub-list) [933 955]))                  
+                :typemodifiers ("extern" "\"C\"" "extern")
+                :prototype-flag t)
+                (reparse-symbol extern-c-contents) [904 956])
+            ("array_list_add" function
+               (:type "int"
+                :arguments 
+                  ( ("al" variable
+                       (:pointer 1
+                        :type ("array_list" type
+                             (:prototype t
+                              :type "struct")
+                              nil nil))
+                        (reparse-symbol arg-sub-list) [867 889])
+                    ("data" variable
+                       (:pointer 1
+                        :type "void")
+                        (reparse-symbol arg-sub-list) [890 901]))                  
+                :typemodifiers ("extern" "\"C\"" "extern")
+                :prototype-flag t)
+                (reparse-symbol extern-c-contents) [841 902])
+            ("array_list_put_idx" function
+               (:type "int"
+                :arguments 
+                  ( ("al" variable
+                       (:pointer 1
+                        :type ("array_list" type
+                             (:prototype t
+                              :type "struct")
+                              nil nil))
+                        (reparse-symbol arg-sub-list) [797 819])
+                    ("i" variable (:type "int") (reparse-symbol arg-sub-list) [820 826])
+                    ("data" variable
+                       (:pointer 1
+                        :type "void")
+                        (reparse-symbol arg-sub-list) [827 838]))                  
+                :typemodifiers ("extern" "\"C\"" "extern")
+                :prototype-flag t)
+                (reparse-symbol extern-c-contents) [767 839])
+            ("array_list_get_idx" function
+               (:type "void"
+                :arguments 
+                  ( ("al" variable
+                       (:pointer 1
+                        :type ("array_list" type
+                             (:prototype t
+                              :type "struct")
+                              nil nil))
+                        (reparse-symbol arg-sub-list) [735 757])
+                    ("i" variable (:type "int") (reparse-symbol arg-sub-list) [758 764]))                  
+                :typemodifiers ("extern" "\"C\"" "extern")
+                :pointer 1
+                :prototype-flag t)
+                (reparse-symbol extern-c-contents) [703 765])
+            ("array_list_free" function
+               (:type "void"
+                :arguments 
+                  ( ("al" variable
+                       (:pointer 1
+                        :type ("array_list" type
+                             (:prototype t
+                              :type "struct")
+                              nil nil))
+                        (reparse-symbol arg-sub-list) [678 700]))                  
+                :typemodifiers ("extern" "\"C\"" "extern")
+                :prototype-flag t)
+                (reparse-symbol extern-c-contents) [650 701])
+            ("array_list_new" function
+               (:type ("array_list" type
+                     (:prototype t
+                      :type "struct")
+                      nil nil)
+                :arguments 
+                  ( ("free_fn" variable
+                       (:pointer 1
+                        :type ("array_list_free_fn" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [619 647]))                  
+                :typemodifiers ("extern" "\"C\"" "extern")
+                :pointer 1
+                :prototype-flag t)
+                (reparse-symbol extern-c-contents) [578 648])
+            ("array_list" type
+               (:typemodifiers ("extern" "\"C\"")
+                :type "struct"
+                :members 
+                  ( ("array" variable
+                       (:pointer 2
+                        :type "void")
+                        (reparse-symbol classsubparts) [503 516])
+                    ("length" variable (:type "int") (reparse-symbol classsubparts) [519 530])
+                    ("size" variable (:type "int") (reparse-symbol classsubparts) [533 542])
+                    ("free_fn" variable
+                       (:pointer 1
+                        :type ("array_list_free_fn" type (:type "class") nil nil))
+                        (reparse-symbol classsubparts) [545 573]))                  )
+                (reparse-symbol extern-c-contents) [481 576])
+            ("array_list_free_fn" function
+               (:typemodifiers ("extern" "\"C\"")
+                :type "void"
+                :arguments 
+                  ( ("data" variable
+                       (:pointer 1
+                        :type "void")
+                        (reparse-symbol arg-sub-list) [467 478]))                  
+                :prototype-flag t)
+                (reparse-symbol extern-c-contents) [440 479])
+            ("ARRAY_LIST_DEFAULT_SIZE" variable
+               (:typemodifiers ("extern" "\"C\"")
+                :constant-flag t)
+                (reparse-symbol extern-c-contents) [404 427]))          
+      :file "arraylist.h"
+      :pointmax 1090
+      :fsize 1089
+      :lastmodtime '(21390 9404 0 0)
+      :unmatched-syntax '((TYPEDEF 432 . 439))
+      :lexical-table 
+        '(("_arraylist_h_")
+          ("ARRAY_LIST_DEFAULT_SIZE" . ((number "32" 428 . 430)))
+          )
+)
+    (semanticdb-table "linkhash.h"
+      :major-mode 'c-mode
+      :tags 
+        '( ("_linkhash_h_" variable (:constant-flag t) nil [404 416])
+            ("json_object.h" include nil nil [418 442])
+            ("lh_table_resize" function
+               (:typemodifiers ("extern" "\"C\"")
+                :type "void"
+                :arguments 
+                  ( ("t" variable
+                       (:pointer 1
+                        :type ("lh_table" type
+                             (:prototype t
+                              :type "struct")
+                              nil nil))
+                        (reparse-symbol arg-sub-list) [6690 6709])
+                    ("new_size" variable (:type "int") (reparse-symbol arg-sub-list) [6710 6723]))                  
+                :prototype-flag t)
+                (reparse-symbol extern-c-contents) [6669 6724])
+            ("lh_abort" function
+               (:typemodifiers ("extern" "\"C\"")
+                :type "void"
+                :arguments 
+                  ( ("msg" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [6646 6662])
+                    ("..." variable (:type "vararg") (reparse-symbol arg-sub-list) [6663 6667]))                  
+                :prototype-flag t)
+                (reparse-symbol extern-c-contents) [6632 6668])
+            ("lh_table_length" function
+               (:type "int"
+                :arguments 
+                  ( ("t" variable
+                       (:pointer 1
+                        :type ("lh_table" type
+                             (:prototype t
+                              :type "struct")
+                              nil nil))
+                        (reparse-symbol arg-sub-list) [6610 6629]))                  
+                :typemodifiers ("extern" "\"C\"" "extern")
+                :prototype-flag t)
+                (reparse-symbol extern-c-contents) [6583 6630])
+            ("lh_table_delete" function
+               (:type "int"
+                :arguments 
+                  ( ("t" variable
+                       (:pointer 1
+                        :type ("lh_table" type
+                             (:prototype t
+                              :type "struct")
+                              nil nil))
+                        (reparse-symbol arg-sub-list) [6546 6565])
+                    ("k" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "void")
+                        (reparse-symbol arg-sub-list) [6566 6580]))                  
+                :typemodifiers ("extern" "\"C\"" "extern")
+                :prototype-flag t)
+                (reparse-symbol extern-c-contents) [6519 6581])
+            ("lh_table_delete_entry" function
+               (:type "int"
+                :arguments 
+                  ( ("t" variable
+                       (:pointer 1
+                        :type ("lh_table" type
+                             (:prototype t
+                              :type "struct")
+                              nil nil))
+                        (reparse-symbol arg-sub-list) [6178 6197])
+                    ("e" variable
+                       (:pointer 1
+                        :type ("lh_entry" type
+                             (:prototype t
+                              :type "struct")
+                              nil nil))
+                        (reparse-symbol arg-sub-list) [6198 6217]))                  
+                :typemodifiers ("extern" "\"C\"" "extern")
+                :prototype-flag t)
+                (reparse-symbol extern-c-contents) [6145 6218])
+            ("lh_table_lookup_ex" function
+               (:type ("json_bool" type (:type "class") nil nil)
+                :arguments 
+                  ( ("t" variable
+                       (:pointer 1
+                        :type ("lh_table" type
+                             (:prototype t
+                              :type "struct")
+                              nil nil))
+                        (reparse-symbol arg-sub-list) [5798 5817])
+                    ("k" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "void")
+                        (reparse-symbol arg-sub-list) [5818 5832])
+                    ("v" variable
+                       (:pointer 2
+                        :type "void")
+                        (reparse-symbol arg-sub-list) [5833 5842]))                  
+                :typemodifiers ("extern" "\"C\"" "extern")
+                :prototype-flag t)
+                (reparse-symbol extern-c-contents) [5762 5843])
+            ("lh_table_lookup" function
+               (:type "void"
+                :arguments 
+                  ( ("t" variable
+                       (:pointer 1
+                        :type ("lh_table" type
+                             (:prototype t
+                              :type "struct")
+                              nil nil))
+                        (reparse-symbol arg-sub-list) [5473 5492])
+                    ("k" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "void")
+                        (reparse-symbol arg-sub-list) [5493 5507]))                  
+                :constant-flag t
+                :typemodifiers ("extern" "\"C\"" "extern")
+                :pointer 1
+                :prototype-flag t)
+                (reparse-symbol extern-c-contents) [5438 5508])
+            ("lh_table_lookup_entry" function
+               (:type ("lh_entry" type
+                     (:prototype t
+                      :type "struct")
+                      nil nil)
+                :arguments 
+                  ( ("t" variable
+                       (:pointer 1
+                        :type ("lh_table" type
+                             (:prototype t
+                              :type "struct")
+                              nil nil))
+                        (reparse-symbol arg-sub-list) [5167 5186])
+                    ("k" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "void")
+                        (reparse-symbol arg-sub-list) [5187 5201]))                  
+                :typemodifiers ("extern" "\"C\"" "extern")
+                :pointer 1
+                :prototype-flag t)
+                (reparse-symbol extern-c-contents) [5121 5202])
+            ("lh_table_insert" function
+               (:type "int"
+                :arguments 
+                  ( ("t" variable
+                       (:pointer 1
+                        :type ("lh_table" type
+                             (:prototype t
+                              :type "struct")
+                              nil nil))
+                        (reparse-symbol arg-sub-list) [4868 4887])
+                    ("k" variable
+                       (:pointer 1
+                        :type "void")
+                        (reparse-symbol arg-sub-list) [4888 4896])
+                    ("v" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "void")
+                        (reparse-symbol arg-sub-list) [4897 4911]))                  
+                :typemodifiers ("extern" "\"C\"" "extern")
+                :prototype-flag t)
+                (reparse-symbol extern-c-contents) [4841 4912])
+            ("lh_table_free" function
+               (:type "void"
+                :arguments 
+                  ( ("t" variable
+                       (:pointer 1
+                        :type ("lh_table" type
+                             (:prototype t
+                              :type "struct")
+                              nil nil))
+                        (reparse-symbol arg-sub-list) [4647 4666]))                  
+                :typemodifiers ("extern" "\"C\"" "extern")
+                :prototype-flag t)
+                (reparse-symbol extern-c-contents) [4621 4667])
+            ("lh_kptr_table_new" function
+               (:type ("lh_table" type
+                     (:prototype t
+                      :type "struct")
+                      nil nil)
+                :arguments 
+                  ( ("size" variable (:type "int") (reparse-symbol arg-sub-list) [4401 4410])
+                    ("name" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [4411 4428])
+                    ("free_fn" variable
+                       (:pointer 1
+                        :type ("lh_entry_free_fn" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [4436 4462]))                  
+                :typemodifiers ("extern" "\"C\"" "extern")
+                :pointer 1
+                :prototype-flag t)
+                (reparse-symbol extern-c-contents) [4359 4463])
+            ("lh_kchar_table_new" function
+               (:type ("lh_table" type
+                     (:prototype t
+                      :type "struct")
+                      nil nil)
+                :arguments 
+                  ( ("size" variable (:type "int") (reparse-symbol arg-sub-list) [4035 4044])
+                    ("name" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [4045 4062])
+                    ("free_fn" variable
+                       (:pointer 1
+                        :type ("lh_entry_free_fn" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [4071 4097]))                  
+                :typemodifiers ("extern" "\"C\"" "extern")
+                :pointer 1
+                :prototype-flag t)
+                (reparse-symbol extern-c-contents) [3992 4098])
+            ("lh_table_new" function
+               (:type ("lh_table" type
+                     (:prototype t
+                      :type "struct")
+                      nil nil)
+                :arguments 
+                  ( ("size" variable (:type "int") (reparse-symbol arg-sub-list) [3605 3614])
+                    ("name" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [3615 3632])
+                    ("free_fn" variable
+                       (:pointer 1
+                        :type ("lh_entry_free_fn" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [3642 3668])
+                    ("hash_fn" variable
+                       (:pointer 1
+                        :type ("lh_hash_fn" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [3678 3698])
+                    ("equal_fn" variable
+                       (:pointer 1
+                        :type ("lh_equal_fn" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [3708 3730]))                  
+                :typemodifiers ("extern" "\"C\"" "extern")
+                :pointer 1
+                :prototype-flag t)
+                (reparse-symbol extern-c-contents) [3568 3731])
+            ("lh_foreach_safe" variable
+               (:typemodifiers ("extern" "\"C\"")
+                :constant-flag t)
+                (reparse-symbol extern-c-contents) [2672 2687])
+            ("lh_foreach" variable
+               (:typemodifiers ("extern" "\"C\"")
+                :constant-flag t)
+                (reparse-symbol extern-c-contents) [2504 2514])
+            ("lh_char_equal" function
+               (:type "int"
+                :arguments 
+                  ( ("k1" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "void")
+                        (reparse-symbol arg-sub-list) [2423 2438])
+                    ("k2" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "void")
+                        (reparse-symbol arg-sub-list) [2439 2454]))                  
+                :typemodifiers ("extern" "\"C\"" "extern")
+                :prototype-flag t)
+                (reparse-symbol extern-c-contents) [2398 2455])
+            ("lh_char_hash" function
+               (:type "unsigned long"
+                :arguments 
+                  ( ("k" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "void")
+                        (reparse-symbol arg-sub-list) [2382 2396]))                  
+                :typemodifiers ("extern" "\"C\"" "extern")
+                :prototype-flag t)
+                (reparse-symbol extern-c-contents) [2348 2397])
+            ("lh_ptr_equal" function
+               (:type "int"
+                :arguments 
+                  ( ("k1" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "void")
+                        (reparse-symbol arg-sub-list) [2314 2329])
+                    ("k2" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "void")
+                        (reparse-symbol arg-sub-list) [2330 2345]))                  
+                :typemodifiers ("extern" "\"C\"" "extern")
+                :prototype-flag t)
+                (reparse-symbol extern-c-contents) [2290 2346])
+            ("lh_ptr_hash" function
+               (:type "unsigned long"
+                :arguments 
+                  ( ("k" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "void")
+                        (reparse-symbol arg-sub-list) [2274 2288]))                  
+                :typemodifiers ("extern" "\"C\"" "extern")
+                :prototype-flag t)
+                (reparse-symbol extern-c-contents) [2241 2289])
+            ("lh_table" type
+               (:typemodifiers ("extern" "\"C\"")
+                :type "struct"
+                :members 
+                  ( ("size" variable (:type "int") (reparse-symbol classsubparts) [1537 1546])
+                    ("count" variable (:type "int") (reparse-symbol classsubparts) [1582 1592])
+                    ("collisions" variable (:type "int") (reparse-symbol classsubparts) [1631 1646])
+                    ("resizes" variable (:type "int") (reparse-symbol classsubparts) [1682 1694])
+                    ("lookups" variable (:type "int") (reparse-symbol classsubparts) [1730 1742])
+                    ("inserts" variable (:type "int") (reparse-symbol classsubparts) [1778 1790])
+                    ("deletes" variable (:type "int") (reparse-symbol classsubparts) [1826 1838])
+                    ("name" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol classsubparts) [1879 1896])
+                    ("head" variable
+                       (:pointer 1
+                        :type ("lh_entry" type
+                             (:prototype t
+                              :type "struct")
+                              nil nil))
+                        (reparse-symbol classsubparts) [1930 1952])
+                    ("tail" variable
+                       (:pointer 1
+                        :type ("lh_entry" type
+                             (:prototype t
+                              :type "struct")
+                              nil nil))
+                        (reparse-symbol classsubparts) [1985 2007])
+                    ("table" variable
+                       (:pointer 1
+                        :type ("lh_entry" type
+                             (:prototype t
+                              :type "struct")
+                              nil nil))
+                        (reparse-symbol classsubparts) [2010 2033])
+                    ("free_fn" variable
+                       (:pointer 1
+                        :type ("lh_entry_free_fn" type (:type "class") nil nil))
+                        (reparse-symbol classsubparts) [2112 2138])
+                    ("hash_fn" variable
+                       (:pointer 1
+                        :type ("lh_hash_fn" type (:type "class") nil nil))
+                        (reparse-symbol classsubparts) [2140 2160])
+                    ("equal_fn" variable
+                       (:pointer 1
+                        :type ("lh_equal_fn" type (:type "class") nil nil))
+                        (reparse-symbol classsubparts) [2162 2184]))                  )
+                (reparse-symbol extern-c-contents) [1486 2187])
+            ("lh_entry" type
+               (:typemodifiers ("extern" "\"C\"")
+                :type "struct"
+                :members 
+                  ( ("k" variable
+                       (:pointer 1
+                        :type "void")
+                        (reparse-symbol classsubparts) [1283 1291])
+                    ("v" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "void")
+                        (reparse-symbol classsubparts) [1318 1332])
+                    ("next" variable
+                       (:pointer 1
+                        :type ("lh_entry" type
+                             (:prototype t
+                              :type "struct")
+                              nil nil))
+                        (reparse-symbol classsubparts) [1363 1385])
+                    ("prev" variable
+                       (:pointer 1
+                        :type ("lh_entry" type
+                             (:prototype t
+                              :type "struct")
+                              nil nil))
+                        (reparse-symbol classsubparts) [1421 1443]))                  )
+                (reparse-symbol extern-c-contents) [1241 1446])
+            ("lh_equal_fn" function
+               (:typemodifiers ("extern" "\"C\"")
+                :type "int"
+                :arguments 
+                  ( ("k1" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "void")
+                        (reparse-symbol arg-sub-list) [1169 1184])
+                    ("k2" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "void")
+                        (reparse-symbol arg-sub-list) [1185 1200]))                  
+                :prototype-flag t)
+                (reparse-symbol extern-c-contents) [1150 1201])
+            ("lh_hash_fn" function
+               (:typemodifiers ("extern" "\"C\"")
+                :type "unsigned long"
+                :arguments 
+                  ( ("k" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "void")
+                        (reparse-symbol arg-sub-list) [1086 1100]))                  
+                :prototype-flag t)
+                (reparse-symbol extern-c-contents) [1058 1101])
+            ("lh_entry_free_fn" function
+               (:typemodifiers ("extern" "\"C\"")
+                :type "void"
+                :arguments 
+                  ( ("e" variable
+                       (:pointer 1
+                        :type ("lh_entry" type
+                             (:prototype t
+                              :type "struct")
+                              nil nil))
+                        (reparse-symbol arg-sub-list) [989 1008]))                  
+                :prototype-flag t)
+                (reparse-symbol extern-c-contents) [964 1009])
+            ("lh_entry" type
+               (:typemodifiers ("extern" "\"C\"")
+                :type "struct"
+                :prototype t)
+                (reparse-symbol extern-c-contents) [898 914])
+            ("LH_FREED" variable
+               (:typemodifiers ("extern" "\"C\"")
+                :constant-flag t)
+                (reparse-symbol extern-c-contents) [878 886])
+            ("LH_EMPTY" variable
+               (:typemodifiers ("extern" "\"C\"")
+                :constant-flag t)
+                (reparse-symbol extern-c-contents) [800 808])
+            ("LH_LOAD_FACTOR" variable
+               (:typemodifiers ("extern" "\"C\"")
+                :constant-flag t)
+                (reparse-symbol extern-c-contents) [721 735])
+            ("LH_PRIME" variable
+               (:typemodifiers ("extern" "\"C\"")
+                :constant-flag t)
+                (reparse-symbol extern-c-contents) [539 547]))          
+      :file "linkhash.h"
+      :pointmax 6762
+      :fsize 6761
+      :lastmodtime '(21390 9404 0 0)
+      :unmatched-syntax '((TYPEDEF 1142 . 1149) (TYPEDEF 1050 . 1057) (TYPEDEF 956 . 963))
+      :lexical-table 
+        '(("lh_foreach" (spp-arg-list ("table" "entry") 2514 . 2528) . ((FOR "for" 2531 . 2534) (semantic-list "(entry = table->head; entry; entry = entry->next)" 2534 . 2583)))
+          ("LH_PRIME" . ((symbol "0x9e370001UL" 548 . 560)))
+          ("LH_FREED" . 
+              ((semantic-list "(void*)" 887 . 894) (punctuation "-" 894 . 895) (number "2" 895 . 896)))
+          ("lh_foreach_safe" (spp-arg-list ("table" "entry" "tmp") 2687 . 2706) . ((FOR "for" 2709 . 2712) (semantic-list "(entry = table->head; entry && ((tmp = entry->next) || 1); entry = tmp)" 2712 . 2783)))
+          ("LH_EMPTY" . 
+              ((semantic-list "(void*)" 809 . 816) (punctuation "-" 816 . 817) (number "1" 817 . 818)))
+          ("_linkhash_h_")
+          ("LH_LOAD_FACTOR" . ((number "0.66" 736 . 740)))
+          )
+)
+    (semanticdb-table "debug.h"
+      :major-mode 'c-mode
+      :tags 
+        '( ("_DEBUG_H_" variable (:constant-flag t) nil [397 406])
+            ("stdlib.h" include (:system-flag t) nil [408 427])
+            ("MC_INFO" variable
+               (:typemodifiers ("extern" "\"C\"")
+                :constant-flag t)
+                (reparse-symbol extern-c-contents) [1777 1784])
+            ("MC_DEBUG" variable
+               (:typemodifiers ("extern" "\"C\"")
+                :constant-flag t)
+                (reparse-symbol extern-c-contents) [1718 1726])
+            ("MC_SET_SYSLOG" variable
+               (:typemodifiers ("extern" "\"C\"")
+                :constant-flag t)
+                (reparse-symbol extern-c-contents) [1669 1682])
+            ("MC_GET_DEBUG" variable
+               (:typemodifiers ("extern" "\"C\"")
+                :constant-flag t)
+                (reparse-symbol extern-c-contents) [1642 1654])
+            ("MC_SET_DEBUG" variable
+               (:typemodifiers ("extern" "\"C\"")
+                :constant-flag t)
+                (reparse-symbol extern-c-contents) [1595 1607])
+            ("MC_ERROR" variable
+               (:typemodifiers ("extern" "\"C\"")
+                :constant-flag t)
+                (reparse-symbol extern-c-contents) [1288 1296])
+            ("MC_ABORT" variable
+               (:typemodifiers ("extern" "\"C\"")
+                :constant-flag t)
+                (reparse-symbol extern-c-contents) [1236 1244])
+            ("JASSERT" variable
+               (:typemodifiers ("extern" "\"C\"")
+                :constant-flag t)
+                (reparse-symbol extern-c-contents) [911 918])
+            ("mc_info" function
+               (:type "void"
+                :arguments 
+                  ( ("msg" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [802 818])
+                    ("..." variable (:type "vararg") (reparse-symbol arg-sub-list) [819 823]))                  
+                :typemodifiers ("extern" "\"C\"" "extern")
+                :prototype-flag t)
+                (reparse-symbol extern-c-contents) [782 824])
+            ("mc_error" function
+               (:type "void"
+                :arguments 
+                  ( ("msg" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [759 775])
+                    ("..." variable (:type "vararg") (reparse-symbol arg-sub-list) [776 780]))                  
+                :typemodifiers ("extern" "\"C\"" "extern")
+                :prototype-flag t)
+                (reparse-symbol extern-c-contents) [738 781])
+            ("mc_debug" function
+               (:type "void"
+                :arguments 
+                  ( ("msg" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [715 731])
+                    ("..." variable (:type "vararg") (reparse-symbol arg-sub-list) [732 736]))                  
+                :typemodifiers ("extern" "\"C\"" "extern")
+                :prototype-flag t)
+                (reparse-symbol extern-c-contents) [694 737])
+            ("mc_abort" function
+               (:type "void"
+                :arguments 
+                  ( ("msg" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [671 687])
+                    ("..." variable (:type "vararg") (reparse-symbol arg-sub-list) [688 692]))                  
+                :typemodifiers ("extern" "\"C\"" "extern")
+                :prototype-flag t)
+                (reparse-symbol extern-c-contents) [650 693])
+            ("mc_set_syslog" function
+               (:type "void"
+                :arguments 
+                  ( ("syslog" variable (:type "int") (reparse-symbol arg-sub-list) [564 575]))                  
+                :typemodifiers ("extern" "\"C\"" "extern")
+                :prototype-flag t)
+                (reparse-symbol extern-c-contents) [538 576])
+            ("mc_get_debug" function
+               (:type "int"
+                :arguments 
+                  ( ("" variable (:type "void") (reparse-symbol arg-sub-list) [530 535]))                  
+                :typemodifiers ("extern" "\"C\"" "extern")
+                :prototype-flag t)
+                (reparse-symbol extern-c-contents) [506 536])
+            ("mc_set_debug" function
+               (:type "void"
+                :arguments 
+                  ( ("debug" variable (:type "int") (reparse-symbol arg-sub-list) [494 504]))                  
+                :typemodifiers ("extern" "\"C\"" "extern")
+                :prototype-flag t)
+                (reparse-symbol extern-c-contents) [469 505]))          
+      :file "debug.h"
+      :pointmax 1870
+      :fsize 1869
+      :lastmodtime '(21390 9404 0 0)
+      :unmatched-syntax nil
+      :lexical-table 
+        '(("MC_INFO" (spp-arg-list ("x" "...") 1784 . 1792) . 
+              ((IF "if" 1793 . 1795) (semantic-list "(0)" 1796 . 1799) (symbol "mc_info" 1800 . 1807) (semantic-list "(x, ##__VA_ARGS__)" 1807 . 1825)))
+          ("MC_GET_DEBUG" (spp-arg-list nil 1654 . 1656) . ((semantic-list "(0)" 1657 . 1660)))
+          ("_DEBUG_H_")
+          ("MC_ERROR" (spp-arg-list ("x" "...") 1296 . 1304) . ((symbol "mc_error" 1305 . 1313) (semantic-list "(x, ##__VA_ARGS__)" 1313 . 1331)))
+          ("JASSERT" (spp-arg-list ("cond") 918 . 924) . 
+              ((DO "do" 925 . 927) (semantic-list "{}" 928 . 930) (WHILE "while" 931 . 936) (semantic-list "(0)" 936 . 939)))
+          ("MC_SET_DEBUG" (spp-arg-list ("x") 1607 . 1610) . 
+              ((IF "if" 1611 . 1613) (semantic-list "(0)" 1614 . 1617) (symbol "mc_set_debug" 1618 . 1630) (semantic-list "(x)" 1630 . 1633)))
+          ("MC_DEBUG" (spp-arg-list ("x" "...") 1726 . 1734) . 
+              ((IF "if" 1735 . 1737) (semantic-list "(0)" 1738 . 1741) (symbol "mc_debug" 1742 . 1750) (semantic-list "(x, ##__VA_ARGS__)" 1750 . 1768)))
+          ("MC_SET_SYSLOG" (spp-arg-list ("x") 1682 . 1685) . 
+              ((IF "if" 1686 . 1688) (semantic-list "(0)" 1689 . 1692) (symbol "mc_set_syslog" 1693 . 1706) (semantic-list "(x)" 1706 . 1709)))
+          ("MC_ABORT" (spp-arg-list ("x" "...") 1244 . 1252) . ((symbol "mc_abort" 1253 . 1261) (semantic-list "(x, ##__VA_ARGS__)" 1261 . 1279)))
+          )
+)
+    (semanticdb-table "bits.h"
+      :major-mode 'c-mode
+      :tags 
+        '( ("_bits_h_" variable (:constant-flag t) nil [332 340])
+            ("json_min" variable (:constant-flag t) nil [367 375])
+            ("json_max" variable (:constant-flag t) nil [438 446])
+            ("hexdigit" variable (:constant-flag t) nil [492 500])
+            ("error_ptr" variable (:constant-flag t) nil [555 564])
+            ("error_description" variable (:constant-flag t) nil [595 612])
+            ("is_error" variable (:constant-flag t) nil [658 666]))          
+      :file "bits.h"
+      :pointmax 694
+      :fsize 693
+      :lastmodtime '(21390 9404 0 0)
+      :unmatched-syntax nil
+      :lexical-table 
+        '(("json_min" (spp-arg-list ("a" "b") 375 . 380) . ((semantic-list "((a) < (b) ? (a) : (b))" 381 . 404)))
+          ("is_error" (spp-arg-list ("ptr") 666 . 671) . ((semantic-list "(ptr == NULL)" 672 . 685)))
+          ("hexdigit" (spp-arg-list ("x") 500 . 503) . ((semantic-list "(((x) <= '9') ? (x) - '0' : ((x) & 7) + 9)" 504 . 546)))
+          ("error_ptr" (spp-arg-list ("error") 564 . 571) . ((semantic-list "((void*)error)" 572 . 586)))
+          ("_bits_h_")
+          ("error_description" (spp-arg-list ("error") 612 . 619) . ((semantic-list "(json_tokener_errors[error])" 621 . 649)))
+          ("json_max" (spp-arg-list ("a" "b") 446 . 451) . ((semantic-list "((a) > (b) ? (a) : (b))" 452 . 475)))
+          )
+)
+    (semanticdb-table "json_inttypes.h"
+      :major-mode 'c-mode
+      :tags 
+        '( ("_json_inttypes_h_" variable (:constant-flag t) nil [36 53])
+            ("json_config.h" include nil nil [55 79]))          
+      :file "json_inttypes.h"
+      :pointmax 581
+      :fsize 580
+      :lastmodtime '(21390 9404 0 0)
+      :unmatched-syntax nil
+      :lexical-table 
+        '(("_json_inttypes_h_")
+          )
+)
+    (semanticdb-table "json_config.h"
+      :major-mode 'c-mode
+      :tags 
+        '( ("JSON_C_HAVE_INTTYPES_H" variable (:constant-flag t) nil [139 161]))          
+      :file "json_config.h"
+      :pointmax 164
+      :fsize 163
+      :lastmodtime '(21390 9404 0 0)
+      :unmatched-syntax nil
+      :lexical-table 
+        '(("JSON_C_HAVE_INTTYPES_H" . ((number "1" 162 . 163)))
+          )
+))
+  :file "!usr!include!json-c!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2")

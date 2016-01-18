@@ -1,0 +1,352 @@
+;; Object fm-lib-unrar/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "fm-lib-unrar/"
+  :tables
+  (list
+    (semanticdb-table "simple_example.c"
+      :major-mode 'c-mode
+      :tags 
+        '( ("fm_unrar.h" include nil nil [1 22])
+            ("stdio.h" include (:system-flag t) nil [24 42])
+            ("stdlib.h" include (:system-flag t) nil [43 62])
+            ("guess_open_file" function
+               (:arguments 
+                  ( ("file" variable
+                       (:pointer 2
+                        :type ("unrar_file" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [419 437])
+                    ("info" variable
+                       (:pointer 1
+                        :type ("unrar_file_header" type
+                             (:prototype t
+                              :type "struct")
+                              nil nil))
+                        (reparse-symbol arg-sub-list) [438 469])
+                    ("name" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [476 493])
+                    ("pass" variable
+                       (:pointer 1
+                        :dereference 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [494 513])
+                    ("pass_size" variable (:type "int") (reparse-symbol arg-sub-list) [514 528]))                  
+                :type "int")
+                nil [399 1231])
+            ("print_password" function
+               (:arguments 
+                  ( ("file" variable
+                       (:pointer 1
+                        :type ("unrar_file" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [1362 1379]))                  
+                :type "void")
+                nil [1342 1508])
+            ("extract_encrypted" function
+               (:arguments 
+                  ( ("file" variable
+                       (:pointer 1
+                        :type ("unrar_file" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [1960 1977])
+                    ("info" variable
+                       (:pointer 1
+                        :type ("unrar_file_header" type
+                             (:prototype t
+                              :type "struct")
+                              nil nil))
+                        (reparse-symbol arg-sub-list) [1978 2009])
+                    ("pass" variable
+                       (:pointer 1
+                        :dereference 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [2018 2037])
+                    ("pass_size" variable (:type "int") (reparse-symbol arg-sub-list) [2038 2052])
+                    ("found_password" variable
+                       (:pointer 1
+                        :type "int")
+                        (reparse-symbol arg-sub-list) [2053 2073]))                  
+                :type "int")
+                nil [1938 2526])
+            ("extract_simple" function
+               (:arguments 
+                  ( ("file" variable
+                       (:pointer 1
+                        :type ("unrar_file" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [2728 2745])
+                    ("info" variable
+                       (:pointer 1
+                        :type ("unrar_file_header" type
+                             (:prototype t
+                              :type "struct")
+                              nil nil))
+                        (reparse-symbol arg-sub-list) [2746 2777]))                  
+                :type "int")
+                nil [2709 2982])
+            ("main" function
+               (:arguments 
+                  ( ("argc" variable (:type "int") (reparse-symbol arg-sub-list) [2993 3002])
+                    ("argv" variable
+                       (:pointer 1
+                        :dereference 1
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [3003 3016]))                  
+                :type "int")
+                nil [2984 4020]))          
+      :file "simple_example.c"
+      :pointmax 4021
+      :fsize 4020
+      :lastmodtime '(22127 6349 0 0)
+      :unmatched-syntax nil)
+    (semanticdb-table "fm_unrar.h"
+      :major-mode 'c-mode
+      :tags 
+        '( ("unrar_file" variable (:constant-flag t) nil [129 139])
+            ("EUNRAR_SUCCESS" variable (:constant-flag t) nil [156 170])
+            ("EUNRAR_END_ARCHIVE" variable (:constant-flag t) nil [193 211])
+            ("EUNRAR_NO_MEMORY" variable (:constant-flag t) nil [230 246])
+            ("EUNRAR_BAD_DATA" variable (:constant-flag t) nil [267 282])
+            ("EUNRAR_BAD_ARCHIVE" variable (:constant-flag t) nil [304 322])
+            ("EUNRAR_UNKNOWN_FORMAT" variable (:constant-flag t) nil [341 362])
+            ("EUNRAR_EOPEN" variable (:constant-flag t) nil [378 390])
+            ("EUNRAR_ECREATE" variable (:constant-flag t) nil [415 429])
+            ("EUNRAR_ECLOSE" variable (:constant-flag t) nil [452 465])
+            ("EUNRAR_EREAD" variable (:constant-flag t) nil [489 501])
+            ("EUNRAR_EWRITE" variable (:constant-flag t) nil [526 539])
+            ("EUNRAR_SMALL_BUF" variable (:constant-flag t) nil [563 579])
+            ("EUNRAR_UNKNOWN" variable (:constant-flag t) nil [600 614])
+            ("EUNRAR_MISSING_PASSWORD" variable (:constant-flag t) nil [637 660])
+            ("EUNRAR_EREFERENCE" variable (:constant-flag t) nil [674 691])
+            ("EUNRAR_BAD_PASSWORD" variable (:constant-flag t) nil [711 730])
+            ("UNRAR_OM_LIST" variable (:constant-flag t) nil [749 762])
+            ("UNRAR_OM_EXTRACT" variable (:constant-flag t) nil [782 798])
+            ("UNRAR_OM_LIST_INCSPLIT" variable (:constant-flag t) nil [815 837])
+            ("UNRAR_FILE_SKIP" variable (:constant-flag t) nil [849 864])
+            ("UNRAR_FILE_TEST" variable (:constant-flag t) nil [882 897])
+            ("UNRAR_FILE_EXTRACT" variable (:constant-flag t) nil [915 933])
+            ("UNRAR_FILENAME_LENGTH" variable (:constant-flag t) nil [949 970])
+            ("UNRAR_HASH_LENGTH" variable (:constant-flag t) nil [985 1002])
+            ("UNRAR_RHDF_SPLITBEFORE" variable (:constant-flag t) nil [1067 1089])
+            ("UNRAR_RHDF_SPLITAFTER" variable (:constant-flag t) nil [1103 1124])
+            ("UNRAR_RHDF_ENCRYPTED" variable (:constant-flag t) nil [1139 1159])
+            ("UNRAR_RHDF_SOLID" variable (:constant-flag t) nil [1175 1191])
+            ("UNRAR_RHDF_DIRECTORY" variable (:constant-flag t) nil [1211 1231])
+            ("unrar_file_header" type
+               (:members 
+                  ( ("ArcName" variable
+                       (:dereference 1
+                        :type "char")
+                        (reparse-symbol classsubparts) [1269 1313])
+                    ("FileName" variable
+                       (:dereference 1
+                        :type "char")
+                        (reparse-symbol classsubparts) [1316 1361])
+                    ("Flags" variable (:type "unsigned int") (reparse-symbol classsubparts) [1364 1383])
+                    ("PackSize" variable (:type "unsigned int") (reparse-symbol classsubparts) [1386 1408])
+                    ("PackSizeHigh" variable (:type "unsigned int") (reparse-symbol classsubparts) [1411 1437])
+                    ("UnpSize" variable (:type "unsigned int") (reparse-symbol classsubparts) [1440 1461])
+                    ("UnpSizeHigh" variable (:type "unsigned int") (reparse-symbol classsubparts) [1464 1489])
+                    ("HostOS" variable (:type "unsigned int") (reparse-symbol classsubparts) [1492 1512])
+                    ("FileCRC" variable (:type "unsigned int") (reparse-symbol classsubparts) [1515 1536])
+                    ("FileTime" variable (:type "unsigned int") (reparse-symbol classsubparts) [1539 1561])
+                    ("UnpVer" variable (:type "unsigned int") (reparse-symbol classsubparts) [1564 1584])
+                    ("Method" variable (:type "unsigned int") (reparse-symbol classsubparts) [1587 1607])
+                    ("FileAttr" variable (:type "unsigned int") (reparse-symbol classsubparts) [1610 1632])
+                    ("DictSize" variable (:type "unsigned int") (reparse-symbol classsubparts) [1635 1657])
+                    ("HashType" variable (:type "unsigned int") (reparse-symbol classsubparts) [1660 1682])
+                    ("Hash" variable
+                       (:dereference 1
+                        :type "char")
+                        (reparse-symbol classsubparts) [1685 1722])
+                    ("IndexHeader" variable (:type "unsigned int") (reparse-symbol classsubparts) [1725 1750])
+                    ("IndexData" variable (:type "unsigned int") (reparse-symbol classsubparts) [1753 1776]))                  
+                :type "struct")
+                nil [1240 1779])
+            ("unrar_open_archive_data" type
+               (:members 
+                  ( ("EncryptedHeader" variable (:type "unsigned int") (reparse-symbol classsubparts) [1816 1845])
+                    ("OpenMode" variable (:type "unsigned int") (reparse-symbol classsubparts) [1848 1870])
+                    ("OpenResult" variable (:type "unsigned int") (reparse-symbol classsubparts) [1873 1897])
+                    ("Flags" variable (:type "unsigned int") (reparse-symbol classsubparts) [1900 1919]))                  
+                :type "struct")
+                nil [1781 1922])
+            ("unrar_close" function
+               (:typemodifiers ("extern" "\"C\"")
+                :type "void"
+                :arguments 
+                  ( ("file" variable
+                       (:pointer 2
+                        :type "void")
+                        (reparse-symbol arg-sub-list) [5325 5342]))                  
+                :prototype-flag t)
+                (reparse-symbol extern-c-contents) [5308 5343])
+            ("unrar_rollback" function
+               (:typemodifiers ("extern" "\"C\"")
+                :type "int"
+                :arguments 
+                  ( ("file" variable
+                       (:pointer 2
+                        :type "void")
+                        (reparse-symbol arg-sub-list) [5170 5187])
+                    ("header" variable
+                       (:pointer 1
+                        :type ("unrar_file_header" type
+                             (:prototype t
+                              :type "struct")
+                              nil nil))
+                        (reparse-symbol arg-sub-list) [5188 5221]))                  
+                :prototype-flag t)
+                (reparse-symbol extern-c-contents) [5151 5222])
+            ("unrar_read_file" function
+               (:typemodifiers ("extern" "\"C\"")
+                :type "int"
+                :arguments 
+                  ( ("file" variable
+                       (:pointer 2
+                        :type "void")
+                        (reparse-symbol arg-sub-list) [4809 4826])
+                    ("buffer" variable
+                       (:pointer 1
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [4827 4840])
+                    ("dest_dir" variable
+                       (:pointer 1
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [4841 4856])
+                    ("dest_name" variable
+                       (:pointer 1
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [4865 4881])
+                    ("mode" variable (:type "int") (reparse-symbol arg-sub-list) [4882 4891]))                  
+                :prototype-flag t)
+                (reparse-symbol extern-c-contents) [4789 4892])
+            ("unrar_get_password" function
+               (:typemodifiers ("extern" "\"C\"")
+                :type "void"
+                :arguments 
+                  ( ("file" variable
+                       (:pointer 2
+                        :type "void")
+                        (reparse-symbol arg-sub-list) [3894 3911])
+                    ("dest" variable
+                       (:pointer 1
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [3912 3923])
+                    ("size" variable (:type "int") (reparse-symbol arg-sub-list) [3924 3933]))                  
+                :prototype-flag t)
+                (reparse-symbol extern-c-contents) [3870 3934])
+            ("unrar_set_password" function
+               (:typemodifiers ("extern" "\"C\"")
+                :type "void"
+                :arguments 
+                  ( ("file" variable
+                       (:pointer 2
+                        :type "void")
+                        (reparse-symbol arg-sub-list) [3547 3564])
+                    ("password" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [3565 3586]))                  
+                :prototype-flag t)
+                (reparse-symbol extern-c-contents) [3523 3587])
+            ("unrar_read_header" function
+               (:typemodifiers ("extern" "\"C\"")
+                :type "int"
+                :arguments 
+                  ( ("file" variable
+                       (:pointer 2
+                        :type "void")
+                        (reparse-symbol arg-sub-list) [3271 3288])
+                    ("header" variable
+                       (:pointer 1
+                        :type ("unrar_file_header" type
+                             (:prototype t
+                              :type "struct")
+                              nil nil))
+                        (reparse-symbol arg-sub-list) [3289 3322]))                  
+                :prototype-flag t)
+                (reparse-symbol extern-c-contents) [3249 3323])
+            ("unrar_open_file" function
+               (:typemodifiers ("extern" "\"C\"")
+                :type "void"
+                :arguments 
+                  ( ("info" variable
+                       (:pointer 1
+                        :type ("unrar_open_archive_data" type
+                             (:prototype t
+                              :type "struct")
+                              nil nil))
+                        (reparse-symbol arg-sub-list) [2922 2959])
+                    ("file_path" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [2960 2982])
+                    ("mode" variable (:type "int") (reparse-symbol arg-sub-list) [2991 3000]))                  
+                :pointer 1
+                :prototype-flag t)
+                (reparse-symbol extern-c-contents) [2895 3001])
+            ("unrar_open_buffer" function
+               (:typemodifiers ("extern" "\"C\"")
+                :type "void"
+                :arguments 
+                  ( ("info" variable
+                       (:pointer 1
+                        :type ("unrar_open_archive_data" type
+                             (:prototype t
+                              :type "struct")
+                              nil nil))
+                        (reparse-symbol arg-sub-list) [2419 2456])
+                    ("buffer" variable
+                       (:pointer 1
+                        :type "void")
+                        (reparse-symbol arg-sub-list) [2457 2470])
+                    ("size" variable (:type "int") (reparse-symbol arg-sub-list) [2481 2490])
+                    ("mode" variable (:type "int") (reparse-symbol arg-sub-list) [2491 2500]))                  
+                :pointer 1
+                :prototype-flag t)
+                (reparse-symbol extern-c-contents) [2390 2501]))          
+      :file "fm_unrar.h"
+      :pointmax 5374
+      :fsize 5373
+      :lastmodtime '(22123 9845 0 0)
+      :unmatched-syntax '((symbol 9 . 13) (symbol 2 . 8) (punctuation 1 . 2))
+      :lexical-table 
+        '(("unrar_file" . ((VOID "void" 140 . 144) (punctuation "*" 145 . 146)))
+          ("EUNRAR_BAD_DATA" . ((number "12" 293 . 295)))
+          ("EUNRAR_EWRITE" . ((number "19" 552 . 554)))
+          ("UNRAR_FILE_TEST" . ((number "1" 905 . 906)))
+          ("UNRAR_FILE_EXTRACT" . ((number "2" 938 . 939)))
+          ("UNRAR_OM_LIST_INCSPLIT" . ((number "2" 838 . 839)))
+          ("UNRAR_FILENAME_LENGTH" . ((number "1024" 972 . 976)))
+          ("UNRAR_RHDF_DIRECTORY" . ((number "0x20" 1234 . 1238)))
+          ("EUNRAR_SUCCESS" . ((number "0" 183 . 184)))
+          ("EUNRAR_NO_MEMORY" . ((number "11" 256 . 258)))
+          ("EUNRAR_BAD_ARCHIVE" . ((number "13" 330 . 332)))
+          ("UNRAR_HASH_LENGTH" . ((number "32" 1008 . 1010)))
+          ("EUNRAR_MISSING_PASSWORD" . ((number "22" 663 . 665)))
+          ("UNRAR_RHDF_SOLID" . ((number "0x10" 1198 . 1202)))
+          ("EUNRAR_EREAD" . ((number "18" 515 . 517)))
+          ("EUNRAR_SMALL_BUF" . ((number "20" 589 . 591)))
+          ("EUNRAR_BAD_PASSWORD" . ((number "24" 737 . 739)))
+          ("UNRAR_OM_LIST" . ((number "0" 772 . 773)))
+          ("UNRAR_RHDF_ENCRYPTED" . ((number "0x04" 1162 . 1166)))
+          ("EUNRAR_EOPEN" . ((number "15" 404 . 406)))
+          ("UNRAR_OM_EXTRACT" . ((number "1" 805 . 806)))
+          ("UNRAR_FILE_SKIP" . ((number "0" 872 . 873)))
+          ("EUNRAR_UNKNOWN_FORMAT" . ((number "14" 367 . 369)))
+          ("EUNRAR_ECREATE" . ((number "16" 441 . 443)))
+          ("EUNRAR_UNKNOWN" . ((number "21" 626 . 628)))
+          ("UNRAR_RHDF_SPLITBEFORE" . ((number "0x01" 1090 . 1094)))
+          ("EUNRAR_EREFERENCE" . ((number "23" 700 . 702)))
+          ("EUNRAR_END_ARCHIVE" . ((number "10" 219 . 221)))
+          ("EUNRAR_ECLOSE" . ((number "17" 478 . 480)))
+          ("UNRAR_RHDF_SPLITAFTER" . ((number "0x02" 1126 . 1130)))
+          )
+))
+  :file "!home!harrison!sshfs!vendor-lib-unrar!fm-lib-unrar!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2")

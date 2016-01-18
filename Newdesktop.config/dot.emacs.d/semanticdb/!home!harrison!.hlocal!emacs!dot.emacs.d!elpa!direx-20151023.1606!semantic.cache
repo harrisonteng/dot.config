@@ -1,0 +1,16 @@
+;; Object direx-20151023.1606/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "direx-20151023.1606/"
+  :tables
+  (list
+    (semanticdb-table "direx-autoloads.el"
+      :major-mode 'emacs-lisp-mode
+      :tags nil
+      :file "direx-autoloads.el"
+      :pointmax 283
+      :fsize 945
+      :lastmodtime '(22065 4334 314526 462000)
+      :unmatched-syntax nil))
+  :file "!home!harrison!.hlocal!emacs!dot.emacs.d!elpa!direx-20151023.1606!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2")

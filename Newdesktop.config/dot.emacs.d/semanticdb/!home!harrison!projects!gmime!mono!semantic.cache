@@ -1,0 +1,50 @@
+;; Object mono/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "mono/"
+  :tables
+  (list
+    (semanticdb-table "Makefile.am"
+      :major-mode 'makefile-automake-mode
+      :tags 
+        '( ("API" variable (:default-value ("gmime-api.xml")) nil [1 21])
+            ("SNK" variable (:default-value ("gmime-sharp.snk")) nil [21 43])
+            ("RAW_API" variable (:default-value ("gmime-api.raw")) nil [43 67])
+            ("METADATA" variable (:default-value ("GMime.metadata")) nil [67 93])
+            ("ASSEMBLY_NAME" variable (:default-value ("gmime-sharp")) nil [93 121])
+            ("references" variable (:default-value ("$(GLIB_SHARP_LIBS)")) nil [121 153])
+            ("SOURCES_XML" variable (:default-value ("sources.xml")) nil [153 179])
+            ("PACKAGE_SHARP" variable (:default-value ("$(PACKAGE)-sharp-$(GMIME_API_VERSION)")) nil [180 234])
+            ("ASSEMBLY" variable (:default-value ("$(ASSEMBLY_NAME).dll")) nil [234 266])
+            ("TARGET" variable (:default-value ("$(ASSEMBLY)" "$(ASSEMBLY).config")) nil [266 306])
+            ("TARGET_API" variable (:default-value ("$(API)")) nil [306 326])
+            ("noinst_DATA" variable (:default-value ("$(API)" "$(ASSEMBLY)" "$(ASSEMBLY).config")) nil [326 378])
+            ("CLEANFILES" variable (:default-value ("$(ASSEMBLY)" "generated-stamp" "generated/*.cs" "$(API)")) nil [378 441])
+            ("DISTCLEANFILES" variable (:default-value ("$(ASSEMBLY).config" "AssemblyInfo.cs" "gmime-sharp-$(GMIME_API_VERSION).pc")) nil [441 529])
+            ("GACUTIL_DESTDIR_FLAGS" variable (:default-value ("-package" "$(PACKAGE_SHARP)" "-root" "$(DESTDIR)$(gacdir)")) nil [529 605])
+            ("GACUTIL_FLAGS" variable (:default-value ("-package" "$(PACKAGE_SHARP)" "-gacdir" "$(gacdir)")) nil [605 665])
+            ("pkgconfigdir" variable (:default-value ("$(libdir)/pkgconfig")) nil [666 701])
+            ("pkgconfig_DATA" variable (:default-value ("$(PACKAGE_SHARP).pc")) nil [701 738])
+            ("gapidir" variable (:default-value ("$(datadir)/gapi-2.0")) nil [738 768])
+            ("gapi_DATA" variable (:default-value ("$(TARGET_API)")) nil [768 794])
+            ("sources" variable (:default-value ("StreamWrapper.cs" "HeaderEnumerator.cs" "Header.cs")) nil [795 870])
+            ("build_sources" variable (:default-value ("$(srcdir)/StreamWrapper.cs" "$(srcdir)/HeaderEnumerator.cs" "$(srcdir)/Header.cs" "AssemblyInfo.cs")) nil [871 1001])
+            ("customs" variable (:default-value ("CertificateCollection.custom" "DataWrapper.custom" "Global.custom" "HeaderList.custom" "InternetAddress.custom" "InternetAddressList.custom" "Message.custom" "Multipart.custom" "Object.custom" "SignatureCollection.custom" "Stream.custom")) nil [1002 1287])
+            ("build_customs" variable (:default-value ("$(srcdir)/CertificateCollection.custom" "$(srcdir)/DataWrapper.custom" "$(srcdir)/Global.custom" "$(srcdir)/HeaderList.custom" "$(srcdir)/InternetAddress.custom" "$(srcdir)/InternetAddressList.custom" "$(srcdir)/Message.custom" "$(srcdir)/Multipart.custom" "$(srcdir)/Object.custom" "$(srcdir)/SignatureCollection.custom" "$(srcdir)/Stream.custom")) nil [1288 1676])
+            ("EXTRA_DIST" variable (:default-value ("$(ASSEMBLY).config.in" "AssemblyInfo.cs.in" "$(SNK)" "$(METADATA)" "$(RAW_API)" "$(customs)" "$(sources)" "$(SOURCES_XML)" "gmime-sharp.pc.in")) nil [1677 1870])
+            ("$(PACKAGE_SHARP)" function (:arguments ("gmime-sharp.pc")) nil [1871 1947])
+            ("$(API)" function (:arguments ("$(srcdir)/$(RAW_API)" "$(srcdir)/$(METADATA)")) nil [1948 2110])
+            ("generated-stamp" function (:arguments ("$(API)" "$(build_customs)")) nil [2111 2313])
+            ("GAPI_CDECL_INSERT" variable (:default-value ("$(top_srcdir)/gapi-cdecl-insert" "--keyfile=$(SNK)" "$(ASSEMBLY)")) nil [2332 2411])
+            ("GAPI_CDECL_INSERT" variable nil nil [2416 2435])
+            ("$(ASSEMBLY)" function (:arguments ("$(build_sources)" "generated-stamp" "$(srcdir)/$(ASSEMBLY_NAME).snk")) nil [2442 2718])
+            ("install-data-local" function nil nil [2719 3124])
+            ("uninstall-local" function nil nil [3125 3535])
+            ("parse" function nil nil [3536 3574]))          
+      :file "Makefile.am"
+      :pointmax 3574
+      :fsize 3573
+      :lastmodtime '(21560 30358 194185 270000)
+      :unmatched-syntax '((shell-command 3544 . 3573) (bol 3543 . 3543))))
+  :file "!home!harrison!projects!gmime!mono!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2")

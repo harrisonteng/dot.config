@@ -1,0 +1,25 @@
+;; Object bounce/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "bounce/"
+  :tables (list 
+   (semanticdb-table "Makefile.am"
+    :major-mode 'makefile-automake-mode
+    :tags 
+        '( ("agents_execdir" variable (:default-value ("$(prefix)/agents")) nil [1 35])
+            ("agents_exec_PROGRAMS" variable (:default-value ("bounce")) nil [36 64])
+            ("bounce_SOURCES" variable (:default-value ("bounce.c" "../hash.c" "../common.c" "../config.c" "../mcfg.c" "../logger.c")) nil [64 144])
+            ("bounce_LDADD" variable (:default-value ("-lemcbase" "-lglib-2.0")) nil [144 178])
+            ("bounce_LDFLAGS" variable (:default-value ("-Wl,-export-dynamic")) nil [178 213])
+            ("install-exec-hook" function nil nil [214 423])
+            ("uninstall-hook" function nil nil [424 580]))          
+    :file "Makefile.am"
+    :pointmax 580
+    :fsize 579
+    :lastmodtime '(21696 16167 470341 608000)
+    :unmatched-syntax '((shell-command 441 . 579) (bol 440 . 440))
+    )
+   )
+  :file "!home!harrison!projects!git!fm-app-mailer!bounce!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2"
+  )

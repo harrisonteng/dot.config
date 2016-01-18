@@ -1,0 +1,659 @@
+;; Object net/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "net/"
+  :tables
+  (list
+    (semanticdb-table "browse-url.el.gz"
+      :major-mode 'emacs-lisp-mode
+      :tags 
+        '( ("browse-url" customgroup (:user-visible-flag t) nil [8593 8762])
+            ("browse-url-browser-function" variable (:default-value (quote browse-url-default-browser)) nil [8779 10975])
+            ("browse-url-mailto-function" variable (:default-value (quote browse-url-mail)) nil [10977 11395])
+            ("browse-url-netscape-program" variable (:default-value "netscape") nil [11397 11858])
+            ("browse-url-netscape-arguments" variable nil nil [11860 12025])
+            ("browse-url-netscape-startup-arguments" variable (:default-value browse-url-netscape-arguments) nil [12027 12324])
+            ("browse-url-browser-display" variable nil nil [12326 12508])
+            ("browse-url-mozilla-program" variable (:default-value "mozilla") nil [12510 12636])
+            ("browse-url-mozilla-arguments" variable nil nil [12638 12801])
+            ("browse-url-mozilla-startup-arguments" variable (:default-value browse-url-mozilla-arguments) nil [12803 13096])
+            ("browse-url-firefox-program" variable (:default-value (let ((candidates (quote ("firefox" "iceweasel" "icecat")))) (while (and candidates (not (executable-find (car candidates)))) (setq candidates (cdr candidates))) (or (car candidates) "firefox"))) nil [13098 13418])
+            ("browse-url-firefox-arguments" variable nil nil [13420 13583])
+            ("browse-url-firefox-startup-arguments" variable (:default-value browse-url-firefox-arguments) nil [13585 13878])
+            ("browse-url-chromium-program" variable (:default-value (let ((candidates (quote ("chromium" "chromium-browser")))) (while (and candidates (not (executable-find (car candidates)))) (setq candidates (cdr candidates))) (or (car candidates) "chromium"))) nil [13880 14220])
+            ("browse-url-chromium-arguments" variable nil nil [14222 14405])
+            ("browse-url-galeon-program" variable (:default-value "galeon") nil [14407 14530])
+            ("browse-url-galeon-arguments" variable nil nil [14532 14693])
+            ("browse-url-galeon-startup-arguments" variable (:default-value browse-url-galeon-arguments) nil [14695 14984])
+            ("browse-url-epiphany-program" variable (:default-value "epiphany") nil [14986 15115])
+            ("browse-url-epiphany-arguments" variable nil nil [15117 15282])
+            ("browse-url-epiphany-startup-arguments" variable (:default-value browse-url-epiphany-arguments) nil [15284 15581])
+            ("browse-url-gnome-moz-program" variable (:default-value "gnome-moz-remote") nil [15638 15694])
+            ("browse-url-gnome-moz-arguments" variable (:default-value (quote nil)) nil [15696 15895])
+            ("browse-url-mozilla-new-window-is-tab" variable nil nil [15897 16177])
+            ("browse-url-firefox-new-window-is-tab" variable nil nil [16179 16566])
+            ("browse-url-galeon-new-window-is-tab" variable nil nil [16568 16846])
+            ("browse-url-epiphany-new-window-is-tab" variable nil nil [16848 17130])
+            ("browse-url-netscape-new-window-is-tab" variable nil nil [17132 17414])
+            ("browse-url-new-window-flag" variable nil nil [17416 17790])
+            ("browse-url-mosaic-program" variable (:default-value "xmosaic") nil [17792 17947])
+            ("browse-url-mosaic-arguments" variable nil nil [17949 18110])
+            ("browse-url-mosaic-pidfile" variable (:default-value "~/.mosaicpid") nil [18112 18248])
+            ("browse-url-filename-alist" variable (:default-value (\` (("^/\\(ftp@\\|anonymous@\\)?\\([^:]+\\):/*" . "ftp://\\2/") ("^/\\([^:@]+@\\)?\\([^:]+\\):/*" . "ftp://\\1\\2/") (\,@ (if (memq system-type (quote (windows-nt ms-dos))) (quote (("^\\([a-zA-Z]:\\)[\\/]" . "file:///\\1/") ("^[\\/][\\/]+" . "file://"))))) ("^/+" . "file:///")))) nil [18250 19698])
+            ("browse-url-save-file" variable nil nil [19700 19876])
+            ("browse-url-of-file-hook" variable nil nil [19878 20179])
+            ("browse-url-CCI-port" variable (:default-value 3003) nil [20181 20390])
+            ("browse-url-CCI-host" variable (:default-value "localhost") nil [20392 20643])
+            ("browse-url-temp-file-name" variable nil nil [20645 20683])
+            ("make-variable-buffer-local" code nil nil [20684 20739])
+            ("browse-url-xterm-program" variable (:default-value "xterm") nil [20741 20957])
+            ("browse-url-xterm-args" variable nil nil [20959 21171])
+            ("browse-url-gnudoit-program" variable (:default-value "gnudoit") nil [21173 21329])
+            ("browse-url-gnudoit-args" variable (:default-value (quote ("-q"))) nil [21331 21551])
+            ("browse-url-generic-program" variable nil nil [21553 21731])
+            ("browse-url-generic-args" variable nil nil [21733 21909])
+            ("browse-url-temp-dir" variable (:default-value temporary-file-directory) nil [21911 22226])
+            ("browse-url-netscape-version" variable (:default-value 3) nil [22228 22438])
+            ("browse-url-text-browser" variable (:default-value "lynx") nil [22440 22581])
+            ("browse-url-text-emacs-args" variable (:default-value (and (not window-system) (quote ("-show_cursor")))) nil [22583 23028])
+            ("browse-url-text-input-field" variable (:default-value (quote avoid)) nil [23030 23769])
+            ("browse-url-text-input-attempts" variable (:default-value 10) nil [23771 23955])
+            ("browse-url-text-input-delay" variable (:default-value 0.2) nil [23957 24134])
+            ("browse-url-kde-program" variable (:default-value "kfmclient") nil [24136 24290])
+            ("browse-url-kde-args" variable (:default-value (quote ("openURL"))) nil [24292 24469])
+            ("browse-url-elinks-wrapper" variable (:default-value (quote ("xterm" "-e"))) nil [24471 24645])
+            ("browse-url-url-encode-chars" function (:arguments ("text" "chars")) nil [24731 25174])
+            ("browse-url-encode-url" function (:arguments ("url")) nil [25176 25592])
+            ("browse-url-url-at-point" function nil nil [25675 25896])
+            ("browse-url-interactive-arg" function (:arguments ("prompt")) nil [26069 26921])
+            ("browse-url-maybe-new-window" function (:arguments ("arg")) nil [27121 27273])
+            ("browse-url-of-file" function
+               (:user-visible-flag t
+                :arguments ("file"))
+                nil [27383 28100])
+            ("browse-url-file-url" function (:arguments ("file")) nil [28102 28787])
+            ("browse-url-of-buffer" function
+               (:user-visible-flag t
+                :arguments ("buffer"))
+                nil [28804 29667])
+            ("browse-url-delete-temp-file" function (:arguments ("temp-file-name")) nil [29669 30000])
+            ("add-hook" code nil nil [30002 30059])
+            ("declare-function" code nil nil [30061 30151])
+            ("browse-url-of-dired-file" function (:user-visible-flag t) nil [30168 30427])
+            ("browse-url-of-region" function
+               (:user-visible-flag t
+                :arguments ("min" "max"))
+                nil [30444 30659])
+            ("browse-url" function
+               (:user-visible-flag t
+                :arguments ("url" "args"))
+                nil [30846 32624])
+            ("browse-url-at-point" function
+               (:user-visible-flag t
+                :arguments ("arg"))
+                nil [32641 33060])
+            ("browse-url-at-mouse" function
+               (:user-visible-flag t
+                :arguments ("event"))
+                nil [33077 33559])
+            ("dos-windows-version" variable nil nil [33697 33725])
+            ("declare-function" code nil nil [33726 33773])
+            ("browse-url-default-windows-browser" function (:arguments ("url" "_new-window")) nil [33795 34216])
+            ("browse-url-default-macosx-browser" function (:arguments ("url" "_new-window")) nil [34218 34394])
+            ("browse-url-process-environment" function nil nil [34417 34904])
+            ("browse-url-emacs-display" function nil nil [34906 35300])
+            ("browse-url-default-browser" function (:arguments ("url" "args")) nil [35302 36832])
+            ("browse-url-can-use-xdg-open" function nil nil [36834 38198])
+            ("browse-url-xdg-open" function
+               (:user-visible-flag t
+                :arguments ("url" "ignored"))
+                nil [38216 38530])
+            ("browse-url-netscape" function
+               (:user-visible-flag t
+                :arguments ("url" "new-window"))
+                nil [38547 40074])
+            ("browse-url-netscape-sentinel" function (:arguments ("process" "url")) nil [40076 40550])
+            ("browse-url-netscape-reload" function (:user-visible-flag t) nil [40552 40907])
+            ("browse-url-netscape-send" function (:arguments ("command")) nil [40909 41239])
+            ("browse-url-mozilla" function
+               (:user-visible-flag t
+                :arguments ("url" "new-window"))
+                nil [41256 42669])
+            ("browse-url-mozilla-sentinel" function (:arguments ("process" "url")) nil [42671 43142])
+            ("browse-url-firefox" function
+               (:user-visible-flag t
+                :arguments ("url" "new-window"))
+                nil [43159 45206])
+            ("browse-url-firefox-sentinel" function (:arguments ("process" "url")) nil [45208 45657])
+            ("browse-url-chromium" function
+               (:user-visible-flag t
+                :arguments ("url" "_new-window"))
+                nil [45674 46220])
+            ("browse-url-galeon" function
+               (:user-visible-flag t
+                :arguments ("url" "new-window"))
+                nil [46237 47694])
+            ("browse-url-galeon-sentinel" function (:arguments ("process" "url")) nil [47696 48160])
+            ("browse-url-epiphany" function
+               (:user-visible-flag t
+                :arguments ("url" "new-window"))
+                nil [48162 49639])
+            ("browse-url-epiphany-sentinel" function (:arguments ("process" "url")) nil [49641 50119])
+            ("url-handler-regexp" variable nil nil [50121 50148])
+            ("browse-url-emacs" function
+               (:user-visible-flag t
+                :arguments ("url" "_new-window"))
+                nil [50165 50788])
+            ("browse-url-gnome-moz" function
+               (:user-visible-flag t
+                :arguments ("url" "new-window"))
+                nil [50805 51708])
+            ("browse-url-mosaic" function
+               (:user-visible-flag t
+                :arguments ("url" "new-window"))
+                nil [51744 53989])
+            ("browse-url-cci" function
+               (:user-visible-flag t
+                :arguments ("url" "new-window"))
+                nil [54035 55220])
+            ("declare-function" code nil nil [55250 55316])
+            ("declare-function" code nil nil [55317 55390])
+            ("browse-url-w3" function
+               (:user-visible-flag t
+                :arguments ("url" "new-window"))
+                nil [55407 56077])
+            ("browse-url-w3-gnudoit" function
+               (:user-visible-flag t
+                :arguments ("url" "_new-window"))
+                nil [56094 56635])
+            ("browse-url-text-xterm" function
+               (:user-visible-flag t
+                :arguments ("url" "_new-window"))
+                nil [56681 57292])
+            ("declare-function" code nil nil [57337 57380])
+            ("declare-function" code nil nil [57381 57424])
+            ("declare-function" code nil nil [57425 57478])
+            ("browse-url-text-emacs" function
+               (:user-visible-flag t
+                :arguments ("url" "new-buffer"))
+                nil [57495 60202])
+            ("rfc2368-parse-mailto-url" function (:prototype-flag t) nil [60223 60269])
+            ("browse-url-mail" function
+               (:user-visible-flag t
+                :arguments ("url" "new-window"))
+                nil [60286 61924])
+            ("browse-url-generic" function
+               (:user-visible-flag t
+                :arguments ("url" "_new-window"))
+                nil [61968 62634])
+            ("browse-url-kde" function
+               (:user-visible-flag t
+                :arguments ("url" "_new-window"))
+                nil [62651 62993])
+            ("browse-url-elinks-new-window" function (:arguments ("url")) nil [62995 63297])
+            ("browse-url-elinks" function
+               (:user-visible-flag t
+                :arguments ("url" "new-window"))
+                nil [63314 64105])
+            ("browse-url-elinks-sentinel" function (:arguments ("process" "url")) nil [64107 64817])
+            ("browse-url" package nil nil [64819 64840]))          
+      :file "browse-url.el.gz"
+      :pointmax 64870
+      :fsize 15818
+      :lastmodtime '(21362 56326 0 0)
+      :unmatched-syntax nil)
+    (semanticdb-table "tramp.el.gz"
+      :major-mode 'emacs-lisp-mode
+      :tags 
+        '( ("tramp-compat" include nil nil [2166 2189])
+            ("cl" include nil nil [2237 2250])
+            ("bkup-backup-directory-info" variable nil nil [2252 2287])
+            ("directory-sep-char" variable nil nil [2288 2315])
+            ("eshell-path-env" variable nil nil [2316 2340])
+            ("file-notify-descriptors" variable nil nil [2341 2373])
+            ("ls-lisp-use-insert-directory-program" variable nil nil [2374 2419])
+            ("outline-regexp" variable nil nil [2420 2443])
+            ("tramp" customgroup (:user-visible-flag t) nil [2488 2616])
+            ("tramp-mode" variable (:default-value t) nil [2697 2847])
+            ("tramp-verbose" variable (:default-value 3) nil [2849 3268])
+            ("when" code nil nil [3305 4012])
+            ("when" code nil nil [4163 4941])
+            ("tramp-auto-save-directory" variable nil nil [4944 5157])
+            ("tramp-encoding-shell" variable (:default-value (if (memq system-type (quote (windows-nt))) (getenv "COMSPEC") "/bin/sh")) nil [5159 6133])
+            ("tramp-encoding-command-switch" variable (:default-value (if (string-match "cmd\\.exe" tramp-encoding-shell) "/c" "-c")) nil [6135 6422])
+            ("tramp-encoding-command-interactive" variable (:default-value (unless (string-match "cmd\\.exe" tramp-encoding-shell) "-i")) nil [6424 6748])
+            ("tramp-methods" variable nil nil [6771 12314])
+            ("tramp-ssh-controlmaster-options" variable
+               (:constant-flag t
+                :default-value (let ((result "") (case-fold-search t)) (ignore-errors (with-temp-buffer (call-process "ssh" nil t nil "-o" "ControlMaster") (goto-char (point-min)) (when (search-forward-regexp "missing.+argument" nil t) (setq result "-o ControlPath=%t.%%r@%%h:%%p -o ControlMaster=auto"))) (unless (zerop (length result)) (with-temp-buffer (call-process "ssh" nil t nil "-o" "ControlPersist") (goto-char (point-min)) (when (search-forward-regexp "missing.+argument" nil t) (setq result (concat result " -o ControlPersist=no")))))) result))
+                nil [12337 13063])
+            ("tramp-use-ssh-controlmaster-options" variable (:default-value (not (zerop (length tramp-ssh-controlmaster-options)))) nil [13086 13295])
+            ("tramp-default-method" variable (:default-value (cond ((and (eq system-type (quote windows-nt)) (executable-find "pscp")) (if (or (fboundp (quote password-read)) (fboundp (quote auth-source-user-or-password)) (fboundp (quote auth-source-search)) (tramp-compat-process-running-p "Pageant")) "pscp" "plink")) ((executable-find "scp") (if (or (fboundp (quote password-read)) (fboundp (quote auth-source-user-or-password)) (fboundp (quote auth-source-search)) (getenv "SSH_AUTH_SOCK") (getenv "SSH_AGENT_PID") (> (length tramp-ssh-controlmaster-options) 0)) "scp" "ssh")) (t "ftp"))) nil [13297 14911])
+            ("tramp-default-method-alist" variable nil nil [14934 15715])
+            ("tramp-default-user" variable nil nil [15717 16065])
+            ("tramp-default-user-alist" variable nil nil [16088 16812])
+            ("tramp-default-host" variable (:default-value (system-name)) nil [16814 16977])
+            ("tramp-default-host-alist" variable nil nil [17000 17742])
+            ("tramp-default-proxies-alist" variable nil nil [17744 18673])
+            ("tramp-save-ad-hoc-proxies" variable nil nil [18675 18816])
+            ("tramp-restricted-shell-hosts-alist" variable (:default-value (when (memq system-type (quote (windows-nt))) (list (concat "\\`" (regexp-quote (system-name)) "\\'")))) nil [18818 19355])
+            ("tramp-local-host-regexp" variable
+               (:constant-flag t
+                :default-value (concat "\\`" (regexp-opt (list "localhost" "localhost6" (system-name) "127.0.0.1" "::1") t) "\\'"))
+                nil [19378 19579])
+            ("tramp-completion-function-alist" variable nil nil [19581 20607])
+            ("tramp-echo-mark-marker" variable
+               (:constant-flag t
+                :default-value "_echo")
+                nil [20609 20697])
+            ("tramp-echo-mark-marker-length" variable
+               (:constant-flag t
+                :default-value (length tramp-echo-mark-marker))
+                nil [20699 20818])
+            ("tramp-echo-mark" variable
+               (:constant-flag t
+                :default-value (concat tramp-echo-mark-marker (make-string tramp-echo-mark-marker-length 8)))
+                nil [20820 21371])
+            ("tramp-echoed-echo-mark-regexp" variable
+               (:constant-flag t
+                :default-value (format "%s\\(\\( \\)?\\)\\{%d\\}" tramp-echo-mark-marker tramp-echo-mark-marker-length))
+                nil [21373 21593])
+            ("tramp-local-end-of-line" variable (:default-value (if (memq system-type (quote (windows-nt))) "
+" "
+")) nil [21595 21784])
+            ("tramp-rsh-end-of-line" variable (:default-value "
+") nil [21786 22008])
+            ("tramp-login-prompt-regexp" variable (:default-value ".*ogin\\( .*\\)?: *") nil [22010 22247])
+            ("tramp-shell-prompt-pattern" variable (:default-value (concat (if (featurep (quote xemacs)) "" "\\(?:^\\|\\)") "[^]#$%>
+]*#?[]#$%>] *\\(\\[[0-9;]*[a-zA-Z] *\\)*")) nil [22249 23319])
+            ("tramp-password-prompt-regexp" variable (:default-value (format "^.*\\(%s\\).*: ? *" (if (boundp (quote password-word-equivalents)) (regexp-opt (symbol-value (quote password-word-equivalents))) "password\\|passphrase"))) nil [23321 23737])
+            ("tramp-wrong-passwd-regexp" variable (:default-value (concat "^.*" (regexp-opt (quote ("Permission denied" "Login incorrect" "Login Incorrect" "Connection refused" "Connection closed" "Timeout, server not responding." "Sorry, try again." "Name or service not known" "Host key verification failed." "No supported authentication methods left to try!")) t) ".*" "\\|" "^.*\\(" "Received signal [0-9]+" "\\).*")) nil [23739 24391])
+            ("tramp-yesno-prompt-regexp" variable (:default-value (concat (regexp-opt (quote ("Are you sure you want to continue connecting (yes/no)?")) t) "\\s-*")) nil [24393 24766])
+            ("tramp-yn-prompt-regexp" variable (:default-value (concat (regexp-opt (quote ("Store key in cache? (y/n)" "Update cached key? (y/n, Return cancels connection)")) t) "\\s-*")) nil [24768 25163])
+            ("tramp-terminal-prompt-regexp" variable (:default-value (concat "\\(" "TERM = (.*)" "\\|" "Terminal type\\? \\[.*\\]" "\\)\\s-*")) nil [25165 25496])
+            ("tramp-operation-not-permitted-regexp" variable (:default-value (concat "\\(" "preserving times.*" "\\|" "set mode" "\\)" ":\\s-*" (regexp-opt (quote ("Operation not permitted")) t))) nil [25498 25855])
+            ("tramp-copy-failed-regexp" variable (:default-value (concat "\\(.+: " (regexp-opt (quote ("Permission denied" "not a regular file" "is a directory" "No such file or directory")) t) "\\)\\s-*")) nil [25857 26220])
+            ("tramp-process-alive-regexp" variable nil nil [26222 26580])
+            ("tramp-temp-name-prefix" variable
+               (:constant-flag t
+                :default-value "tramp.")
+                nil [26582 26946])
+            ("tramp-temp-buffer-name" variable
+               (:constant-flag t
+                :default-value " *tramp temp*")
+                nil [26948 27102])
+            ("tramp-temp-buffer-file-name" variable nil nil [27104 27231])
+            ("make-variable-buffer-local" code nil nil [27232 27289])
+            ("put" code nil nil [27290 27343])
+            ("tramp-syntax" variable (:default-value (if (featurep (quote xemacs)) (quote sep) (quote ftp))) nil [27918 28299])
+            ("tramp-prefix-format" variable
+               (:constant-flag t
+                :default-value (cond ((equal tramp-syntax (quote ftp)) "/") ((equal tramp-syntax (quote sep)) "/[") (t (error "Wrong `tramp-syntax' defined"))))
+                nil [28301 28548])
+            ("tramp-prefix-regexp" variable
+               (:constant-flag t
+                :default-value (concat "^" (regexp-quote tramp-prefix-format)))
+                nil [28550 28758])
+            ("tramp-method-regexp" variable
+               (:constant-flag t
+                :default-value "[a-zA-Z_0-9-]+")
+                nil [28760 28850])
+            ("tramp-postfix-method-format" variable
+               (:constant-flag t
+                :default-value (cond ((equal tramp-syntax (quote ftp)) ":") ((equal tramp-syntax (quote sep)) "/") (t (error "Wrong `tramp-syntax' defined"))))
+                nil [28852 29115])
+            ("tramp-postfix-method-regexp" variable
+               (:constant-flag t
+                :default-value (regexp-quote tramp-postfix-method-format))
+                nil [29117 29313])
+            ("tramp-user-regexp" variable
+               (:constant-flag t
+                :default-value "[^/|: 	]+")
+                nil [29315 29388])
+            ("tramp-prefix-domain-format" variable
+               (:constant-flag t
+                :default-value "%")
+                nil [29411 29513])
+            ("tramp-prefix-domain-regexp" variable
+               (:constant-flag t
+                :default-value (regexp-quote tramp-prefix-domain-format))
+                nil [29536 29721])
+            ("tramp-domain-regexp" variable
+               (:constant-flag t
+                :default-value "[-a-zA-Z0-9_.]+")
+                nil [29723 29805])
+            ("tramp-user-with-domain-regexp" variable
+               (:constant-flag t
+                :default-value (concat "\\(" tramp-user-regexp "\\)" tramp-prefix-domain-regexp "\\(" tramp-domain-regexp "\\)"))
+                nil [29807 30009])
+            ("tramp-postfix-user-format" variable
+               (:constant-flag t
+                :default-value "@")
+                nil [30011 30148])
+            ("tramp-postfix-user-regexp" variable
+               (:constant-flag t
+                :default-value (regexp-quote tramp-postfix-user-format))
+                nil [30150 30330])
+            ("tramp-host-regexp" variable
+               (:constant-flag t
+                :default-value "[a-zA-Z0-9_.-]+")
+                nil [30332 30410])
+            ("tramp-prefix-ipv6-format" variable
+               (:constant-flag t
+                :default-value (cond ((equal tramp-syntax (quote ftp)) "[") ((equal tramp-syntax (quote sep)) "") (t (error "Wrong `tramp-syntax' defined"))))
+                nil [30412 30656])
+            ("tramp-prefix-ipv6-regexp" variable
+               (:constant-flag t
+                :default-value (regexp-quote tramp-prefix-ipv6-format))
+                nil [30658 30830])
+            ("tramp-ipv6-regexp" variable
+               (:constant-flag t
+                :default-value "\\(?:\\(?:[a-zA-Z0-9]+\\)?:\\)+[a-zA-Z0-9.]+")
+                nil [30987 31100])
+            ("tramp-postfix-ipv6-format" variable
+               (:constant-flag t
+                :default-value (cond ((equal tramp-syntax (quote ftp)) "]") ((equal tramp-syntax (quote sep)) "") (t (error "Wrong `tramp-syntax' defined"))))
+                nil [31102 31348])
+            ("tramp-postfix-ipv6-regexp" variable
+               (:constant-flag t
+                :default-value (regexp-quote tramp-postfix-ipv6-format))
+                nil [31350 31526])
+            ("tramp-prefix-port-format" variable
+               (:constant-flag t
+                :default-value (cond ((equal tramp-syntax (quote ftp)) "#") ((equal tramp-syntax (quote sep)) "#") (t (error "Wrong `tramp-syntax' defined"))))
+                nil [31528 31748])
+            ("tramp-prefix-port-regexp" variable
+               (:constant-flag t
+                :default-value (regexp-quote tramp-prefix-port-format))
+                nil [31750 31935])
+            ("tramp-port-regexp" variable
+               (:constant-flag t
+                :default-value "[0-9]+")
+                nil [31937 32008])
+            ("tramp-host-with-port-regexp" variable
+               (:constant-flag t
+                :default-value (concat "\\(" tramp-host-regexp "\\)" tramp-prefix-port-regexp "\\(" tramp-port-regexp "\\)"))
+                nil [32010 32206])
+            ("tramp-postfix-hop-format" variable
+               (:constant-flag t
+                :default-value "|")
+                nil [32208 32307])
+            ("tramp-postfix-hop-regexp" variable
+               (:constant-flag t
+                :default-value (regexp-quote tramp-postfix-hop-format))
+                nil [32309 32487])
+            ("tramp-postfix-host-format" variable
+               (:constant-flag t
+                :default-value (cond ((equal tramp-syntax (quote ftp)) ":") ((equal tramp-syntax (quote sep)) "]") (t (error "Wrong `tramp-syntax' defined"))))
+                nil [32489 32746])
+            ("tramp-postfix-host-regexp" variable
+               (:constant-flag t
+                :default-value (regexp-quote tramp-postfix-host-format))
+                nil [32748 32934])
+            ("tramp-localname-regexp" variable
+               (:constant-flag t
+                :default-value ".*$")
+                nil [32936 33007])
+            ("tramp-remote-file-name-spec-regexp" variable
+               (:constant-flag t
+                :default-value (concat "\\(?:" "\\(" tramp-method-regexp "\\)" tramp-postfix-method-regexp "\\)?" "\\(?:" "\\(" tramp-user-regexp "\\)" tramp-postfix-user-regexp "\\)?" "\\(" "\\(?:" tramp-host-regexp "\\|" tramp-prefix-ipv6-regexp "\\(?:" tramp-ipv6-regexp "\\)?" tramp-postfix-ipv6-regexp "\\)" "\\(?:" tramp-prefix-port-regexp tramp-port-regexp "\\)?" "\\)?"))
+                nil [33032 33553])
+            ("tramp-file-name-structure" variable
+               (:constant-flag t
+                :default-value (list (concat tramp-prefix-regexp "\\(" "\\(?:" tramp-remote-file-name-spec-regexp tramp-postfix-hop-regexp "\\)+" "\\)?" tramp-remote-file-name-spec-regexp tramp-postfix-host-regexp "\\(" tramp-localname-regexp "\\)") 5 6 7 8 1))
+                nil [33555 34689])
+            ("tramp-file-name-regexp-unified" variable
+               (:constant-flag t
+                :default-value (if (memq system-type (quote (cygwin windows-nt))) "\\`/\\(\\[.*\\]\\|[^/|:]\\{2,\\}[^/|]*\\):" "\\`/[^/|:][^/|]*:"))
+                nil [34706 35112])
+            ("tramp-file-name-regexp-separate" variable
+               (:constant-flag t
+                :default-value "\\`/\\[.*\\]")
+                nil [35129 35361])
+            ("tramp-file-name-regexp" variable
+               (:constant-flag t
+                :default-value (cond ((equal tramp-syntax (quote ftp)) tramp-file-name-regexp-unified) ((equal tramp-syntax (quote sep)) tramp-file-name-regexp-separate) (t (error "Wrong `tramp-syntax' defined"))))
+                nil [35378 36325])
+            ("tramp-completion-file-name-regexp-unified" variable
+               (:constant-flag t
+                :default-value (if (memq system-type (quote (cygwin windows-nt))) "\\`/[^/]\\{2,\\}\\'" "\\`/[^/]*\\'"))
+                nil [36342 36728])
+            ("tramp-completion-file-name-regexp-separate" variable
+               (:constant-flag t
+                :default-value "\\`/\\([[][^]]*\\)?\\'")
+                nil [36745 37011])
+            ("tramp-completion-file-name-regexp" variable
+               (:constant-flag t
+                :default-value (cond ((equal tramp-syntax (quote ftp)) tramp-completion-file-name-regexp-unified) ((equal tramp-syntax (quote sep)) tramp-completion-file-name-regexp-separate) (t (error "Wrong `tramp-syntax' defined"))))
+                nil [37028 37693])
+            ("tramp-chunksize" variable (:default-value (when (and (not (featurep (quote xemacs))) (memq system-type (quote (hpux)))) 500)) nil [38049 40989])
+            ("tramp-process-connection-type" variable (:default-value t) nil [41242 41529])
+            ("tramp-connection-timeout" variable (:default-value 60) nil [41531 41832])
+            ("tramp-connection-min-time-diff" variable (:default-value 5) nil [41834 42409])
+            ("tramp-completion-reread-directory-timeout" variable (:default-value 10) nil [42411 43059])
+            ("tramp-current-method" variable nil nil [43086 43166])
+            ("tramp-current-user" variable nil nil [43168 43246])
+            ("tramp-current-host" variable nil nil [43248 43320])
+            ("tramp-current-connection" variable nil nil [43322 43390])
+            ("tramp-completion-file-name-handler-alist" variable
+               (:constant-flag t
+                :default-value (quote ((file-name-all-completions . tramp-completion-handle-file-name-all-completions) (file-name-completion . tramp-completion-handle-file-name-completion))))
+                nil [43407 43832])
+            ("tramp-foreign-file-name-handler-alist" variable nil nil [43928 44154])
+            ("tramp-user-error" function (:arguments ("vec-or-proc" "format" "args")) nil [44203 44387])
+            ("tramp-get-method-parameter" function (:arguments ("method" "param")) nil [44533 44769])
+            ("tramp-file-name-p" function (:arguments ("vec")) nil [44771 44885])
+            ("tramp-file-name-method" function (:arguments ("vec")) nil [44887 45004])
+            ("tramp-file-name-user" function (:arguments ("vec")) nil [45006 45119])
+            ("tramp-file-name-host" function (:arguments ("vec")) nil [45121 45234])
+            ("tramp-file-name-localname" function (:arguments ("vec")) nil [45236 45359])
+            ("tramp-file-name-hop" function (:arguments ("vec")) nil [45361 45472])
+            ("tramp-file-name-real-user" function (:arguments ("vec")) nil [45593 45867])
+            ("tramp-file-name-domain" function (:arguments ("vec")) nil [45869 46113])
+            ("tramp-file-name-real-host" function (:arguments ("vec")) nil [46232 46502])
+            ("tramp-file-name-port" function (:arguments ("vec")) nil [46504 46876])
+            ("tramp-tramp-file-p" function (:arguments ("name")) nil [46899 47084])
+            ("tramp-obsolete-methods" variable
+               (:constant-flag t
+                :default-value (quote ("ssh1" "ssh2" "scp1" "scp2" "scpc" "rsyncc" "plink1")))
+                nil [47117 47230])
+            ("tramp-warned-obsolete-methods" variable nil nil [47232 47333])
+            ("tramp-find-method" function (:arguments ("method" "user" "host")) nil [47335 48852])
+            ("tramp-find-user" function (:arguments ("method" "user" "host")) nil [48854 49615])
+            ("tramp-find-host" function (:arguments ("method" "user" "host")) nil [49617 50124])
+            ("tramp-check-proper-method-and-host" function (:arguments ("vec")) nil [50126 50849])
+            ("tramp-dissect-file-name" function (:arguments ("name" "nodefault")) nil [50851 52118])
+            ("tramp-buffer-name" function (:arguments ("vec")) nil [52120 52603])
+            ("tramp-make-tramp-file-name" function (:arguments ("method" "user" "host" "localname" "hop")) nil [52605 53206])
+            ("tramp-completion-make-tramp-file-name" function (:arguments ("method" "user" "host" "localname")) nil [53208 53942])
+            ("tramp-get-buffer" function (:arguments ("vec")) nil [53944 54366])
+            ("tramp-get-connection-buffer" function (:arguments ("vec")) nil [54368 54655])
+            ("tramp-get-connection-name" function (:arguments ("vec")) nil [54657 54936])
+            ("tramp-get-connection-process" function (:arguments ("vec")) nil [54938 55179])
+            ("tramp-debug-buffer-name" function (:arguments ("vec")) nil [55181 55681])
+            ("tramp-debug-outline-regexp" variable
+               (:constant-flag t
+                :default-value "[0-9]+:[0-9]+:[0-9]+\\.[0-9]+ [a-z0-9-]+ (\\([0-9]+\\)) #")
+                nil [55683 55847])
+            ("tramp-debug-outline-level" function nil nil [55849 56112])
+            ("tramp-get-debug-buffer" function (:arguments ("vec")) nil [56114 57065])
+            ("tramp-debug-message" function (:arguments ("vec" "fmt-string" "arguments")) nil [57067 59059])
+            ("tramp-message-show-message" variable (:default-value t) nil [59061 59263])
+            ("tramp-message" function (:arguments ("vec-or-proc" "level" "fmt-string" "arguments")) nil [59265 60690])
+            ("tramp-backtrace" function (:arguments ("vec-or-proc")) nil [60692 61079])
+            ("tramp-error" function (:arguments ("vec-or-proc" "signal" "fmt-string" "arguments")) nil [61081 61674])
+            ("tramp-error-with-buffer" function (:arguments ("buf" "vec-or-proc" "signal" "fmt-string" "arguments")) nil [61676 62977])
+            ("with-parsed-tramp-file-name" function (:arguments ("filename" "var" "body")) nil [62979 64403])
+            ("put" code nil nil [64405 64463])
+            ("put" code nil nil [64464 64537])
+            ("tramp-compat-font-lock-add-keywords" code nil nil [64538 64632])
+            ("tramp-progress-reporter-update" function (:arguments ("reporter" "value")) nil [64634 64900])
+            ("with-tramp-progress-reporter" function (:arguments ("vec" "level" "message" "body")) nil [64902 66123])
+            ("tramp-compat-font-lock-add-keywords" code nil nil [66125 66220])
+            ("with-tramp-file-property" function (:arguments ("vec" "file" "property" "body")) nil [66222 66797])
+            ("put" code nil nil [66799 66854])
+            ("put" code nil nil [66855 66906])
+            ("tramp-compat-font-lock-add-keywords" code nil nil [66907 66998])
+            ("with-tramp-connection-property" function (:arguments ("key" "property" "body")) nil [67000 67483])
+            ("put" code nil nil [67485 67546])
+            ("put" code nil nil [67547 67604])
+            ("tramp-compat-font-lock-add-keywords" code nil nil [67605 67702])
+            ("tramp-drop-volume-letter" function (:arguments ("name")) nil [67704 68167])
+            ("tramp-set-completion-function" function (:arguments ("method" "function-list")) nil [68226 69623])
+            ("tramp-get-completion-function" function (:arguments ("method")) nil [69625 69985])
+            ("tramp-rfn-eshadow-overlay" variable nil nil [70086 70120])
+            ("make-variable-buffer-local" code nil nil [70121 70176])
+            ("tramp-rfn-eshadow-setup-minibuffer" function nil nil [70178 71042])
+            ("when" code nil nil [71044 71330])
+            ("tramp-rfn-eshadow-update-overlay-regexp" variable
+               (:constant-flag t
+                :default-value (format "[^%s/~]*\\(/\\|~\\)" tramp-postfix-host-format))
+                nil [71332 71441])
+            ("tramp-rfn-eshadow-update-overlay" function nil nil [71443 72653])
+            ("when" code nil nil [72655 72931])
+            ("tramp-inodes" variable nil nil [73214 73271])
+            ("tramp-devices" variable nil nil [73643 73701])
+            ("tramp-default-file-modes" function (:arguments ("filename")) nil [73703 74019])
+            ("tramp-replace-environment-variables" function (:arguments ("filename")) nil [74021 74659])
+            ("when" code nil nil [74788 75716])
+            ("tramp-find-file-name-coding-system-alist" function (:arguments ("filename" "tmpname")) nil [75718 76445])
+            ("tramp-run-real-handler" function (:arguments ("operation" "args")) nil [76447 77023])
+            ("progn" code nil nil [77040 77575])
+            ("tramp-file-name-for-operation" function (:arguments ("operation" "args")) nil [78016 81416])
+            ("tramp-find-foreign-file-name-handler" function (:arguments ("filename")) nil [81418 82159])
+            ("tramp-debug-on-error" variable nil nil [82161 82245])
+            ("tramp-condition-case-unless-debug" function (:arguments ("var" "bodyform" "handlers")) nil [82247 82513])
+            ("tramp-file-name-handler" function (:arguments ("operation" "args")) nil [82533 85709])
+            ("tramp-locked" variable nil nil [86764 86938])
+            ("tramp-locker" variable nil nil [86940 87116])
+            ("progn" code nil nil [87133 88579])
+            ("progn" code nil nil [88596 88871])
+            ("progn" code nil nil [89237 89744])
+            ("tramp-register-autoload-file-name-handlers" code nil nil [89761 89805])
+            ("tramp-register-file-name-handlers" function nil nil [89807 90963])
+            ("eval-after-load" code nil nil [90965 91025])
+            ("tramp-exists-file-name-handler" function (:arguments ("operation" "args")) nil [91027 91770])
+            ("tramp-unload-file-name-handlers" function nil nil [91787 92044])
+            ("add-hook" code nil nil [92046 92108])
+            ("tramp-completion-mode" variable nil nil [92164 92547])
+            ("tramp-completion-mode-p" function nil nil [93303 94442])
+            ("tramp-connectable-p" function (:arguments ("filename")) nil [94444 94930])
+            ("tramp-completion-handle-file-name-all-completions" function (:arguments ("filename" "directory")) nil [95131 97268])
+            ("tramp-completion-handle-file-name-completion" function (:arguments ("filename" "directory" "predicate")) nil [97343 97751])
+            ("tramp-completion-dissect-file-name" function (:arguments ("name")) nil [98689 102330])
+            ("tramp-completion-dissect-file-name1" function (:arguments ("structure" "name")) nil [102332 103025])
+            ("tramp-get-completion-methods" function (:arguments ("partial-method")) nil [103126 103445])
+            ("tramp-get-completion-user-host" function (:arguments ("method" "partial-user" "partial-host" "user" "host")) nil [103514 104433])
+            ("tramp-parse-group" function (:arguments ("regexp" "match-level" "skip-regexp")) nil [104456 104808])
+            ("tramp-parse-file" function (:arguments ("filename" "function")) nil [104831 105297])
+            ("tramp-parse-rhosts" function (:arguments ("filename")) nil [105320 105504])
+            ("tramp-parse-rhosts-group" function nil nil [105506 105916])
+            ("tramp-parse-shosts" function (:arguments ("filename")) nil [105939 106111])
+            ("tramp-parse-shosts-group" function nil nil [106113 106288])
+            ("tramp-parse-sconfig" function (:arguments ("filename")) nil [106311 106485])
+            ("tramp-parse-sconfig-group" function nil nil [106487 106686])
+            ("tramp-parse-shostkeys-sknownhosts" function (:arguments ("dirname" "regexp")) nil [106709 107217])
+            ("tramp-parse-shostkeys" function (:arguments ("dirname")) nil [107240 107465])
+            ("tramp-parse-sknownhosts" function (:arguments ("dirname")) nil [107488 107729])
+            ("tramp-parse-hosts" function (:arguments ("filename")) nil [107752 107922])
+            ("tramp-parse-hosts-group" function nil nil [107924 108128])
+            ("tramp-parse-passwd" function (:arguments ("filename")) nil [108452 108701])
+            ("tramp-parse-passwd-group" function nil nil [108703 109038])
+            ("tramp-parse-netrc" function (:arguments ("filename")) nil [109061 109228])
+            ("tramp-parse-netrc-group" function nil nil [109230 109648])
+            ("tramp-parse-putty" function (:arguments ("registry-or-dirname")) nil [109671 110187])
+            ("tramp-parse-putty-group" function (:arguments ("registry")) nil [110189 110520])
+            ("tramp-handle-file-local-copy-hook" variable nil nil [110586 110706])
+            ("tramp-handle-write-region-hook" variable nil nil [110708 110822])
+            ("tramp-handle-directory-file-name" function (:arguments ("directory")) nil [110824 111391])
+            ("tramp-handle-directory-files" function (:arguments ("directory" "full" "match" "nosort" "files-only")) nil [111393 112170])
+            ("tramp-handle-directory-files-and-attributes" function (:arguments ("directory" "full" "match" "nosort" "id-format")) nil [112172 112515])
+            ("tramp-handle-dired-uncache" function (:arguments ("dir" "dir-p")) nil [112517 112812])
+            ("tramp-handle-file-accessible-directory-p" function (:arguments ("filename")) nil [112814 113001])
+            ("tramp-handle-file-exists-p" function (:arguments ("filename")) nil [113003 113132])
+            ("tramp-handle-file-modes" function (:arguments ("filename")) nil [113134 113379])
+            ("tramp-handle-file-name-as-directory" function (:arguments ("file")) nil [113447 113981])
+            ("tramp-handle-file-name-completion" function (:arguments ("filename" "directory" "predicate")) nil [113983 114453])
+            ("tramp-handle-file-name-directory" function (:arguments ("file")) nil [114455 115120])
+            ("tramp-handle-file-name-nondirectory" function (:arguments ("file")) nil [115122 115343])
+            ("tramp-handle-file-newer-than-file-p" function (:arguments ("file1" "file2")) nil [115345 115629])
+            ("tramp-handle-file-regular-p" function (:arguments ("filename")) nil [115631 115812])
+            ("tramp-handle-file-remote-p" function (:arguments ("filename" "identification" "connected")) nil [115814 116647])
+            ("tramp-handle-file-symlink-p" function (:arguments ("filename")) nil [116649 117035])
+            ("tramp-handle-find-backup-file-name" function (:arguments ("filename")) nil [117037 118438])
+            ("tramp-handle-insert-directory" function (:arguments ("filename" "switches" "wildcard" "full-directory-p")) nil [118440 119646])
+            ("tramp-handle-insert-file-contents" function (:arguments ("filename" "visit" "beg" "end" "replace")) nil [119648 123660])
+            ("tramp-handle-load" function (:arguments ("file" "noerror" "nomessage" "nosuffix" "must-suffix")) nil [123662 124802])
+            ("tramp-handle-make-symbolic-link" function (:arguments ("filename" "linkname" "ok-if-already-exists")) nil [124804 125105])
+            ("tramp-handle-shell-command" function (:arguments ("command" "output-buffer" "error-buffer")) nil [125107 128176])
+            ("tramp-handle-substitute-in-file-name" function (:arguments ("filename")) nil [128178 129069])
+            ("tramp-handle-unhandled-file-name-directory" function (:arguments ("_filename")) nil [129071 129321])
+            ("tramp-handle-set-visited-file-modtime" function (:arguments ("time-list")) nil [129323 129929])
+            ("tramp-handle-verify-visited-file-modtime" function (:arguments ("buf")) nil [129931 131451])
+            ("tramp-handle-file-notify-add-watch" function (:arguments ("filename" "_flags" "_callback")) nil [131453 131848])
+            ("tramp-handle-file-notify-rm-watch" function (:arguments ("proc")) nil [131850 132202])
+            ("tramp-action-login" function (:arguments ("_proc" "vec")) nil [132433 133037])
+            ("tramp-action-password" function (:arguments ("proc" "vec")) nil [133039 133955])
+            ("tramp-action-succeed" function (:arguments ("_proc" "_vec")) nil [133957 134070])
+            ("tramp-action-permission-denied" function (:arguments ("proc" "_vec")) nil [134072 134217])
+            ("tramp-action-yesno" function (:arguments ("proc" "vec")) nil [134219 134835])
+            ("tramp-action-yn" function (:arguments ("proc" "vec")) nil [134837 135443])
+            ("tramp-action-terminal" function (:arguments ("_proc" "vec")) nil [135445 135866])
+            ("tramp-action-process-alive" function (:arguments ("proc" "_vec")) nil [135868 136049])
+            ("tramp-action-out-of-band" function (:arguments ("proc" "vec")) nil [136051 137058])
+            ("tramp-process-one-action" function (:arguments ("proc" "vec" "actions")) nil [137103 137852])
+            ("tramp-process-actions" function (:arguments ("proc" "vec" "pos" "actions" "timeout")) nil [137854 139637])
+            ("tramp-accept-process-output" function (:arguments ("proc" "timeout" "timeout-msecs")) nil [139663 140412])
+            ("tramp-check-for-regexp" function (:arguments ("proc" "regexp")) nil [140414 142038])
+            ("tramp-wait-for-regexp" function (:arguments ("proc" "timeout" "regexp")) nil [142040 143566])
+            ("tramp-send-string" function (:arguments ("vec" "string")) nil [143818 145420])
+            ("tramp-get-inode" function (:arguments ("vec")) nil [145422 145645])
+            ("tramp-get-device" function (:arguments ("vec")) nil [145647 145890])
+            ("tramp-equal-remote" function (:arguments ("file1" "file2")) nil [145892 146544])
+            ("tramp-mode-string-to-int" function (:arguments ("mode-string")) nil [146567 149491])
+            ("tramp-file-mode-type-map" variable
+               (:constant-flag t
+                :default-value (quote ((0 . "-") (1 . "p") (2 . "c") (3 . "m") (4 . "d") (5 . "?") (6 . "b") (7 . "?") (8 . "-") (9 . "n") (10 . "l") (11 . "?") (12 . "s") (13 . "D") (14 . "w"))))
+                nil [149493 150223])
+            ("tramp-file-mode-from-int" function (:arguments ("mode")) nil [150246 150886])
+            ("tramp-file-mode-permissions" function (:arguments ("perm" "suid" "suid-text")) nil [150888 151313])
+            ("tramp-get-local-uid" function (:arguments ("id-format")) nil [151344 151446])
+            ("tramp-get-local-gid" function (:arguments ("id-format")) nil [151469 151667])
+            ("tramp-check-cached-permissions" function (:arguments ("vec" "access")) nil [151690 153370])
+            ("tramp-local-host-p" function (:arguments ("vec")) nil [153393 154461])
+            ("tramp-get-remote-tmpdir" function (:arguments ("vec")) nil [154463 154993])
+            ("tramp-make-tramp-temp-file" function (:arguments ("vec")) nil [155016 155822])
+            ("tramp-delete-temp-file-function" function nil nil [155824 156029])
+            ("add-hook" code nil nil [156031 156092])
+            ("add-hook" code nil nil [156093 156211])
+            ("tramp-handle-make-auto-save-file-name" function nil nil [156254 157943])
+            ("unless" code nil nil [157945 158659])
+            ("tramp-set-auto-save-file-modes" function nil nil [158770 159499])
+            ("unless" code nil nil [159501 159778])
+            ("tramp-subst-strs-in-string" function (:arguments ("alist" "string")) nil [159780 160217])
+            ("tramp-call-process" function (:arguments ("program" "infile" "destination" "display" "args")) nil [160257 160909])
+            ("tramp-read-passwd" function (:arguments ("proc" "prompt")) nil [160932 163032])
+            ("tramp-clear-passwd" function (:arguments ("vec")) nil [163055 163328])
+            ("tramp-half-a-year" variable
+               (:constant-flag t
+                :default-value (quote (241 17024)))
+                nil [163383 163463])
+            ("tramp-parse-time-months" variable
+               (:constant-flag t
+                :default-value (quote (("jan" . 1) ("feb" . 2) ("mar" . 3) ("apr" . 4) ("may" . 5) ("jun" . 6) ("jul" . 7) ("aug" . 8) ("sep" . 9) ("oct" . 10) ("nov" . 11) ("dec" . 12))))
+                nil [163465 163706])
+            ("tramp-time-less-p" function (:arguments ("t1" "t2")) nil [163802 164048])
+            ("tramp-time-subtract" function (:arguments ("t1" "t2")) nil [164123 164446])
+            ("tramp-time-diff" function (:arguments ("t1" "t2")) nil [164469 165294])
+            ("tramp-shell-quote-argument" function (:arguments ("s")) nil [166579 167134])
+            ("tramp-eshell-directory-change" function nil nil [167288 167873])
+            ("eval-after-load" code nil nil [167875 168178])
+            ("tramp-unload-tramp" function (:user-visible-flag t) nil [168406 168669])
+            ("tramp" package nil nil [168671 168687]))          
+      :file "tramp.el.gz"
+      :pointmax 170444
+      :fsize 45077
+      :lastmodtime '(21391 16284 0 0)
+      :unmatched-syntax '((symbol 139639 . 139640) (close-paren 4941 . 4942) (symbol 4144 . 4160) (open-paren 4143 . 4144) (close-paren 4012 . 4013) (symbol 3286 . 3302) (open-paren 3285 . 3286) (close-paren 2250 . 2251) (symbol 2217 . 2234) (open-paren 2216 . 2217))))
+  :file "!usr!local!emacs24!share!emacs!24.4!lisp!net!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2")

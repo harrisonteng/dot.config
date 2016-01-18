@@ -1,0 +1,23 @@
+;; Object autoresp/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "autoresp/"
+  :tables
+  (list
+    (semanticdb-table "Makefile.am"
+      :major-mode 'makefile-automake-mode
+      :tags 
+        '( ("agents_execdir" variable (:default-value ("$(prefix)/agents")) nil [1 35])
+            ("agents_exec_PROGRAMS" variable (:default-value ("autoresp")) nil [36 66])
+            ("autoresp_SOURCES" variable (:default-value ("autoresp.c" "../hash.c" "../common.c" "../config.c" "../mcfg.c" "../logger.c")) nil [66 150])
+            ("autoresp_LDADD" variable (:default-value ("-lemcbase" "-lgmime-2.0" "-lgobject-2.0" "-lglib-2.0")) nil [150 212])
+            ("autoresp_LDFLAGS" variable (:default-value ("-Wl,-export-dynamic")) nil [212 249])
+            ("install-exec-hook" function nil nil [250 385])
+            ("uninstall-hook" function nil nil [386 490]))          
+      :file "Makefile.am"
+      :pointmax 490
+      :fsize 489
+      :lastmodtime '(21742 20804 0 0)
+      :unmatched-syntax '((shell-command 403 . 489) (bol 402 . 402))))
+  :file "!home!harrison!projects!work!bitbucket!fm-app-mailer!autoresp!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2")

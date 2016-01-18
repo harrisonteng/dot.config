@@ -1,0 +1,16 @@
+;; Object fm-app-gomsgparser/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "fm-app-gomsgparser/"
+  :tables
+  (list
+    (semanticdb-table "fm-app-gomsgparser_dev.json"
+      :major-mode 'js-mode
+      :tags nil
+      :file "fm-app-gomsgparser_dev.json"
+      :pointmax 834
+      :fsize 828
+      :lastmodtime '(22157 28887 47412 821000)
+      :unmatched-syntax nil))
+  :file "!home!harrison!projects!repository!emc!bitbucket!fm-app-gomsgparser!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2")

@@ -1,0 +1,20 @@
+;; Object tutorial/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "tutorial/"
+  :tables
+  (list
+    (semanticdb-table "Makefile.am"
+      :major-mode 'makefile-automake-mode
+      :tags 
+        '( (".PHONY" function (:arguments ("html")) nil [1 14])
+            ("EXTRA_DIST" variable (:default-value ("gmime-tut.sgml")) nil [15 43])
+            ("html" function nil nil [44 50])
+            ("dist-hook" function (:arguments ("html")) nil [238 254]))          
+      :file "Makefile.am"
+      :pointmax 367
+      :fsize 366
+      :lastmodtime '(21560 30358 182185 270000)
+      :unmatched-syntax '((shell-command 349 . 359) (bol 348 . 348) (shell-command 310 . 347) (bol 309 . 309) (shell-command 271 . 303) (bol 270 . 270) (shell-command 220 . 230) (bol 219 . 219) (shell-command 180 . 218) (bol 179 . 179) (shell-command 168 . 178) (bol 167 . 167) ...)))
+  :file "!home!harrison!projects!gmime!docs!tutorial!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2")

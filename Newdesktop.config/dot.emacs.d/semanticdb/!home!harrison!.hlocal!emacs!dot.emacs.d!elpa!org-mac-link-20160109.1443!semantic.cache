@@ -1,0 +1,16 @@
+;; Object org-mac-link-20160109.1443/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "org-mac-link-20160109.1443/"
+  :tables
+  (list
+    (semanticdb-table "org-mac-link-autoloads.el"
+      :major-mode 'emacs-lisp-mode
+      :tags nil
+      :file "org-mac-link-autoloads.el"
+      :pointmax 297
+      :fsize 389
+      :lastmodtime '(22163 60325 347212 884000)
+      :unmatched-syntax nil))
+  :file "!home!harrison!.hlocal!emacs!dot.emacs.d!elpa!org-mac-link-20160109.1443!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2")

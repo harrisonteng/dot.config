@@ -1,0 +1,16 @@
+;; Object ido-completing-read+-20150423.1037/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "ido-completing-read+-20150423.1037/"
+  :tables
+  (list
+    (semanticdb-table "ido-completing-read+-autoloads.el"
+      :major-mode 'emacs-lisp-mode
+      :tags nil
+      :file "ido-completing-read+-autoloads.el"
+      :pointmax 313
+      :fsize 1830
+      :lastmodtime '(21827 50269 715445 769000)
+      :unmatched-syntax nil))
+  :file "!home!harrison!Dropbox!newdesktop.settings!dot.emacs.d!elpa!ido-completing-read+-20150423.1037!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2")

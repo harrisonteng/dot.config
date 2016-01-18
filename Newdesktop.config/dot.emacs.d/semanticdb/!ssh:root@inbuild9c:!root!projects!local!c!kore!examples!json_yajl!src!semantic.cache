@@ -1,0 +1,16 @@
+;; Object src/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "src/"
+  :tables
+  (list
+    (semanticdb-table "json_yajl.c"
+      :major-mode 'c-mode
+      :tags nil
+      :file "json_yajl.c"
+      :pointmax 4956
+      :fsize 1595
+      :lastmodtime '(21871 38135)
+      :unmatched-syntax nil))
+  :file "!ssh:root@inbuild9c:!root!projects!local!c!kore!examples!json_yajl!src!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2")

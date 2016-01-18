@@ -1,0 +1,16 @@
+;; Object ido-ubiquitous-20150630.926/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "ido-ubiquitous-20150630.926/"
+  :tables
+  (list
+    (semanticdb-table "ido-ubiquitous-autoloads.el"
+      :major-mode 'emacs-lisp-mode
+      :tags nil
+      :file "ido-ubiquitous-autoloads.el"
+      :pointmax 301
+      :fsize 1788
+      :lastmodtime '(21920 14744 786874 292000)
+      :unmatched-syntax nil))
+  :file "!home!harrison!Dropbox!newdesktop.settings!dot.emacs.d!elpa!ido-ubiquitous-20150630.926!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2")

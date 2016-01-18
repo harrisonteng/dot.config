@@ -1,0 +1,3896 @@
+;; Object fm-app-mailer/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "fm-app-mailer/"
+  :tables
+  (list
+    (semanticdb-table "alworker.c"
+      :major-mode 'c-mode
+      :tags 
+        '( ("rcsid" variable
+               (:pointer 1
+                :typemodifiers ("static")
+                :default-value "\"$Id$\""
+                :type "char")
+                nil [1 29])
+            ("use_rcsid" function
+               (:typemodifiers ("static")
+                :arguments 
+                  ( ("" variable (:type "void") (reparse-symbol arg-sub-list) [52 57]))                  
+                :type "void")
+                nil [30 87])
+            ("_GNU_SOURCE" variable (:constant-flag t) nil [146 157])
+            ("stdio.h" include (:system-flag t) nil [158 176])
+            ("stdlib.h" include (:system-flag t) nil [177 196])
+            ("sysexits.h" include (:system-flag t) nil [197 218])
+            ("glib.h" include (:system-flag t) nil [219 236])
+            ("string.h" include (:system-flag t) nil [237 256])
+            ("sys/stat.h" include (:system-flag t) nil [257 278])
+            ("errno.h" include (:system-flag t) nil [279 297])
+            ("sys/types.h" include (:system-flag t) nil [298 320])
+            ("unistd.h" include (:system-flag t) nil [321 340])
+            ("sys/wait.h" include (:system-flag t) nil [341 362])
+            ("fcntl.h" include (:system-flag t) nil [363 381])
+            ("signal.h" include (:system-flag t) nil [382 401])
+            ("getopt.h" include (:system-flag t) nil [402 421])
+            ("libemcbase.h" include (:system-flag t) nil [422 445])
+            ("json/json.h" include (:system-flag t) nil [446 468])
+            ("alworker.h" include nil nil [470 491])
+            ("logger.h" include nil nil [492 511])
+            ("emcconfig.h" include nil nil [512 534])
+            ("common.h" include nil nil [535 554])
+            ("debugmode" variable
+               (:typemodifiers ("extern")
+                :type "int")
+                nil [556 577])
+            ("pretendmode" variable
+               (:typemodifiers ("extern")
+                :type "int")
+                nil [578 601])
+            ("outboundmode" variable
+               (:typemodifiers ("extern")
+                :type "int")
+                nil [602 626])
+            ("msgid" variable
+               (:pointer 1
+                :typemodifiers ("extern")
+                :constant-flag t
+                :type "char")
+                nil [627 652])
+            ("host_id" variable
+               (:typemodifiers ("extern")
+                :type "long")
+                nil [653 673])
+            ("config" variable
+               (:pointer 1
+                :typemodifiers ("extern")
+                :type ("EmcConfig" type (:type "class") nil nil))
+                nil [675 700])
+            ("agentpid" variable
+               (:default-value "0"
+                :type "int")
+                nil [701 718])
+            ("al_opts" variable
+               (:typemodifiers ("extern")
+                :type ("alworker_options" type (:type "class") nil nil))
+                nil [719 751])
+            ("g_aentry" variable
+               (:pointer 1
+                :default-value "NULL"
+                :type ("EmcAEntry" type (:type "class") nil nil))
+                nil [753 780])
+            ("altimeout" variable
+               (:default-value "0"
+                :type "long")
+                nil [781 800])
+            ("al_alarmer" function
+               (:prototype-flag t
+                :arguments 
+                  ( ("sig" variable (:type "int") (reparse-symbol arg-sub-list) [843 851]))                  
+                :type "void")
+                nil [827 852])
+            ("check_retries" function
+               (:prototype-flag t
+                :arguments 
+                  ( ("aentry" variable
+                       (:pointer 1
+                        :type ("EmcAEntry" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [873 891])
+                    ("agent_name" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [892 915]))                  
+                :type "void")
+                nil [854 916])
+            ("do_agent" function
+               (:prototype-flag t
+                :arguments 
+                  ( ("aentry" variable
+                       (:pointer 1
+                        :type ("EmcAEntry" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [931 949])
+                    ("agent_path" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [950 973])
+                    ("onfail" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [974 993]))                  
+                :type "int")
+                nil [918 994])
+            ("process_inline_action" function
+               (:prototype-flag t
+                :arguments 
+                  ( ("aentry" variable
+                       (:pointer 1
+                        :type ("EmcAEntry" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [1021 1039]))                  
+                :type "int")
+                nil [995 1040])
+            ("process_agent_commands" function
+               (:prototype-flag t
+                :arguments 
+                  ( ("agent_name" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [1068 1091])
+                    ("commands" variable
+                       (:pointer 1
+                        :type ("EmcArray" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [1092 1111])
+                    ("aentry" variable
+                       (:pointer 1
+                        :type ("EmcAEntry" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [1112 1130]))                  
+                :type "int")
+                nil [1041 1131])
+            ("BUFFER_SIZE" variable (:constant-flag t) nil [1141 1152])
+            ("MSGID" variable (:constant-flag t) nil [1170 1175])
+            ("HOSTNAME" variable (:constant-flag t) nil [1192 1200])
+            ("TIMESTAMPE" variable (:constant-flag t) nil [1216 1226])
+            ("dont_set_ae_status" variable
+               (:default-value "0"
+                :type "int")
+                nil [1233 1260])
+            ("stop_processing" variable
+               (:default-value "0"
+                :type "int")
+                nil [1261 1285])
+            ("pid" variable
+               (:default-value "0"
+                :type "int")
+                nil [1287 1299])
+            ("do_alworker" function (:type "int") nil [1301 8699])
+            ("summary_json_in_common" function
+               (:arguments 
+                  ( ("jobj" variable
+                       (:pointer 1
+                        :type ("json_object" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [8729 8747]))                  
+                :type "void")
+                nil [8701 9249])
+            ("summary_in_json" function
+               (:pointer 1
+                :arguments 
+                  ( ("agent_name" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [9273 9296])
+                    ("usecs" variable (:type "long") (reparse-symbol arg-sub-list) [9297 9308])
+                    ("exit_code" variable (:type "int") (reparse-symbol arg-sub-list) [9309 9323])
+                    ("signal_caught" variable (:type "int") (reparse-symbol arg-sub-list) [9324 9342])
+                    ("timeout" variable (:type "int") (reparse-symbol arg-sub-list) [9343 9355])
+                    ("msgsize" variable (:type "int") (reparse-symbol arg-sub-list) [9356 9368]))                  
+                :type "char")
+                nil [9251 10822])
+            ("STATSHOST" variable (:constant-flag t) nil [10832 10841])
+            ("STATSPORT" variable (:constant-flag t) nil [10865 10874])
+            ("emit_statsd" function
+               (:arguments 
+                  ( ("agent_name" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [10896 10919])
+                    ("agent_usecs" variable (:type "int") (reparse-symbol arg-sub-list) [10920 10936])
+                    ("name" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [10937 10954])
+                    ("measure" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [10955 10975]))                  
+                :type "int")
+                nil [10880 12526])
+            ("do_agent" function
+               (:arguments 
+                  ( ("aentry" variable
+                       (:pointer 1
+                        :type ("EmcAEntry" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [12541 12559])
+                    ("agent_path" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [12560 12583])
+                    ("onfail" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [12584 12604]))                  
+                :type "int")
+                nil [12528 22790])
+            ("check_retries" function
+               (:arguments 
+                  ( ("aentry" variable
+                       (:pointer 1
+                        :type ("EmcAEntry" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [22811 22829])
+                    ("agent_name" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [22830 22853]))                  
+                :type "void")
+                nil [22792 23950])
+            ("process_agent_commands" function
+               (:arguments 
+                  ( ("agent_name" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [23979 24002])
+                    ("commands" variable
+                       (:pointer 1
+                        :type ("EmcArray" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [24003 24022])
+                    ("aentry" variable
+                       (:pointer 1
+                        :type ("EmcAEntry" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [24023 24041]))                  
+                :type "int")
+                nil [23952 31668])
+            ("process_inline_action" function
+               (:arguments 
+                  ( ("aentry" variable
+                       (:pointer 1
+                        :type ("EmcAEntry" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [31696 31714]))                  
+                :type "int")
+                nil [31670 32821])
+            ("al_alarmer" function
+               (:arguments 
+                  ( ("sig" variable (:type "int") (reparse-symbol arg-sub-list) [32839 32847]))                  
+                :type "void")
+                nil [32823 33736]))          
+      :file "alworker.c"
+      :pointmax 33738
+      :fsize 33737
+      :lastmodtime '(21780 17908 694146 775000)
+      :unmatched-syntax nil
+      :lexical-table 
+        '(("TIMESTAMPE" . ((string "\"ts\"" 1227 . 1231)))
+          ("STATSHOST" . ((string "\"statsd.local\"" 10842 . 10856)))
+          ("_GNU_SOURCE")
+          ("BUFFER_SIZE" . 
+              ((number "1024" 1153 . 1157) (punctuation "*" 1158 . 1159) (number "4" 1159 . 1160)))
+          ("MSGID" . ((string "\"msgid\"" 1176 . 1183)))
+          ("STATSPORT" . ((number "8125" 10875 . 10879)))
+          ("HOSTNAME" . ((string "\"host\"" 1201 . 1207)))
+          )
+)
+    (semanticdb-table "Makefile.am"
+      :major-mode 'makefile-automake-mode
+      :tags 
+        '( ("AUTOMAKE_OPTIONS" variable (:default-value ("foreign")) nil [16 41])
+            ("mailer_execdir" variable (:default-value ("$(prefix)/bin")) nil [42 71])
+            ("DEFS" variable (:default-value ("@DEFS@" "-DBUILD_DATE=\\\"`$(date_path) +\"%Y-%m-%dT%H:%M:%S\"`\\\"" "-DBUILD_USER=\\\"`$(id_path) -un`@`$(hostname_path)`\\\"")) nil [72 197])
+            ("SUBDIRS" variable (:default-value ("courier_deliver" "remote_deliver" "autoresp" "bcastbnc" "bounce" "libemcqfile" "libemcqmysql" "listbnc" "listserv" "maillist" "mfilter" "virus" "admin" "espamc" "tagliner" "archiver" "contentfilter")) nil [419 644])
+            ("mailer_exec_PROGRAMS" variable (:default-value ("qrunner")) nil [830 933])
+            ("noinst_HEADERS" variable (:default-value ("common.h" "g_mime_common.h" "constants.h" "alworker.h" "emcmailer.h" "exdeliver.h" "hash.h" "ldeliver.h" "logger.h" "mcfg.h" "cidr.h" "qworker.h" "utils.h")) nil [1128 1313])
+            ("EXTRA_DIST" variable (:default-value ("scripts/EMCTypes.pm" "scripts/subscribeMailingListMember.pl" "scripts/unsubscribeMailingListMember.pl" "scripts/createOnlyMailboxDirectory.pl" "scripts/createHostedMailbox.pl" "data/emcmailer_conf.in" "data/emcmailer_id" "README_PERL" "doc/db" "emcconfig.h.in" "setup.sh" "sqlitecache/query.c" "sqlitecache/sqlite_encode.h" "sqlitecache/query.c" "sqlitecache/expirefromcache.pl" "sqlitecache/query.h")) nil [1511 1940])
+            ("agent_execdir" variable (:default-value ("@prefix@/agents")) nil [2108 2138])
+            ("agent_exec_SCRIPTS" variable (:default-value ("scripts/subscribeMailingListMember.pl" "scripts/unsubscribeMailingListMember.pl" "scripts/createOnlyMailboxDirectory.pl" "scripts/createHostedMailbox.pl" "scripts/EMCTypes.pm")) nil [2138 2339])
+            ("scripts_execdir" variable (:default-value ("@prefix@/bin")) nil [2517 2546])
+            ("scripts_exec_SCRIPTS" variable (:default-value ("scripts/convert-quexion-shared")) nil [2546 2601])
+            ("confdir" variable (:default-value ("@confdir@")) nil [2796 2814])
+            ("qrunner_SOURCES" variable (:default-value ("qrunner.c" "qworker.c" "alworker.c" "ldeliver.c" "exdeliver.c" "config.c" "common.c" "mcfg.c" "hash.c" "logger.c" "confdnet.c")) nil [3062 3217])
+            ("qrunner_LDFLAGS" variable (:default-value ("-Wl,-export-dynamic" "-L/usr/local/lib")) nil [3218 3271])
+            ("qrunner_LDADD" variable (:default-value ("-lemcbase" "-lglib-2.0" "-lgobject-2.0" "-ljson")) nil [3271 3327])
+            ("qworker_SOURCES" variable (:default-value ("qworker_main.c" "qworker.c" "alworker.c" "ldeliver.c" "exdeliver.c" "common.c" "config.c" "mcfg.c" "hash.c" "logger.c" "confdnet.c")) nil [3525 3685])
+            ("qworker_LDFLAGS" variable (:default-value ("-Wl,-export-dynamic" "-L/usr/local/lib")) nil [3686 3739])
+            ("qworker_LDADD" variable (:default-value ("-lemcbase" "-lglib-2.0" "-lgobject-2.0" "-ljson")) nil [3739 3795])
+            ("alworker_SOURCES" variable (:default-value ("alworker_main.c" "alworker.c" "common.c" "config.c" "mcfg.c" "hash.c" "logger.c")) nil [3994 4100])
+            ("alworker_LDFLAGS" variable (:default-value ("-Wl,-export-dynamic" "-L/usr/local/lib")) nil [4101 4155])
+            ("alworker_LDADD" variable (:default-value ("-lemcbase" "-lglib-2.0" "-lgobject-2.0" "-ljson")) nil [4155 4212])
+            ("ldeliver_SOURCES" variable (:default-value ("ldeliver_main.c" "ldeliver.c" "common.c" "config.c" "mcfg.c" "hash.c" "logger.c" "confdnet.c")) nil [4411 4531])
+            ("ldeliver_LDFLAGS" variable (:default-value ("-Wl,-export-dynamic" "-L/usr/local/lib")) nil [4532 4586])
+            ("ldeliver_LDADD" variable (:default-value ("-lemcbase" "-lglib-2.0" "-lgobject-2.0")) nil [4586 4636])
+            ("exdeliver_SOURCES" variable (:default-value ("exdeliver_main.c" "exdeliver.c" "common.c" "config.c" "mcfg.c" "hash.c" "logger.c")) nil [4837 4947])
+            ("exdeliver_LDFLAGS" variable (:default-value ("-Wl,-export-dynamic" "-L/usr/local/lib")) nil [4948 5003])
+            ("exdeliver_LDADD" variable (:default-value ("-lemcbase" "-lglib-2.0" "-lgobject-2.0")) nil [5003 5054])
+            ("qinject_SOURCES" variable (:default-value ("qinject.c" "common.c" "config.c" "mcfg.c" "hash.c" "logger.c")) nil [5253 5338])
+            ("qinject_LDFLAGS" variable (:default-value ("-Wl,-export-dynamic" "-L/usr/local/lib")) nil [5339 5392])
+            ("qinject_LDADD" variable (:default-value ("-lemcbase" "-lglib-2.0" "-lgobject-2.0")) nil [5392 5441])
+            ("qcleaner_SOURCES" variable (:default-value ("qcleaner.c" "common.c" "config.c" "mcfg.c" "hash.c" "logger.c")) nil [5641 5728])
+            ("qcleaner_LDFLAGS" variable (:default-value ("-Wl,-export-dynamic" "-L/usr/local/lib")) nil [5729 5783])
+            ("qcleaner_LDADD" variable (:default-value ("-lemcbase" "-lglib-2.0" "-lgobject-2.0")) nil [5783 5833])
+            ("DEPLOY_FROM" variable (:default-value ("/var/tmp/deploy")) nil [6049 6077])
+            ("deploy" function nil nil [6271 6553])
+            ("install-exec-local" function nil nil [6731 7153]))          
+      :file "Makefile.am"
+      :pointmax 7180
+      :fsize 7179
+      :lastmodtime '(21754 15726 826063 4000)
+      :unmatched-syntax '((shell-command 7155 . 7179) (bol 7154 . 7154) (bol 934 . 934)))
+    (semanticdb-table "alworker.h"
+      :major-mode 'c-mode
+      :tags 
+        '( ("EMC_ALWORKER" variable (:constant-flag t) nil [30 42])
+            ("common.h" include nil nil [44 63])
+            ("alworker_options_t" type
+               (:members 
+                  ( ("configfile" variable
+                       (:pointer 1
+                        :type "char")
+                        (reparse-symbol classsubparts) [123 141])
+                    ("alnum" variable (:type "long") (reparse-symbol classsubparts) [143 154])
+                    ("alstream" variable
+                       (:pointer 1
+                        :type "char")
+                        (reparse-symbol classsubparts) [156 172])
+                    ("alist" variable
+                       (:pointer 1
+                        :type ("EmcAList" type (:type "class") nil nil))
+                        (reparse-symbol classsubparts) [174 191])
+                    ("impl" variable
+                       (:pointer 1
+                        :type ("EmcQImpl" type (:type "class") nil nil))
+                        (reparse-symbol classsubparts) [224 240])
+                    ("queue_type" variable
+                       (:pointer 1
+                        :type "char")
+                        (reparse-symbol classsubparts) [242 260]))                  
+                :type "struct")
+                nil [65 280])
+            ("alworker_options" type
+               (:typedef ("alworker_options_t" type (:type "struct") nil nil)
+                :type "typedef")
+                nil [65 280])
+            ("do_alworker" function
+               (:prototype-flag t
+                :arguments 
+                  ( ("" variable (:type "void") (reparse-symbol arg-sub-list) [298 303]))                  
+                :type "int")
+                nil [282 304]))          
+      :file "alworker.h"
+      :pointmax 313
+      :fsize 312
+      :lastmodtime '(21731 35447 706521 373000)
+      :unmatched-syntax nil
+      :lexical-table 
+        '(("EMC_ALWORKER")
+          )
+)
+    (semanticdb-table "logger.h"
+      :major-mode 'c-mode
+      :tags 
+        '( ("syslog.h" include (:system-flag t) nil [1 20])
+            ("LOGGER_H" variable (:constant-flag t) nil [47 55])
+            ("REPORT_ERROR" variable (:constant-flag t) nil [65 77])
+            ("REPORT_DEBUG" variable (:constant-flag t) nil [88 100])
+            ("REPORT_AGENT" variable (:constant-flag t) nil [111 123])
+            ("REPORT_STATS" variable (:constant-flag t) nil [134 146])
+            ("REPORT_INFO" variable (:constant-flag t) nil [157 168])
+            ("DEBUG_SYSLOG" variable (:constant-flag t) nil [182 194])
+            ("DEBUG_STDOUT" variable (:constant-flag t) nil [211 223])
+            ("DEBUG_RULE" variable (:constant-flag t) nil [240 250])
+            ("DEBUG_FINGERPRINT" variable (:constant-flag t) nil [269 286])
+            ("DEBUG_CONFIG" variable (:constant-flag t) nil [298 310])
+            ("DEBUG_WARN" variable (:constant-flag t) nil [328 338])
+            ("DEBUG_FAIL" variable (:constant-flag t) nil [358 368])
+            ("DEBUG_INFO" variable (:constant-flag t) nil [388 398])
+            ("DEBUG_RESULT" variable (:constant-flag t) nil [419 431])
+            ("DEBUG_PARSE_DOM" variable (:constant-flag t) nil [450 465])
+            ("DEBUG_MAX" variable (:constant-flag t) nil [481 490])
+            ("spam_logger" function
+               (:prototype-flag t
+                :arguments 
+                  ( ("" variable (:type "int") (reparse-symbol arg-sub-list) [522 526])
+                    ("" variable (:type "int") (reparse-symbol arg-sub-list) [527 531])
+                    ("" variable (:type "int") (reparse-symbol arg-sub-list) [532 536])
+                    ("" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [537 550])
+                    ("..." variable (:type "vararg") (reparse-symbol arg-sub-list) [551 555]))                  
+                :type "void")
+                nil [505 556])
+            ("mailer_log" function
+               (:prototype-flag t
+                :arguments 
+                  ( ("error" variable (:type "int") (reparse-symbol arg-sub-list) [574 584])
+                    ("log_template" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [585 611])
+                    ("..." variable (:type "vararg") (reparse-symbol arg-sub-list) [612 616]))                  
+                :type "void")
+                nil [558 617])
+            ("mailer_log_simple" function
+               (:prototype-flag t
+                :arguments 
+                  ( ("error" variable (:type "int") (reparse-symbol arg-sub-list) [641 651])
+                    ("message" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [652 672]))                  
+                :type "void")
+                nil [618 673]))          
+      :file "logger.h"
+      :pointmax 682
+      :fsize 681
+      :lastmodtime '(21731 35447 962521 377000)
+      :unmatched-syntax nil
+      :lexical-table 
+        '(("DEBUG_CONFIG" . ((number "16" 317 . 319)))
+          ("REPORT_STATS" . ((number "4" 147 . 148)))
+          ("REPORT_INFO" . ((number "0" 170 . 171)))
+          ("REPORT_ERROR" . ((number "1" 78 . 79)))
+          ("DEBUG_PARSE_DOM" . ((number "512" 469 . 472)))
+          ("DEBUG_SYSLOG" . ((number "1" 201 . 202)))
+          ("REPORT_AGENT" . ((number "3" 124 . 125)))
+          ("REPORT_DEBUG" . ((number "2" 101 . 102)))
+          ("DEBUG_STDOUT" . ((number "2" 230 . 231)))
+          ("DEBUG_FINGERPRINT" . ((number "8" 288 . 289)))
+          ("DEBUG_WARN" . ((number "32" 347 . 349)))
+          ("DEBUG_RESULT" . ((number "256" 438 . 441)))
+          ("LOGGER_H")
+          ("DEBUG_INFO" . ((number "128" 407 . 410)))
+          ("DEBUG_MAX" . ((number "512" 500 . 503)))
+          ("DEBUG_RULE" . ((number "4" 259 . 260)))
+          ("DEBUG_FAIL" . ((number "64" 377 . 379)))
+          )
+)
+    (semanticdb-table "common.h"
+      :major-mode 'c-mode
+      :tags 
+        '( ("EMC_COMMON_H" variable (:constant-flag t) nil [30 42])
+            ("mysql/mysql.h" include (:system-flag t) nil [44 68])
+            ("glib.h" include (:system-flag t) nil [69 86])
+            ("openssl/aes.h" include (:system-flag t) nil [87 111])
+            ("sys/uio.h" include (:system-flag t) nil [112 132])
+            ("emcconfig.h" include (:system-flag t) nil [134 156])
+            ("constants.h" include (:system-flag t) nil [157 179])
+            ("emcmailer.h" include (:system-flag t) nil [180 202])
+            ("EmcQImpl" type
+               (:typedef ("void")
+                :pointer 1
+                :type "typedef")
+                nil [246 270])
+            ("EmcQueue" type
+               (:typedef ("void")
+                :pointer 1
+                :type "typedef")
+                nil [271 295])
+            ("EmcQEntry" type
+               (:typedef ("void")
+                :pointer 1
+                :type "typedef")
+                nil [296 321])
+            ("EmcAList" type
+               (:typedef ("void")
+                :pointer 1
+                :type "typedef")
+                nil [322 346])
+            ("EmcAEntry" type
+               (:typedef ("void")
+                :pointer 1
+                :type "typedef")
+                nil [347 372])
+            ("EmcHeader" type
+               (:typedef ("void")
+                :pointer 1
+                :type "typedef")
+                nil [373 398])
+            ("EmcHint" type
+               (:typedef ("void")
+                :pointer 1
+                :type "typedef")
+                nil [399 422])
+            ("EmcHostedEntry" type
+               (:typedef ("void")
+                :pointer 1
+                :type "typedef")
+                nil [423 453])
+            ("EmcExternalEntry" type
+               (:typedef ("void")
+                :pointer 1
+                :type "typedef")
+                nil [454 486])
+            ("EmcQEntryArray" type
+               (:typedef ("EmcQEntry" type (:type "class") nil nil)
+                :type "typedef")
+                nil [488 528])
+            ("EmcAListArray" type
+               (:typedef ("EmcAList" type (:type "class") nil nil)
+                :type "typedef")
+                nil [529 568])
+            ("EmcAEntryArray" type
+               (:typedef ("EmcAEntry" type (:type "class") nil nil)
+                :type "typedef")
+                nil [569 609])
+            ("EmcHeaderArray" type
+               (:typedef ("EmcHeader" type (:type "class") nil nil)
+                :type "typedef")
+                nil [610 650])
+            ("EmcHostedEntryArray" type
+               (:typedef ("EmcHostedEntry" type (:type "class") nil nil)
+                :type "typedef")
+                nil [651 696])
+            ("EmcExternalEntryArray" type
+               (:typedef ("EmcExternalEntry" type (:type "class") nil nil)
+                :type "typedef")
+                nil [697 744])
+            ("init_impl" function
+               (:prototype-flag t
+                :pointer 1
+                :function-pointer t
+                :arguments 
+                  ( ("config" variable
+                       (:pointer 1
+                        :type ("EmcConfig" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [823 842]))                  
+                :type ("EmcQImpl" type (:type "class") nil nil))
+                nil [781 843])
+            ("init_impl2" function
+               (:prototype-flag t
+                :pointer 1
+                :function-pointer t
+                :arguments 
+                  ( ("config" variable
+                       (:pointer 1
+                        :type ("EmcConfig" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [886 905])
+                    ("connect_to_aka" variable (:type "int") (reparse-symbol arg-sub-list) [905 924]))                  
+                :type ("EmcQImpl" type (:type "class") nil nil))
+                nil [844 925])
+            ("impl_get_akadb" function
+               (:prototype-flag t
+                :pointer 1
+                :function-pointer t
+                :arguments 
+                  ( ("" variable
+                       (:pointer 1
+                        :type ("EmcQImpl" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [968 980]))                  
+                :type ("MYSQL" type (:type "class") nil nil))
+                nil [926 981])
+            ("qentry_dup" function
+               (:prototype-flag t
+                :pointer 1
+                :function-pointer t
+                :arguments 
+                  ( ("" variable
+                       (:pointer 1
+                        :type ("EmcQEntry" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [1039 1051]))                  
+                :type ("EmcQEntry" type (:type "class") nil nil))
+                nil [997 1052])
+            ("qentry_get_sender" function
+               (:prototype-flag t
+                :pointer 1
+                :function-pointer t
+                :constant-flag t
+                :arguments 
+                  ( ("" variable
+                       (:pointer 1
+                        :type ("EmcQEntry" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [1095 1107]))                  
+                :type "char")
+                nil [1053 1108])
+            ("qentry_get_recipient" function
+               (:prototype-flag t
+                :pointer 1
+                :function-pointer t
+                :constant-flag t
+                :arguments 
+                  ( ("" variable
+                       (:pointer 1
+                        :type ("EmcQEntry" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [1151 1163]))                  
+                :type "char")
+                nil [1109 1164])
+            ("qentry_get_message_id" function
+               (:prototype-flag t
+                :pointer 1
+                :function-pointer t
+                :constant-flag t
+                :arguments 
+                  ( ("" variable
+                       (:pointer 1
+                        :type ("EmcQEntry" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [1207 1219]))                  
+                :type "char")
+                nil [1165 1220])
+            ("qentry_get_qnum" function
+               (:prototype-flag t
+                :function-pointer t
+                :arguments 
+                  ( ("" variable
+                       (:pointer 1
+                        :type ("EmcQEntry" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [1263 1275]))                  
+                :type "long")
+                nil [1221 1276])
+            ("qentry_get_inode" function
+               (:prototype-flag t
+                :function-pointer t
+                :arguments 
+                  ( ("" variable
+                       (:pointer 1
+                        :type ("EmcQEntry" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [1319 1331]))                  
+                :type "long")
+                nil [1277 1332])
+            ("qentry_get_status" function
+               (:prototype-flag t
+                :pointer 1
+                :function-pointer t
+                :constant-flag t
+                :arguments 
+                  ( ("" variable
+                       (:pointer 1
+                        :type ("EmcQEntry" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [1375 1387]))                  
+                :type "char")
+                nil [1333 1388])
+            ("qentry_get_lock" function
+               (:prototype-flag t
+                :function-pointer t
+                :arguments 
+                  ( ("" variable
+                       (:pointer 1
+                        :type ("EmcQEntry" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [1431 1443]))                  
+                :type "int")
+                nil [1389 1444])
+            ("qentry_is_outbound" function
+               (:prototype-flag t
+                :function-pointer t
+                :arguments 
+                  ( ("" variable
+                       (:pointer 1
+                        :type ("EmcQEntry" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [1487 1499]))                  
+                :type "int")
+                nil [1445 1500])
+            ("qentry_get_time" function
+               (:prototype-flag t
+                :function-pointer t
+                :arguments 
+                  ( ("" variable
+                       (:pointer 1
+                        :type ("EmcQEntry" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [1543 1555]))                  
+                :type "long")
+                nil [1501 1556])
+            ("qentry_get_last_retry" function
+               (:prototype-flag t
+                :function-pointer t
+                :arguments 
+                  ( ("" variable
+                       (:pointer 1
+                        :type ("EmcQEntry" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [1599 1611]))                  
+                :type "long")
+                nil [1557 1612])
+            ("qentry_get_filename" function
+               (:prototype-flag t
+                :pointer 1
+                :function-pointer t
+                :constant-flag t
+                :arguments 
+                  ( ("" variable
+                       (:pointer 1
+                        :type ("EmcQEntry" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [1655 1667]))                  
+                :type "char")
+                nil [1613 1668])
+            ("qentry_get_host" function
+               (:prototype-flag t
+                :pointer 1
+                :function-pointer t
+                :constant-flag t
+                :arguments 
+                  ( ("" variable
+                       (:pointer 1
+                        :type ("EmcQEntry" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [1711 1723]))                  
+                :type "char")
+                nil [1669 1724])
+            ("qentry_set_impl" function
+               (:prototype-flag t
+                :function-pointer t
+                :arguments 
+                  ( ("" variable
+                       (:pointer 1
+                        :type ("EmcQEntry" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [1767 1779])
+                    ("" variable
+                       (:pointer 1
+                        :type ("EmcQImpl" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [1780 1791]))                  
+                :type "void")
+                nil [1725 1792])
+            ("qentry_remove" function
+               (:prototype-flag t
+                :function-pointer t
+                :arguments 
+                  ( ("" variable
+                       (:pointer 1
+                        :type ("EmcQEntry" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [1835 1847]))                  
+                :type "int")
+                nil [1793 1848])
+            ("qentry_serialize" function
+               (:prototype-flag t
+                :pointer 1
+                :function-pointer t
+                :arguments 
+                  ( ("" variable
+                       (:pointer 1
+                        :type ("EmcQImpl" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [1891 1901])
+                    ("" variable
+                       (:pointer 1
+                        :type ("EmcQEntry" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [1901 1913]))                  
+                :type "char")
+                nil [1849 1914])
+            ("qentry_deserialize" function
+               (:prototype-flag t
+                :pointer 1
+                :function-pointer t
+                :arguments 
+                  ( ("" variable
+                       (:pointer 1
+                        :type ("EmcQImpl" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [1957 1967])
+                    ("" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [1967 1980]))                  
+                :type ("EmcQEntry" type (:type "class") nil nil))
+                nil [1915 1981])
+            ("qentry_create" function
+               (:prototype-flag t
+                :pointer 1
+                :function-pointer t
+                :arguments 
+                  ( ("" variable
+                       (:pointer 1
+                        :type ("EmcQImpl" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [2025 2036])
+                    ("" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [2051 2064])
+                    ("" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [2079 2094])
+                    ("" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [2110 2123])
+                    ("" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [2138 2151])
+                    ("" variable (:type "int") (reparse-symbol arg-sub-list) [2166 2171]))                  
+                :type ("EmcQEntry" type (:type "class") nil nil))
+                nil [1983 2172])
+            ("qentry_create_with_data" function
+               (:prototype-flag t
+                :pointer 1
+                :function-pointer t
+                :arguments 
+                  ( ("" variable
+                       (:pointer 1
+                        :type ("EmcQImpl" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [2215 2226])
+                    ("" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [2241 2254])
+                    ("" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [2269 2284])
+                    ("" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [2300 2313])
+                    ("" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [2328 2341])
+                    ("" variable (:type "int") (reparse-symbol arg-sub-list) [2356 2360])
+                    ("" variable (:type "int") (reparse-symbol arg-sub-list) [2361 2365])
+                    ("" variable
+                       (:pointer 1
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [2366 2374]))                  
+                :type ("EmcQEntry" type (:type "class") nil nil))
+                nil [2173 2375])
+            ("qentry_create_real" function
+               (:prototype-flag t
+                :pointer 1
+                :function-pointer t
+                :arguments 
+                  ( ("" variable
+                       (:pointer 1
+                        :type ("EmcQImpl" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [2413 2424])
+                    ("" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [2439 2452])
+                    ("" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [2467 2482])
+                    ("" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [2498 2511])
+                    ("" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [2526 2539])
+                    ("" variable (:type "int") (reparse-symbol arg-sub-list) [2554 2558])
+                    ("" variable (:type "int") (reparse-symbol arg-sub-list) [2559 2563])
+                    ("" variable
+                       (:pointer 1
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [2564 2571])
+                    ("" variable (:type "int") (reparse-symbol arg-sub-list) [2572 2577]))                  
+                :type ("EmcQEntry" type (:type "class") nil nil))
+                nil [2376 2578])
+            ("qentry_get" function
+               (:prototype-flag t
+                :pointer 1
+                :function-pointer t
+                :arguments 
+                  ( ("" variable
+                       (:pointer 1
+                        :type ("EmcQImpl" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [2621 2632])
+                    ("" variable (:type "long") (reparse-symbol arg-sub-list) [2633 2639]))                  
+                :type ("EmcQEntry" type (:type "class") nil nil))
+                nil [2579 2640])
+            ("qentry_lock" function
+               (:prototype-flag t
+                :function-pointer t
+                :arguments 
+                  ( ("" variable
+                       (:pointer 1
+                        :type ("EmcQEntry" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [2683 2695]))                  
+                :type "int")
+                nil [2641 2696])
+            ("qentry_unlock" function
+               (:prototype-flag t
+                :function-pointer t
+                :arguments 
+                  ( ("" variable
+                       (:pointer 1
+                        :type ("EmcQEntry" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [2739 2751]))                  
+                :type "int")
+                nil [2697 2752])
+            ("qentry_set_status" function
+               (:prototype-flag t
+                :function-pointer t
+                :arguments 
+                  ( ("" variable
+                       (:pointer 1
+                        :type ("EmcQEntry" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [2795 2807])
+                    ("" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [2808 2821]))                  
+                :type "int")
+                nil [2753 2822])
+            ("qentry_get_pending" function
+               (:prototype-flag t
+                :function-pointer t
+                :arguments 
+                  ( ("" variable
+                       (:pointer 1
+                        :type ("EmcQImpl" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [2865 2876])
+                    ("" variable
+                       (:pointer 1
+                        :type ("EmcQEntryArray" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [2877 2894])
+                    ("own_only" variable (:type "int") (reparse-symbol arg-sub-list) [2895 2909]))                  
+                :type "int")
+                nil [2823 2910])
+            ("qentry_get_locked" function
+               (:prototype-flag t
+                :function-pointer t
+                :arguments 
+                  ( ("" variable
+                       (:pointer 1
+                        :type ("EmcQImpl" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [2953 2964])
+                    ("" variable
+                       (:pointer 1
+                        :type ("EmcQEntryArray" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [2965 2982])
+                    ("" variable (:type "int") (reparse-symbol arg-sub-list) [2983 2987])
+                    ("own_only" variable (:type "int") (reparse-symbol arg-sub-list) [2988 3002]))                  
+                :type "int")
+                nil [2911 3003])
+            ("qentry_finished" function
+               (:prototype-flag t
+                :function-pointer t
+                :arguments 
+                  ( ("qentry" variable
+                       (:pointer 1
+                        :type ("EmcQEntry" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [3046 3066]))                  
+                :type "int")
+                nil [3004 3067])
+            ("qentry_get_at" function
+               (:prototype-flag t
+                :pointer 1
+                :function-pointer t
+                :arguments 
+                  ( ("" variable (:type ("EmcQEntryArray" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [3110 3125])
+                    ("" variable (:type "int") (reparse-symbol arg-sub-list) [3126 3130]))                  
+                :type ("EmcQEntry" type (:type "class") nil nil))
+                nil [3068 3131])
+            ("qentry_free_list" function
+               (:prototype-flag t
+                :function-pointer t
+                :arguments 
+                  ( ("" variable (:type ("EmcQEntryArray" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [3174 3189])
+                    ("" variable (:type "int") (reparse-symbol arg-sub-list) [3190 3195]))                  
+                :type "void")
+                nil [3132 3196])
+            ("qentry_free" function
+               (:prototype-flag t
+                :function-pointer t
+                :arguments 
+                  ( ("" variable
+                       (:pointer 1
+                        :type ("EmcQEntry" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [3239 3252]))                  
+                :type "void")
+                nil [3197 3253])
+            ("qentry_get_processing_status" function
+               (:prototype-flag t
+                :function-pointer t
+                :arguments 
+                  ( ("" variable
+                       (:pointer 1
+                        :type ("EmcQEntry" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [3315 3328]))                  
+                :type "int")
+                nil [3254 3329])
+            ("alist_get_qnum" function
+               (:prototype-flag t
+                :function-pointer t
+                :arguments 
+                  ( ("alist" variable
+                       (:pointer 1
+                        :type ("EmcAList" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [3386 3404]))                  
+                :type "long")
+                nil [3344 3405])
+            ("alist_get_alnum" function
+               (:prototype-flag t
+                :function-pointer t
+                :arguments 
+                  ( ("alist" variable
+                       (:pointer 1
+                        :type ("EmcAList" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [3448 3466]))                  
+                :type "long")
+                nil [3406 3467])
+            ("alist_get_message_id" function
+               (:prototype-flag t
+                :pointer 1
+                :function-pointer t
+                :constant-flag t
+                :arguments 
+                  ( ("alist" variable
+                       (:pointer 1
+                        :type ("EmcAList" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [3510 3528]))                  
+                :type "char")
+                nil [3468 3529])
+            ("alist_get_inode" function
+               (:prototype-flag t
+                :function-pointer t
+                :arguments 
+                  ( ("alist" variable
+                       (:pointer 1
+                        :type ("EmcAList" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [3572 3590]))                  
+                :type "long")
+                nil [3530 3591])
+            ("alist_get_filename" function
+               (:prototype-flag t
+                :pointer 1
+                :function-pointer t
+                :constant-flag t
+                :arguments 
+                  ( ("alist" variable
+                       (:pointer 1
+                        :type ("EmcAList" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [3634 3652]))                  
+                :type "char")
+                nil [3592 3653])
+            ("alist_get_recipient" function
+               (:prototype-flag t
+                :pointer 1
+                :function-pointer t
+                :constant-flag t
+                :arguments 
+                  ( ("alist" variable
+                       (:pointer 1
+                        :type ("EmcAList" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [3696 3714]))                  
+                :type "char")
+                nil [3654 3715])
+            ("alist_get_sender" function
+               (:prototype-flag t
+                :pointer 1
+                :function-pointer t
+                :constant-flag t
+                :arguments 
+                  ( ("alist" variable
+                       (:pointer 1
+                        :type ("EmcAList" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [3758 3776]))                  
+                :type "char")
+                nil [3716 3777])
+            ("alist_get_level" function
+               (:prototype-flag t
+                :function-pointer t
+                :arguments 
+                  ( ("alist" variable
+                       (:pointer 1
+                        :type ("EmcAList" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [3820 3838]))                  
+                :type "int")
+                nil [3778 3839])
+            ("alist_get_allow_ext" function
+               (:prototype-flag t
+                :function-pointer t
+                :arguments 
+                  ( ("alist" variable
+                       (:pointer 1
+                        :type ("EmcAList" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [3882 3900]))                  
+                :type "int")
+                nil [3840 3901])
+            ("alist_get_data" function
+               (:prototype-flag t
+                :pointer 1
+                :function-pointer t
+                :constant-flag t
+                :arguments 
+                  ( ("alist" variable
+                       (:pointer 1
+                        :type ("EmcAList" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [3944 3962]))                  
+                :type "char")
+                nil [3902 3963])
+            ("alist_get_status" function
+               (:prototype-flag t
+                :pointer 1
+                :function-pointer t
+                :constant-flag t
+                :arguments 
+                  ( ("alist" variable
+                       (:pointer 1
+                        :type ("EmcAList" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [4006 4024]))                  
+                :type "char")
+                nil [3964 4025])
+            ("alist_get_lock" function
+               (:prototype-flag t
+                :function-pointer t
+                :arguments 
+                  ( ("alist" variable
+                       (:pointer 1
+                        :type ("EmcAList" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [4068 4086]))                  
+                :type "int")
+                nil [4026 4087])
+            ("alist_get_akadb" function
+               (:prototype-flag t
+                :pointer 1
+                :function-pointer t
+                :arguments 
+                  ( ("alist" variable
+                       (:pointer 1
+                        :type ("EmcAList" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [4130 4148]))                  
+                :type ("MYSQL" type (:type "class") nil nil))
+                nil [4088 4149])
+            ("alist_set_impl" function
+               (:prototype-flag t
+                :function-pointer t
+                :arguments 
+                  ( ("" variable
+                       (:pointer 1
+                        :type ("EmcAList" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [4192 4203])
+                    ("" variable
+                       (:pointer 1
+                        :type ("EmcQImpl" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [4204 4215]))                  
+                :type "void")
+                nil [4150 4216])
+            ("alist_create" function
+               (:prototype-flag t
+                :pointer 1
+                :function-pointer t
+                :arguments 
+                  ( ("qentry" variable
+                       (:pointer 1
+                        :type ("EmcQEntry" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [4259 4278])
+                    ("recipient" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [4293 4316])
+                    ("inode" variable (:type "long") (reparse-symbol arg-sub-list) [4331 4342])
+                    ("filename" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [4357 4379])
+                    ("allow_ext" variable (:type "int") (reparse-symbol arg-sub-list) [4394 4408])
+                    ("level" variable (:type "int") (reparse-symbol arg-sub-list) [4423 4433])
+                    ("data" variable
+                       (:pointer 1
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [4448 4461]))                  
+                :type ("EmcAList" type (:type "class") nil nil))
+                nil [4217 4462])
+            ("alist_clone" function
+               (:prototype-flag t
+                :pointer 1
+                :function-pointer t
+                :arguments 
+                  ( ("orig" variable
+                       (:pointer 1
+                        :type ("EmcAList" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [4505 4521])
+                    ("recipient" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [4536 4559])
+                    ("level" variable (:type "int") (reparse-symbol arg-sub-list) [4574 4584])
+                    ("data" variable
+                       (:pointer 1
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [4599 4612]))                  
+                :type ("EmcAList" type (:type "class") nil nil))
+                nil [4463 4613])
+            ("alist_serialize" function
+               (:prototype-flag t
+                :pointer 1
+                :function-pointer t
+                :arguments 
+                  ( ("impl" variable
+                       (:pointer 1
+                        :type ("EmcQImpl" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [4656 4672])
+                    ("alist" variable
+                       (:pointer 1
+                        :type ("EmcAList" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [4673 4689]))                  
+                :type "char")
+                nil [4614 4690])
+            ("alist_deserialize" function
+               (:prototype-flag t
+                :pointer 1
+                :function-pointer t
+                :arguments 
+                  ( ("impl" variable
+                       (:pointer 1
+                        :type ("EmcQImpl" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [4733 4749])
+                    ("in_stream" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [4750 4772]))                  
+                :type ("EmcAList" type (:type "class") nil nil))
+                nil [4691 4773])
+            ("alist_get_by_hosted" function
+               (:prototype-flag t
+                :pointer 1
+                :function-pointer t
+                :arguments 
+                  ( ("impl" variable
+                       (:pointer 1
+                        :type ("EmcQImpl" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [4816 4832])
+                    ("hosted" variable
+                       (:pointer 1
+                        :type ("EmcHostedEntry" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [4847 4872]))                  
+                :type ("EmcAList" type (:type "class") nil nil))
+                nil [4774 4873])
+            ("alist_lock" function
+               (:prototype-flag t
+                :function-pointer t
+                :arguments 
+                  ( ("alist" variable
+                       (:pointer 1
+                        :type ("EmcAList" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [4916 4934]))                  
+                :type "int")
+                nil [4874 4935])
+            ("alist_unlock" function
+               (:prototype-flag t
+                :function-pointer t
+                :arguments 
+                  ( ("alist" variable
+                       (:pointer 1
+                        :type ("EmcAList" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [4978 4996]))                  
+                :type "int")
+                nil [4936 4997])
+            ("alist_set_filename" function
+               (:prototype-flag t
+                :function-pointer t
+                :arguments 
+                  ( ("alist" variable
+                       (:pointer 1
+                        :type ("EmcAList" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [5040 5057])
+                    ("filename" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [5058 5080]))                  
+                :type "void")
+                nil [4998 5081])
+            ("alist_set_status" function
+               (:prototype-flag t
+                :function-pointer t
+                :arguments 
+                  ( ("alist" variable
+                       (:pointer 1
+                        :type ("EmcAList" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [5124 5141])
+                    ("status" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [5142 5163]))                  
+                :type "int")
+                nil [5082 5164])
+            ("alist_set_allow_ext" function
+               (:prototype-flag t
+                :function-pointer t
+                :arguments 
+                  ( ("alist" variable
+                       (:pointer 1
+                        :type ("EmcAList" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [5207 5224])
+                    ("allow" variable (:type "int") (reparse-symbol arg-sub-list) [5225 5236]))                  
+                :type "int")
+                nil [5165 5237])
+            ("alist_get_processing_status" function
+               (:prototype-flag t
+                :function-pointer t
+                :arguments 
+                  ( ("alist" variable
+                       (:pointer 1
+                        :type ("EmcAList" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [5282 5300]))                  
+                :type "int")
+                nil [5238 5301])
+            ("alist_get_pending" function
+               (:prototype-flag t
+                :function-pointer t
+                :arguments 
+                  ( ("qentry" variable
+                       (:pointer 1
+                        :type ("EmcQEntry" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [5344 5363])
+                    ("list" variable
+                       (:pointer 1
+                        :type ("EmcAListArray" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [5364 5386]))                  
+                :type "int")
+                nil [5302 5387])
+            ("alist_finished" function
+               (:prototype-flag t
+                :function-pointer t
+                :arguments 
+                  ( ("alist" variable
+                       (:pointer 1
+                        :type ("EmcAList" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [5430 5449]))                  
+                :type "int")
+                nil [5388 5450])
+            ("alist_get_at" function
+               (:prototype-flag t
+                :pointer 1
+                :function-pointer t
+                :arguments 
+                  ( ("list" variable (:type ("EmcAListArray" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [5493 5512])
+                    ("i" variable (:type "int") (reparse-symbol arg-sub-list) [5513 5520]))                  
+                :type ("EmcAList" type (:type "class") nil nil))
+                nil [5451 5521])
+            ("alist_message_modified" function
+               (:prototype-flag t
+                :function-pointer t
+                :arguments 
+                  ( ("alist" variable
+                       (:pointer 1
+                        :type ("EmcAList" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [5564 5580])
+                    ("inode" variable (:type "long") (reparse-symbol arg-sub-list) [5595 5606])
+                    ("filename" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [5621 5642]))                  
+                :type "int")
+                nil [5522 5643])
+            ("alist_remove_all_aentries" function
+               (:prototype-flag t
+                :function-pointer t
+                :arguments 
+                  ( ("alist" variable
+                       (:pointer 1
+                        :type ("EmcAList" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [5686 5704]))                  
+                :type "int")
+                nil [5644 5705])
+            ("alist_max_itemnum" function
+               (:prototype-flag t
+                :function-pointer t
+                :arguments 
+                  ( ("alist" variable
+                       (:pointer 1
+                        :type ("EmcAList" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [5748 5766]))                  
+                :type "int")
+                nil [5706 5767])
+            ("alist_free_list" function
+               (:prototype-flag t
+                :function-pointer t
+                :arguments 
+                  ( ("list" variable (:type ("EmcAListArray" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [5810 5829])
+                    ("sz" variable (:type "int") (reparse-symbol arg-sub-list) [5830 5838]))                  
+                :type "void")
+                nil [5768 5839])
+            ("alist_free" function
+               (:prototype-flag t
+                :function-pointer t
+                :arguments 
+                  ( ("alist" variable
+                       (:pointer 1
+                        :type ("EmcAList" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [5882 5900]))                  
+                :type "void")
+                nil [5840 5901])
+            ("aentry_get_qnum" function
+               (:prototype-flag t
+                :function-pointer t
+                :arguments 
+                  ( ("aentry" variable
+                       (:pointer 1
+                        :type ("EmcAEntry" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [5960 5980]))                  
+                :type "long")
+                nil [5918 5981])
+            ("aentry_get_alnum" function
+               (:prototype-flag t
+                :function-pointer t
+                :arguments 
+                  ( ("aentry" variable
+                       (:pointer 1
+                        :type ("EmcAEntry" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [6024 6044]))                  
+                :type "long")
+                nil [5982 6045])
+            ("aentry_get_message_id" function
+               (:prototype-flag t
+                :pointer 1
+                :function-pointer t
+                :constant-flag t
+                :arguments 
+                  ( ("aentry" variable
+                       (:pointer 1
+                        :type ("EmcAEntry" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [6088 6108]))                  
+                :type "char")
+                nil [6046 6109])
+            ("aentry_get_recipient" function
+               (:prototype-flag t
+                :pointer 1
+                :function-pointer t
+                :constant-flag t
+                :arguments 
+                  ( ("aentry" variable
+                       (:pointer 1
+                        :type ("EmcAEntry" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [6152 6172]))                  
+                :type "char")
+                nil [6110 6173])
+            ("aentry_get_user" function
+               (:prototype-flag t
+                :pointer 1
+                :function-pointer t
+                :constant-flag t
+                :arguments 
+                  ( ("aentry" variable
+                       (:pointer 1
+                        :type ("EmcAEntry" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [6216 6236]))                  
+                :type "char")
+                nil [6174 6237])
+            ("aentry_get_domain" function
+               (:prototype-flag t
+                :pointer 1
+                :function-pointer t
+                :constant-flag t
+                :arguments 
+                  ( ("aentry" variable
+                       (:pointer 1
+                        :type ("EmcAEntry" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [6280 6300]))                  
+                :type "char")
+                nil [6238 6301])
+            ("aentry_get_sender" function
+               (:prototype-flag t
+                :pointer 1
+                :function-pointer t
+                :constant-flag t
+                :arguments 
+                  ( ("aentry" variable
+                       (:pointer 1
+                        :type ("EmcAEntry" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [6344 6364]))                  
+                :type "char")
+                nil [6302 6365])
+            ("aentry_get_itemnum" function
+               (:prototype-flag t
+                :function-pointer t
+                :arguments 
+                  ( ("aentry" variable
+                       (:pointer 1
+                        :type ("EmcAEntry" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [6408 6428]))                  
+                :type "int")
+                nil [6366 6429])
+            ("aentry_get_action" function
+               (:prototype-flag t
+                :pointer 1
+                :function-pointer t
+                :constant-flag t
+                :arguments 
+                  ( ("aentry" variable
+                       (:pointer 1
+                        :type ("EmcAEntry" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [6472 6492]))                  
+                :type "char")
+                nil [6430 6493])
+            ("aentry_get_data" function
+               (:prototype-flag t
+                :pointer 1
+                :function-pointer t
+                :constant-flag t
+                :arguments 
+                  ( ("aentry" variable
+                       (:pointer 1
+                        :type ("EmcAEntry" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [6536 6556]))                  
+                :type "char")
+                nil [6494 6557])
+            ("aentry_get_status" function
+               (:prototype-flag t
+                :pointer 1
+                :function-pointer t
+                :constant-flag t
+                :arguments 
+                  ( ("aentry" variable
+                       (:pointer 1
+                        :type ("EmcAEntry" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [6600 6620]))                  
+                :type "char")
+                nil [6558 6621])
+            ("aentry_get_retry_times" function
+               (:prototype-flag t
+                :function-pointer t
+                :arguments 
+                  ( ("aentry" variable
+                       (:pointer 1
+                        :type ("EmcAEntry" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [6664 6684]))                  
+                :type "int")
+                nil [6622 6685])
+            ("aentry_get_last_retry" function
+               (:prototype-flag t
+                :function-pointer t
+                :arguments 
+                  ( ("aentry" variable
+                       (:pointer 1
+                        :type ("EmcAEntry" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [6728 6748]))                  
+                :type "long")
+                nil [6686 6749])
+            ("aentry_last_error" function
+               (:prototype-flag t
+                :pointer 1
+                :function-pointer t
+                :constant-flag t
+                :arguments 
+                  ( ("aentry" variable
+                       (:pointer 1
+                        :type ("EmcAEntry" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [6792 6812]))                  
+                :type "char")
+                nil [6750 6813])
+            ("aentry_create" function
+               (:prototype-flag t
+                :pointer 1
+                :function-pointer t
+                :arguments 
+                  ( ("alist" variable
+                       (:pointer 1
+                        :type ("EmcAList" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [6857 6874])
+                    ("action" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [6889 6909])
+                    ("recipient" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [6924 6947])
+                    ("sender" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [6962 6982])
+                    ("itemnum" variable (:type "int") (reparse-symbol arg-sub-list) [6997 7009])
+                    ("data" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [7024 7043]))                  
+                :type ("EmcAEntry" type (:type "class") nil nil))
+                nil [6815 7044])
+            ("aentry_get_pending" function
+               (:prototype-flag t
+                :function-pointer t
+                :arguments 
+                  ( ("" variable
+                       (:pointer 1
+                        :type ("EmcAList" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [7087 7099])
+                    ("" variable
+                       (:pointer 1
+                        :type ("EmcAEntryArray" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [7100 7118]))                  
+                :type "int")
+                nil [7045 7119])
+            ("aentry_get_at" function
+               (:prototype-flag t
+                :pointer 1
+                :function-pointer t
+                :arguments 
+                  ( ("list" variable (:type ("EmcAEntryArray" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [7162 7182])
+                    ("i" variable (:type "int") (reparse-symbol arg-sub-list) [7183 7190]))                  
+                :type ("EmcAEntry" type (:type "class") nil nil))
+                nil [7120 7191])
+            ("aentry_free_list" function
+               (:prototype-flag t
+                :function-pointer t
+                :arguments 
+                  ( ("list" variable (:type ("EmcAEntryArray" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [7234 7254])
+                    ("sz" variable (:type "int") (reparse-symbol arg-sub-list) [7255 7263]))                  
+                :type "void")
+                nil [7192 7264])
+            ("aentry_set_error" function
+               (:prototype-flag t
+                :function-pointer t
+                :arguments 
+                  ( ("" variable
+                       (:pointer 1
+                        :type ("EmcAEntry" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [7307 7319])
+                    ("" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [7320 7334]))                  
+                :type "int")
+                nil [7265 7335])
+            ("aentry_touch" function
+               (:prototype-flag t
+                :function-pointer t
+                :arguments 
+                  ( ("" variable
+                       (:pointer 1
+                        :type ("EmcAEntry" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [7378 7391]))                  
+                :type "int")
+                nil [7336 7392])
+            ("aentry_set_status" function
+               (:prototype-flag t
+                :function-pointer t
+                :arguments 
+                  ( ("" variable
+                       (:pointer 1
+                        :type ("EmcAEntry" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [7435 7447])
+                    ("" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [7448 7462]))                  
+                :type "int")
+                nil [7393 7463])
+            ("aentry_stop_after" function
+               (:prototype-flag t
+                :function-pointer t
+                :arguments 
+                  ( ("aentry" variable
+                       (:pointer 1
+                        :type ("EmcAEntry" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [7506 7526]))                  
+                :type "int")
+                nil [7464 7527])
+            ("aentry_hold_after" function
+               (:prototype-flag t
+                :function-pointer t
+                :arguments 
+                  ( ("aentry" variable
+                       (:pointer 1
+                        :type ("EmcAEntry" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [7570 7590]))                  
+                :type "int")
+                nil [7528 7591])
+            ("aentry_free" function
+               (:prototype-flag t
+                :function-pointer t
+                :arguments 
+                  ( ("aentry" variable
+                       (:pointer 1
+                        :type ("EmcAEntry" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [7634 7654]))                  
+                :type "void")
+                nil [7592 7655])
+            ("header_get_qnum" function
+               (:prototype-flag t
+                :function-pointer t
+                :arguments 
+                  ( ("header" variable
+                       (:pointer 1
+                        :type ("EmcHeader" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [7713 7733]))                  
+                :type "long")
+                nil [7671 7735])
+            ("header_get_alnum" function
+               (:prototype-flag t
+                :function-pointer t
+                :arguments 
+                  ( ("header" variable
+                       (:pointer 1
+                        :type ("EmcHeader" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [7778 7798]))                  
+                :type "long")
+                nil [7736 7800])
+            ("header_get_inode" function
+               (:prototype-flag t
+                :function-pointer t
+                :arguments 
+                  ( ("header" variable
+                       (:pointer 1
+                        :type ("EmcHeader" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [7843 7863]))                  
+                :type "long")
+                nil [7801 7865])
+            ("header_get_filename" function
+               (:prototype-flag t
+                :pointer 1
+                :function-pointer t
+                :constant-flag t
+                :arguments 
+                  ( ("header" variable
+                       (:pointer 1
+                        :type ("EmcHeader" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [7908 7928]))                  
+                :type "char")
+                nil [7866 7930])
+            ("header_get_header" function
+               (:prototype-flag t
+                :pointer 1
+                :function-pointer t
+                :constant-flag t
+                :arguments 
+                  ( ("header" variable
+                       (:pointer 1
+                        :type ("EmcHeader" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [7973 7993]))                  
+                :type "char")
+                nil [7931 7995])
+            ("header_create" function
+               (:prototype-flag t
+                :pointer 1
+                :function-pointer t
+                :arguments 
+                  ( ("alist" variable
+                       (:pointer 1
+                        :type ("EmcAList" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [8038 8055])
+                    ("header_txt" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [8070 8095]))                  
+                :type ("EmcHeader" type (:type "class") nil nil))
+                nil [7996 8097])
+            ("header_get_pending" function
+               (:prototype-flag t
+                :function-pointer t
+                :arguments 
+                  ( ("impl" variable
+                       (:pointer 1
+                        :type ("EmcQImpl" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [8140 8156])
+                    ("filename" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [8171 8192])
+                    ("list" variable
+                       (:pointer 1
+                        :type ("EmcHeaderArray" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [8207 8229]))                  
+                :type "int")
+                nil [8098 8231])
+            ("header_get_like" function
+               (:prototype-flag t
+                :pointer 1
+                :function-pointer t
+                :arguments 
+                  ( ("impl" variable
+                       (:pointer 1
+                        :type ("EmcQImpl" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [8274 8290])
+                    ("filename" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [8305 8326])
+                    ("pattern" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [8341 8363]))                  
+                :type ("EmcHeader" type (:type "class") nil nil))
+                nil [8232 8365])
+            ("header_get_at" function
+               (:prototype-flag t
+                :pointer 1
+                :function-pointer t
+                :arguments 
+                  ( ("list" variable (:type ("EmcHeaderArray" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [8408 8428])
+                    ("i" variable (:type "int") (reparse-symbol arg-sub-list) [8429 8436]))                  
+                :type ("EmcHeader" type (:type "class") nil nil))
+                nil [8366 8438])
+            ("header_free_list" function
+               (:prototype-flag t
+                :function-pointer t
+                :arguments 
+                  ( ("list" variable (:type ("EmcHeaderArray" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [8481 8501])
+                    ("sz" variable (:type "int") (reparse-symbol arg-sub-list) [8502 8510]))                  
+                :type "void")
+                nil [8439 8512])
+            ("header_free" function
+               (:prototype-flag t
+                :function-pointer t
+                :arguments 
+                  ( ("header" variable
+                       (:pointer 1
+                        :type ("EmcHeader" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [8555 8575]))                  
+                :type "void")
+                nil [8513 8577])
+            ("hint_get_message_id" function
+               (:prototype-flag t
+                :pointer 1
+                :function-pointer t
+                :constant-flag t
+                :arguments 
+                  ( ("hint" variable
+                       (:pointer 1
+                        :type ("EmcHint" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [8633 8649]))                  
+                :type "char")
+                nil [8591 8650])
+            ("hint_get_inode" function
+               (:prototype-flag t
+                :function-pointer t
+                :arguments 
+                  ( ("hint" variable
+                       (:pointer 1
+                        :type ("EmcHint" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [8693 8709]))                  
+                :type "long")
+                nil [8651 8710])
+            ("hint_get_agent" function
+               (:prototype-flag t
+                :pointer 1
+                :function-pointer t
+                :constant-flag t
+                :arguments 
+                  ( ("hint" variable
+                       (:pointer 1
+                        :type ("EmcHint" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [8753 8769]))                  
+                :type "char")
+                nil [8711 8770])
+            ("hint_get_key" function
+               (:prototype-flag t
+                :pointer 1
+                :function-pointer t
+                :constant-flag t
+                :arguments 
+                  ( ("hint" variable
+                       (:pointer 1
+                        :type ("EmcHint" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [8813 8829]))                  
+                :type "char")
+                nil [8771 8830])
+            ("hint_get_hint" function
+               (:prototype-flag t
+                :pointer 1
+                :function-pointer t
+                :constant-flag t
+                :arguments 
+                  ( ("hint" variable
+                       (:pointer 1
+                        :type ("EmcHint" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [8873 8889]))                  
+                :type "char")
+                nil [8831 8890])
+            ("hint_create" function
+               (:prototype-flag t
+                :pointer 1
+                :function-pointer t
+                :arguments 
+                  ( ("impl" variable
+                       (:pointer 1
+                        :type ("EmcQImpl" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [8933 8949])
+                    ("msgid" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [8964 8983])
+                    ("inode" variable (:type "long") (reparse-symbol arg-sub-list) [8998 9009])
+                    ("agent" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [9024 9043])
+                    ("key" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [9058 9075])
+                    ("hint_txt" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [9090 9113]))                  
+                :type ("EmcHint" type (:type "class") nil nil))
+                nil [8891 9114])
+            ("hint_get" function
+               (:prototype-flag t
+                :pointer 1
+                :function-pointer t
+                :arguments 
+                  ( ("impl" variable
+                       (:pointer 1
+                        :type ("EmcQImpl" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [9157 9173])
+                    ("msgid" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [9188 9207])
+                    ("key" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [9222 9238])
+                    ("agent" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [9253 9273]))                  
+                :type ("EmcHint" type (:type "class") nil nil))
+                nil [9115 9274])
+            ("hosted_get_qnum" function
+               (:prototype-flag t
+                :function-pointer t
+                :arguments 
+                  ( ("hosted" variable
+                       (:pointer 1
+                        :type ("EmcHostedEntry" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [9332 9357]))                  
+                :type "long")
+                nil [9290 9358])
+            ("hosted_get_alnum" function
+               (:prototype-flag t
+                :function-pointer t
+                :arguments 
+                  ( ("hosted" variable
+                       (:pointer 1
+                        :type ("EmcHostedEntry" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [9401 9426]))                  
+                :type "long")
+                nil [9359 9427])
+            ("hosted_get_message_id" function
+               (:prototype-flag t
+                :pointer 1
+                :function-pointer t
+                :constant-flag t
+                :arguments 
+                  ( ("hosted" variable
+                       (:pointer 1
+                        :type ("EmcHostedEntry" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [9470 9495]))                  
+                :type "char")
+                nil [9428 9496])
+            ("hosted_get_recipient" function
+               (:prototype-flag t
+                :pointer 1
+                :function-pointer t
+                :constant-flag t
+                :arguments 
+                  ( ("hosted" variable
+                       (:pointer 1
+                        :type ("EmcHostedEntry" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [9539 9564]))                  
+                :type "char")
+                nil [9497 9565])
+            ("hosted_get_sender" function
+               (:prototype-flag t
+                :pointer 1
+                :function-pointer t
+                :constant-flag t
+                :arguments 
+                  ( ("hosted" variable
+                       (:pointer 1
+                        :type ("EmcHostedEntry" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [9608 9633]))                  
+                :type "char")
+                nil [9566 9634])
+            ("hosted_get_inode" function
+               (:prototype-flag t
+                :function-pointer t
+                :arguments 
+                  ( ("hosted" variable
+                       (:pointer 1
+                        :type ("EmcHostedEntry" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [9677 9702]))                  
+                :type "long")
+                nil [9635 9703])
+            ("hosted_get_filename" function
+               (:prototype-flag t
+                :pointer 1
+                :function-pointer t
+                :constant-flag t
+                :arguments 
+                  ( ("hosted" variable
+                       (:pointer 1
+                        :type ("EmcHostedEntry" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [9746 9771]))                  
+                :type "char")
+                nil [9704 9772])
+            ("hosted_get_data" function
+               (:prototype-flag t
+                :pointer 1
+                :function-pointer t
+                :constant-flag t
+                :arguments 
+                  ( ("hosted" variable
+                       (:pointer 1
+                        :type ("EmcHostedEntry" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [9815 9840]))                  
+                :type "char")
+                nil [9773 9841])
+            ("hosted_get_status" function
+               (:prototype-flag t
+                :pointer 1
+                :function-pointer t
+                :constant-flag t
+                :arguments 
+                  ( ("hosted" variable
+                       (:pointer 1
+                        :type ("EmcHostedEntry" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [9884 9909]))                  
+                :type "char")
+                nil [9842 9910])
+            ("hosted_get_retry_times" function
+               (:prototype-flag t
+                :function-pointer t
+                :arguments 
+                  ( ("hosted" variable
+                       (:pointer 1
+                        :type ("EmcHostedEntry" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [9953 9978]))                  
+                :type "int")
+                nil [9911 9979])
+            ("hosted_get_last_retry" function
+               (:prototype-flag t
+                :function-pointer t
+                :arguments 
+                  ( ("hosted" variable
+                       (:pointer 1
+                        :type ("EmcHostedEntry" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [10022 10047]))                  
+                :type "long")
+                nil [9980 10048])
+            ("hosted_get_last_error" function
+               (:prototype-flag t
+                :pointer 1
+                :function-pointer t
+                :constant-flag t
+                :arguments 
+                  ( ("hosted" variable
+                       (:pointer 1
+                        :type ("EmcHostedEntry" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [10091 10116]))                  
+                :type "char")
+                nil [10049 10117])
+            ("hosted_create" function
+               (:prototype-flag t
+                :pointer 1
+                :function-pointer t
+                :arguments 
+                  ( ("alist" variable
+                       (:pointer 1
+                        :type ("EmcAList" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [10160 10177])
+                    ("inode" variable (:type "long") (reparse-symbol arg-sub-list) [10192 10203])
+                    ("filename" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [10218 10240])
+                    ("recipient" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [10255 10278])
+                    ("sender" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [10293 10313])
+                    ("data" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [10328 10347]))                  
+                :type ("EmcHostedEntry" type (:type "class") nil nil))
+                nil [10118 10348])
+            ("hosted_set_error" function
+               (:prototype-flag t
+                :function-pointer t
+                :arguments 
+                  ( ("" variable
+                       (:pointer 1
+                        :type ("EmcHostedEntry" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [10391 10407])
+                    ("" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [10408 10422]))                  
+                :type "int")
+                nil [10349 10423])
+            ("hosted_touch" function
+               (:prototype-flag t
+                :function-pointer t
+                :arguments 
+                  ( ("" variable
+                       (:pointer 1
+                        :type ("EmcHostedEntry" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [10466 10482])
+                    ("" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [10483 10497]))                  
+                :type "int")
+                nil [10424 10498])
+            ("hosted_set_status" function
+               (:prototype-flag t
+                :function-pointer t
+                :arguments 
+                  ( ("" variable
+                       (:pointer 1
+                        :type ("EmcHostedEntry" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [10541 10557])
+                    ("" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [10558 10572]))                  
+                :type "int")
+                nil [10499 10573])
+            ("hosted_get_pending" function
+               (:prototype-flag t
+                :function-pointer t
+                :arguments 
+                  ( ("" variable
+                       (:pointer 1
+                        :type ("EmcQEntry" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [10616 10627])
+                    ("" variable
+                       (:pointer 1
+                        :type ("EmcHostedEntryArray" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [10628 10650]))                  
+                :type "int")
+                nil [10574 10651])
+            ("hosted_get_at" function
+               (:prototype-flag t
+                :pointer 1
+                :function-pointer t
+                :arguments 
+                  ( ("list" variable (:type ("EmcHostedEntryArray" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [10694 10719])
+                    ("i" variable (:type "int") (reparse-symbol arg-sub-list) [10720 10727]))                  
+                :type ("EmcHostedEntry" type (:type "class") nil nil))
+                nil [10652 10728])
+            ("hosted_free_list" function
+               (:prototype-flag t
+                :function-pointer t
+                :arguments 
+                  ( ("list" variable (:type ("EmcHostedEntryArray" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [10771 10796])
+                    ("sz" variable (:type "int") (reparse-symbol arg-sub-list) [10797 10805]))                  
+                :type "void")
+                nil [10729 10806])
+            ("hosted_free" function
+               (:prototype-flag t
+                :function-pointer t
+                :arguments 
+                  ( ("hosted" variable
+                       (:pointer 1
+                        :type ("EmcHostedEntry" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [10849 10874]))                  
+                :type "void")
+                nil [10807 10875])
+            ("hosted_remove" function
+               (:prototype-flag t
+                :function-pointer t
+                :arguments 
+                  ( ("hosted" variable
+                       (:pointer 1
+                        :type ("EmcHostedEntry" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [10918 10943]))                  
+                :type "void")
+                nil [10876 10944])
+            ("external_get_qnum" function
+               (:prototype-flag t
+                :function-pointer t
+                :arguments 
+                  ( ("external" variable
+                       (:pointer 1
+                        :type ("EmcExternalEntry" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [11004 11033]))                  
+                :type "long")
+                nil [10962 11034])
+            ("external_get_alnum" function
+               (:prototype-flag t
+                :function-pointer t
+                :arguments 
+                  ( ("external" variable
+                       (:pointer 1
+                        :type ("EmcExternalEntry" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [11077 11106]))                  
+                :type "long")
+                nil [11035 11107])
+            ("external_get_message_id" function
+               (:prototype-flag t
+                :pointer 1
+                :function-pointer t
+                :constant-flag t
+                :arguments 
+                  ( ("external" variable
+                       (:pointer 1
+                        :type ("EmcExternalEntry" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [11150 11179]))                  
+                :type "char")
+                nil [11108 11180])
+            ("external_get_recipient" function
+               (:prototype-flag t
+                :pointer 1
+                :function-pointer t
+                :constant-flag t
+                :arguments 
+                  ( ("external" variable
+                       (:pointer 1
+                        :type ("EmcExternalEntry" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [11223 11252]))                  
+                :type "char")
+                nil [11181 11253])
+            ("external_get_sender" function
+               (:prototype-flag t
+                :pointer 1
+                :function-pointer t
+                :constant-flag t
+                :arguments 
+                  ( ("external" variable
+                       (:pointer 1
+                        :type ("EmcExternalEntry" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [11296 11325]))                  
+                :type "char")
+                nil [11254 11326])
+            ("external_get_inode" function
+               (:prototype-flag t
+                :function-pointer t
+                :arguments 
+                  ( ("external" variable
+                       (:pointer 1
+                        :type ("EmcExternalEntry" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [11369 11398]))                  
+                :type "long")
+                nil [11327 11399])
+            ("external_get_filename" function
+               (:prototype-flag t
+                :pointer 1
+                :function-pointer t
+                :constant-flag t
+                :arguments 
+                  ( ("external" variable
+                       (:pointer 1
+                        :type ("EmcExternalEntry" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [11442 11471]))                  
+                :type "char")
+                nil [11400 11472])
+            ("external_get_data" function
+               (:prototype-flag t
+                :pointer 1
+                :function-pointer t
+                :constant-flag t
+                :arguments 
+                  ( ("external" variable
+                       (:pointer 1
+                        :type ("EmcExternalEntry" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [11515 11544]))                  
+                :type "char")
+                nil [11473 11545])
+            ("external_get_status" function
+               (:prototype-flag t
+                :pointer 1
+                :function-pointer t
+                :constant-flag t
+                :arguments 
+                  ( ("external" variable
+                       (:pointer 1
+                        :type ("EmcExternalEntry" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [11588 11617]))                  
+                :type "char")
+                nil [11546 11618])
+            ("external_get_rhost" function
+               (:prototype-flag t
+                :pointer 1
+                :function-pointer t
+                :constant-flag t
+                :arguments 
+                  ( ("external" variable
+                       (:pointer 1
+                        :type ("EmcExternalEntry" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [11661 11690]))                  
+                :type "char")
+                nil [11619 11691])
+            ("external_get_retry_times" function
+               (:prototype-flag t
+                :function-pointer t
+                :arguments 
+                  ( ("external" variable
+                       (:pointer 1
+                        :type ("EmcExternalEntry" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [11734 11763]))                  
+                :type "int")
+                nil [11692 11764])
+            ("external_get_last_retry" function
+               (:prototype-flag t
+                :function-pointer t
+                :arguments 
+                  ( ("external" variable
+                       (:pointer 1
+                        :type ("EmcExternalEntry" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [11807 11836]))                  
+                :type "long")
+                nil [11765 11837])
+            ("external_get_last_error" function
+               (:prototype-flag t
+                :pointer 1
+                :function-pointer t
+                :constant-flag t
+                :arguments 
+                  ( ("external" variable
+                       (:pointer 1
+                        :type ("EmcExternalEntry" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [11880 11909]))                  
+                :type "char")
+                nil [11838 11910])
+            ("external_create" function
+               (:prototype-flag t
+                :pointer 1
+                :function-pointer t
+                :arguments 
+                  ( ("alist" variable
+                       (:pointer 1
+                        :type ("EmcAList" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [11953 11970])
+                    ("inode" variable (:type "long") (reparse-symbol arg-sub-list) [11985 11996])
+                    ("filename" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [12011 12033])
+                    ("recipient" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [12048 12071])
+                    ("sender" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [12086 12106])
+                    ("rhost" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [12121 12140])
+                    ("data" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [12155 12174]))                  
+                :type ("EmcExternalEntry" type (:type "class") nil nil))
+                nil [11911 12175])
+            ("external_set_error" function
+               (:prototype-flag t
+                :function-pointer t
+                :arguments 
+                  ( ("" variable
+                       (:pointer 1
+                        :type ("EmcExternalEntry" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [12218 12236])
+                    ("" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [12237 12251]))                  
+                :type "int")
+                nil [12176 12252])
+            ("external_set_status" function
+               (:prototype-flag t
+                :function-pointer t
+                :arguments 
+                  ( ("" variable
+                       (:pointer 1
+                        :type ("EmcExternalEntry" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [12295 12313])
+                    ("" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [12314 12328]))                  
+                :type "int")
+                nil [12253 12329])
+            ("external_get_pending" function
+               (:prototype-flag t
+                :function-pointer t
+                :arguments 
+                  ( ("" variable
+                       (:pointer 1
+                        :type ("EmcQEntry" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [12372 12383])
+                    ("" variable
+                       (:pointer 1
+                        :type ("EmcExternalEntryArray" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [12384 12408]))                  
+                :type "int")
+                nil [12330 12409])
+            ("external_get_at" function
+               (:prototype-flag t
+                :pointer 1
+                :function-pointer t
+                :arguments 
+                  ( ("list" variable (:type ("EmcExternalEntryArray" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [12452 12479])
+                    ("i" variable (:type "int") (reparse-symbol arg-sub-list) [12480 12487]))                  
+                :type ("EmcExternalEntry" type (:type "class") nil nil))
+                nil [12410 12488])
+            ("external_free_list" function
+               (:prototype-flag t
+                :function-pointer t
+                :arguments 
+                  ( ("list" variable (:type ("EmcExternalEntryArray" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [12531 12558])
+                    ("sz" variable (:type "int") (reparse-symbol arg-sub-list) [12559 12567]))                  
+                :type "void")
+                nil [12489 12568])
+            ("external_free" function
+               (:prototype-flag t
+                :function-pointer t
+                :arguments 
+                  ( ("external" variable
+                       (:pointer 1
+                        :type ("EmcExternalEntry" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [12611 12640]))                  
+                :type "void")
+                nil [12569 12641])
+            ("external_remove" function
+               (:prototype-flag t
+                :function-pointer t
+                :arguments 
+                  ( ("external" variable
+                       (:pointer 1
+                        :type ("EmcExternalEntry" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [12684 12713]))                  
+                :type "void")
+                nil [12642 12714])
+            ("message_store" function
+               (:prototype-flag t
+                :function-pointer t
+                :arguments 
+                  ( ("" variable
+                       (:pointer 1
+                        :type ("EmcQImpl" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [12773 12784])
+                    ("recips" variable
+                       (:pointer 1
+                        :dereference 1
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [12799 12815])
+                    ("sender" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [12830 12850])
+                    ("" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [12865 12878])
+                    ("" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [12893 12906])
+                    ("" variable
+                       (:pointer 1
+                        :type "long")
+                        (reparse-symbol arg-sub-list) [12921 12928])
+                    ("" variable
+                       (:pointer 2
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [12943 12952]))                  
+                :type "int")
+                nil [12731 12953])
+            ("message_remove" function
+               (:prototype-flag t
+                :function-pointer t
+                :arguments 
+                  ( ("" variable
+                       (:pointer 1
+                        :type ("EmcQImpl" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [12996 13007])
+                    ("" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [13022 13036]))                  
+                :type "int")
+                nil [12954 13037])
+            ("message_merge_headers" function
+               (:prototype-flag t
+                :function-pointer t
+                :arguments 
+                  ( ("impl" variable
+                       (:pointer 1
+                        :type ("EmcQImpl" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [13080 13095])
+                    ("filename" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [13110 13132])
+                    ("fdout" variable (:type "int") (reparse-symbol arg-sub-list) [13147 13157])
+                    ("extra_headers" variable
+                       (:pointer 1
+                        :type ("EmcArray" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [13172 13198]))                  
+                :type "int")
+                nil [13038 13199])
+            ("message_merge_headers_escape" function
+               (:prototype-flag t
+                :function-pointer t
+                :arguments 
+                  ( ("impl" variable
+                       (:pointer 1
+                        :type ("EmcQImpl" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [13249 13264])
+                    ("filename" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [13279 13301])
+                    ("fdout" variable (:type "int") (reparse-symbol arg-sub-list) [13316 13326])
+                    ("extra_headers" variable
+                       (:pointer 1
+                        :type ("EmcArray" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [13341 13366])
+                    ("escape" variable (:type "int") (reparse-symbol arg-sub-list) [13381 13393]))                  
+                :type "int")
+                nil [13200 13394])
+            ("message_merge_headers_as_string" function
+               (:prototype-flag t
+                :pointer 1
+                :function-pointer t
+                :arguments 
+                  ( ("impl" variable
+                       (:pointer 1
+                        :type ("EmcQImpl" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [13444 13459])
+                    ("filename" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [13474 13496])
+                    ("extra_headers" variable
+                       (:pointer 1
+                        :type ("EmcArray" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [13511 13537]))                  
+                :type "char")
+                nil [13395 13538])
+            ("message_create" function
+               (:prototype-flag t
+                :pointer 1
+                :function-pointer t
+                :arguments 
+                  ( ("impl" variable
+                       (:pointer 1
+                        :type ("EmcQImpl" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [13581 13596])
+                    ("base_msgid" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [13611 13635])
+                    ("recips" variable
+                       (:pointer 1
+                        :dereference 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [13650 13672])
+                    ("sender" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [13687 13707])
+                    ("sender_name" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [13722 13747])
+                    ("subject" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [13762 13783])
+                    ("message" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [13798 13819])
+                    ("msg_size" variable (:type "int") (reparse-symbol arg-sub-list) [13834 13848]))                  
+                :type "char")
+                nil [13539 13849])
+            ("message_create_with_data" function
+               (:prototype-flag t
+                :pointer 1
+                :function-pointer t
+                :arguments 
+                  ( ("impl" variable
+                       (:pointer 1
+                        :type ("EmcQImpl" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [13892 13907])
+                    ("base_msgid" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [13922 13946])
+                    ("recips" variable
+                       (:pointer 1
+                        :dereference 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [13961 13983])
+                    ("sender" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [13998 14018])
+                    ("sender_name" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [14033 14058])
+                    ("subject" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [14073 14094])
+                    ("message" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [14109 14130])
+                    ("msg_size" variable (:type "int") (reparse-symbol arg-sub-list) [14145 14158])
+                    ("data" variable
+                       (:pointer 1
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [14173 14186]))                  
+                :type "char")
+                nil [13850 14187])
+            ("message_create_outbound_with_data" function
+               (:prototype-flag t
+                :pointer 1
+                :function-pointer t
+                :arguments 
+                  ( ("impl" variable
+                       (:pointer 1
+                        :type ("EmcQImpl" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [14239 14254])
+                    ("base_msgid" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [14269 14293])
+                    ("recips" variable
+                       (:pointer 1
+                        :dereference 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [14308 14330])
+                    ("sender" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [14345 14365])
+                    ("sender_name" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [14380 14405])
+                    ("subject" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [14420 14441])
+                    ("message" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [14456 14477])
+                    ("msg_size" variable (:type "int") (reparse-symbol arg-sub-list) [14492 14505])
+                    ("data" variable
+                       (:pointer 1
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [14520 14533]))                  
+                :type "char")
+                nil [14188 14534])
+            ("misc_sender_valid" function
+               (:prototype-flag t
+                :function-pointer t
+                :arguments 
+                  ( ("sender" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [14592 14613]))                  
+                :type "int")
+                nil [14550 14614])
+            ("misc_get_unique_id" function
+               (:prototype-flag t
+                :pointer 1
+                :function-pointer t
+                :arguments 
+                  ( ("msgid" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [14657 14676])
+                    ("host_id" variable (:type "long") (reparse-symbol arg-sub-list) [14677 14691]))                  
+                :type "char")
+                nil [14615 14692])
+            ("misc_get_localname" function
+               (:prototype-flag t
+                :pointer 1
+                :function-pointer t
+                :arguments 
+                  ( ("address" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [14735 14757]))                  
+                :type "char")
+                nil [14693 14758])
+            ("misc_get_domain" function
+               (:prototype-flag t
+                :pointer 1
+                :function-pointer t
+                :arguments 
+                  ( ("address" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [14801 14823]))                  
+                :type "char")
+                nil [14759 14824])
+            ("build_expand_alist" function
+               (:prototype-flag t
+                :function-pointer t
+                :arguments 
+                  ( ("alist" variable
+                       (:pointer 1
+                        :type ("EmcAList" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [14881 14899]))                  
+                :type "int")
+                nil [14839 14900])
+            ("build_expand_outbound_alist" function
+               (:prototype-flag t
+                :function-pointer t
+                :arguments 
+                  ( ("alist" variable
+                       (:pointer 1
+                        :type ("EmcAList" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [14946 14964]))                  
+                :type "int")
+                nil [14901 14965])
+            ("build_expand_forward" function
+               (:prototype-flag t
+                :function-pointer t
+                :arguments 
+                  ( ("alist" variable
+                       (:pointer 1
+                        :type ("EmcAList" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [15008 15025])
+                    ("aentry" variable
+                       (:pointer 1
+                        :type ("EmcAEntry" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [15026 15045]))                  
+                :type "int")
+                nil [14966 15046])
+            ("build_expand_forward_bounce" function
+               (:prototype-flag t
+                :function-pointer t
+                :arguments 
+                  ( ("alist" variable
+                       (:pointer 1
+                        :type ("EmcAList" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [15091 15108])
+                    ("aentry" variable
+                       (:pointer 1
+                        :type ("EmcAEntry" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [15109 15128]))                  
+                :type "int")
+                nil [15047 15129])
+            ("build_expand_shcal" function
+               (:prototype-flag t
+                :function-pointer t
+                :arguments 
+                  ( ("alist" variable
+                       (:pointer 1
+                        :type ("EmcAList" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [15172 15189])
+                    ("aentry" variable
+                       (:pointer 1
+                        :type ("EmcAEntry" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [15190 15209]))                  
+                :type "int")
+                nil [15130 15210])
+            ("build_expand_hosted" function
+               (:prototype-flag t
+                :function-pointer t
+                :arguments 
+                  ( ("alist" variable
+                       (:pointer 1
+                        :type ("EmcAList" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [15253 15270])
+                    ("aentry" variable
+                       (:pointer 1
+                        :type ("EmcAEntry" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [15271 15290]))                  
+                :type "int")
+                nil [15211 15291])
+            ("build_expand_external" function
+               (:prototype-flag t
+                :function-pointer t
+                :arguments 
+                  ( ("alist" variable
+                       (:pointer 1
+                        :type ("EmcAList" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [15334 15351])
+                    ("aentry" variable
+                       (:pointer 1
+                        :type ("EmcAEntry" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [15352 15371]))                  
+                :type "int")
+                nil [15292 15372])
+            ("build_expand_relay" function
+               (:prototype-flag t
+                :function-pointer t
+                :arguments 
+                  ( ("alist" variable
+                       (:pointer 1
+                        :type ("EmcAList" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [15415 15432])
+                    ("aentry" variable
+                       (:pointer 1
+                        :type ("EmcAEntry" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [15433 15452]))                  
+                :type "int")
+                nil [15373 15453])
+            ("build_is_external_domain" function
+               (:prototype-flag t
+                :function-pointer t
+                :arguments 
+                  ( ("impl" variable
+                       (:pointer 1
+                        :type ("EmcQImpl" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [15496 15512])
+                    ("" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [15513 15527]))                  
+                :type "int")
+                nil [15454 15528])
+            ("build_is_external_address" function
+               (:prototype-flag t
+                :function-pointer t
+                :arguments 
+                  ( ("impl" variable
+                       (:pointer 1
+                        :type ("EmcQImpl" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [15571 15587])
+                    ("" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [15588 15602]))                  
+                :type "int")
+                nil [15529 15603])
+            ("build_do_special_addresses" function
+               (:prototype-flag t
+                :function-pointer t
+                :arguments 
+                  ( ("alist" variable
+                       (:pointer 1
+                        :type ("EmcAList" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [15647 15664]))                  
+                :type "int")
+                nil [15604 15665])
+            ("admin_get_all_entries" function
+               (:prototype-flag t
+                :function-pointer t
+                :arguments 
+                  ( ("impl" variable
+                       (:pointer 1
+                        :type ("EmcQImpl" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [15722 15738])
+                    ("entries" variable
+                       (:pointer 1
+                        :type ("EmcQEntryArray" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [15753 15779]))                  
+                :type "int")
+                nil [15680 15780])
+            ("admin_get_pending_entries" function
+               (:prototype-flag t
+                :function-pointer t
+                :arguments 
+                  ( ("impl" variable
+                       (:pointer 1
+                        :type ("EmcQImpl" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [15823 15839])
+                    ("entries" variable
+                       (:pointer 1
+                        :type ("EmcQEntryArray" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [15854 15880]))                  
+                :type "int")
+                nil [15781 15881])
+            ("admin_get_frozen_entries" function
+               (:prototype-flag t
+                :function-pointer t
+                :arguments 
+                  ( ("impl" variable
+                       (:pointer 1
+                        :type ("EmcQImpl" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [15924 15940])
+                    ("entries" variable
+                       (:pointer 1
+                        :type ("EmcQEntryArray" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [15955 15981]))                  
+                :type "int")
+                nil [15882 15982])
+            ("admin_get_failed_entries" function
+               (:prototype-flag t
+                :function-pointer t
+                :arguments 
+                  ( ("impl" variable
+                       (:pointer 1
+                        :type ("EmcQImpl" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [16025 16041])
+                    ("entries" variable
+                       (:pointer 1
+                        :type ("EmcQEntryArray" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [16056 16082]))                  
+                :type "int")
+                nil [15983 16083])
+            ("admin_lock_qentry" function
+               (:prototype-flag t
+                :function-pointer t
+                :arguments 
+                  ( ("impl" variable
+                       (:pointer 1
+                        :type ("EmcQImpl" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [16126 16142])
+                    ("msgid" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [16157 16177]))                  
+                :type "int")
+                nil [16084 16178])
+            ("admin_unlock_qentry" function
+               (:prototype-flag t
+                :function-pointer t
+                :arguments 
+                  ( ("impl" variable
+                       (:pointer 1
+                        :type ("EmcQImpl" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [16221 16237])
+                    ("msgid" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [16238 16258]))                  
+                :type "int")
+                nil [16179 16259])
+            ("admin_get_locked_entries" function
+               (:prototype-flag t
+                :function-pointer t
+                :arguments 
+                  ( ("impl" variable
+                       (:pointer 1
+                        :type ("EmcQImpl" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [16302 16318])
+                    ("entries" variable
+                       (:pointer 1
+                        :type ("EmcQEntryArray" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [16333 16359]))                  
+                :type "int")
+                nil [16260 16360])
+            ("admin_get_qentry_info" function
+               (:prototype-flag t
+                :function-pointer t
+                :arguments 
+                  ( ("impl" variable
+                       (:pointer 1
+                        :type ("EmcQImpl" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [16403 16419])
+                    ("message_id" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [16434 16458])
+                    ("qentry" variable
+                       (:pointer 2
+                        :type ("EmcQEntry" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [16473 16493])
+                    ("alists" variable
+                       (:pointer 1
+                        :type ("EmcAListArray" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [16508 16531])
+                    ("num_alists" variable
+                       (:pointer 1
+                        :type "int")
+                        (reparse-symbol arg-sub-list) [16546 16563])
+                    ("hosted" variable
+                       (:pointer 1
+                        :type ("EmcHostedEntryArray" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [16578 16607])
+                    ("num_hosted" variable
+                       (:pointer 1
+                        :type "int")
+                        (reparse-symbol arg-sub-list) [16622 16639])
+                    ("external" variable
+                       (:pointer 1
+                        :type ("EmcExternalEntryArray" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [16654 16687])
+                    ("num_external" variable
+                       (:pointer 1
+                        :type "int")
+                        (reparse-symbol arg-sub-list) [16702 16722]))                  
+                :type "int")
+                nil [16361 16723])
+            ("admin_set_action_status" function
+               (:prototype-flag t
+                :function-pointer t
+                :arguments 
+                  ( ("impl" variable
+                       (:pointer 1
+                        :type ("EmcQImpl" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [16766 16782])
+                    ("msgid" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [16797 16816])
+                    ("recipient" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [16831 16854])
+                    ("action" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [16869 16889])
+                    ("status" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [16904 16925]))                  
+                :type "int")
+                nil [16724 16926])
+            ("admin_get_action_entries" function
+               (:prototype-flag t
+                :function-pointer t
+                :arguments 
+                  ( ("impl" variable
+                       (:pointer 1
+                        :type ("EmcQImpl" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [16969 16985])
+                    ("msgid" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [17000 17019])
+                    ("recipient" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [17034 17057])
+                    ("list" variable
+                       (:pointer 1
+                        :type ("EmcAEntryArray" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [17072 17095]))                  
+                :type "int")
+                nil [16927 17096])
+            ("admin_reset_failed_qentry" function
+               (:prototype-flag t
+                :function-pointer t
+                :arguments 
+                  ( ("impl" variable
+                       (:pointer 1
+                        :type ("EmcQImpl" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [17139 17155])
+                    ("msgid" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [17156 17175]))                  
+                :type "int")
+                nil [17097 17176])
+            ("admin_thaw_qentry" function
+               (:prototype-flag t
+                :function-pointer t
+                :arguments 
+                  ( ("impl" variable
+                       (:pointer 1
+                        :type ("EmcQImpl" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [17219 17235])
+                    ("msgid" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [17236 17255]))                  
+                :type "int")
+                nil [17177 17256])
+            ("admin_get_qentry" function
+               (:prototype-flag t
+                :pointer 1
+                :function-pointer t
+                :arguments 
+                  ( ("impl" variable
+                       (:pointer 1
+                        :type ("EmcQImpl" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [17299 17315])
+                    ("msgid" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [17316 17335]))                  
+                :type ("EmcQEntry" type (:type "class") nil nil))
+                nil [17257 17336])
+            ("admin_set_qentry_status" function
+               (:prototype-flag t
+                :function-pointer t
+                :arguments 
+                  ( ("impl" variable
+                       (:pointer 1
+                        :type ("EmcQImpl" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [17379 17395])
+                    ("msgid" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [17410 17429])
+                    ("status" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [17444 17465]))                  
+                :type "int")
+                nil [17337 17466])
+            ("admin_queue_rebuild" function
+               (:prototype-flag t
+                :function-pointer t
+                :arguments 
+                  ( ("impl" variable
+                       (:pointer 1
+                        :type ("EmcQImpl" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [17505 17521]))                  
+                :type "int")
+                nil [17467 17522])
+            ("connect_to_aka_db" function
+               (:prototype-flag t
+                :arguments 
+                  ( ("config" variable
+                       (:pointer 1
+                        :type ("EmcConfig" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [17563 17582])
+                    ("sock" variable
+                       (:pointer 1
+                        :type ("MYSQL" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [17583 17597]))                  
+                :type "int")
+                nil [17540 17598])
+            ("connect_to_aka_db_rw" function
+               (:prototype-flag t
+                :arguments 
+                  ( ("config" variable
+                       (:pointer 1
+                        :type ("EmcConfig" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [17625 17644])
+                    ("sock" variable
+                       (:pointer 1
+                        :type ("MYSQL" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [17645 17659]))                  
+                :type "int")
+                nil [17599 17660])
+            ("mysql_quote" function
+               (:prototype-flag t
+                :pointer 1
+                :arguments 
+                  ( ("sock" variable
+                       (:pointer 1
+                        :type ("MYSQL" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [17679 17691])
+                    ("string" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [17692 17711]))                  
+                :type "char")
+                nil [17661 17712])
+            ("_mysql_quote" function
+               (:prototype-flag t
+                :pointer 1
+                :arguments 
+                  ( ("sock" variable
+                       (:pointer 1
+                        :type ("MYSQL" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [17732 17744])
+                    ("string" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [17745 17764]))                  
+                :type "char")
+                nil [17713 17765])
+            ("emc_query" function
+               (:prototype-flag t
+                :arguments 
+                  ( ("sock" variable
+                       (:pointer 1
+                        :type ("MYSQL" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [17780 17792])
+                    ("string" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [17793 17812]))                  
+                :type "int")
+                nil [17766 17813])
+            ("md5hash" function
+               (:prototype-flag t
+                :arguments 
+                  ( ("data" variable
+                       (:pointer 1
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [17827 17838])
+                    ("datalen" variable (:type "int") (reparse-symbol arg-sub-list) [17839 17851])
+                    ("digest" variable
+                       (:pointer 1
+                        :type "unsigned char")
+                        (reparse-symbol arg-sub-list) [17852 17874]))                  
+                :type "void")
+                nil [17814 17875])
+            ("hmacHash" function
+               (:prototype-flag t
+                :arguments 
+                  ( ("data" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [17891 17908])
+                    ("datalen" variable (:type "int") (reparse-symbol arg-sub-list) [17909 17921])
+                    ("digest" variable
+                       (:pointer 1
+                        :type "unsigned char")
+                        (reparse-symbol arg-sub-list) [17922 17944])
+                    ("secret" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [17945 17964]))                  
+                :type "void")
+                nil [17876 17965])
+            ("install_impl" function
+               (:prototype-flag t
+                :arguments 
+                  ( ("config" variable
+                       (:pointer 1
+                        :type ("EmcConfig" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [17983 18001])
+                    ("type" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [18002 18019]))                  
+                :type "int")
+                nil [17966 18020])
+            ("fatal" function
+               (:prototype-flag t
+                :arguments 
+                  ( ("msg" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [18032 18049]))                  
+                :type "void")
+                nil [18021 18050])
+            ("is_sender_valid" function
+               (:prototype-flag t
+                :arguments 
+                  ( ("sender" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [18071 18091]))                  
+                :type "int")
+                nil [18051 18092])
+            ("aes_ecb_encrypt" function
+               (:prototype-flag t
+                :arguments 
+                  ( ("in" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "unsigned char")
+                        (reparse-symbol arg-sub-list) [18122 18146])
+                    ("in_length" variable (:type ("size_t" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [18147 18164])
+                    ("key" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [18165 18181]))                  
+                :type ("iovec" type
+                     (:prototype t
+                      :type "struct")
+                      nil nil))
+                nil [18093 18182])
+            ("mysplit" function
+               (:prototype-flag t
+                :pointer 2
+                :arguments 
+                  ( ("input" variable
+                       (:pointer 1
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [18199 18211])
+                    ("delim" variable
+                       (:constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [18212 18229]))                  
+                :type "char")
+                nil [18183 18230]))          
+      :file "common.h"
+      :pointmax 18239
+      :fsize 18238
+      :lastmodtime '(21731 35447 750521 373000)
+      :unmatched-syntax '((semantic-list 2480 . 2482) (semantic-list 2282 . 2284) (semantic-list 2092 . 2094))
+      :lexical-table 
+        '(("EMC_COMMON_H")
+          )
+)
+    (semanticdb-table "constants.h"
+      :major-mode 'c-mode
+      :tags 
+        '( ("EMC_CONSTANTS_H" variable (:constant-flag t) nil [33 48])
+            ("ASSERT" variable (:constant-flag t) nil [73 79])
+            ("START_BREAK_FRAME" variable (:constant-flag t) nil [212 229])
+            ("END_BREAK_FRAME" variable (:constant-flag t) nil [273 288])
+            ("SAFE_FREE" variable (:constant-flag t) nil [338 347])
+            ("DUPLICATE_RECIPIENT_ERROR" variable (:constant-flag t) nil [406 431])
+            ("OP_FAIL" variable (:constant-flag t) nil [445 452])
+            ("OP_OK" variable (:constant-flag t) nil [467 472])
+            ("SPAM_ACTION" variable (:constant-flag t) nil [487 498])
+            ("VIRUS_ACTION" variable (:constant-flag t) nil [519 531])
+            ("EIC_ACTION" variable (:constant-flag t) nil [552 562])
+            ("RELAY_ACTION" variable (:constant-flag t) nil [583 595])
+            ("BOUNCE_ACTION" variable (:constant-flag t) nil [616 629])
+            ("MF_ACTION" variable (:constant-flag t) nil [650 659])
+            ("LIST_ACTION" variable (:constant-flag t) nil [685 696])
+            ("AUTO_ACTION" variable (:constant-flag t) nil [721 732])
+            ("BCAST_BOUNCE_ACTION" variable (:constant-flag t) nil [757 776])
+            ("LIST_BOUNCE_ACTION" variable (:constant-flag t) nil [797 815])
+            ("LISTSERVE_ACTION" variable (:constant-flag t) nil [834 850])
+            ("OUT_BCS_ACTION" variable (:constant-flag t) nil [870 884])
+            ("OUT_VIRUS_ACTION" variable (:constant-flag t) nil [902 918])
+            ("OUT_MF_ACTION" variable (:constant-flag t) nil [942 955])
+            ("OUT_BOUNCE_ACTION" variable (:constant-flag t) nil [979 996])
+            ("OUT_TAGLINE" variable (:constant-flag t) nil [1016 1027])
+            ("J2_STORAGE_ACTION" variable (:constant-flag t) nil [1051 1068])
+            ("ARCHIVER_ACTION" variable (:constant-flag t) nil [1090 1105])
+            ("OUT_ARCHIVER_ACTION" variable (:constant-flag t) nil [1129 1148])
+            ("CONFILTER_ACTION" variable (:constant-flag t) nil [1171 1187])
+            ("OUT_CONFILTER_ACTION" variable (:constant-flag t) nil [1208 1228])
+            ("SPOOL_ACTION" variable (:constant-flag t) nil [1252 1264])
+            ("OUT_SPOOL_ACTION" variable (:constant-flag t) nil [1281 1297])
+            ("POLICYSMART_ACTION" variable (:constant-flag t) nil [1317 1335])
+            ("OUT_POLICYSMART_ACTION" variable (:constant-flag t) nil [1354 1376])
+            ("I_RELAY_ACTION" variable (:constant-flag t) nil [1399 1413])
+            ("I_FORWARD_ACTION" variable (:constant-flag t) nil [1433 1449])
+            ("I_SHRDCAL_ACTION" variable (:constant-flag t) nil [1469 1485])
+            ("I_FWD_BOUNCE_ACTION" variable (:constant-flag t) nil [1505 1524])
+            ("I_HOSTED_ACTION" variable (:constant-flag t) nil [1543 1558])
+            ("I_EXTERNAL_ACTION" variable (:constant-flag t) nil [1577 1594])
+            ("QE_PND" variable (:constant-flag t) nil [1614 1620])
+            ("QE_FAIL" variable (:constant-flag t) nil [1633 1640])
+            ("QE_DONE" variable (:constant-flag t) nil [1652 1659])
+            ("QE_STOP" variable (:constant-flag t) nil [1671 1678])
+            ("QE_FRZE" variable (:constant-flag t) nil [1690 1697])
+            ("AL_PND" variable (:constant-flag t) nil [1710 1716])
+            ("AL_FAIL" variable (:constant-flag t) nil [1729 1736])
+            ("AL_DONE" variable (:constant-flag t) nil [1748 1755])
+            ("AL_STOP" variable (:constant-flag t) nil [1767 1774])
+            ("AL_FRZE" variable (:constant-flag t) nil [1786 1793])
+            ("EMC_FAIL" variable (:constant-flag t) nil [1806 1814])
+            ("DEFAULT_RETRY_TIMES" variable (:constant-flag t) nil [1827 1846])
+            ("DEFAULT_RETRY_INTERVAL" variable (:constant-flag t) nil [1857 1879])
+            ("DEFAULT_ON_FAIL" variable (:constant-flag t) nil [1890 1905])
+            ("DEFAULT_ON_FATAL" variable (:constant-flag t) nil [1921 1937]))          
+      :file "constants.h"
+      :pointmax 1953
+      :fsize 1952
+      :lastmodtime '(21731 35447 750521 373000)
+      :unmatched-syntax nil
+      :lexical-table 
+        '(("EMC_CONSTANTS_H")
+          ("LIST_ACTION" . ((string "\"MAILLIST\"" 702 . 712)))
+          ("QE_FAIL" . ((number "2" 1642 . 1643)))
+          ("DEFAULT_ON_FAIL" . ((string "\"stop\"" 1906 . 1912)))
+          ("SPAM_ACTION" . ((string "\"SPAM\"" 504 . 510)))
+          ("RELAY_ACTION" . ((string "\"RELAY\"" 600 . 607)))
+          ("OUT_MF_ACTION" . ((string "\"OUTMFLTR\"" 960 . 970)))
+          ("ARCHIVER_ACTION" . ((string "\"ARCHIVER\"" 1110 . 1120)))
+          ("OUT_SPOOL_ACTION" . ((string "\"OUTSPOOL\"" 1298 . 1308)))
+          ("END_BREAK_FRAME" . 
+              ((WHILE "while" 289 . 294) (semantic-list "( FALSE )" 294 . 303) (punctuation ";" 303 . 304)))
+          ("OP_OK" . ((symbol "TRUE" 473 . 477)))
+          ("J2_STORAGE_ACTION" . ((string "\"J2STOR\"" 1073 . 1081)))
+          ("QE_DONE" . ((number "3" 1661 . 1662)))
+          ("QE_FRZE" . ((number "5" 1699 . 1700)))
+          ("OUT_ARCHIVER_ACTION" . ((string "\"OUTARCHIVER\"" 1149 . 1162)))
+          ("SPOOL_ACTION" . ((string "\"SPOOL\"" 1265 . 1272)))
+          ("I_RELAY_ACTION" . ((string "\"*RELAY\"" 1416 . 1424)))
+          ("EMC_FAIL" . ((number "80" 1815 . 1817)))
+          ("EIC_ACTION" . ((string "\"EIC\"" 569 . 574)))
+          ("I_FORWARD_ACTION" . ((string "\"*FORWARD\"" 1450 . 1460)))
+          ("DEFAULT_ON_FATAL" . ((string "\"stop\"" 1938 . 1944)))
+          ("LISTSERVE_ACTION" . ((string "\"LISTSERV\"" 851 . 861)))
+          ("OUT_TAGLINE" . ((string "\"OUTTAG\"" 1034 . 1042)))
+          ("OUT_POLICYSMART_ACTION" . ((string "\"OUTPACTION\"" 1377 . 1389)))
+          ("OP_FAIL" . ((symbol "FALSE" 453 . 458)))
+          ("MF_ACTION" . ((string "\"MSGFLTR\"" 667 . 676)))
+          ("OUT_BCS_ACTION" . ((string "\"OUTBCS\"" 885 . 893)))
+          ("OUT_CONFILTER_ACTION" . ((string "\"OUTCONFILTER\"" 1229 . 1243)))
+          ("I_FWD_BOUNCE_ACTION" . ((string "\"*FWDBNC\"" 1525 . 1534)))
+          ("AL_PND" . ((number "1" 1719 . 1720)))
+          ("AL_STOP" . ((number "4" 1776 . 1777)))
+          ("DUPLICATE_RECIPIENT_ERROR" . ((number "127" 432 . 435)))
+          ("BCAST_BOUNCE_ACTION" . ((string "\"BCASTBNC\"" 778 . 788)))
+          ("LIST_BOUNCE_ACTION" . ((string "\"LISTBNC\"" 816 . 825)))
+          ("OUT_VIRUS_ACTION" . ((string "\"OUTVIRUS\"" 923 . 933)))
+          ("START_BREAK_FRAME" . ((DO "do" 230 . 232)))
+          ("OUT_BOUNCE_ACTION" . ((string "\"OUTBOUNC\"" 997 . 1007)))
+          ("I_SHRDCAL_ACTION" . ((string "\"*SHRDCAL\"" 1486 . 1496)))
+          ("AL_FAIL" . ((number "2" 1738 . 1739)))
+          ("ASSERT" (spp-arg-list ("x" "y") 79 . 84) . 
+              ((IF "if" 85 . 87) (semantic-list "( !(x) )" 87 . 95) (semantic-list "{ mailer_log( REPORT_ERROR, \"ASSERT FAILED: %s\", y ); exit(EX_TEMPFAIL); }" 96 . 170)))
+          ("VIRUS_ACTION" . ((string "\"VIRUS\"" 536 . 543)))
+          ("BOUNCE_ACTION" . ((string "\"BOUNCE\"" 633 . 641)))
+          ("I_HOSTED_ACTION" . ((string "\"*HOSTED\"" 1559 . 1568)))
+          ("I_EXTERNAL_ACTION" . ((string "\"*EXTERN\"" 1595 . 1604)))
+          ("AL_DONE" . ((number "3" 1757 . 1758)))
+          ("AL_FRZE" . ((number "5" 1795 . 1796)))
+          ("CONFILTER_ACTION" . ((string "\"CONFILTER\"" 1188 . 1199)))
+          ("POLICYSMART_ACTION" . ((string "\"PACTION\"" 1336 . 1345)))
+          ("QE_STOP" . ((number "4" 1680 . 1681)))
+          ("DEFAULT_RETRY_INTERVAL" . ((number "5" 1880 . 1881)))
+          ("SAFE_FREE" (spp-arg-list ("x") 347 . 350) . 
+              ((IF "if" 351 . 353) (semantic-list "( x != NULL )" 353 . 366) (semantic-list "{ free(x); x = NULL; }" 367 . 389)))
+          ("AUTO_ACTION" . ((string "\"AUTORESP\"" 738 . 748)))
+          ("QE_PND" . ((number "1" 1623 . 1624)))
+          ("DEFAULT_RETRY_TIMES" . ((number "3" 1847 . 1848)))
+          )
+)
+    (semanticdb-table "emcmailer.h"
+      :major-mode 'c-mode
+      :tags 
+        '( ("EMC_MAILER_H" variable (:constant-flag t) nil [30 42])
+            ("glib.h" include (:system-flag t) nil [44 61])
+            ("EmcArray" type
+               (:typedef ("GArray" type (:type "class") nil nil)
+                :type "typedef")
+                nil [84 108])
+            ("emc_array_new" function
+               (:prototype-flag t
+                :pointer 1
+                :arguments 
+                  ( ("zero_terminated" variable (:type "int") (reparse-symbol arg-sub-list) [135 155])
+                    ("clear" variable (:type "int") (reparse-symbol arg-sub-list) [156 166])
+                    ("member_size" variable (:type "int") (reparse-symbol arg-sub-list) [167 184]))                  
+                :type ("EmcArray" type (:type "class") nil nil))
+                nil [109 185])
+            ("emc_array_append_val" function
+               (:prototype-flag t
+                :arguments 
+                  ( ("array" variable
+                       (:pointer 1
+                        :type ("EmcArray" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [212 229])
+                    ("data" variable
+                       (:pointer 1
+                        :type "void")
+                        (reparse-symbol arg-sub-list) [230 243]))                  
+                :type "int")
+                nil [186 244])
+            ("emc_array_append_vals" function
+               (:prototype-flag t
+                :arguments 
+                  ( ("array" variable
+                       (:pointer 1
+                        :type ("EmcArray" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [272 289])
+                    ("data" variable
+                       (:pointer 1
+                        :type "void")
+                        (reparse-symbol arg-sub-list) [290 302])
+                    ("num_elements" variable (:type "int") (reparse-symbol arg-sub-list) [303 321]))                  
+                :type "int")
+                nil [245 322])
+            ("emc_array_insert_val" function
+               (:prototype-flag t
+                :arguments 
+                  ( ("array" variable
+                       (:pointer 1
+                        :type ("EmcArray" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [349 366])
+                    ("index" variable (:type "int") (reparse-symbol arg-sub-list) [367 377])
+                    ("data" variable
+                       (:pointer 1
+                        :type "void")
+                        (reparse-symbol arg-sub-list) [378 391]))                  
+                :type "int")
+                nil [323 392])
+            ("emc_array_insert_vals" function
+               (:prototype-flag t
+                :arguments 
+                  ( ("array" variable
+                       (:pointer 1
+                        :type ("EmcArray" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [420 437])
+                    ("index" variable (:type "int") (reparse-symbol arg-sub-list) [438 448])
+                    ("data" variable
+                       (:pointer 1
+                        :type "void")
+                        (reparse-symbol arg-sub-list) [449 461])
+                    ("num" variable (:type "int") (reparse-symbol arg-sub-list) [462 471]))                  
+                :type "int")
+                nil [393 472])
+            ("emc_array_prepend_val" function
+               (:prototype-flag t
+                :arguments 
+                  ( ("array" variable
+                       (:pointer 1
+                        :type ("EmcArray" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [500 517])
+                    ("data" variable
+                       (:pointer 1
+                        :type "void")
+                        (reparse-symbol arg-sub-list) [518 531]))                  
+                :type "int")
+                nil [473 532])
+            ("emc_array_prepend_vals" function
+               (:prototype-flag t
+                :arguments 
+                  ( ("array" variable
+                       (:pointer 1
+                        :type ("EmcArray" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [561 578])
+                    ("data" variable
+                       (:pointer 1
+                        :type "void")
+                        (reparse-symbol arg-sub-list) [579 591])
+                    ("num_elements" variable (:type "int") (reparse-symbol arg-sub-list) [592 610]))                  
+                :type "int")
+                nil [533 611])
+            ("emc_array_remove_index" function
+               (:prototype-flag t
+                :arguments 
+                  ( ("array" variable
+                       (:pointer 1
+                        :type ("EmcArray" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [641 658])
+                    ("index" variable (:type "int") (reparse-symbol arg-sub-list) [659 670]))                  
+                :type "int")
+                nil [612 671])
+            ("emc_array_index" function
+               (:prototype-flag t
+                :pointer 1
+                :arguments 
+                  ( ("array" variable
+                       (:pointer 1
+                        :type ("EmcArray" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [696 713])
+                    ("index" variable (:type "int") (reparse-symbol arg-sub-list) [714 725]))                  
+                :type "void")
+                nil [672 726])
+            ("emc_array_set_size" function
+               (:prototype-flag t
+                :arguments 
+                  ( ("array" variable
+                       (:pointer 1
+                        :type ("EmcArray" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [751 768])
+                    ("new_size" variable (:type "int") (reparse-symbol arg-sub-list) [769 783]))                  
+                :type "int")
+                nil [727 784])
+            ("emc_array_free" function
+               (:prototype-flag t
+                :arguments 
+                  ( ("array" variable
+                       (:pointer 1
+                        :type ("EmcArray" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [806 823])
+                    ("free_members" variable (:type "int") (reparse-symbol arg-sub-list) [824 842]))                  
+                :type "void")
+                nil [785 843])
+            ("emc_array_get_data" function
+               (:prototype-flag t
+                :pointer 1
+                :arguments 
+                  ( ("array" variable
+                       (:pointer 1
+                        :type ("EmcArray" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [871 889]))                  
+                :type "void")
+                nil [844 890])
+            ("user_hash_func" function
+               (:prototype-flag t
+                :function-pointer t
+                :arguments 
+                  ( ("key" variable
+                       (:pointer 1
+                        :type "void")
+                        (reparse-symbol arg-sub-list) [924 934])
+                    ("val" variable
+                       (:pointer 1
+                        :type "void")
+                        (reparse-symbol arg-sub-list) [935 945])
+                    ("data" variable
+                       (:pointer 1
+                        :type "void")
+                        (reparse-symbol arg-sub-list) [946 957]))                  
+                :type "void")
+                nil [900 958])
+            ("EmcHash" type
+               (:typedef ("GHashTable" type (:type "class") nil nil)
+                :type "typedef")
+                nil [959 986])
+            ("EmcHashFunc" type
+               (:typedef ("GHashFunc" type (:type "class") nil nil)
+                :type "typedef")
+                nil [987 1017])
+            ("EmcHashCompareFunc" type
+               (:typedef ("GCompareFunc" type (:type "class") nil nil)
+                :type "typedef")
+                nil [1018 1058])
+            ("emc_hash_new" function
+               (:prototype-flag t
+                :pointer 1
+                :type ("EmcHash" type (:type "class") nil nil))
+                nil [1059 1084])
+            ("emc_hash_new_full" function
+               (:prototype-flag t
+                :pointer 1
+                :arguments 
+                  ( ("func1" variable (:type ("EmcHashFunc" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [1114 1132])
+                    ("func2" variable (:type ("EmcHashCompareFunc" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [1133 1158]))                  
+                :type ("EmcHash" type (:type "class") nil nil))
+                nil [1085 1159])
+            ("emc_hash_insert" function
+               (:prototype-flag t
+                :arguments 
+                  ( ("hash" variable
+                       (:pointer 1
+                        :type ("EmcHash" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [1182 1197])
+                    ("key" variable
+                       (:pointer 1
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [1198 1209])
+                    ("val" variable
+                       (:pointer 1
+                        :type "void")
+                        (reparse-symbol arg-sub-list) [1210 1222]))                  
+                :type "void")
+                nil [1160 1223])
+            ("emc_hash_size" function
+               (:prototype-flag t
+                :arguments 
+                  ( ("hash" variable
+                       (:pointer 1
+                        :type ("EmcHash" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [1243 1259]))                  
+                :type "int")
+                nil [1224 1260])
+            ("emc_hash_lookup" function
+               (:prototype-flag t
+                :pointer 1
+                :arguments 
+                  ( ("hash" variable
+                       (:pointer 1
+                        :type ("EmcHash" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [1285 1300])
+                    ("key" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [1301 1319]))                  
+                :type "void")
+                nil [1261 1320])
+            ("emc_hash_remove" function
+               (:prototype-flag t
+                :arguments 
+                  ( ("hash" variable
+                       (:pointer 1
+                        :type ("EmcHash" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [1343 1358])
+                    ("key" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [1359 1377]))                  
+                :type "void")
+                nil [1321 1378])
+            ("emc_hash_foreach" function
+               (:prototype-flag t
+                :arguments 
+                  ( ("hash" variable
+                       (:pointer 1
+                        :type ("EmcHash" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [1402 1417])
+                    ("func" variable (:type ("user_hash_func" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [1418 1438])
+                    ("data" variable
+                       (:pointer 1
+                        :type "void")
+                        (reparse-symbol arg-sub-list) [1439 1452]))                  
+                :type "void")
+                nil [1379 1453])
+            ("emc_hash_destroy" function
+               (:prototype-flag t
+                :arguments 
+                  ( ("hash" variable
+                       (:pointer 1
+                        :type ("EmcHash" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [1477 1493]))                  
+                :type "void")
+                nil [1454 1494])
+            ("str_tolower" function
+               (:prototype-flag t
+                :pointer 1
+                :arguments 
+                  ( ("str" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [1516 1534]))                  
+                :type "char")
+                nil [1496 1535])
+            ("EMC_MAXLINE" variable (:constant-flag t) nil [1546 1557])
+            ("EmFd" type
+               (:members 
+                  ( ("fd" variable (:type "int") (reparse-symbol classsubparts) [1621 1630])
+                    ("read_ptr" variable
+                       (:pointer 1
+                        :type "char")
+                        (reparse-symbol classsubparts) [1632 1647])
+                    ("read_cnt" variable (:type "int") (reparse-symbol classsubparts) [1649 1664])
+                    ("read_buf" variable
+                       (:dereference 1
+                        :type "char")
+                        (reparse-symbol classsubparts) [1666 1694]))                  
+                :type "struct")
+                nil [1598 1702])
+            ("EmFd" type
+               (:typedef ("EmFd" type (:type "struct") nil nil)
+                :type "typedef")
+                nil [1598 1702]))          
+      :file "emcmailer.h"
+      :pointmax 1711
+      :fsize 1710
+      :lastmodtime '(21731 35447 862521 376000)
+      :unmatched-syntax '((TYPEDEF 892 . 899))
+      :lexical-table 
+        '(("EMC_MAXLINE" . 
+              ((number "1024" 1560 . 1564) (punctuation "*" 1565 . 1566) (number "8" 1567 . 1568)))
+          ("EMC_MAILER_H")
+          )
+)
+    (semanticdb-table "alworker_main.c"
+      :major-mode 'c-mode
+      :tags 
+        '( ("rcsid" variable
+               (:pointer 1
+                :typemodifiers ("static")
+                :default-value "\"$Id$\""
+                :type "char")
+                nil [1 29])
+            ("use_rcsid" function
+               (:typemodifiers ("static")
+                :arguments 
+                  ( ("" variable (:type "void") (reparse-symbol arg-sub-list) [52 57]))                  
+                :type "void")
+                nil [30 87])
+            ("stdlib.h" include (:system-flag t) nil [138 157])
+            ("stdio.h" include (:system-flag t) nil [158 176])
+            ("sysexits.h" include (:system-flag t) nil [177 198])
+            ("glib.h" include (:system-flag t) nil [199 216])
+            ("string.h" include (:system-flag t) nil [217 236])
+            ("getopt.h" include (:system-flag t) nil [238 257])
+            ("alworker.h" include nil nil [259 280])
+            ("logger.h" include nil nil [281 300])
+            ("emcconfig.h" include nil nil [301 323])
+            ("common.h" include nil nil [324 343])
+            ("al_opts" variable (:type ("alworker_options" type (:type "class") nil nil)) nil [345 370])
+            ("BUFFER_SIZE" variable (:constant-flag t) nil [380 391])
+            ("config" variable
+               (:pointer 1
+                :default-value "NULL"
+                :type ("EmcConfig" type (:type "class") nil nil))
+                nil [403 429])
+            ("msgid" variable
+               (:pointer 1
+                :default-value "NULL"
+                :type "char")
+                nil [454 474])
+            ("host_id" variable
+               (:default-value "-1"
+                :type "long")
+                nil [475 493])
+            ("debugmode" variable
+               (:default-value "0"
+                :type "int")
+                nil [494 512])
+            ("pretendmode" variable
+               (:default-value "0"
+                :type "int")
+                nil [513 533])
+            ("outboundmode" variable
+               (:default-value "0"
+                :type "int")
+                nil [534 555])
+            ("main" function
+               (:arguments 
+                  ( ("argc" variable (:type "int") (reparse-symbol arg-sub-list) [566 575])
+                    ("argv" variable
+                       (:pointer 2
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [576 589]))                  
+                :type "int")
+                nil [557 2886]))          
+      :file "alworker_main.c"
+      :pointmax 2887
+      :fsize 2886
+      :lastmodtime '(21731 35447 706521 373000)
+      :unmatched-syntax nil
+      :lexical-table 
+        '(("BUFFER_SIZE" . 
+              ((number "1024" 392 . 396) (punctuation "*" 397 . 398) (number "16" 399 . 401)))
+          )
+))
+  :file "!home!harrison!projects!bitbucket!fm-app-mailer!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2")

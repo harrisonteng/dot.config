@@ -1,0 +1,17 @@
+;; Object m4/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "m4/"
+  :tables
+  (list
+    (semanticdb-table "Makefile.am"
+      :major-mode 'makefile-automake-mode
+      :tags 
+        '( ("EXTRA_DIST" variable (:default-value ("$(wildcard *.m4)")) nil [1 31]))          
+      :file "Makefile.am"
+      :pointmax 31
+      :fsize 30
+      :lastmodtime '(21560 30358 194185 270000)
+      :unmatched-syntax nil))
+  :file "!home!harrison!projects!gmime!m4!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2")

@@ -1,0 +1,34 @@
+;; Object courier_deliver/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "courier_deliver/"
+  :tables
+  (list
+    (semanticdb-table "Makefile.am"
+      :major-mode 'makefile-automake-mode
+      :tags 
+        '( ("AUTOMAKE_OPTIONS" variable (:default-value ("foreign")) nil [1 26])
+            ("SUBDIRS" variable (:default-value ("courier_deps")) nil [26 47])
+            ("EXTRA_DIST" variable (:default-value ("courier_deliver.conf")) nil [48 80])
+            ("agents_execdir" variable (:default-value ("@prefix@/agents")) nil [81 112])
+            ("confdir" variable (:default-value ("@confdir@")) nil [112 130])
+            ("noinst_HEADERS" variable (:default-value ("common.h" "defaults.h" "private.h" "../config.h" "../common.h" "../hash.h" "../logger.h")) nil [131 222])
+            ("agents_exec_PROGRAMS" variable (:default-value ("courier_deliver")) nil [222 291])
+            ("courier_deliver_SOURCES" variable (:default-value ("dagent-courier.c" "util.c")) nil [292 340])
+            ("courier_deliver_CFLAGS" variable (:default-value ("-I./courier_deps/maildir" "-I./courier_deps/numlib")) nil [340 412])
+            ("courier_deliver_LDADD" variable (:default-value ("-lmaildir" "-lnumlib" "-L./courier_deps/maildir" "-L./courier_deps/numlib" "-lemcbase" "-lemcimap")) nil [412 522])
+            ("dovecot_deliver_SOURCES" variable (:default-value ("dagent-dovecot.c" "util.c")) nil [523 571])
+            ("dovecot_deliver_CFLAGS" variable nil nil [571 595])
+            ("dovecot_deliver_LDADD" variable (:default-value ("-lemcbase" "-lemcimap")) nil [595 637])
+            ("archive_deliver_SOURCES" variable (:default-value ("archive_deliver.c" "util.c" "../config.c" "../common.c" "../hash.c" "../logger.c")) nil [638 733])
+            ("archive_deliver_CFLAGS" variable nil nil [733 757])
+            ("archive_deliver_LDADD" variable (:default-value ("-lemcbase" "-lemcimap" "-larchive" "-lmhash" "-lglib-2.0" "-lsqlite3")) nil [757 838])
+            ("conf_DATA" variable (:default-value ("courier_deliver.conf")) nil [839 870])
+            ("dist_bin_SCRIPTS" variable (:default-value ("adeliver-queuerun")) nil [871 906]))          
+      :file "Makefile.am"
+      :pointmax 906
+      :fsize 905
+      :lastmodtime '(21742 20805 0 0)
+      :unmatched-syntax nil))
+  :file "!home!harrison!projects!work!bitbucket!fm-app-mailer!courier_deliver!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2")

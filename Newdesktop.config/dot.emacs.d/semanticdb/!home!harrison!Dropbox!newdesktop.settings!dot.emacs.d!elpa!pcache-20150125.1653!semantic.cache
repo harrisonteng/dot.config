@@ -1,0 +1,16 @@
+;; Object pcache-20150125.1653/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "pcache-20150125.1653/"
+  :tables
+  (list
+    (semanticdb-table "pcache-autoloads.el"
+      :major-mode 'emacs-lisp-mode
+      :tags nil
+      :file "pcache-autoloads.el"
+      :pointmax 285
+      :fsize 363
+      :lastmodtime '(21780 18014 270145 164000)
+      :unmatched-syntax nil))
+  :file "!home!harrison!Dropbox!newdesktop.settings!dot.emacs.d!elpa!pcache-20150125.1653!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2")

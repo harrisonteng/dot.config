@@ -1,0 +1,16 @@
+;; Object async-20150908.622/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "async-20150908.622/"
+  :tables
+  (list
+    (semanticdb-table "async-autoloads.el"
+      :major-mode 'emacs-lisp-mode
+      :tags nil
+      :file "async-autoloads.el"
+      :pointmax 283
+      :fsize 4277
+      :lastmodtime '(21999 3427 130416 465000)
+      :unmatched-syntax nil))
+  :file "!home!harrison!Dropbox!newdesktop.settings!dot.emacs.d!elpa!async-20150908.622!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2")

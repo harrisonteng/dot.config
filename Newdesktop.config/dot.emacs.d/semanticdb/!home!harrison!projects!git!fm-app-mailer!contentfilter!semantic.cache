@@ -1,0 +1,654 @@
+;; Object contentfilter/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "contentfilter/"
+  :tables (list 
+   (semanticdb-table "filter_rule.c"
+    :major-mode 'c-mode
+    :tags 
+        '( ("rcsid" variable
+               (:pointer 1
+                :typemodifiers ("static")
+                :type "char")
+                nil [1 29])
+            ("use_rcsid" function
+               (:typemodifiers ("static")
+                :arguments 
+                  ( ("" variable (:type "void") (reparse-symbol arg-sub-list) [52 57]))                  
+                :type "void")
+                nil [30 97])
+            ("_GNU_SOURCE" variable (:constant-flag t) nil [156 167])
+            ("glib.h" include (:system-flag t) nil [168 185])
+            ("glib/gstdio.h" include (:system-flag t) nil [186 210])
+            ("glib/gdate.h" include (:system-flag t) nil [211 234])
+            ("locale.h" include (:system-flag t) nil [235 254])
+            ("stdlib.h" include (:system-flag t) nil [255 274])
+            ("ctype.h" include (:system-flag t) nil [275 293])
+            ("string.h" include (:system-flag t) nil [294 313])
+            ("gmime/gmime.h" include (:system-flag t) nil [314 338])
+            ("demime.h" include (:system-flag t) nil [352 371])
+            ("regex.h" include (:system-flag t) nil [372 390])
+            ("pcre.h" include (:system-flag t) nil [391 408])
+            ("magic.h" include (:system-flag t) nil [409 427])
+            ("sysexits.h" include (:system-flag t) nil [428 449])
+            ("pcre.h" include nil nil [450 467])
+            ("filter_rule.h" include nil nil [468 492])
+            ("cf_debugging.h" include nil nil [493 518])
+            ("database.h" include nil nil [519 540])
+            ("file_aparser.h" include nil nil [541 566])
+            ("parser.h" include nil nil [567 586])
+            ("data_match.h" include nil nil [587 610])
+            ("contentfilter.h" include nil nil [611 637])
+            ("../emclib/emc_services.h" include nil nil [638 673])
+            ("../emclib/emime.h" include nil nil [674 702])
+            ("libemcbase.h" include (:system-flag t) nil [703 726])
+            ("WHITELIST" variable (:constant-flag t) nil [747 756])
+            ("BLACKLIST" variable (:constant-flag t) nil [767 776])
+            ("STR_CHECKSUM_MD5" variable (:constant-flag t) nil [788 804])
+            ("STR_CHECKSUM_SHA1" variable (:constant-flag t) nil [823 840])
+            ("STR_CHECKSUM_SHA256" variable (:constant-flag t) nil [860 879])
+            ("IMAGE_SCAN_CMD" variable (:constant-flag t) nil [918 932])
+            ("IAD_DEFAULT_HOST" variable (:constant-flag t) nil [948 964])
+            ("IAD_DEFAULT_PORT" variable (:constant-flag t) nil [983 999])
+            ("IAD_DEFAULT_TIMEOUT" variable (:constant-flag t) nil [1015 1034])
+            ("IAD_DEFAULT_THRESHOLD" variable (:constant-flag t) nil [1047 1068])
+            ("MATCH_OP_STR" variable
+               (:dereference 1
+                :type ("CF_HASH_NODE" type (:type "class") nil nil))
+                nil [1122 3070])
+            ("RULE_CRITERIA_STR" variable
+               (:dereference 1
+                :type ("CF_HASH_NODE" type (:type "class") nil nil))
+                nil [3118 5828])
+            ("DB_DOMAIN_LIST" variable (:type ("list_db_s" type (:type "class") nil nil)) nil [5830 5940])
+            ("DB_LIST_INFO" variable (:type ("list_db_s" type (:type "class") nil nil)) nil [5942 6053])
+            ("ipAddress" variable
+               (:pointer 1
+                :constant-flag t
+                :type "char")
+                nil [6300 6328])
+            ("outIpAddress" variable
+               (:pointer 1
+                :constant-flag t
+                :type "char")
+                nil [6329 6361])
+            ("inIpAddress" variable
+               (:pointer 1
+                :constant-flag t
+                :type "char")
+                nil [6362 6393])
+            ("encTypeList" variable
+               (:pointer 1
+                :type ("DataList" type (:type "class") nil nil))
+                nil [6395 6424])
+            ("encTypes" variable
+               (:pointer 1
+                :dereference 1
+                :constant-flag t
+                :type "char")
+                nil [6425 6535])
+            ("gmime_part_is_encrypted" function
+               (:arguments 
+                  ( ("part" variable
+                       (:pointer 1
+                        :type ("GMimeObject" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [6591 6609]))                  
+                :type ("gboolean" type (:type "class") nil nil))
+                nil [6557 8011])
+            ("rule_apply" function
+               (:arguments 
+                  ( ("rule" variable
+                       (:pointer 1
+                        :type ("Rule" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [8035 8046]))                  
+                :type ("RuleStatus" type (:type "class") nil nil))
+                nil [8013 33970])
+            ("rule_get_data_list" function
+               (:pointer 1
+                :arguments 
+                  ( ("rule" variable
+                       (:pointer 1
+                        :type ("Rule" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [34001 34012]))                  
+                :type ("DataList" type (:type "class") nil nil))
+                nil [33972 34710])
+            ("cc_capture" function
+               (:arguments 
+                  ( ("re" variable
+                       (:pointer 1
+                        :type ("pcre" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [34728 34737])
+                    ("str" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [34738 34754])
+                    ("cc_list" variable
+                       (:pointer 2
+                        :type ("GSList" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [34755 34772]))                  
+                :type "void")
+                nil [34712 35237])
+            ("luhn_check" function
+               (:typemodifiers ("static")
+                :arguments 
+                  ( ("number" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [35761 35780]))                  
+                :type "int")
+                nil [35739 36267])
+            ("is_cc_card" function
+               (:arguments 
+                  ( ("cc_str" variable
+                       (:pointer 1
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [36284 36297]))                  
+                :type "int")
+                nil [36269 36795])
+            ("str_count_CC" function
+               (:arguments 
+                  ( ("haystack" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [36814 36835]))                  
+                :type "int")
+                nil [36797 38130])
+            ("rule_match" function
+               (:arguments 
+                  ( ("rule" variable
+                       (:pointer 1
+                        :type ("Rule" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [38154 38165])
+                    ("haystack" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [38166 38187]))                  
+                :type ("RuleStatus" type (:type "class") nil nil))
+                nil [38132 40801])
+            ("attachment_status_new" function
+               (:pointer 1
+                :type ("AttachmentStatus" type (:type "class") nil nil))
+                nil [40803 41050])
+            ("rule_attachment_match" function
+               (:arguments 
+                  ( ("rule" variable
+                       (:pointer 1
+                        :type ("Rule" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [41085 41096])
+                    ("list" variable
+                       (:pointer 1
+                        :type ("GList" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [41097 41109]))                  
+                :type ("RuleStatus" type (:type "class") nil nil))
+                nil [41052 67606])
+            ("rule_get_default" function
+               (:arguments 
+                  ( ("rule" variable
+                       (:pointer 1
+                        :type ("Rule" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [67634 67645]))                  
+                :type ("gboolean" type (:type "class") nil nil))
+                nil [67608 67707])
+            ("rule_new" function
+               (:pointer 1
+                :type ("Rule" type (:type "class") nil nil))
+                nil [67709 67948])
+            ("rule_new_simple" function
+               (:pointer 1
+                :arguments 
+                  ( ("criteria" variable (:type "int") (reparse-symbol arg-sub-list) [67972 67985])
+                    ("matchOp" variable (:type "int") (reparse-symbol arg-sub-list) [67986 67998])
+                    ("data" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [67999 68016]))                  
+                :type ("Rule" type (:type "class") nil nil))
+                nil [67950 68159])
+            ("rule_copy" function
+               (:pointer 1
+                :arguments 
+                  ( ("rule" variable
+                       (:pointer 1
+                        :type ("Rule" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [68177 68188]))                  
+                :type ("Rule" type (:type "class") nil nil))
+                nil [68161 68273])
+            ("rule_clear" function
+               (:arguments 
+                  ( ("rule" variable
+                       (:pointer 1
+                        :type ("Rule" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [68291 68302]))                  
+                :type "void")
+                nil [68275 68878])
+            ("rule_free" function
+               (:arguments 
+                  ( ("rule" variable
+                       (:pointer 1
+                        :type ("Rule" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [68895 68906]))                  
+                :type "void")
+                nil [68880 69205])
+            ("rule_set_ruleID" function
+               (:arguments 
+                  ( ("rule" variable
+                       (:pointer 1
+                        :type ("Rule" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [69228 69239])
+                    ("ruleID" variable (:type "unsigned long") (reparse-symbol arg-sub-list) [69240 69261]))                  
+                :type "void")
+                nil [69207 69292])
+            ("rule_set_listID" function
+               (:arguments 
+                  ( ("rule" variable
+                       (:pointer 1
+                        :type ("Rule" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [69315 69326])
+                    ("listID" variable (:type "unsigned long") (reparse-symbol arg-sub-list) [69327 69348]))                  
+                :type "void")
+                nil [69294 69379])
+            ("rule_set_count" function
+               (:arguments 
+                  ( ("rule" variable
+                       (:pointer 1
+                        :type ("Rule" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [69401 69412])
+                    ("count" variable (:type "int") (reparse-symbol arg-sub-list) [69413 69423]))                  
+                :type "void")
+                nil [69381 69659])
+            ("rule_set_points" function
+               (:arguments 
+                  ( ("rule" variable
+                       (:pointer 1
+                        :type ("Rule" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [69682 69693])
+                    ("points" variable (:type "float") (reparse-symbol arg-sub-list) [69694 69707]))                  
+                :type "void")
+                nil [69661 69738])
+            ("rule_set_criteria" function
+               (:arguments 
+                  ( ("rule" variable
+                       (:pointer 1
+                        :type ("Rule" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [69763 69774])
+                    ("string" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [69775 69794]))                  
+                :type "void")
+                nil [69740 70722])
+            ("rule_set_case_sensitive" function
+               (:arguments 
+                  ( ("rule" variable
+                       (:pointer 1
+                        :type ("Rule" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [70753 70764])
+                    ("b" variable (:type ("gboolean" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [70765 70776]))                  
+                :type "void")
+                nil [70724 70809])
+            ("rule_set_reverse_op" function
+               (:arguments 
+                  ( ("rule" variable
+                       (:pointer 1
+                        :type ("Rule" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [70836 70847])
+                    ("b" variable (:type ("gboolean" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [70848 70859]))                  
+                :type "void")
+                nil [70811 70888])
+            ("rule_set_matchOp" function
+               (:arguments 
+                  ( ("rule" variable
+                       (:pointer 1
+                        :type ("Rule" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [70912 70923])
+                    ("string" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [70924 70943]))                  
+                :type "void")
+                nil [70890 71253])
+            ("rule_set_data" function
+               (:arguments 
+                  ( ("rule" variable
+                       (:pointer 1
+                        :type ("Rule" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [71274 71285])
+                    ("data" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [71286 71303]))                  
+                :type "void")
+                nil [71255 71340])
+            ("rule_set_countOp" function
+               (:arguments 
+                  ( ("rule" variable
+                       (:pointer 1
+                        :type ("Rule" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [71364 71375])
+                    ("countOpStr" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [71376 71399]))                  
+                :type "void")
+                nil [71342 71947])
+            ("rule_get_list_id" function
+               (:arguments 
+                  ( ("rule" variable
+                       (:pointer 1
+                        :type ("Rule" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [71980 71991]))                  
+                :type "unsigned long")
+                nil [71949 72169])
+            ("rule_get_data_type" function
+               (:arguments 
+                  ( ("rule" variable
+                       (:pointer 1
+                        :type ("Rule" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [72200 72211]))                  
+                :type ("DATA_TYPE" type (:type "class") nil nil))
+                nil [72171 72242])
+            ("rule_set_data_type" function
+               (:arguments 
+                  ( ("rule" variable
+                       (:pointer 1
+                        :type ("Rule" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [72273 72284])
+                    ("dataType" variable (:type ("DATA_TYPE" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [72285 72304]))                  
+                :type ("DATA_TYPE" type (:type "class") nil nil))
+                nil [72244 72366])
+            ("rule_set_matched" function
+               (:arguments 
+                  ( ("rule" variable
+                       (:pointer 1
+                        :type ("Rule" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [72396 72407])
+                    ("matched" variable (:type ("gboolean" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [72408 72425]))                  
+                :type ("RuleStatus" type (:type "class") nil nil))
+                nil [72368 72575])
+            ("rule_set_status" function
+               (:arguments 
+                  ( ("rule" variable
+                       (:pointer 1
+                        :type ("Rule" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [72604 72615])
+                    ("status" variable (:type ("RuleStatus" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [72616 72634]))                  
+                :type ("RuleStatus" type (:type "class") nil nil))
+                nil [72577 72684])
+            ("rule_set_repeat_points" function
+               (:arguments 
+                  ( ("rule" variable
+                       (:pointer 1
+                        :type ("Rule" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [72714 72725])
+                    ("repeatPoints" variable (:type "int") (reparse-symbol arg-sub-list) [72726 72743]))                  
+                :type "void")
+                nil [72686 72786])
+            ("rule_set_n_matches" function
+               (:arguments 
+                  ( ("rule" variable
+                       (:pointer 1
+                        :type ("Rule" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [72812 72823])
+                    ("nMatches" variable (:type "int") (reparse-symbol arg-sub-list) [72824 72837]))                  
+                :type "void")
+                nil [72788 72872])
+            ("rule_get_n_matches" function
+               (:arguments 
+                  ( ("rule" variable
+                       (:pointer 1
+                        :type ("Rule" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [72897 72908]))                  
+                :type "int")
+                nil [72874 72939])
+            ("rule_is_valid" function
+               (:arguments 
+                  ( ("rule" variable
+                       (:pointer 1
+                        :type ("Rule" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [72964 72975]))                  
+                :type ("gboolean" type (:type "class") nil nil))
+                nil [72941 73096])
+            ("rule_get_ruleID" function
+               (:arguments 
+                  ( ("rule" variable
+                       (:pointer 1
+                        :type ("Rule" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [73128 73139]))                  
+                :type "unsigned long")
+                nil [73098 73168])
+            ("rule_get_criteria" function
+               (:arguments 
+                  ( ("rule" variable
+                       (:pointer 1
+                        :type ("Rule" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [73192 73203]))                  
+                :type "int")
+                nil [73170 73234])
+            ("rule_get_criteria_str" function
+               (:pointer 1
+                :arguments 
+                  ( ("rule" variable
+                       (:pointer 1
+                        :type ("Rule" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [73264 73275]))                  
+                :type "char")
+                nil [73236 73309])
+            ("is_attachment_criteria" function
+               (:arguments 
+                  ( ("criteriaNum" variable (:type ("CRITERIA" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [73343 73364]))                  
+                :type ("gboolean" type (:type "class") nil nil))
+                nil [73311 73865])
+            ("rule_get_match_op" function
+               (:arguments 
+                  ( ("rule" variable
+                       (:pointer 1
+                        :type ("Rule" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [73889 73900]))                  
+                :type "int")
+                nil [73867 73930])
+            ("rule_get_match_op_str" function
+               (:pointer 1
+                :arguments 
+                  ( ("rule" variable
+                       (:pointer 1
+                        :type ("Rule" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [73960 73971]))                  
+                :type "char")
+                nil [73932 74004])
+            ("rule_get_count_op" function
+               (:arguments 
+                  ( ("rule" variable
+                       (:pointer 1
+                        :type ("Rule" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [74028 74039]))                  
+                :type "int")
+                nil [74006 74069])
+            ("rule_get_count_op_str" function
+               (:pointer 1
+                :arguments 
+                  ( ("rule" variable
+                       (:pointer 1
+                        :type ("Rule" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [74099 74110]))                  
+                :type "char")
+                nil [74071 74143])
+            ("rule_get_data" function
+               (:pointer 1
+                :constant-flag t
+                :arguments 
+                  ( ("rule" variable
+                       (:pointer 1
+                        :type ("Rule" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [74171 74182]))                  
+                :type "char")
+                nil [74145 74209])
+            ("rule_has_count" function
+               (:arguments 
+                  ( ("rule" variable
+                       (:pointer 1
+                        :type ("Rule" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [74235 74246]))                  
+                :type ("gboolean" type (:type "class") nil nil))
+                nil [74211 74776])
+            ("rule_get_count" function
+               (:arguments 
+                  ( ("rule" variable
+                       (:pointer 1
+                        :type ("Rule" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [74797 74808]))                  
+                :type "int")
+                nil [74778 74836])
+            ("rule_get_matched" function
+               (:arguments 
+                  ( ("rule" variable
+                       (:pointer 1
+                        :type ("Rule" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [74864 74875]))                  
+                :type ("gboolean" type (:type "class") nil nil))
+                nil [74838 74922])
+            ("rule_get_status" function
+               (:arguments 
+                  ( ("rule" variable
+                       (:pointer 1
+                        :type ("Rule" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [74951 74962]))                  
+                :type ("RuleStatus" type (:type "class") nil nil))
+                nil [74924 74991])
+            ("rule_get_points" function
+               (:arguments 
+                  ( ("rule" variable
+                       (:pointer 1
+                        :type ("Rule" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [75015 75026]))                  
+                :type "float")
+                nil [74993 75055])
+            ("rule_get_total_points" function
+               (:arguments 
+                  ( ("rule" variable
+                       (:pointer 1
+                        :type ("Rule" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [75085 75096]))                  
+                :type "float")
+                nil [75057 75233])
+            ("rule_get_repeat_points" function
+               (:arguments 
+                  ( ("rule" variable
+                       (:pointer 1
+                        :type ("Rule" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [75262 75273]))                  
+                :type "int")
+                nil [75235 75308])
+            ("rule_get_priority" function
+               (:arguments 
+                  ( ("rule" variable
+                       (:pointer 1
+                        :type ("Rule" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [75332 75343]))                  
+                :type "int")
+                nil [75310 75392])
+            ("rule_scan_string" function
+               (:pointer 1
+                :arguments 
+                  ( ("ruleStr" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [75418 75438]))                  
+                :type ("Rule" type (:type "class") nil nil))
+                nil [75394 77959])
+            ("showRuleFormat" function (:type "void") nil [77961 79064])
+            ("rule_get_string" function
+               (:pointer 1
+                :arguments 
+                  ( ("rule" variable
+                       (:pointer 1
+                        :type ("Rule" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [79088 79099]))                  
+                :type "char")
+                nil [79066 80298]))          
+    :file "filter_rule.c"
+    :pointmax 80289
+    :fsize 80289
+    :lastmodtime '(21723 53485 908739 769000)
+    :unmatched-syntax 'nil
+    :lexical-table 
+        '(("_GNU_SOURCE")
+          ("IAD_DEFAULT_THRESHOLD" . ((string "\"74\"" 1069 . 1073)))
+          ("IAD_DEFAULT_PORT" . ((string "\"9999\"" 1000 . 1006)))
+          ("IMAGE_SCAN_CMD" . ((string "\"scan\"" 933 . 939)))
+          ("STR_CHECKSUM_MD5" . ((string "\"{MD5}\"" 807 . 814)))
+          ("WHITELIST" . ((number "0" 757 . 758)))
+          ("STR_CHECKSUM_SHA1" . ((string "\"{SHA1}\"" 843 . 851)))
+          ("IAD_DEFAULT_HOST" . ((string "\"0.0.0.0\"" 965 . 974)))
+          ("BLACKLIST" . ((number "1" 777 . 778)))
+          ("STR_CHECKSUM_SHA256" . ((string "\"{SHA256}\"" 881 . 891)))
+          ("IAD_DEFAULT_TIMEOUT" . ((string "\"1\"" 1035 . 1038)))
+          )
+
+    )
+   (semanticdb-table "Makefile.am"
+    :major-mode 'makefile-automake-mode
+    :tags 
+        '( ("agents_execdir" variable (:default-value ("$(prefix)/agents")) nil [1 35])
+            ("DEFS" variable (:default-value ("@DEFS@" "-DBUILD_DATE=\\\"`$(date_path) +\"%Y-%m-%dT%H:%M:%S\"`\\\"" "-DBUILD_USER=\\\"`$(id_path) -un`@`$(hostname_path)`\\\"")) nil [36 159])
+            ("agents_exec_PROGRAMS" variable (:default-value ("contentfilter")) nil [354 389])
+            ("contentfilter_SOURCES" variable (:default-value ("contentfilter.c" "filter_action.c" "rule_set.c" "action_set.c" "../emclib/emc_services.c" "filter_rule.c" "cf_debugging.c" "database.c" "msg_template.c" "cf_common.c" "parser.c" "../cidr.c" "../hash.c" "../logger.c" "../common.c" "../g_mime_common.c" "../config.c" "../utils.c" "file_aparser.c" "data_match.c" "mail_security.c" "../espamc/whitelist.c" "../emclib/emime.c" "../emclib/estring.c" "../emclib/realmtree.c" "../emclib/echecksum.c" "../emclib/elog.c" "../emclib/estdio.c" "../quarantine/quarantine.c" "../vaultsmart/vaultsmart.c" "nxjson.c")) nil [585 1190])
+            ("contentfilter_CPPFLAGS" variable (:default-value ("-I/usr/local/include")) nil [1481 1525])
+            ("contentfilter_LDFLAGS" variable (:default-value ("-Wl,-export-dynamic" "-L/usr/local/lib")) nil [1525 1584])
+            ("contentfilter_LDADD" variable (:default-value ("-lemcbase" "-lglib-2.0" "-lgmime-2.0" "-lgobject-2.0" "-ldomainkeys" "-lresolv" "-ldomainkeys" "-lmagic" "-lssl" "-lcrypto" "-lcurl" "-ljson")) nil [1584 1723])
+            ("install-exec-hook" function nil nil [1908 2143])
+            ("uninstall-hook" function nil nil [2324 2530]))          
+    :file "Makefile.am"
+    :pointmax 2530
+    :fsize 2529
+    :lastmodtime '(21723 53485 888739 768000)
+    :unmatched-syntax '((shell-command 2527 . 2529) (bol 2526 . 2526))
+    )
+   (semanticdb-table "filter_rule.h"
+    :file "filter_rule.h"
+    :fsize 4000
+    :lastmodtime '(21696 16167 474341 608000)
+    )
+   (semanticdb-table "cf_debugging.h"
+    :file "cf_debugging.h"
+    :fsize 842
+    :lastmodtime '(21696 16167 470341 608000)
+    )
+   (semanticdb-table "database.h"
+    :file "database.h"
+    :fsize 4080
+    :lastmodtime '(21696 16167 470341 608000)
+    )
+   (semanticdb-table "file_aparser.h"
+    :file "file_aparser.h"
+    :fsize 740
+    :lastmodtime '(21696 16167 470341 608000)
+    )
+   (semanticdb-table "parser.h"
+    :file "parser.h"
+    :fsize 2436
+    :lastmodtime '(21696 16167 474341 608000)
+    )
+   (semanticdb-table "data_match.h"
+    :file "data_match.h"
+    :fsize 3695
+    :lastmodtime '(21696 16167 470341 608000)
+    )
+   (semanticdb-table "contentfilter.h"
+    :file "contentfilter.h"
+    :fsize 1478
+    :lastmodtime '(21696 16167 470341 608000)
+    )
+   )
+  :file "!home!harrison!projects!git!fm-app-mailer!contentfilter!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2"
+  )

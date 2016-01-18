@@ -1,0 +1,110 @@
+;; Object example/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "example/"
+  :tables
+  (list
+    (semanticdb-table "example.c"
+      :major-mode 'c-mode
+      :tags 
+        '( ("stdio.h" include (:system-flag t) nil [244 262])
+            ("stdlib.h" include (:system-flag t) nil [263 282])
+            ("string.h" include (:system-flag t) nil [283 302])
+            ("time.h" include (:system-flag t) nil [303 320])
+            ("sys/types.h" include (:system-flag t) nil [453 475])
+            ("sys/socket.h" include (:system-flag t) nil [476 499])
+            ("netinet/in.h" include (:system-flag t) nil [500 523])
+            ("arpa/inet.h" include (:system-flag t) nil [524 546])
+            ("errno.h" include (:system-flag t) nil [548 566])
+            ("ETCDIR" variable (:constant-flag t) nil [575 581])
+            ("LIBDIR" variable (:constant-flag t) nil [598 604])
+            ("cmae.h" include nil nil [662 679])
+            ("app_context_string" variable
+               (:pointer 1
+                :constant-flag t
+                :default-value "\"Application Context\""
+                :type "char")
+                nil [847 902])
+            ("LogCB" function
+               (:arguments 
+                  ( ("MsgLevel" variable (:type ("CMAE_LogLevel_t" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [947 972])
+                    ("Facility" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [973 994])
+                    ("code" variable (:type ("CMAE_LogCode_t" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [995 1015])
+                    ("ASCIIMsg" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [1016 1037]))                  
+                :type "void")
+                nil [936 1116])
+            ("print_cmae_result_details" function
+               (:arguments 
+                  ( ("result" variable (:type ("CMAE_Result_t" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [1149 1170]))                  
+                :type "void")
+                nil [1118 2752])
+            ("MessageChangedCB" function
+               (:arguments 
+                  ( ("score" variable (:type "unsigned int") (reparse-symbol arg-sub-list) [2867 2886])
+                    ("analysis" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [2909 2930])
+                    ("result" variable
+                       (:constant-flag t
+                        :type ("CMAE_Result_t" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [2953 2980])
+                    ("AFMessageInfo" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "void")
+                        (reparse-symbol arg-sub-list) [3003 3029])
+                    ("AFMessageInfoLength" variable (:type ("size_t" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [3052 3079])
+                    ("AFApplData" variable
+                       (:pointer 1
+                        :type "void")
+                        (reparse-symbol arg-sub-list) [3102 3119]))                  
+                :type "void")
+                nil [2845 3898])
+            ("MessageCleanupCB" function
+               (:arguments 
+                  ( ("AFApplData" variable
+                       (:pointer 1
+                        :type "void")
+                        (reparse-symbol arg-sub-list) [4002 4019])
+                    ("AFMessageInfo" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "void")
+                        (reparse-symbol arg-sub-list) [4042 4068])
+                    ("AFMessageInfoLength" variable (:type ("size_t" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [4091 4118]))                  
+                :type "void")
+                nil [3980 4286])
+            ("print_licensing_info" function (:type "void") nil [4405 6712])
+            ("print_microupdate_version_info" function (:type "void") nil [6714 7835])
+            ("main" function
+               (:arguments 
+                  ( ("argc" variable (:type "int") (reparse-symbol arg-sub-list) [7857 7866])
+                    ("argv" variable
+                       (:pointer 1
+                        :dereference 1
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [7867 7880]))                  
+                :type "int")
+                nil [7848 16858]))          
+      :file "example.c"
+      :pointmax 16859
+      :fsize 16858
+      :lastmodtime '(21520 32698 0 0)
+      :unmatched-syntax nil
+      :lexical-table 
+        '(("ETCDIR" . ((string "\"./etc\"" 582 . 589)))
+          ("LIBDIR" . ((string "\"./lib\"" 605 . 612)))
+          )
+))
+  :file "!home!harrison!projects!cloudmark!AuthorityEngineSDK!Linux!4.0.0!cloudmark!example!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2")

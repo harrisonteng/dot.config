@@ -1,0 +1,211 @@
+;; Object rest_lookup/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "rest_lookup/"
+  :tables
+  (list
+    (semanticdb-table "rest_lookup.h"
+      :file "rest_lookup.h"
+      :fsize 1020
+      :lastmodtime '(21780 20354 250109 448000))
+    (semanticdb-table "rest_lookup.c"
+      :major-mode 'c-mode
+      :tags 
+        '( ("rcsid" variable
+               (:pointer 1
+                :typemodifiers ("static")
+                :default-value "\"$Id: rest_lookup.c 51568 2015-01-30 21:15:17Z harrison.teng $\""
+                :type "char")
+                nil [1 86])
+            ("use_rcsid" function
+               (:typemodifiers ("static")
+                :arguments 
+                  ( ("" variable (:type "void") (reparse-symbol arg-sub-list) [109 114]))                  
+                :type "void")
+                nil [87 149])
+            ("_GNU_SOURCE" variable (:constant-flag t) nil [208 219])
+            ("rest_lookup.h" include nil nil [220 244])
+            ("REPORT_FORMAT_LINE" variable (:constant-flag t) nil [254 272])
+            ("LONG_REPORT_LINE" variable (:constant-flag t) nil [301 317])
+            ("SHORT_REPORT_LINE" variable (:constant-flag t) nil [329 346])
+            ("UBQD_SERVER_URL" variable (:constant-flag t) nil [428 443])
+            ("UBQD_CLIENT_TIMEOUT" variable (:constant-flag t) nil [491 510])
+            ("UBQD_KEY_NUM_OF_HIT_URLS" variable (:constant-flag t) nil [523 547])
+            ("UBQD_KEY_HIT_URLS" variable (:constant-flag t) nil [571 588])
+            ("UBQD_KEY_MISS_URLS" variable (:constant-flag t) nil [634 652])
+            ("UBQD_KEY_MALFORMED_URLS" variable (:constant-flag t) nil [679 702])
+            ("UBQD_SOURCE_FIELD" variable (:constant-flag t) nil [729 746])
+            ("gConfig" variable
+               (:pointer 1
+                :typemodifiers ("extern")
+                :type ("CfgFile" type (:type "class") nil nil))
+                nil [757 782])
+            ("curlMemoryCallback" function
+               (:prototype-flag t
+                :typemodifiers ("static")
+                :arguments 
+                  ( ("contents" variable
+                       (:pointer 1
+                        :type "void")
+                        (reparse-symbol arg-sub-list) [817 832])
+                    ("size" variable (:type ("size_t" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [833 845])
+                    ("nmemb" variable (:type ("size_t" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [846 859])
+                    ("usrp" variable
+                       (:pointer 1
+                        :type "void")
+                        (reparse-symbol arg-sub-list) [860 871]))                  
+                :type ("size_t" type (:type "class") nil nil))
+                nil [784 872])
+            ("make_urlblock_report" function
+               (:arguments 
+                  ( ("results" variable
+                       (:pointer 1
+                        :type ("SpammerResults" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [900 924])
+                    ("is_spam" variable (:type ("BOOL" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [925 938])
+                    ("always_flag" variable (:type ("BOOL" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [939 956])
+                    ("short_report_line" variable
+                       (:pointer 1
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [957 981]))                  
+                :type "void")
+                nil [874 1823])
+            ("print_report_when_errorout" function
+               (:arguments 
+                  ( ("results" variable
+                       (:pointer 1
+                        :type ("SpammerResults" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [1857 1881]))                  
+                :type "void")
+                nil [1825 2055])
+            ("lookup_urlblock" function
+               (:arguments 
+                  ( ("msgid" variable
+                       (:pointer 1
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [2077 2089])
+                    ("helo" variable
+                       (:pointer 1
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [2096 2107])
+                    ("ip" variable
+                       (:pointer 1
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [2114 2123])
+                    ("domain" variable
+                       (:pointer 1
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [2130 2143])
+                    ("recipient_domain" variable
+                       (:pointer 1
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [2150 2173])
+                    ("reversedns_sender" variable
+                       (:pointer 1
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [2180 2204])
+                    ("fullurl_anchor" variable
+                       (:pointer 1
+                        :type ("GSList" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [2211 2234])
+                    ("results" variable
+                       (:pointer 1
+                        :type ("SpammerResults" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [2241 2267]))                  
+                :type "int")
+                nil [2057 4583])
+            ("curlMemoryCallback" function
+               (:typemodifiers ("static")
+                :arguments 
+                  ( ("contents" variable
+                       (:pointer 1
+                        :type "void")
+                        (reparse-symbol arg-sub-list) [4618 4633])
+                    ("size" variable (:type ("size_t" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [4634 4646])
+                    ("nmemb" variable (:type ("size_t" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [4647 4660])
+                    ("userp" variable
+                       (:pointer 1
+                        :type "void")
+                        (reparse-symbol arg-sub-list) [4661 4673]))                  
+                :type ("size_t" type (:type "class") nil nil))
+                nil [4585 5037])
+            ("log_check_result" function
+               (:arguments 
+                  ( ("jobj" variable
+                       (:pointer 1
+                        :type ("json_object" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [5090 5108])
+                    ("json_key" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [5109 5130])
+                    ("result" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [5131 5150])
+                    ("hash_source" variable
+                       (:pointer 2
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [5151 5170]))                  
+                :type "int")
+                nil [5069 6991])
+            ("MAX_SOURCE" variable (:constant-flag t) nil [7001 7011])
+            ("get_rest_response" function
+               (:arguments 
+                  ( ("json" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [7075 7092])
+                    ("server_url" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [7100 7123])
+                    ("client_timeout_int" variable (:type "int") (reparse-symbol arg-sub-list) [7131 7154])
+                    ("ubqd_key_num_of_hit_urls" variable
+                       (:pointer 1
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [7161 7192])
+                    ("ubqd_key_hit_urls" variable
+                       (:pointer 1
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [7200 7224])
+                    ("ubqd_key_miss_urls" variable
+                       (:pointer 1
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [7231 7256])
+                    ("ubqd_key_malformed_urls" variable
+                       (:pointer 1
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [7263 7293])
+                    ("results" variable
+                       (:pointer 1
+                        :type ("SpammerResults" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [7300 7331]))                  
+                :type "int")
+                nil [7052 10333]))          
+      :file "rest_lookup.c"
+      :pointmax 10334
+      :fsize 10333
+      :lastmodtime '(21780 20354 250109 448000)
+      :unmatched-syntax nil
+      :lexical-table 
+        '(("REPORT_FORMAT_LINE" . ((string "\"SPAM: %s %s %5.1f\"" 273 . 292)))
+          ("_GNU_SOURCE")
+          ("SHORT_REPORT_LINE" . ((string "\"URLBLOCK\"" 347 . 357)))
+          ("UBQD_KEY_NUM_OF_HIT_URLS" . ((string "\"num_urls_bad\"" 548 . 562)))
+          ("UBQD_KEY_HIT_URLS" . ((string "\"phishing_urls,spam_urls,virus_urls\"" 589 . 625)))
+          ("UBQD_KEY_MALFORMED_URLS" . ((string "\"malformed_urls\"" 703 . 719)))
+          ("MAX_SOURCE" . ((number "100" 7012 . 7015)))
+          ("UBQD_CLIENT_TIMEOUT" . ((string "\"1\"" 511 . 514)))
+          ("UBQD_SERVER_URL" . ((string "\"http://127.0.0.1:3030/blockurlsquery\"" 444 . 482)))
+          ("UBQD_KEY_MISS_URLS" . ((string "\"undetected_urls\"" 653 . 670)))
+          ("LONG_REPORT_LINE" . ((string "\"\"" 318 . 320)))
+          ("UBQD_SOURCE_FIELD" . ((string "\"source\"" 747 . 755)))
+          )
+))
+  :file "!home!harrison!projects!bitbucket!fm-service-spamfilter-emcspamd2!src!rest_lookup!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2")

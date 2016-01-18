@@ -1,0 +1,19 @@
+;; Object courier_deps/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "courier_deps/"
+  :tables
+  (list
+    (semanticdb-table "Makefile.am"
+      :major-mode 'makefile-automake-mode
+      :tags 
+        '( ("AUTOMAKE_OPTIONS" variable (:default-value ("foreign")) nil [1 26])
+            ("SUBDIRS" variable (:default-value ("gdbmobj" "unicode" "rfc822" "numlib" "maildir")) nil [26 72])
+            ("noinst_HEADERS" variable (:default-value ("dbobj.h")) nil [72 95]))          
+      :file "Makefile.am"
+      :pointmax 95
+      :fsize 94
+      :lastmodtime '(21742 20805 0 0)
+      :unmatched-syntax nil))
+  :file "!home!harrison!projects!work!bitbucket!fm-app-mailer!courier_deliver!courier_deps!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2")

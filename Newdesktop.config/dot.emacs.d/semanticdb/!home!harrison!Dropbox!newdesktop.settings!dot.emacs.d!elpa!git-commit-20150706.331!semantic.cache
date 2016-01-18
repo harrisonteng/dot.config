@@ -1,0 +1,16 @@
+;; Object git-commit-20150706.331/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "git-commit-20150706.331/"
+  :tables
+  (list
+    (semanticdb-table "git-commit-autoloads.el"
+      :major-mode 'emacs-lisp-mode
+      :tags nil
+      :file "git-commit-autoloads.el"
+      :pointmax 293
+      :fsize 1142
+      :lastmodtime '(21920 14734 194874 274000)
+      :unmatched-syntax nil))
+  :file "!home!harrison!Dropbox!newdesktop.settings!dot.emacs.d!elpa!git-commit-20150706.331!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2")

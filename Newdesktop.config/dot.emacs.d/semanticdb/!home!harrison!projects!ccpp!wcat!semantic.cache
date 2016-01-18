@@ -1,0 +1,160 @@
+;; Object wcat/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "wcat/"
+  :tables
+  (list
+    (semanticdb-table "wcat.c"
+      :major-mode 'c-mode
+      :tags 
+        '( ("stdio.h" include (:system-flag t) nil [977 995])
+            ("string.h" include (:system-flag t) nil [996 1015])
+            ("stdlib.h" include (:system-flag t) nil [1016 1035])
+            ("unistd.h" include (:system-flag t) nil [1036 1055])
+            ("sys/types.h" include (:system-flag t) nil [1056 1078])
+            ("sys/stat.h" include (:system-flag t) nil [1079 1100])
+            ("fcntl.h" include (:system-flag t) nil [1101 1119])
+            ("ctype.h" include (:system-flag t) nil [1120 1138])
+            ("error.h" include (:system-flag t) nil [1139 1157])
+            ("errno.h" include (:system-flag t) nil [1158 1176])
+            ("VERSION" variable (:constant-flag t) nil [1186 1193])
+            ("REVISION" variable (:constant-flag t) nil [1208 1216])
+            ("STATUS" variable (:constant-flag t) nil [1229 1235])
+            ("TRUE" variable (:constant-flag t) nil [1254 1258])
+            ("FALSE" variable (:constant-flag t) nil [1269 1274])
+            ("NUL" variable (:constant-flag t) nil [1298 1301])
+            ("NEW_LINE" variable (:constant-flag t) nil [1323 1331])
+            ("TAB" variable (:constant-flag t) nil [1345 1348])
+            ("SUCCESS" variable (:constant-flag t) nil [1363 1370])
+            ("FAIL" variable (:constant-flag t) nil [1385 1389])
+            ("READ_ERROR" variable (:constant-flag t) nil [1407 1417])
+            ("WRITE_ERROR" variable (:constant-flag t) nil [1429 1440])
+            ("STDOUT_FILE" variable (:constant-flag t) nil [1452 1463])
+            ("STDIN_FILE" variable (:constant-flag t) nil [1474 1484])
+            ("BLK_SIZE" variable (:constant-flag t) nil [1495 1503])
+            ("LSB" variable (:constant-flag t) nil [1520 1523])
+            ("ARRAY_LENGTH" variable (:constant-flag t) nil [1576 1588])
+            ("flag_bits" type
+               (:members 
+                  ( ("showend" variable
+                       (:suffix ":1"
+                        :type "char")
+                        (reparse-symbol classsubparts) [1622 1637])
+                    ("showtab" variable
+                       (:suffix ":1"
+                        :type "char")
+                        (reparse-symbol classsubparts) [1640 1655])
+                    ("linenum_all" variable
+                       (:suffix ":1"
+                        :type "char")
+                        (reparse-symbol classsubparts) [1658 1677])
+                    ("linenum_nonempty" variable
+                       (:suffix ":1"
+                        :type "char")
+                        (reparse-symbol classsubparts) [1680 1704])
+                    ("sqeeze_bl" variable
+                       (:suffix ":1"
+                        :type "char")
+                        (reparse-symbol classsubparts) [1707 1724])
+                    ("showspchar" variable
+                       (:suffix ":1"
+                        :type "char")
+                        (reparse-symbol classsubparts) [1727 1745])
+                    ("help" variable
+                       (:suffix ":1"
+                        :type "char")
+                        (reparse-symbol classsubparts) [1748 1760]))                  
+                :type "struct")
+                nil [1593 1776])
+            ("option_flags" type
+               (:typedef ("flag_bits" type (:type "struct") nil nil)
+                :type "typedef")
+                nil [1593 1776])
+            ("wcat" function
+               (:prototype-flag t
+                :arguments 
+                  ( ("file" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [1788 1805])
+                    ("flag" variable (:type ("option_flags" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [1806 1824]))                  
+                :type "int")
+                nil [1778 1825])
+            ("print_help" function
+               (:prototype-flag t
+                :arguments 
+                  ( ("" variable (:type "void") (reparse-symbol arg-sub-list) [1843 1848]))                  
+                :type "void")
+                nil [1826 1849])
+            ("generate_line_number" function
+               (:prototype-flag t
+                :arguments 
+                  ( ("" variable (:type "void") (reparse-symbol arg-sub-list) [1877 1882]))                  
+                :type "void")
+                nil [1850 1883])
+            ("line_number" variable
+               (:dereference 1
+                :default-value "{ ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ',
+  '\\r', ' ', ' ', ' ', '\\r', ' ', ' ', ' ', ' ', ' ',
+  '0', '\\t'
+}"
+                :type "char")
+                nil [2515 2670])
+            ("main" function
+               (:arguments 
+                  ( ("argc" variable (:type "int") (reparse-symbol arg-sub-list) [2911 2920])
+                    ("argv" variable
+                       (:pointer 1
+                        :dereference 1
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [2921 2934]))                  
+                :type "int")
+                nil [2901 4340])
+            ("wcat" function
+               (:arguments 
+                  ( ("file" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [4779 4796])
+                    ("flag" variable (:type ("option_flags" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [4797 4815]))                  
+                :type "int")
+                nil [4769 7905])
+            ("generate_line_number" function
+               (:arguments 
+                  ( ("" variable (:type "void") (reparse-symbol arg-sub-list) [8224 8229]))                  
+                :type "void")
+                nil [8197 8542])
+            ("print_help" function
+               (:arguments 
+                  ( ("" variable (:type "void") (reparse-symbol arg-sub-list) [8708 8713]))                  
+                :type "void")
+                nil [8691 9902]))          
+      :file "wcat.c"
+      :pointmax 9903
+      :fsize 9887
+      :lastmodtime '(19445 35422 0 0)
+      :unmatched-syntax nil
+      :lexical-table 
+        '(("STATUS" . ((string "\"Stable\"" 1236 . 1244)))
+          ("NEW_LINE" . ((string "'\\n'" 1332 . 1336)))
+          ("FAIL" . ((punctuation "-" 1396 . 1397) (number "1" 1397 . 1398)))
+          ("ARRAY_LENGTH" . ((number "22" 1589 . 1591)))
+          ("TRUE" . ((number "1" 1259 . 1260)))
+          ("SUCCESS" . ((number "1" 1375 . 1376)))
+          ("STDIN_FILE" . ((number "0" 1485 . 1486)))
+          ("FALSE" . ((number "0" 1275 . 1276)))
+          ("TAB" . ((string "'\\t'" 1349 . 1353)))
+          ("READ_ERROR" . ((number "2" 1419 . 1420)))
+          ("VERSION" . ((string "\"1.0\"" 1194 . 1199)))
+          ("NUL" . ((string "'\\0'" 1302 . 1306)))
+          ("BLK_SIZE" . ((symbol "BUFSIZ" 1504 . 1510)))
+          ("STDOUT_FILE" . ((number "1" 1464 . 1465)))
+          ("REVISION" . ((string "\"1\"" 1217 . 1220)))
+          ("WRITE_ERROR" . ((number "3" 1441 . 1442)))
+          ("LSB" . ((number "20" 1524 . 1526)))
+          )
+))
+  :file "!home!harrison!projects!ccpp!wcat!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2")

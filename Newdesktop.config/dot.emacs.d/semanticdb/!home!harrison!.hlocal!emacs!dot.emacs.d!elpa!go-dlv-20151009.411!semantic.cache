@@ -1,0 +1,16 @@
+;; Object go-dlv-20151009.411/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "go-dlv-20151009.411/"
+  :tables
+  (list
+    (semanticdb-table "go-dlv-autoloads.el"
+      :major-mode 'emacs-lisp-mode
+      :tags nil
+      :file "go-dlv-autoloads.el"
+      :pointmax 285
+      :fsize 622
+      :lastmodtime '(22045 14119 405820 139000)
+      :unmatched-syntax nil))
+  :file "!home!harrison!.hlocal!emacs!dot.emacs.d!elpa!go-dlv-20151009.411!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2")

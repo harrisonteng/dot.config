@@ -1,0 +1,48 @@
+;; Object cfunctions/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "cfunctions/"
+  :tables
+  (list
+    (semanticdb-table "slurpfile.c"
+      :major-mode 'c-mode
+      :tags 
+        '( ("stdio.h" include (:system-flag t) nil [101 119])
+            ("malloc.h" include (:system-flag t) nil [121 140])
+            ("string.h" include (:system-flag t) nil [142 161])
+            ("read_line" function
+               (:pointer 1
+                :arguments 
+                  ( ("fp" variable
+                       (:pointer 1
+                        :type ("FILE" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [184 193]))                  
+                :type "char")
+                nil [166 1007])
+            ("slurp_file" function
+               (:pointer 1
+                :arguments 
+                  ( ("filename" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [1089 1111]))                  
+                :type "char")
+                nil [1070 1545])
+            ("main" function
+               (:arguments 
+                  ( ("argc" variable (:type "int") (reparse-symbol arg-sub-list) [1556 1565])
+                    ("argv" variable
+                       (:pointer 1
+                        :dereference 1
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [1566 1579]))                  
+                :type "int")
+                nil [1546 1638]))          
+      :file "slurpfile.c"
+      :pointmax 1640
+      :fsize 1625
+      :lastmodtime '(20129 50554 0 0)
+      :unmatched-syntax nil))
+  :file "!home!harrison!projects!work!newdesktop!local!cfunctions!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2")

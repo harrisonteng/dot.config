@@ -1,0 +1,16 @@
+;; Object babel-repl-20150712.800/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "babel-repl-20150712.800/"
+  :tables
+  (list
+    (semanticdb-table "babel-repl-autoloads.el"
+      :major-mode 'emacs-lisp-mode
+      :tags nil
+      :file "babel-repl-autoloads.el"
+      :pointmax 293
+      :fsize 619
+      :lastmodtime '(21924 12664 913518 707000)
+      :unmatched-syntax nil))
+  :file "!home!harrison!Dropbox!newdesktop.settings!dot.emacs.d!elpa!babel-repl-20150712.800!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2")

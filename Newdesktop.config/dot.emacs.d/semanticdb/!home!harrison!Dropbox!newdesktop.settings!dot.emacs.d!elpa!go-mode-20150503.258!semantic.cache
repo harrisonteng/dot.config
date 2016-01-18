@@ -1,0 +1,16 @@
+;; Object go-mode-20150503.258/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "go-mode-20150503.258/"
+  :tables
+  (list
+    (semanticdb-table "go-mode-autoloads.el"
+      :major-mode 'emacs-lisp-mode
+      :tags nil
+      :file "go-mode-autoloads.el"
+      :pointmax 3047
+      :fsize 3088
+      :lastmodtime '(21833 28069 332391 891000)
+      :unmatched-syntax nil))
+  :file "!home!harrison!Dropbox!newdesktop.settings!dot.emacs.d!elpa!go-mode-20150503.258!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2")

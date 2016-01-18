@@ -1,0 +1,323 @@
+;; Object cfunctions/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "cfunctions/"
+  :tables
+  (list
+    (semanticdb-table "getdnsname.c"
+      :major-mode 'c-mode
+      :tags 
+        '( ("stdio.h" include (:system-flag t) nil [1 18])
+            ("string.h" include (:system-flag t) nil [20 38])
+            ("stdlib.h" include (:system-flag t) nil [40 58])
+            ("sys/socket.h" include (:system-flag t) nil [60 82])
+            ("arpa/inet.h" include (:system-flag t) nil [84 105])
+            ("netinet/in.h" include (:system-flag t) nil [106 128])
+            ("unistd.h" include (:system-flag t) nil [129 147])
+            ("dns_servers" variable
+               (:dereference 2
+                :type "char")
+                nil [150 176])
+            ("dns_server_count" variable
+               (:default-value "0"
+                :type "int")
+                nil [177 202])
+            ("T_A" variable (:constant-flag t) nil [212 215])
+            ("T_NS" variable (:constant-flag t) nil [241 245])
+            ("T_CNAME" variable (:constant-flag t) nil [269 276])
+            ("T_SOA" variable (:constant-flag t) nil [305 310])
+            ("T_PTR" variable (:constant-flag t) nil [351 356])
+            ("T_MX" variable (:constant-flag t) nil [394 398])
+            ("ngethostbyname" function
+               (:prototype-flag t
+                :arguments 
+                  ( ("" variable
+                       (:pointer 1
+                        :type "unsigned char")
+                        (reparse-symbol arg-sub-list) [461 477])
+                    ("" variable (:type "int") (reparse-symbol arg-sub-list) [478 482]))                  
+                :type "void")
+                nil [440 483])
+            ("ChangetoDnsNameFormat" function
+               (:prototype-flag t
+                :arguments 
+                  ( ("" variable
+                       (:pointer 1
+                        :type "unsigned char")
+                        (reparse-symbol arg-sub-list) [512 527])
+                    ("" variable
+                       (:pointer 1
+                        :type "unsigned char")
+                        (reparse-symbol arg-sub-list) [527 542]))                  
+                :type "void")
+                nil [484 543])
+            ("ReadName" function
+               (:prototype-flag t
+                :pointer 1
+                :arguments 
+                  ( ("" variable
+                       (:pointer 1
+                        :type "unsigned char")
+                        (reparse-symbol arg-sub-list) [569 584])
+                    ("" variable
+                       (:pointer 1
+                        :type "unsigned char")
+                        (reparse-symbol arg-sub-list) [584 599])
+                    ("" variable
+                       (:pointer 1
+                        :type "int")
+                        (reparse-symbol arg-sub-list) [599 604]))                  
+                :type "unsigned char")
+                nil [544 605])
+            ("get_dns_servers" function
+               (:prototype-flag t
+                :type "void")
+                nil [606 629])
+            ("DNS_HEADER" type
+               (:members 
+                  ( ("id" variable (:type "unsigned short") (reparse-symbol classsubparts) [679 697])
+                    ("rd" variable
+                       (:suffix ":1"
+                        :type "unsigned char")
+                        (reparse-symbol classsubparts) [729 749])
+                    ("tc" variable
+                       (:suffix ":1"
+                        :type "unsigned char")
+                        (reparse-symbol classsubparts) [775 795])
+                    ("aa" variable
+                       (:suffix ":1"
+                        :type "unsigned char")
+                        (reparse-symbol classsubparts) [821 841])
+                    ("opcode" variable
+                       (:suffix ":4"
+                        :type "unsigned char")
+                        (reparse-symbol classsubparts) [868 892])
+                    ("qr" variable
+                       (:suffix ":1"
+                        :type "unsigned char")
+                        (reparse-symbol classsubparts) [919 939])
+                    ("rcode" variable
+                       (:suffix ":4"
+                        :type "unsigned char")
+                        (reparse-symbol classsubparts) [969 992])
+                    ("cd" variable
+                       (:suffix ":1"
+                        :type "unsigned char")
+                        (reparse-symbol classsubparts) [1014 1034])
+                    ("ad" variable
+                       (:suffix ":1"
+                        :type "unsigned char")
+                        (reparse-symbol classsubparts) [1060 1080])
+                    ("z" variable
+                       (:suffix ":1"
+                        :type "unsigned char")
+                        (reparse-symbol classsubparts) [1107 1126])
+                    ("ra" variable
+                       (:suffix ":1"
+                        :type "unsigned char")
+                        (reparse-symbol classsubparts) [1150 1170])
+                    ("q_count" variable (:type "unsigned short") (reparse-symbol classsubparts) [1200 1223])
+                    ("ans_count" variable (:type "unsigned short") (reparse-symbol classsubparts) [1258 1283])
+                    ("auth_count" variable (:type "unsigned short") (reparse-symbol classsubparts) [1316 1342])
+                    ("add_count" variable (:type "unsigned short") (reparse-symbol classsubparts) [1378 1403]))                  
+                :type "struct")
+                nil [655 1436])
+            ("QUESTION" type
+               (:members 
+                  ( ("qtype" variable (:type "unsigned short") (reparse-symbol classsubparts) [1504 1525])
+                    ("qclass" variable (:type "unsigned short") (reparse-symbol classsubparts) [1530 1552]))                  
+                :type "struct")
+                nil [1482 1555])
+            ("R_DATA" type
+               (:members 
+                  ( ("type" variable (:type "unsigned short") (reparse-symbol classsubparts) [1657 1677])
+                    ("_class" variable (:type "unsigned short") (reparse-symbol classsubparts) [1682 1704])
+                    ("ttl" variable (:type "unsigned int") (reparse-symbol classsubparts) [1709 1726])
+                    ("data_len" variable (:type "unsigned short") (reparse-symbol classsubparts) [1731 1755]))                  
+                :type "struct")
+                nil [1637 1758])
+            ("RES_RECORD" type
+               (:members 
+                  ( ("name" variable
+                       (:pointer 1
+                        :type "unsigned char")
+                        (reparse-symbol classsubparts) [1842 1862])
+                    ("resource" variable
+                       (:pointer 1
+                        :type ("R_DATA" type
+                             (:prototype t
+                              :type "struct")
+                              nil nil))
+                        (reparse-symbol classsubparts) [1867 1891])
+                    ("rdata" variable
+                       (:pointer 1
+                        :type "unsigned char")
+                        (reparse-symbol classsubparts) [1896 1917]))                  
+                :type "struct")
+                nil [1818 1920])
+            ("QUERY" type
+               (:typedef ("" type
+                     (:members 
+                        ( ("name" variable
+                             (:pointer 1
+                              :type "unsigned char")
+                              (reparse-symbol classsubparts) [1967 1987])
+                          ("ques" variable
+                             (:pointer 1
+                              :type ("QUESTION" type
+                                   (:prototype t
+                                    :type "struct")
+                                    nil nil))
+                              (reparse-symbol classsubparts) [1992 2014]))                        
+                      :type "struct")
+                      nil nil)
+                :type "typedef")
+                nil [1946 2023])
+            ("main" function
+               (:arguments 
+                  ( ("argc" variable (:type "int") (reparse-symbol arg-sub-list) [2036 2046])
+                    ("argv" variable
+                       (:pointer 1
+                        :dereference 1
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [2047 2060]))                  
+                :type "int")
+                nil [2026 2608])
+            ("ngethostbyname" function
+               (:arguments 
+                  ( ("host" variable
+                       (:pointer 1
+                        :type "unsigned char")
+                        (reparse-symbol arg-sub-list) [2683 2704])
+                    ("query_type" variable (:type "int") (reparse-symbol arg-sub-list) [2705 2720]))                  
+                :type "void")
+                nil [2663 8802])
+            ("ReadName" function
+               (:pointer 1
+                :arguments 
+                  ( ("reader" variable
+                       (:pointer 1
+                        :type "unsigned char")
+                        (reparse-symbol arg-sub-list) [8834 8856])
+                    ("buffer" variable
+                       (:pointer 1
+                        :type "unsigned char")
+                        (reparse-symbol arg-sub-list) [8856 8878])
+                    ("count" variable
+                       (:pointer 1
+                        :type "int")
+                        (reparse-symbol arg-sub-list) [8878 8889]))                  
+                :type ("u_char" type (:type "class") nil nil))
+                nil [8817 10097])
+            ("get_dns_servers" function
+               (:arguments 
+                  ( ("dnsserver" variable
+                       (:pointer 1
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [10189 10205]))                  
+                :type "void")
+                nil [10168 10889])
+            ("ChangetoDnsNameFormat" function
+               (:arguments 
+                  ( ("dns" variable
+                       (:pointer 1
+                        :type "unsigned char")
+                        (reparse-symbol arg-sub-list) [10996 11015])
+                    ("host" variable
+                       (:pointer 1
+                        :type "unsigned char")
+                        (reparse-symbol arg-sub-list) [11015 11035]))                  
+                :type "void")
+                nil [10969 11376]))          
+      :file "getdnsname.c"
+      :pointmax 11377
+      :fsize 11365
+      :lastmodtime '(21263 54127 0 0)
+      :unmatched-syntax nil
+      :lexical-table 
+        '(("T_A" . ((number "1" 216 . 217)))
+          ("T_SOA" . ((number "6" 311 . 312)))
+          ("T_NS" . ((number "2" 246 . 247)))
+          ("T_CNAME" . ((number "5" 277 . 278)))
+          ("T_PTR" . ((number "12" 357 . 359)))
+          ("T_MX" . ((number "15" 399 . 401)))
+          )
+)
+    (semanticdb-table "getmx.c"
+      :major-mode 'c-mode
+      :tags 
+        '( ("stdio.h" include (:system-flag t) nil [1 19])
+            ("ctype.h" include (:system-flag t) nil [20 38])
+            ("errno.h" include (:system-flag t) nil [39 57])
+            ("signal.h" include (:system-flag t) nil [58 77])
+            ("setjmp.h" include (:system-flag t) nil [78 97])
+            ("sys/types.h" include (:system-flag t) nil [99 121])
+            ("sys/param.h" include (:system-flag t) nil [162 184])
+            ("sys/socket.h" include (:system-flag t) nil [185 208])
+            ("netinet/in.h" include (:system-flag t) nil [209 232])
+            ("netdb.h" include (:system-flag t) nil [234 252])
+            ("arpa/nameser.h" include (:system-flag t) nil [308 333])
+            ("resolv.h" include (:system-flag t) nil [334 353])
+            ("qbuf_t" type
+               (:typedef ("char")
+                :type "typedef")
+                nil [438 458])
+            ("nbuf_t" type
+               (:typedef ("u_char" type (:type "class") nil nil)
+                :type "typedef")
+                nil [516 538])
+            ("s_ntoa" function
+               (:pointer 1
+                :arguments 
+                  ( ("addr" variable (:type "unsigned long") (reparse-symbol arg-sub-list) [560 579]))                  
+                :type "char")
+                nil [547 767])
+            ("getmxbyname" function
+               (:pointer 1
+                :arguments 
+                  ( ("domain" variable
+                       (:pointer 1
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [793 806]))                  
+                :type "char")
+                nil [775 4342])
+            ("txtquery" function
+               (:pointer 1
+                :typemodifiers ("static")
+                :arguments 
+                  ( ("domain" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [4368 4387])
+                    ("ttl" variable
+                       (:pointer 1
+                        :type "unsigned int")
+                        (reparse-symbol arg-sub-list) [4388 4406]))                  
+                :type "char")
+                nil [4346 6533])
+            ("gethostaddr" function
+               (:arguments 
+                  ( ("name" variable
+                       (:pointer 1
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [6709 6721]))                  
+                :type ("in_addr_t" type (:type "class") nil nil))
+                nil [6686 6973])
+            ("main" function
+               (:arguments 
+                  ( ("argc" variable (:type "int") (reparse-symbol arg-sub-list) [6986 6995])
+                    ("argv" variable
+                       (:pointer 1
+                        :dereference 1
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [6996 7009]))                  
+                :type "int")
+                nil [6976 7402]))          
+      :file "getmx.c"
+      :pointmax 7404
+      :fsize 7396
+      :lastmodtime '(21282 5706 0 0)
+      :unmatched-syntax nil))
+  :file "!home!harrison!projects!local!cfunctions!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2")

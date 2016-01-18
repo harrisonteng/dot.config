@@ -1,0 +1,16 @@
+;; Object header2-20151231.1326/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "header2-20151231.1326/"
+  :tables
+  (list
+    (semanticdb-table "header2-autoloads.el"
+      :major-mode 'emacs-lisp-mode
+      :tags nil
+      :file "header2-autoloads.el"
+      :pointmax 287
+      :fsize 1625
+      :lastmodtime '(22154 45248 227434 329000)
+      :unmatched-syntax nil))
+  :file "!home!harrison!.hlocal!emacs!dot.emacs.d!elpa!header2-20151231.1326!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2")

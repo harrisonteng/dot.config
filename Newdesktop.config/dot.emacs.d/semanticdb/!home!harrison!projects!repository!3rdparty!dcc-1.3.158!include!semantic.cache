@@ -1,0 +1,70 @@
+;; Object include/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "include/"
+  :tables
+  (list
+    (semanticdb-table "dcc_types.h"
+      :major-mode 'c-mode
+      :tags 
+        '( ("DCC_TYPES_H" variable (:constant-flag t) nil [1952 1963])
+            ("STRICT" variable (:constant-flag t) nil [2685 2691])
+            ("WIN32_LEAN_AND_MEAN" variable (:constant-flag t) nil [2700 2719])
+            ("stdarg.h" include (:system-flag t) nil [2720 2739])
+            ("stdio.h" include (:system-flag t) nil [2740 2758])
+            ("stdlib.h" include (:system-flag t) nil [2759 2778])
+            ("errno.h" include (:system-flag t) nil [2779 2797])
+            ("winerror.h" include (:system-flag t) nil [2798 2819])
+            ("limits.h" include (:system-flag t) nil [2820 2839])
+            ("winsock2.h" include (:system-flag t) nil [2840 2861])
+            ("ws2tcpip.h" include (:system-flag t) nil [2862 2883])
+            ("time.h" include (:system-flag t) nil [2884 2901])
+            ("sys/types.h" include (:system-flag t) nil [2902 2924])
+            ("sys/stat.h" include (:system-flag t) nil [2925 2946])
+            ("fcntl.h" include (:system-flag t) nil [2947 2965])
+            ("io.h" include (:system-flag t) nil [2966 2981])
+            ("int32_t" type
+               (:typedef ("signed int")
+                :type "typedef")
+                nil [2983 3010])
+            ("int64_t" type
+               (:typedef ("__int64" type (:type "class") nil nil)
+                :type "typedef")
+                nil [3011 3036])
+            ("DCC_EMSG" type
+               (:typedef ("char")
+                :type "typedef")
+                nil [3473 3500])
+            ("DCC_PATH" type
+               (:typedef ("char")
+                :type "typedef")
+                nil [3782 3809])
+            ("DCC_UNUSED" variable (:constant-flag t) nil [4118 4128])
+            ("DCC_PF" variable (:constant-flag t) nil [4137 4143])
+            ("DCC_NORET" variable (:constant-flag t) nil [4157 4166])
+            ("DCC_PACKED" variable (:constant-flag t) nil [4175 4185])
+            ("UATTRIB" variable (:constant-flag t) nil [4519 4526])
+            ("PATTRIB" variable (:constant-flag t) nil [4535 4542])
+            ("NRATTRIB" variable (:constant-flag t) nil [4556 4564])
+            ("inline" variable (:constant-flag t) nil [4605 4611]))          
+      :file "dcc_types.h"
+      :pointmax 4646
+      :fsize 4645
+      :lastmodtime '(21474 16158 0 0)
+      :unmatched-syntax nil
+      :lexical-table 
+        '(("DCC_PACKED")
+          ("UATTRIB")
+          ("WIN32_LEAN_AND_MEAN")
+          ("inline")
+          ("DCC_PF" (spp-arg-list ("f" "l") 4143 . 4148))
+          ("DCC_UNUSED")
+          ("STRICT")
+          ("DCC_NORET")
+          ("PATTRIB" (spp-arg-list ("f" "l") 4542 . 4547))
+          ("NRATTRIB")
+          ("DCC_TYPES_H")
+          )
+))
+  :file "!home!harrison!projects!repository!3rdparty!dcc-1.3.158!include!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2")

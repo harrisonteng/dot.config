@@ -1,0 +1,16 @@
+;; Object ido-select-window-20131220.1247/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "ido-select-window-20131220.1247/"
+  :tables
+  (list
+    (semanticdb-table "ido-select-window-autoloads.el"
+      :major-mode 'emacs-lisp-mode
+      :tags nil
+      :file "ido-select-window-autoloads.el"
+      :pointmax 307
+      :fsize 693
+      :lastmodtime '(21803 20861 186515 15000)
+      :unmatched-syntax nil))
+  :file "!home!harrison!Dropbox!newdesktop.settings!dot.emacs.d!elpa!ido-select-window-20131220.1247!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2")

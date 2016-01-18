@@ -1,0 +1,24 @@
+;; Object maillist/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "maillist/"
+  :tables
+  (list
+    (semanticdb-table "Makefile.am"
+      :major-mode 'makefile-automake-mode
+      :tags 
+        '( ("agents_execdir" variable (:default-value ("$(prefix)/agents")) nil [1 35])
+            ("agents_exec_PROGRAMS" variable (:default-value ("maillist")) nil [36 66])
+            ("noinst_HEADERS" variable (:default-value ("../exim_q.h")) nil [66 93])
+            ("maillist_SOURCES" variable (:default-value ("maillist.c" "../hash.c" "../common.c" "../config.c" "../mcfg.c" "../logger.c" "../exim_q.c")) nil [93 189])
+            ("maillist_LDADD" variable (:default-value ("-lemcbase" "-lgmime-2.0" "-lglib-2.0" "-lgobject-2.0" "-lcrypt")) nil [189 259])
+            ("maillist_LDFLAGS" variable (:default-value ("-Wl,-export-dynamic")) nil [259 296])
+            ("install-exec-hook" function nil nil [297 433])
+            ("uninstall-hook" function nil nil [434 538]))          
+      :file "Makefile.am"
+      :pointmax 538
+      :fsize 537
+      :lastmodtime '(21731 35447 962521 377000)
+      :unmatched-syntax '((shell-command 451 . 537) (bol 450 . 450))))
+  :file "!home!harrison!projects!bitbucket!fm-app-mailer!maillist!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2")

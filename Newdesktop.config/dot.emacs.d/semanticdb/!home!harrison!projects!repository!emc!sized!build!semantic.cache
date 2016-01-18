@@ -1,0 +1,24 @@
+;; Object build/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "build/"
+  :tables
+  (list
+    (semanticdb-table "Makefile.am"
+      :major-mode 'makefile-automake-mode
+      :tags 
+        '( ("AUTOMAKE_OPTIONS" variable (:default-value ("foreign")) nil [1 26])
+            ("DEFS" variable (:default-value ("@DEFS@" "-DBUILD_DATE=\\\"`$(date_path) +\"%Y-%m-%dT%H:%M:%S\"`\\\"" "-DBUILD_USER=\\\"`$(id_path) -un`@`$(hostname_path)`\\\"")) nil [27 150])
+            ("bin_PROGRAMS" variable (:default-value ("sized")) nil [151 170])
+            ("sizeddir" variable (:default-value ("$(prefix)/bin")) nil [171 194])
+            ("sized_SOURCES" variable (:default-value ("../src/sized/size-daemon.c" "../src/sized/mailbox.c" "../src/sized/domain.c")) nil [194 290])
+            ("sized_CPPFLAGS" variable (:default-value ("-I../src/libemcimap" "-I@COURIER_SOURCE@" "-I@COURIER_SOURCE@/maildir" "@GLIB_CFLAGS@")) nil [290 392])
+            ("sized_LDFLAGS" variable (:default-value ("@GLIB_LIBS@")) nil [392 418])
+            ("sized_LDADD" variable (:default-value ("-L@COURIER_SOURCE@/maildir" "-lmaildir" "-L@COURIER_SOURCE@/numlib" "-lnumlib" "-L@COURIER_SOURCE@/rfc822" "-lrfc822" "-lemcimap" "-larchive" "-lmhash")) nil [418 581]))          
+      :file "Makefile.am"
+      :pointmax 581
+      :fsize 580
+      :lastmodtime '(21173 48315 0 0)
+      :unmatched-syntax nil))
+  :file "!home!harrison!projects!repository!emc!sized!build!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2")

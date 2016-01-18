@@ -1,0 +1,25 @@
+;; Object libemcqmysql/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "libemcqmysql/"
+  :tables (list 
+   (semanticdb-table "Makefile.am"
+    :major-mode 'makefile-automake-mode
+    :tags 
+        '( ("qlib_execdir" variable (:default-value ("$(prefix)/lib")) nil [1 28])
+            ("qlib_exec_PROGRAMS" variable (:default-value ("libemcqmysql.so")) nil [29 64])
+            ("noinst_HEADERS" variable (:default-value ("libemcqmysql.h")) nil [64 94])
+            ("libemcqmysql_so_SOURCES" variable (:default-value ("admin.c" "aentry.c" "alist.c" "build.c" "external.c" "header.c" "hint.c" "hosted.c" "main.c" "message.c" "misc.c" "qentry.c" "../config.c" "../mcfg.c" "../hash.c" "../common.c" "../logger.c" "../forwarding/forwarding.c" "../quarantine/quarantine.c" "../emclib/estring.c" "../emclib/emime.c" "../emclib/elog.c" "../emclib/echecksum.c" "../emclib/estdio.c")) nil [94 426])
+            ("libemcqmysql_so_CFLAGS" variable (:default-value ("-fPIC")) nil [426 455])
+            ("libemcqmysql_so_LDFLAGS" variable (:default-value ("-shared" "-nostartfiles")) nil [455 501])
+            ("libemcqmysql_so_LDADD" variable (:default-value ("-L/usr/local/lib" "-lemcbase")) nil [501 550]))          
+    :file "Makefile.am"
+    :pointmax 550
+    :fsize 549
+    :lastmodtime '(21696 16167 598341 610000)
+    :unmatched-syntax 'nil
+    )
+   )
+  :file "!home!harrison!projects!git!fm-app-mailer!libemcqmysql!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2"
+  )

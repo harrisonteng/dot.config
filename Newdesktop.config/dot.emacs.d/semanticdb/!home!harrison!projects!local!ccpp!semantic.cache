@@ -1,0 +1,123 @@
+;; Object ccpp/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "ccpp/"
+  :tables
+  (list
+    (semanticdb-table "ssl-demo.c"
+      :major-mode 'c-mode
+      :tags 
+        '( ("sys/socket.h" include (:system-flag t) nil [115 138])
+            ("sys/types.h" include (:system-flag t) nil [139 161])
+            ("netinet/in.h" include (:system-flag t) nil [162 185])
+            ("netdb.h" include (:system-flag t) nil [186 204])
+            ("stdio.h" include (:system-flag t) nil [205 223])
+            ("string.h" include (:system-flag t) nil [224 243])
+            ("stdlib.h" include (:system-flag t) nil [244 263])
+            ("unistd.h" include (:system-flag t) nil [264 283])
+            ("errno.h" include (:system-flag t) nil [284 302])
+            ("openssl/rand.h" include (:system-flag t) nil [304 329])
+            ("openssl/ssl.h" include (:system-flag t) nil [330 354])
+            ("openssl/err.h" include (:system-flag t) nil [355 379])
+            ("connection" type
+               (:typedef ("" type
+                     (:members 
+                        ( ("socket" variable (:type "int") (reparse-symbol classsubparts) [491 502])
+                          ("sslHandle" variable
+                             (:pointer 1
+                              :type ("SSL" type (:type "class") nil nil))
+                              (reparse-symbol classsubparts) [507 522])
+                          ("sslContext" variable
+                             (:pointer 1
+                              :type ("SSL_CTX" type (:type "class") nil nil))
+                              (reparse-symbol classsubparts) [527 547]))                        
+                      :type "struct")
+                      nil nil)
+                :type "typedef")
+                nil [470 561])
+            ("SERVER" variable (:constant-flag t) nil [624 630])
+            ("PORT" variable (:constant-flag t) nil [658 662])
+            ("tcpConnect" function (:type "int") nil [706 1371])
+            ("sslConnect" function
+               (:pointer 1
+                :arguments 
+                  ( ("" variable (:type "void") (reparse-symbol arg-sub-list) [1442 1447]))                  
+                :type ("connection" type (:type "class") nil nil))
+                nil [1418 2464])
+            ("sslDisconnect" function
+               (:arguments 
+                  ( ("c" variable
+                       (:pointer 1
+                        :type ("connection" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [2525 2539]))                  
+                :type "void")
+                nil [2505 2749])
+            ("sslRead" function
+               (:pointer 1
+                :arguments 
+                  ( ("c" variable
+                       (:pointer 1
+                        :type ("connection" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [2813 2827]))                  
+                :type "char")
+                nil [2798 3426])
+            ("sslWrite" function
+               (:arguments 
+                  ( ("c" variable
+                       (:pointer 1
+                        :type ("connection" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [3475 3489])
+                    ("text" variable
+                       (:pointer 1
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [3490 3501]))                  
+                :type "void")
+                nil [3460 3565])
+            ("main" function
+               (:arguments 
+                  ( ("argc" variable (:type "int") (reparse-symbol arg-sub-list) [3635 3644])
+                    ("argv" variable
+                       (:pointer 2
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [3645 3657]))                  
+                :type "int")
+                nil [3625 3862]))          
+      :file "ssl-demo.c"
+      :pointmax 3863
+      :fsize 3859
+      :lastmodtime '(21413 8529 0 0)
+      :unmatched-syntax nil
+      :lexical-table 
+        '(("PORT" . ((number "443" 663 . 666)))
+          ("SERVER" . ((string "\"www.openssl.org\"" 632 . 649)))
+          )
+)
+    (semanticdb-table "listdir_r.c"
+      :major-mode 'c-mode
+      :tags 
+        '( ("unistd.h" include (:system-flag t) nil [1 20])
+            ("sys/types.h" include (:system-flag t) nil [21 43])
+            ("dirent.h" include (:system-flag t) nil [44 63])
+            ("stdio.h" include (:system-flag t) nil [64 82])
+            ("listdir" function
+               (:arguments 
+                  ( ("name" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [97 114])
+                    ("level" variable (:type "int") (reparse-symbol arg-sub-list) [115 125]))                  
+                :type "void")
+                nil [84 998])
+            ("main" function
+               (:arguments 
+                  ( ("" variable (:type "void") (reparse-symbol arg-sub-list) [1009 1014]))                  
+                :type "int")
+                nil [1000 1082]))          
+      :file "listdir_r.c"
+      :pointmax 1083
+      :fsize 1058
+      :lastmodtime '(21424 24705 0 0)
+      :unmatched-syntax nil))
+  :file "!home!harrison!projects!local!ccpp!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2")

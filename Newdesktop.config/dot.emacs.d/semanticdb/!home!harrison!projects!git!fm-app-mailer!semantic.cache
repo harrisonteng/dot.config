@@ -1,0 +1,54 @@
+;; Object fm-app-mailer/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "fm-app-mailer/"
+  :tables (list 
+   (semanticdb-table "Makefile.am"
+    :major-mode 'makefile-automake-mode
+    :tags 
+        '( ("AUTOMAKE_OPTIONS" variable (:default-value ("foreign")) nil [16 41])
+            ("mailer_execdir" variable (:default-value ("$(prefix)/bin")) nil [42 71])
+            ("DEFS" variable (:default-value ("@DEFS@" "-DBUILD_DATE=\\\"`$(date_path) +\"%Y-%m-%dT%H:%M:%S\"`\\\"" "-DBUILD_USER=\\\"`$(id_path) -un`@`$(hostname_path)`\\\"")) nil [72 197])
+            ("SUBDIRS" variable (:default-value ("courier_deliver" "remote_deliver" "autoresp" "bcastbnc" "bounce" "libemcqfile" "libemcqmysql" "listbnc" "listserv" "maillist" "mfilter" "virus" "admin" "espamc" "tagliner" "archiver" "contentfilter")) nil [419 644])
+            ("mailer_exec_PROGRAMS" variable (:default-value ("qrunner")) nil [830 933])
+            ("noinst_HEADERS" variable (:default-value ("common.h" "g_mime_common.h" "constants.h" "alworker.h" "emcmailer.h" "exdeliver.h" "hash.h" "ldeliver.h" "logger.h" "mcfg.h" "cidr.h" "qworker.h" "utils.h")) nil [1128 1313])
+            ("EXTRA_DIST" variable (:default-value ("scripts/EMCTypes.pm" "scripts/subscribeMailingListMember.pl" "scripts/unsubscribeMailingListMember.pl" "scripts/createOnlyMailboxDirectory.pl" "scripts/createHostedMailbox.pl" "data/emcmailer_conf.in" "data/emcmailer_id" "README_PERL" "doc/db" "emcconfig.h.in" "setup.sh" "sqlitecache/query.c" "sqlitecache/sqlite_encode.h" "sqlitecache/query.c" "sqlitecache/expirefromcache.pl" "sqlitecache/query.h")) nil [1511 1940])
+            ("agent_execdir" variable (:default-value ("@prefix@/agents")) nil [2108 2138])
+            ("agent_exec_SCRIPTS" variable (:default-value ("scripts/subscribeMailingListMember.pl" "scripts/unsubscribeMailingListMember.pl" "scripts/createOnlyMailboxDirectory.pl" "scripts/createHostedMailbox.pl" "scripts/EMCTypes.pm")) nil [2138 2339])
+            ("scripts_execdir" variable (:default-value ("@prefix@/bin")) nil [2517 2546])
+            ("scripts_exec_SCRIPTS" variable (:default-value ("scripts/convert-quexion-shared")) nil [2546 2601])
+            ("confdir" variable (:default-value ("@confdir@")) nil [2796 2814])
+            ("qrunner_SOURCES" variable (:default-value ("qrunner.c" "qworker.c" "alworker.c" "ldeliver.c" "exdeliver.c" "config.c" "common.c" "mcfg.c" "hash.c" "logger.c" "confdnet.c")) nil [3062 3217])
+            ("qrunner_LDFLAGS" variable (:default-value ("-Wl,-export-dynamic" "-L/usr/local/lib")) nil [3218 3271])
+            ("qrunner_LDADD" variable (:default-value ("-lemcbase" "-lglib-2.0" "-lgobject-2.0")) nil [3271 3321])
+            ("qworker_SOURCES" variable (:default-value ("qworker_main.c" "qworker.c" "alworker.c" "ldeliver.c" "exdeliver.c" "common.c" "config.c" "mcfg.c" "hash.c" "logger.c" "confdnet.c")) nil [3519 3679])
+            ("qworker_LDFLAGS" variable (:default-value ("-Wl,-export-dynamic" "-L/usr/local/lib")) nil [3680 3733])
+            ("qworker_LDADD" variable (:default-value ("-lemcbase" "-lglib-2.0" "-lgobject-2.0")) nil [3733 3782])
+            ("alworker_SOURCES" variable (:default-value ("alworker_main.c" "alworker.c" "common.c" "config.c" "mcfg.c" "hash.c" "logger.c")) nil [3981 4087])
+            ("alworker_LDFLAGS" variable (:default-value ("-Wl,-export-dynamic" "-L/usr/local/lib")) nil [4088 4142])
+            ("alworker_LDADD" variable (:default-value ("-lemcbase" "-lglib-2.0" "-lgobject-2.0")) nil [4142 4192])
+            ("ldeliver_SOURCES" variable (:default-value ("ldeliver_main.c" "ldeliver.c" "common.c" "config.c" "mcfg.c" "hash.c" "logger.c" "confdnet.c")) nil [4391 4511])
+            ("ldeliver_LDFLAGS" variable (:default-value ("-Wl,-export-dynamic" "-L/usr/local/lib")) nil [4512 4566])
+            ("ldeliver_LDADD" variable (:default-value ("-lemcbase" "-lglib-2.0" "-lgobject-2.0")) nil [4566 4616])
+            ("exdeliver_SOURCES" variable (:default-value ("exdeliver_main.c" "exdeliver.c" "common.c" "config.c" "mcfg.c" "hash.c" "logger.c")) nil [4817 4927])
+            ("exdeliver_LDFLAGS" variable (:default-value ("-Wl,-export-dynamic" "-L/usr/local/lib")) nil [4928 4983])
+            ("exdeliver_LDADD" variable (:default-value ("-lemcbase" "-lglib-2.0" "-lgobject-2.0")) nil [4983 5034])
+            ("qinject_SOURCES" variable (:default-value ("qinject.c" "common.c" "config.c" "mcfg.c" "hash.c" "logger.c")) nil [5233 5318])
+            ("qinject_LDFLAGS" variable (:default-value ("-Wl,-export-dynamic" "-L/usr/local/lib")) nil [5319 5372])
+            ("qinject_LDADD" variable (:default-value ("-lemcbase" "-lglib-2.0" "-lgobject-2.0")) nil [5372 5421])
+            ("qcleaner_SOURCES" variable (:default-value ("qcleaner.c" "common.c" "config.c" "mcfg.c" "hash.c" "logger.c")) nil [5621 5708])
+            ("qcleaner_LDFLAGS" variable (:default-value ("-Wl,-export-dynamic" "-L/usr/local/lib")) nil [5709 5763])
+            ("qcleaner_LDADD" variable (:default-value ("-lemcbase" "-lglib-2.0" "-lgobject-2.0")) nil [5763 5813])
+            ("DEPLOY_FROM" variable (:default-value ("/var/tmp/deploy")) nil [6029 6057])
+            ("deploy" function nil nil [6251 6533])
+            ("install-exec-local" function nil nil [6711 7133]))          
+    :file "Makefile.am"
+    :pointmax 7160
+    :fsize 7159
+    :lastmodtime '(21723 53485 888739 768000)
+    :unmatched-syntax '((shell-command 7135 . 7159) (bol 7134 . 7134) (bol 934 . 934))
+    )
+   )
+  :file "!home!harrison!projects!git!fm-app-mailer!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2"
+  )

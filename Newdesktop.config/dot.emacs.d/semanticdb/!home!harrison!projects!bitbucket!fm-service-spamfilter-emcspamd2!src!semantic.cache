@@ -1,0 +1,346 @@
+;; Object src/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "src/"
+  :tables
+  (list
+    (semanticdb-table "spammer.c"
+      :major-mode 'c-mode
+      :tags 
+        '( ("rcsid" variable
+               (:pointer 1
+                :typemodifiers ("static")
+                :default-value "\"$Id$\""
+                :type "char")
+                nil [1 29])
+            ("use_rcsid" function
+               (:typemodifiers ("static")
+                :arguments 
+                  ( ("" variable (:type "void") (reparse-symbol arg-sub-list) [52 57]))                  
+                :type "void")
+                nil [30 87])
+            ("stdlib.h" include (:system-flag t) nil [138 157])
+            ("unistd.h" include (:system-flag t) nil [158 177])
+            ("sysexits.h" include (:system-flag t) nil [178 199])
+            ("pcre.h" include (:system-flag t) nil [200 217])
+            ("emcspamd.h" include (:system-flag t) nil [242 263])
+            ("spammer.h" include (:system-flag t) nil [264 284])
+            ("specials.h" include (:system-flag t) nil [285 306])
+            ("emcdcc.h" include (:system-flag t) nil [307 326])
+            ("rbl.h" include (:system-flag t) nil [327 343])
+            ("dbl.h" include (:system-flag t) nil [344 360])
+            ("rules.h" include (:system-flag t) nil [361 379])
+            ("bayes.h" include (:system-flag t) nil [380 398])
+            ("policysmart_options.h" include (:system-flag t) nil [399 431])
+            ("libemime.h" include (:system-flag t) nil [448 469])
+            ("whitelist.h" include (:system-flag t) nil [487 509])
+            ("html_parser/parser.h" include nil nil [511 542])
+            ("clamav/clamav_filter.h" include nil nil [543 576])
+            ("encodings/to_utf8.h" include nil nil [577 607])
+            ("html_parser/domain_extract.h" include nil nil [608 647])
+            ("rest_lookup/rest_lookup.h" include nil nil [648 684])
+            ("X_SPAM_STATUS_HEADER" variable (:constant-flag t) nil [694 714])
+            ("X_SPAM_SUMMARY_HEADER" variable (:constant-flag t) nil [739 760])
+            ("HAM" variable (:constant-flag t) nil [786 789])
+            ("SPAM" variable (:constant-flag t) nil [800 804])
+            ("gConfig" variable
+               (:pointer 1
+                :typemodifiers ("extern")
+                :type ("CfgFile" type (:type "class") nil nil))
+                nil [808 833])
+            ("gPolicyAdapters" variable
+               (:pointer 1
+                :dereference 1
+                :typemodifiers ("extern")
+                :constant-flag t
+                :type "char")
+                nil [834 872])
+            ("gPolicyAdapterHooks" variable
+               (:pointer 1
+                :dereference 1
+                :typemodifiers ("extern")
+                :type ("PolicyConfigHook" type (:type "class") nil nil))
+                nil [873 921])
+            ("gPolicyAdapterName" variable
+               (:pointer 1
+                :typemodifiers ("extern")
+                :constant-flag t
+                :type "char")
+                nil [922 961])
+            ("gWhitelistAdapters" variable
+               (:pointer 1
+                :dereference 1
+                :typemodifiers ("extern")
+                :constant-flag t
+                :type "char")
+                nil [962 1003])
+            ("gWhitelistHooks" variable
+               (:pointer 1
+                :dereference 1
+                :typemodifiers ("extern")
+                :type ("WhitelistHook" type (:type "class") nil nil))
+                nil [1004 1045])
+            ("PCRE_OVECSIZE" variable (:constant-flag t) nil [1055 1068])
+            ("gRecip" variable
+               (:pointer 1
+                :default-value "NULL"
+                :type "char")
+                nil [1122 1143])
+            ("gUserid" variable
+               (:pointer 1
+                :default-value "NULL"
+                :type "char")
+                nil [1144 1166])
+            ("gDomain" variable
+               (:pointer 1
+                :default-value "NULL"
+                :type "char")
+                nil [1167 1189])
+            ("gSender" variable
+               (:pointer 1
+                :default-value "NULL"
+                :type "char")
+                nil [1190 1212])
+            ("gIP" variable
+               (:pointer 1
+                :default-value "NULL"
+                :type "char")
+                nil [1213 1231])
+            ("gReturnPath" variable
+               (:pointer 1
+                :default-value "NULL"
+                :type "char")
+                nil [1232 1258])
+            ("gXEnvFrom" variable
+               (:pointer 1
+                :default-value "NULL"
+                :type "char")
+                nil [1259 1283])
+            ("gHumanFrom" variable
+               (:pointer 1
+                :default-value "NULL"
+                :type "char")
+                nil [1284 1309])
+            ("gPolicyRealm" variable
+               (:pointer 1
+                :default-value "NULL"
+                :type "char")
+                nil [1310 1337])
+            ("gOS" variable
+               (:pointer 1
+                :default-value "NULL"
+                :type "char")
+                nil [1338 1356])
+            ("gGeo" variable
+               (:pointer 1
+                :default-value "NULL"
+                :type "char")
+                nil [1357 1376])
+            ("gHelo" variable
+               (:pointer 1
+                :default-value "NULL"
+                :type "char")
+                nil [1377 1397])
+            ("gNumMatchedSpecials" variable
+               (:default-value "0"
+                :type "int")
+                nil [1398 1426])
+            ("gNumMatchedRules" variable
+               (:default-value "0"
+                :type "int")
+                nil [1427 1452])
+            ("gMatchedSpecials" variable
+               (:dereference 1
+                :default-value "{-1}"
+                :type "int")
+                nil [1453 1490])
+            ("gMatchedRules" variable
+               (:dereference 1
+                :default-value "{-1}"
+                :type "int")
+                nil [1491 1525])
+            ("gTotalMsgSize" variable
+               (:default-value "0"
+                :type "long")
+                nil [1556 1579])
+            ("gTotalUSecs" variable
+               (:default-value "0"
+                :type "long")
+                nil [1580 1601])
+            ("gTotalMsgs" variable
+               (:default-value "0"
+                :type "long")
+                nil [1602 1622])
+            ("gSpammerSettings" variable (:type ("SpammerSettings" type (:type "class") nil nil)) nil [1624 1657])
+            ("gReportBuffer" variable
+               (:dereference 1
+                :type "char")
+                nil [1658 1696])
+            ("gMsgID" variable
+               (:pointer 1
+                :default-value "NULL"
+                :type "char")
+                nil [1698 1719])
+            ("gFmtReport" variable
+               (:dereference 1
+                :typemodifiers ("extern")
+                :type "char")
+                nil [1721 1746])
+            ("gDomainPolicy" variable
+               (:default-value "{0}"
+                :type ("DomainPolicy" type (:type "class") nil nil))
+                nil [1821 1854])
+            ("REPORT_HEADER_LINE" variable (:constant-flag t) nil [1864 1882])
+            ("REPORT_HEADER_PADDING" variable (:constant-flag t) nil [1970 1991])
+            ("REPORT_SUMMARY_PREALLOC" variable (:constant-flag t) nil [2010 2033])
+            ("REPORT_SUMMARY_LINE" variable (:constant-flag t) nil [2110 2129])
+            ("REPORT_FOOTER_LINE" variable (:constant-flag t) nil [2181 2199])
+            ("make_report_header" function
+               (:arguments 
+                  ( ("results" variable
+                       (:pointer 1
+                        :type ("SpammerResults" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [2304 2329]))                  
+                :type "void")
+                nil [2280 3327])
+            ("make_report_summary" function
+               (:arguments 
+                  ( ("results" variable
+                       (:pointer 1
+                        :type ("SpammerResults" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [3354 3379])
+                    ("score" variable (:type "double") (reparse-symbol arg-sub-list) [3380 3393]))                  
+                :type "void")
+                nil [3329 3786])
+            ("free_domain_policy" function
+               (:arguments 
+                  ( ("policy" variable
+                       (:pointer 1
+                        :type ("DomainPolicy" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [3813 3835]))                  
+                :type "void")
+                nil [3789 4176])
+            ("init_domain_policy" function
+               (:arguments 
+                  ( ("domain" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [4201 4221])
+                    ("policy" variable
+                       (:pointer 1
+                        :type ("DomainPolicy" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [4222 4244]))                  
+                :type "int")
+                nil [4178 4841])
+            ("init_user_options" function
+               (:arguments 
+                  ( ("realm" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [4866 4884])
+                    ("policy" variable
+                       (:pointer 1
+                        :type ("DomainPolicy" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [4885 4907]))                  
+                :type "int")
+                nil [4843 6768])
+            ("set_policy_pref" function
+               (:arguments 
+                  ( ("policy" variable
+                       (:pointer 1
+                        :type ("DomainPolicy" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [6791 6812])
+                    ("pref_name" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [6813 6835])
+                    ("pref_value" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [6836 6859]))                  
+                :type "int")
+                nil [6770 9153])
+            ("do_whitelist" function
+               (:arguments 
+                  ( ("sender" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [9174 9194])
+                    ("ip" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [9197 9213])
+                    ("recip" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [9216 9235])
+                    ("results" variable
+                       (:pointer 1
+                        :type ("SpammerResults" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [9238 9263])
+                    ("score" variable
+                       (:pointer 1
+                        :type "double")
+                        (reparse-symbol arg-sub-list) [9266 9281]))                  
+                :type "int")
+                nil [9155 9827])
+            ("scan_message" function
+               (:arguments 
+                  ( ("buffer" variable
+                       (:pointer 1
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [9846 9860])
+                    ("len" variable (:type ("size_t" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [9861 9872])
+                    ("settings" variable
+                       (:pointer 1
+                        :type ("SpammerSettings" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [9875 9902])
+                    ("results" variable
+                       (:pointer 1
+                        :type ("SpammerResults" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [9903 9928]))                  
+                :type "int")
+                nil [9829 44631])
+            ("free_spammer_results" function
+               (:arguments 
+                  ( ("results" variable
+                       (:pointer 1
+                        :type ("SpammerResults" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [44660 44685]))                  
+                :type "void")
+                nil [44634 45464]))          
+      :file "spammer.c"
+      :pointmax 45465
+      :fsize 45464
+      :lastmodtime '(21780 20354 250109 448000)
+      :unmatched-syntax nil
+      :lexical-table 
+        '(("REPORT_SUMMARY_PREALLOC" . ((string "\"SPAM:                                                           \"" 2034 . 2100)))
+          ("REPORT_HEADER_PADDING" . ((string "\"SPAM:\"" 1994 . 2001)))
+          ("REPORT_SUMMARY_LINE" . ((string "\"SPAM: %s, score=%.1f threshold=%.1f\"" 2134 . 2171)))
+          ("REPORT_FOOTER_LINE" . ((string "\"SPAM: ----------------- End of Anti-Spam Report -------------------\"" 2205 . 2274)))
+          ("PCRE_OVECSIZE" . ((number "30" 1069 . 1071)))
+          ("SPAM" . ((number "2" 805 . 806)))
+          ("HAM" . ((number "1" 790 . 791)))
+          ("REPORT_HEADER_LINE" . ((string "\"SPAM: --------------------  Anti-Spam Report ----------------------\"" 1888 . 1957)))
+          ("X_SPAM_STATUS_HEADER" . ((string "\"X-SPAM-Status\"" 715 . 730)))
+          ("X_SPAM_SUMMARY_HEADER" . ((string "\"X-SPAM-Summary\"" 761 . 777)))
+          )
+)
+    (semanticdb-table "emcspamd.h"
+      :file "emcspamd.h"
+      :fsize 10447
+      :lastmodtime '(21780 20354 250109 448000))
+    (semanticdb-table "spammer.h"
+      :file "spammer.h"
+      :fsize 336
+      :lastmodtime '(21731 35621 66524 627000)))
+  :file "!home!harrison!projects!bitbucket!fm-service-spamfilter-emcspamd2!src!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2")

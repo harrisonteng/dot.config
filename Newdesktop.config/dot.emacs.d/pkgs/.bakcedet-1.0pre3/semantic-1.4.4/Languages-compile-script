@@ -1,0 +1,5 @@
+(add-to-list 'load-path nil)
+(add-to-list 'load-path ".")
+(add-to-list 'load-path "/usr/home/harrison/.emacs.d/pkgs/eieio-0.17")
+(add-to-list 'load-path "/usr/home/harrison/.emacs.d/pkgs/speedbar-0.14beta4")
+(setq debug-on-error t)

@@ -1,0 +1,16 @@
+;; Object with-editor-20151111.418/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "with-editor-20151111.418/"
+  :tables
+  (list
+    (semanticdb-table "with-editor-autoloads.el"
+      :major-mode 'emacs-lisp-mode
+      :tags nil
+      :file "with-editor-autoloads.el"
+      :pointmax 295
+      :fsize 407
+      :lastmodtime '(22084 54878 473785 863000)
+      :unmatched-syntax nil))
+  :file "!home!harrison!.hlocal!emacs!dot.emacs.d!elpa!with-editor-20151111.418!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2")

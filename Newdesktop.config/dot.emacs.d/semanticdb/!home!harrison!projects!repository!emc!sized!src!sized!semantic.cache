@@ -1,0 +1,393 @@
+;; Object sized/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "sized/"
+  :tables
+  (list
+    (semanticdb-table "mailbox.c"
+      :major-mode 'c-mode
+      :tags 
+        '( ("rcsid" variable
+               (:pointer 1
+                :typemodifiers ("static")
+                :default-value "\"$Id: mailbox.c 28095 2011-07-13 21:45:30Z bart.majerski $\""
+                :type "char")
+                nil [1 82])
+            ("use_rcsid" function
+               (:typemodifiers ("static")
+                :arguments 
+                  ( ("" variable (:type "void") (reparse-symbol arg-sub-list) [105 110]))                  
+                :type "void")
+                nil [83 140])
+            ("_GNU_SOURCE" variable (:constant-flag t) nil [202 213])
+            ("dirent.h" include (:system-flag t) nil [214 233])
+            ("errno.h" include (:system-flag t) nil [234 252])
+            ("stdio.h" include (:system-flag t) nil [253 271])
+            ("stdlib.h" include (:system-flag t) nil [272 291])
+            ("string.h" include (:system-flag t) nil [292 311])
+            ("syslog.h" include (:system-flag t) nil [312 331])
+            ("unistd.h" include (:system-flag t) nil [332 351])
+            ("sys/types.h" include (:system-flag t) nil [352 374])
+            ("pwd.h" include (:system-flag t) nil [375 391])
+            ("grp.h" include (:system-flag t) nil [392 408])
+            ("mysql/mysql.h" include (:system-flag t) nil [409 433])
+            ("courierhome.h" include nil nil [435 459])
+            ("emc.h" include nil nil [460 476])
+            ("logins.h" include nil nil [477 496])
+            ("maildirquota.h" include (:system-flag t) nil [497 522])
+            ("maildircreate.h" include (:system-flag t) nil [523 549])
+            ("libemcbase.h" include nil nil [551 574])
+            ("maildirsize_read" function
+               (:prototype-flag t
+                :arguments 
+                  ( ("" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [597 610])
+                    ("" variable
+                       (:pointer 1
+                        :type "int")
+                        (reparse-symbol arg-sub-list) [611 617])
+                    ("" variable
+                       (:pointer 1
+                        :type ("off_t" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [618 626])
+                    ("" variable
+                       (:pointer 1
+                        :type "unsigned int")
+                        (reparse-symbol arg-sub-list) [627 638])
+                    ("" variable
+                       (:pointer 1
+                        :type "unsigned int")
+                        (reparse-symbol arg-sub-list) [639 650])
+                    ("" variable
+                       (:pointer 1
+                        :type ("stat" type
+                             (:prototype t
+                              :type "struct")
+                              nil nil))
+                        (reparse-symbol arg-sub-list) [657 671]))                  
+                :type "int")
+                nil [576 672])
+            ("maildir_getquota" function
+               (:prototype-flag t
+                :arguments 
+                  ( ("" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [694 707])
+                    ("" variable (:type "char") (reparse-symbol arg-sub-list) [708 715]))                  
+                :type "int")
+                nil [673 717])
+            ("countsubdir" function
+               (:prototype-flag t
+                :arguments 
+                  ( ("" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [734 747])
+                    ("" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [748 761])
+                    ("" variable
+                       (:pointer 1
+                        :type ("time_t" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [762 771])
+                    ("" variable
+                       (:pointer 1
+                        :type ("off_t" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [772 780])
+                    ("" variable
+                       (:pointer 1
+                        :type "unsigned int")
+                        (reparse-symbol arg-sub-list) [781 792]))                  
+                :type "int")
+                nil [718 793])
+            ("countcurnew" function
+               (:prototype-flag t
+                :arguments 
+                  ( ("" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [810 823])
+                    ("" variable
+                       (:pointer 1
+                        :type ("time_t" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [824 833])
+                    ("" variable
+                       (:pointer 1
+                        :type ("off_t" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [834 842])
+                    ("" variable
+                       (:pointer 1
+                        :type "unsigned int")
+                        (reparse-symbol arg-sub-list) [843 854]))                  
+                :type "int")
+                nil [794 855])
+            ("maildirpath" variable
+               (:pointer 1
+                :dereference 1
+                :typemodifiers ("extern")
+                :type "char")
+                nil [858 885])
+            ("maildirnum" variable
+               (:typemodifiers ("extern")
+                :type "int")
+                nil [886 908])
+            ("akabeans_db_host" variable
+               (:dereference 1
+                :typemodifiers ("extern")
+                :type "char")
+                nil [909 940])
+            ("maildir" variable
+               (:pointer 1
+                :constant-flag t
+                :default-value "\"Maildir/\""
+                :type "char")
+                nil [1012 1045])
+            ("get_home" function
+               (:arguments 
+                  ( ("address" variable
+                       (:pointer 1
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [1430 1444])
+                    ("home_p" variable
+                       (:pointer 2
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [1445 1459]))                  
+                :type "int")
+                nil [1417 2237])
+            ("get_home_via_akabeans" function
+               (:typemodifiers ("static")
+                :arguments 
+                  ( ("address" variable
+                       (:pointer 1
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [2421 2435])
+                    ("home" variable
+                       (:pointer 2
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [2436 2448])
+                    ("errstr" variable
+                       (:pointer 2
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [2449 2463]))                  
+                :type "int")
+                nil [2388 4294])
+            ("get_quota_via_akabeans" function
+               (:typemodifiers ("static")
+                :arguments 
+                  ( ("address" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [4403 4423])
+                    ("quota" variable
+                       (:pointer 2
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [4424 4437])
+                    ("errstr" variable
+                       (:pointer 2
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [4438 4452]))                  
+                :type "int")
+                nil [4369 6508])
+            ("mailbox_delete" function
+               (:arguments 
+                  ( ("address" variable
+                       (:pointer 1
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [6550 6564])
+                    ("folder" variable
+                       (:pointer 1
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [6565 6578])
+                    ("argv" variable
+                       (:pointer 1
+                        :dereference 1
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [6579 6592]))                  
+                :type "int")
+                nil [6531 7145])
+            ("mailbox_share" function
+               (:arguments 
+                  ( ("address" variable
+                       (:pointer 1
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [7269 7283])
+                    ("folder" variable
+                       (:pointer 1
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [7284 7297])
+                    ("argv" variable
+                       (:pointer 1
+                        :dereference 1
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [7298 7311]))                  
+                :type "int")
+                nil [7251 7447])
+            ("mailbox_unshare" function
+               (:arguments 
+                  ( ("address" variable
+                       (:pointer 1
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [7510 7524])
+                    ("folder" variable
+                       (:pointer 1
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [7525 7538])
+                    ("argv" variable
+                       (:pointer 1
+                        :dereference 1
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [7539 7552]))                  
+                :type "int")
+                nil [7490 7696])
+            ("mailbox_lock" function
+               (:arguments 
+                  ( ("address" variable
+                       (:pointer 1
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [7797 7811])
+                    ("folder" variable
+                       (:pointer 1
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [7812 7825])
+                    ("argv" variable
+                       (:pointer 1
+                        :dereference 1
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [7826 7839]))                  
+                :type "int")
+                nil [7780 8125])
+            ("mailbox_unlock" function
+               (:arguments 
+                  ( ("address" variable
+                       (:pointer 1
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [8146 8160])
+                    ("folder" variable
+                       (:pointer 1
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [8161 8174])
+                    ("argv" variable
+                       (:pointer 1
+                        :dereference 1
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [8175 8188]))                  
+                :type "int")
+                nil [8127 8444])
+            ("mailbox_islocked" function
+               (:arguments 
+                  ( ("address" variable
+                       (:pointer 1
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [8467 8481])
+                    ("folder" variable
+                       (:pointer 1
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [8482 8495])
+                    ("argv" variable
+                       (:pointer 1
+                        :dereference 1
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [8496 8509]))                  
+                :type "int")
+                nil [8446 8756])
+            ("mailbox_create_maildir" function
+               (:arguments 
+                  ( ("home" variable
+                       (:pointer 1
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [8785 8796])
+                    ("uid" variable (:type ("uid_t" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [8797 8807])
+                    ("gid" variable (:type ("gid_t" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [8808 8818])
+                    ("mask" variable (:type ("mode_t" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [8819 8831]))                  
+                :type "int")
+                nil [8758 10129])
+            ("mailbox_create" function
+               (:arguments 
+                  ( ("address" variable
+                       (:pointer 1
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [10150 10164])
+                    ("folder" variable
+                       (:pointer 1
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [10165 10178])
+                    ("argv" variable
+                       (:pointer 1
+                        :dereference 1
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [10179 10192]))                  
+                :type "int")
+                nil [10131 11169])
+            ("update_maildirsize" function
+               (:typemodifiers ("static")
+                :arguments 
+                  ( ("address" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [11201 11221])
+                    ("maildir" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [11222 11242])
+                    ("sizesum" variable (:type ("off_t" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [11243 11257])
+                    ("countsum" variable (:type "int") (reparse-symbol arg-sub-list) [11258 11271]))                  
+                :type "int")
+                nil [11171 12217])
+            ("mailbox_empty_maildirsize" function
+               (:typemodifiers ("static")
+                :arguments 
+                  ( ("address" variable
+                       (:pointer 1
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [12256 12270])
+                    ("folder" variable
+                       (:pointer 1
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [12271 12284])
+                    ("argv" variable
+                       (:pointer 1
+                        :dereference 1
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [12285 12298]))                  
+                :type "int")
+                nil [12219 12999])
+            ("mailbox_query" function
+               (:arguments 
+                  ( ("address" variable
+                       (:pointer 1
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [13097 13111])
+                    ("folder" variable
+                       (:pointer 1
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [13112 13125])
+                    ("argv" variable
+                       (:pointer 1
+                        :dereference 1
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [13126 13139]))                  
+                :type "int")
+                nil [13079 15926]))          
+      :file "mailbox.c"
+      :pointmax 15927
+      :fsize 15926
+      :lastmodtime '(21173 48315 0 0)
+      :unmatched-syntax '((semantic-list 713 . 715))
+      :lexical-table 
+        '(("_GNU_SOURCE")
+          )
+))
+  :file "!home!harrison!projects!repository!emc!sized!src!sized!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2")

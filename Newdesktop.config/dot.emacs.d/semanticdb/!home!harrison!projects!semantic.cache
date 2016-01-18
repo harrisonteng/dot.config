@@ -1,0 +1,20 @@
+;; Object projects/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "projects/"
+  :tables
+  (list
+    (semanticdb-table "aaa.c"
+      :major-mode 'c-mode
+      :tags 
+        '( ("stdio.h" include (:system-flag t) nil [1 19])
+            ("sys/stat.h" include (:system-flag t) nil [20 41])
+            ("unistd.h" include (:system-flag t) nil [42 61])
+            ("main" function (:type "int") nil [64 437]))          
+      :file "aaa.c"
+      :pointmax 438
+      :fsize 437
+      :lastmodtime '(21733 1065 496336 588000)
+      :unmatched-syntax nil))
+  :file "!home!harrison!projects!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2")

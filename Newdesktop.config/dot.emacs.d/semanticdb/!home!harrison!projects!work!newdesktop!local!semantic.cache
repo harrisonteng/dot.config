@@ -1,0 +1,101 @@
+;; Object local/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "local/"
+  :tables
+  (list
+    (semanticdb-table "cleanuparray.c"
+      :major-mode 'c-mode
+      :tags 
+        '( ("cleanuparray.h" include nil nil [195 220])
+            ("stdio.h" include nil nil [221 239])
+            ("stdlib.h" include nil nil [240 259])
+            ("cleanuparray" function
+               (:pointer 1
+                :arguments 
+                  ( ("ary" variable
+                       (:dereference 1
+                        :type "int")
+                        (reparse-symbol arg-sub-list) [281 291])
+                    ("intSize" variable (:type "int") (reparse-symbol arg-sub-list) [292 305]))                  
+                :type "int")
+                nil [261 456])
+            ("count_one_bits" function
+               (:arguments 
+                  ( ("iInput" variable (:type "unsigned int") (reparse-symbol arg-sub-list) [478 499]))                  
+                :type "int")
+                nil [458 767])
+            ("mystrlen" function (:type "void") nil [770 1506])
+            ("create_oneway_linkedlist" function
+               (:arguments 
+                  ( ("" variable (:type "void") (reparse-symbol arg-sub-list) [1539 1545]))                  
+                :type "void")
+                nil [1508 1574])
+            ("main" function (:type "int") nil [1577 2306]))          
+      :file "cleanuparray.c"
+      :pointmax 2307
+      :fsize 2293
+      :lastmodtime '(18730 58392 0 0)
+      :unmatched-syntax nil)
+    (semanticdb-table "cleanuparray.h"
+      :major-mode 'c-mode
+      :tags 
+        '( ("CLEANUPARRAY_H" variable (:constant-flag t) nil [222 236])
+            ("ARRAYSIZE" variable (:constant-flag t) nil [246 255])
+            ("cleanuparray" function
+               (:prototype-flag t
+                :pointer 1
+                :arguments 
+                  ( ("ary" variable
+                       (:dereference 1
+                        :type "int")
+                        (reparse-symbol arg-sub-list) [280 290])
+                    ("intSizeofArray" variable (:type "int") (reparse-symbol arg-sub-list) [290 310]))                  
+                :type "int")
+                nil [260 311])
+            ("count_one_bits" function
+               (:prototype-flag t
+                :arguments 
+                  ( ("iInput" variable (:type "unsigned int") (reparse-symbol arg-sub-list) [332 353]))                  
+                :type "int")
+                nil [312 354])
+            ("mystrlen" function
+               (:prototype-flag t
+                :arguments 
+                  ( ("" variable (:type "void") (reparse-symbol arg-sub-list) [370 376]))                  
+                :type "void")
+                nil [355 377])
+            ("NODE" type
+               (:members 
+                  ( ("iNid" variable (:type "int") (reparse-symbol classsubparts) [409 418])
+                    ("ptr_Node" variable
+                       (:pointer 1
+                        :type ("NODE" type
+                             (:prototype t
+                              :type "struct")
+                              nil nil))
+                        (reparse-symbol classsubparts) [427 449]))                  
+                :type "struct")
+                nil [379 456])
+            ("Node" type
+               (:typedef ("NODE" type (:type "struct") nil nil)
+                :type "typedef")
+                nil [379 456])
+            ("create_oneway_linkedlist" function
+               (:prototype-flag t
+                :arguments 
+                  ( ("" variable (:type "void") (reparse-symbol arg-sub-list) [490 496]))                  
+                :type "void")
+                nil [458 497]))          
+      :file "cleanuparray.h"
+      :pointmax 527
+      :fsize 526
+      :lastmodtime '(18730 58364 0 0)
+      :unmatched-syntax nil
+      :lexical-table 
+        '(("ARRAYSIZE" . ((number "10" 256 . 258)))
+          ("CLEANUPARRAY_H")
+          )
+))
+  :file "!home!harrison!projects!work!newdesktop!local!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2")

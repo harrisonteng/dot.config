@@ -1,0 +1,16 @@
+;; Object magit-topgit-20151018.1031/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "magit-topgit-20151018.1031/"
+  :tables
+  (list
+    (semanticdb-table "magit-topgit-autoloads.el"
+      :major-mode 'emacs-lisp-mode
+      :tags nil
+      :file "magit-topgit-autoloads.el"
+      :pointmax 297
+      :fsize 603
+      :lastmodtime '(22053 7926 487546 649000)
+      :unmatched-syntax nil))
+  :file "!home!harrison!.hlocal!emacs!dot.emacs.d!elpa!magit-topgit-20151018.1031!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2")

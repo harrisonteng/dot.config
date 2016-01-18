@@ -1,0 +1,278 @@
+export GOPATH=/home/harrison/projects/local/golang;
+export PATH=$PATH:/usr/local/go/bin:$GOPATH/bin:/usr/local/emacs/bin;
+export GIT_SSH_COMMAND='ssh -l git -i ~/.ssh/id_rsa_bitbucket';
+alias hmutt='mutt -F /root/.muttrc.harrison';
+alias htracker='/usr/local/emc/scripts/bayes_train/trackerdb';
+alias cdmutt='cd /root/bayes_train/today';
+alias cleanmuttdir='/root/bayes_train/today/';
+alias cdprojects='cd ~/projects/repository/emc/bitbucket';
+alias gl1='git log --graph --pretty=format:"%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset%n" --abbrev-commit --date=relative --branches';
+alias gl2='git log --graph --all --format="%C(cyan dim) %p %Cred %h %C(white dim) %s %Cgreen(%cr)%C(cyan dim) <%an>%C(bold yellow)%d%Creset"';
+alias mysshfs='sshfs -o idmap=user -o no_readahead,auto_cache,reconnect root@inbuild9c:/root/projects /home/harrison/sshfs';
+alias umysshfs='fusermount -u /home/harrison/sshfs';
+
+function hcd () {
+
+    local l_project=$1;
+
+    local l_root='/usr/local/emc/scripts/bayes_train/harrison';
+
+    if [ "X${l_root}" == "X" ];then
+        echo "oops";
+        return
+    else 
+        mydir="${l_root}/${l_project}";
+        echo "go to $mydir";
+        cd "$mydir";
+    fi
+
+}
+
+function hcp () {
+    
+    local l_srcdir=$1;
+
+    l_dstdir='/usr/local/emc/scripts/bayes_train/harrison/today/Inbox/cur';
+
+    cp ${l_srcdir}/* ${l_dstdir}/.;
+
+}
+
+function gentag () {
+
+    local l_type=$1;
+    local l_dir=$2;
+
+    find ${l_dir} -name "*.${l_type}" -print > cscope.files;
+
+    ctags -L cscope.files;
+    ctags -e -L cscope.files;
+
+}
+
+function hjobs() {
+    jobs -l |while read jbs;do echo -n "$jbs "; echo -n " cwd ";pid=`echo $jbs|awk '{print $2}'`;readlink /proc/$pid/cwd;done
+}
+function hcdjobs() {
+    local l_jobid=$1;
+    pid=`jobs -p ${l_jobid}`;
+    cd `readlink /proc/${pid}/cwd`;
+}
+
+#from http://mediadoneright.com/content/ultimate-git-ps1-bash-prompt
+
+Color_Off="\[\033[0m\]"       # Text Reset
+
+# Regular Colors
+Black="\[\033[0;30m\]"        # Black
+Red="\[\033[0;31m\]"          # Red
+Green="\[\033[0;32m\]"        # Green
+Yellow="\[\033[0;33m\]"       # Yellow
+Blue="\[\033[0;34m\]"         # Blue
+Purple="\[\033[0;35m\]"       # Purple
+Cyan="\[\033[0;36m\]"         # Cyan
+White="\[\033[0;37m\]"        # White
+
+# Bold
+BBlack="\[\033[1;30m\]"       # Black
+BRed="\[\033[1;31m\]"         # Red
+BGreen="\[\033[1;32m\]"       # Green
+BYellow="\[\033[1;33m\]"      # Yellow
+BBlue="\[\033[1;34m\]"        # Blue
+BPurple="\[\033[1;35m\]"      # Purple
+BCyan="\[\033[1;36m\]"        # Cyan
+BWhite="\[\033[1;37m\]"       # White
+
+# Underline
+UBlack="\[\033[4;30m\]"       # Black
+URed="\[\033[4;31m\]"         # Red
+UGreen="\[\033[4;32m\]"       # Green
+UYellow="\[\033[4;33m\]"      # Yellow
+UBlue="\[\033[4;34m\]"        # Blue
+UPurple="\[\033[4;35m\]"      # Purple
+UCyan="\[\033[4;36m\]"        # Cyan
+UWhite="\[\033[4;37m\]"       # White
+
+# Background
+On_Black="\[\033[40m\]"       # Black
+On_Red="\[\033[41m\]"         # Red
+On_Green="\[\033[42m\]"       # Green
+On_Yellow="\[\033[43m\]"      # Yellow
+On_Blue="\[\033[44m\]"        # Blue
+On_Purple="\[\033[45m\]"      # Purple
+On_Cyan="\[\033[46m\]"        # Cyan
+On_White="\[\033[47m\]"       # White
+
+# High Intensty
+IBlack="\[\033[0;90m\]"       # Black
+IRed="\[\033[0;91m\]"         # Red
+IGreen="\[\033[0;92m\]"       # Green
+IYellow="\[\033[0;93m\]"      # Yellow
+IBlue="\[\033[0;94m\]"        # Blue
+IPurple="\[\033[0;95m\]"      # Purple
+ICyan="\[\033[0;96m\]"        # Cyan
+IWhite="\[\033[0;97m\]"       # White
+
+# Bold High Intensty
+BIBlack="\[\033[1;90m\]"      # Black
+BIRed="\[\033[1;91m\]"        # Red
+BIGreen="\[\033[1;92m\]"      # Green
+BIYellow="\[\033[1;93m\]"     # Yellow
+BIBlue="\[\033[1;94m\]"       # Blue
+BIPurple="\[\033[1;95m\]"     # Purple
+BICyan="\[\033[1;96m\]"       # Cyan
+BIWhite="\[\033[1;97m\]"      # White
+
+# High Intensty backgrounds
+On_IBlack="\[\033[0;100m\]"   # Black
+On_IRed="\[\033[0;101m\]"     # Red
+On_IGreen="\[\033[0;102m\]"   # Green
+On_IYellow="\[\033[0;103m\]"  # Yellow
+On_IBlue="\[\033[0;104m\]"    # Blue
+On_IPurple="\[\033[10;95m\]"  # Purple
+On_ICyan="\[\033[0;106m\]"    # Cyan
+On_IWhite="\[\033[0;107m\]"   # White
+
+# Various variables you might want for your PS1 prompt instead
+Time12h="\T"
+Time12a="\@"
+FullDateTime=$(/bin/date "+%A %Y-%m-%d %H:%M:%S %p")
+PathShort="\w"
+PathFull="\W"
+NewLine="\n"
+Jobs="\j"
+LH="\h"
+
+function what_is_current_tag () {
+    curtag=$(git describe --tags 2>/dev/null);
+    if [ "list$curtag" != "listlist" ];then
+        echo "<$curtag>";
+    else
+        echo "<>";
+    fi
+    return;
+}
+
+function git_prompt () {
+
+  if ! git rev-parse --git-dir > /dev/null 2>&1; then
+    return 0
+  fi
+
+  git_branch=$(git branch 2>/dev/null| sed -n '/^\*/s/^\* //p');
+
+  git_tag=$(what_is_current_tag);
+
+  #if git diff --quiet 2>/dev/null >&2; then
+  #  git_color="$Green"
+  #else
+  #  git_color="$IRed"
+  #fi
+  git_full_hash=$(git log --pretty=format:'%H' -n 1);
+
+  echo "[ ${git_branch} | ${git_tag} | ${git_full_hash} ]";
+
+}
+
+function git_prompt_diff_l () {
+  git_compare_origin=$(git status |sed -n 2p |sed 's/# \(Your branch is\|Untracked files:\)\(.*\)/\2/g');
+  git_num_file_modified=$(git status -s |egrep -c "^\s[MARCD]");
+  if [ ${git_num_file_modified} -lt 1 ];then
+    echo "${git_compare_origin}";
+  else
+    echo "${git_compare_origin} ${git_num_file_modified}";
+  fi
+}
+
+function git_prompt_diff_lr () {
+  local l_branch=$1;
+  
+  branchinremote=$(git branch -r |grep ${l_branch});
+  if [[ -z $branchinremote ]];then
+      echo "Not committed yet";
+      return;
+  fi
+  git_num_file_modified_r=$(git diff --name-only origin/${l_branch} |wc -l);
+  if [ ${git_num_file_modified_r} -lt 1 ];then
+      echo "";
+  else
+      echo "Uncommitted file numbers : ${git_num_file_modified_r}";
+  fi
+}
+
+function get_root_user_prompt () {
+ if [ ${UID} -eq 0 ];then
+     echo "#";
+ else
+     echo "$";
+ fi
+}
+
+function who_is_onthebox () {
+    mypts=`who -m |sed -e "s%^.* \(pts/[0-9]*\).*(\(.*\))%\1%g"`;
+
+    if [ "X$mypts" == "X" ];then
+      usrs=`ps auxwww | grep sshd: |grep -v grep |awk '{print $1" "$2" "$9" "$11" "$12}'`;
+    else
+      usrs=`ps auxwww | grep sshd: |grep -v $mypts|grep -v grep |awk '{print $1" "$2" "$9" "$11" "$12}'`;
+    fi
+
+    #usrs=`ps auxwww | grep sshd: |grep -v $mypts|grep -v grep |awk '{print $1" "$2" "$9" "$11" "$12}'`;
+    if [ "X$usrs" != "X" ];then
+      echo "$usrs | ";
+    fi
+    return;
+}
+
+function where_am_i () {
+    whereami=`who -m |sed -e "s%^.* \(pts/[0-9]*\).*(\(.*\))%[\1] (\2)%g"`;
+    #|awk '{sub(/\.electric\.net\./,"",$NF);print $NF}'
+    echo "$whereami";
+    return
+}
+
+function where_tunnel_through () {
+
+    host $(netstat -anp |grep `ps auxwww |grep sshd: |grep -v grep |awk '{print $2}'` |grep tcp|awk '{print $5}' |sed 's/\(.*\):\(.*\)/\1/g')|awk '{print $NF}';
+    return;
+}
+
+#http://git-scm.com/book/en/v2/Git-in-Other-Environments-Git-in-Bash
+export GIT_PS1_SHOWDIRTYSTATE=1
+OLDPS1='${debian_chroot:+($debian_chroot)}'$IPurple'\u@\h: $(where_am_i)';
+NEWPS1='\n'$IBlack'$(/bin/date "+%A %Y-%m-%d %H:%M:%S %p")''\n'$IBlue'$(who_is_onthebox)'$Collor_off'$(git branch &>/dev/null;\
+if [ $? -eq 0 ]; then \
+  branchname=$(git branch 2>/dev/null| sed -n "/^\*/s/^\* //p");
+  echo "$(echo `git status` | grep "nothing added to commit" > /dev/null 2>&1; \
+  if [ "$?" -eq "0" ]; then \
+    # @4 - Clean repository - nothing to commit
+    echo "'$Green'"$(git_prompt) "'$Cyan'""Local:" "'$IPurple'"$(git_prompt_diff_l) "'$Cyan'""Remote:" "'$BIRed'"$(git_prompt_diff_lr $branchname); \
+  else \
+    # @5 - Changes to working tree
+    echo "'$IRed'"$(git_prompt) "'$Cyan'""Local:" "'$IPurple'"$(git_prompt_diff_l) "'$Cyan'""Remote:" "'$BIRed'"$(git_prompt_diff_lr $branchname); \
+    fi) '$BYellow'\n'$PathShort'\n'$Color_Off'"; \
+else \
+  # @2 - Prompt when not in GIT repo
+    echo " '$Yellow'\n'$PathShort'\n'$Color_Off'"; \
+fi)'
+export PS1="$NEWPS1$OLDPS1\$(get_root_user_prompt)$Color_Off "
+
+##http://git-scm.com/book/en/v2/Git-in-Other-Environments-Git-in-Bash
+#export GIT_PS1_SHOWDIRTYSTATE=1
+#OLDPS1='${debian_chroot:+($debian_chroot)}'$IPurple'\u@\h:';
+#NEWPS1=$IBlack'$(/bin/date "+%A %Y-%m-%d %H:%M:%S %p")'$Collor_off' $(git branch &>/dev/null;\
+#if [ $? -eq 0 ]; then \
+#  branchname=$(git branch 2>/dev/null| sed -n "/^\*/s/^\* //p");
+#  echo "$(echo `git status` | grep "nothing added to commit" > /dev/null 2>&1; \
+#  if [ "$?" -eq "0" ]; then \
+#    # @4 - Clean repository - nothing to commit
+#    echo "'$Green'"$(git_prompt) "'$Cyan'""Local:" "'$IPurple'"$(git_prompt_diff_l) "'$Cyan'""Remote:" "'$BIRed'"$(git_prompt_diff_lr $branchname); \
+#  else \
+#    # @5 - Changes to working tree
+#    echo "'$IRed'"$(git_prompt) "'$Cyan'""Local:" "'$IPurple'"$(git_prompt_diff_l) "'$Cyan'""Remote:" "'$BIRed'"$(git_prompt_diff_lr $branchname); \
+#  fi) '$BYellow'\n'$PathShort'\n'$Color_Off'"; \
+#else \
+#  # @2 - Prompt when not in GIT repo
+#  echo " '$Yellow'\n'$PathShort'\n'$Color_Off'"; \
+#fi)'
+#export PS1="$NEWPS1$OLDPS1\$(get_root_user_prompt)$Color_Off "

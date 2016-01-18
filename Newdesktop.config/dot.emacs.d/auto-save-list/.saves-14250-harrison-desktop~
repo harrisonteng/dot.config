@@ -1,0 +1,14 @@
+/home/harrison/projects/poc/noc/m4noctools/db_importdata.pl
+/home/harrison/projects/poc/noc/m4noctools/#db_importdata.pl#
+/home/harrison/projects/poc/noc/m4noclibs/perl/Fileutils.pm
+/home/harrison/projects/poc/noc/m4noclibs/perl/#Fileutils.pm#
+/home/harrison/projects/poc/noc/m4noclibs/perl/MySQLutils.pm
+/home/harrison/projects/poc/noc/m4noclibs/perl/#MySQLutils.pm#
+/home/harrison/projects/poc/noc/backups/mysql/mysql_backup.pl
+/home/harrison/projects/poc/noc/backups/mysql/#mysql_backup.pl#
+/home/harrison/projects/poc/noc/backups/primary/sync_to_fallback.pl
+/home/harrison/projects/poc/noc/backups/primary/#sync_to_fallback.pl#
+/home/harrison/projects/poc/noc/nagios_plugins/custom/check_mysql_resource.pl
+/home/harrison/projects/poc/noc/nagios_plugins/custom/#check_mysql_resource.pl#
+/home/harrison/projects/poc/noc/m4noctools/mysql_fixtables.pl
+/home/harrison/projects/poc/noc/m4noctools/#mysql_fixtables.pl#

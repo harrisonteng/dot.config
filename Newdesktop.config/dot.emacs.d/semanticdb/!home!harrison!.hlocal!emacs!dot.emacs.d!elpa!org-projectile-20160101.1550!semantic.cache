@@ -1,0 +1,16 @@
+;; Object org-projectile-20160101.1550/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "org-projectile-20160101.1550/"
+  :tables
+  (list
+    (semanticdb-table "org-projectile-autoloads.el"
+      :major-mode 'emacs-lisp-mode
+      :tags nil
+      :file "org-projectile-autoloads.el"
+      :pointmax 301
+      :fsize 870
+      :lastmodtime '(22154 45230 695434 331000)
+      :unmatched-syntax nil))
+  :file "!home!harrison!.hlocal!emacs!dot.emacs.d!elpa!org-projectile-20160101.1550!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2")

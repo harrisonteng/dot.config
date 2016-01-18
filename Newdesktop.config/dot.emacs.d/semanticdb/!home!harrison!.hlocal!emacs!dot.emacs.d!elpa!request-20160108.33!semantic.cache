@@ -1,0 +1,16 @@
+;; Object request-20160108.33/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "request-20160108.33/"
+  :tables
+  (list
+    (semanticdb-table "request-autoloads.el"
+      :major-mode 'emacs-lisp-mode
+      :tags nil
+      :file "request-autoloads.el"
+      :pointmax 287
+      :fsize 366
+      :lastmodtime '(22159 62869 115243 861000)
+      :unmatched-syntax nil))
+  :file "!home!harrison!.hlocal!emacs!dot.emacs.d!elpa!request-20160108.33!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2")

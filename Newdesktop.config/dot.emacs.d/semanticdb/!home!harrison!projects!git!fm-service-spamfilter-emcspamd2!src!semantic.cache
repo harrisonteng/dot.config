@@ -1,0 +1,1536 @@
+;; Object src/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "src/"
+  :tables
+  (list
+    (semanticdb-table "spammer.c"
+      :major-mode 'c-mode
+      :tags 
+        '( ("rcsid" variable
+               (:pointer 1
+                :typemodifiers ("static")
+                :default-value "\"$Id$\""
+                :type "char")
+                nil [1 29])
+            ("use_rcsid" function
+               (:typemodifiers ("static")
+                :arguments 
+                  ( ("" variable (:type "void") (reparse-symbol arg-sub-list) [52 57]))                  
+                :type "void")
+                nil [30 87])
+            ("stdlib.h" include (:system-flag t) nil [138 157])
+            ("unistd.h" include (:system-flag t) nil [158 177])
+            ("sysexits.h" include (:system-flag t) nil [178 199])
+            ("pcre.h" include (:system-flag t) nil [200 217])
+            ("emcspamd.h" include (:system-flag t) nil [242 263])
+            ("spammer.h" include (:system-flag t) nil [264 284])
+            ("specials.h" include (:system-flag t) nil [285 306])
+            ("emcdcc.h" include (:system-flag t) nil [307 326])
+            ("rbl.h" include (:system-flag t) nil [327 343])
+            ("dbl.h" include (:system-flag t) nil [344 360])
+            ("rules.h" include (:system-flag t) nil [361 379])
+            ("bayes.h" include (:system-flag t) nil [380 398])
+            ("policysmart_options.h" include (:system-flag t) nil [399 431])
+            ("libemime.h" include (:system-flag t) nil [448 469])
+            ("whitelist.h" include (:system-flag t) nil [487 509])
+            ("html_parser/parser.h" include nil nil [511 542])
+            ("clamav/clamav_filter.h" include nil nil [543 576])
+            ("encodings/to_utf8.h" include nil nil [577 607])
+            ("X_SPAM_STATUS_HEADER" variable (:constant-flag t) nil [617 637])
+            ("X_SPAM_SUMMARY_HEADER" variable (:constant-flag t) nil [662 683])
+            ("HAM" variable (:constant-flag t) nil [709 712])
+            ("SPAM" variable (:constant-flag t) nil [723 727])
+            ("UBQD_SERVER_URL" variable (:constant-flag t) nil [800 815])
+            ("UBQD_CLIENT_TIMEOUT" variable (:constant-flag t) nil [863 882])
+            ("UBQD_KEY_NUM_OF_HIT_URLS" variable (:constant-flag t) nil [893 917])
+            ("UBQD_KEY_HIT_URLS" variable (:constant-flag t) nil [941 958])
+            ("UBQD_KEY_MISS_URLS" variable (:constant-flag t) nil [1004 1022])
+            ("UBQD_KEY_MALFORMED_URLS" variable (:constant-flag t) nil [1049 1072])
+            ("gConfig" variable
+               (:pointer 1
+                :typemodifiers ("extern")
+                :type ("CfgFile" type (:type "class") nil nil))
+                nil [1091 1116])
+            ("gPolicyAdapters" variable
+               (:pointer 1
+                :dereference 1
+                :typemodifiers ("extern")
+                :constant-flag t
+                :type "char")
+                nil [1117 1155])
+            ("gPolicyAdapterHooks" variable
+               (:pointer 1
+                :dereference 1
+                :typemodifiers ("extern")
+                :type ("PolicyConfigHook" type (:type "class") nil nil))
+                nil [1156 1204])
+            ("gPolicyAdapterName" variable
+               (:pointer 1
+                :typemodifiers ("extern")
+                :constant-flag t
+                :type "char")
+                nil [1205 1244])
+            ("gWhitelistAdapters" variable
+               (:pointer 1
+                :dereference 1
+                :typemodifiers ("extern")
+                :constant-flag t
+                :type "char")
+                nil [1245 1286])
+            ("gWhitelistHooks" variable
+               (:pointer 1
+                :dereference 1
+                :typemodifiers ("extern")
+                :type ("WhitelistHook" type (:type "class") nil nil))
+                nil [1287 1328])
+            ("PCRE_OVECSIZE" variable (:constant-flag t) nil [1338 1351])
+            ("gRecip" variable
+               (:pointer 1
+                :default-value "NULL"
+                :type "char")
+                nil [1405 1426])
+            ("gUserid" variable
+               (:pointer 1
+                :default-value "NULL"
+                :type "char")
+                nil [1427 1449])
+            ("gDomain" variable
+               (:pointer 1
+                :default-value "NULL"
+                :type "char")
+                nil [1450 1472])
+            ("gSender" variable
+               (:pointer 1
+                :default-value "NULL"
+                :type "char")
+                nil [1473 1495])
+            ("gIP" variable
+               (:pointer 1
+                :default-value "NULL"
+                :type "char")
+                nil [1496 1514])
+            ("gReturnPath" variable
+               (:pointer 1
+                :default-value "NULL"
+                :type "char")
+                nil [1515 1541])
+            ("gXEnvFrom" variable
+               (:pointer 1
+                :default-value "NULL"
+                :type "char")
+                nil [1542 1566])
+            ("gHumanFrom" variable
+               (:pointer 1
+                :default-value "NULL"
+                :type "char")
+                nil [1567 1592])
+            ("gPolicyRealm" variable
+               (:pointer 1
+                :default-value "NULL"
+                :type "char")
+                nil [1593 1620])
+            ("gOS" variable
+               (:pointer 1
+                :default-value "NULL"
+                :type "char")
+                nil [1621 1639])
+            ("gGeo" variable
+               (:pointer 1
+                :default-value "NULL"
+                :type "char")
+                nil [1640 1659])
+            ("gNumMatchedSpecials" variable
+               (:default-value "0"
+                :type "int")
+                nil [1660 1688])
+            ("gNumMatchedRules" variable
+               (:default-value "0"
+                :type "int")
+                nil [1689 1714])
+            ("gMatchedSpecials" variable
+               (:dereference 1
+                :default-value "{-1}"
+                :type "int")
+                nil [1715 1752])
+            ("gMatchedRules" variable
+               (:dereference 1
+                :default-value "{-1}"
+                :type "int")
+                nil [1753 1787])
+            ("gTotalMsgSize" variable
+               (:default-value "0"
+                :type "long")
+                nil [1818 1841])
+            ("gTotalUSecs" variable
+               (:default-value "0"
+                :type "long")
+                nil [1842 1863])
+            ("gTotalMsgs" variable
+               (:default-value "0"
+                :type "long")
+                nil [1864 1884])
+            ("gSpammerSettings" variable (:type ("SpammerSettings" type (:type "class") nil nil)) nil [1886 1919])
+            ("gReportBuffer" variable
+               (:dereference 1
+                :type "char")
+                nil [1920 1958])
+            ("gMsgID" variable
+               (:pointer 1
+                :default-value "NULL"
+                :type "char")
+                nil [1960 1981])
+            ("gFmtReport" variable
+               (:dereference 1
+                :typemodifiers ("extern")
+                :type "char")
+                nil [1983 2008])
+            ("gDomainPolicy" variable
+               (:default-value "{0}"
+                :type ("DomainPolicy" type (:type "class") nil nil))
+                nil [2083 2116])
+            ("REPORT_HEADER_LINE" variable (:constant-flag t) nil [2126 2144])
+            ("REPORT_HEADER_PADDING" variable (:constant-flag t) nil [2232 2253])
+            ("REPORT_SUMMARY_PREALLOC" variable (:constant-flag t) nil [2272 2295])
+            ("REPORT_SUMMARY_LINE" variable (:constant-flag t) nil [2372 2391])
+            ("REPORT_FOOTER_LINE" variable (:constant-flag t) nil [2443 2461])
+            ("make_report_header" function
+               (:arguments 
+                  ( ("results" variable
+                       (:pointer 1
+                        :type ("SpammerResults" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [2566 2591]))                  
+                :type "void")
+                nil [2542 3598])
+            ("make_report_summary" function
+               (:arguments 
+                  ( ("results" variable
+                       (:pointer 1
+                        :type ("SpammerResults" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [3625 3650])
+                    ("score" variable (:type "double") (reparse-symbol arg-sub-list) [3651 3664]))                  
+                :type "void")
+                nil [3600 4057])
+            ("free_domain_policy" function
+               (:arguments 
+                  ( ("policy" variable
+                       (:pointer 1
+                        :type ("DomainPolicy" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [4084 4106]))                  
+                :type "void")
+                nil [4060 4447])
+            ("init_domain_policy" function
+               (:arguments 
+                  ( ("domain" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [4472 4492])
+                    ("policy" variable
+                       (:pointer 1
+                        :type ("DomainPolicy" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [4493 4515]))                  
+                :type "int")
+                nil [4449 5112])
+            ("init_user_options" function
+               (:arguments 
+                  ( ("realm" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [5137 5155])
+                    ("policy" variable
+                       (:pointer 1
+                        :type ("DomainPolicy" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [5156 5178]))                  
+                :type "int")
+                nil [5114 7039])
+            ("set_policy_pref" function
+               (:arguments 
+                  ( ("policy" variable
+                       (:pointer 1
+                        :type ("DomainPolicy" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [7062 7083])
+                    ("pref_name" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [7084 7106])
+                    ("pref_value" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [7107 7130]))                  
+                :type "int")
+                nil [7041 9424])
+            ("do_whitelist" function
+               (:arguments 
+                  ( ("sender" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [9445 9465])
+                    ("ip" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [9468 9484])
+                    ("recip" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [9487 9506])
+                    ("results" variable
+                       (:pointer 1
+                        :type ("SpammerResults" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [9509 9534])
+                    ("score" variable
+                       (:pointer 1
+                        :type "double")
+                        (reparse-symbol arg-sub-list) [9537 9552]))                  
+                :type "int")
+                nil [9426 10098])
+            ("scan_message" function
+               (:arguments 
+                  ( ("buffer" variable
+                       (:pointer 1
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [10117 10131])
+                    ("len" variable (:type ("size_t" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [10132 10143])
+                    ("settings" variable
+                       (:pointer 1
+                        :type ("SpammerSettings" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [10146 10173])
+                    ("results" variable
+                       (:pointer 1
+                        :type ("SpammerResults" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [10174 10199]))                  
+                :type "int")
+                nil [10100 47046])
+            ("free_spammer_results" function
+               (:arguments 
+                  ( ("results" variable
+                       (:pointer 1
+                        :type ("SpammerResults" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [47075 47100]))                  
+                :type "void")
+                nil [47049 47879]))          
+      :file "spammer.c"
+      :pointmax 47880
+      :fsize 47870
+      :lastmodtime '(21723 62697 4912 694000)
+      :unmatched-syntax nil
+      :lexical-table 
+        '(("UBQD_KEY_NUM_OF_HIT_URLS" . ((string "\"num_urls_bad\"" 918 . 932)))
+          ("UBQD_KEY_HIT_URLS" . ((string "\"phishing_urls,spam_urls,virus_urls\"" 959 . 995)))
+          ("UBQD_KEY_MALFORMED_URLS" . ((string "\"malformed_urls\"" 1073 . 1089)))
+          ("REPORT_SUMMARY_PREALLOC" . ((string "\"SPAM:                                                           \"" 2296 . 2362)))
+          ("REPORT_HEADER_PADDING" . ((string "\"SPAM:\"" 2256 . 2263)))
+          ("UBQD_CLIENT_TIMEOUT" . ((number "1" 883 . 884)))
+          ("REPORT_SUMMARY_LINE" . ((string "\"SPAM: %s, score=%.1f threshold=%.1f\"" 2396 . 2433)))
+          ("REPORT_FOOTER_LINE" . ((string "\"SPAM: ----------------- End of Anti-Spam Report -------------------\"" 2467 . 2536)))
+          ("UBQD_SERVER_URL" . ((string "\"http://127.0.0.1:3030/blockurlsquery\"" 816 . 854)))
+          ("PCRE_OVECSIZE" . ((number "30" 1352 . 1354)))
+          ("SPAM" . ((number "2" 728 . 729)))
+          ("UBQD_KEY_MISS_URLS" . ((string "\"undetected_urls\"" 1023 . 1040)))
+          ("HAM" . ((number "1" 713 . 714)))
+          ("REPORT_HEADER_LINE" . ((string "\"SPAM: --------------------  Anti-Spam Report ----------------------\"" 2150 . 2219)))
+          ("X_SPAM_STATUS_HEADER" . ((string "\"X-SPAM-Status\"" 638 . 653)))
+          ("X_SPAM_SUMMARY_HEADER" . ((string "\"X-SPAM-Summary\"" 684 . 700)))
+          )
+)
+    (semanticdb-table "emcspamd.h"
+      :major-mode 'c-mode
+      :tags 
+        '( ("__emcspamd_h" variable (:constant-flag t) nil [30 42])
+            ("stdlib.h" include (:system-flag t) nil [44 63])
+            ("unistd.h" include (:system-flag t) nil [64 83])
+            ("libemime.h" include (:system-flag t) nil [84 105])
+            ("libemcbase.h" include (:system-flag t) nil [106 129])
+            ("config.h" include (:system-flag t) nil [130 149])
+            ("json/json.h" include (:system-flag t) nil [205 227])
+            ("html_parser/str_utils.h" include nil nil [228 262])
+            ("DEFAULT_USERID" variable (:constant-flag t) nil [272 286])
+            ("DEFAULT_DOMAIN" variable (:constant-flag t) nil [305 319])
+            ("DEFAULT_CFG_FILENAME" variable (:constant-flag t) nil [339 359])
+            ("DEFAULT_COM_ADAPTER" variable (:constant-flag t) nil [395 414])
+            ("DEFAULT_POLICY_ADAPTER" variable (:constant-flag t) nil [439 461])
+            ("ASSERT" variable (:constant-flag t) nil [486 492])
+            ("ASSERT_SYS" variable (:constant-flag t) nil [578 588])
+            ("SAFE_FREE" variable (:constant-flag t) nil [674 683])
+            ("START_BREAK_FRAME" variable (:constant-flag t) nil [731 748])
+            ("END_BREAK_FRAME" variable (:constant-flag t) nil [760 775])
+            ("MIN" variable (:constant-flag t) nil [811 814])
+            ("MAX" variable (:constant-flag t) nil [863 866])
+            ("SPAM_SUMMARY_LEN" variable (:constant-flag t) nil [904 920])
+            ("MAX_DEBUG_LEVELS" variable (:constant-flag t) nil [954 970])
+            ("TLD_DEFAULT_CFG_FILENAME" variable (:constant-flag t) nil [1005 1029])
+            ("TLD_READ_BUFFER_SIZE" variable (:constant-flag t) nil [1065 1085])
+            ("DebugLevelIndex" type
+               (:members 
+                  ( ("DEBUG_NONE" variable
+                       (:constant-flag t
+                        :type "int")
+                        (reparse-symbol enumsubparts) [1124 1135])
+                    ("DEBUG_PROC" variable
+                       (:constant-flag t
+                        :type "int")
+                        (reparse-symbol enumsubparts) [1137 1148])
+                    ("DEBUG_CONFIG" variable
+                       (:constant-flag t
+                        :type "int")
+                        (reparse-symbol enumsubparts) [1150 1163])
+                    ("DEBUG_URLBLOCK" variable
+                       (:constant-flag t
+                        :type "int")
+                        (reparse-symbol enumsubparts) [1165 1180])
+                    ("DEBUG_RBL" variable
+                       (:constant-flag t
+                        :type "int")
+                        (reparse-symbol enumsubparts) [1182 1192])
+                    ("DEBUG_DCC" variable
+                       (:constant-flag t
+                        :type "int")
+                        (reparse-symbol enumsubparts) [1194 1204])
+                    ("DEBUG_BAYES" variable
+                       (:constant-flag t
+                        :type "int")
+                        (reparse-symbol enumsubparts) [1206 1218])
+                    ("DEBUG_BAYES_EXT" variable
+                       (:constant-flag t
+                        :type "int")
+                        (reparse-symbol enumsubparts) [1220 1236])
+                    ("DEBUG_RULES" variable
+                       (:constant-flag t
+                        :type "int")
+                        (reparse-symbol enumsubparts) [1238 1250])
+                    ("DEBUG_RULES_EXT" variable
+                       (:constant-flag t
+                        :type "int")
+                        (reparse-symbol enumsubparts) [1252 1268])
+                    ("DEBUG_RULES_ALL" variable
+                       (:constant-flag t
+                        :type "int")
+                        (reparse-symbol enumsubparts) [1270 1286])
+                    ("DEBUG_SPECIALS" variable
+                       (:constant-flag t
+                        :type "int")
+                        (reparse-symbol enumsubparts) [1288 1303])
+                    ("DEBUG_SCAN" variable
+                       (:constant-flag t
+                        :type "int")
+                        (reparse-symbol enumsubparts) [1305 1316])
+                    ("DEBUG_IO" variable
+                       (:constant-flag t
+                        :type "int")
+                        (reparse-symbol enumsubparts) [1318 1327])
+                    ("DEBUG_TIMING" variable
+                       (:constant-flag t
+                        :type "int")
+                        (reparse-symbol enumsubparts) [1329 1342])
+                    ("DEBUG_REPORT" variable
+                       (:constant-flag t
+                        :type "int")
+                        (reparse-symbol enumsubparts) [1344 1357])
+                    ("DEBUG_ALL" variable
+                       (:constant-flag t
+                        :type "int")
+                        (reparse-symbol enumsubparts) [1359 1369]))                  
+                :type "enum")
+                nil [1092 1388])
+            ("DebugLevelIndex" type
+               (:typedef ("DebugLevelIndex" type (:type "enum") nil nil)
+                :type "typedef")
+                nil [1092 1388])
+            ("DebugLevel_t" type
+               (:members 
+                  ( ("level" variable (:type ("DebugLevelIndex" type (:type "class") nil nil)) (reparse-symbol classsubparts) [1421 1443])
+                    ("desc" variable
+                       (:pointer 1
+                        :type "char")
+                        (reparse-symbol classsubparts) [1445 1457]))                  
+                :type "struct")
+                nil [1390 1471])
+            ("DebugLevel" type
+               (:typedef ("DebugLevel_t" type (:type "struct") nil nil)
+                :type "typedef")
+                nil [1390 1471])
+            ("init_debug_level" function
+               (:prototype-flag t
+                :arguments 
+                  ( ("level" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [1567 1587]))                  
+                :type "void")
+                nil [1544 1588])
+            ("MAX_ALLOWED_CHILDREN" variable (:constant-flag t) nil [1598 1618])
+            ("AdapterInputHook" function
+               (:prototype-flag t
+                :arguments 
+                  ( ("fd" variable (:type "int") (reparse-symbol arg-sub-list) [1705 1712]))                  
+                :type "int")
+                nil [1682 1713])
+            ("POLICY_RESULT_HEADER" variable (:constant-flag t) nil [1773 1793])
+            ("POLICY_RESULT_BODY" variable (:constant-flag t) nil [1804 1822])
+            ("POLICY_RESULT_ATTACH" variable (:constant-flag t) nil [1834 1854])
+            ("thresholdcfg" type
+               (:members 
+                  ( ("threshold" variable (:type "double") (reparse-symbol classsubparts) [1889 1906])
+                    ("result" variable (:type "int") (reparse-symbol classsubparts) [1908 1919])
+                    ("tag" variable (:type "int") (reparse-symbol classsubparts) [1934 1942])
+                    ("tagtext" variable
+                       (:pointer 1
+                        :type "char")
+                        (reparse-symbol classsubparts) [1944 1958])
+                    ("copyto" variable
+                       (:pointer 1
+                        :type "char")
+                        (reparse-symbol classsubparts) [1960 1973])
+                    ("type" variable (:type "char") (reparse-symbol classsubparts) [1975 1985]))                  
+                :type "struct")
+                nil [1858 1998])
+            ("Threshold" type
+               (:typedef ("thresholdcfg" type (:type "struct") nil nil)
+                :type "typedef")
+                nil [1858 1998])
+            ("domaincfg" type
+               (:members 
+                  ( ("domain" variable
+                       (:pointer 1
+                        :type "char")
+                        (reparse-symbol classsubparts) [2632 2645])
+                    ("max_message_size" variable (:type ("size_t" type (:type "class") nil nil)) (reparse-symbol classsubparts) [2647 2671])
+                    ("high" variable (:type ("Threshold" type (:type "class") nil nil)) (reparse-symbol classsubparts) [2673 2688])
+                    ("low" variable (:type ("Threshold" type (:type "class") nil nil)) (reparse-symbol classsubparts) [2690 2704])
+                    ("use_bayes" variable (:type ("BOOL" type (:type "class") nil nil)) (reparse-symbol classsubparts) [2706 2721])
+                    ("use_specials" variable (:type ("BOOL" type (:type "class") nil nil)) (reparse-symbol classsubparts) [2723 2741])
+                    ("use_phishing" variable (:type ("BOOL" type (:type "class") nil nil)) (reparse-symbol classsubparts) [2743 2761])
+                    ("use_rules" variable (:type ("BOOL" type (:type "class") nil nil)) (reparse-symbol classsubparts) [2763 2778])
+                    ("bayes_high_percent" variable (:type "double") (reparse-symbol classsubparts) [2780 2806])
+                    ("bayes_high_score" variable (:type "int") (reparse-symbol classsubparts) [2808 2829])
+                    ("bayes_medium_percent" variable (:type "double") (reparse-symbol classsubparts) [2831 2859])
+                    ("bayes_medium_score" variable (:type "int") (reparse-symbol classsubparts) [2861 2884])
+                    ("bayes_low_percent" variable (:type "double") (reparse-symbol classsubparts) [2886 2911])
+                    ("bayes_low_score" variable (:type "int") (reparse-symbol classsubparts) [2913 2933])
+                    ("use_rbl" variable (:type ("BOOL" type (:type "class") nil nil)) (reparse-symbol classsubparts) [2935 2948])
+                    ("use_dcc" variable (:type ("BOOL" type (:type "class") nil nil)) (reparse-symbol classsubparts) [2950 2963])
+                    ("report_dcc" variable (:type ("BOOL" type (:type "class") nil nil)) (reparse-symbol classsubparts) [2965 2981])
+                    ("rules_filename" variable
+                       (:pointer 1
+                        :type "char")
+                        (reparse-symbol classsubparts) [2983 3005])
+                    ("use_whitelist" variable (:type ("BOOL" type (:type "class") nil nil)) (reparse-symbol classsubparts) [3007 3026])
+                    ("whitelist_provider" variable
+                       (:pointer 1
+                        :type "char")
+                        (reparse-symbol classsubparts) [3028 3054])
+                    ("archive_days" variable (:type "int") (reparse-symbol classsubparts) [3056 3073])
+                    ("allow_user_settings" variable (:type ("BOOL" type (:type "class") nil nil)) (reparse-symbol classsubparts) [3075 3100])
+                    ("always_use_bayes" variable (:type ("BOOL" type (:type "class") nil nil)) (reparse-symbol classsubparts) [3105 3127])
+                    ("always_use_specials" variable (:type ("BOOL" type (:type "class") nil nil)) (reparse-symbol classsubparts) [3132 3157])
+                    ("always_use_rules" variable (:type ("BOOL" type (:type "class") nil nil)) (reparse-symbol classsubparts) [3162 3184])
+                    ("always_use_phishing" variable (:type ("BOOL" type (:type "class") nil nil)) (reparse-symbol classsubparts) [3189 3214]))                  
+                :type "struct")
+                nil [2604 3230])
+            ("DomainPolicy" type
+               (:typedef ("domaincfg" type (:type "struct") nil nil)
+                :type "typedef")
+                nil [2604 3230])
+            ("set_policy_pref" function
+               (:prototype-flag t
+                :arguments 
+                  ( ("policy" variable
+                       (:pointer 1
+                        :type ("DomainPolicy" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [3254 3275])
+                    ("pref_name" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [3276 3298])
+                    ("pref_value" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [3299 3322]))                  
+                :type "int")
+                nil [3233 3323])
+            ("worker_status" type
+               (:members 
+                  ( ("WACTIVE" variable
+                       (:constant-flag t
+                        :default-value (3390 3391)
+                        :type "int")
+                        (reparse-symbol enumsubparts) [3382 3391])
+                    ("WIDLE" variable
+                       (:constant-flag t
+                        :default-value (3399 3400)
+                        :type "int")
+                        (reparse-symbol enumsubparts) [3393 3400]))                  
+                :type "enum")
+                nil [3361 3403])
+            ("worker_slot_t" type
+               (:members 
+                  ( ("pid" variable (:type ("pid_t" type (:type "class") nil nil)) (reparse-symbol classsubparts) [3437 3447])
+                    ("status" variable (:type "int") (reparse-symbol classsubparts) [3449 3460]))                  
+                :type "struct")
+                nil [3405 3475])
+            ("worker_slot" type
+               (:typedef ("worker_slot_t" type (:type "struct") nil nil)
+                :type "typedef")
+                nil [3405 3475])
+            ("SIG_CHILD_ACTIVE" variable (:constant-flag t) nil [3485 3501])
+            ("SIG_CHILD_IDLE" variable (:constant-flag t) nil [3518 3532])
+            ("SIG_COME_TO_PAPA" variable (:constant-flag t) nil [3550 3566])
+            ("CHILD_IN_STARTUP" variable (:constant-flag t) nil [3585 3601])
+            ("CHILD_IN_ACCEPT_WAIT" variable (:constant-flag t) nil [3613 3633])
+            ("CHILD_IN_PROCESSING" variable (:constant-flag t) nil [3644 3663])
+            ("debug" function
+               (:prototype-flag t
+                :arguments 
+                  ( ("level" variable (:type "int") (reparse-symbol arg-sub-list) [3680 3690])
+                    ("fmt" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [3691 3708])
+                    ("..." variable (:type "vararg") (reparse-symbol arg-sub-list) [3709 3714]))                  
+                :type "void")
+                nil [3668 3715])
+            ("sig_die_with_children" function
+               (:prototype-flag t
+                :arguments 
+                  ( ("signo" variable (:type "int") (reparse-symbol arg-sub-list) [3744 3755]))                  
+                :type "void")
+                nil [3716 3756])
+            ("sig_child_change" function
+               (:prototype-flag t
+                :arguments 
+                  ( ("signo" variable (:type "int") (reparse-symbol arg-sub-list) [3780 3791]))                  
+                :type "void")
+                nil [3757 3792])
+            ("sig_child_die" function
+               (:prototype-flag t
+                :arguments 
+                  ( ("signo" variable (:type "int") (reparse-symbol arg-sub-list) [3813 3824]))                  
+                :type "void")
+                nil [3793 3825])
+            ("sig_return_to_papa" function
+               (:prototype-flag t
+                :arguments 
+                  ( ("signo" variable (:type "int") (reparse-symbol arg-sub-list) [3851 3862]))                  
+                :type "void")
+                nil [3826 3863])
+            ("sig_child_alarm" function
+               (:prototype-flag t
+                :arguments 
+                  ( ("signo" variable (:type "int") (reparse-symbol arg-sub-list) [3886 3897]))                  
+                :type "void")
+                nil [3864 3898])
+            ("sig_child_segv" function
+               (:prototype-flag t
+                :arguments 
+                  ( ("signo" variable (:type "int") (reparse-symbol arg-sub-list) [3920 3931]))                  
+                :type "void")
+                nil [3899 3932])
+            ("spammer_header_t" type
+               (:members 
+                  ( ("name" variable
+                       (:pointer 1
+                        :type "char")
+                        (reparse-symbol classsubparts) [3999 4011])
+                    ("value" variable
+                       (:pointer 1
+                        :type "char")
+                        (reparse-symbol classsubparts) [4013 4026]))                  
+                :type "struct")
+                nil [3964 4043])
+            ("SpammerHeader" type
+               (:typedef ("spammer_header_t" type (:type "struct") nil nil)
+                :type "typedef")
+                nil [3964 4043])
+            ("spammer_settings_t" type
+               (:members 
+                  ( ("threshold" variable (:type "double") (reparse-symbol classsubparts) [4082 4099])
+                    ("spam_action" variable (:type "int") (reparse-symbol classsubparts) [4101 4117])
+                    ("recipient" variable
+                       (:dereference 1
+                        :type "char")
+                        (reparse-symbol classsubparts) [4119 4139])
+                    ("sender" variable
+                       (:dereference 1
+                        :type "char")
+                        (reparse-symbol classsubparts) [4141 4158])
+                    ("ip" variable
+                       (:dereference 1
+                        :type "char")
+                        (reparse-symbol classsubparts) [4161 4174])
+                    ("msgid" variable
+                       (:dereference 1
+                        :type "char")
+                        (reparse-symbol classsubparts) [4176 4192])
+                    ("policy_realm" variable
+                       (:dereference 1
+                        :type "char")
+                        (reparse-symbol classsubparts) [4194 4217]))                  
+                :type "struct")
+                nil [4045 4236])
+            ("SpammerSettings" type
+               (:typedef ("spammer_settings_t" type (:type "struct") nil nil)
+                :type "typedef")
+                nil [4045 4236])
+            ("REPORT_HAS_ROOM" variable (:constant-flag t) nil [4246 4261])
+            ("DONT_GENERATE_MSG" variable (:constant-flag t) nil [4345 4362])
+            ("GENERATE_MSG" variable (:constant-flag t) nil [4375 4387])
+            ("GENERATE_MSG_IFSPAM" variable (:constant-flag t) nil [4405 4424])
+            ("VariantType" type
+               (:members 
+                  ( ("VT_BYTE" variable
+                       (:constant-flag t
+                        :type "int")
+                        (reparse-symbol enumsubparts) [4457 4465])
+                    ("VT_CHAR" variable
+                       (:constant-flag t
+                        :type "int")
+                        (reparse-symbol enumsubparts) [4467 4475])
+                    ("VT_SHORT" variable
+                       (:constant-flag t
+                        :type "int")
+                        (reparse-symbol enumsubparts) [4477 4486])
+                    ("VT_INT" variable
+                       (:constant-flag t
+                        :type "int")
+                        (reparse-symbol enumsubparts) [4488 4495])
+                    ("VT_LONG" variable
+                       (:constant-flag t
+                        :type "int")
+                        (reparse-symbol enumsubparts) [4497 4505])
+                    ("VT_FLOAT" variable
+                       (:constant-flag t
+                        :type "int")
+                        (reparse-symbol enumsubparts) [4507 4516])
+                    ("VT_DOUBLE" variable
+                       (:constant-flag t
+                        :type "int")
+                        (reparse-symbol enumsubparts) [4518 4528])
+                    ("VT_STRING" variable
+                       (:constant-flag t
+                        :type "int")
+                        (reparse-symbol enumsubparts) [4530 4540])
+                    ("VT_BUFFER" variable
+                       (:constant-flag t
+                        :type "int")
+                        (reparse-symbol enumsubparts) [4542 4552]))                  
+                :type "enum")
+                nil [4429 4567])
+            ("VariantType" type
+               (:typedef ("VariantType" type (:type "enum") nil nil)
+                :type "typedef")
+                nil [4429 4567])
+            ("Buffer_t" type
+               (:members 
+                  ( ("len" variable (:type "long") (reparse-symbol classsubparts) [4596 4605])
+                    ("data" variable
+                       (:pointer 1
+                        :type "void")
+                        (reparse-symbol classsubparts) [4607 4619]))                  
+                :type "struct")
+                nil [4569 4629])
+            ("Buffer" type
+               (:typedef ("Buffer_t" type (:type "struct") nil nil)
+                :type "typedef")
+                nil [4569 4629])
+            ("Variant_t" type
+               (:members 
+                  ( ("type" variable (:type ("VariantType" type (:type "class") nil nil)) (reparse-symbol classsubparts) [4659 4676])
+                    ("val" variable (:type ("val" type
+                         (:prototype t
+                          :type "union")
+                          nil nil)) (reparse-symbol classsubparts) [4678 4888])
+                    ("val" type
+                       (:members 
+                          ( ("byte_val" variable (:type "char") (reparse-symbol classsubparts) [4692 4709])
+                            ("char_val" variable (:type "char") (reparse-symbol classsubparts) [4712 4729])
+                            ("short_val" variable (:type "short int") (reparse-symbol classsubparts) [4732 4754])
+                            ("int_val" variable (:type "int") (reparse-symbol classsubparts) [4757 4773])
+                            ("long_val" variable (:type "long") (reparse-symbol classsubparts) [4776 4793])
+                            ("float_val" variable (:type "float") (reparse-symbol classsubparts) [4796 4814])
+                            ("double_val" variable (:type "double") (reparse-symbol classsubparts) [4817 4836])
+                            ("string_val" variable
+                               (:pointer 1
+                                :type "char")
+                                (reparse-symbol classsubparts) [4839 4858])
+                            ("buffer_val" variable (:type ("Buffer" type (:type "class") nil nil)) (reparse-symbol classsubparts) [4861 4880]))                          
+                        :type "union")
+                        (reparse-symbol classsubparts) [4678 4888]))                  
+                :type "struct")
+                nil [4631 4899])
+            ("Variant" type
+               (:typedef ("Variant_t" type (:type "struct") nil nil)
+                :type "typedef")
+                nil [4631 4899])
+            ("IMG_COUNT_PROP" variable (:constant-flag t) nil [4909 4923])
+            ("FONT_COUNT_PROP" variable (:constant-flag t) nil [4958 4973])
+            ("ANCHOR_COUNT_PROP" variable (:constant-flag t) nil [5008 5025])
+            ("TAG_COUNT_PROP" variable (:constant-flag t) nil [5060 5074])
+            ("TOTAL_TAG_LEN_PROP" variable (:constant-flag t) nil [5109 5127])
+            ("BUILT_TOKEN_COUNT_PROP" variable (:constant-flag t) nil [5163 5185])
+            ("DELIM_COUNT_PROP" variable (:constant-flag t) nil [5215 5231])
+            ("CHAR_COUNT_PROP" variable (:constant-flag t) nil [5261 5276])
+            ("HTML_BUILT_TOKEN_COUNT_PROP" variable (:constant-flag t) nil [5307 5334])
+            ("HTML_DELIM_COUNT_PROP" variable (:constant-flag t) nil [5369 5390])
+            ("HTML_CHAR_COUNT_PROP" variable (:constant-flag t) nil [5425 5445])
+            ("ParsedMessageBody_t" type
+               (:members 
+                  ( ("text_body" variable
+                       (:pointer 1
+                        :type "char")
+                        (reparse-symbol classsubparts) [5511 5528])
+                    ("text_body_len" variable (:type ("size_t" type (:type "class") nil nil)) (reparse-symbol classsubparts) [5530 5551])
+                    ("text_body_encoding" variable (:type "int") (reparse-symbol classsubparts) [5553 5576])
+                    ("html_body" variable
+                       (:pointer 1
+                        :type "char")
+                        (reparse-symbol classsubparts) [5580 5597])
+                    ("html_body_len" variable (:type ("size_t" type (:type "class") nil nil)) (reparse-symbol classsubparts) [5599 5620])
+                    ("html_body_encoding" variable (:type "int") (reparse-symbol classsubparts) [5622 5645])
+                    ("parsed_html_body" variable
+                       (:pointer 1
+                        :type "char")
+                        (reparse-symbol classsubparts) [5649 5673])
+                    ("parsed_html_body_len" variable (:type ("size_t" type (:type "class") nil nil)) (reparse-symbol classsubparts) [5675 5703])
+                    ("parsed_html_tokens" variable
+                       (:pointer 1
+                        :type "char")
+                        (reparse-symbol classsubparts) [5707 5733])
+                    ("parsed_html_tokens_len" variable (:type ("size_t" type (:type "class") nil nil)) (reparse-symbol classsubparts) [5735 5765])
+                    ("uri_tokens" variable
+                       (:pointer 1
+                        :type "char")
+                        (reparse-symbol classsubparts) [5769 5787])
+                    ("uri_tokens_len" variable (:type ("size_t" type (:type "class") nil nil)) (reparse-symbol classsubparts) [5789 5811])
+                    ("imgs" variable
+                       (:pointer 1
+                        :type ("GList" type (:type "class") nil nil))
+                        (reparse-symbol classsubparts) [5814 5827])
+                    ("fullurl_anchor" variable
+                       (:pointer 1
+                        :type ("GSList" type (:type "class") nil nil))
+                        (reparse-symbol classsubparts) [5889 5913])
+                    ("props" variable
+                       (:pointer 1
+                        :type ("GHashTable" type (:type "class") nil nil))
+                        (reparse-symbol classsubparts) [6172 6191]))                  
+                :type "struct")
+                nil [5473 6214])
+            ("ParsedMessageBody" type
+               (:typedef ("ParsedMessageBody_t" type (:type "struct") nil nil)
+                :type "typedef")
+                nil [5473 6214])
+            ("spammer_results_t" type
+               (:members 
+                  ( ("verdict" variable (:type "double") (reparse-symbol classsubparts) [6347 6362])
+                    ("threshold" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type ("Threshold" type (:type "class") nil nil))
+                        (reparse-symbol classsubparts) [6364 6392])
+                    ("gen_report" variable (:type ("BOOL" type (:type "class") nil nil)) (reparse-symbol classsubparts) [6394 6413])
+                    ("report_spam_only" variable (:type ("BOOL" type (:type "class") nil nil)) (reparse-symbol classsubparts) [6415 6437])
+                    ("report" variable
+                       (:pointer 1
+                        :type "char")
+                        (reparse-symbol classsubparts) [6439 6454])
+                    ("report_len" variable (:type ("size_t" type (:type "class") nil nil)) (reparse-symbol classsubparts) [6456 6475])
+                    ("cur_report_line" variable
+                       (:pointer 1
+                        :type "char")
+                        (reparse-symbol classsubparts) [6506 6530])
+                    ("gen_message" variable (:type "int") (reparse-symbol classsubparts) [6565 6582])
+                    ("gen_message_headers" variable (:type "int") (reparse-symbol classsubparts) [6674 6699])
+                    ("modified_message" variable
+                       (:pointer 1
+                        :type ("EMimeOutStream" type (:type "class") nil nil))
+                        (reparse-symbol classsubparts) [6701 6735])
+                    ("added_headers" variable
+                       (:pointer 1
+                        :type ("GSList" type (:type "class") nil nil))
+                        (reparse-symbol classsubparts) [6737 6759])
+                    ("mime_message" variable
+                       (:pointer 1
+                        :type ("EMimeMessage" type (:type "class") nil nil))
+                        (reparse-symbol classsubparts) [6763 6791])
+                    ("message_body" variable
+                       (:pointer 1
+                        :type ("ParsedMessageBody" type (:type "class") nil nil))
+                        (reparse-symbol classsubparts) [6793 6826])
+                    ("spam_summary" variable
+                       (:dereference 1
+                        :type "char")
+                        (reparse-symbol classsubparts) [6853 6889]))                  
+                :type "struct")
+                nil [6311 6977])
+            ("SpammerResults" type
+               (:typedef ("spammer_results_t" type (:type "struct") nil nil)
+                :type "typedef")
+                nil [6311 6977])
+            ("make_spam_worker" function
+               (:prototype-flag t
+                :arguments 
+                  ( ("i" variable (:type "int") (reparse-symbol arg-sub-list) [7003 7009])
+                    ("listenfd" variable (:type "int") (reparse-symbol arg-sub-list) [7010 7023])
+                    ("addrlen" variable (:type "int") (reparse-symbol arg-sub-list) [7024 7037]))                  
+                :type ("pid_t" type (:type "class") nil nil))
+                nil [6979 7038])
+            ("scan_message" function
+               (:prototype-flag t
+                :arguments 
+                  ( ("buffer" variable
+                       (:pointer 1
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [7057 7071])
+                    ("len" variable (:type ("size_t" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [7072 7083])
+                    ("settings" variable
+                       (:pointer 1
+                        :type ("SpammerSettings" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [7086 7113])
+                    ("results" variable
+                       (:pointer 1
+                        :type ("SpammerResults" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [7114 7140]))                  
+                :type "int")
+                nil [7039 7141])
+            ("message_body_props_add" function
+               (:prototype-flag t
+                :arguments 
+                  ( ("message_body" variable
+                       (:pointer 1
+                        :type ("ParsedMessageBody" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [7188 7221])
+                    ("key" variable
+                       (:pointer 1
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [7222 7233])
+                    ("data" variable
+                       (:pointer 1
+                        :type ("Variant" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [7234 7250]))                  
+                :type "void")
+                nil [7157 7251])
+            ("message_body_props_remove" function
+               (:prototype-flag t
+                :arguments 
+                  ( ("message_body" variable
+                       (:pointer 1
+                        :type ("ParsedMessageBody" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [7284 7317])
+                    ("key" variable
+                       (:pointer 1
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [7318 7330]))                  
+                :type "void")
+                nil [7252 7331])
+            ("message_body_props_lookup_byte" function
+               (:prototype-flag t
+                :arguments 
+                  ( ("message_body" variable
+                       (:pointer 1
+                        :type ("ParsedMessageBody" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [7372 7405])
+                    ("key" variable
+                       (:pointer 1
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [7406 7417])
+                    ("val" variable
+                       (:pointer 1
+                        :type "int")
+                        (reparse-symbol arg-sub-list) [7418 7429]))                  
+                :type ("BOOL" type (:type "class") nil nil))
+                nil [7332 7430])
+            ("message_body_props_lookup_char" function
+               (:prototype-flag t
+                :arguments 
+                  ( ("message_body" variable
+                       (:pointer 1
+                        :type ("ParsedMessageBody" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [7471 7504])
+                    ("key" variable
+                       (:pointer 1
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [7505 7516])
+                    ("val" variable
+                       (:pointer 1
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [7517 7529]))                  
+                :type ("BOOL" type (:type "class") nil nil))
+                nil [7431 7530])
+            ("message_body_props_lookup_short" function
+               (:prototype-flag t
+                :arguments 
+                  ( ("message_body" variable
+                       (:pointer 1
+                        :type ("ParsedMessageBody" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [7572 7605])
+                    ("key" variable
+                       (:pointer 1
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [7606 7617])
+                    ("val" variable
+                       (:pointer 1
+                        :type "short int")
+                        (reparse-symbol arg-sub-list) [7618 7635]))                  
+                :type ("BOOL" type (:type "class") nil nil))
+                nil [7531 7636])
+            ("message_body_props_lookup_int" function
+               (:prototype-flag t
+                :arguments 
+                  ( ("message_body" variable
+                       (:pointer 1
+                        :type ("ParsedMessageBody" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [7676 7709])
+                    ("key" variable
+                       (:pointer 1
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [7710 7721])
+                    ("val" variable
+                       (:pointer 1
+                        :type "int")
+                        (reparse-symbol arg-sub-list) [7722 7733]))                  
+                :type ("BOOL" type (:type "class") nil nil))
+                nil [7637 7734])
+            ("message_body_props_lookup_long" function
+               (:prototype-flag t
+                :arguments 
+                  ( ("message_body" variable
+                       (:pointer 1
+                        :type ("ParsedMessageBody" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [7775 7808])
+                    ("key" variable
+                       (:pointer 1
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [7809 7820])
+                    ("val" variable
+                       (:pointer 1
+                        :type "long")
+                        (reparse-symbol arg-sub-list) [7821 7833]))                  
+                :type ("BOOL" type (:type "class") nil nil))
+                nil [7735 7834])
+            ("message_body_props_lookup_float" function
+               (:prototype-flag t
+                :arguments 
+                  ( ("message_body" variable
+                       (:pointer 1
+                        :type ("ParsedMessageBody" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [7876 7909])
+                    ("key" variable
+                       (:pointer 1
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [7910 7921])
+                    ("val" variable
+                       (:pointer 1
+                        :type "float")
+                        (reparse-symbol arg-sub-list) [7922 7935]))                  
+                :type ("BOOL" type (:type "class") nil nil))
+                nil [7835 7936])
+            ("message_body_props_lookup_double" function
+               (:prototype-flag t
+                :arguments 
+                  ( ("message_body" variable
+                       (:pointer 1
+                        :type ("ParsedMessageBody" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [7979 8012])
+                    ("key" variable
+                       (:pointer 1
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [8013 8024])
+                    ("val" variable
+                       (:pointer 1
+                        :type "double")
+                        (reparse-symbol arg-sub-list) [8025 8039]))                  
+                :type ("BOOL" type (:type "class") nil nil))
+                nil [7937 8040])
+            ("message_body_props_lookup_string" function
+               (:prototype-flag t
+                :arguments 
+                  ( ("message_body" variable
+                       (:pointer 1
+                        :type ("ParsedMessageBody" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [8083 8116])
+                    ("key" variable
+                       (:pointer 1
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [8117 8128])
+                    ("val" variable
+                       (:pointer 2
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [8129 8142]))                  
+                :type ("BOOL" type (:type "class") nil nil))
+                nil [8041 8143])
+            ("message_body_props_lookup_buffer" function
+               (:prototype-flag t
+                :arguments 
+                  ( ("message_body" variable
+                       (:pointer 1
+                        :type ("ParsedMessageBody" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [8186 8219])
+                    ("key" variable
+                       (:pointer 1
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [8220 8231])
+                    ("val" variable
+                       (:pointer 1
+                        :type ("Buffer" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [8232 8246]))                  
+                :type ("BOOL" type (:type "class") nil nil))
+                nil [8144 8247])
+            ("message_body_props_foreach_remove" function
+               (:prototype-flag t
+                :arguments 
+                  ( ("key" variable (:type ("gpointer" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [8294 8307])
+                    ("val" variable (:type ("gpointer" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [8308 8321])
+                    ("data" variable (:type ("gpointer" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [8322 8337]))                  
+                :type ("gboolean" type (:type "class") nil nil))
+                nil [8248 8338])
+            ("message_body_props_report" function
+               (:prototype-flag t
+                :arguments 
+                  ( ("in_key" variable (:type ("gpointer" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [8373 8389])
+                    ("in_val" variable (:type ("gpointer" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [8390 8406])
+                    ("in_data" variable (:type ("gpointer" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [8407 8425]))                  
+                :type "void")
+                nil [8339 8426])
+            ("free_message_body" function
+               (:prototype-flag t
+                :arguments 
+                  ( ("message_body" variable
+                       (:pointer 1
+                        :type ("ParsedMessageBody" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [8451 8485]))                  
+                :type "void")
+                nil [8427 8486])
+            ("report_message_body_props" function
+               (:prototype-flag t
+                :arguments 
+                  ( ("message_body" variable
+                       (:pointer 1
+                        :type ("ParsedMessageBody" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [8519 8553]))                  
+                :type "void")
+                nil [8487 8554])
+            ("format_report" function
+               (:prototype-flag t
+                :arguments 
+                  ( ("report" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [8574 8595]))                  
+                :type "int")
+                nil [8555 8596])
+            ("myreplace" function
+               (:prototype-flag t
+                :pointer 1
+                :arguments 
+                  ( ("src" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [8627 8643])
+                    ("from" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [8644 8661])
+                    ("to" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [8662 8677]))                  
+                :type "char")
+                nil [8611 8678])
+            ("mychomp" function
+               (:prototype-flag t
+                :arguments 
+                  ( ("" variable
+                       (:pointer 1
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [8692 8699]))                  
+                :type "void")
+                nil [8679 8700])
+            ("isIPAddress" function
+               (:prototype-flag t
+                :arguments 
+                  ( ("" variable
+                       (:pointer 1
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [8717 8723]))                  
+                :type "int")
+                nil [8701 8724])
+            ("getipparts" function
+               (:prototype-flag t
+                :arguments 
+                  ( ("ipparts" variable
+                       (:pointer 1
+                        :dereference 1
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [8741 8757])
+                    ("ptr" variable
+                       (:pointer 1
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [8757 8767]))                  
+                :type "void")
+                nil [8725 8768])
+            ("get_ip_from_fqhn" function
+               (:prototype-flag t
+                :arguments 
+                  ( ("hostname" variable
+                       (:pointer 1
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [8790 8807])
+                    ("ip" variable
+                       (:pointer 1
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [8808 8817]))                  
+                :type "int")
+                nil [8769 8818])
+            ("get_domain_from_address" function
+               (:prototype-flag t
+                :pointer 1
+                :arguments 
+                  ( ("emailaddress" variable
+                       (:pointer 1
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [8850 8869]))                  
+                :type "char")
+                nil [8819 8870])
+            ("mysplit" function
+               (:prototype-flag t
+                :pointer 2
+                :arguments 
+                  ( ("input" variable
+                       (:pointer 1
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [8887 8900])
+                    ("delim" variable
+                       (:constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [8901 8918]))                  
+                :type "char")
+                nil [8871 8919])
+            ("reverse_address" function
+               (:prototype-flag t
+                :pointer 1
+                :arguments 
+                  ( ("address" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [8944 8966]))                  
+                :type "char")
+                nil [8920 8967])
+            ("add_report_line" function
+               (:prototype-flag t
+                :arguments 
+                  ( ("results" variable
+                       (:pointer 1
+                        :type ("SpammerResults" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [8989 9014])
+                    ("size" variable (:type ("size_t" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [9015 9027])
+                    ("fmt" variable
+                       (:pointer 1
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [9028 9039])
+                    ("..." variable (:type "vararg") (reparse-symbol arg-sub-list) [9040 9045]))                  
+                :type "int")
+                nil [8968 9046])
+            ("add_header" function
+               (:prototype-flag t
+                :arguments 
+                  ( ("results" variable
+                       (:pointer 1
+                        :type ("SpammerResults" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [9063 9088])
+                    ("name" variable
+                       (:pointer 1
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [9089 9101])
+                    ("value" variable
+                       (:pointer 1
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [9102 9116]))                  
+                :type "int")
+                nil [9047 9117])
+            ("chomp" function
+               (:prototype-flag t
+                :arguments 
+                  ( ("buf" variable
+                       (:pointer 1
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [9131 9143]))                  
+                :type "void")
+                nil [9119 9144])
+            ("build_json_request" function
+               (:prototype-flag t
+                :pointer 1
+                :arguments 
+                  ( ("msgid" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [9171 9189])
+                    ("helo" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [9193 9210])
+                    ("ip" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [9214 9229])
+                    ("senderdomain" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [9233 9258])
+                    ("recipientdomain" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [9262 9290])
+                    ("reversedns" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [9294 9317])
+                    ("fullurl_anchortexts" variable
+                       (:pointer 1
+                        :type ("GSList" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [9321 9349]))                  
+                :type "char")
+                nil [9145 9350])
+            ("build_json" function
+               (:prototype-flag t
+                :pointer 1
+                :arguments 
+                  ( ("ptrFullURLAnchor" variable
+                       (:pointer 1
+                        :type ("URL_Anchortext" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [9376 9409]))                  
+                :type ("json_object" type (:type "class") nil nil))
+                nil [9351 9410])
+            ("make_byte_variant" function
+               (:prototype-flag t
+                :pointer 1
+                :arguments 
+                  ( ("val" variable (:type "int") (reparse-symbol arg-sub-list) [9441 9450]))                  
+                :type ("Variant" type (:type "class") nil nil))
+                nil [9412 9451])
+            ("make_char_variant" function
+               (:prototype-flag t
+                :pointer 1
+                :arguments 
+                  ( ("val" variable (:type "char") (reparse-symbol arg-sub-list) [9481 9491]))                  
+                :type ("Variant" type (:type "class") nil nil))
+                nil [9452 9492])
+            ("make_short_variant" function
+               (:prototype-flag t
+                :pointer 1
+                :arguments 
+                  ( ("val" variable (:type "short int") (reparse-symbol arg-sub-list) [9523 9538]))                  
+                :type ("Variant" type (:type "class") nil nil))
+                nil [9493 9539])
+            ("make_int_variant" function
+               (:prototype-flag t
+                :pointer 1
+                :arguments 
+                  ( ("val" variable (:type "int") (reparse-symbol arg-sub-list) [9568 9577]))                  
+                :type ("Variant" type (:type "class") nil nil))
+                nil [9540 9578])
+            ("make_long_variant" function
+               (:prototype-flag t
+                :pointer 1
+                :arguments 
+                  ( ("val" variable (:type "long") (reparse-symbol arg-sub-list) [9608 9618]))                  
+                :type ("Variant" type (:type "class") nil nil))
+                nil [9579 9619])
+            ("make_float_variant" function
+               (:prototype-flag t
+                :pointer 1
+                :arguments 
+                  ( ("val" variable (:type "float") (reparse-symbol arg-sub-list) [9650 9661]))                  
+                :type ("Variant" type (:type "class") nil nil))
+                nil [9620 9662])
+            ("make_double_variant" function
+               (:prototype-flag t
+                :pointer 1
+                :arguments 
+                  ( ("val" variable (:type "double") (reparse-symbol arg-sub-list) [9694 9706]))                  
+                :type ("Variant" type (:type "class") nil nil))
+                nil [9663 9707])
+            ("make_string_variant" function
+               (:prototype-flag t
+                :pointer 1
+                :arguments 
+                  ( ("val" variable
+                       (:pointer 1
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [9739 9751]))                  
+                :type ("Variant" type (:type "class") nil nil))
+                nil [9708 9752])
+            ("make_buffer_variant" function
+               (:prototype-flag t
+                :pointer 1
+                :arguments 
+                  ( ("val" variable
+                       (:pointer 1
+                        :type ("Buffer" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [9784 9798]))                  
+                :type ("Variant" type (:type "class") nil nil))
+                nil [9753 9799])
+            ("PolicyConfigHook" function
+               (:prototype-flag t
+                :arguments 
+                  ( ("domain" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [10005 10025])
+                    ("policy" variable
+                       (:pointer 1
+                        :type ("DomainPolicy" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [10026 10048])
+                    ("data" variable
+                       (:pointer 1
+                        :type "void")
+                        (reparse-symbol arg-sub-list) [10049 10062]))                  
+                :type "int")
+                nil [9980 10063])
+            ("WhitelistHook" function
+               (:prototype-flag t
+                :arguments 
+                  ( ("sender" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [10094 10114])
+                    ("ip" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [10115 10131])
+                    ("recip" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [10132 10151])
+                    ("results" variable
+                       (:pointer 1
+                        :type ("SpammerResults" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [10155 10180])
+                    ("score" variable
+                       (:pointer 1
+                        :type "double")
+                        (reparse-symbol arg-sub-list) [10181 10197]))                  
+                :type "int")
+                nil [10072 10198]))          
+      :file "emcspamd.h"
+      :pointmax 10207
+      :fsize 10206
+      :lastmodtime '(21723 54067 400750 685000)
+      :unmatched-syntax '((TYPEDEF 10064 . 10071) (TYPEDEF 9972 . 9979) (punctuation 1931 . 1932) (DELETE 1925 . 1931) (INT 1921 . 1924) (TYPEDEF 1674 . 1681))
+      :lexical-table 
+        '(("POLICY_RESULT_ATTACH" . ((number "3" 1855 . 1856)))
+          ("BUILT_TOKEN_COUNT_PROP" . ((string "\"built_token_count\"" 5187 . 5206)))
+          ("__emcspamd_h")
+          ("MAX" (spp-arg-list ("x" "y") 866 . 871) . ((semantic-list "(x > y ? x : y)" 872 . 887)))
+          ("SIG_CHILD_IDLE" . ((symbol "SIGUSR2" 3534 . 3541)))
+          ("GENERATE_MSG" . ((number "1" 4395 . 4396)))
+          ("END_BREAK_FRAME" . 
+              ((WHILE "while" 776 . 781) (semantic-list "(FALSE)" 781 . 788) (punctuation ";" 788 . 789)))
+          ("MIN" (spp-arg-list ("x" "y") 814 . 819) . ((semantic-list "(x < y ? x : y)" 820 . 835)))
+          ("GENERATE_MSG_IFSPAM" . ((number "2" 4425 . 4426)))
+          ("MAX_DEBUG_LEVELS" . ((number "100" 971 . 974)))
+          ("POLICY_RESULT_HEADER" . ((number "1" 1794 . 1795)))
+          ("HTML_BUILT_TOKEN_COUNT_PROP" . ((string "\"html_built_token_count\"" 5336 . 5360)))
+          ("HTML_CHAR_COUNT_PROP" . ((string "\"html_char_count\"" 5454 . 5471)))
+          ("MAX_ALLOWED_CHILDREN" . ((number "500" 1619 . 1622)))
+          ("DONT_GENERATE_MSG" . ((number "0" 4365 . 4366)))
+          ("TAG_COUNT_PROP" . ((string "\"html_tag_count\"" 5084 . 5100)))
+          ("DEFAULT_DOMAIN" . ((string "\"default\"" 320 . 329)))
+          ("DEFAULT_CFG_FILENAME" . ((string "\"/etc/mail/emcspamd2.conf\"" 360 . 386)))
+          ("CHILD_IN_STARTUP" . ((number "0" 3603 . 3604)))
+          ("CHILD_IN_ACCEPT_WAIT" . ((number "1" 3634 . 3635)))
+          ("DEFAULT_USERID" . ((string "\"default\"" 287 . 296)))
+          ("TOTAL_TAG_LEN_PROP" . ((string "\"html_total_tag_len\"" 5133 . 5153)))
+          ("CHAR_COUNT_PROP" . ((string "\"char_count\"" 5285 . 5297)))
+          ("DEFAULT_POLICY_ADAPTER" . ((string "\"global-policy\"" 462 . 477)))
+          ("START_BREAK_FRAME" . ((DO "do" 749 . 751)))
+          ("SPAM_SUMMARY_LEN" . ((number "4000" 921 . 925)))
+          ("TLD_DEFAULT_CFG_FILENAME" . ((string "\"/etc/mail/2level_TLD.txt\"" 1030 . 1056)))
+          ("FONT_COUNT_PROP" . ((string "\"html_font_count\"" 4982 . 4999)))
+          ("DELIM_COUNT_PROP" . ((string "\"delim_count\"" 5239 . 5252)))
+          ("ASSERT" (spp-arg-list ("x" "y") 492 . 497) . 
+              ((IF "if" 498 . 500) (semantic-list "( !(x) )" 500 . 508) (semantic-list "{ err_quit( \"ASSERT FAILED: %s\", y ); exit( EX_TEMPFAIL ); }" 509 . 569)))
+          ("SIG_CHILD_ACTIVE" . ((symbol "SIGUSR1" 3502 . 3509)))
+          ("IMG_COUNT_PROP" . ((string "\"html_img_count\"" 4933 . 4949)))
+          ("DEFAULT_COM_ADAPTER" . ((string "\"spam-assassin\"" 415 . 430)))
+          ("ASSERT_SYS" (spp-arg-list ("x" "y") 588 . 593) . 
+              ((IF "if" 594 . 596) (semantic-list "( !(x) )" 596 . 604) (semantic-list "{ err_sys( \"ASSERT FAILED: %s\", y ); exit( EX_TEMPFAIL ); }" 605 . 664)))
+          ("TLD_READ_BUFFER_SIZE" . ((number "256" 1086 . 1089)))
+          ("POLICY_RESULT_BODY" . ((number "2" 1824 . 1825)))
+          ("SIG_COME_TO_PAPA" . ((symbol "SIGQUIT" 3567 . 3574)))
+          ("CHILD_IN_PROCESSING" . ((number "2" 3665 . 3666)))
+          ("REPORT_HAS_ROOM" (spp-arg-list ("x" "y") 4261 . 4269) . ((semantic-list "( (x->report_len - ( x->cur_report_line - x->report ) - y) > 0 )" 4270 . 4334)))
+          ("ANCHOR_COUNT_PROP" . ((string "\"html_anchor_count\"" 5032 . 5051)))
+          ("HTML_DELIM_COUNT_PROP" . ((string "\"html_delim_count\"" 5398 . 5416)))
+          ("SAFE_FREE" (spp-arg-list ("x") 683 . 688) . 
+              ((IF "if" 689 . 691) (semantic-list "( x )" 691 . 696) (semantic-list "{ free( x ); x = NULL; }" 697 . 721)))
+          )
+)
+    (semanticdb-table "spammer.h"
+      :major-mode 'c-mode
+      :tags 
+        '( ("__emc_spammer_h" variable (:constant-flag t) nil [33 48])
+            ("SETSIZE" variable (:constant-flag t) nil [58 65])
+            ("REPORT_BUFFER_LEN" variable (:constant-flag t) nil [79 96])
+            ("libemime.h" include (:system-flag t) nil [151 172])
+            ("emcspamd.h" include (:system-flag t) nil [173 194])
+            ("free_spammer_results" function
+               (:prototype-flag t
+                :arguments 
+                  ( ("results" variable
+                       (:pointer 1
+                        :type ("SpammerResults" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [223 249]))                  
+                :type "void")
+                nil [196 250])
+            ("modify_message" function
+               (:prototype-flag t
+                :arguments 
+                  ( ("message" variable
+                       (:pointer 1
+                        :type ("EMimeMessage" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [274 297])
+                    ("results" variable
+                       (:pointer 1
+                        :type ("SpammerResults" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [301 327]))                  
+                :type "int")
+                nil [252 328]))          
+      :file "spammer.h"
+      :pointmax 337
+      :fsize 336
+      :lastmodtime '(21723 54068 8750 697000)
+      :unmatched-syntax nil
+      :lexical-table 
+        '(("REPORT_BUFFER_LEN" . 
+              ((number "1024" 97 . 101) (punctuation "*" 102 . 103) (number "12" 104 . 106)))
+          ("__emc_spammer_h")
+          ("SETSIZE" . ((number "2000" 66 . 70)))
+          )
+))
+  :file "!home!harrison!projects!git!fm-service-spamfilter-emcspamd2!src!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2")

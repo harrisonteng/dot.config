@@ -1,0 +1,16 @@
+;; Object go-complete-20151013.416/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "go-complete-20151013.416/"
+  :tables
+  (list
+    (semanticdb-table "go-complete-autoloads.el"
+      :major-mode 'emacs-lisp-mode
+      :tags nil
+      :file "go-complete-autoloads.el"
+      :pointmax 295
+      :fsize 536
+      :lastmodtime '(22045 14119 801820 147000)
+      :unmatched-syntax nil))
+  :file "!home!harrison!.hlocal!emacs!dot.emacs.d!elpa!go-complete-20151013.416!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2")

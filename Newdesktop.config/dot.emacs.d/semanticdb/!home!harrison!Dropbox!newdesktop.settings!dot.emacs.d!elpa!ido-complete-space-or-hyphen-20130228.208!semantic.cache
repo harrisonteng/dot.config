@@ -1,0 +1,16 @@
+;; Object ido-complete-space-or-hyphen-20130228.208/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "ido-complete-space-or-hyphen-20130228.208/"
+  :tables
+  (list
+    (semanticdb-table "ido-complete-space-or-hyphen-autoloads.el"
+      :major-mode 'emacs-lisp-mode
+      :tags nil
+      :file "ido-complete-space-or-hyphen-autoloads.el"
+      :pointmax 329
+      :fsize 791
+      :lastmodtime '(21803 20872 734369 839000)
+      :unmatched-syntax nil))
+  :file "!home!harrison!Dropbox!newdesktop.settings!dot.emacs.d!elpa!ido-complete-space-or-hyphen-20130228.208!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2")

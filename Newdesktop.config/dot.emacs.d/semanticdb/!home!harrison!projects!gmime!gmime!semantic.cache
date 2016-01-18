@@ -1,0 +1,69 @@
+;; Object gmime/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "gmime/"
+  :tables
+  (list
+    (semanticdb-table "Makefile.am"
+      :major-mode 'makefile-automake-mode
+      :tags 
+        '( ("SUBDIRS" variable (:default-value (".")) nil [60 72])
+            ("gmimeincludedir" variable (:default-value ("$(includedir)/gmime-$(GMIME_API_VERSION)/gmime")) nil [73 138])
+            ("INCLUDES" variable (:default-value ("-I$(top_srcdir)" "-I$(top_builddir)" "-I$(top_srcdir)/util" "-I$(top_builddir)/util" "-DG_LOG_DOMAIN=\\\"gmime\\\"" "$(GMIME_CFLAGS)" "$(GLIB_CFLAGS)")) nil [139 317])
+            ("noinst_PROGRAMS" variable (:default-value ("gen-table")) nil [318 358])
+            ("EXTRA_DIST" variable (:default-value ("gmime-version.h.in" "gmime-version.h")) nil [359 407])
+            ("lib_LTLIBRARIES" variable (:default-value ("libgmime-2.6.la")) nil [408 442])
+            ("libgmime_2_6_la_SOURCES" variable (:default-value ("gmime.c" "gmime-certificate.c" "gmime-charset.c" "gmime-common.c" "gmime-content-type.c" "gmime-crypto-context.c" "gmime-data-wrapper.c" "gmime-disposition.c" "gmime-encodings.c" "gmime-events.c" "gmime-filter.c" "gmime-filter-basic.c" ...)) nil [443 1725])
+            ("gmimeinclude_HEADERS" variable (:default-value ("gmime.h" "gmime-certificate.h" "gmime-charset.h" "gmime-content-type.h" "gmime-crypto-context.h" "gmime-data-wrapper.h" "gmime-disposition.h" "gmime-encodings.h" "gmime-error.h" "gmime-filter.h" "gmime-filter-basic.h" "gmime-filter-best.h" ...)) nil [1726 2982])
+            ("noinst_HEADERS" variable (:default-value ("gmime-charset-map-private.h" "gmime-table-private.h" "gmime-parse-utils.h" "gmime-common.h" "gmime-events.h")) nil [2983 3122])
+            ("install-data-local" function (:arguments ("install-libtool-import-lib")) nil [3123 3170])
+            ("uninstall-local" function (:arguments ("uninstall-libtool-import-lib")) nil [3171 3217])
+            ("no_undefined" variable (:default-value ("-no-undefined")) nil [3236 3265])
+            ("install-libtool-import-lib" function nil nil [3284 3386])
+            ("uninstall-libtool-import-lib" function nil nil [3387 3478])
+            ("install-libtool-import-lib" function nil nil [3483 3511])
+            ("uninstall-libtool-import-lib" function nil nil [3511 3541])
+            ("libgmime_2_6_la_LIBADD" variable (:default-value ("$(top_builddir)/util/libutil.la" "$(GLIB_LIBS)")) nil [3548 3618])
+            ("libgmime_2_6_la_LDFLAGS" variable (:default-value ("-version-info" "$(LT_CURRENT):$(LT_REVISION):$(LT_AGE)" "-export-dynamic" "$(no_undefined)")) nil [3618 3735])
+            ("gen_table_SOURCES" variable (:default-value ("gen-table.c")) nil [3736 3768])
+            ("gen_table_LDFLAGS" variable nil nil [3768 3789])
+            ("gen_table_DEPENDENCIES" variable nil nil [3789 3815])
+            ("gen_table_LDADD" variable nil nil [3815 3834])
+            ("charset_map_SOURCES" variable (:default-value ("charset-map.c")) nil [3835 3871])
+            ("charset_map_LDFLAGS" variable nil nil [3871 3894])
+            ("charset_map_DEPENDENCIES" variable nil nil [3894 3922])
+            ("charset_map_LDADD" variable (:default-value ("$(top_builddir)/util/libutil.la" "$(GLIB_LIBS)")) nil [3922 3987])
+            ("CLEANFILES" variable nil nil [3988 4001])
+            ("INTROSPECTION_GIRS" variable nil nil [4037 4058])
+            ("INTROSPECTION_SCANNER_ARGS" variable (:default-value ("--add-include-path=$(srcdir)")) nil [4058 4116])
+            ("INTROSPECTION_COMPILER_ARGS" variable (:default-value ("--includedir=$(srcdir)")) nil [4116 4169])
+            ("GMime-2.6.gir" function (:arguments ("libgmime-2.6.la")) nil [4192 4223])
+            ("GMime_2_6_gir_INCLUDES" variable (:default-value ("GObject-2.0" "Gio-2.0")) nil [4223 4268])
+            ("GMime_2_6_gir_CFLAGS" variable (:default-value ("$(INCLUDES)")) nil [4268 4303])
+            ("GMime_2_6_gir_LIBS" variable (:default-value ("libgmime-2.6.la")) nil [4303 4340])
+            ("GMime_2_6_gir_FILES" variable (:default-value ("$(gmimeinclude_HEADERS)" "$(libgmime_2_6_la_SOURCES)")) nil [4340 4413])
+            ("GMime_2_6_gir_EXPORT_PACKAGES" variable (:default-value ("gmime-2.6")) nil [4413 4455])
+            ("GMime_2_6_gir_SCANNERFLAGS" variable (:default-value ("--c-include=\"gmime/gmime.h\"" "--accept-unprefixed" "--symbol-prefix" "\"gmime_\"" "--symbol-prefix" "\"g_mime_\"")) nil [4455 4595])
+            ("INTROSPECTION_GIRS" variable (:default-value ("GMime-2.6.gir")) nil [4595 4631])
+            ("girdir" variable (:default-value ("$(datadir)/gir-1.0")) nil [4632 4660])
+            ("gir_DATA" variable (:default-value ("$(INTROSPECTION_GIRS)")) nil [4660 4693])
+            ("typelibdir" variable (:default-value ("$(libdir)/girepository-1.0")) nil [4694 4734])
+            ("typelib_DATA" variable (:default-value ("$(INTROSPECTION_GIRS:.gir=.typelib)")) nil [4734 4785])
+            ("CLEANFILES" variable (:default-value ("$(gir_DATA)" "$(typelib_DATA)")) nil [4786 4828])
+            ("gmime-2.6.vapi" function (:arguments ("GMime-2.6.gir" "GMime-2.6.metadata")) nil [4883 4932])
+            ("VAPIGEN_VAPIS" variable (:default-value ("gmime-2.6.vapi")) nil [4933 4964])
+            ("gmime_2_6_vapi_DEPS" variable (:default-value ("gio-2.0")) nil [4964 4994])
+            ("gmime_2_6_vapi_METADATADIRS" variable (:default-value ("$(srcdir)")) nil [4994 5034])
+            ("gmime_2_6_vapi_FILES" variable (:default-value ("GMime-2.6.gir")) nil [5034 5071])
+            ("gmime-2.6.deps" function nil nil [5072 5169])
+            ("vapidir" variable (:default-value ("$(datadir)/vala/vapi")) nil [5170 5201])
+            ("vapi_DATA" variable (:default-value ("$(VAPIGEN_VAPIS)" "$(VAPIGEN_VAPIS:.vapi=.deps)")) nil [5201 5259])
+            ("EXTRA_DIST" variable (:default-value ("GMime-2.6.metadata")) nil [5260 5293])
+            ("CLEANFILES" variable (:default-value ("$(vapi_DATA)")) nil [5293 5320]))          
+      :file "Makefile.am"
+      :pointmax 5326
+      :fsize 5325
+      :lastmodtime '(21560 30358 186185 270000)
+      :unmatched-syntax '((semantic-list 4863 . 4881) (punctuation 4862 . 4863) (symbol 4853 . 4861) (bol 4853 . 4853) (semantic-list 4012 . 4036) (punctuation 4011 . 4012) (symbol 4002 . 4010) (bol 4002 . 4002))))
+  :file "!home!harrison!projects!gmime!gmime!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2")

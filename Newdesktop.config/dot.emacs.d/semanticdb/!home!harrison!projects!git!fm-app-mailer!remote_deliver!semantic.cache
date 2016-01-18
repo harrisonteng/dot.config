@@ -1,0 +1,26 @@
+;; Object remote_deliver/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "remote_deliver/"
+  :tables (list 
+   (semanticdb-table "Makefile.am"
+    :major-mode 'makefile-automake-mode
+    :tags 
+        '( ("AUTOMAKE_OPTIONS" variable (:default-value ("foreign")) nil [1 26])
+            ("agents_execdir" variable (:default-value ("@prefix@/agents")) nil [27 58])
+            ("agents_exec_PROGRAMS" variable (:default-value ("remote_deliver")) nil [59 95])
+            ("noinst_HEADERS" variable (:default-value ("../mcfg.h" "../smtp.h" "../exim_q.h")) nil [95 142])
+            ("remote_deliver_SOURCES" variable (:default-value ("remote_deliver.c" "../logger.c" "../common.c" "../exim_q.c" "../config.c" "../mcfg.c" "../hash.c" "../smtp.c")) nil [142 260])
+            ("remote_deliver_CFLAGS" variable (:default-value ("-g" "-pthread")) nil [260 294])
+            ("remote_deliver_LDADD" variable (:default-value ("-L/usr/local/lib" "-lemcbase" "-lglib-2.0" "-ldl" "-lesmtp" "-lmysqlclient")) nil [294 380])
+            ("remote_deliver_LDFLAGS" variable (:default-value ("-Wl,-export-dynamic")) nil [380 424]))          
+    :file "Makefile.am"
+    :pointmax 424
+    :fsize 423
+    :lastmodtime '(21696 16167 602341 610000)
+    :unmatched-syntax 'nil
+    )
+   )
+  :file "!home!harrison!projects!git!fm-app-mailer!remote_deliver!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2"
+  )

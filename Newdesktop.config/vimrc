@@ -1,0 +1,1116 @@
+set nocompatible              " be iMproved, required
+filetype off                  " required
+
+"set runtimepath=~/.vim
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+let path='~/.vim/bundle/Vundle.vim'
+call vundle#rc(path)
+Plugin 'gmarik/Vundle.vim'
+Plugin 'fatih/vim-go'
+Plugin 'majutsushi/tagbar'
+Plugin 'kshenoy/vim-signature'
+Plugin 'tpope/vim-fugitive'
+Plugin 'dgryski/vim-godef'
+Bundle 'Valloric/YouCompleteMe'
+Bundle 'Blackrush/vim-gocode'
+Bundle 'rjohnsondev/vim-compiler-go'
+Plugin 'scrooloose/syntastic'
+
+call vundle#end()
+
+let g:ycm_confirm_extra_conf = 0
+let g:ycm_collect_identifiers_from_tag_files = 1
+"let g:ycm_key_invoke_completion = '<C-Space>'
+if v:lang =~ "utf8$" || v:lang =~ "UTF-8$"
+   set fileencodings=ucs-bom,utf-8,latin1
+endif
+
+"set nocompatible        " Use Vim defaults (much better!)
+set bs=indent,eol,start " allow backspacing over everything in insert mode
+set viminfo='20,\"50    " read/write a .viminfo file, don't store more
+                        " than 50 lines of registers
+set tabstop=8          "
+set history=50          " keep 50 lines of command line history
+set ruler               " show the cursor position all the time
+set number              " show line numbers
+set smarttab            " smart tabulatin and backspace
+set title               " show title
+set incsearch           " find while typing
+set t_Co=256            " terminal uses 256 colors
+set textwidth=79        " PEP8
+set autoindent          " PEP8
+set shiftwidth=4        " PEP8
+set softtabstop=4       " PEP8
+set syntax=on
+
+"Utils
+"va then select your region
+function! s:get_visual_selection()
+        "Shamefully stolen from http://stackoverflow.com/a/6271254/794380
+        " Why is this not a built-in Vim script function?!
+        let [lnum1, col1] = getpos("'<")[1:2]
+        let [lnum2, col2] = getpos("'>")[1:2]
+        let lines = getline(lnum1, lnum2)
+        let lines[-1] = lines[-1][: col2 - (&selection == 'inclusive' ? 1 : 2)]
+        let lines[0] = lines[0][col1 - 1:]
+        return join(lines, "\n")
+endfunction
+"Utils
+
+
+" Don't wake up system with blinking cursor:
+" http://www.linuxpowertop.org/known.php
+let &guicursor = &guicursor . ",a:blinkon0"
+
+" Set the leader key
+let mapleader = ","
+
+" Search in current dir recursively
+map <leader>Se :execute "vimgrep /" . expand("<cword>") . "/j **" <Bar> cw<CR>
+
+" resize with ,^
+" resize 10
+map <leader>^ :resize 10<CR>
+
+" Do :help cope if you are unsure what cope is. It's super useful!
+map <leader>Hcc :botright cope<cr>
+map <leader>Hn :cn<cr>
+map <leader>Hp :cp<cr>
+
+
+" Tab configuration
+map <leader>Htn :tabnew<CR>
+map <leader>Hte :tabedit
+map <leader>Htc :tabclose<CR>
+map <leader>Htm :tabmove
+
+" When pressing <leader>cd switch to the directory of the open buffer
+map <leader>Hcd :cd %:p:h<CR>
+
+" When vimrc is edited, reload it
+autocmd! bufwritepost vimrc source ~/.vimrc
+
+" dot asm format as nasm
+au BufRead,BufNewFile *.asm set filetype=nasm
+
+""""""""""""""""""""""""""""""
+" => Visual mode related
+""""""""""""""""""""""""""""""
+"search within region
+function! RangeSearch(direction)
+  call inputsave()
+  let g:srchstr = input(a:direction)
+  call inputrestore()
+  if strlen(g:srchstr) > 0
+    let g:srchstr = g:srchstr.
+          \ '\%>'.(line("'<")-1).'l'.
+          \ '\%<'.(line("'>")+1).'l'
+  else
+    let g:srchstr = ''
+  endif
+endfunction
+vnoremap <silent> / :<C-U>call RangeSearch('/')<CR>:if strlen(g:srchstr) > 0\|exec '/'.g:srchstr\|endif<CR>
+vnoremap <silent> ? :<C-U>call RangeSearch('?')<CR>:if strlen(g:srchstr) > 0\|exec '?'.g:srchstr\|endif<CR>
+" Really useful!
+"  In visual mode when you press * or # to search for the current selection
+vnoremap <silent> * :call VisualSearch('f')<CR>
+vnoremap <silent> # :call VisualSearch('b')<CR>
+
+""""""""""""""""""""""""""""""
+" => Vim grep
+" """"""""""""""""""""""""""""""
+let Grep_Skip_Dirs = 'RCS CVS SCCS .svn generated'
+set grepprg=/bin/grep\ -nH
+
+"remove trailing spaces
+function! TrimWhiteSpaces()
+    %s/\s\+$//e
+endfunction
+
+" When you press gv you vimgrep after the selected text
+vnoremap <silent> gv :call VisualSearch('gv')<CR>
+
+function! CmdLine(str)
+    exe "menu Foo.Bar :" . a:str
+    emenu Foo.Bar
+    unmenu Foo
+endfunction
+
+" When you press gv you vimgrep after the selected text
+vnoremap <silent> gv :call VisualSearch('gv')<CR>
+
+function! CmdLine(str)
+    exe "menu Foo.Bar :" . a:str
+    emenu Foo.Bar
+    unmenu Foo
+endfunction
+
+" From an idea by Michael Naumann
+function! VisualSearch(direction) range
+    let l:saved_reg = @"
+    execute "normal! vgvy"
+
+    let l:pattern = escape(@", '\\/.*$^~[]')
+    let l:pattern = substitute(l:pattern, "\n$", "", "")
+
+    if a:direction == 'b'
+        execute "normal ?" . l:pattern . "^M"
+    elseif a:direction == 'gv'
+        call CmdLine("vimgrep " . '/'. l:pattern . '/' . ' **/*.')
+    elseif a:direction == 'f'
+        execute "normal /" . l:pattern . "^M"
+    endif
+
+    let @/ = l:pattern
+    let @" = l:saved_reg
+endfunction
+
+
+" Display a place holder character for tabs and trailing spaces
+"set list
+"set listchars=trail:⋅,nbsp:⋅,tab:▷⋅
+
+" Only do this part when compiled with support for autocommands
+if has("autocmd")
+  augroup fedora
+    autocmd!
+    " In text files, always limit the width of text to 78 characters
+    autocmd BufRead *.txt set tw=78
+    " When editing a file, always jump to the last cursor position
+    autocmd BufReadPost *
+    \ if line("'\"") > 0 && line ("'\"") <= line("$") |
+    \   exe "normal! g'\"" |
+    \ endif
+    " don't write swapfile on most commonly used directories for NFS mounts or USB sticks
+    autocmd BufNewFile,BufReadPre /media/*,/mnt/* set directory=~/tmp,/var/tmp,/tmp
+
+    " Switch to working directory of the open file
+    " autocmd BufEnter * lcd %:p:h
+  augroup END
+
+  " Enable formatting based on file types
+  augroup myfiletypes
+    autocmd!
+    autocmd FileType ruby,eruby,yaml,cucumber,vim,lua,latex,tex set autoindent shiftwidth=2 softtabstop=2 expandtab
+    autocmd BufRead *.mkd,*.markdown  set ai formatoptions=tcroqn2 comments=n:>
+  augroup END
+endif
+
+if has("cscope") && filereadable("/usr/bin/cscope")
+   set csprg=/usr/bin/cscope
+   set csto=0
+   set cst
+   set nocsverb
+   " add any database in current directory
+   if filereadable("cscope.out")
+      cs add cscope.out
+   " else add database pointed to by environment
+   elseif $CSCOPE_DB != ""
+      cs add $CSCOPE_DB
+   endif
+   set csverb
+endif
+
+" Switch syntax highlighting on, when the terminal has colors
+" Also switch on highlighting the last used search pattern.
+if &t_Co > 2 || has("gui_running")
+  syntax on
+  set hlsearch
+endif
+
+"_ to toggle the highlight on/off
+nnoremap <silent> _ :nohl<CR>
+
+filetype plugin indent on
+
+
+" Set the key to toggle NERDTree
+nnoremap <leader>d :NERDTreeToggle<cr>
+
+let NERDChristmasTree = 1               " NERDTree with colors
+let NERDTreeHighlightCursorline = 1     " highlight cursorline
+let NERDTreeMapActivateNode='<CR>'      " set Enter/Return to activate a node
+
+" Set the keys to turn spell checking on/off
+map <F8> <Esc>:setlocal spell spelllang=en_us<CR>
+map <F9> <Esc>:setlocal nospell<CR>
+
+" Set FuzzyFinder settings
+let g:fuzzy_ignore = "*.log"
+let g:fuzzy_matching_limit = 70
+let g:fuzzy_ceiling=20000               " file count limit to search
+
+" Add what to ignore in the fuzzy search
+let g:fuzzy_ignore = "*.png;*.PNG;*.JPG;*.jpg;*.GIF;*.gif"
+let g:fuzzy_ignore = "*.ogg;*.OGG;*.ogv;*.OGV;*.mkv;*.MKV"
+let g:fuzzy_ignore = "*.mp3;*.mp3;*.mp4;*.MP4;*.avi;*.AVI;*.wma;*.WMA;*.wmv;*.WMV"
+let g:fuzzy_ignore = "*.flv;*.FLV;*.mov;*.MOV;*.pdf;*.PDF"
+let g:fuzzy_ignore = "*.zip;*.ZIP;*.tar;*.7z;*.gz;*.bz2"
+
+map <leader>T :FuzzyFinderTextMate<CR>
+map <leader>b :FuzzyFinderBuffer<CR>
+
+" Set keys to toggle Scratch buffer
+function! ToggleScratch()
+  if expand('%') == g:ScratchBufferName
+    quit
+  else
+    Sscratch
+  endif
+endfunction
+
+map <leader>Hcr :call ToggleScratch()<CR>
+
+" Enable code folding by syntax and disable folding by default
+setlocal foldmethod=syntax
+setlocal foldmethod=indent   "fold based on indent
+setlocal foldnestmax=10      "deepest fold is 10 levels
+setlocal foldlevel=1         "default level 1
+setlocal nofoldenable
+
+
+
+" Turn off rails related things in statusbar
+let g:rails_statusline=0
+
+" Remove highlighting search results
+map <silent> <leader>nh :nohls <CR>
+
+" Snipmate setup
+source ~/.vim/snippets/support_functions.vim
+if version < 703 && version > 700
+  autocmd vimenter * call ExtractSnips("~/.vim/snippets/html", "eruby")
+  autocmd vimenter * call ExtractSnips("~/.vim/snippets/html", "php")
+endif
+
+" Vim-LaTeX setup
+filetype plugin on
+set grepprg=grep\ -nH\ $*
+let g:tex_flavor='latex'
+
+" Vala support
+autocmd BufRead *.vala set efm=%f:%l.%c-%[%^:]%#:\ %t%[%^:]%#:\ %m
+autocmd BufRead *.vapi set efm=%f:%l.%c-%[%^:]%#:\ %t%[%^:]%#:\ %m
+au BufRead,BufNewFile *.vala  setfiletype vala
+au BufRead,BufNewFile *.vapi  setfiletype vala
+
+let vala_comment_strings = 1
+let vala_space_errors = 1
+let vala_no_tab_space_error = 1
+
+
+autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
+"colorscheme slate
+" Set color scheme
+for i in [ 'peaksea','slate']
+  " may not exsit so use silent!
+  silent! exec 'colorscheme '.i
+  silent! if g:colors_name == i
+    break
+  endif
+endfor
+"display long spaces
+nnoremap <leader>wn :match ExtraWhitespace /^\s* \s*\<Bar>\s\+$/<CR>
+nnoremap <leader>wf :match<CR>
+"remove trailing spaces
+nnoremap <leader>wr :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
+
+function! FileSize()
+  let bytes = getfsize(expand("%:p"))
+  if bytes <= 0
+    return ""
+  endif
+  if bytes < 1024
+    return bytes
+  else
+    return (bytes / 1024) . "k"
+  endif
+endfunction
+
+" Always Set Scatus Line
+set laststatus=2
+"" color
+"hi User1 guifg=#eea040 guibg=#222222
+"hi User2 guifg=#dd3333 guibg=#222222
+"hi User3 guifg=#ff66ff guibg=#222222
+"hi User4 guifg=#a0ee40 guibg=#222222
+"hi User5 guifg=#eeee40 guibg=#222222
+""Format the statusline
+set statusline=\ %n\ %{v:register}\ %{HasPaste()}%F%m%r%h\ %w\ Size:%{FileSize()}\ \ Host:%{hostname()}\ \ %{fugitive#statusline()}\ \ CWD:%r%{CurDir()}%h\ \ file:%y\ format:%{&ff}\ \ Line:\%l/%L:%c\ %=\ [\%{strftime(\"%Y-%m-%d\ %H:%M:%S\")}]
+
+function! CurDir()
+    let curdir = substitute(getcwd(), '/root/', "~/", "g")
+    return curdir
+endfunction
+
+function! HasPaste()
+    if &paste
+        return 'PASTE MODE  '
+    else
+        return ''
+    endif
+endfunction
+
+" This is for perldoc.vim
+"autocmd BufNewFile,BufRead *.p? map <F1> :Perldoc<cword><CR>
+"autocmd BufNewFile,BufRead *.p? setf perl
+"autocmd BufNewFile,BufRead *.p? let g:perldoc_program='/usr/bin/perldoc'
+"autocmd BufNewFile,BufRead *.p? source ~/.vim/ftplugin/perl_doc.vim
+
+" Map leader Cb for ConqueTermSplit bash in Normal Mode
+nnoremap <leader>Cb :ConqueTermSplit bash<CR>
+
+" Map leader CTb for ConqueTermSplit bash in Normal Mode
+nnoremap <leader>CTb :ConqueTermTab bash<CR>
+
+" control Paste from other app better
+nnoremap <F2> :set invpaste paste?<CR>
+imap <F2> <C-O>:set invpaste paste?<CR>
+set pastetoggle=<F2>
+
+" my sudoedit to fix SudoEdit on some Vim
+command! -bar -nargs=0 SudoW :silent exe "write !sudo tee % >/dev/null" |silent edit!
+"function! Sudowrite()
+"    let filename=expand('%')
+"    exec '!tee > /tmp/damn.footest'
+"    for line in getbufline(a:filename, 1, '$')
+"        exec '!echo -E ' . line
+"    endfor
+"endfunction
+"map <leader>Hsw :call Sudowrite()<CR>
+
+" When you have all tabs open for a project, type :mksession.
+" Then, whenever you return to that dir, I just ,s to reload that workspace
+nmap <leader>s <ESC>:call LoadSession()<CR>
+let s:sessionloaded = 0
+function LoadSession()
+  source Session.vim
+  let s:sessionloaded = 1
+endfunction
+function SaveSession()
+  if s:sessionloaded == 1
+    mksession!
+  end
+endfunction
+autocmd VimLeave * call SaveSession()
+
+
+" Smart Comment out
+" Perl, Python and shell scripts
+autocmd BufNewFile,BufRead *.py,*.pl,*.pm,*.sh vmap u :-1/^#/s///<CR>
+autocmd BufNewFile,BufRead *.py,*.pl,*.pm,*.sh vmap c :-1/^/s//#/<CR>
+" C, C++
+autocmd BufNewFile,BufRead *.h,*.c,*.cpp vmap u :-1/^\/\//s///<CR>
+autocmd BufNewFile,BufRead *.h,*.c,*.cpp vmap s :-1/^/s//\/\//<CR>
+
+" MiniBufExplorer, list out mini-buffers as tabs
+let g:miniBufExplMapWindowNavVim = 1
+let g:miniBufExplMapWindowNavArrows = 1
+let g:miniBufExplMapCTabSwitchBufs = 1
+let g:miniBufExplModSelTarget = 1
+
+" taglist ( http://vim.sourceforge.net/scripts/script.php?script_id=273 )
+" tell me where is ctags
+let Tlist_Ctags_Cmd='/usr/bin/ctags'
+map <leader>Htg :Tlist<CR>
+" map <leader>Hbtg :!/usr/bin/ctags -R
+
+" omini-completion
+set omnifunc=syntaxcomplete#Complete
+autocmd FileType python set omnifunc=pythoncomplete#Complete
+autocmd FileType python set textwidth=79 ts=8 sw=4 sts=4
+set omnifunc=syntaxcomplete#Complete " override built-in C omnicomplete with C++ OmniCppComplete plugin
+let OmniCpp_GlobalScopeSearch   = 1
+let OmniCpp_DisplayMode         = 1
+let OmniCpp_ShowScopeInAbbr     = 0 "do not show namespace in pop-up
+let OmniCpp_ShowPrototypeInAbbr = 1 "show prototype in pop-up
+let OmniCpp_ShowAccess          = 1 "show access in pop-up
+let OmniCpp_SelectFirstItem     = 1 "select first item in pop-up
+set completeopt=menuone,menu,longest
+inoremap <C-p> <C-x><C-o>
+
+map T :TaskList<CR>
+map P :TlistToggle<CR>
+
+" http://blog.dispatched.ch/2009/05/24/vim-as-python-ide/
+" python-mode at https://github.com/klen/python-mode
+" Pathogen load
+filetype off
+
+call pathogen#infect()
+call pathogen#helptags()
+
+filetype plugin indent on
+syntax on
+
+" Load python mode by default
+" let g:pymode = 1
+
+" Disable pylint checking every save
+let g:pymode_lint_write = 0
+
+" Load pylint code plugin
+let g:pymode_lint = 1
+
+" Switch pylint, pyflakes, pep8, mccabe code-checkers
+" Can have multiply values "pep8,pyflakes,mcccabe"
+" Choices are pyflakes, pep8, mccabe, pylint, pep257
+let g:pymode_lint_checker = "pyflakes,pep8,mccabe"
+
+" Skip errors and warnings
+" E.g. "E501,W002", "E2,W" (Skip all Warnings and Errors startswith E2) and etc
+let g:pymode_lint_ignore = "E501"
+
+" Select errors and warnings
+" E.g. "E4,W"
+let g:pymode_lint_select = ""
+
+" Run linter on the fly
+let g:pymode_lint_onfly = 0
+
+" Pylint configuration file
+" If file not found use 'pylintrc' from python-mode plugin directory
+let g:pymode_lint_config = "$HOME/.pylintrc"
+
+" Check code every save
+let g:pymode_lint_write = 1
+
+" Auto open cwindow if errors be finded
+let g:pymode_lint_cwindow = 1
+
+" Show error message if cursor placed at the error line
+let g:pymode_lint_message = 1
+
+" Auto jump on first error
+let g:pymode_lint_jump = 0
+
+" Hold cursor in current window
+" when quickfix is open
+let g:pymode_lint_hold = 0
+
+" Place error signs
+let g:pymode_lint_signs = 1
+
+" Maximum allowed mccabe complexity
+let g:pymode_lint_mccabe_complexity = 8
+
+" Minimal height of pylint error window
+let g:pymode_lint_minheight = 3
+
+" Maximal height of pylint error window
+let g:pymode_lint_maxheight = 6
+
+" Begin of pymode-rope
+" Load rope plugin
+let g:pymode_rope = 1
+
+" Map keys for autocompletion
+let g:pymode_rope_autocomplete_map = '<C-Space>'
+
+" Auto create and open ropeproject
+let g:pymode_rope_auto_project = 1
+
+" Enable autoimport
+let g:pymode_rope_enable_autoimport = 1
+
+" Auto generate global cache
+let g:pymode_rope_autoimport_generate = 1
+
+let g:pymode_rope_autoimport_underlineds = 0
+
+let g:pymode_rope_codeassist_maxfixes = 10
+
+let g:pymode_rope_sorted_completions = 1
+
+let g:pymode_rope_extended_complete = 1
+
+let g:pymode_rope_autoimport_modules = ["os","shutil","datetime"]
+
+let g:pymode_rope_confirm_saving = 1
+
+let g:pymode_rope_global_prefix = "<C-x>p"
+
+let g:pymode_rope_local_prefix = "<C-c>r"
+
+let g:pymode_rope_vim_completion = 1
+
+let g:pymode_rope_guess_project = 1
+
+let g:pymode_rope_goto_def_newwin = ""
+
+let g:pymode_rope_always_show_complete_menu = 0
+
+" End of pymode-rope
+
+" Set key 'R' for run python code
+let g:pymode_run_key = 'R'
+
+" load show documentation plugin
+let g:pymode_doc = 1
+
+" Key for show python documentation
+let g:pymode_doc_key = 'K'
+
+" Executable command for documentation search
+let g:pydoc = 'pydoc'
+
+" Load run code plugin
+let g:pymode_run = 1
+
+" Key for run python code
+let g:pymode_run_key = '<leader>r'
+
+" Enable pymode's custom syntax highlighting
+let g:pymode_syntax = 1
+
+" Enable all python highlightings
+let g:pymode_syntax_all = 1
+
+" Highlight "print" as function
+let g:pymode_syntax_print_as_function = 0
+
+" Highlight indentation errors
+let g:pymode_syntax_indent_errors = g:pymode_syntax_all
+
+" Highlight trailing spaces
+let g:pymode_syntax_space_errors = g:pymode_syntax_all
+
+" Highlight string formatting
+let g:pymode_syntax_string_formatting = g:pymode_syntax_all
+
+" Highlight str.format syntax
+let g:pymode_syntax_string_format = g:pymode_syntax_all
+
+" Highlight string.Template syntax
+let g:pymode_syntax_string_templates = g:pymode_syntax_all
+
+" Highlight doc-tests
+let g:pymode_syntax_doctests = g:pymode_syntax_all
+
+" Highlight builtin objects (__doc__, self, etc)
+let g:pymode_syntax_builtin_objs = g:pymode_syntax_all
+
+" Highlight builtin functions
+let g:pymode_syntax_builtin_funcs = g:pymode_syntax_all
+
+" Highlight exceptions
+let g:pymode_syntax_highlight_exceptions = g:pymode_syntax_all
+
+" For fast machines
+let g:pymode_syntax_slow_sync = 0
+
+"Window Management
+" Move the cursor to the window left of the current one
+noremap <silent> ,h :wincmd h<cr>
+
+" Move the cursor to the window below the current one
+noremap <silent> ,j :wincmd j<cr>
+
+" Move the cursor to the window above the current one
+noremap <silent> ,k :wincmd k<cr>
+
+" Move the cursor to the window right of the current one
+noremap <silent> ,l :wincmd l<cr>
+
+" Close the window below this one
+noremap <silent> ,cj :wincmd j<cr>:close<cr>
+
+" Close the window above this one
+noremap <silent> ,ck :wincmd k<cr>:close<cr>
+
+" Close the window to the left of this one
+noremap <silent> ,ch :wincmd h<cr>:close<cr>
+
+" Close the window to the right of this one
+noremap <silent> ,cl :wincmd l<cr>:close<cr>
+
+" Close the current window
+noremap <silent> ,cc :close<cr>
+
+" Move the current window to the right of the main Vim window
+noremap <silent> ,ml <C-W>L
+
+" Move the current window to the top of the main Vim window
+noremap <silent> ,mk <C-W>K
+
+" Move the current window to the left of the main Vim window
+noremap <silent> ,mh <C-W>H
+
+" Move the current window to the bottom of the main Vim window
+noremap <silent> ,mj <C-W>J
+
+
+" for window
+autocmd BufRead,BufNewFile *.vb setlocal filetype=vbnet
+
+" csharp
+" Folding : http://vim.wikia.com/wiki/Syntax-based_folding, see comment by Ostrygen
+set tags=tags;/
+au FileType cs set omnifunc=syntaxcomplete#Complete
+au FileType cs set foldmethod=marker
+au FileType cs set foldmarker={,}
+au FileType cs set foldtext=substitute(getline(v:foldstart),'{.*','{...}',)
+au FileType cs set foldlevelstart=2
+
+" cscope settings
+" g find what function does
+" c Find functions calling this function
+" d: Find functions called by this function
+" e: Find this egrep pattern
+" f: Find this file
+" g: Find this definition
+" i: Find files #including this file
+" s: Find this C symbol
+" t: Find assignments to"
+nmap <leader>sa :cs add cscope.out<cr>
+nmap <leader>ss :cs find s <C-R>=expand("<cword>")<cr><cr>
+nmap <leader>sg :cs find g <C-R>=expand("<cword>")<cr><cr>
+nmap <leader>sc :cs find c <C-R>=expand("<cword>")<cr><cr>
+nmap <leader>st :cs find t <C-R>=expand("<cword>")<cr><cr>
+nmap <leader>se :cs find e <C-R>=expand("<cword>")<cr><cr>
+nmap <leader>sf :cs find f <C-R>=expand("<cfile>")<cr><cr>
+nmap <leader>si :cs find i <C-R>=expand("<cfile>")<cr><cr>
+nmap <leader>sd :cs find d <C-R>=expand("<cword>")<cr><cr>
+
+
+function Myconque(term)
+  execute "ConqueTermsplit" a:term
+endfunction
+
+" Set the key to toggle ConqueTerm bash
+nnoremap <leader>` :ConqueTerm bash<cr>
+nnoremap <leader>~ :ConqueTermSplit bash<cr>
+let g:ConqueTerm_SendFunctionKeys = 1
+let g:ConqueTerm_ReadUnfocused = 1
+let g:ConqueTerm_ExecFileKey = '<F9>'
+
+fun! ShowFuncName()
+  let lnum = line(".")
+  let col = col(".")
+  echohl ModeMsg
+  echo getline(search("^[^ \t#/]\\{2}.*[^:]\s*$", 'bW'))
+  echohl None
+  call search("\\%" . lnum . "l" . "\\%" . col . "c")
+endfun
+map f :call ShowFuncName() <CR>
+
+" golang
+let g:golang_goroot = "/usr/local/go"
+if exists("g:did_load_filetypes")
+  filetype off
+  filetype plugin indent off
+endif
+filetype plugin indent on
+syntax on
+autocmd FileType go autocmd BufWritePre <buffer> Fmt
+
+" Shell output in seperate window
+command! -complete=shellcmd -nargs=+ Shell call s:RunShellCommand(<q-args>)
+function! s:RunShellCommand(cmdline)
+  echo a:cmdline
+  let expanded_cmdline = a:cmdline
+  for part in split(a:cmdline, ' ')
+     if part[0] =~ '\v[%#<]'
+        let expanded_part = fnameescape(expand(part))
+        let expanded_cmdline = substitute(expanded_cmdline, part, expanded_part, '')
+     endif
+  endfor
+  botright new
+  setlocal buftype=nofile bufhidden=wipe nobuflisted noswapfile nowrap
+  call setline(1, 'You entered:    ' . a:cmdline)
+  call setline(2, 'Expanded Form:  ' .expanded_cmdline)
+  call setline(3,substitute(getline(2),'.','=','g'))
+  execute '$read !'. expanded_cmdline
+  setlocal nomodifiable
+  1
+endfunction
+
+" online doc
+function! OnlineDoc()
+  if &ft =~ "cpp"
+    let s:urlTemplate = "http://doc.trolltech.com/4.1/%.html"
+  elseif &ft =~ "ruby"
+    let s:urlTemplate = "http://www.ruby-doc.org/core/classes/%.html"
+  elseif &ft =~ "perl"
+    let s:urlTemplate = "http://perldoc.perl.org/functions/%.html"
+  elseif &ft =~ "c"
+    let s:temp = "https://developer.gnome.org/gmime/stable/gmime-gmime.html#%"
+    " https://developer.gnome.org/gmime/stable/GMimeObject.html
+    let s:urlTemplate = escape (s:temp, "#")
+  elseif &ft =~ "go"
+    let line0 = getline (".")
+    let line = matchstr (line0, "github.com/*")
+    :if line==""
+      let s:urlTemplate = "http://golang.org/pkg/%/"
+    :else
+      let line = escape (line0, "#?&;|%")
+      exec 'silent! :Shell w3m ' . line
+      return
+    :endif
+  elseif &ft =~ "py"
+    let s:urlTemplate = "https://docs.python.org/2/library/%.html"
+  else
+    return
+  endif
+  let s:browser = "w3m"
+  let s:wordUnderCursor = expand("<cword>")
+  let s:url = substitute(s:urlTemplate, "%", s:wordUnderCursor, "g")
+  let s:cmd = "silent! :Shell " . s:browser . " " . s:url
+  execute s:cmd
+  redraw!
+endfunction
+" Online doc search.
+map <leader>< :call OnlineDoc()<CR>
+
+
+" Invoke a web browser
+function! Browser ()
+  let line0 = getline (".")
+  let line = matchstr (line0, "http[^ ]*")
+  :if line==""
+    let line = matchstr (line0, "ftp[^ ]*")
+  :endif
+  :if line==""
+    let line = matchstr (line0, "^//*")
+    :if line!=""
+      let line = substitute (line0, '//', "", "g")
+    :endif
+  :endif
+  let line = escape (line, "#?&;|%")
+  ":if line==""
+  " let line = "\"" . (expand("%:p")) . "\""
+  ":endif
+  exec 'silent! :Shell w3m ' . "\"" . line . "\""
+endfunction
+map <leader>w :call Browser()<CR>
+
+function! Google()
+    let keyword = expand("<cword>")
+    let url = "http://www.google.com/search?q=" . keyword
+    exec 'silent! :Shell w3m ' . url
+endfun
+map <leader>g :call Google()<CR>
+
+function! GmimeObjManual()
+  let s:temp = "https://developer.gnome.org/gmime/stable/GMimeObject.html#%"
+  let s:urlTemplate = escape (s:temp, "#")
+  let s:browser = "w3m"
+  let s:wordUnderCursor = expand("<cword>")
+  let s:url = substitute(s:urlTemplate, "%", substitute(s:wordUnderCursor, '_', '-', 'g'), "g")
+  let s:cmd = "silent! :Shell " . s:browser . " " . s:url
+  execute s:cmd
+  redraw!
+endfun
+map <leader>GM :call GmimeObjManual()<CR>
+
+
+function! Manual()
+    let keyword = expand("<cword>")
+    exec 'silent! :Shell man ' . keyword
+    redraw!
+    return
+endfun
+map <leader>M :call Manual()<CR>
+
+" misc
+command! -complete=file -nargs=* Git call s:RunShellCommand('git '.<q-args>)
+command! -complete=file -nargs=* Svn call s:RunShellCommand('svn '.<q-args>)
+command! -complete=file -nargs=* Bzr call s:RunShellCommand('bzr '.<q-args>)
+command! -complete=file -nargs=* Hg  call s:RunShellCommand('hg '.<q-args>)
+
+" Vim plugin to highlight variables in Perl.
+" I now created a repository from this: https://github.com/mannih/vim-perl-variable-highlighter
+
+function! s:hlvar()
+if ( exists( "w:current_match" ) )
+call matchdelete( w:current_match )
+unlet w:current_match
+endif
+
+let l:old_iskeyword = &iskeyword
+set iskeyword=@,$,%,_,48-57,192-255,@-@
+let l:word = expand( '<cword>' )
+let &iskeyword = l:old_iskeyword
+
+" we only care about words starting with a sigil
+if ( -1 == match( l:word, '^[%$@]' ) )
+return
+endif
+
+" build up the match by replacing the sigil with the character class [$%@]
+" and appending a word-boundary:
+let l:match = substitute( l:word, '^[$@%]', '[$@%]', '' ) . '\>'
+
+" do the highlighting
+let w:current_match = matchadd( 'PerlVarHiLight', l:match )
+endfunction
+
+
+if ( ! exists( "g:hlvarnoauto" ) || g:hlvarnoauto == 1 )
+augroup HighlightVar
+autocmd!
+au FileType perl :au CursorMoved * call <SID>hlvar()
+au FileType perl :au CursorMovedI * call <SID>hlvar()
+augroup END
+
+" only add the highlight group if it doesn't already exist.
+" this way, users can define their own highlighting with their
+" favorite colors by having a "highlight PerlVarHiLight ..." statement
+" in their .vimrc
+if ( ! hlexists( 'PerlVarHiLight' ) )
+highlight PerlVarHiLight ctermbg=black guifg=#ff0000 guibg=#000000 ctermfg=LightRed gui=bold
+endif
+
+command! HlVar :call <SID>hlvar()
+endif
+
+"""vim-airline
+"let g:airline_section_b = '%{strftime("%c")}'
+"let g:airline_section_y = 'BN: %{bufnr("%")}'
+"let g:airline_section_c = '%F'
+""let g:airline#extensions#tabline#enabled = 1
+
+function! UpdateTags()
+  execute ":!ctags -R --languages=C,C++ --c++-kinds=+p --fields=+iaS --extra=+q ./"
+  echohl StatusLine | echo "C/C++ tag updated" | echohl None
+endfunction
+nnoremap <F4> :call UpdateTags()
+
+let g:tagbar_type_go = {
+    \ 'ctagstype' : 'go',
+    \ 'kinds'     : [
+        \ 'p:package',
+        \ 'i:imports:1',
+        \ 'c:constants',
+        \ 'v:variables',
+        \ 't:types',
+        \ 'n:interfaces',
+        \ 'w:fields',
+        \ 'e:embedded',
+        \ 'm:methods',
+        \ 'r:constructor',
+        \ 'f:functions'
+    \ ],
+    \ 'sro' : '.',
+    \ 'kind2scope' : {
+        \ 't' : 'ctype',
+        \ 'n' : 'ntype'
+    \ },
+    \ 'scope2kind' : {
+        \ 'ctype' : 't',
+        \ 'ntype' : 'n'
+    \ },
+    \ 'ctagsbin'  : 'gotags',
+    \ 'ctagsargs' : '-sort -silent'
+\ }
+
+let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
+set omnifunc=syntaxcomplete#Complete
+
+"GUndo
+nnoremap <F5> :GundoToggle<CR>
+
+"vim-compiler-go
+autocmd FileType go compiler golang
+let g:golang_onwrite=0
+
+""synastic
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
+"nmap <F8> :TagbarToggle<CR>
+" c file, ,cc comment one line
+" c file, ,cs commant in /* */ way
+"    Vim folding commands
+"---------------------------------
+"zf#j creates a fold from the cursor down # lines.
+"zf/ string creates a fold from the cursor to string .
+"zj moves the cursor to the next fold.
+"zk moves the cursor to the previous fold.
+"za toggle a fold at the cursor.
+"zo opens a fold at the cursor.
+"zO opens all folds at the cursor.
+"zc closes a fold under cursor.
+"zm increases the foldlevel by one.
+"zM closes all open folds.
+"zr decreases the foldlevel by one.
+"zR decreases the foldlevel to zero -- all folds will be open.
+"zd deletes the fold at the cursor.
+"zE deletes all folds.
+"[z move to start of open fold.
+"]z move to end of open fold."
+
+
+"auto indent the whole file
+"=, the indent command can take motions. So, gg to get the start of the file,
+"= to indent, G to the end of the file, gg=G.
+"swap window veritcally ,Ctrl-w_x
+
+"CScope
+"select_files > cscope.files
+"ctags -L cscope.files
+"ctags -e -L cscope.files
+"cscope -ub -i cscope.files
+
+""""
+"First, a small bit of setup: you should set the editor that Cscope will open your search results in. The default editor is vi; if you want to change it to something else, set the CSCOPE_EDITOR environment variable, e.g.:
+"
+"export CSCOPE_EDITOR=`which emacs`
+"Note that those are backticks, not single-quotes, in that command. Put this command in your .bashrc file if you'd like.
+"
+"cd to the top-level of your project directory and then use a find command to gather up all of the source code files in your project. The following command will recursively find all of the .c, .cpp, .h, and .hpp files in your current directory and any subdirectories, and store the list of these filenames in cscope.files:
+"
+"cd ~/small-project/
+"find . -name '*.c' -o -name '*.cpp' -o -name '*.h' -o -name '*.hpp' > cscope.files
+"find /usr/local/src/harrison/src_spamd/trunk /usr/include /usr/local/include
+"-type d \( -name '*branches*' -o -name '*tag*' -o -name '*\.ori' -o -name
+"'*\.svn' -o -name '*tmp' -o -name '*temp' \) -prune -o \( -name '*.c' -o
+"-name '*.cpp' -o -name '*.h' \) -print > cscope.files
+"Depending on your project, you can use additional file extensions in this command, such as .java, .py, .s, etc.
+"
+"Now, pass the list of source files to Cscope, which will build a reference database:
+"
+"cscope -q -R -b -i cscope.files
+"The -q flag is used to build a faster (but larger) database. -R tells Cscope to search for symbols recursively. -b builds the database only, but does not start the Cscope browser. -i cscope.files specifies the list of source files. The output of this command will be a set of files in your current directory: cscope.in.out, cscope.out, and cscope.po.out.
+"
+"Finally, start the Cscope browser:
+"
+"cscope -d
+"The -d flag tells Cscope not to regenerate the database (which you already did in the previous step). Within the Cscope browser, type ? to see the help page, and type Ctrl-d to exit. The browser will show you a list of the searches you can perform in your code:
+"
+"Find this C symbol:
+"Find this global definition:
+"Find functions called by this function:
+"Find functions calling this function:
+"Find this text string:
+"Change this text string:
+"Find this egrep pattern:
+"Find this file:
+"Find files #including this file:
+"Most of these should be self-explanatory. C symbols include pretty much anything that you can think of in a C file: function names, variable names, things that are #define'd, etc. You can search for all instances of a symbol, or find its original definition. Cscope can find all of the functions that call a particular function, which can be extremely useful; this is a feature of Cscope that other tools like Ctags do not have. If you find that the C symbol and function searches do not find what you are looking for, you can fall back to the text search options at the bottom of the list.
+"
+"Select the type of search that you'd like to perform, type in your search term and hit Enter. At the top of the screen Cscope will display a list of results with the file, function, and line where the search term was found. If you select one of these results and hit Enter, Cscope will open up the editor to the matching line in the file. You can manipulate the file as you please, and when you close it the browser will appear again. When you're finished, press Ctrl-d to exit.
+"
+"
+"""""
+
+"=, the indent command can take motions. So, gg to get the start of the file,
+"= to indent, G to the end of the file, gg=G.
+"Ctl-W_c , swap window
+"folding functions
+"zc: close a fold,zo: open a fold, za if open/close then close/open, zA open all.
+"The commands zc (close), zo (open), and za (toggle) operate on one level of folding, at the cursor. The commands zC, zO and zA are similar, but operate on all folding levels (for example, the cursor line may be in an open fold, which is inside another open fold; typing zC would close all folds at the cursor).
+"The command zr reduces folding by opening one more level of folds throughout the whole buffer (the cursor position is not relevant). Use zR to open all folds.
+"The command zm gives more folding by closing one more level of folds throughout the whole buffer. Use zM to close all folds.
+"
+"    Vim folding commands
+"---------------------------------
+"zf#j creates a fold from the cursor down # lines.
+"zf/ string creates a fold from the cursor to string .
+"zj moves the cursor to the next fold.
+"zk moves the cursor to the previous fold.
+"za toggle a fold at the cursor.
+"zo opens a fold at the cursor.
+"zO opens all folds at the cursor.
+"zc closes a fold under cursor.
+"zm increases the foldlevel by one.
+"zM closes all open folds.
+"zr decreases the foldlevel by one.
+"zR decreases the foldlevel to zero -- all folds will be open.
+"zd deletes the fold at the cursor.
+"zE deletes all folds.
+"[z move to start of open fold.
+"]z move to end of open fold."
+"
+
+"function! CFoldLevel(lnum)
+"  let line = getline(a:lnum)
+"  if line =~ '^/\*'
+"    return '>1' " A new fold of level 1 starts here.
+"  else
+"    return '1' " This line has a foldlevel of 1.
+"  endif
+"endfunction
+"
+"function! CFoldText()
+"  " Look through all of the folded text for the function signature.
+"  let signature = ''
+"  let i = v:foldstart
+"  while signature == '' && i < v:foldend
+"    let line = getline(i)
+"    if line =~ '\w\+(.*)$'
+"      let signature = line
+"    endif
+"    let i = i + 1
+"  endwhile
+"
+"  " Return what the fold should show when folded.
+"  return '+-- ' . (v:foldend - v:foldstart) . ' Lines: ' . signature . ' '
+"endfunction
+"
+"function! CFold()
+"  set foldenable
+"  set foldlevel=1
+"  set foldmethod=expr
+"  set foldexpr=CFoldLevel(v:lnum)
+"  set foldtext=CFoldText()
+"  set foldnestmax=10
+"endfunction
+"map <Leader>F  :call CFold()<cr>
+"
+
+"support local variable : ctags -R --c-kinds=+lp
+""ctags --list-kinds=c
+"ctags -R --languages=C,C++ --c++-kinds=+p --fields=+iaS --extra=+q ./
+""Do you really need line numbers? Another way could be to select the range visually.
+"select the range using v, V or whatever
+""press ESC to unselect the range
+"search using /\%Vwhat_to_search to search for 'what_to_search' in the
+"previously selected range.
+
+",cc comment out line /* */
+",cs comment out line /* \n\n */
+"
+"==== Easygrep =====
+"
+"    <Leader>vv  - Grep for the word under the cursor, match all occurences,
+"                  like |gstar|
+"    <Leader>vV  - Grep for the word under the cursor, match whole word, like
+"                  |star|
+"    <Leader>va  - Like vv, but add to existing list
+"    <Leader>vA  - Like vV, but add to existing list
+"    <Leader>vr  - Perform a global search search on the word under the cursor
+"                  and prompt for a pattern with which to replace it.
+"    <Leader>vo  - Select the files to search in and set grep options
+"
+"
+"    :Grep [arg]
+"        Search for the specified arg, like <Leader>vv.  When an ! is added,
+"        search like <Leader>vV
+"
+"    :GrepAdd [arg]
+"        Search for the specified arg, add to existing file list, as in
+"        <Leader>va.  When an ! is added, search like <Leader>vA
+"
+"    :Replace [target] [replacement]
+"        Perform a global search and replace.  The function searches
+"        the same set of files a grep for the desired target and opens a dialog to
+"        confirm replacement.
+"
+"    :ReplaceUndo
+"        Undoes the last :Replace operation.  Does not stack successive
+"        searches; only the last replace may be undone.  This function may not
+"        work well when edits are made between a call to Replace and a call to
+"        ReplaceUndo.
+"
+"    :GrepOptions [arg]
+"        Open a window to set grep options.
+"

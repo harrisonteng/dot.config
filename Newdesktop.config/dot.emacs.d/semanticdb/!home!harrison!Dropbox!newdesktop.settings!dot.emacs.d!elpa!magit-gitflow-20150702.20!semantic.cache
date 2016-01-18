@@ -1,0 +1,16 @@
+;; Object magit-gitflow-20150702.20/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "magit-gitflow-20150702.20/"
+  :tables
+  (list
+    (semanticdb-table "magit-gitflow-autoloads.el"
+      :major-mode 'emacs-lisp-mode
+      :tags nil
+      :file "magit-gitflow-autoloads.el"
+      :pointmax 299
+      :fsize 392
+      :lastmodtime '(21920 14727 474874 262000)
+      :unmatched-syntax nil))
+  :file "!home!harrison!Dropbox!newdesktop.settings!dot.emacs.d!elpa!magit-gitflow-20150702.20!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2")

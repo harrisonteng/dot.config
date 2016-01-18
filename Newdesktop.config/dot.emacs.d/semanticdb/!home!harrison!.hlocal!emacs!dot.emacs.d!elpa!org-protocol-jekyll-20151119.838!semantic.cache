@@ -1,0 +1,16 @@
+;; Object org-protocol-jekyll-20151119.838/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "org-protocol-jekyll-20151119.838/"
+  :tables
+  (list
+    (semanticdb-table "org-protocol-jekyll-autoloads.el"
+      :major-mode 'emacs-lisp-mode
+      :tags nil
+      :file "org-protocol-jekyll-autoloads.el"
+      :pointmax 311
+      :fsize 409
+      :lastmodtime '(22100 41719 51473 920000)
+      :unmatched-syntax nil))
+  :file "!home!harrison!.hlocal!emacs!dot.emacs.d!elpa!org-protocol-jekyll-20151119.838!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2")

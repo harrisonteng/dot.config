@@ -1,0 +1,16 @@
+;; Object go-snippets-20151121.2257/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "go-snippets-20151121.2257/"
+  :tables
+  (list
+    (semanticdb-table "go-snippets-autoloads.el"
+      :major-mode 'emacs-lisp-mode
+      :tags nil
+      :file "go-snippets-autoloads.el"
+      :pointmax 295
+      :fsize 660
+      :lastmodtime '(22100 41749 903474 499000)
+      :unmatched-syntax nil))
+  :file "!home!harrison!.hlocal!emacs!dot.emacs.d!elpa!go-snippets-20151121.2257!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2")

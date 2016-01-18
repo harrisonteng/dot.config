@@ -1,0 +1,33 @@
+;; Object rfc822/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "rfc822/"
+  :tables (list 
+   (semanticdb-table "Makefile.am"
+    :major-mode 'makefile-automake-mode
+    :tags 
+        '( ("noinst_LIBRARIES" variable (:default-value ("librfc822.a")) nil [103 132])
+            ("librfc822_a_SOURCES" variable (:default-value ("rfc822.c" "rfc822.h" "rfc822hdr.c" "rfc822hdr.h" "rfc822_getaddr.c" "rfc822_getaddrs.c" "rfc822_mkdate.c" "rfc822_parsedt.c" "rfc2047u.c" "rfc2047.c" "rfc2047.h" "imapsubj.c" "imaprefs.h" "imaprefs.c")) nil [132 372])
+            ("BUILT_SOURCES" variable (:default-value ("rfc822.3" "rfc822.html")) nil [386 421])
+            ("noinst_DATA" variable (:default-value ("$(BUILT_SOURCES)")) nil [421 450])
+            ("noinst_PROGRAMS" variable (:default-value ("testsuite")) nil [457 491])
+            ("testsuite_SOURCES" variable (:default-value ("testsuite.c")) nil [491 521])
+            ("testsuite_DEPENDENCIES" variable (:default-value ("librfc822.a")) nil [521 556])
+            ("testsuite_LDADD" variable (:default-value ("librfc822.a")) nil [556 584])
+            ("reftest_SOURCES" variable (:default-value ("reftest.c" "imaprefs.h")) nil [584 621])
+            ("reftest_DEPENDENCIES" variable (:default-value ("librfc822.a")) nil [621 654])
+            ("reftest_LDADD" variable (:default-value ("librfc822.a")) nil [654 680])
+            ("EXTRA_DIST" variable (:default-value ("testsuite.txt" "reftest.txt" "$(BUILT_SOURCES)")) nil [681 735])
+            ("rfc822.html" function (:arguments ("rfc822.sgml" "../docbook/sgml2html")) nil [749 841])
+            ("rfc822.3" function (:arguments ("rfc822.sgml" "../docbook/sgml2html")) nil [842 927])
+            ("test" function nil nil [934 1032]))          
+    :file "Makefile.am"
+    :pointmax 1032
+    :fsize 1031
+    :lastmodtime '(21696 16167 554341 609000)
+    :unmatched-syntax '((shell-command 989 . 1031) (bol 988 . 988))
+    )
+   )
+  :file "!home!harrison!projects!git!fm-app-mailer!courier_deliver!courier_deps!rfc822!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2"
+  )
