@@ -2834,3 +2834,7 @@ CLOSED: [2015-12-23 Wed 15:23]
 *** 3. let's build a udp server to get a. update b. return learning result
 ** TODO Items [0/1]
 *** TODO 
+* 2016/01/19 09:57:19
+** Items [/]
+*** [#A] emcspamd2 and blocklistd deployment
+*** [#B] uribl assessment with surbl 

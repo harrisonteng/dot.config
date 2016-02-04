@@ -3475,7 +3475,7 @@ sub do" NameofMethod " {
 ;;(defun sudo-edit-current-file ()
 ;;  (interactive)
 ;;  (let ((my-file-name) ; fill this with the file to open
-;;        (position))    ; if the file is already open save position
+;;        (position))    ; if the file is already open save posiTion
 ;;    (if (equal major-mode 'dired-mode) ; test if we are in dired-mode 
 ;;        (progn
 ;;          (setq my-file-name (dired-get-file-for-visit))
@@ -3492,12 +3492,12 @@ sub do" NameofMethod " {
 ;;Begin of golang mode ======
 ;;http://dominik.honnef.co/posts/2013/03/writing_go_in_emacs/
 ;;(setq load-path (cons "~/.emacs.d/pkgs/go-mode.el" load-path))
-(setq load-path (cons "~/.emacs.d/elpa/go-mode-20151226.1224" load-path))
+(setq load-path (cons "~/.emacs.d/elpa/go-mode-20160127.4" load-path))
 (require 'go-mode)
 ;;(require 'go-mode-load)
 (add-hook 'before-save-hook 'gofmt-before-save)
 ;;(setq load-path (cons "~/.emacs.d/pkgs/goflymake" load-path))
-;;(add-to-list 'load-path "~/.emacs.d/elpa/flycheck-20160110.1108")
+(add-to-list 'load-path "~/.emacs.d/elpa/flycheck-20160129.311")
 (add-to-list 'load-path "~/.emacs.d/elpa/go-eldoc-20151028.10")
 (add-to-list 'load-path "~/.emacs.d/elpa/go-errcheck-20150828.1135")
 (add-to-list 'load-path "~/projects/local/golang/src/github.com/dougm/goflymake")
@@ -3636,7 +3636,7 @@ sub do" NameofMethod " {
  '(display-time-mode t)
  '(ecb-layout-window-sizes (quote (("left8" (0.1657142857142857 . 0.28378378378378377) (0.1657142857142857 . 0.22972972972972974) (0.1657142857142857 . 0.2702702702702703) (0.1657142857142857 . 0.16216216216216217)))))
  '(ecb-options-version "2.32")
- '(ecb-source-path (quote ("~/Projects" "~/")))
+ '(ecb-source-path (quote ("~/projects" "~/")))
  ;;'(jde-help-docsets (quote (("JDK API" "nil" nil))))
  ;;'(jde-jdk (quote ("1.7.0_25")))
  ;;'(jde-jdk-doc-url "nil")
