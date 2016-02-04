@@ -1,0 +1,16 @@
+;; Object projectile-20160130.457/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "projectile-20160130.457/"
+  :tables
+  (list
+    (semanticdb-table "projectile-autoloads.el"
+      :major-mode 'emacs-lisp-mode
+      :tags nil
+      :file "projectile-autoloads.el"
+      :pointmax 293
+      :fsize 8544
+      :lastmodtime '(22191 42330 597892 499000)
+      :unmatched-syntax nil))
+  :file "!home!harrison!projects!repository!github!dot.config!Newdesktop.config!dot.emacs.d!elpa!projectile-20160130.457!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2")
