@@ -78,7 +78,8 @@ _chomp_path() {
     echo ${last}
 }
 
-# PS1='\[\033[1;34m\]\u \[\033[1;32m\]@\[\033[1;34m\] \h \[\033[1;30m\]::\[\033[1;37m\] $(_chomp_path $(pwd)) \[\033[1;30m\]%%\[\033[0m\] '
+
+#PS1='\[\033[1;34m\]\u \[\033[1;32m\]@\[\033[1;34m\] \h \[\033[1;30m\]::\[\033[1;37m\] $(_chomp_path $(pwd)) \[\033[1;30m\]%%\[\033[0m\] '
 
 if [ "$color_prompt" = yes ]; then
     PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
@@ -107,6 +108,8 @@ esac
 if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
+
+echo "tere";
 
 # enable color support of ls and also add handy aliases
 if [ "$TERM" != "dumb" ] && [ -x /usr/bin/dircolors ]; then

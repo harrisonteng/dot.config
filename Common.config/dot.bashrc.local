@@ -100,7 +100,7 @@ Jobs="\j"
 LH="\h"
 
 function what_is_current_tag () {
-    curtag=$(git describe --tags);
+    curtag=$(git describe --tags 2>&1 1>/dev/null);
     if [ "list$curtag" != "listlist" ];then
         echo "<$curtag>";
     else
@@ -142,7 +142,7 @@ function git_prompt_diff_l () {
 
 function git_prompt_diff_lr () {
   local l_branch=$1;
-  
+
   branchinremote=$(git branch -r |grep ${l_branch});
   if [[ -z $branchinremote ]];then
       echo "Not committed yet";
@@ -165,7 +165,7 @@ function get_root_user_prompt () {
 }
 
 function who_is_onthebox () {
-    mypts=`who -m |sed -e "s%^.* \(pts/[0-9]*\).*(\(.*\))%\1%g"`;
+    mypts=`who -m |sed -e "s%^.* \(pts/[0-9]*\).*(\(.*\))%\1%g" |awk '{print $1}'`;
 	if [ "X$mypts" == "X" ];then
 		usrs=`ps auxwww | grep sshd: |grep -v grep |awk '{print $1" "$2" "$9" "$11" "$12}'`;
 	else
@@ -178,7 +178,7 @@ function who_is_onthebox () {
 }
 
 function where_am_i () {
-    whereami=`who -m |sed -e "s%^.* \(pts/[0-9]*\).*(\(.*\))%[\1] (\2)%g"`;
+    whereami=`who -m |sed -e "s%^.* \(pts/[0-9]*\).*(\(.*\))%[\1] (\2)%g" |awk '{print $1}'`;
     #|awk '{sub(/\.electric\.net\./,"",$NF);print $NF}'
     echo "$whereami";
     return
