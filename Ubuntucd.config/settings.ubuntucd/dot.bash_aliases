@@ -60,4 +60,4 @@ kvmviewer='virt-viewer -c qemu:///system ob54'
 #Emacs Daemon
 #$YOUREMACS --daemon --eval "(setq default-frame-alist '((font-backend .\"xft\") (set-background-color \"black\") (set-foreground-color \"white\")))"
 #Emacs Client
-#$YOUREMACSCLIENT -n -e '(load "~/.emacs.clientinit.el")' --alternate-editor=vim --no-wait
+#$YOUREMACSCLIENT -c -n -e '(load "~/.emacs.clientinit.el")' --alternate-editor=vim --no-wait
