@@ -229,9 +229,12 @@
 ;;#+BEGIN: clocktable :maxlevel 5 :scope agenda-with-archives :block thisweek :fileskip0 t :indent t
 ;;#+END:
 
+(define-key org-mode-map "\M-q" 'toggle-truncate-lines)
+
 ;;==== End of orgmode ======
 ;; Ediff
-(setq ediff-window-setup-function 'ediff-setup-windows-plain)
+;; Enable below only in the same window
+;;(setq ediff-window-setup-function 'ediff-setup-windows-plain)
 
 (setq preferred-debugger-alist 
       '((c-mode . gdb) 
@@ -1155,6 +1158,11 @@ Require `font-lock'."
   '(set-face-foreground (quote font-lock-comment-face) "wheat"))
 
 (custom-set-faces
+ ;; Ediff to be verically
+ ;;'(ediff-split-window-function (quote split-window-vertically))
+ '(ediff-window-setup-function 'ediff-setup-windows-plain)
+ '(ediff-diff-options "-w")
+ '(ediff-split-window-function 'split-window-horizontally))
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
@@ -2362,7 +2370,24 @@ sub do" NameofMethod " {
 
 ;;End of Mysql Command =====================================================
 
+;;Begin of Robo-mode ======================================================
+;;(setq load-path (cons "~/.emacs.d/pkgs/robot-mode" load-path))
+(load "~/.emacs.d/pkgs/robot-mode/robot-mode")
+    (add-to-list 'auto-mode-alist '("\\.robot\\'" . robot-mode))
+
+;;End of Robo-mode ========================================================
+
 ;;Begin of Python-mode =====================================================
+(require 'yasnippet)
+(yas-global-mode 1)
+(add-hook 'python-mode-hook
+            (lambda ()
+              (setq py-python-command "python2")
+              (setq py-default-interpreter "python2"))
+	      (setq Company-mode t)
+	      )
+
+(elpy-enable)
 
 ;;    * C-j: Insert a new line with the same indentation level as the current line
 ;;    * RET: Insert a new line with the same indentation level as the current line
@@ -2391,17 +2416,10 @@ sub do" NameofMethod " {
 ;;    * C-c :: Check the indentation off-set
 ;;    * C-c <: Shift the region to the left
 ;;    * C-c >: Shift the region to the right
-;;    * C-c ?: Show Python mode documentation
+;;    * C-c ?: Show pYthon mode documentation
 ;;    * C-c |: Execute the highlighted (marked) part of the current program. 
 
 ;;Root Path of pylookup
-
-;; PyDoc -----------------------------------------------------------------
-;;(setq load-path (cons "~/.emacs.d/pkgs/python-mode-1.0" load-path))
-(add-hook 'python-mode-hook
-            (lambda ()
-              (setq py-python-command "python2")
-              (setq py-default-interpreter "python2")))
 
 (when (load "flymake" t)
   (defun flymake-pyflakes-init ()
@@ -2412,8 +2430,10 @@ sub do" NameofMethod " {
             (file-name-directory buffer-file-name))))
       (list "pycheckers.sh"  (list local-file))))
    (add-to-list 'flymake-allowed-file-name-masks
-             '("\\.py\\'" flymake-pyflakes-init)))
+                '("\\.py\\'" flymake-pyflakes-init)))
 
+;; PyDoc -----------------------------------------------------------------
+;;(setq load-path (cons "~/.emacs.d/pkgs/python-mode-1.0" load-path))
 (defun pydoc (w)
   "Launch PyDOC on the Word at Point"
   (interactive
@@ -2511,6 +2531,7 @@ sub do" NameofMethod " {
    (interactive
     (list (gud-query-cmdline pdb-path
 	        (file-name-nondirectory buffer-file-name)))))
+
 
 ;;End of Python-mode ============================================================
 
@@ -3250,6 +3271,12 @@ sub do" NameofMethod " {
 ;;
 ;;;;End of ERC =============================================================
 
+;;;;Begin of sane-term =====
+;;(require 'sane-term)
+;;(global-set-key (kbd "C-x t") 'sane-term)
+;;(global-set-key (kbd "C-x T") 'sane-term-create)
+;;;;End of sane-term =====
+
 
 ;;Begin of multi-term ====================================================
 (autoload 'multi-term "multi-term" nil t)
@@ -3620,7 +3647,7 @@ sub do" NameofMethod " {
  '(ecb-options-version "2.40")
  '(ecb-source-path
    (quote
-    ("~/projects" "~/" "/cygdrive/c/Inetpub/wwwroot/enterprisemailer" "/svn" "/emcsvn")))
+    ("~/" "~/projects" "~/projects.work")))
  '(mumamo-chunk-coloring 1)
  '(package-selected-packages
    (quote
