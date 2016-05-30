@@ -56,3 +56,8 @@ alias pkgsup='pkg_version -vIL='
 #KVM
 kvminstall='virt-install --connect qemu:///system -n homeserver -r 2048 -vcpus=1 --disk path=/var/lib/libvirt/images/homeserver.img,size=80 -c /disk2/installation/homeserver/Windows.Home.Server.OEM.Install.DVD.iso --vnc --noautoconsole --os-type windows --accelerate --network=bridge:br0 --hvm'
 kvmviewer='virt-viewer -c qemu:///system ob54'
+
+#Emacs Daemon
+#$YOUREMACS --daemon --eval "(setq default-frame-alist '((font-backend .\"xft\") (set-background-color \"black\") (set-foreground-color \"white\")))"
+#Emacs Client
+#$YOUREMACSCLIENT -c -n -e '(load "~/.emacs.clientinit.el")' --alternate-editor=vim --no-wait
