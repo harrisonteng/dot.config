@@ -229,7 +229,7 @@
 ;;#+BEGIN: clocktable :maxlevel 5 :scope agenda-with-archives :block thisweek :fileskip0 t :indent t
 ;;#+END:
 
-(define-key org-mode-map "\M-q" 'toggle-truncate-lines)
+;;(define-key org-mode-map "\M-q" 'toggle-truncate-lines)
 
 ;;==== End of orgmode ======
 ;; Ediff
@@ -1162,7 +1162,7 @@ Require `font-lock'."
  ;;'(ediff-split-window-function (quote split-window-vertically))
  '(ediff-window-setup-function 'ediff-setup-windows-plain)
  '(ediff-diff-options "-w")
- '(ediff-split-window-function 'split-window-horizontally))
+ '(ediff-split-window-function 'split-window-horizontally)
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
