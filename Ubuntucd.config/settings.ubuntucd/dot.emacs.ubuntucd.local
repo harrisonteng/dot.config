@@ -118,14 +118,14 @@
 ;;C-c , [A]B|C] set priority and shift up/down to pro/de mote priority
 ;;C-c C-x C-c set column view and q quit it
 (require 'org-install)
-(add-to-list 'auto-mode-alist '("\\.org$" . org-mode))
+(add-to-list 'auto-mode-alist '("\\.org$" . Org-mode))
 (define-key global-map "\C-cl" 'org-store-link)
 (define-key global-map "\C-ca" 'org-agenda)
 (setq org-log-done t)
 
-(setq org-todo-keyword-faces '(("TODO" . (:foreground "white" :weight bold))
-				("INPROGRESS" . (:foreground "forest green" :weight bold))
-				("VERIFY" . (:foreground "gold" :weight bold)) 
+(setq org-todo-keyword-faces '(("TODO" . (:foreground "white" :weight regular))
+				("INPROGRESS" . (:foreground "forest green" :weight regular))
+				("VERIFY" . (:foreground "gold" :weight regular)) 
 							   ("DONE" . (:foreground "green" :weight bold)) 
 							    ("PENDING" . (:foreground "OrangeRed" :weight bold)) 
 							   ("CANCELED" . (:foreground "red" :weight bold)) 
@@ -141,10 +141,10 @@
 (setq org-default-priority ?E) 
 ;; appearance 
 (setq org-priority-faces '((?A . (:background "red" :foreground "white" :weight bold)) 
-						   (?B . (:background "DarkOrange" :foreground "white" :weight bold)) 
-						   (?C . (:background "yellow" :foreground "DarkGreen" :weight bold)) 
-						   (?D . (:background "DodgerBlue" :foreground "black" :weight bold)) 
-						   (?E . (:background "SkyBlue" :foreground "black" :weight bold)) ))
+						   (?B . (:background "DarkOrange" :foreground "white" :weight regular)) 
+						   (?C . (:background "yellow" :foreground "DarkGreen" :weight regular)) 
+						   (?D . (:background "DodgerBlue" :foreground "black" :weight regular)) 
+						   (?E . (:background "SkyBlue" :foreground "black" :weight regular)) ))
 
 ;;If you would like a TODO entry to automatically change to DONE when all children are done, you can use the following setup:
 (defun org-summary-todo (n-done n-not-done)
@@ -229,7 +229,7 @@
 ;;#+BEGIN: clocktable :maxlevel 5 :scope agenda-with-archives :block thisweek :fileskip0 t :indent t
 ;;#+END:
 
-(define-key org-mode-map "\M-q" 'toggle-truncate-lines)
+;;(define-key org-mode-map "\M-q" 'toggle-truncate-lines)
 
 ;;==== End of orgmode ======
 ;; Ediff
@@ -1162,7 +1162,7 @@ Require `font-lock'."
  ;;'(ediff-split-window-function (quote split-window-vertically))
  '(ediff-window-setup-function 'ediff-setup-windows-plain)
  '(ediff-diff-options "-w")
- '(ediff-split-window-function 'split-window-horizontally))
+ '(ediff-split-window-function 'split-window-horizontally)
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
@@ -1957,37 +1957,37 @@ sub do" NameofMethod " {
 ;;    keybindings available in all buffers:
 ;;
 ;; to generate global index run cscope-indexer -r under /emcsvn/emc
-;;(add-hook 'cscope-minor-mode-hooks
-;;          '(lambda ()
-;;             (define-key cscope:map "\C-css" 'cscope-find-this-symbol)
-;;             (define-key cscope:map "\C-csd" 'cscope-find-global-definition)
-;;             (define-key cscope:map "\C-csg" 'cscope-find-global-definition)
-;;             (define-key cscope:map "\C-csG" 'cscope-find-global-definition-no-prompting)
-;;             (define-key cscope:map "\C-csc" 'cscope-find-functions-calling-this-function)
-;;             (define-key cscope:map "\C-csC" 'cscope-find-called-functions)
-;;             (define-key cscope:map "\C-cst" 'cscope-find-this-text-string)
-;;             (define-key cscope:map "\C-cse" 'cscope-find-egrep-pattern)
-;;             (define-key cscope:map "\C-csf" 'cscope-find-this-file)
-;;             (define-key cscope:map "\C-csi" 'cscope-find-files-including-file)
-;;             ;; --- (The '---' indicates that this line corresponds to a menu separator.)
-;;             (define-key cscope:map "\C-csb" 'cscope-display-buffer)
-;;             (define-key cscope:map "\C-csB" 'cscope-display-buffer-toggle)
-;;             (define-key cscope:map "\C-csn" 'cscope-next-symbol)
-;;             (define-key cscope:map "\C-csN" 'cscope-next-file)
-;;             (define-key cscope:map "\C-csp" 'cscope-prev-symbol)
-;;             (define-key cscope:map "\C-csP" 'cscope-prev-file)
-;;             (define-key cscope:map "\C-csu" 'cscope-pop-mark)
-;;             ;; ---
-;;             (define-key cscope:map "\C-csa" 'cscope-set-initial-directory)
-;;             (define-key cscope:map "\C-csA" 'cscope-unset-initial-directory)
-;;             ;; ---
-;;             (define-key cscope:map "\C-csL" 'cscope-create-list-of-files-to-index)
-;;             (define-key cscope:map "\C-csI" 'cscope-index-files)
-;;             (define-key cscope:map "\C-csE" 'cscope-edit-list-of-files-to-index)
-;;             (define-key cscope:map "\C-csW" 'cscope-tell-user-about-directory)
-;;             (define-key cscope:map "\C-csS" 'cscope-tell-user-about-directory)
-;;             (define-key cscope:map "\C-csT" 'cscope-tell-user-about-directory)
-;;             (define-key cscope:map "\C-csD" 'cscope-dired-directory)))
+(add-hook 'cscope-minor-mode-hooks
+          '(lambda ()
+             (define-key cscope:map "\C-css" 'cscope-find-this-symbol)
+             (define-key cscope:map "\C-csd" 'cscope-find-global-definition)
+             (define-key cscope:map "\C-csg" 'cscope-find-global-definition)
+             (define-key cscope:map "\C-csG" 'cscope-find-global-definition-no-prompting)
+             (define-key cscope:map "\C-csc" 'cscope-find-functions-calling-this-function)
+             (define-key cscope:map "\C-csC" 'cscope-find-called-functions)
+             (define-key cscope:map "\C-cst" 'cscope-find-this-text-string)
+             (define-key cscope:map "\C-cse" 'cscope-find-egrep-pattern)
+             (define-key cscope:map "\C-csf" 'cscope-find-this-file)
+             (define-key cscope:map "\C-csi" 'cscope-find-files-including-file)
+             ;; --- (The '---' indicates that this line corresponds to a menu separator.)
+             (define-key cscope:map "\C-csb" 'cscope-display-buffer)
+             (define-key cscope:map "\C-csB" 'cscope-display-buffer-toggle)
+             (define-key cscope:map "\C-csn" 'cscope-next-symbol)
+             (define-key cscope:map "\C-csN" 'cscope-next-file)
+             (define-key cscope:map "\C-csp" 'cscope-prev-symbol)
+             (define-key cscope:map "\C-csP" 'cscope-prev-file)
+             (define-key cscope:map "\C-csu" 'cscope-pop-mark)
+             ;; ---
+             (define-key cscope:map "\C-csa" 'cscope-set-initial-directory)
+             (define-key cscope:map "\C-csA" 'cscope-unset-initial-directory)
+             ;; ---
+             (define-key cscope:map "\C-csL" 'cscope-create-list-of-files-to-index)
+             (define-key cscope:map "\C-csI" 'cscope-index-files)
+             (define-key cscope:map "\C-csE" 'cscope-edit-list-of-files-to-index)
+             (define-key cscope:map "\C-csW" 'cscope-tell-user-about-directory)
+             (define-key cscope:map "\C-csS" 'cscope-tell-user-about-directory)
+             (define-key cscope:map "\C-csT" 'cscope-tell-user-about-directory)
+             (define-key cscope:map "\C-csD" 'cscope-dired-directory)))
 
 (defun find-caller (tagname)
     "Find occurences of tagname in files in the current directory matching extension of current file."
