@@ -21,6 +21,45 @@
 ;; Make TERM to be xterm so that VIM works fine in Term Mode
 (setenv "TERM" "xterm")
 
+;; Popup win
+(require 'popwin)
+(popwin-mode 1)
+(global-set-key (kbd "C-z") popwin:keymap)
+
+;; Key    | Command                               |
+;;--------+---------------------------------------|
+;; b      | popwin:popup-buffer                   |
+;; l      | popwin:popup-last-buffer              |
+;; o      | popwin:display-buffer                 |
+;; C-b    | popwin:switch-to-last-buffer          |
+;; C-p    | popwin:original-pop-to-last-buffer    |
+;; C-o    | popwin:original-display-last-buffer   |
+;; SPC    | popwin:select-popup-window            |
+;; s      | popwin:stick-popup-window             |
+;; 0      | popwin:close-popup-window             |
+;; f, C-f | popwin:find-file                      |
+;; e      | popwin:messages                       |
+;; C-u    | popwin:universal-display              |
+;; 1      | popwin:one-window                     |
+
+;; Popup frame
+
+;; Inspired from `mouse-tear-off-window'.
+(defun tear-off-window ()
+  "Create a new frame displaying buffer of selected window.
+    If window is not the only one in frame, then delete it.
+    Otherwise, this command effectively clones the frame and window."
+  (interactive)
+  (let ((owin  (selected-window))
+        (buf   (window-buffer))
+        (fr    (make-frame)))
+    (select-frame fr)
+    (switch-to-buffer buf)
+    (save-window-excursion 
+      (select-window owin)
+      (unless (one-window-p) (delete-window owin)))))
+(global-set-key (kbd "C-z t") 'tear-off-window)
+
 ;;Daemon config
 ;;http://www.wanglianghome.org/blog/2009/01/customization-tips-for-emacs-daemon.html
 ;;(if (and (fboundp 'daemonp) (daemonp))
@@ -3220,55 +3259,53 @@ sub do" NameofMethod " {
 
 ;;;(add-to-list 'Info-default-directory-list "~/.emacs.d/pkgs/tramp/info/")
 
-;;(add-to-list 'load-path "~/.emacs.d/pkgs/erc")
-;;    (require 'erc)
+(add-to-list 'load-path "~/.emacs.d/pkgs/erc")
+    (require 'erc)
 
-;;;;Beging of ERC =========================================================
-;;(defmacro asf-erc-bouncer-connect (command server port nick ssl pass)
-;;  "Create interactive command `command', for connecting to an IRC server. The command uses interactive mode if passed an argument."
-;;  (fset command
-;;	`(lambda (arg)
-;;	   (interactive "p")
-;;	   (if (not (= 1 arg))
-;;	       (erc-select ,server ,port ,nick)
-;;	       (let ((erc-connect-function ',(if ssl
-;;						 'open-ssl-stream
-;;						 'open-network-stream
-;;                                                 )
-;;                                           )
-;;                     )
-;;		(erc ,server ,port ,nick "hengha" t ,pass)
-;;               )))))
-;;
-;;(setq erc-prompt (lambda ()
-;;		   (if (and (boundp 'erc-default-recipients) (erc-default-target))
-;;		       (erc-propertize (concat (erc-default-target) ">") 'read-only t 'rear-nonsticky t 'front-nonsticky t)
-;;		       (erc-propertize (concat "ERC>") 'read-only t 'rear-nonsticky t 'front-nonsticky t))))
-;;
-;;(asf-erc-bouncer-connect erc-freenode "irc.freenode.net" 6667 "hengha" nil "3565335653")
-;;
-;;;;(asf-erc-bouncer-connect erc-emc
-;;	;;		 "irc.electric.net" 6667 "harrison" t nil)
-;;
-;;(defun irc ()
-;;  "Start up my IRC connections."
-;;  (interactive)
-;;  (select-frame (make-frame '((name . "Emacs IRCS")
-;;			      (minibuffer . t))))
-;;  (call-interactively 'erc-freenode)
-;;  ;;(sit-for 1)
-;;  ;;(call-interactively 'erc-emc)
-;;)
-;;
-;;;; C-c e o to emc
+;;Beging of ERC =========================================================
+(defmacro asf-erc-bouncer-connect (command server port nick ssl pass)
+  "Create interactive command `command', for connecting to an IRC server. The command uses interactive mode if passed an argument."
+  (fset command
+	`(lambda (arg)
+	   (interactive "p")
+	   (if (not (= 1 arg))
+	       (erc-select ,server ,port ,nick)
+	       (let ((erc-connect-function ',(if ssl
+						 'open-ssl-stream
+						 'open-network-stream
+                                                 )
+                                           )
+                     )
+		(erc ,server ,port ,nick "hengha" t ,pass)
+               )))))
+
+(setq erc-prompt (lambda ()
+		   (if (and (boundp 'erc-default-recipients) (erc-default-target))
+		       (erc-propertize (concat (erc-default-target) ">") 'read-only t 'rear-nonsticky t 'front-nonsticky t)
+		       (erc-propertize (concat "ERC>") 'read-only t 'rear-nonsticky t 'front-nonsticky t))))
+
+(asf-erc-bouncer-connect erc-freenode "irc.freenode.net" 6667 "hengha" nil "3565335653")
+
+;;(asf-erc-bouncer-connect erc-emc
+	;;		 "irc.electric.net" 6667 "harrison" t nil)
+
+(defun irc ()
+  "Start up my IRC connections."
+  (interactive)
+  (select-frame (make-frame '((name . "Emacs IRCS")
+			      (minibuffer . t))))
+  (call-interactively 'erc-freenode)
+  (sit-for 1)
+  ;;(call-interactively 'erc-emc)
+)
+
+;; C-c e o to emc
 ;;(global-set-key "\C-ceo" (lambda () (interactive)
 ;;                               (erc-select-ssl :server "irc.electric.net" :port "6667"
 ;;                                    :nick "harrison")))
-;;
-;;(setq erc-autojoin-channels-alist
-;;         '(("freenode.net" "#emacs")
-;;           ("electric.net" "#EMC")))
-;;
+(setq erc-autojoin-channels-alist
+         '(("freenode.net" "#emacs")))
+
 ;;;;End of ERC =============================================================
 
 ;;;;Begin of sane-term =====

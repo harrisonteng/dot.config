@@ -1,22 +1,24 @@
-// Copyright (C) 2011, 2012  Google Inc.
+// Copyright (C) 2011, 2012 Google Inc.
 //
-// This file is part of YouCompleteMe.
+// This file is part of ycmd.
 //
-// YouCompleteMe is free software: you can redistribute it and/or modify
+// ycmd is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
 // the Free Software Foundation, either version 3 of the License, or
 // (at your option) any later version.
 //
-// YouCompleteMe is distributed in the hope that it will be useful,
+// ycmd is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 // GNU General Public License for more details.
 //
 // You should have received a copy of the GNU General Public License
-// along with YouCompleteMe.  If not, see <http://www.gnu.org/licenses/>.
+// along with ycmd.  If not, see <http://www.gnu.org/licenses/>.
 
 #ifndef LETTERNODELISTMAP_H_BRK2UMC1
 #define LETTERNODELISTMAP_H_BRK2UMC1
+
+#include "DLLDefines.h"
 
 #include <list>
 #include <boost/utility.hpp>
@@ -28,21 +30,18 @@ namespace YouCompleteMe {
 
 class LetterNode;
 
-int IndexForChar( char letter );
-bool IsUppercase( char letter );
+YCM_DLL_EXPORT bool IsUppercase( char letter );
+bool IsInAsciiRange( int index );
+YCM_DLL_EXPORT int IndexForLetter( char letter );
 
 class LetterNodeListMap : boost::noncopyable {
 public:
   LetterNodeListMap();
-  ~LetterNodeListMap();
-
-  bool HasLetter( char letter );
+  YCM_DLL_EXPORT ~LetterNodeListMap();
 
   std::list< LetterNode * > &operator[] ( char letter );
 
-  std::list< LetterNode * > *ListPointerAt( char letter );
-
-  bool HasLetter( char letter ) const;
+  YCM_DLL_EXPORT std::list< LetterNode * > *ListPointerAt( char letter );
 
 private:
   boost::array< std::list< LetterNode * >*, NUM_LETTERS > letters_;

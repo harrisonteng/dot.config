@@ -77,13 +77,27 @@ SignatureRefresh
   Force the display of signs in the buffer to refresh. Use this to correct
   the signs if things go awry
 
-SignatureListMarks
+SignatureListBufferMarks [n]
   List all the marks used in the current buffer in the location list
+  Accepts an optional argument to provide 'n' lines of context
 
-SignatureListMarkers [marker]
-  List all instances of the specified marker used in the current buffer in
-  the location list. If no argument is given, it lists all markers
+SignatureListGlobalMarks [n]
+  List only the global marks used in all buffers in the location list
+  Accepts an optional argument to provide 'n' lines of context
 
+SignatureListMarkers [marker] [n]
+  List all instances of the specified marker(s) used in the current buffer
+  in the location list. If no argument is given, it lists all markers
+  Accepts an optional argument to provide 'n' lines of context
+>
+  :SignatureListMarkers         : List all markers
+  :SignatureListMarkers 1       : List only the '!' marker
+  :SignatureListMarkers @       : List only the '@' marker
+  :SignatureListMarkers 0, 2    : List only ) marker with 2 lines of context
+  :SignatureListMarkers '', 2   : List all markers with 2 lines of context
+  :SignatureListMarkers '!@', 2 : List only the '!' and '@' markers and show
+                                  2 lines of context around them
+<
 
 ==============================================================================
 4. Customization                                     *signature-customization*
@@ -108,12 +122,12 @@ SignatureListMarkers [marker]
         \ 'GotoPrevLineByPos'  :  "['",
         \ 'GotoNextSpotByPos'  :  "]`",
         \ 'GotoPrevSpotByPos'  :  "[`",
-        \ 'GotoNextMarker'     :  "[+",
+        \ 'GotoNextMarker'     :  "]-",
         \ 'GotoPrevMarker'     :  "[-",
         \ 'GotoNextMarkerAny'  :  "]=",
         \ 'GotoPrevMarkerAny'  :  "[=",
-        \ 'ListLocalMarks'     :  "m/",
-        \ 'ListLocalMarkers'   :  "m?"
+        \ 'ListBufferMarks'    :  "m/",
+        \ 'ListBufferMarkers'  :  "m?"
         \ }
 <
   By default, it defines the mappings as shown in |signature-mappings|
@@ -152,9 +166,8 @@ SignatureListMarkers [marker]
     `<leader>m!`       will remove all the '!' markers
     `<leader>m<BS>`    will remove all markers
 
-  Note:
-  Currently, either marks or markers can be displayed in front of a line.
-  Both can't be displayed simultaenously.
+  NOTE: Currently, either marks or markers can be displayed in front of a
+  line. Both can't be displayed simultaenously.
 
   To set this to mapleader or maplocalleader
 >
@@ -184,31 +197,78 @@ SignatureListMarkers [marker]
                                   The mark is not displayed
     `g:SignatureMarkOrder="\m\p"` : Display last two marks placed
 
-  Note:
-  The signs feature allows only 2 characters to be displayed. This is not and
-  arbitratry limitation of the plugin.
+  NOTE: The signs feature allows only 2 characters to be displayed. This limit
+  is imposed by vim itself and not by the plugin
 
 
                                                      *'g:SignatureMarkTextHL'*
-  String, Default : 'Exception'
+  String, Default : 'SignatureMarkText'
 
-  The highlight group used for mark signs. This can be set to a function
-  reference can be assigned to this to allow dynamic highlighting of signs
-  NOTE: The quotes should be a part of the assignment.
-  Eg.   let g:SignatureMarkTextHL = "'Exception'"
+  The highlight group used for mark signs. This can be set either to a string
+  or to a |Funcref|.
 
-                                                   *'g:SignatureMarkerTextHL'*
-  String, Default : 'WarningMsg'
+  If it holds a string, it must be an expression suitable for passing to
+  |eval()|. In the simple case, it can be the name of a highlight group. It can
+  also hold more complicated expressions, in which case the expression `a:lnum`
+  may be helpful. It holds the number of the line where the current mark is to
+  be highlighted.
 
-  The highlight group used for marker signs. This can be set to a function
-  reference can be assigned to this to allow dynamic highlighting of signs
-  NOTE: The quotes should be a part of the assignment.
-  Eg.   let g:SignatureMarkTextHL = "'WarningMsg'"
+  If it holds a |Funcref|, then the function will be called with one argument,
+  the line number of the mark to be highlighted. The function should return
+  the name of a highlight group.
+
+  Example using a string:
+>
+    let g:SignatureMarkTextHL = "Exception"
+<
+  Example of |Funcref|:
+>
+    function Example(lineno)
+      return "Exception"
+    endfunction
+    let g:SignatureMarkTextHL = function("Example")
+<
+  By default, this is set to SignatureMarkText which is a highlight group 
+  that is linked to Exception
+
+                                              *'g:SignatureMarkTextHLDynamic'*
+  Boolean, Default: 0
+
+  Highlight signs of marks dynamically based upon state indicated by
+  vim-gitgutter or vim-signify. Setting this to `1` prior to plugin
+  initialization overwrites |g:SignatureMarkTextHL|.
+
 
                                                      *'g:SignatureMarkLineHL'*
+  String, Default : 'SignatureMarkLine'
+
+  The highlight group used for hightlighting lines having marks. This can be a
+  string or |Funcref|. SignatureMarkLine links to Normal by default.
+  See |g:SignatureMarkTextHL| for details.
+
+
+                                                   *'g:SignatureMarkerTextHL'*
+  String, Default : 'SignatureMarkerText'
+
+  The highlight group used for marker signs. This can be a string or |Funcref|. 
+  SignatureMarkText links to WarningMsg by default.
+  See |g:SignatureMarkTextHL| for details.
+
+
+                                            *'g:SignatureMarkerTextHLDynamic'*
+  Boolean, Default: 0
+
+  Highlight signs of markers dynamically based upon state indicated by
+  vim-gitgutter or vim-signify. Setting this to `1` prior to plugin
+  initialization overwrites |g:SignatureMarkerTextHL|.
+
+
+                                                   *'g:SignatureMarkerLineHL'*
   String, Default : ''
 
-  The highlight group used for hightlighting lines having mark/marker signs.
+  The highlight group used for hightlighting lines having markers. This can be
+  a string or a |Funcref|. SignatureMarkerLine links to Normal by default.
+  See |g:SignatureMarkTextHL| for details.
 
 
                                              *'g:SignatureDeleteConfirmation'*
@@ -292,7 +352,6 @@ SignatureListMarkers [marker]
   Boolean, Default: 0
 
   When set to 1, will always place markers instead of toggling them
-
 
 
 ==============================================================================
