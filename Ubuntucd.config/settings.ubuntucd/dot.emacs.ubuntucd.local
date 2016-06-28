@@ -81,7 +81,7 @@
      (mouse-avoidance-mode . 'exile)
      ;; face
      ;;(font . "文泉驿等宽微米黑 8")
-	 (font . "-unknown-DejaVu Sans Mono-normal-normal-normal-*-12-*-*-*-m-0-iso10646-1")
+	 (font . "-unknown-DejaVu Sans Mono-normal-normal-normal-*-10-*-*-*-m-0-iso10646-1")
      )
         ;; if on term
         (nil
@@ -3684,7 +3684,7 @@ sub do" NameofMethod " {
  '(ecb-options-version "2.40")
  '(ecb-source-path
    (quote
-    ("~/" "~/projects" "~/projects.work")))
+    ("~/" "~/projects" "~/projects.work" "~/projects.work/repo/env")))
  '(mumamo-chunk-coloring 1)
  '(package-selected-packages
    (quote
