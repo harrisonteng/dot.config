@@ -942,7 +942,7 @@ Require `font-lock'."
 (setq display-time-interval 10)
 
 ;; setup Init Folder that Emacs will enter
-(setq default-directory "~/projects")
+(setq default-directory "~/projects.work")
 
 ;;Centralized backup dir to hold ~ backup files
 (add-to-list 'backup-directory-alist (cons "." "~/.emacsbackups/"))
@@ -1197,16 +1197,14 @@ Require `font-lock'."
   '(set-face-foreground (quote font-lock-comment-face) "wheat"))
 
 (custom-set-faces
- ;; Ediff to be verically
- ;;'(ediff-split-window-function (quote split-window-vertically))
- '(ediff-window-setup-function 'ediff-setup-windows-plain)
- '(ediff-diff-options "-w")
- '(ediff-split-window-function 'split-window-horizontally)
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(background "blue")
+ '(ediff-diff-options "-w")
+ '(ediff-split-window-function (quote split-window-horizontally))
+ '(ediff-window-setup-function (quote ediff-setup-windows-plain))
  '(font-lock-builtin-face ((((class color) (background dark)) (:foreground "Turquoise"))))
  '(font-lock-comment-face ((t (:foreground "MediumAquamarine"))))
  '(font-lock-constant-face ((((class color) (background dark)) (:bold t :foreground "DarkOrchid"))))
@@ -3186,18 +3184,18 @@ sub do" NameofMethod " {
 ;;;This variable controls which method will be used
 ;;;when a method is not specified in the tramp file name. 
 (require 'tramp)
-(setq tramp-password-prompt-regexp ".*[Pp]assword: *$")
-(setq tramp-shell-prompt-pattern "^[^;$#>]*[;$#>]*")
+;(setq tramp-password-prompt-regexp ".*[Pp]assword: *$")
+;(setq tramp-shell-prompt-pattern "^[^;$#>]*[;$#>]*")
 ;;;[[Regexp `\(^[^#$%>
 ;;;]*[#$%>] *\|^[^;$#>]*[;$#>] *\)\'' not found in 60 secs]]
 (setq password-cache-expiry nil)
 (setq tramp-default-method "ssh")
-(setq tramp-default-user "root")
+(setq tramp-default-user "devops")
 ;;;(setq tramp-default-host "localhost")
 
 ;;;(set-default 'tramp-default-proxies-alist (quote ((".*"
 ;;;"\\'harrison.teng\\'" "/ssh:%h:"))))
-(set-default 'tramp-default-proxies-alist (quote ((".*" "\\'harrison.teng\\'" "/ssh:bastion3ai.electric.net:"))))
+;set-default 'tramp-default-proxies-alist (quote ((".*" "\\'harrison.teng\\'" "/ssh:bastion3ai.electric.net:"))))
 ;;;(add-to-list 'tramp-default-proxies-alist '(".*" "\'root\'" "/ssh:%h:"))
 (defun sudo-edit (&optional arg)
     "Edit currently visited file as root.With a prefix ARG prompt for a file to visit.
@@ -3321,7 +3319,7 @@ sub do" NameofMethod " {
 
 (setq multi-term-program "/bin/bash")   ;; use bash
 (setq term-default-bg-color "#000000")  ;; background color (black)
-(setq term-default-fg-color "#dddd00")  ;; foreground color (yellow)
+(setq term-default-fg-color "#dddddd")  ;; foreground color (white)
 
 ;; (setq multi-term-program "/bin/zsh") ;; or use zsh...
 
@@ -3684,7 +3682,8 @@ sub do" NameofMethod " {
  '(ecb-options-version "2.40")
  '(ecb-source-path
    (quote
-    ("~/" "~/projects" "~/projects.work" "~/projects.work/repo/env")))
+    ("~/projects" "~/projects.work" "~/projects.work/repo/env" "/ssh:devops@controlpc-harrison:/opt/" "/ssh:devops@jenkins-tcl-harrison:/opt/FortiRobot"
+     ("/" "/"))))
  '(mumamo-chunk-coloring 1)
  '(package-selected-packages
    (quote
