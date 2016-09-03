@@ -3682,7 +3682,8 @@ sub do" NameofMethod " {
  '(ecb-options-version "2.40")
  '(ecb-source-path
    (quote
-    ("~/projects" "~/projects.work" "~/projects.work/repo/env" "/ssh:devops@controlpc-harrison:/opt/" "/ssh:devops@jenkins-tcl-harrison:/opt/FortiRobot"
+    ;;("~/projects" "~/projects.work" "~/projects.work/repo/env" "/ssh:devops@controlpc-harrison:/opt/" "/ssh:devops@jenkins-tcl-harrison:/opt/FortiRobot"
+    ("~/projects" "~/projects.work" "~/projects.work/repo/env" "/mnt/harrison/p-jenkins-harrison-FortiRobot" "/mnt/harrison/p-controlpc-harrison-autolib" "/mnt/harrison/p-controlpc-harrison-testcase"
      ("/" "/"))))
  '(mumamo-chunk-coloring 1)
  '(package-selected-packages
