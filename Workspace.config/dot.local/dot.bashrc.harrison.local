@@ -101,8 +101,14 @@ alias gl2='git log --graph --all --format="%C(cyan dim) %p %Cred %h %C(white dim
 #alias mysshfs9c='sshfs -o auto_cache -o cache_timeout=115200 -o attr_timeout=115200 -o no_remote_lock -oauto_cache,reconnect,no_readahead root@inbuild9c:/root/projects /home/harrison/sshfs/inbuild9c'
 #alias umysshfs90a='fusermount -u /home/harrison/sshfs/inbuild90a'
 #alias umysshfs9c='fusermount -u /home/harrison/sshfs/inbuild9c'
+#
+#
+
 alias mfsstorage='mysshfs 70.68.198.71 /home/harrison/Storage /mnt/harrison/hfs harrison 4033'
 alias umfsstorage='umount -l /mnt/harrison/hfs;fusermount -u /mnt/harrison/hfs'
+alias pctlautolib='mysshfs p-controlpc-harrison /opt/autolib /mnt/harrison/p-controlpc-harrison-autolib devops 22'
+alias pctltestcase='mysshfs p-controlpc-harrison /opt/autolib /mnt/harrison/p-controlpc-harrison-testcase devops 22'
+alias pjenfortirobot='mysshfs p-jenkins-harrison /opt/FortiRobot /mnt/harrison/p-jenkins-harrison-FortiRobot devops 22'
 #===
 #
 #
