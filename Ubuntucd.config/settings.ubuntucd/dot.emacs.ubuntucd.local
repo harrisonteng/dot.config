@@ -343,6 +343,10 @@
 ;;ack
 (require 'ack)
 
+;; SVN
+;; M-x svn-status -> list all files, regardless of the status
+;; C-x v d -> list ONLY those local-changed files
+;; C-x v g -> blame opened file line by line
 ;;psvn
 (require 'psvn)
 
@@ -3743,7 +3747,7 @@ sub do" NameofMethod " {
  '(ecb-source-path
    (quote
     ;;("~/projects" "~/projects.work" "~/projects.work/repo/env" "/ssh:devops@controlpc-harrison:/opt/" "/ssh:devops@jenkins-tcl-harrison:/opt/FortiRobot"
-    ("~/projects" "~/projects.work" "~/projects.work/repo/env" "/mnt/harrison/p-jenkins-harrison-FortiRobot" "/mnt/harrison/p-controlpc-harrison-autolib" "/mnt/harrison/p-controlpc-harrison-testcase"
+    ("~/projects" "~/projects.work" "~/projects.work/repo/env" "/mnt/harrison/p-jenkins-harrison-FortiRobot" "/mnt/harrison/p-controlpc-harrison-autolib" "/mnt/harrison/p-controlpc-harrison-testcase" "/mnt/harrison/jenkins-tcl-harrison-FortiRobot" "/mnt/harrison/controlpc-harrison-autolib" "/mnt/harrison/controlpc-harrison-testcase"
      ("/" "/"))))
  '(mumamo-chunk-coloring 1)
  '(package-selected-packages
