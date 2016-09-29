@@ -7,7 +7,6 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 "let path='~/.vim/bundle/Vundle.vim'
 "call vundle#rc(path)
-Plugin 'VundleVim/Vundle.vim'
 Plugin 'gmarik/Vundle.vim'
 Plugin 'fatih/vim-go'
 Plugin 'majutsushi/tagbar'
