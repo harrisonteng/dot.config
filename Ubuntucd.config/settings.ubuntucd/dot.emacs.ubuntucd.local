@@ -769,9 +769,10 @@
 ;;End of IDO mode ============================
 ;;
 ;;Begin of Auto complete mode ==========
-(add-to-list 'load-path "~/.emacs.d/elpa/popup-20160409.2133")
-(add-to-list 'load-path "~/.emacs.d/elpa/auto-complete-20160416.604")
+;;(add-to-list 'load-path "~/.emacs.d/elpa/popup-20160409.2133")
+;;(add-to-list 'load-path "~/.emacs.d/elpa/auto-complete-20160416.604")
 (require 'auto-complete)
+(global-auto-complete-mode t)
 (require 'auto-complete-config)
 ;;End of Auto complete mode ========
 
