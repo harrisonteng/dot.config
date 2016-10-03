@@ -81,7 +81,7 @@
      (mouse-avoidance-mode . 'exile)
      ;; face
      ;;(font . "文泉驿等宽微米黑 8")
-	 (font . "-unknown-DejaVu Sans Mono-normal-normal-normal-*-10-*-*-*-m-0-iso10646-1")
+	 (font . "-unknown-DejaVu Sans Mono-normal-normal-normal-*-12-*-*-*-m-0-iso10646-1")
      )
         ;; if on term
         (nil
@@ -774,6 +774,8 @@
 (require 'auto-complete)
 (global-auto-complete-mode t)
 (require 'auto-complete-config)
+(ac-config-default)
+(define-key ac-mode-map (kbd "C-SPC") 'auto-complete)
 ;;End of Auto complete mode ========
 
 
@@ -1032,7 +1034,7 @@ Require `font-lock'."
 ;; set default-font a for emacs with window
 (cond (window-system
    ;;(set-default-font "-b&h-lucidaTypewriter-medium-r-normal-sans-12-120-75-75-m-70-iso8859-1")
-   (set-default-font "-unknown-DejaVu Sans Mono-normal-normal-normal-*-12-*-*-*-m-0-iso10646-1")
+   (set-default-font "-unknown-DejaVu Sans Mono-normal-normal-normal-*-14-*-*-*-m-0-iso10646-1")
 ))
 
 ;;-b&h-lucidatypewriter-medium-r-normal-sans-11-80-100-100-m-70-iso8859-1
@@ -2004,7 +2006,7 @@ sub do" NameofMethod " {
 ;;End of Cperl-mode ==========================================================
 
 ;;Begin of cc-mode ===========================================================
-(setq load-path (cons ".emacs.d/pkgs/ccmode-5.32.2" load-path))
+(setq load-path (cons ".emacs.d/pkgs/ccmode-5.33" load-path))
 (require 'gud)
 ;;(require 'gdb-ui)
 
@@ -2321,7 +2323,7 @@ sub do" NameofMethod " {
 ;;;;;;;; Auto-completion
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;(global-set-key [(control tab)] 'senator-complete-symbol);
-(global-set-key "\C-q" 'senator-completion-menu-popup)
+(global-set-key "\C-q" 'semantic-ia-complete-symbol)
 ;;(global-set-key [(control tab)] 'semantic-ia-complete-symbol-menu)
 ;;(global-set-key "\C-q" 'senator-completion-menu-popup)
 ;;(global-set-key "\C-l" 'senator-complete-symbol)
@@ -3716,6 +3718,11 @@ sub do" NameofMethod " {
 ;;(add-to-list 'load-path "~/.emacs.d/pkgs/cedet-1.1/eieio")
 ;;(add-to-list 'load-path "~/.emacs.d/pkgs/cedet-1.1/semantic")
 (setq semantic-load-turn-everything-on t)
+(defun my:add-semantic-to-autocomplete() 
+    (add-to-list 'ac-sources 'ac-source-semantic)
+    )
+(add-hook 'c-mode-common-hook 'my:add-semantic-to-autocomplete)
+(global-ede-mode 1)
 ;;(require 'semantic-load)
 
 
