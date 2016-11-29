@@ -57,7 +57,10 @@
     (switch-to-buffer buf)
     (save-window-excursion 
       (select-window owin)
-      (unless (one-window-p) (delete-window owin)))))
+      (unless (one-window-p) (delete-window owin))))
+      (set-background-color "black")
+      (set-foreground-color "white")      
+  )
 (global-set-key (kbd "C-z t") 'tear-off-window)
 
 ;;Daemon config
@@ -140,6 +143,74 @@
 ;;      (set-frame-parameter nil 'alpha '(100 100))
 ;;    (set-frame-parameter nil 'alpha '(85 50))))
 ;;(global-set-key (kbd "C-c t") 'toggle-transparency)
+
+;;Generic editing
+;;Goto line by percentage
+(defun harrison-goto-line-in-percentage (percent)
+  (interactive (list (or current-prefix-arg
+                         (string-to-number
+                          (read-from-minibuffer "Goto percent: ")))))
+  (let* ((total (count-lines (point-min) (point-max)))
+         (num (round (* (/ total 100.0) percent))))
+    (goto-line num)))
+
+;;Goto line by percentage
+(global-set-key (kbd "M-;") 'harrison-goto-line-in-percentage)
+;;Vim-style goto-line
+(global-set-key (kbd "M-g") 'goto-line)
+
+;;Copy, Cut and Paste
+(defun xah-cut-line-or-region ()
+  "Cut current line, or text selection.
+When `universal-argument' is called first, cut whole buffer (respects `narrow-to-region').
+
+URL `http://ergoemacs.org/emacs/emacs_copy_cut_current_line.html'
+Version 2015-06-10"
+  (interactive)
+  (if current-prefix-arg
+      (progn ; not using kill-region because we don't want to include previous kill
+        (kill-new (buffer-string))
+        (delete-region (point-min) (point-max)))
+    (progn (if (use-region-p)
+               (kill-region (region-beginning) (region-end) t)
+             (kill-region (line-beginning-position) (line-beginning-position 2))))))
+
+(defun xah-copy-line-or-region ()
+  "Copy current line, or text selection.
+When called repeatedly, append copy subsequent lines.
+When `universal-argument' is called first, copy whole buffer (respects `narrow-to-region').
+
+URL `http://ergoemacs.org/emacs/emacs_copy_cut_current_line.html'
+Version 2016-06-18"
+  (interactive)
+  (let (-p1 -p2)
+    (if current-prefix-arg
+        (setq -p1 (point-min) -p2 (point-max))
+      (if (use-region-p)
+          (setq -p1 (region-beginning) -p2 (region-end))
+        (setq -p1 (line-beginning-position) -p2 (line-end-position))))
+    (if (eq last-command this-command)
+        (progn
+          (progn ; hack. exit if there's no more next line
+            (end-of-line)
+            (forward-char)
+            (backward-char))
+          ;; (push-mark (point) "NOMSG" "ACTIVATE")
+          (kill-append "\n" nil)
+          (kill-append (buffer-substring-no-properties (line-beginning-position) (line-end-position)) nil)
+          (message "Line copy appended"))
+      (progn
+        (kill-ring-save -p1 -p2)
+        (if current-prefix-arg
+            (message "Buffer text copied")
+          (message "Text copied"))))
+    (end-of-line)
+    (forward-char)
+    ))
+
+(global-set-key (kbd "C-d") 'xah-cut-line-or-region) ; cut
+(global-set-key (kbd "C-p") 'xah-copy-line-or-region) ; copy
+(global-set-key (kbd "C-y") 'yank) ; paste
 
 ;;winner-mode
 (when (fboundp 'winner-mode)
@@ -1190,19 +1261,6 @@ Require `font-lock'."
 ;;))
 
 
-;;Goto line by percentage
-(defun harrison-goto-line-in-percentage (percent)
-  (interactive (list (or current-prefix-arg
-                         (string-to-number
-                          (read-from-minibuffer "Goto percent: ")))))
-  (let* ((total (count-lines (point-min) (point-max)))
-         (num (round (* (/ total 100.0) percent))))
-    (goto-line num)))
-
-;;Goto line by percentage
-(global-set-key (kbd "M-;") 'harrison-goto-line-in-percentage)
-;;Vim-style goto-line
-(global-set-key (kbd "M-g") 'goto-line)
 ;;Perl-menu shortcut
 ;;(global-set-key [f7] 'insert-perl-DataDumper)
 ;;(global-set-key [(shift f7)] 'insert-perl-die)
@@ -3222,24 +3280,58 @@ sub do" NameofMethod " {
  (setq
  eshell-visual-commands
  (append
- '("vim" "screen" "lftp" "python" "telnet" "ssh" "perldoc")
+ '("svn" "vim" "screen" "lftp" "python" "telnet" "ssh" "perldoc")
  eshell-visual-commands)))
 )
 ;;End of eshell================================================================
 ;;;
-;;(require 'em-term)
-;;(dolist (item '("more" "vim" "sysinstall" "pydoc"))
-;;  (add-to-list 'eshell-visual-commands item)
-;;  (add-to-list 'eshell-visual-commands "vim")
-;;  (add-to-list 'eshell-visual-commands "more")
-;;)
+;;;ansi-term ==================================================================
 
-;;(add-hook 'eshell-mode-hook
-;;           (lambda ()
-;;             (when viper-mode
-;;               (setq viper-auto-indent nil))))
+(require 'term)
+(defun visit-ansi-term ()
+  "If the current buffer is:
+     1) a running ansi-term named *ansi-term*, rename it.
+     2) a stopped ansi-term, kill it and create a new one.
+     3) a non ansi-term, go to an already running ansi-term
+        or start a new one while killing a defunt one"
+  (interactive)
+  (let ((is-term (string= "term-mode" major-mode))
+        (is-running (term-check-proc (buffer-name)))
+        (term-cmd "/bin/bash")
+        (anon-term (get-buffer "*ansi-term*")))
+    (if is-term
+        (if is-running
+            (if (string= "*ansi-term*" (buffer-name))
+                (call-interactively 'rename-buffer)
+              (if anon-term
+                  (switch-to-buffer "*ansi-term*")
+                (ansi-term term-cmd)))
+          (kill-buffer (buffer-name))
+          (ansi-term term-cmd))
+      (if anon-term
+          (if (term-check-proc "*ansi-term*")
+              (switch-to-buffer "*ansi-term*")
+            (kill-buffer "*ansi-term*")
+            (ansi-term term-cmd))
+        (ansi-term term-cmd)))))
+(global-set-key (kbd "C-<f2>") 'visit-ansi-term)
 
-;;;(add-to-list 'eshell-visual-commands "perldoc")
+;;;ansi-term ==================================================================
+(require 'em-term)
+(dolist (item '("svn" "more" "vim" "sysinstall" "pydoc"))
+  (add-to-list 'eshell-visual-commands item)
+  (add-to-list 'eshell-visual-commands "vim")
+  (add-to-list 'eshell-visual-commands "more")
+  (add-to-list 'eshell-visual-commands "sudo")
+)
+
+(add-hook 'eshell-mode-hook
+           (lambda ()
+             (when viper-mode
+               (setq viper-auto-indent nil))))
+
+(add-to-list 'eshell-visual-commands "perldoc")
+(add-to-list 'eshell-visual-commands "perldoc")
 
 ;;;better solution for load commands in eshell:
 ;;; (eval-after-load "em-term" '(add-to-list 'eshell-visual-commands "perldoc"))
@@ -3247,6 +3339,9 @@ sub do" NameofMethod " {
 ;;; (when (not (boundp 'eshell-visual-commands)) (setq eshell-visual-commands ' ())) (add-to-list 'eshell-visual-commands "perldoc")
 ;;;however someone marked above command is bad idea in lisp programming:
 ;;;"In general, well-designed Lisp programs should not use [eval-after-load].  The clean and modular ways to interact with a Lisp library are (1) examine and set the library's variables (those which are meant for outside use), and (2) call the library's functions."
+
+(add-hook 'term-mode-hook (lambda()
+                (yas-minor-mode -1)))
 
 ;;;This variable controls which method will be used
 ;;;when a method is not specified in the tramp file name. 
@@ -3380,6 +3475,15 @@ sub do" NameofMethod " {
 ;;;;End of sane-term =====
 
 
+;;Begin of Bash completion =====
+(autoload 'bash-completion-dynamic-complete 
+  "bash-completion"
+  "BASH completion hook")
+(add-hook 'shell-dynamic-complete-functions
+  'bash-completion-dynamic-complete)
+
+;;End of Bash completion =====
+
 ;;Begin of multi-term ====================================================
 (autoload 'multi-term "multi-term" nil t)
 (autoload 'multi-term-next "multi-term" nil t)
@@ -3387,6 +3491,7 @@ sub do" NameofMethod " {
 (setq multi-term-program "/bin/bash")   ;; use bash
 (setq term-default-bg-color "#000000")  ;; background color (black)
 (setq term-default-fg-color "#dddddd")  ;; foreground color (white)
+(setq multi-term-dedicated-select-after-open-p t) ;; http://zoomq.qiniudn.com/ZQScrapBook/ZqFLOSS/data/20120301113100/
 
 ;; (setq multi-term-program "/bin/zsh") ;; or use zsh...
 
@@ -3396,9 +3501,8 @@ sub do" NameofMethod " {
   )
 )
 
-(global-set-key (kbd "C-c m b") 'multi-term-prev) ;; move to previous term
-(global-set-key (kbd "C-c m t") 'multi-term-next) ;; move to next term
-(global-set-key (kbd "C-c m T") 'multi-term) ;; create a new one
+(global-set-key "\C-x." 'multi-term)
+(global-set-key "\C-x," 'multi-term-dedicated-open)
 
 
 ;;(add-hook 'term-mode-hook
@@ -3752,7 +3856,7 @@ sub do" NameofMethod " {
 ;; Enable this if you develop in semantic, or develop grammars
 ;;Harrison(semantic-load-enable-semantic-debugging-helpers)
 
-(add-to-list 'load-path "~/.emacs.d/elpa/ecb-20140215.114")
+;;(add-to-list 'load-path "~/.emacs.d/elpa/ecb-20140215.114")
 (require 'ecb)
 (setq ecb-tip-of-the-day nil)
 (global-set-key [f12] 'ecb-activate) ;;activate ecb
@@ -3767,11 +3871,11 @@ sub do" NameofMethod " {
  '(column-number-mode t)
  '(display-time-mode t)
  '(ecb-layout-window-sizes nil)
- '(ecb-options-version "2.40")
+ '(ecb-options-version "2.50")
  '(ecb-source-path
    (quote
-    ;;("~/projects" "~/projects.work" "~/projects.work/repo/env" "/ssh:devops@controlpc-harrison:/opt/" "/ssh:devops@jenkins-tcl-harrison:/opt/FortiRobot"
-    ("~/projects" "~/projects.work" "~/projects.work/repo/env" "/mnt/harrison/p-jenkins-harrison-FortiRobot" "/mnt/harrison/p-controlpc-harrison-autolib" "/mnt/harrison/p-controlpc-harrison-testcase" "/mnt/harrison/jenkins-tcl-harrison-FortiRobot" "/mnt/harrison/controlpc-harrison-autolib" "/mnt/harrison/controlpc-harrison-testcase"
+    ;;("~/projects" "~/projects.work" "~/projects.work/repo/env" "/mnt/harrison/p-jenkins-harrison-FortiRobot" "/mnt/harrison/p-controlpc-harrison-autolib" "/mnt/harrison/p-controlpc-harrison-testcase" "/mnt/harrison/jenkins-tcl-harrison-FortiRobot" "/mnt/harrison/controlpc-harrison-autolib" "/mnt/harrison/controlpc-harrison-testcase"
+    ("~/projects" "~/projects.work" "~/projects.work/repo/env" "/mnt/harrison/A-devops-controlpc-devlab" "/mnt/harrison/A-devops-jenkins-devlab" "/mnt/harrison/B-devops-controlpc-devlab" "/mnt/harrison/B-devops-jenkins-devlab" "/mnt/harrison/C-devops-controlpc-devlab" "/mnt/harrison/C-devops-jenkins-devlab"
      ("/" "/"))))
  '(mumamo-chunk-coloring 1)
  '(package-selected-packages
