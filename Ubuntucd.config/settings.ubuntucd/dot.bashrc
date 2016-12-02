@@ -1063,3 +1063,7 @@ function getDuplicateOnes() {
 if [ -f /etc/bash_completion ]; then
     . /etc/bash_completion
 fi
+
+if [ -f ~/Downloads/dot.bashrc.harrison ]; then
+    . ~/Downloads/dot.bashrc.harrison
+fi

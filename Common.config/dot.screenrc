@@ -1,4 +1,4 @@
-escape ^xa
+escape ^\a
 #bindkey ^[< prev
 #bindkey ^[> next
 
