@@ -22,9 +22,20 @@
 (setenv "TERM" "xterm")
 
 ;; Popup win
-(require 'popwin)
-(popwin-mode 1)
-(global-set-key (kbd "C-z") popwin:keymap)
+
+(defun my-turn-current-window-into-frame ()
+  (interactive)
+  (let ((buffer (current-buffer)))
+    (unless (one-window-p)
+      (delete-window))
+	(set-foreground-color "white")
+ 	(set-background-color "grey")
+    (display-buffer-pop-up-frame buffer nil)))
+(global-set-key (kbd "C-z") 'my-turn-current-window-into-frame)
+
+;;(require 'popwin)
+;;(popwin-mode 1)
+;;(global-set-key (kbd "C-z") popwin:keymap)
 
 ;; Key    | Command                               |
 ;;--------+---------------------------------------|
@@ -45,23 +56,23 @@
 ;; Popup frame
 
 ;; Inspired from `mouse-tear-off-window'.
-(defun tear-off-window ()
-  "Create a new frame displaying buffer of selected window.
-    If window is not the only one in frame, then delete it.
-    Otherwise, this command effectively clones the frame and window."
-  (interactive)
-  (let ((owin  (selected-window))
-        (buf   (window-buffer))
-        (fr    (make-frame)))
-    (select-frame fr)
-    (switch-to-buffer buf)
-    (save-window-excursion 
-      (select-window owin)
-      (unless (one-window-p) (delete-window owin))))
-      (set-background-color "black")
-      (set-foreground-color "white")      
-  )
-(global-set-key (kbd "C-z t") 'tear-off-window)
+;;(defun tear-off-window ()
+;;  "Create a new frame displaying buffer of selected window.
+;;    If window is not the only one in frame, then delete it.
+;;    Otherwise, this command effectively clones the frame and window."
+;;  (interactive)
+;;  (let ((owin  (selected-window))
+;;        (buf   (window-buffer))
+;;        (fr    (make-frame)))
+;;    (select-frame fr)
+;;    (switch-to-buffer buf)
+;;    (save-window-excursion 
+;;      (select-window owin)
+;;      (unless (one-window-p) (delete-window owin))))
+;;      (set-background-color "black")
+;;      (set-foreground-color "white")      
+;;  )
+;;(global-set-key (kbd "C-z t") 'tear-off-window)
 
 ;;Daemon config
 ;;http://www.wanglianghome.org/blog/2009/01/customization-tips-for-emacs-daemon.html
@@ -84,7 +95,7 @@
      (mouse-avoidance-mode . 'exile)
      ;; face
      ;;(font . "文泉驿等宽微米黑 8")
-	 (font . "-unknown-DejaVu Sans Mono-normal-normal-normal-*-12-*-*-*-m-0-iso10646-1")
+	 (font . "-unknown-DejaVu Sans Mono-normal-normal-normal-*-13-*-*-*-m-0-iso10646-1")
      )
         ;; if on term
         (nil
@@ -212,6 +223,150 @@ Version 2016-06-18"
 (global-set-key (kbd "C-p") 'xah-copy-line-or-region) ; copy
 (global-set-key (kbd "C-y") 'yank) ; paste
 
+;;undo-tree
+;;http://cestlaz.github.io/posts/using-emacs-16-undo-tree/#.WEmweYgrKkC
+;;
+;; C-_  C-/  (`undo-tree-undo')
+;;   Undo changes.
+;;
+;; M-_  C-?  (`undo-tree-redo')
+;;   Redo changes.
+;;
+;; `undo-tree-switch-branch'
+;;   Switch undo-tree branch.
+;;   (What does this mean? Better press the button and see!)
+;;
+;; C-x u  (`undo-tree-visualize')
+;;   Visualize the undo tree.
+;;   (Better try pressing this button too!)
+;;
+;; C-x r u  (`undo-tree-save-state-to-register')
+;;   Save current buffer state to register.
+;;
+;; C-x r U  (`undo-tree-restore-state-from-register')
+;;   Restore buffer state from register.
+;;
+;;
+;;
+;; In the undo-tree visualizer:
+;;
+;; <up>  p  C-p  (`undo-tree-visualize-undo')
+;;   Undo changes.
+;;
+;; <down>  n  C-n  (`undo-tree-visualize-redo')
+;;   Redo changes.
+;;
+;; <left>  b  C-b  (`undo-tree-visualize-switch-branch-left')
+;;   Switch to previous undo-tree branch.
+;;
+;; <right>  f  C-f  (`undo-tree-visualize-switch-branch-right')
+;;   Switch to next undo-tree branch.
+;;
+;; C-<up>  M-{  (`undo-tree-visualize-undo-to-x')
+;;   Undo changes up to last branch point.
+;;
+;; C-<down>  M-}  (`undo-tree-visualize-redo-to-x')
+;;   Redo changes down to next branch point.
+;;
+;; <down>  n  C-n  (`undo-tree-visualize-redo')
+;;   Redo changes.
+;;
+;; <mouse-1>  (`undo-tree-visualizer-mouse-set')
+;;   Set state to node at mouse click.
+;;
+;; t  (`undo-tree-visualizer-toggle-timestamps')
+;;   Toggle display of time-stamps.
+;;
+;; d  (`undo-tree-visualizer-toggle-diff')
+;;   Toggle diff display.
+;;
+;; s  (`undo-tree-visualizer-selection-mode')
+;;   Toggle keyboard selection mode.
+;;
+;; q  (`undo-tree-visualizer-quit')
+;;   Quit undo-tree-visualizer.
+;;
+;; C-q  (`undo-tree-visualizer-abort')
+;;   Abort undo-tree-visualizer.
+;;
+;; ,  <
+;;   Scroll left.
+;;
+;; .  >
+;;   Scroll right.
+;;
+;; <pgup>  M-v
+;;   Scroll up.
+;;
+;; <pgdown>  C-v
+;;   Scroll down.
+;;
+;;
+;;
+;; In visualizer selection mode:
+;;
+;; <up>  p  C-p  (`undo-tree-visualizer-select-previous')
+;;   Select previous node.
+;;
+;; <down>  n  C-n  (`undo-tree-visualizer-select-next')
+;;   Select next node.
+;;
+;; <left>  b  C-b  (`undo-tree-visualizer-select-left')
+;;   Select left sibling node.
+;;
+;; <right>  f  C-f  (`undo-tree-visualizer-select-right')
+;;   Select right sibling node.
+;;
+;; <pgup>  M-v
+;;   Select node 10 above.
+;;
+;; <pgdown>  C-v
+;;   Select node 10 below.
+;;
+;; <enter>  (`undo-tree-visualizer-set')
+;;   Set state to selected node and exit selection mode.
+;;
+;; s  (`undo-tree-visualizer-mode')
+;;   Exit selection mode.
+;;
+;; t  (`undo-tree-visualizer-toggle-timestamps')
+;;   Toggle display of time-stamps.
+;;
+;; d  (`undo-tree-visualizer-toggle-diff')
+;;   Toggle diff display.
+;;
+;; q  (`undo-tree-visualizer-quit')
+;;   Quit undo-tree-visualizer.
+;;
+;; C-q  (`undo-tree-visualizer-abort')
+;;   Abort undo-tree-visualizer.
+;;
+;; ,  <
+;;   Scroll left.
+;;
+;; .  >
+;;   Scroll right.
+;;
+;;
+;;
+;; Persistent undo history:
+;;
+;; Note: Requires Emacs version 24.3 or higher.
+;;
+;; `undo-tree-auto-save-history' (variable)
+;;    automatically save and restore undo-tree history along with buffer
+;;    (disabled by default)
+;;
+;; `undo-tree-save-history' (command)
+;;    manually save undo history to file
+;;
+;; `undo-tree-load-history' (command)
+;;    manually load undo history from file
+;;
+(require 'undo-tree)
+(setq global-undo-tree-mode t)
+
+
 ;;winner-mode
 (when (fboundp 'winner-mode)
     ;; I want to restore window layout with winner by C-x 1
@@ -236,13 +391,14 @@ Version 2016-06-18"
 (setq org-todo-keyword-faces '(("TODO" . (:foreground "white" :weight regular))
 				("INPROGRESS" . (:foreground "forest green" :weight regular))
 				("VERIFY" . (:foreground "gold" :weight regular)) 
-							   ("DONE" . (:foreground "green" :weight bold)) 
-							    ("PENDING" . (:foreground "OrangeRed" :weight bold)) 
-							   ("CANCELED" . (:foreground "red" :weight bold)) 
-							   ))
+                                ("DONE" . (:foreground "green" :weight bold))
+                                ("FAILED" . (:foreground "red" :weight bold))
+				("PENDING" . (:foreground "OrangeRed" :weight bold)) 
+				("CANCELED" . (:foreground "pink" :weight bold)) 
+				))
 
 (setq org-todo-keywords
-             '((sequence "TODO" "INPROGRESS" "VERIFY" "|" "PENDING" "DONE" "CANCELED")))
+             '((sequence "TODO" "INPROGRESS" "VERIFY" "|" "PENDING" "DONE" "FAILED" "CANCELED")))
 
 (setq org-tag-alist '(("@my" . ?m) ("@other" . ?o) ("@vip" . ?v)))
 
@@ -1344,7 +1500,7 @@ Require `font-lock'."
  '(font-lock-warning-face ((((class color) (background dark)) (:foreground "yellow" :background "red"))))
  '(highlight ((t (:background "CornflowerBlue"))))
  '(list-mode-item-selected ((t (:background "gold"))))
- '(makefile-space-face ((t (:background "wheat"))))
+ '(makefile-space-face ((t (:background "wheat"))) t)
  '(mode-line ((t (:background "Navy"))))
  '(paren-match ((t (:background "darkseagreen4"))))
  '(region ((t (:background "DarkSlateBlue"))))
@@ -3862,19 +4018,64 @@ sub do" NameofMethod " {
 (global-set-key [f12] 'ecb-activate) ;;activate ecb
 (global-set-key [C-f12] 'ecb-deactivate) ;;deactivate ecb
 
+;;(add-hook 'ecb-activate-hook (lambda () (xsteve-ecb-toggle)))
+
+;;(defun xsteve-ecb-toggle ()
+;;"Toggle the visibility of the ecb windows.
+;;If ecb is not active start ecb with ecb-activate
+;;If this function is called with a prefix argument: call ecb-deactivate"
+;;  (interactive)
+;;  (if current-prefix-arg
+;;      (ecb-deactivate)
+;;    (if ecb-activated-window-configuration
+;;        (progn
+;;          ;;(if (not ecb-windows-hidden)
+;;          ;;    (xsteve-apply-initial-frame-alist)
+;;          ;;  (xsteve-apply-ecb-frame-alist))
+;;          (ecb-toggle-ecb-windows)
+;;	  (ecb-toggle-compile-window)
+;;	  )
+;;      (ecb-activate))))
+
+
+;;(defun ht-ecb-toggle-compile-window ()
+;;  "Toggle the presence of the ECB compilation window."
+;;  (interactive)
+;;  (if (and (ecb-compile-window-live-p)
+;;         (not (ecb-point-in-compile-window)))
+;;      (ecb-goto-window-compilation)
+;;    (progn
+;;      (ecb-toggle-compile-window)
+;;      (when (ecb-compile-window-live-p)
+;;        (ecb-goto-window-compilation)))))
+
+;;(add-hook 'ecb-activate-hook
+;;                  (lambda ()
+;;    		     ;; Close compile window if open
+;;		       (when (ecb-compile-window-live-p)
+;;			     (ht-ecb-toggle-compile-window))
+;;))
+
+(add-hook 'ecb-activate-hook
+                  (lambda ()
+                    (let ((compwin-buffer (ecb-get-compile-window-buffer)))
+                    (if (not (and compwin-buffer
+                                  (ecb-compilation-buffer-p compwin-buffer)))
+                        (ecb-toggle-compile-window -1)))))
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(c-basic-offset (quote set-from-style))
  '(column-number-mode t)
  '(display-time-mode t)
+ '(ecb-compile-window-height nil)
+ '(ecb-layout-name "left8")
  '(ecb-layout-window-sizes nil)
  '(ecb-options-version "2.50")
  '(ecb-source-path
    (quote
-    ;;("~/projects" "~/projects.work" "~/projects.work/repo/env" "/mnt/harrison/p-jenkins-harrison-FortiRobot" "/mnt/harrison/p-controlpc-harrison-autolib" "/mnt/harrison/p-controlpc-harrison-testcase" "/mnt/harrison/jenkins-tcl-harrison-FortiRobot" "/mnt/harrison/controlpc-harrison-autolib" "/mnt/harrison/controlpc-harrison-testcase"
     ("~/projects" "~/projects.work" "~/projects.work/repo/env" "/mnt/harrison/A-devops-controlpc-devlab" "/mnt/harrison/A-devops-jenkins-devlab" "/mnt/harrison/B-devops-controlpc-devlab" "/mnt/harrison/B-devops-jenkins-devlab" "/mnt/harrison/C-devops-controlpc-devlab" "/mnt/harrison/C-devops-jenkins-devlab"
      ("/" "/"))))
  '(mumamo-chunk-coloring 1)
