@@ -21,17 +21,37 @@
 ;; Make TERM to be xterm so that VIM works fine in Term Mode
 (setenv "TERM" "xterm")
 
+;;winner-mode
+;;(winner-mode)
+(when (fboundp 'winner-mode)
+    ;; I want to restore window layout with winner by C-x 1
+    (winner-mode 1)) ;;"C-c <left>" and "C-c <right>" undo and re-do window changes.
+
+;; Ediff tweak
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; ediff                                                                  ;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(require 'ediff)
+;; don't start another frame
+;; this is done by default in preluse
+(setq ediff-window-setup-function 'ediff-setup-windows-plain)
+;; put windows side by side
+(setq ediff-split-window-function (quote split-window-horizontally))
+;;revert windows on exit - needs winner mode
+(add-hook 'ediff-after-quit-hook-internal 'winner-undo)
+
+
 ;; Popup win
 
-(defun my-turn-current-window-into-frame ()
-  (interactive)
-  (let ((buffer (current-buffer)))
-    (unless (one-window-p)
-      (delete-window))
-	(set-foreground-color "white")
- 	(set-background-color "grey")
-    (display-buffer-pop-up-frame buffer nil)))
-(global-set-key (kbd "C-z") 'my-turn-current-window-into-frame)
+;;(defun my-turn-current-window-into-frame ()
+;;  (interactive)
+;;  (let ((buffer (current-buffer)))
+;;    (unless (one-window-p)
+;;      (delete-window))
+;;	(set-foreground-color "white")
+;; 	(set-background-color "grey")
+;;    (display-buffer-pop-up-frame buffer nil)))
+;;(global-set-key (kbd "C-z") 'my-turn-current-window-into-frame)
 
 ;;(require 'popwin)
 ;;(popwin-mode 1)
@@ -367,10 +387,6 @@ Version 2016-06-18"
 (setq global-undo-tree-mode t)
 
 
-;;winner-mode
-(when (fboundp 'winner-mode)
-    ;; I want to restore window layout with winner by C-x 1
-    (winner-mode 1)) ;;"C-c <left>" and "C-c <right>" undo and re-do window changes.
 
 ;;org mode
 ;;(setq load-path (cons "~/.emacs.d/pkgs/org-7.7/contrib/lisp" load-path))
@@ -380,7 +396,7 @@ Version 2016-06-18"
 ;;add timestamp, M-x my-insert-date or C-c .
 ;;C-c C-s|d schedule|deadline
 ;;C-c a L List by Tag
-;;C-c , [A]B|C] set priority and shift up/down to pro/de mote priority
+;;Shift up/down , [A]B|C] set priority and shift up/down to pro/de mote priority
 ;;C-c C-x C-c set column view and q quit it
 (require 'org-install)
 (add-to-list 'auto-mode-alist '("\\.org$" . Org-mode))
