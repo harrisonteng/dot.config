@@ -1103,14 +1103,15 @@ function go() {
 	local input=$3; # 35C
 
 	num=${input:0:2};
-	char=${input:2:1};
+	numsmoke=${input:0:3};
+	char=${input:2:2};
 
 	if [ "X${type}" == "Xc" ];then
 	    ssh ${prodorlab}-vdom-r${num}${char}-controlpc-harrison;
 	elif [ "X${type}" == "Xj" ];then
 	    ssh ${prodorlab}-vdom-r${num}${char}-jenkins-harrison;
 	elif [ "X${type}" == "Xt" ];then
-	    telnet ${prodorlab}-vdom-r${num}-term-harrison;
+	    telnet ${prodorlab}-vdom-r${numsmoke}-term-harrison;
 	fi
 
 }
