@@ -1,0 +1,265 @@
+127.0.0.1	localhost
+127.0.1.1	harrison-OptiPlex-5040
+
+#my cubicle
+#172.18.25.201	htpdu   htpdu
+#172.18.25.149	htterm	    htterm
+#172.18.25.146	ht100d1	ht100d1
+#172.18.25.147	ht60d	ht60d
+172.18.25.145	harrison-desktop.fortinet.com	harrison-desktop
+172.18.25.235	harrison-l460.fortinet.com	harrison-l460
+172.18.25.232	harrison-l460-gobang.fortinet.com	harrison-l460-gobang
+
+#2nd floor lab
+172.18.25.56	labpdu	labpdu
+172.18.25.57	labterm	labterm
+
+192.168.100.150 devjenkins  devjenkins
+172.18.25.58	jenkins-slave8	jenkins-slave8
+172.18.25.59	jenkins-slave9	jenkins-slave9
+
+172.18.25.52	test-ext    test-ext
+172.18.25.53	test-int    test-int
+172.18.25.50	FGT-EXT	FGT-EXT
+172.18.25.54	FGT-INT	FGT-INT
+
+172.18.25.196	rbportal    rbportal
+
+172.18.125.112	autolibhost autolibhost
+172.18.125.113	autolibhost-1004    autolibhost-1004
+172.18.125.114	fw-harrison fw-harrison
+172.18.125.115	term-harrison term-harrison
+172.18.125.116	controlpc-harrison controlpc-harrison
+
+
+
+##Firewall
+
+## Below 2 are dev vms
+172.18.125.118	jenkins-tcl-harrison	jenkins-tcl-harrison
+172.18.125.119	newcontrolpc-harrison newcontrolpc-harrison
+#2nd Lab - Hypervisor Firewall Testing
+172.18.125.120	h-jenkins-tcl-harrison  h-jenkins-tcl-harrison
+172.18.125.121  h-newcontrolpc-harrison h-newcontrolpc-harrison
+172.18.125.122  h-term-harrison		h-term-harrison
+172.18.125.125	fw-pdu-harrison		fw-pdu-harrison
+172.18.125.229	fw-140D-harrison
+172.18.125.121	fw-controlpc-harrison
+172.18.60.4     vw-firewall             vw-firewall
+172.18.60.15	vw-controlpc		vw-controlpc
+172.18.60.65	xh-controlpc		xh-controlpc
+
+
+##VDOM
+172.18.125.160	vdomfw-140D-harrison	vdomfw-140D-harrison
+172.18.125.124	vdomfw-term-harrison	vdomfw-term-harrison
+172.18.125.200	vdomfw-alias-harrison	vdomfw-alias-harrison
+
+#Lab on 2nd floor ( room 250 )
+#
+172.18.125.160	l-vdom-r01-fw-harrison  l-vdom-r01-fw-harrison
+172.18.125.170  l-vdom-r01-pdu-harrison l-vdom-r01-pdu-harrison
+172.18.125.180	l-vdom-r01-term-harrison	l-vdom-r01-term-harrison
+172.18.125.162	l-vdom-r01A-fhv-harrison   l-vdom-r01A-fhv-harrison
+172.18.125.161	l-vdom-r01A-controlpc-harrison   l-vdom-r01A-controlpc-harrison
+172.18.125.169	l-vdom-r01A-jenkins-harrison	l-vdom-r01A-jenkins-harrison
+172.18.125.172	l-vdom-r01B-fhv-harrison   l-vdom-r01B-fhv-harrison
+172.18.125.171	l-vdom-r01B-controlpc-harrison	l-vdom-r01B-controlpc-harrison
+172.18.125.179	l-vdom-r01B-jenkins-harrison	l-vdom-r01B-jenkins-harrison
+172.18.125.182	l-vdom-r01C-fhv-harrison   l-vdom-r01C-fhv-harrison
+172.18.125.181	l-vdom-r01C-controlpc-harrison	l-vdom-r01C-controlpc-harrison
+172.18.125.189	l-vdom-r01C-jenkins-harrison	l-vdom-r01C-jenkins-harrison
+
+#Production or 3rd floor
+#WIFI
+172.16.181.113	PC-WIFI	PC-WIFI
+172.18.125.211  oldesxi	oldesxi
+172.16.181.214	newesxi	newesxi
+
+192.168.100.221	tftphost    tftphost
+
+172.16.181.122	p-pdu-harrison  p-pdu-harrison
+172.16.181.121	p-dut-80d-harrison  p-dut-80d-harrison
+172.16.181.115	p-fw-harrison	p-fw-harrison
+172.16.181.119	p-term-harrison	p-term-harrison
+172.16.181.118	p-jenkins-harrison  p-jenkins-harrison
+172.16.181.117	p-controlpc-harrison	p-controlpc-harrison
+
+#Production.R19
+172.16.181.10	p-vdom-r19-fw-harrison  p-vdom-r19-fw-harrison
+172.16.181.20	p-vdom-r19-pdu-harrison  p-vdom-r19-pdu-harrison
+172.16.181.30	p-vdom-r19-term-harrison  p-vdom-r19-term-harrison
+
+#R19A
+172.16.181.12	p-vdom-r19A-fhv-harrison  p-vdom-r19A-fhv-harrison
+172.16.181.11	p-vdom-r19A-controlpc-harrison  p-vdom-r19A-controlpc-harrison
+172.16.181.19	p-vdom-r19A-jenkins-harrison  p-vdom-r19A-jenkins-harrison
+#R19B
+172.16.181.22	p-vdom-r19B-fhv-harrison  p-vdom-r19B-fhv-harrison
+172.16.181.21	p-vdom-r19B-controlpc-harrison  p-vdom-r19B-controlpc-harrison
+172.16.181.29	p-vdom-r19B-jenkins-harrison  p-vdom-r19B-jenkins-harrison
+#R19C
+172.16.181.32	p-vdom-r19C-fhv-harrison  p-vdom-r19C-fhv-harrison
+172.16.181.31	p-vdom-r19C-controlpc-harrison  p-vdom-r19C-controlpc-harrison
+172.16.181.39	p-vdom-r19C-jenkins-harrison  p-vdom-r19C-jenkins-harrison
+
+#Production.R35
+172.16.181.40	p-vdom-r35-fw-harrison  p-vdom-r35-fw-harrison
+172.16.181.50	p-vdom-r35-pdu-harrison  p-vdom-r35-pdu-harrison
+172.16.181.60	p-vdom-r35-term-harrison  p-vdom-r35-term-harrison
+
+#R35A
+172.16.181.42	p-vdom-r35A-fhv-harrison  p-vdom-r35A-fhv-harrison
+172.16.181.41	p-vdom-r35A-controlpc-harrison  p-vdom-r35A-controlpc-harrison
+172.16.181.49	p-vdom-r35A-jenkins-harrison  p-vdom-r35A-jenkins-harrison
+#R35B
+172.16.181.52	p-vdom-r35B-fhv-harrison  p-vdom-r35B-fhv-harrison
+172.16.181.51	p-vdom-r35B-controlpc-harrison  p-vdom-r35B-controlpc-harrison
+172.16.181.59	p-vdom-r35B-jenkins-harrison  p-vdom-r35B-jenkins-harrison
+#R35C
+172.16.181.62	p-vdom-r35C-fhv-harrison  p-vdom-r35C-fhv-harrison
+172.16.181.61	p-vdom-r35C-controlpc-harrison  p-vdom-r35C-controlpc-harrison
+172.16.181.69	p-vdom-r35C-jenkins-harrison  p-vdom-r35C-jenkins-harrison
+
+
+#Production.R37
+172.16.181.70	p-vdom-r37-fw-harrison  p-vdom-r37-fw-harrison
+172.16.181.80	p-vdom-r37-pdu-harrison  p-vdom-r37-pdu-harrison
+172.16.181.90	p-vdom-r37-term-harrison  p-vdom-r37-term-harrison
+
+#R37A
+#R37B
+172.16.181.82	p-vdom-r37B-fhv-harrison  p-vdom-r37B-fhv-harrison
+172.16.181.81	p-vdom-r37B-controlpc-harrison  p-vdom-r37B-controlpc-harrison
+172.16.181.89	p-vdom-r37B-jenkins-harrison  p-vdom-r37B-jenkins-harrison
+#R37C
+172.16.181.92	p-vdom-r37C-fhv-harrison  p-vdom-r37C-fhv-harrison
+172.16.181.91	p-vdom-r37C-controlpc-harrison  p-vdom-r37C-controlpc-harrison
+172.16.181.99	p-vdom-r37C-jenkins-harrison  p-vdom-r37C-jenkins-harrison
+
+#Production.R48
+172.16.181.120	p-vdom-r48-fw-harrison  p-vdom-r48-fw-harrison
+172.16.181.130	p-vdom-r48-pdu-harrison  p-vdom-r48-pdu-harrison
+172.16.181.140	p-vdom-r48-term-harrison  p-vdom-r48-term-harrison
+
+#R48A
+#R48B
+172.16.181.132	p-vdom-r48B-fhv-harrison  p-vdom-r48B-fhv-harrison
+172.16.181.131	p-vdom-r48B-controlpc-harrison  p-vdom-r48B-controlpc-harrison
+172.16.181.139	p-vdom-r48B-jenkins-harrison  p-vdom-r48B-jenkins-harrison
+#R48C
+172.16.181.142	p-vdom-r48C-fhv-harrison  p-vdom-r48C-fhv-harrison
+172.16.181.141	p-vdom-r48C-controlpc-harrison  p-vdom-r48C-controlpc-harrison
+172.16.181.149	p-vdom-r48C-jenkins-harrison  p-vdom-r48C-jenkins-harrison
+
+##################### SMOKE #####################
+
+#R22
+172.16.183.10   p-vdom-r22-fw-harrison           p-vdom-r22-fw-harrison
+172.16.183.20   p-vdom-r22-pdu-harrison          p-vdom-r22-pdu-harrison
+172.16.183.30   p-vdom-r22-term-harrison         p-vdom-r22-term-harrison
+
+#R22A
+172.16.183.12   p-vdom-r22A-fhv-harrison         p-vdom-r22A-fhv-harrison
+172.16.183.11	p-vdom-r22A-controlpc-harrison   p-vdom-r22A-controlpc-harrison
+172.16.183.19   p-vdom-r22A-jenkins-harrison     p-vdom-r22A-jenkins-harrison
+#R22B
+172.16.183.22   p-vdom-r22B-fhv-harrison         p-vdom-r22B-fhv-harrison
+172.16.183.21	p-vdom-r22B-controlpc-harrison   p-vdom-r22B-controlpc-harrison
+172.16.183.29   p-vdom-r22B-jenkins-harrison     p-vdom-r22B-jenkins-harrison
+#R22C
+172.16.183.32   p-vdom-r22C-fhv-harrison         p-vdom-r22C-fhv-harrison
+172.16.183.31	p-vdom-r22C-controlpc-harrison   p-vdom-r22C-controlpc-harrison
+172.16.183.39   p-vdom-r22C-jenkins-harrison     p-vdom-r22C-jenkins-harrison
+
+
+
+#R54U
+172.16.183.40   p-vdom-r54U-fw-harrison          p-vdom-r54U-fw-harrison
+172.16.183.50   p-vdom-r54U-pdu-harrison         p-vdom-r54U-pdu-harrison
+172.16.183.60   p-vdom-r54U-term-harrison        p-vdom-r54U-term-harrison
+#R54UA
+172.16.183.42   p-vdom-r54UA-fhv-harrison        p-vdom-r54UA-fhv-harrison
+172.16.183.41   p-vdom-r54UA-controlpc-harrison  p-vdom-r54UA-controlpc-harrison
+172.16.183.49   p-vdom-r54UA-jenkins-harrison    p-vdom-r54UA-jenkins-harrison
+#R54UB
+172.16.183.52   p-vdom-r54UB-fhv-harrison        p-vdom-r54UB-fhv-harrison
+172.16.183.51	p-vdom-r54UB-controlpc-harrison  p-vdom-r54UB-controlpc-harrison
+172.16.183.59   p-vdom-r54UB-jenkins-harrison    p-vdom-r54UB-jenkins-harrison
+#R54UC
+172.16.183.62   p-vdom-r54UC-fhv-harrison        p-vdom-r54UC-fhv-harrison
+172.16.183.61	p-vdom-r54UC-controlpc-harrison  p-vdom-r54UC-controlpc-harrison
+172.16.183.69   p-vdom-r54UC-jenkins-harrison    p-vdom-r54UC-jenkins-harrison
+
+
+
+#R54L
+172.16.183.70   p-vdom-r54L-fw-harrison          p-vdom-r54L-fw-harrison
+172.16.183.80   p-vdom-r54L-pdu-harrison         p-vdom-r54L-pdu-harrison
+172.16.183.90   p-vdom-r54L-term-harrison        p-vdom-r54L-term-harrison
+#R54LA
+172.16.183.72   p-vdom-r54LA-fhv-harrison        p-vdom-r54LA-fhv-harrison
+172.16.183.71   p-vdom-r54LA-controlpc-harrison  p-vdom-r54LA-controlpc-harrison
+172.16.183.79   p-vdom-r54LA-jenkins-harrison    p-vdom-r54LA-jenkins-harrison
+#R54LB
+172.16.183.82   p-vdom-r54LB-fhv-harrison        p-vdom-r54LB-fhv-harrison
+172.16.183.81	p-vdom-r54LB-controlpc-harrison  p-vdom-r54LB-controlpc-harrison
+172.16.183.89   p-vdom-r54LB-jenkins-harrison    p-vdom-r54LB-jenkins-harrison
+#R54LC
+172.16.183.92   p-vdom-r54LC-fhv-harrison        p-vdom-r54LC-fhv-harrison
+172.16.183.91	p-vdom-r54LC-controlpc-harrison  p-vdom-r54LC-controlpc-harrison
+172.16.183.99   p-vdom-r54LC-jenkins-harrison    p-vdom-r54LC-jenkins-harrison
+
+
+
+#R55U
+172.16.183.100  p-vdom-r55U-fw-harrison          p-vdom-r55U-fw-harrison
+172.16.183.110  p-vdom-r55U-pdu-harrison         p-vdom-r55U-pdu-harrison
+172.16.183.120  p-vdom-r55U-term-harrison        p-vdom-r55U-term-harrison
+
+#R55UA
+172.16.183.102  p-vdom-r55UA-fhv-harrison        p-vdom-r55UA-fhv-harrison
+172.16.183.101	p-vdom-r55UA-controlpc-harrison  p-vdom-r55UA-controlpc-harrison
+172.16.183.109  p-vdom-r55UA-jenkins-harrison    p-vdom-r55UA-jenkins-harrison
+#R55UB
+172.16.183.112  p-vdom-r55UB-fhv-harrison        p-vdom-r55UB-fhv-harrison
+172.16.183.111	p-vdom-r55UB-controlpc-harrison  p-vdom-r55UB-controlpc-harrison
+172.16.183.119  p-vdom-r55UB-jenkins-harrison    p-vdom-r55UB-jenkins-harrison
+#R55UC
+172.16.183.122  p-vdom-r55UC-fhv-harrison        p-vdom-r55UC-fhv-harrison
+172.16.183.121	p-vdom-r55UC-controlpc-harrison  p-vdom-r55UC-controlpc-harrison
+172.16.183.129  p-vdom-r55UC-jenkins-harrison    p-vdom-r55UC-jenkins-harrison
+
+#R55L
+172.16.183.130  p-vdom-r55L-fw-harrison          p-vdom-r55L-fw-harrison
+172.16.183.140  p-vdom-r55L-pdu-harrison         p-vdom-r55L-pdu-harrison
+172.16.183.150  p-vdom-r55L-term-harrison        p-vdom-r55L-term-harrison
+
+#R55LA
+172.16.183.132  p-vdom-r55LA-fhv-harrison        p-vdom-r55LA-fhv-harrison
+172.16.183.131	p-vdom-r55LA-controlpc-harrison  p-vdom-r55LA-controlpc-harrison
+172.16.183.139  p-vdom-r55LA-jenkins-harrison    p-vdom-r55LA-jenkins-harrison
+#R55LB
+172.16.183.142  p-vdom-r55LB-fhv-harrison        p-vdom-r55LB-fhv-harrison
+172.16.183.141	p-vdom-r55LB-controlpc-harrison  p-vdom-r55LB-controlpc-harrison
+172.16.183.149  p-vdom-r55LB-jenkins-harrison    p-vdom-r55LB-jenkins-harrison
+#R55LC
+172.16.183.152  p-vdom-r55LC-fhv-harrison        p-vdom-r55LC-fhv-harrison
+172.16.183.151	p-vdom-r55LC-controlpc-harrison  p-vdom-r55LC-controlpc-harrison
+172.16.183.159  p-vdom-r55LC-jenkins-harrison    p-vdom-r55LC-jenkins-harrison
+
+
+
+
+#FNET 
+192.168.100.200	h-fguard    h-fguard
+
+#ICINGA
+172.16.181.201	icinga.devops.fortinet.com
+
+# The following lines are desirable for IPv6 capable hosts
+::1     ip6-localhost ip6-loopback
+fe00::0 ip6-localnet
+ff00::0 ip6-mcastprefix
+ff02::1 ip6-allnodes
+ff02::2 ip6-allrouters
