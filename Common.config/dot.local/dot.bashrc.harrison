@@ -1074,6 +1074,13 @@ function getCRTIME() {
   	done
 }
 
+function mountG() {
+    
+	local account=$1;
+
+	google-drive-ocamlfuse ExternalStorage/Gdrive-${account};
+}
+
 function mountall() {
 	
 	local testbed=$1;
