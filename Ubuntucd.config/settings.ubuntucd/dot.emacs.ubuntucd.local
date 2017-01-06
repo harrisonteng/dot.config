@@ -4092,8 +4092,8 @@ sub do" NameofMethod " {
  '(ecb-options-version "2.50")
  '(ecb-source-path
    (quote
-    ("~/projects" "~/projects.work" "~/projects.work/repo/env" "/mnt/harrison/A-devops-controlpc-devlab" "/mnt/harrison/A-devops-jenkins-devlab" "/mnt/harrison/B-devops-controlpc-devlab" "/mnt/harrison/B-devops-jenkins-devlab" "/mnt/harrison/C-devops-controlpc-devlab" "/mnt/harrison/C-devops-jenkins-devlab"
-     ("/" "/"))))
+    ("~/projects" "~/projects.work" "~/projects.work/repo/env" "/mnt/harrison/A-devops-controlpc-devlab" "/mnt/harrison/A-devops-jenkins-devlab" 
+     ("/"))))
  '(mumamo-chunk-coloring 1)
  '(package-selected-packages
    (quote
