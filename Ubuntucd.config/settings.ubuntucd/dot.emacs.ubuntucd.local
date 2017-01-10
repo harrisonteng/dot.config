@@ -391,6 +391,8 @@ Version 2016-06-18"
 ;;org mode
 ;;(setq load-path (cons "~/.emacs.d/pkgs/org-7.7/contrib/lisp" load-path))
 ;;add same level title, M-RET
+;;add same level title but leave an empty line in the middle, indent that
+;;line
 ;;fold/collapse, TAB
 ;;table ,|A|B|C , C-c RET, auto add next line in table
 ;;add timestamp, M-x my-insert-date or C-c .
@@ -398,8 +400,11 @@ Version 2016-06-18"
 ;;C-c a L List by Tag
 ;;Shift up/down , [A]B|C] set priority and shift up/down to pro/de mote priority
 ;;C-c C-x C-c set column view and q quit it
+;;C-c C-q add tags
 (require 'org-install)
-(add-to-list 'auto-mode-alist '("\\.org$" . Org-mode))
+(setq org-agenda-files (list "~/.orgs/office.org"
+                             "~/.orgs/home.org"))
+(add-to-list 'auto-mode-alist '("\\.org$" . org-mode))
 (define-key global-map "\C-cl" 'org-store-link)
 (define-key global-map "\C-ca" 'org-agenda)
 (setq org-log-done t)
@@ -4092,8 +4097,7 @@ sub do" NameofMethod " {
  '(ecb-options-version "2.50")
  '(ecb-source-path
    (quote
-    ("~/projects" "~/projects.work" "~/projects.work/repo/env" "/mnt/harrison/A-devops-controlpc-devlab" "/mnt/harrison/A-devops-jenkins-devlab" 
-     ("/"))))
+    ("~/projects" "~/projects.work" "~/projects.work/repo/env" "/mnt/harrison/A-devops-controlpc-devlab" "/mnt/harrison/A-devops-jenkins-devlab" "/"))))
  '(mumamo-chunk-coloring 1)
  '(package-selected-packages
    (quote
