@@ -402,8 +402,8 @@ Version 2016-06-18"
 ;;C-c C-x C-c set column view and q quit it
 ;;C-c C-q add tags
 (require 'org-install)
-(setq org-agenda-files (list "~/.orgs/office.org"
-                             "~/.orgs/home.org"))
+(setq org-agenda-files (list "~/.orgs/office_todo.org"
+                             "~/.orgs/office_notes.org"))
 (add-to-list 'auto-mode-alist '("\\.org$" . org-mode))
 (define-key global-map "\C-cl" 'org-store-link)
 (define-key global-map "\C-ca" 'org-agenda)
@@ -4097,7 +4097,7 @@ sub do" NameofMethod " {
  '(ecb-options-version "2.50")
  '(ecb-source-path
    (quote
-    ("~/projects" "~/projects.work" "~/projects.work/repo/env" "/mnt/harrison/A-devops-controlpc-devlab" "/mnt/harrison/A-devops-jenkins-devlab" "/"))))
+    ("~/projects" "~/projects.work" "~/projects.work/repo/env" "/mnt/harrison/A-devops-controlpc-devlab" "/mnt/harrison/A-devops-jenkins-devlab" "/")))
  '(mumamo-chunk-coloring 1)
  '(package-selected-packages
    (quote
