@@ -114,7 +114,7 @@
      (mouse-wheel-follow-mouse . t)
      (mouse-avoidance-mode . 'exile)
      ;; face
-     ;;(font . "文泉驿等宽微米黑 8")
+     ;;(font . "鏂囨硥椹跨瓑瀹藉井绫抽粦 8")
 	 (font . "-unknown-DejaVu Sans Mono-normal-normal-normal-*-13-*-*-*-m-0-iso10646-1")
      )
         ;; if on term
@@ -421,7 +421,7 @@ Version 2016-06-18"
 (setq org-todo-keywords
              '((sequence "TODO" "INPROGRESS" "VERIFY" "|" "PENDING" "DONE" "FAILED" "CANCELED")))
 
-(setq org-tag-alist '(("@my" . ?m) ("@other" . ?o) ("@vip" . ?v)))
+(setq org-tag-alist '(("@my" . ?m) ("@other" . ?o) ("@vip" . ?v) ("@cmd" . ?c) ("snippet" . ?s) ("idea" . ?i) ("toever" . ?e) ("python" . ?p) ("Emacs" . ?E) ("C" . ?C)))
 
 (setq org-highest-priority ?A) 
 (setq org-lowest-priority ?E) 
@@ -488,9 +488,9 @@ Version 2016-06-18"
 ;;*** TODO Internet bill repayment
 ;;    DEADLINE: <2012-11-20 Tue>
 ;;* Reading
-;;** TODO 汉史
-;;** TODO 明史
-;;** TODO 清史
+;;** TODO 姹夊彶
+;;** TODO 鏄庡彶
+;;** TODO 娓呭彶
 ;;** TODO TCP/IP stevens
 ;;   :LOGBOOK:
 ;;   CLOCK: [2012-11-04 Sun 11:05]--[2012-11-04 Sun 11:10] =>  0:05
@@ -3079,7 +3079,7 @@ sub do" NameofMethod " {
 ;;        (if (string-match (rx (and "java." (zero-or-more anything) )) (thing-at-point 'word)) (w3m-goto-url (concat "http://docs.oracle.com/javase/7/docs/api/" (replace-regexp-in-string "\\." "/" (thing-at-point 'word)) ".html" ) ) )
 ;;)
 
-;;;;hengha: no, you can save it.茂驴陆 Read (info "(emacs) Save Keyboard Macro")
+;;;;hengha: no, you can save it.鑼傞┐闄� Read (info "(emacs) Save Keyboard Macro")
 
 ;;(add-hook 'jde-mode-hook
 ;;;; ((lambda ()
@@ -3443,7 +3443,7 @@ sub do" NameofMethod " {
 	 (if node-exists
  	0
 ;; We want to switch back to *eshell* if the requested
-;; Info manual doesn’t exist.
+;; Info manual doesn鈥檛 exist.
 	 (switch-to-buffer buf)
 	 (eshell-print (format "There is no Info manual on %s.\n"
 	 subject))
@@ -3968,7 +3968,7 @@ sub do" NameofMethod " {
 ;;(defun run-current-file ()
 ;;   "Execute or compile the current file.
 ;;For example, if the current buffer is the file x.pl,
-;;then it'll call “perl x.pl” in a shell.
+;;then it'll call 鈥減erl x.pl鈥� in a shell.
 ;;The file can be php, perl, python, ruby, javascript, bash, ocaml,
 ;;java.
 ;;File suffix is used to determine what program to run."
