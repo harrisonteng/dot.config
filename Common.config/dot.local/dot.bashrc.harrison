@@ -1076,9 +1076,11 @@ function getCRTIME() {
 
 function mountG() {
     
-	local account=$1;
+	local label=$1;
+	local account=$2;
 
-	google-drive-ocamlfuse ExternalStorage/Gdrive-${account};
+	google-drive-ocamlfuse -label ${label} /home/harrison/ExternalStorage/Gdrive-${account};
+
 }
 
 function mountall() {
@@ -1086,45 +1088,31 @@ function mountall() {
 	local testbed=$1;
 
 	echo "mounting ${testbed} on lab...";
-	mysshfs l-vdom-r01${testbed}-controlpc-harrison /home/devops /mnt/harrison/${testbed}-devops-controlpc-devlab devops 22;
-	mysshfs l-vdom-r01${testbed}-jenkins-harrison /home/devops /mnt/harrison/${testbed}-devops-jenkins-devlab devops 22;
-	#echo "mounting autolib on prod...";
-	#mysshfs p-controlpc-harrison /opt/autolib /mnt/harrison/p-controlpc-harrison-autolib devops 22;
-	#echo "mounting testcase on prod...";
-	#mysshfs p-controlpc-harrison /opt/autolib /mnt/harrison/p-controlpc-harrison-testcase devops 22;
-	#echo "mounting fortirobot on prod...";
-	#mysshfs p-jenkins-harrison /opt/svnversion/FortiRobot/trunk /mnt/harrison/p-jenkins-harrison-FortiRobot devops 22;
-	#echo "mounting autolib on dev...";
-        #mysshfs h-newcontrolpc-harrison /opt/autolib /mnt/harrison/controlpc-harrison-autolib devops 22;
-	#echo "mounting testcase on dev...";
-	#mysshfs h-newcontrolpc-harrison /opt/testcase /mnt/harrison/controlpc-harrison-testcase devops 22;
-	#echo "mounting fortirobot on dev...";
-	#mysshfs h-jenkins-tcl-harrison /opt/FortiRobot /mnt/harrison/jenkins-tcl-harrison-FortiRobot devops 22;
+	mysshfs l01${testbed}-controlpc /home/devops /mnt/harrison/${testbed}-devops-controlpc-devlab devops 22;
+	mysshfs l01${testbed}-jenkins /home/devops /mnt/harrison/${testbed}-devops-jenkins-devlab devops 22;
 
 }
 
-function go() {
+function goto() {
 	
+	#p48A-fhv    p48A-fhv
 	local prodorlab=$1; # p || l
 	local type=$2; # c || j || t
 	local input=$3; # 35C
+	local rmcmd=$4; # command to run on remote ssh host
 
 	num=${input:0:2};
 	numsmoke=${input:0:3};
 	char=${input:2:2};
 
 	if [ "X${type}" == "Xc" ];then
-	    ssh ${prodorlab}-vdom-r${num}${char}-controlpc-harrison;
+	    ssh devops@${prodorlab}${num}${char}-controlpc "${rmcmd}";
 	elif [ "X${type}" == "Xj" ];then
-	    ssh ${prodorlab}-vdom-r${num}${char}-jenkins-harrison;
+	    ssh devops@${prodorlab}${num}${char}-jenkins "${rmcmd}";
 	elif [ "X${type}" == "Xt" ];then
-	    telnet ${prodorlab}-vdom-r${numsmoke}-term-harrison;
+	    telnet ${prodorlab}${numsmoke}-term;
 	fi
 
-}
-
-function getppa() {
-	grep -RoPish '(?<=ppa.launchpad.net/)[^/]+/[^/ ]+' /etc/apt | sort -u | sed 's/^/ppa:/';
 }
 
 # enable programmable completion features (you don't need to enable

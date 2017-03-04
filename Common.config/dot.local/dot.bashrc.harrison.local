@@ -109,6 +109,7 @@ alias umfsstorage='umount -l /mnt/harrison/hfs;fusermount -u /mnt/harrison/hfs'
 alias pctlautolib='mysshfs p-controlpc-harrison /opt/autolib /mnt/harrison/p-controlpc-harrison-autolib devops 22'
 alias pctltestcase='mysshfs p-controlpc-harrison /opt/autolib /mnt/harrison/p-controlpc-harrison-testcase devops 22'
 alias pjenfortirobot='mysshfs p-jenkins-harrison /opt/FortiRobot /mnt/harrison/p-jenkins-harrison-FortiRobot devops 22'
+alias myev='GIO_USE_NETWORK_MONITOR=base evolution'
 #===
 #
 #
