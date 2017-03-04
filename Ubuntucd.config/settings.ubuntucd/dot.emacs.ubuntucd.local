@@ -402,8 +402,7 @@ Version 2016-06-18"
 ;;C-c C-x C-c set column view and q quit it
 ;;C-c C-q add tags
 (require 'org-install)
-(setq org-agenda-files (list "~/.orgs/office_todo.org"
-                             "~/.orgs/office_notes.org"))
+(setq org-agenda-files (list "~/.orgs"))
 (add-to-list 'auto-mode-alist '("\\.org$" . org-mode))
 (define-key global-map "\C-cl" 'org-store-link)
 (define-key global-map "\C-ca" 'org-agenda)
@@ -4099,6 +4098,7 @@ sub do" NameofMethod " {
    (quote
     ("~/projects" "~/projects.work" "~/projects.work/repo/env" "/mnt/harrison/A-devops-controlpc-devlab" "/mnt/harrison/A-devops-jenkins-devlab" "/")))
  '(mumamo-chunk-coloring 1)
+ '(org-agenda-files nil)
  '(package-selected-packages
    (quote
     (go-eldoc flycheck org-wunderlist org-webpage org-wc org-vcard org-trello org-tree-slide org-transform-tree-table org-toodledo org-table-comment org-sync org-screenshot org-repo-todo org-readme org-protocol-jekyll org-projectile org-present org-pomodoro org-pdfview org-password-manager org-pandoc org-page org-outlook org-octopress org-multiple-keymap org-mobile-sync org-mac-iCal org-linkany org-link-travis org-journal org-jira org-jekyll org-if org-grep org-gnome org-gcal org-fstree org-elisp-help org-ehtml org-dropbox multi-term magit-tramp magit-topgit magit-svn magit-stgit magit-gitflow magit-gh-pulls magit-gerrit magit-find-file magit-filenotify magit-annex go-stacktracer go-snippets go-scratch go-projectile go-play go-errcheck go-dlv go-direx go-complete go-autocomplete ecb cl-generic auto-complete-c-headers auto-compile)))
