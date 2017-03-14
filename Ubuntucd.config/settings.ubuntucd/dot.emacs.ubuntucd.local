@@ -41,8 +41,7 @@
 (add-hook 'ediff-after-quit-hook-internal 'winner-undo)
 
 
-;; Popup win
-
+;;;; Popup win
 ;;(defun my-turn-current-window-into-frame ()
 ;;  (interactive)
 ;;  (let ((buffer (current-buffer)))
@@ -53,9 +52,9 @@
 ;;    (display-buffer-pop-up-frame buffer nil)))
 ;;(global-set-key (kbd "C-z") 'my-turn-current-window-into-frame)
 
-;;(require 'popwin)
-;;(popwin-mode 1)
-;;(global-set-key (kbd "C-z") popwin:keymap)
+(require 'popwin)
+(popwin-mode 1)
+(global-set-key (kbd "C-z") popwin:keymap)
 
 ;; Key    | Command                               |
 ;;--------+---------------------------------------|
@@ -76,23 +75,23 @@
 ;; Popup frame
 
 ;; Inspired from `mouse-tear-off-window'.
-;;(defun tear-off-window ()
-;;  "Create a new frame displaying buffer of selected window.
-;;    If window is not the only one in frame, then delete it.
-;;    Otherwise, this command effectively clones the frame and window."
-;;  (interactive)
-;;  (let ((owin  (selected-window))
-;;        (buf   (window-buffer))
-;;        (fr    (make-frame)))
-;;    (select-frame fr)
-;;    (switch-to-buffer buf)
-;;    (save-window-excursion 
-;;      (select-window owin)
-;;      (unless (one-window-p) (delete-window owin))))
-;;      (set-background-color "black")
-;;      (set-foreground-color "white")      
-;;  )
-;;(global-set-key (kbd "C-z t") 'tear-off-window)
+(defun tear-off-window ()
+  "Create a new frame displaying buffer of selected window.
+    If window is not the only one in frame, then delete it.
+    Otherwise, this command effectively clones the frame and window."
+  (interactive)
+  (let ((owin  (selected-window))
+        (buf   (window-buffer))
+        (fr    (make-frame)))
+    (select-frame fr)
+    (switch-to-buffer buf)
+    (save-window-excursion 
+      (select-window owin)
+      (unless (one-window-p) (delete-window owin))))
+      (set-background-color "black")
+      (set-foreground-color "white")      
+  )
+(global-set-key (kbd "C-z t") 'tear-off-window)
 
 ;;Daemon config
 ;;http://www.wanglianghome.org/blog/2009/01/customization-tips-for-emacs-daemon.html
@@ -4096,7 +4095,7 @@ sub do" NameofMethod " {
  '(ecb-options-version "2.50")
  '(ecb-source-path
    (quote
-    ("~/projects" "~/projects.work" "~/projects.work/repo/env" "/mnt/harrison/A-devops-controlpc-devlab" "/mnt/harrison/A-devops-jenkins-devlab" "/")))
+    ("~/projects" "~/projects.work" "~/projects.work/repo/env" "/mnt/harrison/A-devops-controlpc-devlab" "/mnt/harrison/A-devops-jenkins-devlab" "/mnt/harrison/B-devops-controlpc-devlab" "/mnt/harrison/B-devops-jenkins-devlab" "/")))
  '(mumamo-chunk-coloring 1)
  '(org-agenda-files nil)
  '(package-selected-packages
