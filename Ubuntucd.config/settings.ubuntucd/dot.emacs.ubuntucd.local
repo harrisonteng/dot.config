@@ -27,6 +27,31 @@
     ;; I want to restore window layout with winner by C-x 1
     (winner-mode 1)) ;;"C-c <left>" and "C-c <right>" undo and re-do window changes.
 
+;;Frame settings
+(defun pop-frame ()
+  (set-background-color "dim gray")
+  (set-foreground-color "white")
+  (blink-cursor-mode 0) )
+
+(add-hook 'after-make-frame-functions
+  (lambda ($new-frame)
+    (progn
+      (select-frame $new-frame)
+      (pop-frame)
+    ) ) )
+
+(defun delete-single-window (&optional window)
+  "Remove WINDOW from the display.  Default is `selected-window'.
+If WINDOW is the only one in its frame, then `delete-frame' too."
+  (interactive)
+  (save-current-buffer
+    (setq window (or window (selected-window)))
+    (select-window window)
+    (kill-buffer)
+    (if (one-window-p t)
+        (delete-frame)
+        (delete-window (selected-window)))))
+
 ;; Ediff tweak
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; ediff                                                                  ;;
@@ -3452,6 +3477,57 @@ sub do" NameofMethod " {
  '("svn" "vim" "screen" "lftp" "python" "telnet" "ssh" "perldoc")
  eshell-visual-commands)))
 )
+
+(defun eshell-here ()
+  "Opens up a new shell in the directory associated with the current buffer's file."
+  (interactive)
+  (let* (
+	(parent (file-name-directory (buffer-file-name)))
+	(owin  (selected-window))
+        (buf   (window-buffer))
+        (fr    (make-frame))
+	)
+    (select-frame fr)
+    (other-window 1)
+    (eshell "new")
+    (rename-buffer (concat "*eshell: " name "*"))
+    
+    (insert (concat "ls"))
+    (eshell-send-input)
+    )
+)
+
+(defun eshell-here-old ()
+  "Opens up a new shell in the directory associated with the current buffer's file."
+  (interactive)
+  (let* (
+	 (parent (file-name-directory (buffer-file-name)))
+         (name   (car
+                  (last
+                   (split-string parent "/" t))))
+	 )
+    (split-window-vertically)
+    (other-window 1)
+    (eshell "new")
+    (rename-buffer (concat "*eshell: " name "*"))
+
+    (insert (concat "ls"))
+    (eshell-send-input)))
+
+
+
+
+;; Below works with eshell-here-old
+;;(defun eshell/x (&rest args)
+;;  (delete-single-window))
+
+(global-set-key (kbd "C-!") 'eshell-here)
+(add-hook 'eshell-mode-hook
+          (lambda ()
+            (define-key eshell-mode-map (kbd "C-1") 'delete-single-window)
+	    )
+	  )
+
 ;;End of eshell================================================================
 ;;;
 ;;;ansi-term ==================================================================
@@ -3492,15 +3568,15 @@ sub do" NameofMethod " {
   (add-to-list 'eshell-visual-commands "vim")
   (add-to-list 'eshell-visual-commands "more")
   (add-to-list 'eshell-visual-commands "sudo")
+  (add-to-list 'eshell-visual-commands "perldoc")
 )
 
-(add-hook 'eshell-mode-hook
-           (lambda ()
-             (when viper-mode
-               (setq viper-auto-indent nil))))
+;;(add-hook 'eshell-mode-hook
+;;           (lambda ()
+;;             (when viper-mode
+;;               (setq viper-auto-indent nil))))
 
-(add-to-list 'eshell-visual-commands "perldoc")
-(add-to-list 'eshell-visual-commands "perldoc")
+;;(add-to-list 'eshell-visual-commands "perldoc")
 
 ;;;better solution for load commands in eshell:
 ;;; (eval-after-load "em-term" '(add-to-list 'eshell-visual-commands "perldoc"))
@@ -3673,6 +3749,43 @@ sub do" NameofMethod " {
 (global-set-key "\C-x." 'multi-term)
 (global-set-key "\C-x," 'multi-term-dedicated-open)
 
+
+(defun ht-multi-term ()
+                  "Make a multi-term buffer running foo."
+                  (let ((multi-term-program "/bin/bash"))
+                    (multi-term)))
+
+(defun term-here ()
+  "Opens up a new term in the directory associated with the current buffer's file."
+  (interactive)
+  (let* (
+	(parent (file-name-directory (buffer-file-name)))
+	(owin  (selected-window))
+        (buf   (window-buffer))
+        (fr    (make-frame))
+	)
+    (select-frame fr)
+    (other-window 1)
+    (multi-term)
+    ;;(term "/bin/bash")
+    (rename-buffer (concat "*term: " name "*"))
+    ;;(insert "ls -al\n")
+    ;;(term-send-input)
+    )
+)
+
+(defun set-no-process-query-on-exit ()
+  (let ((proc (get-buffer-process (current-buffer))))
+    (when (processp proc)
+      (set-process-query-on-exit-flag proc nil))))
+
+(add-hook 'term-exec-hook 'set-no-process-query-on-exit)
+
+
+(global-set-key (kbd "C-@") 'term-here)
+(add-hook 'term-mode-hook
+          (lambda ()
+            (define-key term-raw-map (kbd "C-1") 'delete-single-window)))
 
 ;;(add-hook 'term-mode-hook
 ;;  only needed if you use autopair
