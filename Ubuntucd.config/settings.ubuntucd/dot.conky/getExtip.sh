@@ -1,3 +1,5 @@
 #!/bin/bash
 
-wget http://checkip.dyndns.org/ -q -O - |grep -Eo '\<[[:digit:]]{1,3}(\.[[:digit:]]{1,3}){3}\>'
+#wget http://checkip.dyndns.org/ -q -O - |grep -Eo '\<[[:digit:]]{1,3}(\.[[:digit:]]{1,3}){3}\>'
+
+dig +short myip.opendns.com @resolver1.opendns.com
