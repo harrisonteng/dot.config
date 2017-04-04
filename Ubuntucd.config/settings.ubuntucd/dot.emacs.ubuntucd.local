@@ -52,6 +52,15 @@ If WINDOW is the only one in its frame, then `delete-frame' too."
         (delete-frame)
         (delete-window (selected-window)))))
 
+;; Exit ansi-term without asking if there is a process running
+(defun set-no-process-query-on-exit ()
+  (let ((proc (get-buffer-process (current-buffer))))
+    (when (processp proc)
+      (set-process-query-on-exit-flag proc nil))))
+
+(add-hook 'term-exec-hook 'set-no-process-query-on-exit)
+
+
 ;; Ediff tweak
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; ediff                                                                  ;;
@@ -419,6 +428,11 @@ Version 2016-06-18"
 ;;Shift up/down , [A]B|C] set priority and shift up/down to pro/de mote priority
 ;;C-c C-x C-c set column view and q quit it
 ;;C-c C-q add tags
+;;use clocktable:
+;;   C-c C-x C-i org-clock-in
+;;   C-c C-x C-o org-clock-out , aka, mark todo as DONE
+;;   C-c C-x C-e org-clock-modify-effort-estimate
+;;   C-c C-x C-j org-clock-jump , jump to current task
 (require 'org-install)
 (setq org-agenda-files (list "~/.orgs"))
 (add-to-list 'auto-mode-alist '("\\.org$" . org-mode))
@@ -4207,7 +4221,7 @@ sub do" NameofMethod " {
  '(org-agenda-files nil)
  '(package-selected-packages
    (quote
-    (go-eldoc flycheck org-wunderlist org-webpage org-wc org-vcard org-trello org-tree-slide org-transform-tree-table org-toodledo org-table-comment org-sync org-screenshot org-repo-todo org-readme org-protocol-jekyll org-projectile org-present org-pomodoro org-pdfview org-password-manager org-pandoc org-page org-outlook org-octopress org-multiple-keymap org-mobile-sync org-mac-iCal org-linkany org-link-travis org-journal org-jira org-jekyll org-if org-grep org-gnome org-gcal org-fstree org-elisp-help org-ehtml org-dropbox multi-term magit-tramp magit-topgit magit-svn magit-stgit magit-gitflow magit-gh-pulls magit-gerrit magit-find-file magit-filenotify magit-annex go-stacktracer go-snippets go-scratch go-projectile go-play go-errcheck go-dlv go-direx go-complete go-autocomplete ecb cl-generic auto-complete-c-headers auto-compile)))
+    (elpy go-eldoc flycheck org-wunderlist org-webpage org-wc org-vcard org-trello org-tree-slide org-transform-tree-table org-toodledo org-table-comment org-sync org-screenshot org-repo-todo org-readme org-protocol-jekyll org-projectile org-present org-pomodoro org-pdfview org-password-manager org-pandoc org-page org-outlook org-octopress org-multiple-keymap org-mobile-sync org-mac-iCal org-linkany org-link-travis org-journal org-jira org-jekyll org-if org-grep org-gnome org-gcal org-fstree org-elisp-help org-ehtml org-dropbox multi-term magit-tramp magit-topgit magit-svn magit-stgit magit-gitflow magit-gh-pulls magit-gerrit magit-find-file magit-filenotify magit-annex go-stacktracer go-snippets go-scratch go-projectile go-play go-errcheck go-dlv go-direx go-complete go-autocomplete ecb cl-generic auto-complete-c-headers auto-compile)))
  '(regex-tool-backend (quote perl))
  '(safe-local-variable-values
    (quote
@@ -4224,8 +4238,8 @@ sub do" NameofMethod " {
      (tool-bar-lines . 0)
      (unsplittable . t)
      (set-background-color "black"))))
- '(transient-mark-mode t)
- '(speedbar-show-unknown-files t))
+ '(speedbar-show-unknown-files t)
+ '(transient-mark-mode t))
 
 (require 'autoinsert)
 (auto-insert-mode)
