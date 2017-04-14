@@ -73,6 +73,10 @@ If WINDOW is the only one in its frame, then `delete-frame' too."
 (setq ediff-split-window-function (quote split-window-horizontally))
 ;;revert windows on exit - needs winner mode
 (add-hook 'ediff-after-quit-hook-internal 'winner-undo)
+  
+(add-hook 'ediff-startup-hook
+              (lambda ()
+		(ecb-deactivate)))
 
 
 ;;;; Popup win
@@ -3488,7 +3492,7 @@ sub do" NameofMethod " {
  (setq
  eshell-visual-commands
  (append
- '("svn" "vim" "screen" "lftp" "python" "telnet" "ssh" "perldoc")
+ '("svn" "vim" "screen" "lftp" "top" "python" "telnet" "ssh" "perldoc")
  eshell-visual-commands)))
 )
 
