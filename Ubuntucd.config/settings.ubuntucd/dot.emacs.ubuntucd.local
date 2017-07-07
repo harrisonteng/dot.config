@@ -21,15 +21,15 @@
 ;; Make TERM to be xterm so that VIM works fine in Term Mode
 (setenv "TERM" "xterm")
 
-;;winner-mode
-;;(winner-mode)
+;;;;winner-mode
+(winner-mode)
 (when (fboundp 'winner-mode)
     ;; I want to restore window layout with winner by C-x 1
     (winner-mode 1)) ;;"C-c <left>" and "C-c <right>" undo and re-do window changes.
 
 ;;Frame settings
 (defun pop-frame ()
-  (set-background-color "dim gray")
+  (set-background-color "black")
   (set-foreground-color "white")
   (blink-cursor-mode 0) )
 
@@ -66,18 +66,39 @@ If WINDOW is the only one in its frame, then `delete-frame' too."
 ;; ediff                                                                  ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (require 'ediff)
-;; don't start another frame
-;; this is done by default in preluse
-(setq ediff-window-setup-function 'ediff-setup-windows-plain)
-;; put windows side by side
-(setq ediff-split-window-function (quote split-window-horizontally))
+;;;; don't start another frame
+;;;; this is done by default in preluse
+;;(setq ediff-window-setup-function 'ediff-setup-windows-plain)
 ;;revert windows on exit - needs winner mode
-(add-hook 'ediff-after-quit-hook-internal 'winner-undo)
-  
-(add-hook 'ediff-startup-hook
-              (lambda ()
-		(ecb-deactivate)))
+;;(add-hook 'ediff-after-quit-hook-internal 'winner-undo)
+;; put windows side by side
+(setq ediff-split-window-function 'split-window-horizontally)
 
+(add-hook 'ediff-startup-hook
+          (lambda ()
+            (local-set-key (kbd "q") 'my-ediff-quit)))
+
+(defun my-ediff-quit ()
+  "If any of the ediff buffers have been modified, ask if changes
+should be saved. Then quit ediff normally, without asking for
+confirmation"
+  (interactive)
+  (ediff-barf-if-not-control-buffer)
+  (let* ((buf-a ediff-buffer-A)
+         (buf-b ediff-buffer-B)
+         (buf-c ediff-buffer-C)
+         (ctl-buf (current-buffer))
+         (modified (remove-if-not 'buffer-modified-p
+                                  (list buf-a buf-b buf-c))))
+    (let ((save (if modified (yes-or-no-p "Save changes?")nil)))
+      (loop for buf in modified do
+            (progn
+              (set-buffer buf)
+              (if save
+                  (save-buffer)
+                (set-buffer-modified-p nil))))
+      (set-buffer ctl-buf)
+      (ediff-really-quit nil))))
 
 ;;;; Popup win
 ;;(require 'popwin)
@@ -133,7 +154,7 @@ If WINDOW is the only one in its frame, then `delete-frame' too."
       '(
         ;; if frame created on x display
         (x
-     (menu-bar-lines . 1)
+     (menu-bar-lines . 0)
      (tool-bar-lines . nil)
      ;; mouse
      (mouse-wheel-mode . 1)
@@ -4156,7 +4177,7 @@ sub do" NameofMethod " {
 ;; Enable this if you develop in semantic, or develop grammars
 ;;Harrison(semantic-load-enable-semantic-debugging-helpers)
 
-;;(add-to-list 'load-path "~/.emacs.d/elpa/ecb-20140215.114")
+(add-to-list 'load-path "~/.emacs.d/elpa/ecb-20160101.933")
 (require 'ecb)
 (setq ecb-tip-of-the-day nil)
 (global-set-key [f12] 'ecb-activate) ;;activate ecb
@@ -4220,9 +4241,22 @@ sub do" NameofMethod " {
  '(ecb-options-version "2.50")
  '(ecb-source-path
    (quote
-    ("~/projects" "~/projects.work" "~/projects.work/repo/env" "/mnt/harrison/A-devops-controlpc-devlab" "/mnt/harrison/A-devops-jenkins-devlab" "/mnt/harrison/B-devops-controlpc-devlab" "/mnt/harrison/B-devops-jenkins-devlab" "/")))
+    ("~/projects" "~/projects.work" "~/projects.work/repo/env" "/mnt/harrison/A-devops-controlpc-devlab" "/mnt/harrison/A-devops-jenkins-devlab" "/mnt/harrison/B-devops-controlpc-devlab" "/mnt/harrison/B-devops-jenkins-devlab" "/usr/lib/python2.7" "/usr/local/lib/python2.7/" "/")))
+ '(ecb-vc-enable-support t)
+ '(ecb-vc-supported-backends
+   (quote
+    ((ecb-vc-dir-managed-by-CVS . ecb-vc-state)
+     (ecb-vc-dir-managed-by-RCS . ecb-vc-state)
+     (ecb-vc-dir-managed-by-SCCS . ecb-vc-state)
+     (ecb-vc-dir-managed-by-CVS . ecb-vc-state)
+     (ecb-vc-dir-managed-by-CVS . ecb-vc-state)
+     (ecb-vc-dir-managed-by-SVN . ecb-vc-state)
+     (ecb-vc-dir-managed-by-GIT . ecb-vc-state)
+     (ecb-vc-dir-managed-by-BZR . ecb-vc-state)
+     (ecb-vc-dir-managed-by-MTN . ecb-vc-state)
+     (ecb-vc-dir-managed-by-HG . ecb-vc-state))))
  '(mumamo-chunk-coloring 1)
- '(org-agenda-files nil)
+ '(org-agenda-files nil t)
  '(package-selected-packages
    (quote
     (groovy-mode elpy go-eldoc flycheck org-wunderlist org-webpage org-wc org-vcard org-trello org-tree-slide org-transform-tree-table org-toodledo org-table-comment org-sync org-screenshot org-repo-todo org-readme org-protocol-jekyll org-projectile org-present org-pomodoro org-pdfview org-password-manager org-pandoc org-page org-outlook org-octopress org-multiple-keymap org-mobile-sync org-mac-iCal org-linkany org-link-travis org-journal org-jira org-jekyll org-if org-grep org-gnome org-gcal org-fstree org-elisp-help org-ehtml org-dropbox multi-term magit-tramp magit-topgit magit-svn magit-stgit magit-gitflow magit-gh-pulls magit-gerrit magit-find-file magit-filenotify magit-annex go-stacktracer go-snippets go-scratch go-projectile go-play go-errcheck go-dlv go-direx go-complete go-autocomplete ecb cl-generic auto-complete-c-headers auto-compile)))
