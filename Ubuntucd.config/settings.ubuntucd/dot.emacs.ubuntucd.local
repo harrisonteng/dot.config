@@ -27,6 +27,26 @@
     ;; I want to restore window layout with winner by C-x 1
     (winner-mode 1)) ;;"C-c <left>" and "C-c <right>" undo and re-do window changes.
 
+;;Fonts functions
+(defun font-existsp (font)
+  "Check that a font exists: http://www.emacswiki.org/emacs/SetFonts#toc8"
+  (and (window-system)
+       (fboundp 'x-list-fonts)
+       (x-list-fonts font)))
+
+(setq harrison-font-list
+      '(;; list of fonts to search for in order of priority.
+        ;; each has it's own line for easy transposing.
+        "DejaVu Sans Mono-10"
+        "consolas-10"
+        "proggyopti-10"
+        "ProggyOptiS-10"
+        "ProggyClean-10"
+        "Consolas-10"
+        "Lucida Console-10"
+        "Courier New-10"
+        ))
+
 ;;Frame settings
 (defun pop-frame ()
   (set-background-color "black")
@@ -1338,8 +1358,18 @@ Require `font-lock'."
 ;; set default-font a for emacs with window
 (cond (window-system
    ;;(set-default-font "-b&h-lucidaTypewriter-medium-r-normal-sans-12-120-75-75-m-70-iso8859-1")
-   (set-default-font "-unknown-DejaVu Sans Mono-normal-normal-normal-*-14-*-*-*-m-0-iso10646-1")
+   ;;(set-default-font "-unknown-DejaVu Sans Mono-normal-normal-normal-*-14-*-*-*-m-0-iso10646-1")
+    (let* ((in-loop t)
+       (font (car harrison-font-list))
+       (rest (cdr harrison-font-list)))
+	(while (and font in-loop)
+	    (when (font-existsp font)
+		(set-face-attribute 'default nil :font font)
+		(setq in-loop nil))
+		(setq font (car rest)
+		    rest (cdr rest))))
 ))
+
 
 ;;-b&h-lucidatypewriter-medium-r-normal-sans-11-80-100-100-m-70-iso8859-1
 ;;"-bitstream-bitstream vera sans mono-medium-o-normal--0-0-0-0-c-0-iso8859-9"
