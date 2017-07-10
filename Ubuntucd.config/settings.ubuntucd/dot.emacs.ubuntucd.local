@@ -38,6 +38,8 @@
       '(;; list of fonts to search for in order of priority.
         ;; each has it's own line for easy transposing.
         "DejaVu Sans Mono-10"
+        "DejaVu Sans-10"
+        "-PfEd-DejaVu Sans-10"
         "consolas-10"
         "proggyopti-10"
         "ProggyOptiS-10"
@@ -79,7 +81,6 @@ If WINDOW is the only one in its frame, then `delete-frame' too."
       (set-process-query-on-exit-flag proc nil))))
 
 (add-hook 'term-exec-hook 'set-no-process-query-on-exit)
-
 
 ;; Ediff tweak
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -182,7 +183,8 @@ confirmation"
      (mouse-avoidance-mode . 'exile)
      ;; face
      ;;(font . "鏂囨硥椹跨瓑瀹藉井绫抽粦 8")
-	 (font . "-unknown-DejaVu Sans Mono-normal-normal-normal-*-13-*-*-*-m-0-iso10646-1")
+	 ;;(font . "-unknown-DejaVu Sans Mono-normal-normal-normal-*-13-*-*-*-m-0-iso10646-1")
+	 ;;(font . "-PfEd-DejaVu Sans Mono-normal-normal-normal-*-13-*-*-*-m-0-fontset-auto1")
      )
         ;; if on term
         (nil
@@ -1358,7 +1360,8 @@ Require `font-lock'."
 ;; set default-font a for emacs with window
 (cond (window-system
    ;;(set-default-font "-b&h-lucidaTypewriter-medium-r-normal-sans-12-120-75-75-m-70-iso8859-1")
-   ;;(set-default-font "-unknown-DejaVu Sans Mono-normal-normal-normal-*-14-*-*-*-m-0-iso10646-1")
+   ;; work (set-default-font "-unknown-DejaVu Sans Mono-normal-normal-normal-*-14-*-*-*-m-0-iso10646-1")
+   ;; home (set-default-tont "-PfEd-DejaVu Sans Mono-normal-normal-normal-*-13-*-*-*-m-0-fontset-auto1")
     (let* ((in-loop t)
        (font (car harrison-font-list))
        (rest (cdr harrison-font-list)))
@@ -3960,15 +3963,12 @@ sub do" NameofMethod " {
 
 ;;Begin of golang mode ======
 ;;http://dominik.honnef.co/posts/2013/03/writing_go_in_emacs/
-;;(setq load-path (cons "~/.emacs.d/pkgs/go-mode.el" load-path))
-(setq load-path (cons "~/.emacs.d/elpa/go-mode-20160404.2" load-path))
+;;(setq load-path (cons "~/.emacs.d/elpa/go-mode-20170308.1512" load-path))
 (require 'go-mode)
-;;(require 'go-mode-load)
 (add-hook 'before-save-hook 'gofmt-before-save)
-;;(setq load-path (cons "~/.emacs.d/pkgs/goflymake" load-path))
-(add-to-list 'load-path "~/projects/local/golang/src/github.com/dougm/goflymake")
+;;(add-to-list 'load-path "~/projects/local/golang/src/github.com/dougm/goflymake")
 (require 'go-flymake)
-(add-to-list 'load-path "~/projects/local/golang/src/github.com/ptrv/goflycheck")
+;;(add-to-list 'load-path "~/projects/local/golang/src/github.com/ptrv/goflycheck")
 (require 'go-flycheck)
 (require 'go-errcheck)
 (require 'go-eldoc)
