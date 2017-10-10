@@ -453,7 +453,7 @@ syntax on
 let g:pymode_lint_write = 0
 
 " Load pylint code plugin
-let g:pymode_lint = 1
+let g:pymode_lint = 0 
 
 " Switch pylint, pyflakes, pep8, mccabe code-checkers
 " Can have multiply values "pep8,pyflakes,mcccabe"
@@ -469,7 +469,7 @@ let g:pymode_lint_ignore = "E501"
 let g:pymode_lint_select = ""
 
 " Run linter on the fly
-let g:pymode_lint_onfly = 0
+let g:pymode_lint_onfly = 1
 
 " Pylint configuration file
 " If file not found use 'pylintrc' from python-mode plugin directory

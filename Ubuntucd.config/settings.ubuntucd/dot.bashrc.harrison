@@ -130,7 +130,7 @@ function spacesucker {
 
 function screenshotdesktop () {
     local l_output=$1
-        ffmpeg -f x11grab -s wxga -r 25 -i :0.0 -sameq ${l_output}
+    ffmpeg -f x11grab -s wxga -r 25 -i :0.0 -q:a 0 ${l_output}
 }
 
 function getfiles () {
@@ -1055,6 +1055,64 @@ function getDuplicateOnes() {
 	local l_file2=$2;
 
 	perl -ne 'print if ($seen{$_} .= @ARGV) =~ /10$/'  ${l_file1} ${l_file2};
+}
+
+function yamllint() {
+	local l_input_yaml_file=$1;
+        python -c 'import sys, yaml; print yaml.load(sys.stdin)' < ${l_input_yaml_file};
+}
+
+function getCRTIME() {
+
+  	for target in "${@}"; do
+
+    		inode=$(stat -c %i "${target}")
+    		fs=$(df  --output=source "${target}"  | tail -1)
+    		crtime=$(sudo debugfs -R 'stat <'"${inode}"'>' "${fs}" 2>/dev/null | 
+    		grep -oP 'crtime.*--\s*\K.*')
+    		printf "%s\t%s\n" "${target}" "${crtime}"
+  	done
+}
+
+function mountG() {
+    
+	local label=$1;
+	local account=$2;
+
+	google-drive-ocamlfuse -label ${label} /home/harrison/ExternalStorage/Gdrive-${account};
+
+}
+
+function mountall() {
+	
+	local testbed=$1;
+
+	echo "mounting ${testbed} on lab...";
+	mysshfs l01${testbed}-controlpc /home/devops /mnt/harrison/${testbed}-devops-controlpc-devlab devops 22;
+	mysshfs l01${testbed}-jenkins /home/devops /mnt/harrison/${testbed}-devops-jenkins-devlab devops 22;
+
+}
+
+function goto() {
+	
+	#p48A-fhv    p48A-fhv
+	local prodorlab=$1; # p || l
+	local type=$2; # c || j || t
+	local input=$3; # 35C
+	local rmcmd=$4; # command to run on remote ssh host
+
+	num=${input:0:2};
+	numsmoke=${input:0:3};
+	char=${input:2:2};
+
+	if [ "X${type}" == "Xc" ];then
+	    ssh devops@${prodorlab}${num}${char}-controlpc "${rmcmd}";
+	elif [ "X${type}" == "Xj" ];then
+	    ssh devops@${prodorlab}${num}${char}-jenkins "${rmcmd}";
+	elif [ "X${type}" == "Xt" ];then
+	    telnet ${prodorlab}${numsmoke}-term;
+	fi
+
 }
 
 # enable programmable completion features (you don't need to enable

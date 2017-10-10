@@ -776,6 +776,49 @@ Version 2016-06-18"
 ;;
 ;; To view the Subversion log type "M-x svn-log".
 
+;;=== Begin Webkit ===
+;; xwidget-webkit-mode
+
+;;(add-to-list 'load-path "~/.emacs.d/pkgs/xwidgete")
+;;(require 'xwidgete)
+
+;;(evil-set-initial-state 'xwidget-webkit-mode 'emacs)
+(add-hook 'xwidget-webkit-mode-hook
+          (lambda ()
+            (define-key xwidget-webkit-mode-map [mouse-4] 'xwidget-webkit-scroll-down)
+            (define-key xwidget-webkit-mode-map [mouse-5] 'xwidget-webkit-scroll-up)
+            (define-key xwidget-webkit-mode-map (kbd "<up>") 'xwidget-webkit-scroll-down)
+            (define-key xwidget-webkit-mode-map (kbd "<down>") 'xwidget-webkit-scroll-up)
+            (define-key xwidget-webkit-mode-map (kbd "M-w") 'xwidget-webkit-copy-selection-as-kill)
+            (define-key xwidget-webkit-mode-map (kbd "C-c") 'xwidget-webkit-copy-selection-as-kill)
+
+            ;; make xwidget default browser (not for now... maybe in the future!)
+            ;; (setq browse-url-browser-function (lambda (url session)
+            ;;                                     (other-window 1)
+            ;;                                     (xwidget-browse-url-no-reuse url)))
+
+            ;; adapt webkit according to window configuration change automatically
+            ;; without this hook, every time you change your window configuration,
+            ;; you must press 'a' to adapt webkit content to new window size
+            (add-hook 'window-configuration-change-hook (lambda ()
+                                                          (when (equal major-mode 'xwidget-webkit-mode)
+                                                            (xwidget-webkit-adjust-size-dispatch))))
+
+            ;; by default, xwidget reuses previous xwidget window,
+            ;; thus overriding your current website, unless a prefix argument
+            ;; is supplied
+            ;;
+            ;; This function always opens a new website in a new window
+            (defun xwidget-browse-url-no-reuse (url &optional sessoin)
+              (interactive (progn
+                             (require 'browse-url)
+                             (browse-url-interactive-arg "xwidget-webkit URL: "
+                                                         )))
+              (xwidget-webkit-browse-url url t))))
+
+
+;;=== End Webkit ===
+
 ;;(require 'w3m-load)
 ;;Begin of ffap===============
 ;;ffap
@@ -4271,7 +4314,7 @@ sub do" NameofMethod " {
  '(ecb-options-version "2.50")
  '(ecb-source-path
    (quote
-    ("~/projects" "~/projects.work" "~/projects.work/repo/env" "/mnt/harrison/A-devops-controlpc-devlab" "/mnt/harrison/A-devops-jenkins-devlab" "/mnt/harrison/B-devops-controlpc-devlab" "/mnt/harrison/B-devops-jenkins-devlab" "/usr/lib/python2.7" "/usr/local/lib/python2.7/" "/")))
+    ("~/projects" "~/projects.work" "~/projects.work/repo/env" "/mnt/harrison/B-devops-controlpc-devlab" "/mnt/harrison/B-devops-jenkins-devlab" "/usr/lib/python2.7" "/usr/local/lib/python2.7/" "/home/harrison/" "/")))
  '(ecb-vc-enable-support t)
  '(ecb-vc-supported-backends
    (quote
@@ -4289,7 +4332,7 @@ sub do" NameofMethod " {
  '(org-agenda-files nil t)
  '(package-selected-packages
    (quote
-    (groovy-mode elpy go-eldoc flycheck org-wunderlist org-webpage org-wc org-vcard org-trello org-tree-slide org-transform-tree-table org-toodledo org-table-comment org-sync org-screenshot org-repo-todo org-readme org-protocol-jekyll org-projectile org-present org-pomodoro org-pdfview org-password-manager org-pandoc org-page org-outlook org-octopress org-multiple-keymap org-mobile-sync org-mac-iCal org-linkany org-link-travis org-journal org-jira org-jekyll org-if org-grep org-gnome org-gcal org-fstree org-elisp-help org-ehtml org-dropbox multi-term magit-tramp magit-topgit magit-svn magit-stgit magit-gitflow magit-gh-pulls magit-gerrit magit-find-file magit-filenotify magit-annex go-stacktracer go-snippets go-scratch go-projectile go-play go-errcheck go-dlv go-direx go-complete go-autocomplete ecb cl-generic auto-complete-c-headers auto-compile)))
+    (xwidgete groovy-mode elpy go-eldoc flycheck org-wunderlist org-webpage org-wc org-vcard org-trello org-tree-slide org-transform-tree-table org-toodledo org-table-comment org-sync org-screenshot org-repo-todo org-readme org-protocol-jekyll org-projectile org-present org-pomodoro org-pdfview org-password-manager org-pandoc org-page org-outlook org-octopress org-multiple-keymap org-mobile-sync org-mac-iCal org-linkany org-link-travis org-journal org-jira org-jekyll org-if org-grep org-gnome org-gcal org-fstree org-elisp-help org-ehtml org-dropbox multi-term magit-tramp magit-topgit magit-svn magit-stgit magit-gitflow magit-gh-pulls magit-gerrit magit-find-file magit-filenotify magit-annex go-stacktracer go-snippets go-scratch go-projectile go-play go-errcheck go-dlv go-direx go-complete go-autocomplete ecb cl-generic auto-complete-c-headers auto-compile)))
  '(regex-tool-backend (quote perl))
  '(safe-local-variable-values
    (quote
@@ -4307,6 +4350,7 @@ sub do" NameofMethod " {
      (unsplittable . t)
      (set-background-color "black"))))
  '(speedbar-show-unknown-files t)
+ '(tramp-syntax (quote default) nil (tramp))
  '(transient-mark-mode t))
 
 (require 'autoinsert)
