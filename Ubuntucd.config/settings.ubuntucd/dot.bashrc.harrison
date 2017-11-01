@@ -1093,6 +1093,16 @@ function mountall() {
 
 }
 
+function mountsec() {
+
+	local secdir=$1;
+
+	echo "mounting with S on ${secdir}...";
+	sudo mount -t ecryptfs ${secdir} ${secdir};
+
+}
+
+
 function goto() {
 	
 	#p48A-fhv    p48A-fhv

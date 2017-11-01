@@ -34,9 +34,11 @@
        (fboundp 'x-list-fonts)
        (x-list-fonts font)))
 
+;;list current font eval (face-attribute 'default :font)
 (setq harrison-font-list
       '(;; list of fonts to search for in order of priority.
         ;; each has it's own line for easy transposing.
+        "-DAMA-Ubuntu Mono-normal-normal-normal-*-15-*-*-*-m-0-iso10646-1"
         "DejaVu Sans Mono-10"
         "DejaVu Sans-10"
         "-PfEd-DejaVu Sans-10"

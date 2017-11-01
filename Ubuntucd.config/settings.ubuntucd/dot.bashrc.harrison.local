@@ -305,6 +305,7 @@ function where_tunnel_through () {
     return;
 }
 
+#gh 9999 4444 70.68.207.114
 function gh () {
     local lport=$1
     local rport=$2
