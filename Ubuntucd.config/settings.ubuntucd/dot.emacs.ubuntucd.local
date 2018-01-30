@@ -51,11 +51,16 @@
         "Courier New-10"
         ))
 
+;;-DAMA-Ubuntu Mono-normal-normal-normal-*-15-*-*-*-m-0-iso10646-1
+(defun fontify-frame (frame)
+  (set-frame-parameter frame 'font "-DAMA-Ubuntu Mono-normal-normal-normal-*-15-*-*-*-m-0-iso10646-1"))
+
 ;;Frame settings
 (defun pop-frame ()
   (set-background-color "black")
   (set-foreground-color "white")
-  (blink-cursor-mode 0) )
+  (blink-cursor-mode 0)
+  (fontify-frame nil) )
 
 (add-hook 'after-make-frame-functions
   (lambda ($new-frame)
@@ -83,6 +88,13 @@ If WINDOW is the only one in its frame, then `delete-frame' too."
       (set-process-query-on-exit-flag proc nil))))
 
 (add-hook 'term-exec-hook 'set-no-process-query-on-exit)
+
+;;Helm
+(require 'helm-config)
+
+;;YAML
+(require 'yaml-mode)
+    (add-to-list 'auto-mode-alist '("\\.ya?ml\\'" . yaml-mode))
 
 ;; Ediff tweak
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -146,6 +158,7 @@ confirmation"
 
 ;; Popup frame
 
+
 ;; Inspired from `mouse-tear-off-window'.
 (defun tear-off-window ()
   "Create a new frame displaying buffer of selected window.
@@ -162,6 +175,7 @@ confirmation"
       (unless (one-window-p) (delete-window owin))))
       (set-background-color "black")
       (set-foreground-color "white")      
+      (fontify-frame nil)
   )
 
 ;;Daemon config
@@ -184,7 +198,7 @@ confirmation"
      (mouse-wheel-follow-mouse . t)
      (mouse-avoidance-mode . 'exile)
      ;; face
-     ;;(font . "ÈèÇÂõ®Á°•Ê§πË∑®ÁìëÁÄπËóâ‰∫ïÁª´ÊäΩÁ≤¶ 8")
+     ;;(font . "øøøøøøøøøøøø 8")
 	 ;;(font . "-unknown-DejaVu Sans Mono-normal-normal-normal-*-13-*-*-*-m-0-iso10646-1")
 	 ;;(font . "-PfEd-DejaVu Sans Mono-normal-normal-normal-*-13-*-*-*-m-0-fontset-auto1")
      )
@@ -239,6 +253,14 @@ confirmation"
 (add-to-list 'package-archives
              '("melpa" . "http://melpa.org/packages/") t)
 )
+
+;; If package-check-signature is allow-unsigned, don't
+;; signal error when we can't verify signature because of
+;; missing public key.  Other errors are still treated as
+;; fatal (bug#17625).
+(unless (and (eq package-check-signature 'allow-unsigned))
+  (setq had-fatal-error t))
+
 ;;;(set-frame-parameter (selected-frame) 'alpha '(<active> [<inactive>]))
 ;;set-frame-parameter (selected-frame) 'alpha '(85 50))
 ;;(add-to-list 'default-frame-alist '(alpha 85 50))
@@ -320,6 +342,20 @@ Version 2016-06-18"
 (global-set-key (kbd "C-d") 'xah-cut-line-or-region) ; cut
 (global-set-key (kbd "C-p") 'xah-copy-line-or-region) ; copy
 (global-set-key (kbd "C-y") 'yank) ; paste
+
+
+;;json-mode
+(eval-after-load "json-mode"
+  '(progn
+     (require 'flymake-json)
+     ;; flymake-cursor displays error in minibuffer message area instead of requiring hover
+     (require 'flymake-cursor)
+
+     (add-hook 'json-mode-hook 'flymake-json-load)
+     (define-key json-mode-map "\C-c\C-n" (function flymake-goto-next-error))
+     (define-key json-mode-map "\C-c\C-l" 'json-pretty-print-buffer)
+  )
+)
 
 ;;undo-tree
 ;;http://cestlaz.github.io/posts/using-emacs-16-undo-tree/#.WEmweYgrKkC
@@ -568,9 +604,9 @@ Version 2016-06-18"
 ;;*** TODO Internet bill repayment
 ;;    DEADLINE: <2012-11-20 Tue>
 ;;* Reading
-;;** TODO ÂßπÂ§äÂΩ∂
-;;** TODO ÈèÑÂ∫°ÂΩ∂
-;;** TODO Â®ìÂë≠ÂΩ∂
+;;** TODO øøø
+;;** TODO øøø
+;;** TODO øøø
 ;;** TODO TCP/IP stevens
 ;;   :LOGBOOK:
 ;;   CLOCK: [2012-11-04 Sun 11:05]--[2012-11-04 Sun 11:10] =>  0:05
@@ -675,11 +711,19 @@ Version 2016-06-18"
 ;; M-x svn-status -> list all files, regardless of the status
 ;; C-x v d -> list ONLY those local-changed files
 ;; C-x v g -> blame opened file line by line
+;; _ toggle modified only/all 
 ;;psvn
 (require 'psvn)
 
 ;;funcs to issue svn cmd
 ;;ref url http://www.emacswiki.org/emacs/SvnMisc
+;;against current buffer
+;;For example:
+;;create a new file, type M-x svn, ?a. and it is added for you.
+;;want to know what changes youøve made? M-x svn, ?d
+;;revert: M-x svn,?R,?y
+;;etc.
+
 (defun svncmdbuf (cmd &optional fn)
   "run the given svn command on the current window"
   (interactive "scmd:")
@@ -1639,8 +1683,8 @@ Require `font-lock'."
  ;; If there is more than one, they won't work right.
  '(background "blue")
  '(ediff-diff-options "-w")
- '(ediff-split-window-function (quote split-window-horizontally))
- '(ediff-window-setup-function (quote ediff-setup-windows-plain))
+ '(ediff-split-window-function 'split-window-horizontally)
+ '(ediff-window-setup-function 'ediff-setup-windows-plain)
  '(font-lock-builtin-face ((((class color) (background dark)) (:foreground "Turquoise"))))
  '(font-lock-comment-face ((t (:foreground "MediumAquamarine"))))
  '(font-lock-constant-face ((((class color) (background dark)) (:bold t :foreground "DarkOrchid"))))
@@ -2857,7 +2901,7 @@ sub do" NameofMethod " {
             (lambda ()
               (setq py-python-command "python2")
               (setq py-default-interpreter "python2"))
-	      (setq Company-mode t)
+	      ;;(setq Company-mode t)
 	      )
 
 (elpy-enable)
@@ -4315,12 +4359,10 @@ sub do" NameofMethod " {
  '(ecb-layout-window-sizes nil)
  '(ecb-options-version "2.50")
  '(ecb-source-path
-   (quote
-    ("~/projects" "~/projects.work" "~/projects.work/repo/env" "/mnt/harrison/B-devops-controlpc-devlab" "/mnt/harrison/B-devops-jenkins-devlab" "/usr/lib/python2.7" "/usr/local/lib/python2.7/" "/home/harrison/" "/")))
+   '("~/projects" "~/projects.work" "~/projects.work/repo/env" "/mnt/harrison/B-devops-controlpc-devlab" "/mnt/harrison/B-devops-jenkins-devlab" "/usr/lib/python2.7" "/usr/local/lib/python2.7/" "/home/harrison/" "/"))
  '(ecb-vc-enable-support t)
  '(ecb-vc-supported-backends
-   (quote
-    ((ecb-vc-dir-managed-by-CVS . ecb-vc-state)
+   '((ecb-vc-dir-managed-by-CVS . ecb-vc-state)
      (ecb-vc-dir-managed-by-RCS . ecb-vc-state)
      (ecb-vc-dir-managed-by-SCCS . ecb-vc-state)
      (ecb-vc-dir-managed-by-CVS . ecb-vc-state)
@@ -4329,30 +4371,24 @@ sub do" NameofMethod " {
      (ecb-vc-dir-managed-by-GIT . ecb-vc-state)
      (ecb-vc-dir-managed-by-BZR . ecb-vc-state)
      (ecb-vc-dir-managed-by-MTN . ecb-vc-state)
-     (ecb-vc-dir-managed-by-HG . ecb-vc-state))))
+     (ecb-vc-dir-managed-by-HG . ecb-vc-state)))
  '(mumamo-chunk-coloring 1)
  '(org-agenda-files nil t)
  '(package-selected-packages
-   (quote
-    (xwidgete groovy-mode elpy go-eldoc flycheck org-wunderlist org-webpage org-wc org-vcard org-trello org-tree-slide org-transform-tree-table org-toodledo org-table-comment org-sync org-screenshot org-repo-todo org-readme org-protocol-jekyll org-projectile org-present org-pomodoro org-pdfview org-password-manager org-pandoc org-page org-outlook org-octopress org-multiple-keymap org-mobile-sync org-mac-iCal org-linkany org-link-travis org-journal org-jira org-jekyll org-if org-grep org-gnome org-gcal org-fstree org-elisp-help org-ehtml org-dropbox multi-term magit-tramp magit-topgit magit-svn magit-stgit magit-gitflow magit-gh-pulls magit-gerrit magit-find-file magit-filenotify magit-annex go-stacktracer go-snippets go-scratch go-projectile go-play go-errcheck go-dlv go-direx go-complete go-autocomplete ecb cl-generic auto-complete-c-headers auto-compile)))
- '(regex-tool-backend (quote perl))
- '(safe-local-variable-values
-   (quote
-    ((eval add-hook
-           (quote write-file-hooks)
-           (quote time-stamp)))))
+   '(flymake-yaml yaml-mode helm flymake-cursor flymake-json json-mode xwidgete groovy-mode elpy go-eldoc flycheck org-wunderlist org-webpage org-wc org-vcard org-trello org-tree-slide org-transform-tree-table org-toodledo org-table-comment org-sync org-screenshot org-repo-todo org-readme org-protocol-jekyll org-projectile org-present org-pomodoro org-pdfview org-password-manager org-pandoc org-page org-outlook org-octopress org-multiple-keymap org-mobile-sync org-mac-iCal org-linkany org-link-travis org-journal org-jira org-jekyll org-if org-grep org-gnome org-gcal org-fstree org-elisp-help org-ehtml org-dropbox multi-term magit-tramp magit-topgit magit-svn magit-stgit magit-gitflow magit-gh-pulls magit-gerrit magit-find-file magit-filenotify magit-annex go-stacktracer go-snippets go-scratch go-projectile go-play go-errcheck go-dlv go-direx go-complete go-autocomplete ecb cl-generic auto-complete-c-headers auto-compile))
+ '(regex-tool-backend 'perl)
+ '(safe-local-variable-values '((eval add-hook 'write-file-hooks 'time-stamp)))
  '(show-paren-mode t)
  '(speedbar-frame-parameters
-   (quote
-    ((minibuffer)
+   '((minibuffer)
      (width . 20)
      (border-width . 0)
      (menu-bar-lines . 0)
      (tool-bar-lines . 0)
      (unsplittable . t)
-     (set-background-color "black"))))
+     (set-background-color "black")))
  '(speedbar-show-unknown-files t)
- '(tramp-syntax (quote default) nil (tramp))
+ '(tramp-syntax 'default nil (tramp))
  '(transient-mark-mode t))
 
 (require 'autoinsert)

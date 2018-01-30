@@ -13,6 +13,6 @@
 (set-background-color "black")
 (set-foreground-color "white")
 ;; default font for this frame
-(set-default-font "-DAMA-Ubuntu Mono-normal-normal-normal-*-15-*-*-*-m-0-iso10646-1")
+(set-default-font "-DAMA-Ubuntu Mono-normal-normal-normal-*-17-*-*-*-m-0-iso10646-1")
 ;; activate ecb
 (ecb-activate)
