@@ -57,7 +57,7 @@
 
 ;;Frame settings
 (defun pop-frame ()
-  (set-background-color "black")
+  (set-background-color "LightBlue4")
   (set-foreground-color "white")
   (blink-cursor-mode 0)
   (fontify-frame nil) )
@@ -90,11 +90,35 @@ If WINDOW is the only one in its frame, then `delete-frame' too."
 (add-hook 'term-exec-hook 'set-no-process-query-on-exit)
 
 ;;Helm
+(require 'helm)
 (require 'helm-config)
+(require 'helm-grep)
+(helm-mode 1)
+
+;;C-x c is close to C-x C-c
+(global-set-key (kbd "C-c h") 'helm-command-prefix)
+(global-unset-key (kbd "C-x c"))
+
+(defun helm-do-grep-recursive (&optional non-recursive)
+  "Like `helm-do-grep', but greps recursively by default."
+  (interactive "P")
+  (let* ((current-prefix-arg (not non-recursive))
+         (helm-current-prefix-arg non-recursive))
+    (call-interactively 'helm-do-grep-ag)))
+
+(global-set-key (kbd "C-H R") 'helm-do-grep-recursive);; do recursive grep pattern
+(with-eval-after-load 'helm
+;;C-c h C-c f -> List recent files
+;;(C-u) C-c h / -> Recursively find files
+   (define-key helm-map (kbd "C-z")  'helm-select-action) ; list actions using C-z
+)
 
 ;;YAML
 (require 'yaml-mode)
     (add-to-list 'auto-mode-alist '("\\.ya?ml\\'" . yaml-mode))
+(require 'flycheck-yamllint)
+(eval-after-load 'flycheck
+  '(add-hook 'flycheck-mode-hook 'flycheck-yamllint-setup))
 
 ;; Ediff tweak
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -345,6 +369,8 @@ Version 2016-06-18"
 
 
 ;;json-mode
+(add-hook 'json-mode-hook #'flycheck-mode)
+
 (eval-after-load "json-mode"
   '(progn
      (require 'flymake-json)
@@ -1424,7 +1450,7 @@ Require `font-lock'."
 (setq display-time-interval 10)
 
 ;; setup Init Folder that Emacs will enter
-(setq default-directory "~/projects.work")
+(setq default-directory "~/projects.work/repo/newSVN")
 
 ;;Centralized backup dir to hold ~ backup files
 (add-to-list 'backup-directory-alist (cons "." "~/.emacsbackups/"))
@@ -4296,7 +4322,7 @@ sub do" NameofMethod " {
 ;; Enable this if you develop in semantic, or develop grammars
 ;;Harrison(semantic-load-enable-semantic-debugging-helpers)
 
-(add-to-list 'load-path "~/.emacs.d/elpa/ecb-20160101.933")
+(add-to-list 'load-path "~/.emacs.d/elpa/ecb-20170728.1221")
 (require 'ecb)
 (setq ecb-tip-of-the-day nil)
 (global-set-key [f12] 'ecb-activate) ;;activate ecb
@@ -4359,7 +4385,7 @@ sub do" NameofMethod " {
  '(ecb-layout-window-sizes nil)
  '(ecb-options-version "2.50")
  '(ecb-source-path
-   '("~/projects" "~/projects.work" "~/projects.work/repo/env" "/mnt/harrison/B-devops-controlpc-devlab" "/mnt/harrison/B-devops-jenkins-devlab" "/usr/lib/python2.7" "/usr/local/lib/python2.7/" "/home/harrison/" "/"))
+   '("~/projects" "~/projects.work/repo/newSVN" "~/projects.work" "~/projects.work/repo/env" "/mnt/harrison/B-jenkins-tmp" "/mnt/harrison/B-controlpc-tmp" "/mnt/harrison/B-devops-controlpc-devlab" "/mnt/harrison/B-devops-jenkins-devlab" "/usr/lib/python2.7" "/usr/local/lib/python2.7/" "/home/harrison/" "/"))
  '(ecb-vc-enable-support t)
  '(ecb-vc-supported-backends
    '((ecb-vc-dir-managed-by-CVS . ecb-vc-state)
@@ -4375,7 +4401,7 @@ sub do" NameofMethod " {
  '(mumamo-chunk-coloring 1)
  '(org-agenda-files nil t)
  '(package-selected-packages
-   '(flymake-yaml yaml-mode helm flymake-cursor flymake-json json-mode xwidgete groovy-mode elpy go-eldoc flycheck org-wunderlist org-webpage org-wc org-vcard org-trello org-tree-slide org-transform-tree-table org-toodledo org-table-comment org-sync org-screenshot org-repo-todo org-readme org-protocol-jekyll org-projectile org-present org-pomodoro org-pdfview org-password-manager org-pandoc org-page org-outlook org-octopress org-multiple-keymap org-mobile-sync org-mac-iCal org-linkany org-link-travis org-journal org-jira org-jekyll org-if org-grep org-gnome org-gcal org-fstree org-elisp-help org-ehtml org-dropbox multi-term magit-tramp magit-topgit magit-svn magit-stgit magit-gitflow magit-gh-pulls magit-gerrit magit-find-file magit-filenotify magit-annex go-stacktracer go-snippets go-scratch go-projectile go-play go-errcheck go-dlv go-direx go-complete go-autocomplete ecb cl-generic auto-complete-c-headers auto-compile))
+   '(flycheck-yamllint yaml-mode helm flymake-cursor flymake-json json-mode xwidgete groovy-mode elpy go-eldoc flycheck org-wunderlist org-webpage org-wc org-vcard org-trello org-tree-slide org-transform-tree-table org-toodledo org-table-comment org-sync org-screenshot org-repo-todo org-readme org-protocol-jekyll org-projectile org-present org-pomodoro org-pdfview org-password-manager org-pandoc org-page org-outlook org-octopress org-multiple-keymap org-mobile-sync org-mac-iCal org-linkany org-link-travis org-journal org-jira org-jekyll org-if org-grep org-gnome org-gcal org-fstree org-elisp-help org-ehtml org-dropbox multi-term magit-tramp magit-topgit magit-svn magit-stgit magit-gitflow magit-gh-pulls magit-gerrit magit-find-file magit-filenotify magit-annex go-stacktracer go-snippets go-scratch go-projectile go-play go-errcheck go-dlv go-direx go-complete go-autocomplete ecb cl-generic auto-complete-c-headers auto-compile))
  '(regex-tool-backend 'perl)
  '(safe-local-variable-values '((eval add-hook 'write-file-hooks 'time-stamp)))
  '(show-paren-mode t)
@@ -4390,6 +4416,14 @@ sub do" NameofMethod " {
  '(speedbar-show-unknown-files t)
  '(tramp-syntax 'default nil (tramp))
  '(transient-mark-mode t))
+
+;; ECB+Minibuffer
+(defun display-buffer-at-bottom--display-buffer-at-bottom-around (orig-fun &rest args)
+"Bugfix for ECB: cannot use display-buffer-at-bottom', calldisplay-buffer-use-some-window' instead in ECB frame."
+(if (and ecb-minor-mode (equal (selected-frame) ecb-frame))
+(apply 'display-buffer-use-some-window args)
+(apply orig-fun args)))
+(advice-add 'display-buffer-at-bottom :around #'display-buffer-at-bottom--display-buffer-at-bottom-around)
 
 (require 'autoinsert)
 (auto-insert-mode)
@@ -4649,4 +4683,3 @@ sub do" NameofMethod " {
 ;; q     - svn-status-bury-buffer
 
 ;; C-x C-j - svn-status-dired-jump
-
