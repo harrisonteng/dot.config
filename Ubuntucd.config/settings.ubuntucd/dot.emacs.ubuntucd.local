@@ -38,6 +38,7 @@
 (setq harrison-font-list
       '(;; list of fonts to search for in order of priority.
         ;; each has it's own line for easy transposing.
+        "-DAMA-Ubuntu Mono-normal-normal-normal-*-17-*-*-*-m-0-iso10646-1"
         "-DAMA-Ubuntu Mono-normal-normal-normal-*-15-*-*-*-m-0-iso10646-1"
         "DejaVu Sans Mono-10"
         "DejaVu Sans-10"
@@ -53,7 +54,7 @@
 
 ;;-DAMA-Ubuntu Mono-normal-normal-normal-*-15-*-*-*-m-0-iso10646-1
 (defun fontify-frame (frame)
-  (set-frame-parameter frame 'font "-DAMA-Ubuntu Mono-normal-normal-normal-*-15-*-*-*-m-0-iso10646-1"))
+  (set-frame-parameter frame 'font "-DAMA-Ubuntu Mono-normal-normal-normal-*-17-*-*-*-m-0-iso10646-1"))
 
 ;;Frame settings
 (defun pop-frame ()
@@ -102,11 +103,16 @@ If WINDOW is the only one in its frame, then `delete-frame' too."
 (defun helm-do-grep-recursive (&optional non-recursive)
   "Like `helm-do-grep', but greps recursively by default."
   (interactive "P")
-  (let* ((current-prefix-arg (not non-recursive))
-         (helm-current-prefix-arg non-recursive))
-    (call-interactively 'helm-do-grep-ag)))
+    (let* (
+           (current-prefix-arg (not non-recursive))
+           (helm-current-prefix-arg non-recursive)
+         )
+         (call-interactively 'helm-do-grep-ag)
+    )
+  )
 
 (global-set-key (kbd "C-H R") 'helm-do-grep-recursive);; do recursive grep pattern
+
 (with-eval-after-load 'helm
 ;;C-c h C-c f -> List recent files
 ;;(C-u) C-c h / -> Recursively find files
