@@ -4391,7 +4391,7 @@ sub do" NameofMethod " {
  '(ecb-layout-window-sizes nil)
  '(ecb-options-version "2.50")
  '(ecb-source-path
-   '("~/projects" "~/projects.work/repo/newSVN" "~/projects.work" "~/projects.work/repo/env" "/mnt/harrison/B-jenkins-tmp" "/mnt/harrison/B-controlpc-tmp" "/mnt/harrison/B-devops-controlpc-devlab" "/mnt/harrison/B-devops-jenkins-devlab" "/usr/lib/python2.7" "/usr/local/lib/python2.7/" "/home/harrison/" "/"))
+   '("~/projects" "~/projects.work/repo/newSVN" "~/projects.work" "/mnt/harrison/B-jenkins-tmp" "/mnt/harrison/B-controlpc-tmp" "/mnt/harrison/B-devops-controlpc-devlab" "/mnt/harrison/B-devops-jenkins-devlab" "/usr/lib/python2.7" "/usr/local/lib/python2.7/" "/home/harrison/" "/"))
  '(ecb-vc-enable-support t)
  '(ecb-vc-supported-backends
    '((ecb-vc-dir-managed-by-CVS . ecb-vc-state)
