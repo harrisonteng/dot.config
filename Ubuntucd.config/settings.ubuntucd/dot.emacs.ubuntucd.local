@@ -1225,6 +1225,14 @@ Version 2016-06-18"
 (define-key ac-mode-map (kbd "C-SPC") 'auto-complete)
 ;;End of Auto complete mode ========
 
+;;========================
+(defadvice auto-complete-mode
+     (around disable-auto-complete-for-python)
+     (unless (eq major-mode 'python-mode) ad-do-it))
+
+(ad-activate 'auto-complete-mode)
+;;========================
+
 
 ;;popup functions
 ;;(defun my-popup (title msg)
@@ -2927,46 +2935,25 @@ sub do" NameofMethod " {
 ;;End of Robo-mode ========================================================
 
 ;;Begin of Python-mode =====================================================
-(require 'yasnippet)
-(yas-global-mode 1)
+;;(require 'yasnippet)
+;;(yas-global-mode 1)
+(setq elpy-modules '(elpy-module-sane-defaults
+                       elpy-module-company
+                       elpy-module-eldoc
+                       elpy-module-highlight-indentation
+                       elpy-module-pyvenv
+                       elpy-module-yasnippet))
 (add-hook 'python-mode-hook
             (lambda ()
               (setq py-python-command "python2")
               (setq py-default-interpreter "python2"))
-	      ;;(setq Company-mode t)
+	      (setq Company-mode t)
+	      (setq company-quickhelp-mode t)
 	      )
 
 (elpy-enable)
-
-;;    * C-j: Insert a new line with the same indentation level as the current line
-;;    * RET: Insert a new line with the same indentation level as the current line
-;;    * C-M-a: Go to the beginning of the current function or class
-;;    * C-M-e: Go to the end of the current function or class
-;;    * C-M-h: Mark the current function or class for copying, etc.
-;;    * C-M-x: Execute the current function or class
-;;    * C-c C-b: Submit a bug report
-;;    * C-c C-c: Execute the buffer (i.e., the file being displayed)
-;;    * C-c C-d: Trace the stack of the process being executed
-;;    * C-c C-h: Get context-based help
-;;    * C-c TAB: Indent a highlighted (or marked) region
-;;    * C-c C-k: Mark a block of text. Using this at the head of a class or function definition will mark the entire block.
-;;    * C-c C-l: Shift the region to the left. If the cursor is in the middle of a region, the lower half of the region will shift.
-;;    * C-c RET: Execute the current file, opening a new window to show the output.
-;;    * C-c C-n: Jump to the next statement.
-;;    * C-c C-p: Jump to the previous statement.
-;;    * C-c C-r: Shift the region to the right. If the cursor is in the middle of a region, the lower half of the region will shift.
-;;    * C-c C-s: Execute a Python command.
-;;    * C-c C-t: Toggle shells
-;;    * C-c C-u: Go up one block
-;;    * C-c C-v: List the version of the Python mode
-;;    * C-c C-w: Run PyChecker
-;;    * C-c !: Open the Python interactive shell
-;;    * C-c #: Comment the highlighted (marked) region
-;;    * C-c :: Check the indentation off-set
-;;    * C-c <: Shift the region to the left
-;;    * C-c >: Shift the region to the right
-;;    * C-c ?: Show pYthon mode documentation
-;;    * C-c |: Execute the highlighted (marked) part of the current program. 
+;;    * C-c C-d: When point is on a symbol, Elpy will try and find the documentation for that object, and display that
+;;    http://elpy.readthedocs.io/en/latest/ide.html
 
 ;;Root Path of pylookup
 
@@ -4407,7 +4394,7 @@ sub do" NameofMethod " {
  '(mumamo-chunk-coloring 1)
  '(org-agenda-files nil t)
  '(package-selected-packages
-   '(flycheck-yamllint yaml-mode helm flymake-cursor flymake-json json-mode xwidgete groovy-mode elpy go-eldoc flycheck org-wunderlist org-webpage org-wc org-vcard org-trello org-tree-slide org-transform-tree-table org-toodledo org-table-comment org-sync org-screenshot org-repo-todo org-readme org-protocol-jekyll org-projectile org-present org-pomodoro org-pdfview org-password-manager org-pandoc org-page org-outlook org-octopress org-multiple-keymap org-mobile-sync org-mac-iCal org-linkany org-link-travis org-journal org-jira org-jekyll org-if org-grep org-gnome org-gcal org-fstree org-elisp-help org-ehtml org-dropbox multi-term magit-tramp magit-topgit magit-svn magit-stgit magit-gitflow magit-gh-pulls magit-gerrit magit-find-file magit-filenotify magit-annex go-stacktracer go-snippets go-scratch go-projectile go-play go-errcheck go-dlv go-direx go-complete go-autocomplete ecb cl-generic auto-complete-c-headers auto-compile))
+   '(company-quickhelp flycheck-yamllint yaml-mode flymake-cursor flymake-json json-mode xwidgete groovy-mode elpy go-eldoc flycheck org-wunderlist org-webpage org-wc org-vcard org-trello org-tree-slide org-transform-tree-table org-toodledo org-table-comment org-sync org-screenshot org-repo-todo org-readme org-protocol-jekyll org-projectile org-present org-pomodoro org-pdfview org-password-manager org-pandoc org-page org-outlook org-octopress org-multiple-keymap org-mobile-sync org-mac-iCal org-linkany org-link-travis org-journal org-jira org-jekyll org-if org-grep org-gnome org-gcal org-fstree org-elisp-help org-ehtml org-dropbox multi-term magit-tramp magit-topgit magit-svn magit-stgit magit-gitflow magit-gh-pulls magit-gerrit magit-find-file magit-filenotify magit-annex go-stacktracer go-snippets go-scratch go-projectile go-play go-errcheck go-dlv go-direx go-complete go-autocomplete ecb cl-generic auto-complete-c-headers auto-compile))
  '(regex-tool-backend 'perl)
  '(safe-local-variable-values '((eval add-hook 'write-file-hooks 'time-stamp)))
  '(show-paren-mode t)
@@ -4513,9 +4500,9 @@ sub do" NameofMethod " {
 (setq tags-file-name "~/TAGS")
 
 ;;Remeber the last settings
-(require 'desktop)
-(desktop-load-default)
-(desktop-read)
+;;(require 'desktop)
+;;(desktop-load-default)
+;;(desktop-read)
 
 ;;(defun indent-buffer ()
 ;;  "Indent the currently visited buffer."
