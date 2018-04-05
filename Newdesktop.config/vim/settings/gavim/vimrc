@@ -446,23 +446,24 @@ call pathogen#helptags()
 filetype plugin indent on
 syntax on
 
+
 "" Load python mode by default
-"" let g:pymode = 1
+"let g:pymode = 1
 "
 "" Disable pylint checking every save
 "let g:pymode_lint_write = 0
 "
 "" Load pylint code plugin
-"let g:pymode_lint = 0 
+let g:pymode_lint = 1
 "
 "" Switch pylint, pyflakes, pep8, mccabe code-checkers
 "" Can have multiply values "pep8,pyflakes,mcccabe"
 "" Choices are pyflakes, pep8, mccabe, pylint, pep257
-"let g:pymode_lint_checker = "pyflakes,pep8,mccabe"
+let g:pymode_lint_checker = "pylint,pep8"
 "
 "" Skip errors and warnings
 "" E.g. "E501,W002", "E2,W" (Skip all Warnings and Errors startswith E2) and etc
-"let g:pymode_lint_ignore = "E501"
+let g:pymode_lint_ignore = "E501"
 "
 "" Select errors and warnings
 "" E.g. "E4,W"
@@ -473,7 +474,7 @@ syntax on
 "
 "" Pylint configuration file
 "" If file not found use 'pylintrc' from python-mode plugin directory
-"let g:pymode_lint_config = "$HOME/.pylintrc"
+let g:pymode_lint_config = "$HOME/.pylintrc"
 "
 "" Check code every save
 "let g:pymode_lint_write = 1
@@ -925,7 +926,18 @@ set statusline+=%*
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
+let g:syntastic_check_on_wq = 1
+let g:syntastic_mode_map = {'mode':'passive'}
+let g:syntastic_enable_signs=0
+""To disable warnings use:
+let g:syntastic_quiet_messages={'level':'warnings'}
+" ignore files of Ansible Roles.
+let g:syntastic_ignore_files = ['\m^roles/']
+let g:syntastic_python_checkers=['pylint']
+let g:syntastic_python_pylint_rcfile='$HOME/.pylintrc'
+""let g:syntastic_python_flake8_args='--ignore=E501,E225'
+nnoremap <F10> :SyntasticCheck<CR> :SyntasticToggleMode<CR> :w<CR>
+
 
 "nmap <F8> :TagbarToggle<CR>
 " c file, ,cc comment one line
