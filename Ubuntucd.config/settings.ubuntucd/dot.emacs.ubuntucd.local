@@ -4,7 +4,7 @@
 ;; installed packages.  Don't delete this line.  If you don't want it,
 ;; just comment it out by adding a semicolon to the start of the line.
 ;; You may delete these explanatory comments.
-(package-initialize)
+;;(package-initialize)
 
 (setq stack-trace-on-error t)
 (load "~/.emacs.d/pkgs/subdirs")
@@ -297,7 +297,7 @@ confirmation"
 ;;set-frame-parameter (selected-frame) 'alpha '(85 50))
 ;;(add-to-list 'default-frame-alist '(alpha 85 50))
 ;;
-;;eval-when-compile (require 'cl))
+;;eval-when-compile (require 'cl)
 ;;(defun toggle-transparency ()
 ;;  (interactive)
 ;;  (if (/=
@@ -537,6 +537,9 @@ Version 2016-06-18"
 
 
 ;;org mode
+;;M-Enter to add a same level indent
+;;org-do-promote, will promote a level to its parent level, vise versa for
+;;org-do-demote.
 ;;(setq load-path (cons "~/.emacs.d/pkgs/org-7.7/contrib/lisp" load-path))
 ;;add same level title, M-RET
 ;;fold/collapse, TAB
@@ -557,7 +560,18 @@ Version 2016-06-18"
 (add-to-list 'auto-mode-alist '("\\.org$" . org-mode))
 (define-key global-map "\C-cl" 'org-store-link)
 (define-key global-map "\C-ca" 'org-agenda)
+(define-key global-map "\C-cL" 'org-do-promote)
+(define-key global-map "\C-cR" 'org-do-demote)
 (setq org-log-done t)
+(setq org-support-shift-select t)
+
+;;(defun reflash-indentation ()
+;;    "Fix org-indent issues, center line."
+;;    (interactive)
+;;    (org-indent-mode 1)
+;;    (recenter-top-bottom)
+;;    )
+;;(define-key global-map "\C-cr" 'reflash-indentation)
 
 (setq org-todo-keyword-faces '(("TODO" . (:foreground "white" :weight regular))
 				("INPROGRESS" . (:foreground "forest green" :weight regular))
@@ -2954,6 +2968,8 @@ sub do" NameofMethod " {
 	      )
 
 (elpy-enable)
+;; elpy: mark region then elpy-shell-send-region-and-go, aka, C-c C-y R
+;; elpy: elpy-shell-send-buffer-and-go, aka, C-c C-c
 ;;    * C-c C-d: When point is on a symbol, Elpy will try and find the documentation for that object, and display that
 ;;    http://elpy.readthedocs.io/en/latest/ide.html
 
