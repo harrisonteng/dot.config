@@ -1102,26 +1102,34 @@ function mountsec() {
 
 }
 
-
 function goto() {
-	
-	#p48A-fhv    p48A-fhv
-	local prodorlab=$1; # p || l
-	local type=$2; # c || j || t
-	local input=$3; # 35C
-	local rmcmd=$4; # command to run on remote ssh host
+     
+        #p48A-fhv    p48A-fhv
+        #p340-V\d-Jenkins
+        local prodorlab=$1; # p || l
+        local type=$2; # c || j || t
+        local input=$3; # 35C || 3401
+        local flag=$4; # G->gns3
 
-	num=${input:0:2};
-	numsmoke=${input:0:3};
-	char=${input:2:2};
+        if [ "X${flag}" == "Xg" ];then
+            racknum=${input:0:3};
+            testbednum=${input:3:1};
+            ssh devops@${prodorlab}${racknum}-V${testbednum}-Jenkins;
+            return;
+        fi
 
-	if [ "X${type}" == "Xc" ];then
-	    ssh devops@${prodorlab}${num}${char}-controlpc "${rmcmd}";
-	elif [ "X${type}" == "Xj" ];then
-	    ssh devops@${prodorlab}${num}${char}-jenkins "${rmcmd}";
-	elif [ "X${type}" == "Xt" ];then
-	    telnet ${prodorlab}${numsmoke}-term;
-	fi
+        num=${input:0:2};
+        numsmoke=${input:0:3};
+        char=${input:2:2};
+
+
+        if [ "X${type}" == "Xc" ];then
+            ssh devops@${prodorlab}${num}${char}-controlpc;
+        elif [ "X${type}" == "Xj" ];then
+            ssh devops@${prodorlab}${num}${char}-jenkins;
+        elif [ "X${type}" == "Xt" ];then
+            telnet ${prodorlab}${numsmoke}-term;
+        fi
 
 }
 
