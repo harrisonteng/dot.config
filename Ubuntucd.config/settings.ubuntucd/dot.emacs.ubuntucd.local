@@ -96,6 +96,17 @@ If WINDOW is the only one in its frame, then `delete-frame' too."
 (require 'helm-grep)
 (helm-mode 1)
 
+;;https://www.reddit.com/r/emacs/comments/7rho4f/now_you_can_use_helm_with_frames_instead_of/
+;;With the latest Helm, you can display Helm buffers in its own frame, like a popup:
+;;This way, your window configuration won't be changed anymore. Note, even displaying in a minibuffer 
+;;disrupts your window configuration, so using minibuffer is not a solution.
+;;This feature is handy, especially when I have a huge buffer of grep/ag results. 
+;;Using helm-ag, the results are displayed in a frame, and I can switch back and forth between frame without 
+;;having to constantly bring back grep/ag result buffer. It is great if you have a slightly large and wide monitor.
+(setq helm-display-function 'helm-display-buffer-in-own-frame
+        helm-display-buffer-reuse-frame t
+        helm-use-undecorated-frame-option t)
+
 ;;C-x c is close to C-x C-c
 (global-set-key (kbd "C-c h") 'helm-command-prefix)
 (global-unset-key (kbd "C-x c"))
@@ -114,6 +125,12 @@ If WINDOW is the only one in its frame, then `delete-frame' too."
 (global-set-key (kbd "C-H R") 'helm-do-grep-recursive);; do recursive grep pattern
 
 (with-eval-after-load 'helm
+;;I imagine you work often in this directory, so it is on top of history,
+;;you can do C-u C-x C-f RET (assuming you bounded C-x C-f to helm-find-files).
+;;When in helm-find-files, you can also at any moment do C-x r m to
+;;bookmark the directory you are actually browsing, and at any moment C-x r b to retrieve it.
+;;Starting with helm-filtered-bookmarks allow also to retrieve your helm-find-files bookmark in a specific section.		      
+;;C-c h C-x C-f -> find file/urls in current dir
 ;;C-c h C-c f -> List recent files
 ;;(C-u) C-c h / -> Recursively find files
    (define-key helm-map (kbd "C-z")  'helm-select-action) ; list actions using C-z
