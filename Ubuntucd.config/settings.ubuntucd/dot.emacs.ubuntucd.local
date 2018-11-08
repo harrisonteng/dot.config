@@ -138,6 +138,15 @@ If WINDOW is the only one in its frame, then `delete-frame' too."
 
 )
 
+;;http://amitp.blogspot.com/2012/10/emacs-helm-for-finding-files.html
+(require 'helm-files)
+(setq helm-idle-delay 0.1)
+(setq helm-input-idle-delay 0.1)
+(setq helm-locate-command "/home/harrison/.hlocal/emacs/dot.emacs.d/locate-with-find.sh %s %s")
+;;(loop for ext in '("\\.o$" "\\.elc$" "\\.pyc$")
+;;      do (add-to-list 'helm-boring-file-regexp-list ext))
+(global-set-key (kbd "C-H S") 'helm-for-files);; 
+
 ;;YAML
 (require 'yaml-mode)
     (add-to-list 'auto-mode-alist '("\\.ya?ml\\'" . yaml-mode))
