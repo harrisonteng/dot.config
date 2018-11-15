@@ -58,7 +58,7 @@
 
 ;;Frame settings
 (defun pop-frame ()
-  (set-background-color "LightBlue4")
+  (set-background-color "DimGrey")
   (set-foreground-color "white")
   (blink-cursor-mode 0)
   (fontify-frame nil) )
@@ -96,20 +96,47 @@ If WINDOW is the only one in its frame, then `delete-frame' too."
 (require 'helm-grep)
 (helm-mode 1)
 
-;;https://www.reddit.com/r/emacs/comments/7rho4f/now_you_can_use_helm_with_frames_instead_of/
-;;With the latest Helm, you can display Helm buffers in its own frame, like a popup:
-;;This way, your window configuration won't be changed anymore. Note, even displaying in a minibuffer 
-;;disrupts your window configuration, so using minibuffer is not a solution.
-;;This feature is handy, especially when I have a huge buffer of grep/ag results. 
-;;Using helm-ag, the results are displayed in a frame, and I can switch back and forth between frame without 
-;;having to constantly bring back grep/ag result buffer. It is great if you have a slightly large and wide monitor.
-(setq helm-display-function 'helm-display-buffer-in-own-frame
+;;(when (package-installed-p 'helm)
+
+  ;;https://www.reddit.com/r/emacs/comments/7rho4f/now_you_can_use_helm_with_frames_instead_of/
+  ;;With the latest Helm, you can display Helm buffers in its own frame, like a popup:
+  ;;This way, your window configuration won't be changed anymore. Note, even displaying in a minibuffer 
+  ;;disrupts your window configuration, so using minibuffer is not a solution.
+  ;;This feature is handy, especially when I have a huge buffer of grep/ag results. 
+  ;;Using helm-ag, the results are displayed in a frame, and I can switch back and forth between frame without 
+  ;;having to constantly bring back grep/ag result buffer. It is great if you have a slightly large and wide monitor.
+  (setq helm-display-function 'helm-display-buffer-in-own-frame
         helm-display-buffer-reuse-frame t
         helm-use-undecorated-frame-option t)
 
-;;C-x c is close to C-x C-c
-(global-set-key (kbd "C-c h") 'helm-command-prefix)
-(global-unset-key (kbd "C-x c"))
+  ;;C-x c is close to C-x C-c
+  (global-set-key (kbd "C-c h") 'helm-command-prefix)
+  (global-unset-key (kbd "C-x c"))
+
+
+  ;; helm-M-x
+  (setq helm-M-x-fuzzy-match t)
+  (global-set-key (kbd "M-x") 'helm-M-x)
+
+  ;; helm-kill-ring
+  (global-set-key (kbd "M-y") 'helm-show-kill-ring)
+
+  ;; helm-mini
+  (global-set-key (kbd "C-x b") 'helm-mini)
+  (setq helm-buffers-fuzzy-matching t
+        helm-recentf-fuzzy-match t)
+
+  ;; helm-find-files
+  (global-set-key (kbd "C-x C-f") 'helm-find-files)
+;;)
+
+;;; -----------------------------
+;;; helm-projectile
+(when (package-installed-p 'helm-projectile)
+  (projectile-global-mode)
+  (helm-projectile-on)
+  )
+
 
 (defun helm-do-grep-recursive (&optional non-recursive)
   "Like `helm-do-grep', but greps recursively by default."
