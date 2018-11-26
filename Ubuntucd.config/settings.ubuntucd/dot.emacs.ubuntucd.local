@@ -93,8 +93,11 @@ If WINDOW is the only one in its frame, then `delete-frame' too."
 ;;Helm
 (require 'helm)
 (require 'helm-config)
-(require 'helm-grep)
+;;(require 'helm-grep)
+(require 'helm-ag)
 (helm-mode 1)
+;;(helm-autoresize-mode 1)
+
 
 ;;(when (package-installed-p 'helm)
 
@@ -107,7 +110,10 @@ If WINDOW is the only one in its frame, then `delete-frame' too."
   ;;having to constantly bring back grep/ag result buffer. It is great if you have a slightly large and wide monitor.
   (setq helm-display-function 'helm-display-buffer-in-own-frame
         helm-display-buffer-reuse-frame t
-        helm-use-undecorated-frame-option t)
+        helm-use-undecorated-frame-option t
+	helm-display-buffer-width 140
+	helm-display-buffer-height 80
+	helm-autoresize-mode 1)
 
   ;;C-x c is close to C-x C-c
   (global-set-key (kbd "C-c h") 'helm-command-prefix)
@@ -150,6 +156,7 @@ If WINDOW is the only one in its frame, then `delete-frame' too."
   )
 
 (global-set-key (kbd "C-H R") 'helm-do-grep-recursive);; do recursive grep pattern
+(global-set-key (kbd "C-H r") 'helm-do-grep-ag);; do recursive grep without file type
 
 (with-eval-after-load 'helm
 ;;I imagine you work often in this directory, so it is on top of history,
@@ -166,13 +173,21 @@ If WINDOW is the only one in its frame, then `delete-frame' too."
 )
 
 ;;http://amitp.blogspot.com/2012/10/emacs-helm-for-finding-files.html
+;;find string in the file types
 (require 'helm-files)
 (setq helm-idle-delay 0.1)
 (setq helm-input-idle-delay 0.1)
-(setq helm-locate-command "/home/harrison/.hlocal/emacs/dot.emacs.d/locate-with-find.sh %s %s")
-;;(loop for ext in '("\\.o$" "\\.elc$" "\\.pyc$")
-;;      do (add-to-list 'helm-boring-file-regexp-list ext))
+(setq helm-locate-command "/home/harrison/.hlocal/emacs/dot.emacs.d/locate-with-find.sh %s")
+(setq-default helm-boring-file-regexp-list
+                            (append '("\\.DS_Store$"
+                                      "\\.svn$"
+                                      "\\.svn-base$"
+				      "\\.o$"
+				      "\\.elc$"
+				      "\\.pyc$"
+                                      "\\.swp$") helm-boring-file-regexp-list))
 (global-set-key (kbd "C-H S") 'helm-for-files);; 
+;; End of Helm
 
 ;;YAML
 (require 'yaml-mode)
@@ -254,10 +269,12 @@ confirmation"
         (buf   (window-buffer))
         (fr    (make-frame)))
     (select-frame fr)
+    (set-frame-size (selected-frame) 124 124)
     (switch-to-buffer buf)
     (save-window-excursion 
       (select-window owin)
-      (unless (one-window-p) (delete-window owin))))
+      (unless (one-window-p) (delete-window owin)))
+    )
       (set-background-color "black")
       (set-foreground-color "white")      
       (fontify-frame nil)
@@ -1168,122 +1185,122 @@ Version 2016-06-18"
 
 (global-set-key (kbd "<f9>") 'smart-compile)
 
-;;End of Smart Compile =======================================================
-
-;;Begin of IDO mode =========================
-(require 'ange-ftp)
-(require 'ido)
-   ;;(ido-mode t)
-;;Enable IDO for Buffer switch
-(setq ido-enable-flex-matching t)
-;;Ignore cvs mode buffers
-(defun my-ido-ignore-buffers (name)
- "Ignore all c mode buffers -- example function for ido."
- (with-current-buffer name
-  (cond ((or (derived-mode-p 'cvs-mode) (derived-mode-p 'sql-interactive-mode))
-         nil)
-        (t
-         (string-match "^ ?\\*" name)))))
-
-(setq-default ido-ignore-buffers '(my-ido-ignore-buffers)
-                           ido-auto-merge-work-directories-length -1)
- (defun ido-execute ()
-     (interactive)
-     (call-interactively
-      (intern
-       (ido-completing-read
-        "M-x "
-        (let (cmd-list)
-          (mapatoms (lambda (S) (when (commandp S) (setq cmd-list
-(cons (format "%S" S) cmd-list)))))
-          cmd-list)))))
-
-   (global-set-key "\C-c-x" 'ido-execute)
-
-
-;;{{{ ido: fast switch buffers
-(add-hook 'ido-define-mode-map-hook 'ido-my-keys)
-
-(defun ido-my-keys ()
-  "Set up the keymap for `ido'."
-
-  ;; common keys
-  (define-key ido-mode-map "\C-e" 'ido-edit-input)
-  (define-key ido-mode-map "\t" 'ido-complete) ;; complete partial
-  (define-key ido-mode-map "\C-j" 'ido-select-text)
-  (define-key ido-mode-map "\C-m" 'ido-exit-minibuffer)
-  (define-key ido-mode-map "?" 'ido-completion-help) ;; list completions
-  (define-key ido-mode-map [(control ? )] 'ido-restrict-to-matches)
-  (define-key ido-mode-map [(control ?@)] 'ido-restrict-to-matches)
-
-  ;; cycle through matches
-  (define-key ido-mode-map "\C-r" 'ido-prev-match)
-  (define-key ido-mode-map "\C-s" 'ido-next-match)
-  (define-key ido-mode-map [right] 'ido-next-match)
-  (define-key ido-mode-map [left] 'ido-prev-match)
-
-  ;; toggles
-  (define-key ido-mode-map "\C-t" 'ido-toggle-regexp) ;; same as in isearch
-  (define-key ido-mode-map "\C-p" 'ido-toggle-prefix)
-  (define-key ido-mode-map "\C-c" 'ido-toggle-case)
-  (define-key ido-mode-map "\C-a" 'ido-toggle-ignore)
-
-  ;; keys used in file and dir environment
-  (when (memq ido-cur-item '(file dir))
-    (define-key ido-mode-map "\C-b" 'ido-enter-switch-buffer)
-    (define-key ido-mode-map "\C-d" 'ido-enter-dired)
-    (define-key ido-mode-map "\C-f" 'ido-fallback-command)
-
-    ;; cycle among directories
-    ;; use [left] and [right] for matching files
-    (define-key ido-mode-map [down] 'ido-next-match-dir)
-    (define-key ido-mode-map [up]   'ido-prev-match-dir)
-
-    ;; backspace functions
-    (define-key ido-mode-map [backspace] 'ido-delete-backward-updir)
-    (define-key ido-mode-map "\d"        'ido-delete-backward-updir)
-    (define-key ido-mode-map [(meta backspace)] 'ido-delete-backward-word-updir)
-    (define-key ido-mode-map [(control backspace)] 'ido-up-directory)
-
-    ;; I can't understand this
-    (define-key ido-mode-map [(meta ?d)] 'ido-wide-find-dir)
-    (define-key ido-mode-map [(meta ?f)] 'ido-wide-find-file)
-    (define-key ido-mode-map [(meta ?k)] 'ido-forget-work-directory)
-    (define-key ido-mode-map [(meta ?m)] 'ido-make-directory)
-
-    (define-key ido-mode-map [(meta down)] 'ido-next-work-directory)
-    (define-key ido-mode-map [(meta up)] 'ido-prev-work-directory)
-    (define-key ido-mode-map [(meta left)] 'ido-prev-work-file)
-    (define-key ido-mode-map [(meta right)] 'ido-next-work-file)
-
-    ;; search in the directories
-    ;; use C-_ to undo this
-    (define-key ido-mode-map [(meta ?s)] 'ido-merge-work-directories)
-    (define-key ido-mode-map [(control ?\_)] 'ido-undo-merge-work-directory)
-    )
-
-  (when (eq ido-cur-item 'file)
-    (define-key ido-mode-map "\C-k" 'ido-delete-file-at-head)
-    (define-key ido-mode-map "\C-l" 'ido-toggle-literal)
-    (define-key ido-mode-map "\C-o" 'ido-copy-current-word)
-    (define-key ido-mode-map "\C-v" 'ido-toggle-vc)
-    (define-key ido-mode-map "\C-w" 'ido-copy-current-file-name)
-    )
-
-  (when (eq ido-cur-item 'buffer)
-    (define-key ido-mode-map "\C-b" 'ido-fallback-command)
-    (define-key ido-mode-map "\C-f" 'ido-enter-find-file)
-    (define-key ido-mode-map "\C-k" 'ido-kill-buffer-at-head)
-    ))
-
-(ido-mode t)
-;;}}}
-
-
-;;everywhere allows for ido type buffer switching.. which is nice.
-(setq ido-everywhere t)
-;;End of IDO mode ============================
+;;;;End of Smart Compile =======================================================
 ;;
+;;;;Begin of IDO mode =========================
+;;(require 'ange-ftp)
+;;(require 'ido)
+;;   ;;(ido-mode t)
+;;;;Enable IDO for Buffer switch
+;;(setq ido-enable-flex-matching t)
+;;;;Ignore cvs mode buffers
+;;(defun my-ido-ignore-buffers (name)
+;; "Ignore all c mode buffers -- example function for ido."
+;; (with-current-buffer name
+;;  (cond ((or (derived-mode-p 'cvs-mode) (derived-mode-p 'sql-interactive-mode))
+;;         nil)
+;;        (t
+;;         (string-match "^ ?\\*" name)))))
+;;
+;;(setq-default ido-ignore-buffers '(my-ido-ignore-buffers)
+;;                           ido-auto-merge-work-directories-length -1)
+;; (defun ido-execute ()
+;;     (interactive)
+;;     (call-interactively
+;;      (intern
+;;       (ido-completing-read
+;;        "M-x "
+;;        (let (cmd-list)
+;;          (mapatoms (lambda (S) (when (commandp S) (setq cmd-list
+;;(cons (format "%S" S) cmd-list)))))
+;;          cmd-list)))))
+;;
+;;   (global-set-key "\C-c-x" 'ido-execute)
+;;
+;;
+;;;;{{{ ido: fast switch buffers
+;;(add-hook 'ido-define-mode-map-hook 'ido-my-keys)
+;;
+;;(defun ido-my-keys ()
+;;  "Set up the keymap for `ido'."
+;;
+;;  ;; common keys
+;;  (define-key ido-mode-map "\C-e" 'ido-edit-input)
+;;  (define-key ido-mode-map "\t" 'ido-complete) ;; complete partial
+;;  (define-key ido-mode-map "\C-j" 'ido-select-text)
+;;  (define-key ido-mode-map "\C-m" 'ido-exit-minibuffer)
+;;  (define-key ido-mode-map "?" 'ido-completion-help) ;; list completions
+;;  (define-key ido-mode-map [(control ? )] 'ido-restrict-to-matches)
+;;  (define-key ido-mode-map [(control ?@)] 'ido-restrict-to-matches)
+;;
+;;  ;; cycle through matches
+;;  (define-key ido-mode-map "\C-r" 'ido-prev-match)
+;;  (define-key ido-mode-map "\C-s" 'ido-next-match)
+;;  (define-key ido-mode-map [right] 'ido-next-match)
+;;  (define-key ido-mode-map [left] 'ido-prev-match)
+;;
+;;  ;; toggles
+;;  (define-key ido-mode-map "\C-t" 'ido-toggle-regexp) ;; same as in isearch
+;;  (define-key ido-mode-map "\C-p" 'ido-toggle-prefix)
+;;  (define-key ido-mode-map "\C-c" 'ido-toggle-case)
+;;  (define-key ido-mode-map "\C-a" 'ido-toggle-ignore)
+;;
+;;  ;; keys used in file and dir environment
+;;  (when (memq ido-cur-item '(file dir))
+;;    (define-key ido-mode-map "\C-b" 'ido-enter-switch-buffer)
+;;    (define-key ido-mode-map "\C-d" 'ido-enter-dired)
+;;    (define-key ido-mode-map "\C-f" 'ido-fallback-command)
+;;
+;;    ;; cycle among directories
+;;    ;; use [left] and [right] for matching files
+;;    (define-key ido-mode-map [down] 'ido-next-match-dir)
+;;    (define-key ido-mode-map [up]   'ido-prev-match-dir)
+;;
+;;    ;; backspace functions
+;;    (define-key ido-mode-map [backspace] 'ido-delete-backward-updir)
+;;    (define-key ido-mode-map "\d"        'ido-delete-backward-updir)
+;;    (define-key ido-mode-map [(meta backspace)] 'ido-delete-backward-word-updir)
+;;    (define-key ido-mode-map [(control backspace)] 'ido-up-directory)
+;;
+;;    ;; I can't understand this
+;;    (define-key ido-mode-map [(meta ?d)] 'ido-wide-find-dir)
+;;    (define-key ido-mode-map [(meta ?f)] 'ido-wide-find-file)
+;;    (define-key ido-mode-map [(meta ?k)] 'ido-forget-work-directory)
+;;    (define-key ido-mode-map [(meta ?m)] 'ido-make-directory)
+;;
+;;    (define-key ido-mode-map [(meta down)] 'ido-next-work-directory)
+;;    (define-key ido-mode-map [(meta up)] 'ido-prev-work-directory)
+;;    (define-key ido-mode-map [(meta left)] 'ido-prev-work-file)
+;;    (define-key ido-mode-map [(meta right)] 'ido-next-work-file)
+;;
+;;    ;; search in the directories
+;;    ;; use C-_ to undo this
+;;    (define-key ido-mode-map [(meta ?s)] 'ido-merge-work-directories)
+;;    (define-key ido-mode-map [(control ?\_)] 'ido-undo-merge-work-directory)
+;;    )
+;;
+;;  (when (eq ido-cur-item 'file)
+;;    (define-key ido-mode-map "\C-k" 'ido-delete-file-at-head)
+;;    (define-key ido-mode-map "\C-l" 'ido-toggle-literal)
+;;    (define-key ido-mode-map "\C-o" 'ido-copy-current-word)
+;;    (define-key ido-mode-map "\C-v" 'ido-toggle-vc)
+;;    (define-key ido-mode-map "\C-w" 'ido-copy-current-file-name)
+;;    )
+;;
+;;  (when (eq ido-cur-item 'buffer)
+;;    (define-key ido-mode-map "\C-b" 'ido-fallback-command)
+;;    (define-key ido-mode-map "\C-f" 'ido-enter-find-file)
+;;    (define-key ido-mode-map "\C-k" 'ido-kill-buffer-at-head)
+;;    ))
+;;
+;;(ido-mode t)
+;;;;}}}
+;;
+;;
+;;;;everywhere allows for ido type buffer switching.. which is nice.
+;;(setq ido-everywhere t)
+;;;;End of IDO mode ============================
+
 ;;Begin of Auto complete mode ==========
 ;;(add-to-list 'load-path "~/.emacs.d/elpa/popup-20160409.2133")
 ;;(add-to-list 'load-path "~/.emacs.d/elpa/auto-complete-20160416.604")
