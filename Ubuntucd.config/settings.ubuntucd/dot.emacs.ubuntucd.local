@@ -58,7 +58,7 @@
 
 ;;Frame settings
 (defun pop-frame ()
-  (set-background-color "DimGrey")
+  (set-background-color "dark olive green")
   (set-foreground-color "white")
   (blink-cursor-mode 0)
   (fontify-frame nil) )
@@ -90,13 +90,18 @@ If WINDOW is the only one in its frame, then `delete-frame' too."
 
 (add-hook 'term-exec-hook 'set-no-process-query-on-exit)
 
+;;projectile
+;;C-c p f open a file in project
+(projectile-mode +1)
+(define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
+
+
 ;;Helm
 (require 'helm)
 (require 'helm-config)
 ;;(require 'helm-grep)
 (require 'helm-ag)
 (helm-mode 1)
-;;(helm-autoresize-mode 1)
 
 
 ;;(when (package-installed-p 'helm)
@@ -4480,9 +4485,9 @@ sub do" NameofMethod " {
      (ecb-vc-dir-managed-by-MTN . ecb-vc-state)
      (ecb-vc-dir-managed-by-HG . ecb-vc-state)))
  '(mumamo-chunk-coloring 1)
- '(org-agenda-files nil)
+ '(org-agenda-files nil t)
  '(package-selected-packages
-   '(helm company-quickhelp flycheck-yamllint yaml-mode flymake-cursor flymake-json json-mode xwidgete groovy-mode elpy go-eldoc flycheck org-wunderlist org-webpage org-wc org-vcard org-trello org-tree-slide org-transform-tree-table org-toodledo org-table-comment org-sync org-screenshot org-repo-todo org-readme org-protocol-jekyll org-projectile org-present org-pomodoro org-pdfview org-password-manager org-pandoc org-page org-outlook org-octopress org-multiple-keymap org-mobile-sync org-mac-iCal org-linkany org-link-travis org-journal org-jira org-jekyll org-if org-grep org-gnome org-gcal org-fstree org-elisp-help org-ehtml org-dropbox multi-term magit-tramp magit-topgit magit-svn magit-stgit magit-gitflow magit-gh-pulls magit-gerrit magit-find-file magit-filenotify magit-annex go-stacktracer go-snippets go-scratch go-projectile go-play go-errcheck go-dlv go-direx go-complete go-autocomplete ecb cl-generic auto-complete-c-headers auto-compile))
+   '(helm-ag helm-ag-r helm-projectile helm company-quickhelp flycheck-yamllint yaml-mode flymake-cursor flymake-json json-mode xwidgete groovy-mode elpy go-eldoc flycheck org-wunderlist org-webpage org-wc org-vcard org-trello org-tree-slide org-transform-tree-table org-toodledo org-table-comment org-sync org-screenshot org-repo-todo org-readme org-protocol-jekyll org-projectile org-present org-pomodoro org-pdfview org-password-manager org-pandoc org-page org-outlook org-octopress org-multiple-keymap org-mobile-sync org-mac-iCal org-linkany org-link-travis org-journal org-jira org-jekyll org-if org-grep org-gnome org-gcal org-fstree org-elisp-help org-ehtml org-dropbox multi-term magit-tramp magit-topgit magit-svn magit-stgit magit-gitflow magit-gh-pulls magit-gerrit magit-find-file magit-filenotify magit-annex go-stacktracer go-snippets go-scratch go-projectile go-play go-errcheck go-dlv go-direx go-complete go-autocomplete ecb cl-generic auto-complete-c-headers auto-compile))
  '(regex-tool-backend 'perl)
  '(safe-local-variable-values '((eval add-hook 'write-file-hooks 'time-stamp)))
  '(show-paren-mode t)
