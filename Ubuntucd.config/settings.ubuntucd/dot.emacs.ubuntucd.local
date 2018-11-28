@@ -90,6 +90,145 @@ If WINDOW is the only one in its frame, then `delete-frame' too."
 
 (add-hook 'term-exec-hook 'set-no-process-query-on-exit)
 
+;;Begin of Python-mode =====================================================
+;;(require 'yasnippet)
+;;(yas-global-mode 1)
+(setq elpy-modules '(elpy-module-sane-defaults
+                       elpy-module-company
+                       elpy-module-eldoc
+                       elpy-module-highlight-indentation
+                       elpy-module-pyvenv
+                       elpy-module-yasnippet))
+(add-hook 'python-mode-hook
+            (lambda ()
+              (setq py-python-command "python2")
+              (setq py-default-interpreter "python2"))
+	      (setq Company-mode t)
+	      (setq company-quickhelp-mode t)
+	      )
+
+(elpy-enable)
+;; elpy: mark region then elpy-shell-send-region-and-go, aka, C-c C-y R
+;; elpy: elpy-shell-send-buffer-and-go, aka, C-c C-c
+;;    * C-c C-d: When point is on a symbol, Elpy will try and find the documentation for that object, and display that
+;;    http://elpy.readthedocs.io/en/latest/ide.html
+
+;;Root Path of pylookup
+
+(when (load "flymake" t)
+  (defun flymake-pyflakes-init ()
+    (let* ((temp-file (flymake-init-create-temp-buffer-copy
+               'flymake-create-temp-inplace))
+       (local-file (file-relative-name
+            temp-file
+            (file-name-directory buffer-file-name))))
+      (list "pycheckers.sh"  (list local-file))))
+   (add-to-list 'flymake-allowed-file-name-masks
+                '("\\.py\\'" flymake-pyflakes-init)))
+
+;; PyDoc -----------------------------------------------------------------
+;;(setq load-path (cons "~/.emacs.d/pkgs/python-mode-1.0" load-path))
+(defun pydoc (w)
+  "Launch PyDOC on the Word at Point"
+  (interactive
+   (list (let* ((word (thing-at-point 'word))
+		(input (read-string 
+			(format "pydoc entry%s: " 
+				(if (not word) "" (format " (default %s)" word))))))
+	      (if (string= input "") 
+		         (if (not word) (error "No pydoc args given")
+			    word) ;sinon word
+		     input) ;sinon input
+	         )))
+  (shell-command (concat py-python-command " -c \"from pydoc import help;help('" w "')\"") "*PYDOCS*")
+  (view-buffer-other-window "*PYDOCS*" t 'kill-buffer-and-window)
+)
+
+(add-hook 'python-mode-hook
+  (function (lambda ()
+    (local-set-key (kbd "C-p y") 'pydoc))))
+
+;;----pydoc lookup for module.method info----  
+(defun python-module-method-info ()  
+  (interactive)  
+   (let ((curpoint (point)) (prepoint) (postpoint) (cmd))  
+     (save-excursion  
+       (beginning-of-line)  
+       (setq prepoint (buffer-substring (point) curpoint)))  
+     (save-excursion  
+       (end-of-line)  
+       (setq postpoint (buffer-substring (point) curpoint)))  
+     (if (string-match "[_a-z][_\\.0-9a-z]*$" prepoint)  
+         (setq cmd (substring prepoint (match-beginning 0) (match-end 0))))  
+     (if (string-match "^[_0-9a-z]*" postpoint)  
+         (setq cmd (concat cmd (substring postpoint (match-beginning 0) (match-end 0)))))  
+     (if (string= cmd "") nil  
+       (let ((max-mini-window-height 0))  
+         (shell-command (concat "pydoc " cmd))))))  
+   
+(add-hook 'python-mode-hook  
+           (lambda ()  
+             (local-set-key (kbd "C-p m") 'python-module-method-info)))
+
+;;Python Web Doc ---------------------------------------------------------------
+(defun pydoc-webinfo-command ()
+;;  "This function could use some safety checks."
+  (interactive)
+;;      http://docs.python.org/2.7/search.html?q=threading&check_keywords=yes&area=default
+;;      http://docs.python.org/2.7/py-modindex.html#cap-p
+        (w3m-goto-url (concat "http://docs.python.org/2.7/py-modindex.html#cap-" (replace-regexp-in-string "\\([a-zA-Z]\\)\\(.*\\)" "\\1" (replace-regexp-in-string "\\." "/" (thing-at-point 'word)) ) ) )
+
+)
+
+;; highlight cursored lines in python-mode
+;;(add-hook 'python-mode-hook 'hl-line-mode)
+
+;; hs-minor-mode
+(add-hook 'python-mode-hook 'hs-minor-mode)
+(add-hook 'python-mode-hook
+     (function (lambda ()
+         (which-func-mode)
+         ;;Code hiding
+         (local-set-key (kbd "<f5>") 'hs-toggle-hiding)
+         (local-set-key (kbd "<f6>") 'hs-hide-all)
+         (local-set-key (kbd "<S-f6>") 'hs-show-all)
+         (local-set-key (kbd "<f8>") '(lambda () (interactive) (point-to-register ?1)))
+         (local-set-key (kbd "<S-f8>") '(lambda () (interactive) (register-to-point ?1)))
+		 (local-set-key (kbd "C-p w") 'pydoc-webinfo-command)
+         )
+       )
+)
+
+
+;; python-mode-pydoc
+(add-hook 'python-mode-hook
+ (lambda ()
+  (local-set-key (kbd "C-p y") 'pydoc)))
+
+(add-hook 'python-mode-hook
+           (lambda ()
+             (set (make-variable-buffer-local 'beginning-of-defun-function)
+                  'py-beginning-of-def-or-class)
+             (setq outline-regexp "def\\|class ")))
+
+;;(add-hook 'python-mode-hook 'turn-on-eldoc-mode)
+
+;;(add-hook 'python-mode-hook
+;;          '(lambda () (eldoc-mode 1)) t)
+
+;;PDB
+;;pdb setup, note the python version
+ (setq pdb-path '/usr/lib/python2.7/pdb.py
+       gud-pdb-command-name (symbol-name pdb-path))
+ (defadvice pdb (before gud-query-cmdline activate)
+   "Provide a better default command line when called interactively."
+   (interactive
+    (list (gud-query-cmdline pdb-path
+	        (file-name-nondirectory buffer-file-name)))))
+
+
+;;End of Python-mode ============================================================
+
 ;;projectile
 ;;C-c p f open a file in project
 (projectile-mode +1)
@@ -101,6 +240,20 @@ If WINDOW is the only one in its frame, then `delete-frame' too."
 (require 'helm-config)
 ;;(require 'helm-grep)
 (require 'helm-ag)
+(require 'helm-cscope)
+;; Enable helm-cscope-mode
+(add-hook 'c-mode-hook 'helm-cscope-mode)
+(add-hook 'c++-mode-hook 'helm-cscope-mode)
+(add-hook 'elpy-mode-hook 'helm-cscope-mode)
+;; Set key bindings
+(eval-after-load "helm-cscope"
+  '(progn
+     (define-key helm-cscope-mode-map (kbd "M-t") 'helm-cscope-find-symbol)
+     (define-key helm-cscope-mode-map (kbd "M-r") 'helm-cscope-find-global-definition)
+     (define-key helm-cscope-mode-map (kbd "M-g M-c") 'helm-cscope-find-called-function)
+     (define-key helm-cscope-mode-map (kbd "M-g M-p") 'helm-cscope-find-calling-this-funtcion)
+     (define-key helm-cscope-mode-map (kbd "M-s") 'helm-cscope-select)))
+
 (helm-mode 1)
 
 
@@ -3034,145 +3187,6 @@ sub do" NameofMethod " {
     (add-to-list 'auto-mode-alist '("\\.robot\\'" . robot-mode))
 
 ;;End of Robo-mode ========================================================
-
-;;Begin of Python-mode =====================================================
-;;(require 'yasnippet)
-;;(yas-global-mode 1)
-(setq elpy-modules '(elpy-module-sane-defaults
-                       elpy-module-company
-                       elpy-module-eldoc
-                       elpy-module-highlight-indentation
-                       elpy-module-pyvenv
-                       elpy-module-yasnippet))
-(add-hook 'python-mode-hook
-            (lambda ()
-              (setq py-python-command "python2")
-              (setq py-default-interpreter "python2"))
-	      (setq Company-mode t)
-	      (setq company-quickhelp-mode t)
-	      )
-
-(elpy-enable)
-;; elpy: mark region then elpy-shell-send-region-and-go, aka, C-c C-y R
-;; elpy: elpy-shell-send-buffer-and-go, aka, C-c C-c
-;;    * C-c C-d: When point is on a symbol, Elpy will try and find the documentation for that object, and display that
-;;    http://elpy.readthedocs.io/en/latest/ide.html
-
-;;Root Path of pylookup
-
-(when (load "flymake" t)
-  (defun flymake-pyflakes-init ()
-    (let* ((temp-file (flymake-init-create-temp-buffer-copy
-               'flymake-create-temp-inplace))
-       (local-file (file-relative-name
-            temp-file
-            (file-name-directory buffer-file-name))))
-      (list "pycheckers.sh"  (list local-file))))
-   (add-to-list 'flymake-allowed-file-name-masks
-                '("\\.py\\'" flymake-pyflakes-init)))
-
-;; PyDoc -----------------------------------------------------------------
-;;(setq load-path (cons "~/.emacs.d/pkgs/python-mode-1.0" load-path))
-(defun pydoc (w)
-  "Launch PyDOC on the Word at Point"
-  (interactive
-   (list (let* ((word (thing-at-point 'word))
-		(input (read-string 
-			(format "pydoc entry%s: " 
-				(if (not word) "" (format " (default %s)" word))))))
-	      (if (string= input "") 
-		         (if (not word) (error "No pydoc args given")
-			    word) ;sinon word
-		     input) ;sinon input
-	         )))
-  (shell-command (concat py-python-command " -c \"from pydoc import help;help('" w "')\"") "*PYDOCS*")
-  (view-buffer-other-window "*PYDOCS*" t 'kill-buffer-and-window)
-)
-
-(add-hook 'python-mode-hook
-  (function (lambda ()
-    (local-set-key (kbd "C-p y") 'pydoc))))
-
-;;----pydoc lookup for module.method info----  
-(defun python-module-method-info ()  
-  (interactive)  
-   (let ((curpoint (point)) (prepoint) (postpoint) (cmd))  
-     (save-excursion  
-       (beginning-of-line)  
-       (setq prepoint (buffer-substring (point) curpoint)))  
-     (save-excursion  
-       (end-of-line)  
-       (setq postpoint (buffer-substring (point) curpoint)))  
-     (if (string-match "[_a-z][_\\.0-9a-z]*$" prepoint)  
-         (setq cmd (substring prepoint (match-beginning 0) (match-end 0))))  
-     (if (string-match "^[_0-9a-z]*" postpoint)  
-         (setq cmd (concat cmd (substring postpoint (match-beginning 0) (match-end 0)))))  
-     (if (string= cmd "") nil  
-       (let ((max-mini-window-height 0))  
-         (shell-command (concat "pydoc " cmd))))))  
-   
-(add-hook 'python-mode-hook  
-           (lambda ()  
-             (local-set-key (kbd "C-p m") 'python-module-method-info)))
-
-;;Python Web Doc ---------------------------------------------------------------
-(defun pydoc-webinfo-command ()
-;;  "This function could use some safety checks."
-  (interactive)
-;;      http://docs.python.org/2.7/search.html?q=threading&check_keywords=yes&area=default
-;;      http://docs.python.org/2.7/py-modindex.html#cap-p
-        (w3m-goto-url (concat "http://docs.python.org/2.7/py-modindex.html#cap-" (replace-regexp-in-string "\\([a-zA-Z]\\)\\(.*\\)" "\\1" (replace-regexp-in-string "\\." "/" (thing-at-point 'word)) ) ) )
-
-)
-
-;; highlight cursored lines in python-mode
-;;(add-hook 'python-mode-hook 'hl-line-mode)
-
-;; hs-minor-mode
-(add-hook 'python-mode-hook 'hs-minor-mode)
-(add-hook 'python-mode-hook
-     (function (lambda ()
-         (which-func-mode)
-         ;;Code hiding
-         (local-set-key (kbd "<f5>") 'hs-toggle-hiding)
-         (local-set-key (kbd "<f6>") 'hs-hide-all)
-         (local-set-key (kbd "<S-f6>") 'hs-show-all)
-         (local-set-key (kbd "<f8>") '(lambda () (interactive) (point-to-register ?1)))
-         (local-set-key (kbd "<S-f8>") '(lambda () (interactive) (register-to-point ?1)))
-		 (local-set-key (kbd "C-p w") 'pydoc-webinfo-command)
-         )
-       )
-)
-
-
-;; python-mode-pydoc
-(add-hook 'python-mode-hook
- (lambda ()
-  (local-set-key (kbd "C-p y") 'pydoc)))
-
-(add-hook 'python-mode-hook
-           (lambda ()
-             (set (make-variable-buffer-local 'beginning-of-defun-function)
-                  'py-beginning-of-def-or-class)
-             (setq outline-regexp "def\\|class ")))
-
-;;(add-hook 'python-mode-hook 'turn-on-eldoc-mode)
-
-;;(add-hook 'python-mode-hook
-;;          '(lambda () (eldoc-mode 1)) t)
-
-;;PDB
-;;pdb setup, note the python version
- (setq pdb-path '/usr/lib/python2.7/pdb.py
-       gud-pdb-command-name (symbol-name pdb-path))
- (defadvice pdb (before gud-query-cmdline activate)
-   "Provide a better default command line when called interactively."
-   (interactive
-    (list (gud-query-cmdline pdb-path
-	        (file-name-nondirectory buffer-file-name)))))
-
-
-;;End of Python-mode ============================================================
 
 ;;Begin of sh-mode ==========================================================
 
