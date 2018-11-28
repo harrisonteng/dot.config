@@ -4554,7 +4554,6 @@ sub do" NameofMethod " {
        (define-key c-mode-base-map (kbd "C-c C-c") 'compile))
      (add-hook 'c-mode-common-hook 'my-c-mode-common-hook)))
 
-/usr/lib/python2.7/dist-packages
 ;;Python/Grovvy/Shell in FortiRobot.trunk
 ;;find ./projects.work/repo/newSVN/FortiRobot.trunk /usr/lib/python2.7/dist-packages -type d \( -name '*branches*' -o -name '*tag*' -o -name '*\.ori' -o -name '*\.svn' -o -name '*tmp' -o -name '*temp' \) -prune -o \( -name '*.py' -o -name '*.groovy' -o -name '*.sh' \) -print |xargs etags -a --declarations -o ROBOTTRUNK.TAGS
 
