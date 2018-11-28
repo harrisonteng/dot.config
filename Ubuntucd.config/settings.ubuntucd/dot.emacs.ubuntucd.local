@@ -104,6 +104,14 @@ If WINDOW is the only one in its frame, then `delete-frame' too."
 (helm-mode 1)
 
 
+;; https://github.com/emacs-helm/helm/issues/1492
+;; then helm will preserve the initial sorting order made by helm-buffer-list,
+;; if you don't like the initial order, advice helm-buffer-list as you like
+(defun helm-buffers-sort-transformer@donot-sort (_ candidates _)
+  candidates)
+
+(advice-add 'helm-buffers-sort-transformer :around 'helm-buffers-sort-transformer@donot-sort)
+
 ;;(when (package-installed-p 'helm)
 
   ;;https://www.reddit.com/r/emacs/comments/7rho4f/now_you_can_use_helm_with_frames_instead_of/
@@ -117,7 +125,7 @@ If WINDOW is the only one in its frame, then `delete-frame' too."
         helm-display-buffer-reuse-frame t
         helm-use-undecorated-frame-option t
 	helm-display-buffer-width 140
-	helm-display-buffer-height 80
+	helm-display-buffer-height 60
 	helm-autoresize-mode 1)
 
   ;;C-x c is close to C-x C-c
