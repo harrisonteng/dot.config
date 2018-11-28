@@ -58,7 +58,7 @@
 
 ;;Frame settings
 (defun pop-frame ()
-  (set-background-color "dark olive green")
+  (set-background-color "black")
   (set-foreground-color "white")
   (blink-cursor-mode 0)
   (fontify-frame nil) )
@@ -113,6 +113,9 @@ If WINDOW is the only one in its frame, then `delete-frame' too."
 ;;    * C-c C-d: When point is on a symbol, Elpy will try and find the documentation for that object, and display that
 ;;    http://elpy.readthedocs.io/en/latest/ide.html
 
+;;Did you try Elpy? It binds elpy-goto-definition to the key M-..
+;;If you have a recent Emacs, I think you can also jump back with xref-pop-marker-stack (M-,). 
+;;Elpy has some other nice features as well.
 ;;Root Path of pylookup
 
 (when (load "flymake" t)
@@ -251,11 +254,14 @@ If WINDOW is the only one in its frame, then `delete-frame' too."
      (define-key helm-cscope-mode-map (kbd "M-t") 'helm-cscope-find-symbol)
      (define-key helm-cscope-mode-map (kbd "M-r") 'helm-cscope-find-global-definition)
      (define-key helm-cscope-mode-map (kbd "M-g M-c") 'helm-cscope-find-called-function)
-     (define-key helm-cscope-mode-map (kbd "M-g M-p") 'helm-cscope-find-calling-this-funtcion)
+     (define-key helm-cscope-mode-map (kbd "M-g M-p") 'helm-cscope-find-calling-this-function)
      (define-key helm-cscope-mode-map (kbd "M-s") 'helm-cscope-select)))
 
 (helm-mode 1)
 
+;; The helm-etags-select command, bound to <helm-prefix> e by default, can be used to navigate TAGS files built with etags. 
+;; To jump to the definition of the symbol at point, invoke the command with a universal prefix (C-u <helm-prefix> e).
+;;
 
 ;; https://github.com/emacs-helm/helm/issues/1492
 ;; then helm will preserve the initial sorting order made by helm-buffer-list,
@@ -2757,7 +2763,7 @@ sub do" NameofMethod " {
 	 'gdb))))
 
 ;; in project dir
-;; find . /usr/lib/python2.7/dist-packages -type d \( -name '*branches*' -o -name '*tag*' -o -name '*\.ori' -o -name '*\.svn' -o -name '*tmp' -o -name '*temp' \) -prune -o \( -name '*.py' \) -print > cscope.files
+;; find . /usr/lib/python2.7/dist-packages /home/harrison/projects.work/repo/github/robotframework  -type d \( -name '*branches*' -o -name '*tag*' -o -name '*\.ori' -o -name '*\.svn' -o -name '*tmp' -o -name '*temp' \) -prune -o \( -name '*.py' \) -print > cscope.files
 ;; cscope -q -R -b -i cscope.files
 (require 'xcscope)
 ;; 5. If you intend to use xcscope.el often you can optionally edit your
@@ -4569,10 +4575,10 @@ sub do" NameofMethod " {
      (add-hook 'c-mode-common-hook 'my-c-mode-common-hook)))
 
 ;;Python/Grovvy/Shell in FortiRobot.trunk
-;;find ./projects.work/repo/newSVN/FortiRobot.trunk /usr/lib/python2.7/dist-packages -type d \( -name '*branches*' -o -name '*tag*' -o -name '*\.ori' -o -name '*\.svn' -o -name '*tmp' -o -name '*temp' \) -prune -o \( -name '*.py' -o -name '*.groovy' -o -name '*.sh' \) -print |xargs etags -a --declarations -o ROBOTTRUNK.TAGS
+;;find ./projects.work/repo/newSVN/FortiRobot.trunk /usr/lib/python2.7/dist-packages /home/harrison/projects.work/repo/github/robotframework -type d \( -name '*branches*' -o -name '*tag*' -o -name '*\.ori' -o -name '*\.svn' -o -name '*tmp' -o -name '*temp' \) -prune -o \( -name '*.py' -o -name '*.groovy' -o -name '*.sh' \) -print |xargs etags -a --declarations -o ROBOTTRUNK.TAGS
 
 ;;Python/Grovvy/Shell in FortiRobot.br_Q4_testbed
-;;find ./projects.work/repo/newSVN/FortiRobot.br_Q4_testbed /usr/lib/python2.7/dist-packages -type d \( -name '*branches*' -o -name '*tag*' -o -name '*\.ori' -o -name '*\.svn' -o -name '*tmp' -o -name '*temp' \) -prune -o \( -name '*.py' -o -name '*.groovy' -o -name '*.sh' \) -print |xargs etags -a --declarations -o ROBOTQ4.TAGS
+;;find ./projects.work/repo/newSVN/FortiRobot.br_Q4_testbed /usr/lib/python2.7/dist-packages /home/harrison/projects.work/repo/github/robotframework -type d \( -name '*branches*' -o -name '*tag*' -o -name '*\.ori' -o -name '*\.svn' -o -name '*tmp' -o -name '*temp' \) -prune -o \( -name '*.py' -o -name '*.groovy' -o -name '*.sh' \) -print |xargs etags -a --declarations -o ROBOTQ4.TAGS
 
 ;; EMC mailer c tags
 ;;find /emcsvn/emc/emcmailer/trunk -type d \( -name '*branches*' -o -name '*tag*' -o -name '*\.ori' -o -name '*\.svn' -o -name '*tmp' -o -name '*temp' \) -prune -o \( -name '*.c' -o -name '*.h' \) -print |xargs etags -a --declarations -o EMCMAILER.TAGS
@@ -4621,10 +4627,52 @@ sub do" NameofMethod " {
 ;;find ./projects/trunk/campaignconnect -type d \( -name '*branches*' -o -name '*tag*' -o -name '*\.ori' -o -name '*\.svn' -o -name '*tmp' -o -name '*temp' \) -prune -o -name '*.php' -print |xargs etags -a -o HPHP.TAGS
 ;; M-x visit-tags-table
 
-;;C-x 4 . jump to the definition in another frame
+;;C-x 4 . jump to the definition in another frame, with Winner-mode, C-c left arrow key will kill the newly-built frame
 ;;M-*     jump back
 
-(setq tags-file-name "~/TAGS")
+(defun my-visit-tags-table ( tagfile )
+;; "give me tag filename"
+ (interactive "sTagfile: ")
+ (visit-tags-table (concat "/home/harrison/TAGS/" tagfile))
+)
+
+
+;;(defun my-find-tag (&optional show-only)
+;;  "Show tag in other window with no prompt in minibuf."
+;;  (interactive)
+;;  (let ((default (funcall (or find-tag-default-function
+;;                              (get major-mode 'find-tag-default-function)
+;;                              'find-tag-default))))
+;;    (if show-only
+;;        (progn (find-tag-other-window default)
+;;               (shrink-window (- (window-height) 12));;
+;;               (recenter 1)
+;;               (other-window 1))
+;;      (find-tag default))))
+;;
+;;(defun my-generate-tag-table ()
+;;  "Generate tag tables under current directory(Linux)."
+;;  (interactive)
+;;  (let 
+;;      ((exp "")
+;;       (dir ""))
+;;    (setq dir
+;;          (read-from-minibuffer "generate tags in: " default-directory)
+;;          exp
+;;          (read-from-minibuffer "suffix: "))
+;;    (with-temp-buffer
+;;      (shell-command
+;;       (concat "find " dir " -name /"" exp "/" | xargs etags ")
+;;       (buffer-name)))))
+;;
+;;(defun my-release-small-tag-window ()
+;;  "Kill other window also pop tag mark."
+;;  (interactive)
+;;  (delete-other-windows)
+;;  (ignore-errors
+;;    (pop-tag-mark)))
+
+;;(setq tags-file-name "~/TAGS")
 
 ;;Remeber the last settings
 ;;(require 'desktop)
