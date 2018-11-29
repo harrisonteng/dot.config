@@ -349,7 +349,7 @@ If WINDOW is the only one in its frame, then `delete-frame' too."
 (require 'helm-files)
 (setq helm-idle-delay 0.1)
 (setq helm-input-idle-delay 0.1)
-(setq helm-locate-command "/home/harrison/.hlocal/emacs/dot.emacs.d/locate-with-find.sh %s")
+(setq helm-locate-command "/home/harrison/.hlocal/emacs/dot.emacs.d/locate-with-find.sh %.0s %s")
 (setq-default helm-boring-file-regexp-list
                             (append '("\\.DS_Store$"
                                       "\\.svn$"
