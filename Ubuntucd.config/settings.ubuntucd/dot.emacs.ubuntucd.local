@@ -4574,11 +4574,19 @@ sub do" NameofMethod " {
        (define-key c-mode-base-map (kbd "C-c C-c") 'compile))
      (add-hook 'c-mode-common-hook 'my-c-mode-common-hook)))
 
+;;Robot tags
+;;find ~/projects.work/repo/newSVN/FortiRobot.trunk -name '*.robot' -print | xargs etags -o ~/TAGS/robottrunk.tags --regex='/^[^ \t]\([^\(Library|Resource|Suite|Documentation|#|\$|\*|\[|&|\t|\.|\s\)]*+[A-Z0-9]*+[A-Z0-9]*\).*$/\2/i'
+;;find ~/projects.work/repo/newSVN/FortiRobot.br_Q4_testbed -name '*.robot' -print | xargs etags -o ~/TAGS/robotq4.tags --regex='/^[^ \t]\([^\(Library|Resource|Suite|Documentation|#|\$|\*|\[|&|\t|\.|\s\)]*+[A-Z0-9]*+[A-Z0-9]*\).*$/\2/i'
+
 ;;Python/Grovvy/Shell in FortiRobot.trunk
-;;find ./projects.work/repo/newSVN/FortiRobot.trunk /usr/lib/python2.7/dist-packages /home/harrison/projects.work/repo/github/robotframework -type d \( -name '*branches*' -o -name '*tag*' -o -name '*\.ori' -o -name '*\.svn' -o -name '*tmp' -o -name '*temp' \) -prune -o \( -name '*.py' -o -name '*.groovy' -o -name '*.sh' \) -print |xargs etags -a --declarations -o ROBOTTRUNK.TAGS
+;;find ~/projects.work/repo/newSVN/FortiRobot.trunk /usr/lib/python2.7/dist-packages /home/harrison/projects.work/repo/github/robotframework -type d \( -name '*branches*' -o -name '*tag*' -o -name '*\.ori' -o -name '*\.svn' -o -name '*tmp' -o -name '*temp' \) -prune -o \( -name '*.py' -o -name '*.groovy' -o -name '*.sh' \) -print |xargs etags -a --declarations -o ROBOTTRUNK.TAGS
 
 ;;Python/Grovvy/Shell in FortiRobot.br_Q4_testbed
-;;find ./projects.work/repo/newSVN/FortiRobot.br_Q4_testbed /usr/lib/python2.7/dist-packages /home/harrison/projects.work/repo/github/robotframework -type d \( -name '*branches*' -o -name '*tag*' -o -name '*\.ori' -o -name '*\.svn' -o -name '*tmp' -o -name '*temp' \) -prune -o \( -name '*.py' -o -name '*.groovy' -o -name '*.sh' \) -print |xargs etags -a --declarations -o ROBOTQ4.TAGS
+;;find ~/projects.work/repo/newSVN/FortiRobot.br_Q4_testbed /usr/lib/python2.7/dist-packages /home/harrison/projects.work/repo/github/robotframework -type d \( -name '*branches*' -o -name '*tag*' -o -name '*\.ori' -o -name '*\.svn' -o -name '*tmp' -o -name '*temp' \) -prune -o \( -name '*.py' -o -name '*.groovy' -o -name '*.sh' \) -print |xargs etags -a --declarations -o ROBOTQ4.TAGS
+
+;; Cscope
+;; find . /usr/lib/python2.7/dist-packages /home/harrison/projects.work/repo/github/robotframework  -type d \( -name '*branches*' -o -name '*tag*' -o -name '*\.ori' -o -name '*\.svn' -o -name '*tmp' -o -name '*temp' \) -prune -o \( -name '*.py' \) -print > cscope.files
+;; cscope -q -R -b -i cscope.files
 
 ;; EMC mailer c tags
 ;;find /emcsvn/emc/emcmailer/trunk -type d \( -name '*branches*' -o -name '*tag*' -o -name '*\.ori' -o -name '*\.svn' -o -name '*tmp' -o -name '*temp' \) -prune -o \( -name '*.c' -o -name '*.h' \) -print |xargs etags -a --declarations -o EMCMAILER.TAGS
