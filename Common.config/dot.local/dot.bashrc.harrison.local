@@ -1,3 +1,4 @@
+export LS_COLORS="$LS_COLORS:di=1;33"
 export EDITOR=vim
 export GOROOT=/usr/local/go;
 export GOPATH=$HOME/projects/local/golang;
@@ -6,6 +7,18 @@ export PATH=$PATH:$GOPATH/bin:/usr/local/go/bin:/usr/local/tcl8.4/bin:/usr/local
 #alias htracker='/usr/local/emc/scripts/bayes_train/trackerdb'
 #alias cdmutt='cd /root/bayes_train/today'
 #alias cleanmuttdir='/root/bayes_train/today/'
+
+#=== alias
+alias hvim='/usr/local/vim/bin/vim -u /root/.vimrc.harrison';
+alias gl1='git log --graph --pretty=format:"%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset%n" --abbrev-commit --date=relative --branches';
+alias gl2='git log --graph --all --format="%C(cyan dim) %p %Cred %h %C(white dim) %s %Cgreen(%cr)%C(cyan dim) <%an>%C(bold yellow)%d%Creset"';
+#alias gl1='git log --graph --pretty=format:"%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset%n" --abbrev-commit --date=relative #--branches'
+#alias gl2='git log --graph --all --format="%C(cyan dim) %p %Cred %h %C(white dim) %s %Cgreen(%cr)%C(cyan dim) <%an>%C(bold yellow)%d%Creset"'
+#alias mysshfs90a='sshfs -o auto_cache -o cache_timeout=115200 -o attr_timeout=115200 -o no_remote_lock -oauto_cache,reconnect,no_readahead harrison.teng@bastion90a:/home/harrison.teng /home/harrison/sshfs/bastion90a'
+#alias mysshfs9c='sshfs -o auto_cache -o cache_timeout=115200 -o attr_timeout=115200 -o no_remote_lock -oauto_cache,reconnect,no_readahead root@inbuild9c:/root/projects /home/harrison/sshfs/inbuild9c'
+#alias umysshfs90a='fusermount -u /home/harrison/sshfs/inbuild90a'
+#alias umysshfs9c='fusermount -u /home/harrison/sshfs/inbuild9c'
+#===
 
 function hcd () {
 
@@ -290,6 +303,15 @@ function where_tunnel_through () {
 
     host $(netstat -anp |grep `ps auxwww |grep -E '(sshd|sshd:)' |grep -v grep |awk '{print $2}'` |grep tcp|awk '{print $5}' |sed 's/\(.*\):\(.*\)/\1/g')|awk '{print $NF}';
     return;
+}
+
+#gh 9999 4444 174.1.36.113
+function gh () {
+    local lport=$1
+    local rport=$2
+    local rip=$3
+
+     ssh -R ${lport}:localhost:22 -p ${rport} harrison@${rip}
 }
 
 function svn_branch () {

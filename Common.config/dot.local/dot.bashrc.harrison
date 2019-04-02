@@ -1079,7 +1079,7 @@ function mountG() {
 	local label=$1;
 	local account=$2;
 
-	google-drive-ocamlfuse -label ${label} /home/harrison/ExternalStorage/Gdrive-${account};
+	google-drive-ocamlfuse -o nonempty -label ${label} /home/harrison/ExternalStorage/Gdrive-${account};
 
 }
 
@@ -1089,26 +1089,50 @@ function mountall() {
 
 	echo "mounting ${testbed} on lab...";
 	mysshfs l01${testbed}-controlpc /home/devops /mnt/harrison/${testbed}-devops-controlpc-devlab devops 22;
+	mysshfs l01${testbed}-controlpc /tmp /mnt/harrison/${testbed}-controlpc-tmp devops 22;
 	mysshfs l01${testbed}-jenkins /home/devops /mnt/harrison/${testbed}-devops-jenkins-devlab devops 22;
+	mysshfs l01${testbed}-jenkins /tmp /mnt/harrison/${testbed}-jenkins-tmp devops 22;
 
 }
+
+function mountsec() {
+
+	local secdir=$1;
+
+	echo "mounting with S on ${secdir}...";
+	sudo mount -t ecryptfs ${secdir} ${secdir};
+
+}
+
 
 function goto() {
 	
 	#p48A-fhv    p48A-fhv
+	#p340-V\d-Jenkins
 	local prodorlab=$1; # p || l
 	local type=$2; # c || j || t
-	local input=$3; # 35C
-	local rmcmd=$4; # command to run on remote ssh host
+	local input=$3; # 35C || 34011
+	local flag=$4; # G->gns3
+
+	if [ "X${flag}" == "Xg" ];then
+	    racknum=${input:0:3};
+	    hostnum=${input:3:1};
+	    testbednum=${input:4:1};
+	    ip=$(grep ${prodorlab}${racknum}-0${hostnum}-${testbednum}-Jenkins /etc/hosts |awk '{print $1}');
+	    echo "Going to ${prodorlab}${racknum}-0${hostnum}-${testbednum}-Jenkins ${ip}";
+	    ssh devops@${prodorlab}${racknum}-0${hostnum}-${testbednum}-Jenkins;
+	    return;
+	fi
 
 	num=${input:0:2};
 	numsmoke=${input:0:3};
 	char=${input:2:2};
 
+
 	if [ "X${type}" == "Xc" ];then
-	    ssh devops@${prodorlab}${num}${char}-controlpc "${rmcmd}";
+	    ssh devops@${prodorlab}${num}${char}-controlpc;
 	elif [ "X${type}" == "Xj" ];then
-	    ssh devops@${prodorlab}${num}${char}-jenkins "${rmcmd}";
+	    ssh devops@${prodorlab}${num}${char}-jenkins;
 	elif [ "X${type}" == "Xt" ];then
 	    telnet ${prodorlab}${numsmoke}-term;
 	fi
