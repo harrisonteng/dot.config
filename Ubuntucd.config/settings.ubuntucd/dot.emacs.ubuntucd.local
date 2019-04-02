@@ -6,6 +6,9 @@
 ;; You may delete these explanatory comments.
 ;;(package-initialize)
 
+;;Misc Notes:
+;;Ctrl + Up Arrow will guide you through the lines in the buffer, skip those
+;;comments
 (setq stack-trace-on-error t)
 (load "~/.emacs.d/pkgs/subdirs")
 
@@ -58,7 +61,7 @@
 
 ;;Frame settings
 (defun pop-frame ()
-  (set-background-color "black")
+  (set-background-color "OliveDrab")
   (set-foreground-color "white")
   (blink-cursor-mode 0)
   (fontify-frame nil) )
@@ -107,7 +110,14 @@ If WINDOW is the only one in its frame, then `delete-frame' too."
 	      (setq company-quickhelp-mode t)
 	      )
 
-(elpy-enable)
+(when (require 'elpy nil t)
+  (progn
+    (elpy-enable)))
+
+(setq gud-pdb-command-name "python -m pdb")
+
+;;(setq python-shell-completion-native-enable nil)
+
 ;; elpy: mark region then elpy-shell-send-region-and-go, aka, C-c C-y R
 ;; elpy: elpy-shell-send-buffer-and-go, aka, C-c C-c
 ;;    * C-c C-d: When point is on a symbol, Elpy will try and find the documentation for that object, and display that
@@ -261,7 +271,9 @@ If WINDOW is the only one in its frame, then `delete-frame' too."
 
 ;; The helm-etags-select command, bound to <helm-prefix> e by default, can be used to navigate TAGS files built with etags. 
 ;; To jump to the definition of the symbol at point, invoke the command with a universal prefix (C-u <helm-prefix> e).
-;;
+;; here helm-prefix is C-c h
+;; Somehow, C-c h WITHOUT C-u will not reload TAG file over and over, using
+;; loaded one
 
 ;; https://github.com/emacs-helm/helm/issues/1492
 ;; then helm will preserve the initial sorting order made by helm-buffer-list,
@@ -3127,6 +3139,25 @@ sub do" NameofMethod " {
 )
 ;;;;;;;End of magit ==== 
 
+;;;;;;;Begin of magit with Gitlab =====
+;;;;;; Activate the minor mode
+;;;;;;M-x git-commit-insert-issue-mode
+;;;;;;In a magit  commit buffer (git-commit-mode), type “Fixes  #” (or any
+;;;;;;  other keyword understood by github, or just a “#” for Gitlab) and choose
+;;;;;;  the issue from the list.
+;;;;;;So always activate it:
+;;;;;;(add-hook 'git-commit-mode-hook 'git-commit-insert-issue-mode)
+
+;;;;;;You can also call it with
+;;;;;;M-x git-commit-insert-issue-ask-issues
+;;;;;;and programmatically doing something like
+;;;;;;(--map (insert (concat it "\n"))
+;;;;;;(git-commit-insert-issue-github-issues-format "inkel" "github-issues.el"))
+;;;;;;;;
+(setq gitlab-host "https://git-devops.corp.fortinet.com"
+      gitlab-username "hteng"
+      gitlab-password "N@1nternet")
+;;;;;;;End of magit with Gitlab =====
 
 ;;;;Begin of nxhtml-mode =======================================================
 ;;
@@ -4501,7 +4532,7 @@ sub do" NameofMethod " {
  '(ecb-layout-window-sizes nil)
  '(ecb-options-version "2.50")
  '(ecb-source-path
-   '("~/projects" "~/projects.work/repo/newSVN" "~/projects.work" "/mnt/harrison/B-jenkins-tmp" "/mnt/harrison/B-controlpc-tmp" "/mnt/harrison/B-devops-controlpc-devlab" "/mnt/harrison/B-devops-jenkins-devlab" "/usr/lib/python2.7" "/usr/local/lib/python2.7/" "/home/harrison/" "/"))
+   '("~/projects" "~/projects.work/repo/GitLab" "~/projects.work/repo/newSVN" "~/projects.work" "/mnt/harrison/B-jenkins-tmp" "/mnt/harrison/B-controlpc-tmp" "/mnt/harrison/B-devops-controlpc-devlab" "/mnt/harrison/B-devops-jenkins-devlab" "/usr/lib/python2.7" "/usr/local/lib/python2.7/" "/home/harrison/" "/"))
  '(ecb-vc-enable-support t)
  '(ecb-vc-supported-backends
    '((ecb-vc-dir-managed-by-CVS . ecb-vc-state)
@@ -4515,9 +4546,9 @@ sub do" NameofMethod " {
      (ecb-vc-dir-managed-by-MTN . ecb-vc-state)
      (ecb-vc-dir-managed-by-HG . ecb-vc-state)))
  '(mumamo-chunk-coloring 1)
- '(org-agenda-files nil t)
+ '(org-agenda-files nil)
  '(package-selected-packages
-   '(helm-ag helm-ag-r helm-projectile helm company-quickhelp flycheck-yamllint yaml-mode flymake-cursor flymake-json json-mode xwidgete groovy-mode elpy go-eldoc flycheck org-wunderlist org-webpage org-wc org-vcard org-trello org-tree-slide org-transform-tree-table org-toodledo org-table-comment org-sync org-screenshot org-repo-todo org-readme org-protocol-jekyll org-projectile org-present org-pomodoro org-pdfview org-password-manager org-pandoc org-page org-outlook org-octopress org-multiple-keymap org-mobile-sync org-mac-iCal org-linkany org-link-travis org-journal org-jira org-jekyll org-if org-grep org-gnome org-gcal org-fstree org-elisp-help org-ehtml org-dropbox multi-term magit-tramp magit-topgit magit-svn magit-stgit magit-gitflow magit-gh-pulls magit-gerrit magit-find-file magit-filenotify magit-annex go-stacktracer go-snippets go-scratch go-projectile go-play go-errcheck go-dlv go-direx go-complete go-autocomplete ecb cl-generic auto-complete-c-headers auto-compile))
+   '(git-commit-insert-issue helm-cscope xcscope helm-company helm-ag helm-ag-r helm-projectile helm company-quickhelp flycheck-yamllint yaml-mode flymake-cursor flymake-json json-mode xwidgete groovy-mode elpy go-eldoc flycheck org-wunderlist org-webpage org-wc org-vcard org-trello org-tree-slide org-transform-tree-table org-toodledo org-table-comment org-sync org-screenshot org-repo-todo org-readme org-protocol-jekyll org-projectile org-present org-pomodoro org-pdfview org-password-manager org-pandoc org-page org-outlook org-octopress org-multiple-keymap org-mobile-sync org-mac-iCal org-linkany org-link-travis org-journal org-jira org-jekyll org-if org-grep org-gnome org-gcal org-fstree org-elisp-help org-ehtml org-dropbox multi-term magit-tramp magit-topgit magit-svn magit-stgit magit-gitflow magit-gh-pulls magit-gerrit magit-find-file magit-filenotify magit-annex go-stacktracer go-snippets go-scratch go-projectile go-play go-errcheck go-dlv go-direx go-complete go-autocomplete ecb cl-generic auto-complete-c-headers auto-compile))
  '(regex-tool-backend 'perl)
  '(safe-local-variable-values '((eval add-hook 'write-file-hooks 'time-stamp)))
  '(show-paren-mode t)
@@ -4577,12 +4608,16 @@ sub do" NameofMethod " {
 ;;Robot tags
 ;;find ~/projects.work/repo/newSVN/FortiRobot.trunk -name '*.robot' -print | xargs etags -o ~/TAGS/robottrunk.tags --regex='/^[^ \t]\([^\(Library|Resource|Suite|Documentation|#|\$|\*|\[|&|\t|\.|\s\)]*+[A-Z0-9]*+[A-Z0-9]*\).*$/\2/i'
 ;;find ~/projects.work/repo/newSVN/FortiRobot.br_Q4_testbed -name '*.robot' -print | xargs etags -o ~/TAGS/robotq4.tags --regex='/^[^ \t]\([^\(Library|Resource|Suite|Documentation|#|\$|\*|\[|&|\t|\.|\s\)]*+[A-Z0-9]*+[A-Z0-9]*\).*$/\2/i'
+;;find ~/projects.work/repo/newSVN/FortiRobot.br_Q1_testbed -name '*.robot' -print | xargs etags -o ~/TAGS/robotq1.tags --regex='/^[^ \t]\([^\(Library|Resource|Suite|Documentation|#|\$|\*|\[|&|\t|\.|\s\)]*+[A-Z0-9]*+[A-Z0-9]*\).*$/\2/i'
 
 ;;Python/Grovvy/Shell in FortiRobot.trunk
 ;;find ~/projects.work/repo/newSVN/FortiRobot.trunk /usr/lib/python2.7/dist-packages /home/harrison/projects.work/repo/github/robotframework -type d \( -name '*branches*' -o -name '*tag*' -o -name '*\.ori' -o -name '*\.svn' -o -name '*tmp' -o -name '*temp' \) -prune -o \( -name '*.py' -o -name '*.groovy' -o -name '*.sh' \) -print |xargs etags -a --declarations -o ROBOTTRUNK.TAGS
 
 ;;Python/Grovvy/Shell in FortiRobot.br_Q4_testbed
 ;;find ~/projects.work/repo/newSVN/FortiRobot.br_Q4_testbed /usr/lib/python2.7/dist-packages /home/harrison/projects.work/repo/github/robotframework -type d \( -name '*branches*' -o -name '*tag*' -o -name '*\.ori' -o -name '*\.svn' -o -name '*tmp' -o -name '*temp' \) -prune -o \( -name '*.py' -o -name '*.groovy' -o -name '*.sh' \) -print |xargs etags -a --declarations -o ROBOTQ4.TAGS
+
+;;Python/Grovvy/Shell in FortiRobot.br_Q1_testbed
+;;find ~/projects.work/repo/newSVN/FortiRobot.br_Q4_testbed /usr/lib/python2.7/dist-packages /home/harrison/projects.work/repo/github/robotframework -type d \( -name '*branches*' -o -name '*tag*' -o -name '*\.ori' -o -name '*\.svn' -o -name '*tmp' -o -name '*temp' \) -prune -o \( -name '*.py' -o -name '*.groovy' -o -name '*.sh' \) -print |xargs etags -a --declarations -o ROBOTQ1.TAGS
 
 ;; Cscope
 ;; find . /usr/lib/python2.7/dist-packages /home/harrison/projects.work/repo/github/robotframework  -type d \( -name '*branches*' -o -name '*tag*' -o -name '*\.ori' -o -name '*\.svn' -o -name '*tmp' -o -name '*temp' \) -prune -o \( -name '*.py' \) -print > cscope.files
