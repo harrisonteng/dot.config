@@ -102,18 +102,18 @@ If WINDOW is the only one in its frame, then `delete-frame' too."
                        elpy-module-highlight-indentation
                        elpy-module-pyvenv
                        elpy-module-yasnippet))
-(add-hook 'python-mode-hook
-            (lambda ()
-              (setq py-python-command "python2")
-              (setq py-default-interpreter "python2"))
-	      (setq Company-mode t)
-	      (setq company-quickhelp-mode t)
-	      )
 
 (when (require 'elpy nil t)
   (progn
     (elpy-enable)))
 
+(add-hook 'elpy-mode-hook
+            (lambda ()
+              (setq py-python-command "python")
+              (setq py-default-interpreter "python"))
+	      (setq Company-mode t)
+	      (setq company-quickhelp-mode t)
+	      )
 (setq gud-pdb-command-name "python -m pdb")
 
 ;;(setq python-shell-completion-native-enable nil)
@@ -153,7 +153,7 @@ If WINDOW is the only one in its frame, then `delete-frame' too."
 			    word) ;sinon word
 		     input) ;sinon input
 	         )))
-  (shell-command (concat py-python-command " -c \"from pydoc import help;help('" w "')\"") "*PYDOCS*")
+  (shell-command (concat "python" " -c \"from pydoc import help;help('" w "')\"") "*PYDOCS*")
   (view-buffer-other-window "*PYDOCS*" t 'kill-buffer-and-window)
 )
 
@@ -177,7 +177,10 @@ If WINDOW is the only one in its frame, then `delete-frame' too."
          (setq cmd (concat cmd (substring postpoint (match-beginning 0) (match-end 0)))))  
      (if (string= cmd "") nil  
        (let ((max-mini-window-height 0))  
-         (shell-command (concat "pydoc " cmd))))))  
+         (shell-command (concat "pydoc " cmd) "*PYDOCS Modules*")
+	 (view-buffer-other-window "*PYDOCS Modules*" t 'kill-buffer-and-window)
+	 )))
+   )  
    
 (add-hook 'python-mode-hook  
            (lambda ()  
@@ -462,6 +465,7 @@ confirmation"
       (set-background-color "black")
       (set-foreground-color "white")      
       (fontify-frame nil)
+      (select-frame-set-input-focus fr)
   )
 
 ;;Daemon config
