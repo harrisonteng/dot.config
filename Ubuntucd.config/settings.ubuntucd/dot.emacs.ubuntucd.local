@@ -1146,12 +1146,6 @@ Version 2016-06-18"
     (setq truncate-lines t)
  )
 
-(defun midori-browse-url (url &rest ignore)
- "Browse URL using midori."
-      (interactive "sURL: ")
-      (shell-command (concat "midori " url))
-      (pop-to-buffer "*Shell Command Output*")
-      (setq truncate-lines t))
 
 (require 'engine-mode)
 (engine-mode t)
@@ -3608,8 +3602,34 @@ sub do" NameofMethod " {
 ;;(setq browse-url-browser-function 'w3m-browse-url
 ;;     browse-url-new-window-flag t)
 
-(setq browse-url-browser-function 'eww-browse-url
-       browse-url-new-window-flag t)
+(defun midori-browse-url (url &rest ignore)
+ "Browse URL using midori."
+      (interactive "sURL: ")
+      (shell-command (concat "midori " url))
+      (pop-to-buffer "*Shell Command Output*")
+      (setq truncate-lines t))
+
+;;browsing based on regex 
+;;(setq
+;; browse-url-browser-function
+;; '(
+;;  ("gitlab\\.com" . midori-browse-url)
+;;  ("FortiRobot" . midori-browse-url)
+;;  ))
+
+
+(defun choose-browser (url &rest args)
+  (interactive "sURL: ")
+  (if (y-or-n-p "Use external browser? ")
+      (midori-browse-url url)
+    (eww-browse-url url)))
+
+(setq browse-url-browser-function 'choose-browser
+      browse-url-new-window-flag t)
+;;(global-set-key "\C-xm" 'browse-url-at-point)
+
+;;(setq browse-url-browser-function 'eww-browse-url
+;;       browse-url-new-window-flag t)
 
 ;;(setq browse-url-browser-function 'browse-url-generic
 ;;          browse-url-generic-program "midori")
@@ -3673,7 +3693,7 @@ sub do" NameofMethod " {
 
 ;;;invoke different engine in w3m mode:U ew:emacs-w3m
 (setq w3m-search-default-engine "cpanmodule")
-(setq browse-url-browser-function 'w3m-browse-url)
+;;(setq browse-url-browser-function 'w3m-browse-url)
 (global-set-key (kbd "C-c w") 'browse-url-at-point)
 
 ;;;copying url at point
