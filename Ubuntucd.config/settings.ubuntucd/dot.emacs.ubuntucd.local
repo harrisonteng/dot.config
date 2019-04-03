@@ -1128,6 +1128,26 @@ Version 2016-06-18"
 ;; prefix key is C-x / :
 ;; so G -> Google search
 ;; g -> github search
+
+(defun myinew-browse-url (b url)
+  "run svn command tool"
+  (interactive "b: (x)Xwidget (m)Midori (e)Eww (w)W3m ")
+  (case b
+        (?x (svncmdbuf "add"))
+        (?b (svncmdbuf "blame"))
+        (?d (svncmdbuf "diff"))
+        (?D (call-interactively 'sd))
+        (?c (svncmdbuf (concat "commit -m \"" (read-string "checkin message:") "\"")))
+        (?l (svncmdbuf "log"))
+        (?u (svncmdbuf "up"))
+        (?r (svncmdbuf "resolved"))
+        (?x (svncmdbuf "rm"))
+        (?R (if (yes-or-no-p "revert?") (svncmdbuf "revert")))
+    (t (message "unknown command key %c" c)
+       )
+    )    
+  )
+
 (defun my-browse-url (url &rest ignore)
  "Browse URL using midori."
       (interactive "sURL: ")
@@ -1188,7 +1208,7 @@ Version 2016-06-18"
 ;; xwidget-webkit-mode
 
 ;;(add-to-list 'load-path "~/.emacs.d/pkgs/xwidgete")
-;;(require 'xwidgete)
+(require 'xwidgete)
 
 (when
     (featurep 'xwidget-internal)
