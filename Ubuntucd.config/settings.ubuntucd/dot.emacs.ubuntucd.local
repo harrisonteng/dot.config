@@ -1129,26 +1129,24 @@ Version 2016-06-18"
 ;; so G -> Google search
 ;; g -> github search
 
-(defun myinew-browse-url (b url)
-  "run svn command tool"
-  (interactive "b: (x)Xwidget (m)Midori (e)Eww (w)W3m ")
-  (case b
-        (?x (svncmdbuf "add"))
-        (?b (svncmdbuf "blame"))
-        (?d (svncmdbuf "diff"))
-        (?D (call-interactively 'sd))
-        (?c (svncmdbuf (concat "commit -m \"" (read-string "checkin message:") "\"")))
-        (?l (svncmdbuf "log"))
-        (?u (svncmdbuf "up"))
-        (?r (svncmdbuf "resolved"))
-        (?x (svncmdbuf "rm"))
-        (?R (if (yes-or-no-p "revert?") (svncmdbuf "revert")))
-    (t (message "unknown command key %c" c)
-       )
+(defun my-browse-url-in-selected-browser (c url)
+  "run url in selected browser"
+  (interactive "c: (m)Midori (e)Eww (w)W3m \nsUrl: ")
+  (case c
+        (?m (cb_my-browse-url-in-selected-browser "midori" url))
+	(?e (eww-browse-url url))
+        (?w (w3m-browse-url url))
     )    
   )
 
-(defun my-browse-url (url &rest ignore)
+(defun cb_my-browse-url-in-selected-browser (browser url)
+    "Browse here"
+    (shell-command (concat browser url))
+    (pop-to-buffer "*Shell Command Output*")
+    (setq truncate-lines t)
+ )
+
+(defun midori-browse-url (url &rest ignore)
  "Browse URL using midori."
       (interactive "sURL: ")
       (shell-command (concat "midori " url))
@@ -1158,32 +1156,33 @@ Version 2016-06-18"
 (require 'engine-mode)
 (engine-mode t)
 
+(setq engine/browser-function 'browse-url-generic
+          browse-url-generic-program "midori")
+
 (defengine amazon
   "http://www.amazon.ca/s/ref=nb_sb_noss?url=search-alias%3Daps&field-keywords=%s"
-  :browser 'my-browse-url
   :keybinding "a")
 
 (defengine duckduckgo
   "https://duckduckgo.com/?q=%s"
+  :browser 'eww-browse-url
   :keybinding "d")
 
 (defengine github
   "https://github.com/search?ref=simplesearch&q=%s"
-  :browser 'my-browse-url
   :keybinding "g")
 
 (defengine google
   "http://www.google.ca/search?ie=utf-8&oe=utf-8&q=%s"
+  :browser 'eww-browse-url
   :keybinding "G")
 
 (defengine google-images
   "http://www.google.com/images?hl=en&source=hp&biw=1440&bih=795&gbv=2&aq=f&aqi=&aql=&oq=&q=%s"
-  :browser 'my-browse-url
   :keybinding "I")
 
 (defengine google-maps
   "http://maps.google.com/maps?q=%s"
-  :browser 'my-browse-url
   :docstring "Mappin' it up."
   :keybinding "M")
 
@@ -1199,7 +1198,6 @@ Version 2016-06-18"
 
 (defengine youtube
   "http://www.youtube.com/results?aq=f&oq=&search_query=%s"
-  :browser 'my-browse-url
   :keybinding "Y")
   
 ;;=== End engine-mode ===
