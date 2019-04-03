@@ -1124,11 +1124,118 @@ Version 2016-06-18"
 ;;
 ;; To view the Subversion log type "M-x svn-log".
 
+;;=== Begin engine-mode ===
+;; prefix key is C-x / :
+;; so G -> Google search
+;; g -> github search
+(defun my-browse-url (url &rest ignore)
+ "Browse URL using midori."
+      (interactive "sURL: ")
+      (shell-command (concat "midori " url))
+      (pop-to-buffer "*Shell Command Output*")
+      (setq truncate-lines t))
+
+(require 'engine-mode)
+(engine-mode t)
+
+(defengine amazon
+  "http://www.amazon.ca/s/ref=nb_sb_noss?url=search-alias%3Daps&field-keywords=%s"
+  :browser 'my-browse-url
+  :keybinding "a")
+
+(defengine duckduckgo
+  "https://duckduckgo.com/?q=%s"
+  :keybinding "d")
+
+(defengine github
+  "https://github.com/search?ref=simplesearch&q=%s"
+  :browser 'my-browse-url
+  :keybinding "g")
+
+(defengine google
+  "http://www.google.ca/search?ie=utf-8&oe=utf-8&q=%s"
+  :keybinding "G")
+
+(defengine google-images
+  "http://www.google.com/images?hl=en&source=hp&biw=1440&bih=795&gbv=2&aq=f&aqi=&aql=&oq=&q=%s"
+  :browser 'my-browse-url
+  :keybinding "I")
+
+(defengine google-maps
+  "http://maps.google.com/maps?q=%s"
+  :browser 'my-browse-url
+  :docstring "Mappin' it up."
+  :keybinding "M")
+
+(defengine project-gutenberg
+  "http://www.gutenberg.org/ebooks/search/?query=%s")
+
+(defengine rfcs
+  "http://pretty-rfc.herokuapp.com/search?q=%s")
+
+(defengine stack-overflow
+  "https://stackoverflow.com/search?q=%s"
+  :keybinding "s")
+
+(defengine youtube
+  "http://www.youtube.com/results?aq=f&oq=&search_query=%s"
+  :browser 'my-browse-url
+  :keybinding "Y")
+  
+;;=== End engine-mode ===
+
 ;;=== Begin Webkit ===
 ;; xwidget-webkit-mode
 
 ;;(add-to-list 'load-path "~/.emacs.d/pkgs/xwidgete")
 ;;(require 'xwidgete)
+
+(when
+    (featurep 'xwidget-internal)
+  (easy-menu-define my-xwidget-tools-menu nil "Menu for Xwidget Webkit."
+    `("Xwidget Webkit" :visible
+      (featurep 'xwidget-internal)
+      ["Browse Url ..." xwidget-webkit-browse-url :help "Ask xwidget-webkit to browse URL"]
+      ["End Edit Textarea" xwidget-webkit-end-edit-textarea :help "End editing of a webkit text area"]))
+  (easy-menu-add-item menu-bar-tools-menu nil my-xwidget-tools-menu 'separator-net)
+  (easy-menu-define my-xwidget-menu xwidget-webkit-mode-map "Menu for Xwidget Webkit."
+    '("Xwidget Webkit"
+      ["Browse Url" xwidget-webkit-browse-url :help "Ask xwidget-webkit to browse URL"]
+      ["Reload" xwidget-webkit-reload :help "Reload current url"]
+      ["Back" xwidget-webkit-back :help "Go back in history"]
+      "--"
+      ["Insert String" xwidget-webkit-insert-string :help "current webkit widget"]
+      ["End Edit Textarea" xwidget-webkit-end-edit-textarea :help "End editing of a webkit text area"]
+      "--"
+      ["Scroll Forward" xwidget-webkit-scroll-forward :help "Scroll webkit forwards"]
+      ["Scroll Backward" xwidget-webkit-scroll-backward :help "Scroll webkit backwards"]
+      "--"
+      ["Scroll Up" xwidget-webkit-scroll-up :help "Scroll webkit up"]
+      ["Scroll Down" xwidget-webkit-scroll-down :help "Scroll webkit down"]
+      "--"
+      ["Scroll Top" xwidget-webkit-scroll-top :help "Scroll webkit to the very top"]
+      ["Scroll Bottom" xwidget-webkit-scroll-bottom :help "Scroll webkit to the very bottom"]
+      "--"
+      ["Zoom In" xwidget-webkit-zoom-in :help "Increase webkit view zoom factor"]
+      ["Zoom Out" xwidget-webkit-zoom-out :help "Decrease webkit view zoom factor"]
+      "--"
+      ["Fit Width" xwidget-webkit-fit-width :help "Adjust width of webkit to window width"]
+      ["Adjust Size" xwidget-webkit-adjust-size :help "Manually set webkit size to width W, height H"]
+      ["Adjust Size Dispatch" xwidget-webkit-adjust-size-dispatch :help "Adjust size according to mode"]
+      ["Adjust Size To Content" xwidget-webkit-adjust-size-to-content :help "Adjust webkit to content size"]
+      "--"
+      ["Copy Selection As Kill" xwidget-webkit-copy-selection-as-kill :help "Get the webkit selection and put it on the kill-ring"]
+      ["Current Url" xwidget-webkit-current-url :help "Get the webkit url and place it on the kill-ring"]
+      "--"
+      ["Show Element" xwidget-webkit-show-element :help "Make webkit xwidget XW show a named element ELEMENT-SELECTOR"]
+      ["Show Id Element" xwidget-webkit-show-id-element :help "Make webkit xwidget XW show an id-element ELEMENT-ID"]
+      ["Show Id Or Named Element" xwidget-webkit-show-id-or-named-element :help "Make webkit xwidget XW show a name or element id ELEMENT-ID"]
+      ["Show Named Element" xwidget-webkit-show-named-element :help "Make webkit xwidget XW show a named element ELEMENT-NAME"]
+      "--"
+      ["Cleanup" xwidget-cleanup :help "Delete zombie xwidgets"]
+      ["Event Handler" xwidget-event-handler :help "Receive xwidget event"]
+      "--"
+      ["Xwidget Webkit Mode" xwidget-webkit-mode :style toggle :selected xwidget-webkit-mode :help "Xwidget webkit view mode"])))
 
 ;;(evil-set-initial-state 'xwidget-webkit-mode 'emacs)
 (add-hook 'xwidget-webkit-mode-hook
@@ -3155,6 +3262,7 @@ sub do" NameofMethod " {
 ;;;;;;(git-commit-insert-issue-github-issues-format "inkel" "github-issues.el"))
 ;;;;;;;;
 (setq gitlab-host "https://git-devops.corp.fortinet.com"
+      gitlab-token-id "Z_KgXiR9m6PUQwK749Wq"
       gitlab-username "hteng"
       gitlab-password "N@1nternet")
 ;;;;;;;End of magit with Gitlab =====
@@ -3479,8 +3587,14 @@ sub do" NameofMethod " {
 (setq w3m-async-exec t)
 
 ;; browse url in new tab by default
-(setq browse-url-browser-function 'w3m-browse-url
-     browse-url-new-window-flag t)
+;;(setq browse-url-browser-function 'w3m-browse-url
+;;     browse-url-new-window-flag t)
+
+(setq browse-url-browser-function 'eww-browse-url
+       browse-url-new-window-flag t)
+
+;;(setq browse-url-browser-function 'browse-url-generic
+;;          browse-url-generic-program "midori")
 
 ;;;set default homepage of w3m
 (setq w3m-home-page "http://www.google.ca/")
@@ -4546,9 +4660,9 @@ sub do" NameofMethod " {
      (ecb-vc-dir-managed-by-MTN . ecb-vc-state)
      (ecb-vc-dir-managed-by-HG . ecb-vc-state)))
  '(mumamo-chunk-coloring 1)
- '(org-agenda-files nil)
+ '(org-agenda-files nil t)
  '(package-selected-packages
-   '(git-commit-insert-issue helm-cscope xcscope helm-company helm-ag helm-ag-r helm-projectile helm company-quickhelp flycheck-yamllint yaml-mode flymake-cursor flymake-json json-mode xwidgete groovy-mode elpy go-eldoc flycheck org-wunderlist org-webpage org-wc org-vcard org-trello org-tree-slide org-transform-tree-table org-toodledo org-table-comment org-sync org-screenshot org-repo-todo org-readme org-protocol-jekyll org-projectile org-present org-pomodoro org-pdfview org-password-manager org-pandoc org-page org-outlook org-octopress org-multiple-keymap org-mobile-sync org-mac-iCal org-linkany org-link-travis org-journal org-jira org-jekyll org-if org-grep org-gnome org-gcal org-fstree org-elisp-help org-ehtml org-dropbox multi-term magit-tramp magit-topgit magit-svn magit-stgit magit-gitflow magit-gh-pulls magit-gerrit magit-find-file magit-filenotify magit-annex go-stacktracer go-snippets go-scratch go-projectile go-play go-errcheck go-dlv go-direx go-complete go-autocomplete ecb cl-generic auto-complete-c-headers auto-compile))
+   '(engine-mode helm-gitlab git-commit-insert-issue helm-cscope xcscope helm-company helm-ag helm-ag-r helm-projectile helm company-quickhelp flycheck-yamllint yaml-mode flymake-cursor flymake-json json-mode xwidgete groovy-mode elpy go-eldoc flycheck org-wunderlist org-webpage org-wc org-vcard org-trello org-tree-slide org-transform-tree-table org-toodledo org-table-comment org-sync org-screenshot org-repo-todo org-readme org-protocol-jekyll org-projectile org-present org-pomodoro org-pdfview org-password-manager org-pandoc org-page org-outlook org-octopress org-multiple-keymap org-mobile-sync org-mac-iCal org-linkany org-link-travis org-journal org-jira org-jekyll org-if org-grep org-gnome org-gcal org-fstree org-elisp-help org-ehtml org-dropbox multi-term magit-tramp magit-topgit magit-svn magit-stgit magit-gitflow magit-gh-pulls magit-gerrit magit-find-file magit-filenotify magit-annex go-stacktracer go-snippets go-scratch go-projectile go-play go-errcheck go-dlv go-direx go-complete go-autocomplete ecb cl-generic auto-complete-c-headers auto-compile))
  '(regex-tool-backend 'perl)
  '(safe-local-variable-values '((eval add-hook 'write-file-hooks 'time-stamp)))
  '(show-paren-mode t)
