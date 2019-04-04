@@ -2,7 +2,7 @@ export LS_COLORS="$LS_COLORS:di=1;33"
 export EDITOR=vim
 export GOROOT=/usr/local/go;
 export GOPATH=$HOME/projects/local/golang;
-export PATH=$PATH:$GOPATH/bin:/usr/local/go/bin:/usr/local/tcl8.4/bin:/usr/local/expect/bin:
+export PATH=$PATH:$GOPATH/bin:/usr/local/go/bin:/usr/local/tcl8.4/bin:/usr/local/expect/bin:/usr/local/go/bin:
 #alias hmutt='mutt -F /root/.muttrc.harrison'
 #alias htracker='/usr/local/emc/scripts/bayes_train/trackerdb'
 #alias cdmutt='cd /root/bayes_train/today'
