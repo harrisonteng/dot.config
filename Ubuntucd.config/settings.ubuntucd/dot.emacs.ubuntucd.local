@@ -248,10 +248,10 @@ If WINDOW is the only one in its frame, then `delete-frame' too."
 ;;Begin of py-autopep8 mode ====
 ;;M-x py-autopep8-buffer: Uses the autopep8 tool to reformat the current buffer.
 
-;;(require 'py-autopep8)
-;;(add-hook 'python-mode-hook 'py-autopep8-enable-on-save)
-;;(setq py-autopep8-options '("--max-line-length=80")
-;;      )
+(require 'py-autopep8)
+(add-hook 'python-mode-hook 'py-autopep8-enable-on-save)
+(setq py-autopep8-options '("--max-line-length=80")
+      )
 
 ;;End of py-autopep8 mode ====
 
@@ -3299,9 +3299,10 @@ sub do" NameofMethod " {
 ;;;;      (interactive)
 ;;;;        (let ((pop-up-windows nil))
 ;;;;          (call-interactively 'magit-status)))
-(add-to-list 'display-buffer-alist
-                 '(".*COMMIT_EDITMSG". ((display-buffer-pop-up-window) .
-                                        ((inhibit-same-window . t)))))
+(global-git-commit-mode t)
+;;;;(add-to-list 'display-buffer-alist
+;;;;                 '(".*COMMIT_EDITMSG". ((display-buffer-pop-up-window) .
+;;;;                                        ((inhibit-same-window . t)))))
 (defun myms ()
   "Start up my magit status in new frame."
   (interactive)
