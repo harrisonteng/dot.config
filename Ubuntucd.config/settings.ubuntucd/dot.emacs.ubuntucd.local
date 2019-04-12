@@ -3300,9 +3300,9 @@ sub do" NameofMethod " {
 ;;;;        (let ((pop-up-windows nil))
 ;;;;          (call-interactively 'magit-status)))
 (global-git-commit-mode t)
-;;;;(add-to-list 'display-buffer-alist
-;;;;                 '(".*COMMIT_EDITMSG". ((display-buffer-pop-up-window) .
-;;;;                                        ((inhibit-same-window . t)))))
+(add-to-list 'display-buffer-alist
+                 '(".*COMMIT_EDITMSG". ((display-tearbuffer-pop-up-window) .
+                                        ((inhibit-same-window . t)))))
 (defun myms ()
   "Start up my magit status in new frame."
   (interactive)
