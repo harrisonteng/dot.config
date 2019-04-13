@@ -3294,6 +3294,9 @@ sub do" NameofMethod " {
 ;;End of cc-mode =============================================================
 
 ;;;;Begin of magit ==== 
+;;;;
+;;;;  to view diffs between 2 commits. 0: list all commits 1. cursor on commit A 2. d r 3. cursor on commit B 4. then show you dif
+;;;;
 ;;;;(defun my-magit-status ()
 ;;;;    "Don't split window."
 ;;;;      (interactive)
