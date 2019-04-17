@@ -15,8 +15,8 @@
 ;;(setq server-mode t)
 ;;load paredit minor mode
 (autoload 'paredit-mode "paredit"
-     "Minor mode for pseudo-structurally editing Lisp code."
-   t)
+ "Minor mode for pseudo-structurally editing Lisp code."
+t)
 
 ;; My Information
 (setq user-full-name "Harrison Teng")
@@ -27,69 +27,106 @@
 ;;;;winner-mode
 (winner-mode)
 (when (fboundp 'winner-mode)
-    ;; I want to restore window layout with winner by C-x 1
-    (winner-mode 1)) ;;"C-c <left>" and "C-c <right>" undo and re-do window changes.
+;; I want to restore window layout with winner by C-x 1
+(winner-mode 1)) ;;"C-c <left>" and "C-c <right>" undo and re-do window changes.
 
 ;;Fonts functions
 (defun font-existsp (font)
-  "Check that a font exists: http://www.emacswiki.org/emacs/SetFonts#toc8"
-  (and (window-system)
-       (fboundp 'x-list-fonts)
-       (x-list-fonts font)))
+"Check that a font exists: http://www.emacswiki.org/emacs/SetFonts#toc8"
+(and (window-system)
+   (fboundp 'x-list-fonts)
+   (x-list-fonts font)))
 
 ;;list current font eval (face-attribute 'default :font)
 (setq harrison-font-list
-      '(;; list of fonts to search for in order of priority.
-        ;; each has it's own line for easy transposing.
-        "-DAMA-Ubuntu Mono-normal-normal-normal-*-17-*-*-*-m-0-iso10646-1"
-        "-DAMA-Ubuntu Mono-normal-normal-normal-*-15-*-*-*-m-0-iso10646-1"
-        "DejaVu Sans Mono-10"
-        "DejaVu Sans-10"
-        "-PfEd-DejaVu Sans-10"
-        "consolas-10"
-        "proggyopti-10"
-        "ProggyOptiS-10"
-        "ProggyClean-10"
-        "Consolas-10"
-        "Lucida Console-10"
-        "Courier New-10"
-        ))
+  '(;; list of fonts to search for in order of priority.
+    ;; each has it's own line for easy transposing.
+    "-DAMA-Ubuntu Mono-normal-normal-normal-*-17-*-*-*-m-0-iso10646-1"
+    "-DAMA-Ubuntu Mono-normal-normal-normal-*-15-*-*-*-m-0-iso10646-1"
+    "DejaVu Sans Mono-10"
+    "DejaVu Sans-10"
+    "-PfEd-DejaVu Sans-10"
+    "consolas-10"
+    "proggyopti-10"
+    "ProggyOptiS-10"
+    "ProggyClean-10"
+    "Consolas-10"
+    "Lucida Console-10"
+    "Courier New-10"
+    ))
 
 ;;-DAMA-Ubuntu Mono-normal-normal-normal-*-15-*-*-*-m-0-iso10646-1
 (defun fontify-frame (frame)
-  (set-frame-parameter frame 'font "-DAMA-Ubuntu Mono-normal-normal-normal-*-17-*-*-*-m-0-iso10646-1"))
+(set-frame-parameter frame 'font "-DAMA-Ubuntu Mono-normal-normal-normal-*-17-*-*-*-m-0-iso10646-1"))
 
 ;;Frame settings
-(defun pop-frame ()
-  (set-background-color "OliveDrab")
-  (set-foreground-color "white")
-  (blink-cursor-mode 0)
-  (fontify-frame nil) )
+(defun pop-frame-new (frame)
+    (if (equal (frame-parameter frame 'name) "Emacs Magit Status")
+        (progn
+          (message "You are In Emacs Magit Status.")
+          (set-background-color "white")
+          (set-foreground-color "black")
+          (blink-cursor-mode 1)          
+          (fontify-frame nil)      
+         )
+      (message "You are in Regular buffer.")          
+      (set-background-color "black")
+      (set-foreground-color "white")
+      (blink-cursor-mode 0)
+      (fontify-frame nil)      
+    )   
+)
+
 
 (add-hook 'after-make-frame-functions
-  (lambda ($new-frame)
+ (lambda ($new-frame)
     (progn
       (select-frame $new-frame)
-      (pop-frame)
-    ) ) )
+      (pop-frame-new $new-frame)
+    ) 
+   ) 
+  )
+
+;;Below one does not using function
+;;(add-hook 'after-make-frame-functions
+;;  (lambda ($new-frame)
+;;  (select-frame $new-frame)
+;;  (if (equal (frame-parameter $new-frame 'name) "Emacs Magit Status")
+;;    (progn
+;;      (message "You are In Emacs Magit Status.")
+;;      (set-background-color "white")
+;;      (set-foreground-color "black")
+;;      (blink-cursor-mode 1)          
+;;      (message "You are In Emacs Magit Status II.")
+;;    )
+;;  (message "You are in Regular buffer.")          
+;;  (set-background-color "black")
+;;  (set-foreground-color "white")
+;;  (blink-cursor-mode 0)
+;; (fontify-frame nil)      
+;; )   
+;; )
+;;)
+;;
+
 
 (defun delete-single-window (&optional window)
-  "Remove WINDOW from the display.  Default is `selected-window'.
+"Remove WINDOW from the display.  Default is `selected-window'.
 If WINDOW is the only one in its frame, then `delete-frame' too."
-  (interactive)
-  (save-current-buffer
-    (setq window (or window (selected-window)))
-    (select-window window)
-    (kill-buffer)
-    (if (one-window-p t)
-        (delete-frame)
-        (delete-window (selected-window)))))
+(interactive)
+(save-current-buffer
+(setq window (or window (selected-window)))
+(select-window window)
+(kill-buffer)
+(if (one-window-p t)
+    (delete-frame)
+    (delete-window (selected-window)))))
 
 ;; Exit ansi-term without asking if there is a process running
 (defun set-no-process-query-on-exit ()
-  (let ((proc (get-buffer-process (current-buffer))))
-    (when (processp proc)
-      (set-process-query-on-exit-flag proc nil))))
+(let ((proc (get-buffer-process (current-buffer))))
+(when (processp proc)
+  (set-process-query-on-exit-flag proc nil))))
 
 (add-hook 'term-exec-hook 'set-no-process-query-on-exit)
 
@@ -97,23 +134,23 @@ If WINDOW is the only one in its frame, then `delete-frame' too."
 ;;(require 'yasnippet)
 ;;(yas-global-mode 1)
 (setq elpy-modules '(elpy-module-sane-defaults
-                       elpy-module-company
-                       elpy-module-eldoc
-                       elpy-module-highlight-indentation
-                       elpy-module-pyvenv
-                       elpy-module-yasnippet))
+		   elpy-module-company
+		   elpy-module-eldoc
+		   elpy-module-highlight-indentation
+		   elpy-module-pyvenv
+		   elpy-module-yasnippet))
 
 (when (require 'elpy nil t)
-  (progn
-    (elpy-enable)))
+(progn
+(elpy-enable)))
 
 (add-hook 'elpy-mode-hook
-            (lambda ()
-              (setq py-python-command "python")
-              (setq py-default-interpreter "python"))
-	      (setq Company-mode t)
-	      (setq company-quickhelp-mode t)
-	      )
+	(lambda ()
+	  (setq py-python-command "python")
+	  (setq py-default-interpreter "python"))
+	  (setq Company-mode t)
+	  (setq company-quickhelp-mode t)
+	  )
 (setq gud-pdb-command-name "python -m pdb")
 
 ;;(setq python-shell-completion-native-enable nil)
@@ -129,70 +166,70 @@ If WINDOW is the only one in its frame, then `delete-frame' too."
 ;;Root Path of pylookup
 
 (when (load "flymake" t)
-  (defun flymake-pyflakes-init ()
-    (let* ((temp-file (flymake-init-create-temp-buffer-copy
-               'flymake-create-temp-inplace))
-       (local-file (file-relative-name
-            temp-file
-            (file-name-directory buffer-file-name))))
-      (list "pycheckers.sh"  (list local-file))))
-   (add-to-list 'flymake-allowed-file-name-masks
-                '("\\.py\\'" flymake-pyflakes-init)))
+(defun flymake-pyflakes-init ()
+(let* ((temp-file (flymake-init-create-temp-buffer-copy
+	   'flymake-create-temp-inplace))
+   (local-file (file-relative-name
+	temp-file
+	(file-name-directory buffer-file-name))))
+  (list "pycheckers.sh"  (list local-file))))
+(add-to-list 'flymake-allowed-file-name-masks
+	    '("\\.py\\'" flymake-pyflakes-init)))
 
 ;; PyDoc -----------------------------------------------------------------
 ;;(setq load-path (cons "~/.emacs.d/pkgs/python-mode-1.0" load-path))
 (defun pydoc (w)
-  "Launch PyDOC on the Word at Point"
-  (interactive
-   (list (let* ((word (thing-at-point 'word))
-		(input (read-string 
-			(format "pydoc entry%s: " 
-				(if (not word) "" (format " (default %s)" word))))))
-	      (if (string= input "") 
-		         (if (not word) (error "No pydoc args given")
-			    word) ;sinon word
-		     input) ;sinon input
-	         )))
-  (shell-command (concat "python" " -c \"from pydoc import help;help('" w "')\"") "*PYDOCS*")
-  (view-buffer-other-window "*PYDOCS*" t 'kill-buffer-and-window)
+"Launch PyDOC on the Word at Point"
+(interactive
+(list (let* ((word (thing-at-point 'word))
+	    (input (read-string 
+		    (format "pydoc entry%s: " 
+			    (if (not word) "" (format " (default %s)" word))))))
+	  (if (string= input "") 
+		     (if (not word) (error "No pydoc args given")
+			word) ;sinon word
+		 input) ;sinon input
+	     )))
+(shell-command (concat "python" " -c \"from pydoc import help;help('" w "')\"") "*PYDOCS*")
+(view-buffer-other-window "*PYDOCS*" t 'kill-buffer-and-window)
 )
 
 (add-hook 'python-mode-hook
-  (function (lambda ()
-    (local-set-key (kbd "C-p y") 'pydoc))))
+(function (lambda ()
+(local-set-key (kbd "C-p y") 'pydoc))))
 
 ;;----pydoc lookup for module.method info----  
 (defun python-module-method-info ()  
-  (interactive)  
-   (let ((curpoint (point)) (prepoint) (postpoint) (cmd))  
-     (save-excursion  
-       (beginning-of-line)  
-       (setq prepoint (buffer-substring (point) curpoint)))  
-     (save-excursion  
-       (end-of-line)  
-       (setq postpoint (buffer-substring (point) curpoint)))  
-     (if (string-match "[_a-z][_\\.0-9a-z]*$" prepoint)  
-         (setq cmd (substring prepoint (match-beginning 0) (match-end 0))))  
-     (if (string-match "^[_0-9a-z]*" postpoint)  
-         (setq cmd (concat cmd (substring postpoint (match-beginning 0) (match-end 0)))))  
-     (if (string= cmd "") nil  
-       (let ((max-mini-window-height 0))  
-         (shell-command (concat "pydoc " cmd) "*PYDOCS Modules*")
-	 (view-buffer-other-window "*PYDOCS Modules*" t 'kill-buffer-and-window)
-	 )))
-   )  
-   
+(interactive)  
+(let ((curpoint (point)) (prepoint) (postpoint) (cmd))  
+ (save-excursion  
+   (beginning-of-line)  
+   (setq prepoint (buffer-substring (point) curpoint)))  
+ (save-excursion  
+   (end-of-line)  
+   (setq postpoint (buffer-substring (point) curpoint)))  
+ (if (string-match "[_a-z][_\\.0-9a-z]*$" prepoint)  
+     (setq cmd (substring prepoint (match-beginning 0) (match-end 0))))  
+ (if (string-match "^[_0-9a-z]*" postpoint)  
+     (setq cmd (concat cmd (substring postpoint (match-beginning 0) (match-end 0)))))  
+ (if (string= cmd "") nil  
+   (let ((max-mini-window-height 0))  
+     (shell-command (concat "pydoc " cmd) "*PYDOCS Modules*")
+     (view-buffer-other-window "*PYDOCS Modules*" t 'kill-buffer-and-window)
+     )))
+)  
+
 (add-hook 'python-mode-hook  
-           (lambda ()  
-             (local-set-key (kbd "C-p m") 'python-module-method-info)))
+       (lambda ()  
+	 (local-set-key (kbd "C-p m") 'python-module-method-info)))
 
 ;;Python Web Doc ---------------------------------------------------------------
 (defun pydoc-webinfo-command ()
 ;;  "This function could use some safety checks."
-  (interactive)
+(interactive)
 ;;      http://docs.python.org/2.7/search.html?q=threading&check_keywords=yes&area=default
 ;;      http://docs.python.org/2.7/py-modindex.html#cap-p
-        (w3m-goto-url (concat "http://docs.python.org/2.7/py-modindex.html#cap-" (replace-regexp-in-string "\\([a-zA-Z]\\)\\(.*\\)" "\\1" (replace-regexp-in-string "\\." "/" (thing-at-point 'word)) ) ) )
+    (w3m-goto-url (concat "http://docs.python.org/2.7/py-modindex.html#cap-" (replace-regexp-in-string "\\([a-zA-Z]\\)\\(.*\\)" "\\1" (replace-regexp-in-string "\\." "/" (thing-at-point 'word)) ) ) )
 
 )
 
@@ -202,30 +239,30 @@ If WINDOW is the only one in its frame, then `delete-frame' too."
 ;; hs-minor-mode
 (add-hook 'python-mode-hook 'hs-minor-mode)
 (add-hook 'python-mode-hook
-     (function (lambda ()
-         (which-func-mode)
-         ;;Code hiding
-         (local-set-key (kbd "<f5>") 'hs-toggle-hiding)
-         (local-set-key (kbd "<f6>") 'hs-hide-all)
-         (local-set-key (kbd "<S-f6>") 'hs-show-all)
-         (local-set-key (kbd "<f8>") '(lambda () (interactive) (point-to-register ?1)))
-         (local-set-key (kbd "<S-f8>") '(lambda () (interactive) (register-to-point ?1)))
-		 (local-set-key (kbd "C-p w") 'pydoc-webinfo-command)
-         )
-       )
+ (function (lambda ()
+     (which-func-mode)
+     ;;Code hiding
+     (local-set-key (kbd "<f5>") 'hs-toggle-hiding)
+     (local-set-key (kbd "<f6>") 'hs-hide-all)
+     (local-set-key (kbd "<S-f6>") 'hs-show-all)
+     (local-set-key (kbd "<f8>") '(lambda () (interactive) (point-to-register ?1)))
+     (local-set-key (kbd "<S-f8>") '(lambda () (interactive) (register-to-point ?1)))
+	     (local-set-key (kbd "C-p w") 'pydoc-webinfo-command)
+     )
+   )
 )
 
 
 ;; python-mode-pydoc
 (add-hook 'python-mode-hook
- (lambda ()
-  (local-set-key (kbd "C-p y") 'pydoc)))
+(lambda ()
+(local-set-key (kbd "C-p y") 'pydoc)))
 
 (add-hook 'python-mode-hook
-           (lambda ()
-             (set (make-variable-buffer-local 'beginning-of-defun-function)
-                  'py-beginning-of-def-or-class)
-             (setq outline-regexp "def\\|class ")))
+       (lambda ()
+	 (set (make-variable-buffer-local 'beginning-of-defun-function)
+	      'py-beginning-of-def-or-class)
+	 (setq outline-regexp "def\\|class ")))
 
 ;;(add-hook 'python-mode-hook 'turn-on-eldoc-mode)
 
@@ -234,13 +271,13 @@ If WINDOW is the only one in its frame, then `delete-frame' too."
 
 ;;PDB
 ;;pdb setup, note the python version
- (setq pdb-path '/usr/lib/python2.7/pdb.py
-       gud-pdb-command-name (symbol-name pdb-path))
- (defadvice pdb (before gud-query-cmdline activate)
-   "Provide a better default command line when called interactively."
-   (interactive
-    (list (gud-query-cmdline pdb-path
-	        (file-name-nondirectory buffer-file-name)))))
+(setq pdb-path '/usr/lib/python2.7/pdb.py
+   gud-pdb-command-name (symbol-name pdb-path))
+(defadvice pdb (before gud-query-cmdline activate)
+"Provide a better default command line when called interactively."
+(interactive
+(list (gud-query-cmdline pdb-path
+	    (file-name-nondirectory buffer-file-name)))))
 
 
 ;;End of Python-mode ============================================================
@@ -251,7 +288,7 @@ If WINDOW is the only one in its frame, then `delete-frame' too."
 (require 'py-autopep8)
 (add-hook 'python-mode-hook 'py-autopep8-enable-on-save)
 (setq py-autopep8-options '("--max-line-length=80")
-      )
+  )
 
 ;;End of py-autopep8 mode ====
 
@@ -274,12 +311,12 @@ If WINDOW is the only one in its frame, then `delete-frame' too."
 (add-hook 'elpy-mode-hook 'helm-cscope-mode)
 ;; Set key bindings
 (eval-after-load "helm-cscope"
-  '(progn
-     (define-key helm-cscope-mode-map (kbd "M-t") 'helm-cscope-find-symbol)
-     (define-key helm-cscope-mode-map (kbd "M-r") 'helm-cscope-find-global-definition)
-     (define-key helm-cscope-mode-map (kbd "M-g M-c") 'helm-cscope-find-called-function)
-     (define-key helm-cscope-mode-map (kbd "M-g M-p") 'helm-cscope-find-calling-this-function)
-     (define-key helm-cscope-mode-map (kbd "M-s") 'helm-cscope-select)))
+'(progn
+ (define-key helm-cscope-mode-map (kbd "M-t") 'helm-cscope-find-symbol)
+ (define-key helm-cscope-mode-map (kbd "M-r") 'helm-cscope-find-global-definition)
+ (define-key helm-cscope-mode-map (kbd "M-g M-c") 'helm-cscope-find-called-function)
+ (define-key helm-cscope-mode-map (kbd "M-g M-p") 'helm-cscope-find-calling-this-function)
+ (define-key helm-cscope-mode-map (kbd "M-s") 'helm-cscope-select)))
 
 (helm-mode 1)
 
@@ -293,65 +330,65 @@ If WINDOW is the only one in its frame, then `delete-frame' too."
 ;; then helm will preserve the initial sorting order made by helm-buffer-list,
 ;; if you don't like the initial order, advice helm-buffer-list as you like
 (defun helm-buffers-sort-transformer@donot-sort (_ candidates _)
-  candidates)
+candidates)
 
 (advice-add 'helm-buffers-sort-transformer :around 'helm-buffers-sort-transformer@donot-sort)
 
 ;;(when (package-installed-p 'helm)
 
-  ;;https://www.reddit.com/r/emacs/comments/7rho4f/now_you_can_use_helm_with_frames_instead_of/
-  ;;With the latest Helm, you can display Helm buffers in its own frame, like a popup:
-  ;;This way, your window configuration won't be changed anymore. Note, even displaying in a minibuffer 
-  ;;disrupts your window configuration, so using minibuffer is not a solution.
-  ;;This feature is handy, especially when I have a huge buffer of grep/ag results. 
-  ;;Using helm-ag, the results are displayed in a frame, and I can switch back and forth between frame without 
-  ;;having to constantly bring back grep/ag result buffer. It is great if you have a slightly large and wide monitor.
-  (setq helm-display-function 'helm-display-buffer-in-own-frame
-        helm-display-buffer-reuse-frame t
-        helm-use-undecorated-frame-option t
-	helm-display-buffer-width 140
-	helm-display-buffer-height 60
-	helm-autoresize-mode 1)
+;;https://www.reddit.com/r/emacs/comments/7rho4f/now_you_can_use_helm_with_frames_instead_of/
+;;With the latest Helm, you can display Helm buffers in its own frame, like a popup:
+;;This way, your window configuration won't be changed anymore. Note, even displaying in a minibuffer 
+;;disrupts your window configuration, so using minibuffer is not a solution.
+;;This feature is handy, especially when I have a huge buffer of grep/ag results. 
+;;Using helm-ag, the results are displayed in a frame, and I can switch back and forth between frame without 
+;;having to constantly bring back grep/ag result buffer. It is great if you have a slightly large and wide monitor.
+(setq helm-display-function 'helm-display-buffer-in-own-frame
+    helm-display-buffer-reuse-frame t
+    helm-use-undecorated-frame-option t
+    helm-display-buffer-width 140
+    helm-display-buffer-height 60
+    helm-autoresize-mode 1)
 
-  ;;C-x c is close to C-x C-c
-  (global-set-key (kbd "C-c h") 'helm-command-prefix)
-  (global-unset-key (kbd "C-x c"))
+;;C-x c is close to C-x C-c
+(global-set-key (kbd "C-c h") 'helm-command-prefix)
+(global-unset-key (kbd "C-x c"))
 
 
-  ;; helm-M-x
-  (setq helm-M-x-fuzzy-match t)
-  (global-set-key (kbd "M-x") 'helm-M-x)
+;; helm-M-x
+(setq helm-M-x-fuzzy-match t)
+(global-set-key (kbd "M-x") 'helm-M-x)
 
-  ;; helm-kill-ring
-  (global-set-key (kbd "M-y") 'helm-show-kill-ring)
+;; helm-kill-ring
+(global-set-key (kbd "M-y") 'helm-show-kill-ring)
 
-  ;; helm-mini
-  (global-set-key (kbd "C-x b") 'helm-mini)
-  (setq helm-buffers-fuzzy-matching t
-        helm-recentf-fuzzy-match t)
+;; helm-mini
+(global-set-key (kbd "C-x b") 'helm-mini)
+(setq helm-buffers-fuzzy-matching t
+    helm-recentf-fuzzy-match t)
 
-  ;; helm-find-files
-  (global-set-key (kbd "C-x C-f") 'helm-find-files)
+;; helm-find-files
+(global-set-key (kbd "C-x C-f") 'helm-find-files)
 ;;)
 
 ;;; -----------------------------
 ;;; helm-projectile
 (when (package-installed-p 'helm-projectile)
-  (projectile-global-mode)
-  (helm-projectile-on)
-  )
+(projectile-global-mode)
+(helm-projectile-on)
+)
 
 
 (defun helm-do-grep-recursive (&optional non-recursive)
-  "Like `helm-do-grep', but greps recursively by default."
-  (interactive "P")
-    (let* (
-           (current-prefix-arg (not non-recursive))
-           (helm-current-prefix-arg non-recursive)
-         )
-         (call-interactively 'helm-do-grep-ag)
-    )
-  )
+"Like `helm-do-grep', but greps recursively by default."
+(interactive "P")
+(let* (
+       (current-prefix-arg (not non-recursive))
+       (helm-current-prefix-arg non-recursive)
+     )
+     (call-interactively 'helm-do-grep-ag)
+)
+)
 
 (global-set-key (kbd "C-H R") 'helm-do-grep-recursive);; do recursive grep pattern
 (global-set-key (kbd "C-H r") 'helm-do-grep-ag);; do recursive grep without file type
@@ -365,8 +402,8 @@ If WINDOW is the only one in its frame, then `delete-frame' too."
 ;;C-c h C-x C-f -> find file/urls in current dir
 ;;C-c h C-c f -> List recent files
 ;;(C-u) C-c h / -> Recursively find files
-   (define-key helm-map (kbd "C-z")  'helm-select-action) ; list actions using C-z
-   (add-to-list 'helm-completing-read-handlers-alist '(svn-status))
+(define-key helm-map (kbd "C-z")  'helm-select-action) ; list actions using C-z
+(add-to-list 'helm-completing-read-handlers-alist '(svn-status))
 
 )
 
@@ -377,22 +414,22 @@ If WINDOW is the only one in its frame, then `delete-frame' too."
 (setq helm-input-idle-delay 0.1)
 (setq helm-locate-command "/home/harrison/.hlocal/emacs/dot.emacs.d/locate-with-find.sh %.0s %s")
 (setq-default helm-boring-file-regexp-list
-                            (append '("\\.DS_Store$"
-                                      "\\.svn$"
-                                      "\\.svn-base$"
-				      "\\.o$"
-				      "\\.elc$"
-				      "\\.pyc$"
-                                      "\\.swp$") helm-boring-file-regexp-list))
+			(append '("\\.DS_Store$"
+				  "\\.svn$"
+				  "\\.svn-base$"
+				  "\\.o$"
+				  "\\.elc$"
+				  "\\.pyc$"
+				  "\\.swp$") helm-boring-file-regexp-list))
 (global-set-key (kbd "C-H S") 'helm-for-files);; 
 ;; End of Helm
 
 ;;YAML
 (require 'yaml-mode)
-    (add-to-list 'auto-mode-alist '("\\.ya?ml\\'" . yaml-mode))
+(add-to-list 'auto-mode-alist '("\\.ya?ml\\'" . yaml-mode))
 (require 'flycheck-yamllint)
 (eval-after-load 'flycheck
-  '(add-hook 'flycheck-mode-hook 'flycheck-yamllint-setup))
+'(add-hook 'flycheck-mode-hook 'flycheck-yamllint-setup))
 
 ;; Ediff tweak
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -408,30 +445,30 @@ If WINDOW is the only one in its frame, then `delete-frame' too."
 (setq ediff-split-window-function 'split-window-horizontally)
 
 (add-hook 'ediff-startup-hook
-          (lambda ()
-            (local-set-key (kbd "q") 'my-ediff-quit)))
+      (lambda ()
+	(local-set-key (kbd "q") 'my-ediff-quit)))
 
 (defun my-ediff-quit ()
-  "If any of the ediff buffers have been modified, ask if changes
+"If any of the ediff buffers have been modified, ask if changes
 should be saved. Then quit ediff normally, without asking for
 confirmation"
-  (interactive)
-  (ediff-barf-if-not-control-buffer)
-  (let* ((buf-a ediff-buffer-A)
-         (buf-b ediff-buffer-B)
-         (buf-c ediff-buffer-C)
-         (ctl-buf (current-buffer))
-         (modified (remove-if-not 'buffer-modified-p
-                                  (list buf-a buf-b buf-c))))
-    (let ((save (if modified (yes-or-no-p "Save changes?")nil)))
-      (loop for buf in modified do
-            (progn
-              (set-buffer buf)
-              (if save
-                  (save-buffer)
-                (set-buffer-modified-p nil))))
-      (set-buffer ctl-buf)
-      (ediff-really-quit nil))))
+(interactive)
+(ediff-barf-if-not-control-buffer)
+(let* ((buf-a ediff-buffer-A)
+     (buf-b ediff-buffer-B)
+     (buf-c ediff-buffer-C)
+     (ctl-buf (current-buffer))
+     (modified (remove-if-not 'buffer-modified-p
+			      (list buf-a buf-b buf-c))))
+(let ((save (if modified (yes-or-no-p "Save changes?")nil)))
+  (loop for buf in modified do
+	(progn
+	  (set-buffer buf)
+	  (if save
+	      (save-buffer)
+	    (set-buffer-modified-p nil))))
+  (set-buffer ctl-buf)
+  (ediff-really-quit nil))))
 
 ;;;; Popup win
 ;;(require 'popwin)
@@ -459,25 +496,25 @@ confirmation"
 
 ;; Inspired from `mouse-tear-off-window'.
 (defun tear-off-window ()
-  "Create a new frame displaying buffer of selected window.
-    If window is not the only one in frame, then delete it.
-    Otherwise, this command effectively clones the frame and window."
-  (interactive)
-  (let ((owin  (selected-window))
-        (buf   (window-buffer))
-        (fr    (make-frame)))
-    (select-frame fr)
-    (set-frame-size (selected-frame) 124 124)
-    (switch-to-buffer buf)
-    (save-window-excursion 
-      (select-window owin)
-      (unless (one-window-p) (delete-window owin)))
-    )
-      (set-background-color "black")
-      (set-foreground-color "white")      
-      (fontify-frame nil)
-      (select-frame-set-input-focus fr)
-  )
+"Create a new frame displaying buffer of selected window.
+If window is not the only one in frame, then delete it.
+Otherwise, this command effectively clones the frame and window."
+(interactive)
+(let ((owin  (selected-window))
+    (buf   (window-buffer))
+    (fr    (make-frame)))
+(select-frame fr)
+(set-frame-size (selected-frame) 124 124)
+(switch-to-buffer buf)
+(save-window-excursion 
+  (select-window owin)
+  (unless (one-window-p) (delete-window owin)))
+)
+  (set-background-color "black")
+  (set-foreground-color "white")      
+  (fontify-frame nil)
+  (select-frame-set-input-focus fr)
+)
 
 ;;Daemon config
 ;;http://www.wanglianghome.org/blog/2009/01/customization-tips-for-emacs-daemon.html
@@ -489,28 +526,28 @@ confirmation"
 ;;'chinese-gbk "AR PL UKai CN 20"))))
 ;;(set-fontset-font "fontset-default" 'chinese-gbk "AR PL UKai CN 20"))
 (setq window-system-default-frame-alist
-      '(
-        ;; if frame created on x display
-        (x
-     (menu-bar-lines . 0)
-     (tool-bar-lines . nil)
-     ;; mouse
-     (mouse-wheel-mode . 1)
-     (mouse-wheel-follow-mouse . t)
-     (mouse-avoidance-mode . 'exile)
-     ;; face
-     ;;(font . "真真真真真真 8")
-	 ;;(font . "-unknown-DejaVu Sans Mono-normal-normal-normal-*-13-*-*-*-m-0-iso10646-1")
-	 ;;(font . "-PfEd-DejaVu Sans Mono-normal-normal-normal-*-13-*-*-*-m-0-fontset-auto1")
-     )
-        ;; if on term
-        (nil
-     (menu-bar-lines . 0) (tool-bar-lines . 0)
-      (background-color . "black")
-      (foreground-color . "white")
-     )
-    )
-      )
+  '(
+    ;; if frame created on x display
+    (x
+ (menu-bar-lines . 0)
+ (tool-bar-lines . nil)
+ ;; mouse
+ (mouse-wheel-mode . 1)
+ (mouse-wheel-follow-mouse . t)
+ (mouse-avoidance-mode . 'exile)
+ ;; face
+ ;;(font . "真真真真真真 8")
+     ;;(font . "-unknown-DejaVu Sans Mono-normal-normal-normal-*-13-*-*-*-m-0-iso10646-1")
+     ;;(font . "-PfEd-DejaVu Sans Mono-normal-normal-normal-*-13-*-*-*-m-0-fontset-auto1")
+ )
+    ;; if on term
+    (nil
+ (menu-bar-lines . 0) (tool-bar-lines . 0)
+  (background-color . "black")
+  (foreground-color . "white")
+ )
+)
+  )
 
 ;; Chinese environment settings.
 ;;(set-language-environment 'Chinese-GB)
@@ -521,8 +558,8 @@ confirmation"
 (set-clipboard-coding-system 'utf-8)
 (set-terminal-coding-system 'utf-8)
 (set-buffer-file-coding-system 'utf-8)
-  (unless (eq system-type 'windows-nt)
-   (set-selection-coding-system 'utf-8))
+(unless (eq system-type 'windows-nt)
+(set-selection-coding-system 'utf-8))
 (modify-coding-system-alist 'process "*" 'utf-8)
 (setq default-process-coding-system '(utf-8 . utf-8))
 (setq-default pathname-coding-system 'utf-8)
@@ -532,27 +569,27 @@ confirmation"
 
 ;; Transaparency
 (defun djcb-opacity-modify (&optional dec)
-  "modify the transparency of the emacs frame; if DEC is t,
-    decrease the transparency, otherwise increase it in 10%-steps"
-  (let* ((alpha-or-nil (frame-parameter nil 'alpha)) ; nil before setting
-          (oldalpha (if alpha-or-nil alpha-or-nil 100))
-          (newalpha (if dec (- oldalpha 10) (+ oldalpha 10))))
-    (when (and (>= newalpha frame-alpha-lower-limit) (<= newalpha 100))
-      (modify-frame-parameters nil (list (cons 'alpha newalpha))))))
+"modify the transparency of the emacs frame; if DEC is t,
+decrease the transparency, otherwise increase it in 10%-steps"
+(let* ((alpha-or-nil (frame-parameter nil 'alpha)) ; nil before setting
+      (oldalpha (if alpha-or-nil alpha-or-nil 100))
+      (newalpha (if dec (- oldalpha 10) (+ oldalpha 10))))
+(when (and (>= newalpha frame-alpha-lower-limit) (<= newalpha 100))
+  (modify-frame-parameters nil (list (cons 'alpha newalpha))))))
 
- ;; C-8 will increase opacity (== decrease transparency)
- ;; C-9 will decrease opacity (== increase transparency
- ;; C-0 will returns the state to normal
+;; C-8 will increase opacity (== decrease transparency)
+;; C-9 will decrease opacity (== increase transparency
+;; C-0 will returns the state to normal
 (global-set-key (kbd "C-8") '(lambda()(interactive)(djcb-opacity-modify)))
 (global-set-key (kbd "C-9") '(lambda()(interactive)(djcb-opacity-modify t)))
 (global-set-key (kbd "C-0") '(lambda()(interactive)
-                               (modify-frame-parameters nil `((alpha . 100)))))
+			   (modify-frame-parameters nil `((alpha . 100)))))
 
 ;;Melpa
 (when (>= emacs-major-version 24)
 (require 'package) ;; You might already have this line
 (add-to-list 'package-archives
-             '("melpa" . "http://melpa.org/packages/") t)
+	 '("melpa" . "http://melpa.org/packages/") t)
 )
 
 ;; If package-check-signature is allow-unsigned, don't
@@ -560,7 +597,7 @@ confirmation"
 ;; missing public key.  Other errors are still treated as
 ;; fatal (bug#17625).
 (unless (and (eq package-check-signature 'allow-unsigned))
-  (setq had-fatal-error t))
+(setq had-fatal-error t))
 
 ;;;(set-frame-parameter (selected-frame) 'alpha '(<active> [<inactive>]))
 ;;set-frame-parameter (selected-frame) 'alpha '(85 50))
@@ -579,12 +616,12 @@ confirmation"
 ;;Generic editing
 ;;Goto line by percentage
 (defun harrison-goto-line-in-percentage (percent)
-  (interactive (list (or current-prefix-arg
-                         (string-to-number
-                          (read-from-minibuffer "Goto percent: ")))))
-  (let* ((total (count-lines (point-min) (point-max)))
-         (num (round (* (/ total 100.0) percent))))
-    (goto-line num)))
+(interactive (list (or current-prefix-arg
+		     (string-to-number
+		      (read-from-minibuffer "Goto percent: ")))))
+(let* ((total (count-lines (point-min) (point-max)))
+     (num (round (* (/ total 100.0) percent))))
+(goto-line num)))
 
 ;;Goto line by percentage
 (global-set-key (kbd "M-;") 'harrison-goto-line-in-percentage)
@@ -593,52 +630,52 @@ confirmation"
 
 ;;Copy, Cut and Paste
 (defun xah-cut-line-or-region ()
-  "Cut current line, or text selection.
+"Cut current line, or text selection.
 When `universal-argument' is called first, cut whole buffer (respects `narrow-to-region').
 
 URL `http://ergoemacs.org/emacs/emacs_copy_cut_current_line.html'
 Version 2015-06-10"
-  (interactive)
-  (if current-prefix-arg
-      (progn ; not using kill-region because we don't want to include previous kill
-        (kill-new (buffer-string))
-        (delete-region (point-min) (point-max)))
-    (progn (if (use-region-p)
-               (kill-region (region-beginning) (region-end) t)
-             (kill-region (line-beginning-position) (line-beginning-position 2))))))
+(interactive)
+(if current-prefix-arg
+  (progn ; not using kill-region because we don't want to include previous kill
+    (kill-new (buffer-string))
+    (delete-region (point-min) (point-max)))
+(progn (if (use-region-p)
+	   (kill-region (region-beginning) (region-end) t)
+	 (kill-region (line-beginning-position) (line-beginning-position 2))))))
 
 (defun xah-copy-line-or-region ()
-  "Copy current line, or text selection.
+"Copy current line, or text selection.
 When called repeatedly, append copy subsequent lines.
 When `universal-argument' is called first, copy whole buffer (respects `narrow-to-region').
 
 URL `http://ergoemacs.org/emacs/emacs_copy_cut_current_line.html'
 Version 2016-06-18"
-  (interactive)
-  (let (-p1 -p2)
+(interactive)
+(let (-p1 -p2)
+(if current-prefix-arg
+    (setq -p1 (point-min) -p2 (point-max))
+  (if (use-region-p)
+      (setq -p1 (region-beginning) -p2 (region-end))
+    (setq -p1 (line-beginning-position) -p2 (line-end-position))))
+(if (eq last-command this-command)
+    (progn
+      (progn ; hack. exit if there's no more next line
+	(end-of-line)
+	(forward-char)
+	(backward-char))
+      ;; (push-mark (point) "NOMSG" "ACTIVATE")
+      (kill-append "\n" nil)
+      (kill-append (buffer-substring-no-properties (line-beginning-position) (line-end-position)) nil)
+      (message "Line copy appended"))
+  (progn
+    (kill-ring-save -p1 -p2)
     (if current-prefix-arg
-        (setq -p1 (point-min) -p2 (point-max))
-      (if (use-region-p)
-          (setq -p1 (region-beginning) -p2 (region-end))
-        (setq -p1 (line-beginning-position) -p2 (line-end-position))))
-    (if (eq last-command this-command)
-        (progn
-          (progn ; hack. exit if there's no more next line
-            (end-of-line)
-            (forward-char)
-            (backward-char))
-          ;; (push-mark (point) "NOMSG" "ACTIVATE")
-          (kill-append "\n" nil)
-          (kill-append (buffer-substring-no-properties (line-beginning-position) (line-end-position)) nil)
-          (message "Line copy appended"))
-      (progn
-        (kill-ring-save -p1 -p2)
-        (if current-prefix-arg
-            (message "Buffer text copied")
-          (message "Text copied"))))
-    (end-of-line)
-    (forward-char)
-    ))
+	(message "Buffer text copied")
+      (message "Text copied"))))
+(end-of-line)
+(forward-char)
+))
 
 (global-set-key (kbd "C-d") 'xah-cut-line-or-region) ; cut
 (global-set-key (kbd "C-p") 'xah-copy-line-or-region) ; copy
@@ -649,15 +686,15 @@ Version 2016-06-18"
 (add-hook 'json-mode-hook #'flycheck-mode)
 
 (eval-after-load "json-mode"
-  '(progn
-     (require 'flymake-json)
-     ;; flymake-cursor displays error in minibuffer message area instead of requiring hover
-     (require 'flymake-cursor)
+'(progn
+ (require 'flymake-json)
+ ;; flymake-cursor displays error in minibuffer message area instead of requiring hover
+ (require 'flymake-cursor)
 
-     (add-hook 'json-mode-hook 'flymake-json-load)
-     (define-key json-mode-map "\C-c\C-n" (function flymake-goto-next-error))
-     (define-key json-mode-map "\C-c\C-l" 'json-pretty-print-buffer)
-  )
+ (add-hook 'json-mode-hook 'flymake-json-load)
+ (define-key json-mode-map "\C-c\C-n" (function flymake-goto-next-error))
+ (define-key json-mode-map "\C-c\C-l" 'json-pretty-print-buffer)
+)
 )
 
 ;;undo-tree
@@ -843,16 +880,16 @@ Version 2016-06-18"
 ;;(define-key global-map "\C-cr" 'reflash-indentation)
 
 (setq org-todo-keyword-faces '(("TODO" . (:foreground "white" :weight regular))
-				("INPROGRESS" . (:foreground "forest green" :weight regular))
-				("VERIFY" . (:foreground "gold" :weight regular)) 
-                                ("DONE" . (:foreground "green" :weight bold))
-                                ("FAILED" . (:foreground "red" :weight bold))
-				("PENDING" . (:foreground "OrangeRed" :weight bold)) 
-				("CANCELED" . (:foreground "pink" :weight bold)) 
-				))
+			    ("INPROGRESS" . (:foreground "forest green" :weight regular))
+			    ("VERIFY" . (:foreground "gold" :weight regular)) 
+			    ("DONE" . (:foreground "green" :weight bold))
+			    ("FAILED" . (:foreground "red" :weight bold))
+			    ("PENDING" . (:foreground "OrangeRed" :weight bold)) 
+			    ("CANCELED" . (:foreground "pink" :weight bold)) 
+			    ))
 
 (setq org-todo-keywords
-             '((sequence "TODO" "INPROGRESS" "VERIFY" "|" "PENDING" "DONE" "FAILED" "CANCELED")))
+	 '((sequence "TODO" "INPROGRESS" "VERIFY" "|" "PENDING" "DONE" "FAILED" "CANCELED")))
 
 (setq org-tag-alist '(("@my" . ?m) ("@other" . ?o) ("@vip" . ?v) ("@cmd" . ?c) ("snippet" . ?s) ("idea" . ?i) ("toever" . ?e) ("python" . ?p) ("Emacs" . ?E) ("C" . ?C)))
 
@@ -861,17 +898,17 @@ Version 2016-06-18"
 (setq org-default-priority ?E) 
 ;; appearance 
 (setq org-priority-faces '((?A . (:background "red" :foreground "white" :weight bold)) 
-						   (?B . (:background "DarkOrange" :foreground "white" :weight regular)) 
-						   (?C . (:background "yellow" :foreground "DarkGreen" :weight regular)) 
-						   (?D . (:background "DodgerBlue" :foreground "black" :weight regular)) 
-						   (?E . (:background "SkyBlue" :foreground "black" :weight regular)) ))
+					       (?B . (:background "DarkOrange" :foreground "white" :weight regular)) 
+					       (?C . (:background "yellow" :foreground "DarkGreen" :weight regular)) 
+					       (?D . (:background "DodgerBlue" :foreground "black" :weight regular)) 
+					       (?E . (:background "SkyBlue" :foreground "black" :weight regular)) ))
 
 ;;If you would like a TODO entry to automatically change to DONE when all children are done, you can use the following setup:
 (defun org-summary-todo (n-done n-not-done)
-       "Switch entry to DONE when all subentries are done, to TODO otherwise."
-       (let (org-log-done org-log-states)   ; turn off logging
-         (org-todo (if (= n-not-done 0) "DONE" "TODO"))))
-     
+   "Switch entry to DONE when all subentries are done, to TODO otherwise."
+   (let (org-log-done org-log-states)   ; turn off logging
+     (org-todo (if (= n-not-done 0) "DONE" "TODO"))))
+ 
 (add-hook 'org-after-todo-statistics-hook 'org-summary-todo)
 
 ;;Sample
@@ -957,20 +994,20 @@ Version 2016-06-18"
 ;;(setq ediff-window-setup-function 'ediff-setup-windows-plain)
 
 (setq preferred-debugger-alist 
-      '((c-mode . gdb) 
-	(c++-mode . gdb)
-	(cperl-mode . perldb)
-	;;(jde-mode . jdb)
-	))
+  '((c-mode . gdb) 
+    (c++-mode . gdb)
+    (cperl-mode . perldb)
+    ;;(jde-mode . jdb)
+    ))
 
 
 ;; zooming; http://emacs-fu.blogspot.com/2008/12/zooming-inout.html
 (
-   defun harrison-zoom (n) (interactive)
-   (
-      set-face-attribute 'default (selected-frame) :height
-      (+ (face-attribute 'default :height) (* (if (> n 0) 1 -1) 10))
-   )
+defun harrison-zoom (n) (interactive)
+(
+  set-face-attribute 'default (selected-frame) :height
+  (+ (face-attribute 'default :height) (* (if (> n 0) 1 -1) 10))
+)
 )
 
 (global-set-key (kbd "C-+")     (lambda()(interactive(harrison-zoom 1))))
@@ -998,8 +1035,8 @@ Version 2016-06-18"
 (global-set-key (kbd "M-/") 'shell-command-on-region)
 ;; M-& runs shell command with region as stdin and replaces it with stdout
 (global-set-key (kbd "M-&") (lambda () (interactive)
-                              (setq current-prefix-arg (list 4))
-                              (call-interactively 'shell-command-on-region)))
+			  (setq current-prefix-arg (list 4))
+			  (call-interactively 'shell-command-on-region)))
 
 ;; make commenting easy ;)
 (global-set-key (kbd "M-#") 'comment-region)
@@ -1008,11 +1045,11 @@ Version 2016-06-18"
 ;; fullscreen editing
 (global-set-key (kbd "<f11>") 'fullscreen)
 (defun fullscreen ()
-  "Toggle fullscreen editing."
-  (interactive)
-  ;(menu-bar-mode nil)
-  (set-frame-parameter nil 'fullscreen
-                       (if (frame-parameter nil 'fullscreen) nil 'fullboth)))
+"Toggle fullscreen editing."
+(interactive)
+;(menu-bar-mode nil)
+(set-frame-parameter nil 'fullscreen
+		   (if (frame-parameter nil 'fullscreen) nil 'fullboth)))
 
 ;;regex-tool
 (load "regex-tool" t)    ; load regex-tool if it's available
@@ -1042,41 +1079,41 @@ Version 2016-06-18"
 ;;etc.
 
 (defun svncmdbuf (cmd &optional fn)
-  "run the given svn command on the current window"
-  (interactive "scmd:")
-  (let
-	  ((buf "*svn-cmd*"))
-	(if (not fn)
-		(setq fn (buffer-file-name)))
-	(if (shell-command (format "svn %s %s" cmd fn) buf)
-		(switch-to-buffer-other-window buf))))
+"run the given svn command on the current window"
+(interactive "scmd:")
+(let
+      ((buf "*svn-cmd*"))
+    (if (not fn)
+	    (setq fn (buffer-file-name)))
+    (if (shell-command (format "svn %s %s" cmd fn) buf)
+	    (switch-to-buffer-other-window buf))))
 
 (defun svndiff ()
-  "diff the current buffer with subversion"
-  (interactive)
-  (let
-	  ((fn (buffer-file-name)))
-	(if (and fn (shell-command (format "svn diff %s" fn) "*svn-diff*"))
-		(switch-to-buffer-other-window "*svn-diff*"))))
-	
+"diff the current buffer with subversion"
+(interactive)
+(let
+      ((fn (buffer-file-name)))
+    (if (and fn (shell-command (format "svn diff %s" fn) "*svn-diff*"))
+	    (switch-to-buffer-other-window "*svn-diff*"))))
+    
 (defun svn (c)
-  "run svn command tool"
-  (interactive "c: (a)dd (d)iff (D)iff revision (c)ommit (l)og (r)esolve (R)evert (b)lame (u)p (x)delete")
-  (case c
-	(?a (svncmdbuf "add"))
-	(?b (svncmdbuf "blame"))
-	(?d (svncmdbuf "diff"))
-	(?D (call-interactively 'sd))
-	(?c (svncmdbuf (concat "commit -m \"" (read-string "checkin message:") "\"")))
-	(?l (svncmdbuf "log"))
-	(?u (svncmdbuf "up"))
-	(?r (svncmdbuf "resolved"))
-	(?x (svncmdbuf "rm"))
-	(?R (if (yes-or-no-p "revert?") (svncmdbuf "revert")))
-    (t (message "unknown command key %c" c)
-       )
-    )
-  )
+"run svn command tool"
+(interactive "c: (a)dd (d)iff (D)iff revision (c)ommit (l)og (r)esolve (R)evert (b)lame (u)p (x)delete")
+(case c
+    (?a (svncmdbuf "add"))
+    (?b (svncmdbuf "blame"))
+    (?d (svncmdbuf "diff"))
+    (?D (call-interactively 'sd))
+    (?c (svncmdbuf (concat "commit -m \"" (read-string "checkin message:") "\"")))
+    (?l (svncmdbuf "log"))
+    (?u (svncmdbuf "up"))
+    (?r (svncmdbuf "resolved"))
+    (?x (svncmdbuf "rm"))
+    (?R (if (yes-or-no-p "revert?") (svncmdbuf "revert")))
+(t (message "unknown command key %c" c)
+   )
+)
+)
 
 ;;dsvn
 (require 'vc-svn)
@@ -1143,41 +1180,41 @@ Version 2016-06-18"
 ;;=== Begin of EWW ===
 ;;https://writequit.org/eos/eos-web.html
 (when (load "eww" t)
-  ;;(setq browse-url-browser-function
-  ;;      '((".*google.*maps.*" . browse-url-generic)
-  ;;        ("http.*\/\/github.com" . browse-url-generic)
-  ;;        ("groups.google.com" . browse-url-generic)
-  ;;        ("docs.google.com" . browse-url-generic)
-  ;;        ("melpa.org" . browse-url-generic)
-  ;;        ("build.*\.elastic.co" . browse-url-generic)
-  ;;        (".*-ci\.elastic.co" . browse-url-generic)
-  ;;        ("internal-ci\.elastic\.co" . browse-url-generic)
-  ;;        ("zendesk\.com" . browse-url-generic)
-  ;;        ("salesforce\.com" . browse-url-generic)
-  ;;        ("stackoverflow\.com" . browse-url-generic)
-  ;;        ("apache\.org\/jira" . browse-url-generic)
-  ;;        ("thepoachedegg\.net" . browse-url-generic)
-  ;;        ("zoom.us" . browse-url-generic)
-  ;;        ("t.co" . browse-url-generic)
-  ;;        ("twitter.com" . browse-url-generic)
-  ;;        ("\/\/a.co" . browse-url-generic)
-  ;;        ("youtube.com" . browse-url-generic)
-  ;;        ("." . eww-browse-url)))
-  (setq shr-external-browser 'browse-url-generic)
-  (setq browse-url-generic-program (executable-find "surf"))
-  ;;(add-hook 'eww-mode-hook #'toggle-word-wrap)
-  ;;(add-hook 'eww-mode-hook #'visual-line-mode)
-  ;;(define-key eww-mode-map "o" 'eww)
-  ;;(define-key eww-mode-map "O" 'eww-browse-with-external-browser)
-  ;;(define-key eww-mode-map "j" 'next-line)
-  ;;(define-key eww-mode-map "k" 'previous-line)
+;;(setq browse-url-browser-function
+;;      '((".*google.*maps.*" . browse-url-generic)
+;;        ("http.*\/\/github.com" . browse-url-generic)
+;;        ("groups.google.com" . browse-url-generic)
+;;        ("docs.google.com" . browse-url-generic)
+;;        ("melpa.org" . browse-url-generic)
+;;        ("build.*\.elastic.co" . browse-url-generic)
+;;        (".*-ci\.elastic.co" . browse-url-generic)
+;;        ("internal-ci\.elastic\.co" . browse-url-generic)
+;;        ("zendesk\.com" . browse-url-generic)
+;;        ("salesforce\.com" . browse-url-generic)
+;;        ("stackoverflow\.com" . browse-url-generic)
+;;        ("apache\.org\/jira" . browse-url-generic)
+;;        ("thepoachedegg\.net" . browse-url-generic)
+;;        ("zoom.us" . browse-url-generic)
+;;        ("t.co" . browse-url-generic)
+;;        ("twitter.com" . browse-url-generic)
+;;        ("\/\/a.co" . browse-url-generic)
+;;        ("youtube.com" . browse-url-generic)
+;;        ("." . eww-browse-url)))
+(setq shr-external-browser 'browse-url-generic)
+(setq browse-url-generic-program (executable-find "surf"))
+;;(add-hook 'eww-mode-hook #'toggle-word-wrap)
+;;(add-hook 'eww-mode-hook #'visual-line-mode)
+;;(define-key eww-mode-map "o" 'eww)
+;;(define-key eww-mode-map "O" 'eww-browse-with-external-browser)
+;;(define-key eww-mode-map "j" 'next-line)
+;;(define-key eww-mode-map "k" 'previous-line)
 
-  ;;(when (load "eww-lnum" t)
-  ;;  :ensure t
-  ;;  :config
-  ;;  (bind-key "f" #'eww-lnum-follow eww-mode-map)
-  ;;  (bind-key "U" #'eww-lnum-universal eww-mode-map)))
-  )
+;;(when (load "eww-lnum" t)
+;;  :ensure t
+;;  :config
+;;  (bind-key "f" #'eww-lnum-follow eww-mode-map)
+;;  (bind-key "U" #'eww-lnum-universal eww-mode-map)))
+)
 
 ;;=== End of EWW ===
 
@@ -1187,70 +1224,70 @@ Version 2016-06-18"
 ;; g -> github search
 
 (defun my-browse-url-in-selected-browser (c url)
-  "run url in selected browser"
-  (interactive "c: (s)Surf (e)Eww (w)W3m \nsUrl: ")
-  (case c
-        (?s (cb_my-browse-url-in-selected-browser "surf" url))
-	(?e (eww-browse-url url))
-        (?w (w3m-browse-url url))
-    )    
-  )
+"run url in selected browser"
+(interactive "c: (s)Surf (e)Eww (w)W3m \nsUrl: ")
+(case c
+    (?s (cb_my-browse-url-in-selected-browser "surf" url))
+    (?e (eww-browse-url url))
+    (?w (w3m-browse-url url))
+)    
+)
 
 (defun cb_my-browse-url-in-selected-browser (browser url)
-    "Browse here"
-    (shell-command (concat browser url))
-    (pop-to-buffer "*Shell Command Output*")
-    (setq truncate-lines t)
- )
+"Browse here"
+(shell-command (concat browser url))
+(pop-to-buffer "*Shell Command Output*")
+(setq truncate-lines t)
+)
 
 
 (require 'engine-mode)
 (engine-mode t)
 
 (setq engine/browser-function 'browse-url-generic
-          browse-url-generic-program "surf")
+      browse-url-generic-program "surf")
 
 (defengine amazon
-  "http://www.amazon.ca/s/ref=nb_sb_noss?url=search-alias%3Daps&field-keywords=%s"
-  :keybinding "a")
+"http://www.amazon.ca/s/ref=nb_sb_noss?url=search-alias%3Daps&field-keywords=%s"
+:keybinding "a")
 
 (defengine duckduckgo
-  "https://duckduckgo.com/?q=%s"
-  :browser 'eww-browse-url
-  :keybinding "d")
+"https://duckduckgo.com/?q=%s"
+:browser 'eww-browse-url
+:keybinding "d")
 
 (defengine github
-  "https://github.com/search?ref=simplesearch&q=%s"
-  :keybinding "g")
+"https://github.com/search?ref=simplesearch&q=%s"
+:keybinding "g")
 
 (defengine google
-  "http://www.google.ca/search?ie=utf-8&oe=utf-8&q=%s"
-  :browser 'eww-browse-url
-  :keybinding "G")
+"http://www.google.ca/search?ie=utf-8&oe=utf-8&q=%s"
+:browser 'eww-browse-url
+:keybinding "G")
 
 (defengine google-images
-  "http://www.google.com/images?hl=en&source=hp&biw=1440&bih=795&gbv=2&aq=f&aqi=&aql=&oq=&q=%s"
-  :keybinding "I")
+"http://www.google.com/images?hl=en&source=hp&biw=1440&bih=795&gbv=2&aq=f&aqi=&aql=&oq=&q=%s"
+:keybinding "I")
 
 (defengine google-maps
-  "http://maps.google.com/maps?q=%s"
-  :docstring "Mappin' it up."
-  :keybinding "M")
+"http://maps.google.com/maps?q=%s"
+:docstring "Mappin' it up."
+:keybinding "M")
 
 (defengine project-gutenberg
-  "http://www.gutenberg.org/ebooks/search/?query=%s")
+"http://www.gutenberg.org/ebooks/search/?query=%s")
 
 (defengine rfcs
-  "http://pretty-rfc.herokuapp.com/search?q=%s")
+"http://pretty-rfc.herokuapp.com/search?q=%s")
 
 (defengine stack-overflow
-  "https://stackoverflow.com/search?q=%s"
-  :keybinding "s")
+"https://stackoverflow.com/search?q=%s"
+:keybinding "s")
 
 (defengine youtube
-  "http://www.youtube.com/results?aq=f&oq=&search_query=%s"
-  :keybinding "Y")
-  
+"http://www.youtube.com/results?aq=f&oq=&search_query=%s"
+:keybinding "Y")
+
 ;;=== End engine-mode ===
 
 ;;=== Begin Webkit ===
@@ -1260,85 +1297,85 @@ Version 2016-06-18"
 (require 'xwidgete)
 
 (when
-    (featurep 'xwidget-internal)
-  (easy-menu-define my-xwidget-tools-menu nil "Menu for Xwidget Webkit."
-    `("Xwidget Webkit" :visible
-      (featurep 'xwidget-internal)
-      ["Browse Url ..." xwidget-webkit-browse-url :help "Ask xwidget-webkit to browse URL"]
-      ["End Edit Textarea" xwidget-webkit-end-edit-textarea :help "End editing of a webkit text area"]))
-  (easy-menu-add-item menu-bar-tools-menu nil my-xwidget-tools-menu 'separator-net)
-  (easy-menu-define my-xwidget-menu xwidget-webkit-mode-map "Menu for Xwidget Webkit."
-    '("Xwidget Webkit"
-      ["Browse Url" xwidget-webkit-browse-url :help "Ask xwidget-webkit to browse URL"]
-      ["Reload" xwidget-webkit-reload :help "Reload current url"]
-      ["Back" xwidget-webkit-back :help "Go back in history"]
-      "--"
-      ["Insert String" xwidget-webkit-insert-string :help "current webkit widget"]
-      ["End Edit Textarea" xwidget-webkit-end-edit-textarea :help "End editing of a webkit text area"]
-      "--"
-      ["Scroll Forward" xwidget-webkit-scroll-forward :help "Scroll webkit forwards"]
-      ["Scroll Backward" xwidget-webkit-scroll-backward :help "Scroll webkit backwards"]
-      "--"
-      ["Scroll Up" xwidget-webkit-scroll-up :help "Scroll webkit up"]
-      ["Scroll Down" xwidget-webkit-scroll-down :help "Scroll webkit down"]
-      "--"
-      ["Scroll Top" xwidget-webkit-scroll-top :help "Scroll webkit to the very top"]
-      ["Scroll Bottom" xwidget-webkit-scroll-bottom :help "Scroll webkit to the very bottom"]
-      "--"
-      ["Zoom In" xwidget-webkit-zoom-in :help "Increase webkit view zoom factor"]
-      ["Zoom Out" xwidget-webkit-zoom-out :help "Decrease webkit view zoom factor"]
-      "--"
-      ["Fit Width" xwidget-webkit-fit-width :help "Adjust width of webkit to window width"]
-      ["Adjust Size" xwidget-webkit-adjust-size :help "Manually set webkit size to width W, height H"]
-      ["Adjust Size Dispatch" xwidget-webkit-adjust-size-dispatch :help "Adjust size according to mode"]
-      ["Adjust Size To Content" xwidget-webkit-adjust-size-to-content :help "Adjust webkit to content size"]
-      "--"
-      ["Copy Selection As Kill" xwidget-webkit-copy-selection-as-kill :help "Get the webkit selection and put it on the kill-ring"]
-      ["Current Url" xwidget-webkit-current-url :help "Get the webkit url and place it on the kill-ring"]
-      "--"
-      ["Show Element" xwidget-webkit-show-element :help "Make webkit xwidget XW show a named element ELEMENT-SELECTOR"]
-      ["Show Id Element" xwidget-webkit-show-id-element :help "Make webkit xwidget XW show an id-element ELEMENT-ID"]
-      ["Show Id Or Named Element" xwidget-webkit-show-id-or-named-element :help "Make webkit xwidget XW show a name or element id ELEMENT-ID"]
-      ["Show Named Element" xwidget-webkit-show-named-element :help "Make webkit xwidget XW show a named element ELEMENT-NAME"]
-      "--"
-      ["Cleanup" xwidget-cleanup :help "Delete zombie xwidgets"]
-      ["Event Handler" xwidget-event-handler :help "Receive xwidget event"]
-      "--"
-      ["Xwidget Webkit Mode" xwidget-webkit-mode :style toggle :selected xwidget-webkit-mode :help "Xwidget webkit view mode"])))
+(featurep 'xwidget-internal)
+(easy-menu-define my-xwidget-tools-menu nil "Menu for Xwidget Webkit."
+`("Xwidget Webkit" :visible
+  (featurep 'xwidget-internal)
+  ["Browse Url ..." xwidget-webkit-browse-url :help "Ask xwidget-webkit to browse URL"]
+  ["End Edit Textarea" xwidget-webkit-end-edit-textarea :help "End editing of a webkit text area"]))
+(easy-menu-add-item menu-bar-tools-menu nil my-xwidget-tools-menu 'separator-net)
+(easy-menu-define my-xwidget-menu xwidget-webkit-mode-map "Menu for Xwidget Webkit."
+'("Xwidget Webkit"
+  ["Browse Url" xwidget-webkit-browse-url :help "Ask xwidget-webkit to browse URL"]
+  ["Reload" xwidget-webkit-reload :help "Reload current url"]
+  ["Back" xwidget-webkit-back :help "Go back in history"]
+  "--"
+  ["Insert String" xwidget-webkit-insert-string :help "current webkit widget"]
+  ["End Edit Textarea" xwidget-webkit-end-edit-textarea :help "End editing of a webkit text area"]
+  "--"
+  ["Scroll Forward" xwidget-webkit-scroll-forward :help "Scroll webkit forwards"]
+  ["Scroll Backward" xwidget-webkit-scroll-backward :help "Scroll webkit backwards"]
+  "--"
+  ["Scroll Up" xwidget-webkit-scroll-up :help "Scroll webkit up"]
+  ["Scroll Down" xwidget-webkit-scroll-down :help "Scroll webkit down"]
+  "--"
+  ["Scroll Top" xwidget-webkit-scroll-top :help "Scroll webkit to the very top"]
+  ["Scroll Bottom" xwidget-webkit-scroll-bottom :help "Scroll webkit to the very bottom"]
+  "--"
+  ["Zoom In" xwidget-webkit-zoom-in :help "Increase webkit view zoom factor"]
+  ["Zoom Out" xwidget-webkit-zoom-out :help "Decrease webkit view zoom factor"]
+  "--"
+  ["Fit Width" xwidget-webkit-fit-width :help "Adjust width of webkit to window width"]
+  ["Adjust Size" xwidget-webkit-adjust-size :help "Manually set webkit size to width W, height H"]
+  ["Adjust Size Dispatch" xwidget-webkit-adjust-size-dispatch :help "Adjust size according to mode"]
+  ["Adjust Size To Content" xwidget-webkit-adjust-size-to-content :help "Adjust webkit to content size"]
+  "--"
+  ["Copy Selection As Kill" xwidget-webkit-copy-selection-as-kill :help "Get the webkit selection and put it on the kill-ring"]
+  ["Current Url" xwidget-webkit-current-url :help "Get the webkit url and place it on the kill-ring"]
+  "--"
+  ["Show Element" xwidget-webkit-show-element :help "Make webkit xwidget XW show a named element ELEMENT-SELECTOR"]
+  ["Show Id Element" xwidget-webkit-show-id-element :help "Make webkit xwidget XW show an id-element ELEMENT-ID"]
+  ["Show Id Or Named Element" xwidget-webkit-show-id-or-named-element :help "Make webkit xwidget XW show a name or element id ELEMENT-ID"]
+  ["Show Named Element" xwidget-webkit-show-named-element :help "Make webkit xwidget XW show a named element ELEMENT-NAME"]
+  "--"
+  ["Cleanup" xwidget-cleanup :help "Delete zombie xwidgets"]
+  ["Event Handler" xwidget-event-handler :help "Receive xwidget event"]
+  "--"
+  ["Xwidget Webkit Mode" xwidget-webkit-mode :style toggle :selected xwidget-webkit-mode :help "Xwidget webkit view mode"])))
 
 ;;(evil-set-initial-state 'xwidget-webkit-mode 'emacs)
 (add-hook 'xwidget-webkit-mode-hook
-          (lambda ()
-            (define-key xwidget-webkit-mode-map [mouse-4] 'xwidget-webkit-scroll-down)
-            (define-key xwidget-webkit-mode-map [mouse-5] 'xwidget-webkit-scroll-up)
-            (define-key xwidget-webkit-mode-map (kbd "<up>") 'xwidget-webkit-scroll-down)
-            (define-key xwidget-webkit-mode-map (kbd "<down>") 'xwidget-webkit-scroll-up)
-            (define-key xwidget-webkit-mode-map (kbd "M-w") 'xwidget-webkit-copy-selection-as-kill)
-            (define-key xwidget-webkit-mode-map (kbd "C-c") 'xwidget-webkit-copy-selection-as-kill)
+      (lambda ()
+	(define-key xwidget-webkit-mode-map [mouse-4] 'xwidget-webkit-scroll-down)
+	(define-key xwidget-webkit-mode-map [mouse-5] 'xwidget-webkit-scroll-up)
+	(define-key xwidget-webkit-mode-map (kbd "<up>") 'xwidget-webkit-scroll-down)
+	(define-key xwidget-webkit-mode-map (kbd "<down>") 'xwidget-webkit-scroll-up)
+	(define-key xwidget-webkit-mode-map (kbd "M-w") 'xwidget-webkit-copy-selection-as-kill)
+	(define-key xwidget-webkit-mode-map (kbd "C-c") 'xwidget-webkit-copy-selection-as-kill)
 
-            ;; make xwidget default browser (not for now... maybe in the future!)
-            ;; (setq browse-url-browser-function (lambda (url session)
-            ;;                                     (other-window 1)
-            ;;                                     (xwidget-browse-url-no-reuse url)))
+	;; make xwidget default browser (not for now... maybe in the future!)
+	;; (setq browse-url-browser-function (lambda (url session)
+	;;                                     (other-window 1)
+	;;                                     (xwidget-browse-url-no-reuse url)))
 
-            ;; adapt webkit according to window configuration change automatically
-            ;; without this hook, every time you change your window configuration,
-            ;; you must press 'a' to adapt webkit content to new window size
-            (add-hook 'window-configuration-change-hook (lambda ()
-                                                          (when (equal major-mode 'xwidget-webkit-mode)
-                                                            (xwidget-webkit-adjust-size-dispatch))))
+	;; adapt webkit according to window configuration change automatically
+	;; without this hook, every time you change your window configuration,
+	;; you must press 'a' to adapt webkit content to new window size
+	(add-hook 'window-configuration-change-hook (lambda ()
+						      (when (equal major-mode 'xwidget-webkit-mode)
+							(xwidget-webkit-adjust-size-dispatch))))
 
-            ;; by default, xwidget reuses previous xwidget window,
-            ;; thus overriding your current website, unless a prefix argument
-            ;; is supplied
-            ;;
-            ;; This function always opens a new website in a new window
-            (defun xwidget-browse-url-no-reuse (url &optional sessoin)
-              (interactive (progn
-                             (require 'browse-url)
-                             (browse-url-interactive-arg "xwidget-webkit URL: "
-                                                         )))
-              (xwidget-webkit-browse-url url t))))
+	;; by default, xwidget reuses previous xwidget window,
+	;; thus overriding your current website, unless a prefix argument
+	;; is supplied
+	;;
+	;; This function always opens a new website in a new window
+	(defun xwidget-browse-url-no-reuse (url &optional sessoin)
+	  (interactive (progn
+			 (require 'browse-url)
+			 (browse-url-interactive-arg "xwidget-webkit URL: "
+						     )))
+	  (xwidget-webkit-browse-url url t))))
 
 
 ;;=== End Webkit ===
@@ -1373,16 +1410,16 @@ Version 2016-06-18"
 
 ;;Indent by parenthesis
 (defun harrison-indent-according-to-paren ()
-  "Indent the region between paren"
-  (interactive)
-  (let ((prev-char (char-to-string (preceding-char)))
-        (next-char (char-to-string (following-char)))
-        (pos (point)))
-    (save-excursion
-      (cond ((string-match "[[{(<]" next-char)
-             (indent-region pos (progn (forward-sexp 1) (point)) nil))
-            ((string-match "[\]})>]" prev-char)
-             (indent-region (progn (backward-sexp 1) (point)) pos nil))))))
+"Indent the region between paren"
+(interactive)
+(let ((prev-char (char-to-string (preceding-char)))
+    (next-char (char-to-string (following-char)))
+    (pos (point)))
+(save-excursion
+  (cond ((string-match "[[{(<]" next-char)
+	 (indent-region pos (progn (forward-sexp 1) (point)) nil))
+	((string-match "[\]})>]" prev-char)
+	 (indent-region (progn (backward-sexp 1) (point)) pos nil))))))
 
 (global-set-key (kbd "C-x t =") 'harrison-indent-according-to-paren)
 
@@ -1395,11 +1432,11 @@ Version 2016-06-18"
 ;; Toggle Tab Width
 (global-set-key [C-tab] 'toggle-tab-width)
 (defun toggle-tab-width ()
- (interactive)
- (cond ((= tab-width 4) (setq tab-width 8))
-       ((= tab-width 8) (setq tab-width 4)))
- (recenter)
- )
+(interactive)
+(cond ((= tab-width 4) (setq tab-width 8))
+   ((= tab-width 8) (setq tab-width 4)))
+(recenter)
+)
 
 ;;make tab to 8 in cc-mode
 ;;(setq-default c-basic-offset 8
@@ -1416,11 +1453,11 @@ Version 2016-06-18"
 (require 'wdired)
 (autoload 'wdired-change-to-wdired-mode "wdired")
 (add-hook 'dired-load-hook
-          '(lambda ()
-             (define-key dired-mode-map "r" 'wdired-change-to-wdired-mode)
-             (define-key dired-mode-map
-               [menu-bar immediate wdired-change-to-wdired-mode]
-               '("Edit File Names" . wdired-change-to-wdired-mode))))
+      '(lambda ()
+	 (define-key dired-mode-map "r" 'wdired-change-to-wdired-mode)
+	 (define-key dired-mode-map
+	   [menu-bar immediate wdired-change-to-wdired-mode]
+	   '("Edit File Names" . wdired-change-to-wdired-mode))))
 
 
 ;;Dir+
@@ -1445,22 +1482,22 @@ Version 2016-06-18"
 
 ;;mic-paren
 (require 'mic-paren) ; loading
-     (paren-activate)     ; activating
+ (paren-activate)     ; activating
 
 ;;auto-info
 (require 'autoinfo)
-       (autoinfo-mode t)
+   (autoinfo-mode t)
 
 ;;HTTP-twiddle
 (require 'http-twiddle)
-       (http-twiddle-mode t)
+   (http-twiddle-mode t)
 
 ;;uniq the buffer names
 (require 'uniquify)
-   (setq uniquify-buffer-name-style 'reverse)
-   (setq uniquify-separator "/")
-   (setq uniquify-after-kill-buffer-p t) ; rename after killing uniquified
-   (setq uniquify-ignore-buffers-re "^\\*") ; don't muck with special buffer
+(setq uniquify-buffer-name-style 'reverse)
+(setq uniquify-separator "/")
+(setq uniquify-after-kill-buffer-p t) ; rename after killing uniquified
+(setq uniquify-ignore-buffers-re "^\\*") ; don't muck with special buffer
 
 ;;Note that the uniquify functions provided with Emacs,
 ;;uniquify-buffer-file-name, uniquify-rename-buffer,
@@ -1468,19 +1505,19 @@ Version 2016-06-18"
 ;;uniqueness of buffer names. It has nothing to do with the problem of
 ;;removing identical adjacent lines in a given buffer.
 ;;;;If you want a command which mimics the uniq utility found on Unix systems, put the following in your InitFile:
- (defun uniquify-region ()
-   "remove duplicate adjacent lines in the given region"
-   (interactive)
-   (narrow-to-region (region-beginning) (region-end))
-   (beginning-of-buffer)
-   (while (re-search-forward "^\\(.*\n\\)\\1+" nil t)
-     (replace-match "\\1" nil nil))
-   (widen) nil)
+(defun uniquify-region ()
+"remove duplicate adjacent lines in the given region"
+(interactive)
+(narrow-to-region (region-beginning) (region-end))
+(beginning-of-buffer)
+(while (re-search-forward "^\\(.*\n\\)\\1+" nil t)
+ (replace-match "\\1" nil nil))
+(widen) nil)
 
 (defun uniquify-buffer ()
-   (interactive)
-   (mark-whole-buffer)
-   (uniquify-region))
+(interactive)
+(mark-whole-buffer)
+(uniquify-region))
 ;;;;M-x uniquify-buffer will remove identical adjacent lines in current buffer, giving a result similar to what would be obtained with the Unix uniq command.
 
 
@@ -1493,55 +1530,55 @@ Version 2016-06-18"
 ;;   %e  extention of file name       ( bin )
 
 (add-to-list 'smart-compile-alist
-            '("~/projects/gcc/.*" . "make"))
+	'("~/projects/gcc/.*" . "make"))
 
 (when (featurep 'smart-compile)
 (setq smart-compile-alist
-     '(("\\.c$"          . "gcc -Wall -o %n %f")
-       ("\\.[Cc]+[Pp]*$" . "g++ -o %n %f")
-       ("\\.java$"       . "javac %f")
-       ("\\.f90$"        . "f90 %f -o %n")
-       ("\\.[Ff]$"       . "f77 %f -o %n")
-       ("\\.mp$"         . "runmpost.pl %f -o ps")
-       ("\\.php$"        . "php %f")
-       ("\\.tex$"        . "latex %f")
-       ("\\.l$"          . "lex -o %n.yy.c %f")
-       ("\\.y$"          . "yacc -o %n.tab.c %f")
-       ("\\.py$"         . "python %f")
-       ("\\.sql$"        . "mysql < %f")
-       ("\\.ahk$"        . "start d:\\Programs\\AutoHotkey\\AutoHotkey %f")
-       ("\\.sh$"         . "./%f")
-       (emacs-lisp-mode  . (emacs-lisp-byte-compile))))
+ '(("\\.c$"          . "gcc -Wall -o %n %f")
+   ("\\.[Cc]+[Pp]*$" . "g++ -o %n %f")
+   ("\\.java$"       . "javac %f")
+   ("\\.f90$"        . "f90 %f -o %n")
+   ("\\.[Ff]$"       . "f77 %f -o %n")
+   ("\\.mp$"         . "runmpost.pl %f -o ps")
+   ("\\.php$"        . "php %f")
+   ("\\.tex$"        . "latex %f")
+   ("\\.l$"          . "lex -o %n.yy.c %f")
+   ("\\.y$"          . "yacc -o %n.tab.c %f")
+   ("\\.py$"         . "python %f")
+   ("\\.sql$"        . "mysql < %f")
+   ("\\.ahk$"        . "start d:\\Programs\\AutoHotkey\\AutoHotkey %f")
+   ("\\.sh$"         . "./%f")
+   (emacs-lisp-mode  . (emacs-lisp-byte-compile))))
 (setq smart-run-alist
-     '(("\\.c$"          . "./%n")
-       ("\\.[Cc]+[Pp]*$" . "./%n")
-       ("\\.java$"       . "java %n")
-       ("\\.php$"        . "php %f")
-       ("\\.m$"          . "%f")
-       ("\\.scm"         . "%f")
-       ("\\.tex$"        . "dvisvga %n.dvi")
-       ("\\.py$"         . "python %f")
-       ("\\.pl$"         . "perl \"%f\"")
-       ("\\.pm$"         . "perl \"%f\"")
-       ("\\.bat$"        . "%f")
-       ("\\.mp$"         . "mpost %f")
-       ("\\.ahk$"        . "start d:\\Programs\\AutoHotkey\\AutoHotkey %f")
-       ("\\.sh$"         . "./%f")))
+ '(("\\.c$"          . "./%n")
+   ("\\.[Cc]+[Pp]*$" . "./%n")
+   ("\\.java$"       . "java %n")
+   ("\\.php$"        . "php %f")
+   ("\\.m$"          . "%f")
+   ("\\.scm"         . "%f")
+   ("\\.tex$"        . "dvisvga %n.dvi")
+   ("\\.py$"         . "python %f")
+   ("\\.pl$"         . "perl \"%f\"")
+   ("\\.pm$"         . "perl \"%f\"")
+   ("\\.bat$"        . "%f")
+   ("\\.mp$"         . "mpost %f")
+   ("\\.ahk$"        . "start d:\\Programs\\AutoHotkey\\AutoHotkey %f")
+   ("\\.sh$"         . "./%f")))
 (setq smart-executable-alist
-     '("%n.class"
-       "%n.exe"
-       "%n"
-       "%n.mp"
-       "%n.m"
-       "%n.php"
-       "%n.scm"
-       "%n.dvi"
-       "%n.py"
-       "%n.pl"
-       "%n.ahk"
-       "%n.pm"
-       "%n.bat"
-       "%n.sh")))
+ '("%n.class"
+   "%n.exe"
+   "%n"
+   "%n.mp"
+   "%n.m"
+   "%n.php"
+   "%n.scm"
+   "%n.dvi"
+   "%n.py"
+   "%n.pl"
+   "%n.ahk"
+   "%n.pm"
+   "%n.bat"
+   "%n.sh")))
 
 (global-set-key (kbd "<f9>") 'smart-compile)
 
@@ -1673,8 +1710,8 @@ Version 2016-06-18"
 
 ;;========================
 (defadvice auto-complete-mode
-     (around disable-auto-complete-for-python)
-     (unless (eq major-mode 'python-mode) ad-do-it))
+ (around disable-auto-complete-for-python)
+ (unless (eq major-mode 'python-mode) ad-do-it))
 
 (ad-activate 'auto-complete-mode)
 ;;========================
@@ -1688,44 +1725,44 @@ Version 2016-06-18"
 ;;    (new-frame (concat title ": " msg))))
 
 (defun my-popup (prefixarg command-name)
-  (interactive (list current-prefix-arg (read-extended-command)))
-  (let ((command (intern-soft command-name)))
-    (unless command
-      (error "%s is not a valid command name" command-name))
-    (select-frame (make-frame))
-    (let ((prefix-arg prefixarg))
-      (command-execute command))))
+(interactive (list current-prefix-arg (read-extended-command)))
+(let ((command (intern-soft command-name)))
+(unless command
+  (error "%s is not a valid command name" command-name))
+(select-frame (make-frame))
+(let ((prefix-arg prefixarg))
+  (command-execute command))))
 
 
 ;;;;Require C-x C-c prompt. I've closed too often by accident.
 ;;;;http://www.dotemacs.de/dotfiles/KilianAFoth.emacs.html
 (global-set-key [(control x) (control c)]
-  (function
-   (lambda () (interactive)
-     (cond ((y-or-n-p "Quit? ")
-            (save-buffers-kill-emacs))))))
+(function
+(lambda () (interactive)
+ (cond ((y-or-n-p "Quit? ")
+	(save-buffers-kill-emacs))))))
 
 ;;;;"I always compile my .emacs, saves me about two seconds
 ;;;;startuptime. But that only helps if the .emacs.elc is newer
 ;;;;than the .emacs. So compile .emacs if it's not."
 (defun autocompile nil
-  "compile itself if ~/.emacs"
-  (interactive)
-  (require 'bytecomp)
-  (if (string= (buffer-file-name) (expand-file-name (concat
+"compile itself if ~/.emacs"
+(interactive)
+(require 'bytecomp)
+(if (string= (buffer-file-name) (expand-file-name (concat
 default-directory ".emacs")))
-      (byte-compile-file (buffer-file-name))))
+  (byte-compile-file (buffer-file-name))))
 
 (add-hook 'after-save-hook 'autocompile)
 
 
 (global-set-key "%" 'match-paren)
 (defun match-paren (arg)
-  "Go to the matching paren if on a paren; otherwise insert %."
-  (interactive "p")
-  (cond ((looking-at "\\s\(") (forward-list 1) (backward-char 1))
-        ((looking-at "\\s\)") (forward-char 1) (backward-list 1))
-        (t (self-insert-command (or arg 1)))))
+"Go to the matching paren if on a paren; otherwise insert %."
+(interactive "p")
+(cond ((looking-at "\\s\(") (forward-list 1) (backward-char 1))
+    ((looking-at "\\s\)") (forward-char 1) (backward-list 1))
+    (t (self-insert-command (or arg 1)))))
 
 ;;;; Provides vi's % style bracket matching. (press % to match the bracket when the context is a bracket) Much easier then the C-M-f and C-M-b in emacs.
 
@@ -1740,63 +1777,63 @@ default-directory ".emacs")))
 ;;(global-set-key [M-S-down] 'tabbar-backward-group)
 ;;(setq tabbar-buffer-groups-function 'tabbar-buffer-ignore-groups)
 
-  (set-face-attribute
-   'tabbar-default-face nil
-   :background "gray60")
-  (set-face-attribute
-   'tabbar-unselected-face nil
-   :background "gray85"
-   :foreground "gray30"
-   :box nil)
-  (set-face-attribute
-   'tabbar-selected-face nil
-   :background "#f2f2f6"
-   :foreground "black"
-   :box nil)
-  (set-face-attribute
-   'tabbar-button-face nil
-   :box '(:line-width 1 :color "gray72" :style released-button))
-  (set-face-attribute
-   'tabbar-separator-face nil
-   :height 0.7)
+(set-face-attribute
+'tabbar-default-face nil
+:background "gray60")
+(set-face-attribute
+'tabbar-unselected-face nil
+:background "gray85"
+:foreground "gray30"
+:box nil)
+(set-face-attribute
+'tabbar-selected-face nil
+:background "#f2f2f6"
+:foreground "black"
+:box nil)
+(set-face-attribute
+'tabbar-button-face nil
+:box '(:line-width 1 :color "gray72" :style released-button))
+(set-face-attribute
+'tabbar-separator-face nil
+:height 0.7)
 
 (defun tabbar-buffer-ignore-groups (buffer)
 ;;Return only one group for each buffer."
-  (with-current-buffer (get-buffer buffer)
-    (cond
-     ((or (get-buffer-process (current-buffer))
-          (memq major-mode
-                '(comint-mode compilation-mode)))
-      '("Process")
-      )
-     ((member (buffer-name)
-              '("*scratch*" "*Messages*"))
-      '("Common")
-      )
-     ((eq major-mode 'dired-mode)
-      '("Dired")
-      )
-     ((memq major-mode
-            '(help-mode apropos-mode Info-mode Man-mode))
-      '("Help")
-      )
-     ((memq major-mode
-            '(rmail-mode
-              rmail-edit-mode vm-summary-mode vm-mode mail-mode
-              mh-letter-mode mh-show-mode mh-folder-mode
-              gnus-summary-mode message-mode gnus-group-mode
-              gnus-article-mode score-mode gnus-browse-killed-mode))
-      '("Mail")
-      )
-     (t
-      (list
-       "default"  ;; no-grouping
-       (if (and (stringp mode-name) (string-match "[^ ]" mode-name))
-           mode-name
-         (symbol-name major-mode)))
-      )
+(with-current-buffer (get-buffer buffer)
+(cond
+ ((or (get-buffer-process (current-buffer))
+      (memq major-mode
+	    '(comint-mode compilation-mode)))
+  '("Process")
+  )
+ ((member (buffer-name)
+	  '("*scratch*" "*Messages*"))
+  '("Common")
+  )
+ ((eq major-mode 'dired-mode)
+  '("Dired")
+  )
+ ((memq major-mode
+	'(help-mode apropos-mode Info-mode Man-mode))
+  '("Help")
+  )
+ ((memq major-mode
+	'(rmail-mode
+	  rmail-edit-mode vm-summary-mode vm-mode mail-mode
+	  mh-letter-mode mh-show-mode mh-folder-mode
+	  gnus-summary-mode message-mode gnus-group-mode
+	  gnus-article-mode score-mode gnus-browse-killed-mode))
+  '("Mail")
+  )
+ (t
+  (list
+   "default"  ;; no-grouping
+   (if (and (stringp mode-name) (string-match "[^ ]" mode-name))
+       mode-name
+     (symbol-name major-mode)))
+  )
 
-     )))
+ )))
 
 (setq tabbar-buffer-groups-function 'tabbar-buffer-ignore-groups)
 
@@ -1842,36 +1879,36 @@ default-directory ".emacs")))
 (global-set-key [home] 'My-smart-home)
 (global-set-key [end] 'My-smart-end)
 (defun My-smart-home ()
-  "Odd home to beginning of line, even home to beginning of
+"Odd home to beginning of line, even home to beginning of
 text/code."
-  (interactive)
-  (if (and (eq last-command 'My-smart-home)
-           (/= (line-beginning-position) (point)))
-      (beginning-of-line)
-    (beginning-of-line-text))
-  )
+(interactive)
+(if (and (eq last-command 'My-smart-home)
+       (/= (line-beginning-position) (point)))
+  (beginning-of-line)
+(beginning-of-line-text))
+)
 (defun My-smart-end ()
-  "Odd end to end of line, even end to begin of text/code."
-  (interactive)
-  (if (and (eq last-command 'My-smart-end)
-           (= (line-end-position) (point)))
-      (end-of-line-text)
-    (end-of-line))
-  )
+"Odd end to end of line, even end to begin of text/code."
+(interactive)
+(if (and (eq last-command 'My-smart-end)
+       (= (line-end-position) (point)))
+  (end-of-line-text)
+(end-of-line))
+)
 (defun end-of-line-text ()
-  "Move to end of current line and skip comments and trailing space.
+"Move to end of current line and skip comments and trailing space.
 Require `font-lock'."
-  (interactive)
-  (end-of-line)
-  (let ((bol (line-beginning-position)))
-    (unless (eq font-lock-comment-face (get-text-property bol 'face))
-      (while (and (/= bol (point))
-                  (eq font-lock-comment-face
-                      (get-text-property (point) 'face)))
-        (backward-char 1))
-      (unless (= (point) bol)
-        (forward-char 1) (skip-chars-backward " \t\n"))))
-  ) ;;;;Done with home and end keys.
+(interactive)
+(end-of-line)
+(let ((bol (line-beginning-position)))
+(unless (eq font-lock-comment-face (get-text-property bol 'face))
+  (while (and (/= bol (point))
+	      (eq font-lock-comment-face
+		  (get-text-property (point) 'face)))
+    (backward-char 1))
+  (unless (= (point) bol)
+    (forward-char 1) (skip-chars-backward " \t\n"))))
+) ;;;;Done with home and end keys.
 
 ;;;;But what about the normal use for home and end?
 ;;;;We can still have them! Just prefixed with control.
@@ -1934,18 +1971,18 @@ Require `font-lock'."
 ;;
 ;; set default-font a for emacs with window
 (cond (window-system
-   ;;(set-default-font "-b&h-lucidaTypewriter-medium-r-normal-sans-12-120-75-75-m-70-iso8859-1")
-   ;; work (set-default-font "-unknown-DejaVu Sans Mono-normal-normal-normal-*-14-*-*-*-m-0-iso10646-1")
-   ;; home (set-default-tont "-PfEd-DejaVu Sans Mono-normal-normal-normal-*-13-*-*-*-m-0-fontset-auto1")
-    (let* ((in-loop t)
-       (font (car harrison-font-list))
-       (rest (cdr harrison-font-list)))
-	(while (and font in-loop)
-	    (when (font-existsp font)
-		(set-face-attribute 'default nil :font font)
-		(setq in-loop nil))
-		(setq font (car rest)
-		    rest (cdr rest))))
+;;(set-default-font "-b&h-lucidaTypewriter-medium-r-normal-sans-12-120-75-75-m-70-iso8859-1")
+;; work (set-default-font "-unknown-DejaVu Sans Mono-normal-normal-normal-*-14-*-*-*-m-0-iso10646-1")
+;; home (set-default-tont "-PfEd-DejaVu Sans Mono-normal-normal-normal-*-13-*-*-*-m-0-fontset-auto1")
+(let* ((in-loop t)
+   (font (car harrison-font-list))
+   (rest (cdr harrison-font-list)))
+    (while (and font in-loop)
+	(when (font-existsp font)
+	    (set-face-attribute 'default nil :font font)
+	    (setq in-loop nil))
+	    (setq font (car rest)
+		rest (cdr rest))))
 ))
 
 
@@ -1967,27 +2004,27 @@ Require `font-lock'."
 ;;(setq mew-icon-directory "/usr/share/emacs/site-lisp/mew/etc")
 (setq mew-use-cached-passwd t)
 (if (boundp 'read-mail-command)
-    (setq read-mail-command 'mew))
+(setq read-mail-command 'mew))
 (autoload 'mew-user-agent-compose "mew" nil t)
 (if (boundp 'mail-user-agent)
-    (setq mail-user-agent 'mew-user-agent))
+(setq mail-user-agent 'mew-user-agent))
 (if (fboundp 'define-mail-user-agent)
-    (define-mail-user-agent
-       'mew-user-agent
-       'mew-user-agent-compose
-       'mew-draft-send-message
-       'mew-draft-kill
-       'mew-send-hook))
+(define-mail-user-agent
+   'mew-user-agent
+   'mew-user-agent-compose
+   'mew-draft-send-message
+   'mew-draft-kill
+   'mew-send-hook))
 ;;(setq mew-pop-size 0)
 ;;(setq mew-smtp-auth-list nil)
 (setq toolbar-mail-reader 'Mew)
 (set-default 'mew-decode-quoted 't) 
 (when (boundp 'utf-translate-cjk)
-      (setq utf-translate-cjk t)
-      (custom-set-variables
-         '(utf-translate-cjk t)))
+  (setq utf-translate-cjk t)
+  (custom-set-variables
+     '(utf-translate-cjk t)))
 (if (fboundp 'utf-translate-cjk-mode)
-    (utf-translate-cjk-mode 1))
+(utf-translate-cjk-mode 1))
 ;;(require 'flyspell) ;;
 ;;End of Mew =============================================
 
@@ -2002,45 +2039,45 @@ Require `font-lock'."
 (global-set-key "\C-x\C-j" 'dired-jump)
 ; set association of files
 (setq dired-guess-shell-alist-user
-      '(("\\.chm$" "kchmviewer * &")
-        ("\\.pdf$" "kpdf * &")
-        ("\\.rm$" "gmplayer * &")
-        ("\\.rmvb$" "gmplayer * &")
-        ("\\.avi$" "gmplayer * &")
-        ("\\.asf$" "gmplayer * &")
-        ("\\.wmv$" "gmplayer * &")
-        ("\\.htm$" "w3m * &")
-        ("\\.html$" "w3m * &")
-        ("\\.doc$" "openoffice.org-2.0 -writer * &")
-        ("\\.odt$" "openoffice.org-2.0 -writer * &")
-        ("\\.mpg$" "gmplayer * &")
-        ("\\.iso$" "kiso * &")
-        ("\\.cs$" (concat "mcs " (mapconcat (function (lambda (x) (format "%s" x)))(directory-files "." nil (concat "[^" (thing-at-point 'word) "]\\.cs")) " ") " -out:" (thing-at-point 'word) ".exe"))
-        ("\\.exe$" "mono")
-        ("\\.rpm$" "rpm -ql")))
+  '(("\\.chm$" "kchmviewer * &")
+    ("\\.pdf$" "kpdf * &")
+    ("\\.rm$" "gmplayer * &")
+    ("\\.rmvb$" "gmplayer * &")
+    ("\\.avi$" "gmplayer * &")
+    ("\\.asf$" "gmplayer * &")
+    ("\\.wmv$" "gmplayer * &")
+    ("\\.htm$" "w3m * &")
+    ("\\.html$" "w3m * &")
+    ("\\.doc$" "openoffice.org-2.0 -writer * &")
+    ("\\.odt$" "openoffice.org-2.0 -writer * &")
+    ("\\.mpg$" "gmplayer * &")
+    ("\\.iso$" "kiso * &")
+    ("\\.cs$" (concat "mcs " (mapconcat (function (lambda (x) (format "%s" x)))(directory-files "." nil (concat "[^" (thing-at-point 'word) "]\\.cs")) " ") " -out:" (thing-at-point 'word) ".exe"))
+    ("\\.exe$" "mono")
+    ("\\.rpm$" "rpm -ql")))
 
 ;; z to compress the dir
 (defun harrison-dired-compress-dir ()
-  (interactive)
-  (let ((files (dired-get-marked-files t)))
-    (if (and (null (cdr files))
-             (string-match "\\.\\(tgz\\|tar\\.gz\\)" (car files)))
-        (shell-command (concat "tar -xvf " (car files)))
-      (let ((cfile (concat (file-name-nondirectory
-                            (if (null (cdr files))
-                                (car files)
-                              (directory-file-name default-directory))) ".tgz")))
-        (setq cfile
-              (read-from-minibuffer "Compress file name: " cfile))
-        (shell-command (concat "tar -zcvf " cfile " " (mapconcat 'identity files " ")))))
-    (revert-buffer)))
+(interactive)
+(let ((files (dired-get-marked-files t)))
+(if (and (null (cdr files))
+	 (string-match "\\.\\(tgz\\|tar\\.gz\\)" (car files)))
+    (shell-command (concat "tar -xvf " (car files)))
+  (let ((cfile (concat (file-name-nondirectory
+			(if (null (cdr files))
+			    (car files)
+			  (directory-file-name default-directory))) ".tgz")))
+    (setq cfile
+	  (read-from-minibuffer "Compress file name: " cfile))
+    (shell-command (concat "tar -zcvf " cfile " " (mapconcat 'identity files " ")))))
+(revert-buffer)))
 
 (add-hook 'dired-mode-hook
-          (function (lambda()
-                      (define-key dired-mode-map "z" 'harrison-dired-compress-dir)
-                      (define-key dired-mode-map "W" 'browse-url-of-dired-file)
-                      )
-                    )
+      (function (lambda()
+		  (define-key dired-mode-map "z" 'harrison-dired-compress-dir)
+		  (define-key dired-mode-map "W" 'browse-url-of-dired-file)
+		  )
+		)
 )
 
 ;;End of Dird Mode======================================
@@ -2061,18 +2098,18 @@ Require `font-lock'."
 ;;))
 
 (add-to-list 'auto-mode-alist '("\\.pdf\\'" . no-pdf))
-   (defun no-pdf ()
-     "Run pdftotext on the entire buffer."
-     (interactive)
-     (erase-buffer)
-     (shell-command
-      (concat "pdftotext " (buffer-file-name) " -")
-      (current-buffer)
-      t)
-     (set-buffer-modified-p nil)
-     (toggle-read-only t)
-     (delete-other-windows)
-   )
+(defun no-pdf ()
+ "Run pdftotext on the entire buffer."
+ (interactive)
+ (erase-buffer)
+ (shell-command
+  (concat "pdftotext " (buffer-file-name) " -")
+  (current-buffer)
+  t)
+ (set-buffer-modified-p nil)
+ (toggle-read-only t)
+ (delete-other-windows)
+)
 
 ;;(cond (( not window-system )
 ;;
@@ -2132,75 +2169,75 @@ Require `font-lock'."
 (add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)
 
 (if (fboundp 'global-font-lock-mode)
-    (global-font-lock-mode 1))        ; GNU Emacs
+(global-font-lock-mode 1))        ; GNU Emacs
 ;;  (setq font-lock-auto-fontify t))   ; XEmacs
 
 ;;;Emacs title bar to reflect file name
 (defun frame-title-string ()
-   "Return the file name of current buffer, using ~ if under home directory"
-   (let
-      ((fname (or
-                 (buffer-file-name (current-buffer))
-                 (buffer-name))))
-      ;;let body
-      (when (string-match (getenv "HOME") fname)
-        (setq fname (replace-match "~" t t fname))        )
-      fname))
+"Return the file name of current buffer, using ~ if under home directory"
+(let
+  ((fname (or
+	     (buffer-file-name (current-buffer))
+	     (buffer-name))))
+  ;;let body
+  (when (string-match (getenv "HOME") fname)
+    (setq fname (replace-match "~" t t fname))        )
+  fname))
 
 ;;; Title = 'system-name File: foo.bar'
 (setq frame-title-format '("" system-name "  File: "(:eval (frame-title-string))))
 
 (defun shell-command-buffer-file-name ()
-  "This function could use some safety checks."
-  (interactive)
-  (shell-command (expand-file-name (buffer-file-name))))
+"This function could use some safety checks."
+(interactive)
+(shell-command (expand-file-name (buffer-file-name))))
 
 ;;Begin of Color Customization =================================================
 
 ;;Make the comment darkgrey
 
 (eval-after-load "font-lock"
-  '(set-face-foreground (quote font-lock-comment-face) "wheat"))
+'(set-face-foreground (quote font-lock-comment-face) "wheat"))
 
 (custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(background "blue")
- '(ediff-diff-options "-w")
- '(ediff-split-window-function 'split-window-horizontally)
- '(ediff-window-setup-function 'ediff-setup-windows-plain)
- '(font-lock-builtin-face ((((class color) (background dark)) (:foreground "Turquoise"))))
- '(font-lock-comment-face ((t (:foreground "MediumAquamarine"))))
- '(font-lock-constant-face ((((class color) (background dark)) (:bold t :foreground "DarkOrchid"))))
- '(font-lock-doc-string-face ((t (:foreground "green2"))))
- '(font-lock-function-name-face ((t (:foreground "SkyBlue"))))
- '(font-lock-keyword-face ((t (:bold t :foreground "CornflowerBlue"))))
- '(font-lock-preprocessor-face ((t (:italic nil :foreground "CornFlowerBlue"))))
- '(font-lock-reference-face ((t (:foreground "DodgerBlue"))))
- '(font-lock-string-face ((t (:foreground "LimeGreen"))))
- '(font-lock-type-face ((t (:foreground "#9290ff"))))
- '(font-lock-variable-name-face ((t (:foreground "PaleGreen"))))
- '(font-lock-warning-face ((((class color) (background dark)) (:foreground "yellow" :background "red"))))
- '(highlight ((t (:background "CornflowerBlue"))))
- '(list-mode-item-selected ((t (:background "gold"))))
- '(makefile-space-face ((t (:background "wheat"))) t)
- '(mode-line ((t (:background "Navy"))))
- '(paren-match ((t (:background "darkseagreen4"))))
- '(region ((t (:background "DarkSlateBlue"))))
- '(show-paren-match ((t (:foreground "black" :background "wheat"))))
- '(show-paren-mismatch ((((class color)) (:foreground "white" :background "red"))))
- '(speedbar-button-face ((((class color) (background dark)) (:foreground "green4"))))
- '(speedbar-directory-face ((((class color) (background dark)) (:foreground "khaki"))))
- '(speedbar-file-face ((((class color) (background dark)) (:foreground "cyan"))))
- '(speedbar-tag-face ((((class color) (background dark)) (:foreground "Springgreen"))))
- '(vhdl-speedbar-architecture-selected-face ((((class color) (background dark)) (:underline t :foreground "Blue"))))
- '(vhdl-speedbar-entity-face ((((class color) (background dark)) (:foreground "darkGreen"))))
- '(vhdl-speedbar-entity-selected-face ((((class color) (background dark)) (:underline t :foreground "darkGreen"))))
- '(vhdl-speedbar-package-face ((((class color) (background dark)) (:foreground "black"))))
- '(vhdl-speedbar-package-selected-face ((((class color) (background dark)) (:underline t :foreground "black"))))
- '(widget-field ((((class grayscale color) (background light)) (:background "DarkBlue")))))
+;; custom-set-faces was added by Custom.
+;; If you edit it by hand, you could mess it up, so be careful.
+;; Your init file should contain only one such instance.
+;; If there is more than one, they won't work right.
+'(background "blue")
+'(ediff-diff-options "-w")
+'(ediff-split-window-function 'split-window-horizontally)
+'(ediff-window-setup-function 'ediff-setup-windows-plain)
+'(font-lock-builtin-face ((((class color) (background dark)) (:foreground "Turquoise"))))
+'(font-lock-comment-face ((t (:foreground "MediumAquamarine"))))
+'(font-lock-constant-face ((((class color) (background dark)) (:bold t :foreground "DarkOrchid"))))
+'(font-lock-doc-string-face ((t (:foreground "green2"))))
+'(font-lock-function-name-face ((t (:foreground "SkyBlue"))))
+'(font-lock-keyword-face ((t (:bold t :foreground "CornflowerBlue"))))
+'(font-lock-preprocessor-face ((t (:italic nil :foreground "CornFlowerBlue"))))
+'(font-lock-reference-face ((t (:foreground "DodgerBlue"))))
+'(font-lock-string-face ((t (:foreground "LimeGreen"))))
+'(font-lock-type-face ((t (:foreground "#9290ff"))))
+'(font-lock-variable-name-face ((t (:foreground "PaleGreen"))))
+'(font-lock-warning-face ((((class color) (background dark)) (:foreground "yellow" :background "red"))))
+'(highlight ((t (:background "CornflowerBlue"))))
+'(list-mode-item-selected ((t (:background "gold"))))
+'(makefile-space-face ((t (:background "wheat"))) t)
+'(mode-line ((t (:background "Navy"))))
+'(paren-match ((t (:background "darkseagreen4"))))
+'(region ((t (:background "DarkSlateBlue"))))
+'(show-paren-match ((t (:foreground "black" :background "wheat"))))
+'(show-paren-mismatch ((((class color)) (:foreground "white" :background "red"))))
+'(speedbar-button-face ((((class color) (background dark)) (:foreground "green4"))))
+'(speedbar-directory-face ((((class color) (background dark)) (:foreground "khaki"))))
+'(speedbar-file-face ((((class color) (background dark)) (:foreground "cyan"))))
+'(speedbar-tag-face ((((class color) (background dark)) (:foreground "Springgreen"))))
+'(vhdl-speedbar-architecture-selected-face ((((class color) (background dark)) (:underline t :foreground "Blue"))))
+'(vhdl-speedbar-entity-face ((((class color) (background dark)) (:foreground "darkGreen"))))
+'(vhdl-speedbar-entity-selected-face ((((class color) (background dark)) (:underline t :foreground "darkGreen"))))
+'(vhdl-speedbar-package-face ((((class color) (background dark)) (:foreground "black"))))
+'(vhdl-speedbar-package-selected-face ((((class color) (background dark)) (:underline t :foreground "black"))))
+'(widget-field ((((class grayscale color) (background light)) (:background "DarkBlue")))))
 
 
 ;;foreground and background
@@ -2220,35 +2257,35 @@ Require `font-lock'."
 ;;Begin of Command run on cursor ===============================================
 
 (defvar command-output-buffer "Command Output"
-  "Name of the buffer used to present output from commands.")
+"Name of the buffer used to present output from commands.")
 
 (defun command-output-buffer-cleanup (&optional buffer-name)
-  "Cleanup before executing a command.buffer-name is the command's output buffer."
-  (let ((name (or buffer-name command-output-buffer)))
-    (when (get-buffer command-output-buffer)
-      (kill-buffer command-output-buffer))))
+"Cleanup before executing a command.buffer-name is the command's output buffer."
+(let ((name (or buffer-name command-output-buffer)))
+(when (get-buffer command-output-buffer)
+  (kill-buffer command-output-buffer))))
 
 (defun run-command (command &optional pre-view-hook)
-  "Run COMMAND and view the result in another window.
+"Run COMMAND and view the result in another window.
 PRE-VIEW-HOOK is an optional function to call before entering
 view-mode. This is useful to set the major-mode of the result buffer,
 because if you did it afterwards then it would zap view-mode."
-  (command-output-buffer-cleanup)
-  (with-current-buffer (get-buffer-create command-output-buffer)
-    ;; prevent `shell-command' from printing output in a message
-    (let ((max-mini-window-height 0))
-      (shell-command command t))
-    (goto-char (point-min))
-    (when pre-view-hook
-      (funcall pre-view-hook)))
-  (view-buffer-other-window command-output-buffer))
+(command-output-buffer-cleanup)
+(with-current-buffer (get-buffer-create command-output-buffer)
+;; prevent `shell-command' from printing output in a message
+(let ((max-mini-window-height 0))
+  (shell-command command t))
+(goto-char (point-min))
+(when pre-view-hook
+  (funcall pre-view-hook)))
+(view-buffer-other-window command-output-buffer))
 
 (defun command-output-hook (commandstring)
-  "Hook of the command output."
-  (interactive)
+"Hook of the command output."
+(interactive)
 ;;  (let (command (shell-command commandstring))
 ;;    (run-command command)))
-   (run-command commandstring))
+(run-command commandstring))
 
 
 ;;End of Command run on cursor =================================================
@@ -2281,20 +2318,20 @@ because if you did it afterwards then it would zap view-mode."
 
 ;;;; To use abbrev-mode, add lines like this:
 (add-hook 'php-mode-user-hook
-  '(lambda () (define-abbrev php-mode-abbrev-table "ex" "extends")))
+'(lambda () (define-abbrev php-mode-abbrev-table "ex" "extends")))
 
 ;;;php-mode
 (defvar php-mode-syntax-table php-mode-syntax-table)     
-  ;; underscore considered part of word
-  (modify-syntax-entry ?_ "w" php-mode-syntax-table)
-  ;; forward slash considered part of word
+;; underscore considered part of word
+(modify-syntax-entry ?_ "w" php-mode-syntax-table)
+;; forward slash considered part of word
 ;;  (modify-syntax-entry ?/ "w" php-mode-syntax-table)
-  ;; colon considered part of word
-  (modify-syntax-entry ?: "w" php-mode-syntax-table)
-  ;; dollar-sign considered punctuation, not part of word
-  (modify-syntax-entry ?$ "." php-mode-syntax-table)
-  ;; amphersand considered punctuation, not part of word
-  (modify-syntax-entry ?& "." php-mode-syntax-table)
+;; colon considered part of word
+(modify-syntax-entry ?: "w" php-mode-syntax-table)
+;; dollar-sign considered punctuation, not part of word
+(modify-syntax-entry ?$ "." php-mode-syntax-table)
+;; amphersand considered punctuation, not part of word
+(modify-syntax-entry ?& "." php-mode-syntax-table)
 
 
 ;; highlight cursored lines in php-mode
@@ -2303,103 +2340,103 @@ because if you did it afterwards then it would zap view-mode."
 ;;fold/collapse braces-block in php
 (add-hook 'php-mode-hook 'hs-minor-mode)
 (add-hook 'php-mode-hook
-     (function (lambda ()
-         (which-func-mode)
-         ;;Code hiding
-         (local-set-key (kbd "<f5>") 'hs-toggle-hiding)
-         (local-set-key (kbd "<f6>") 'hs-hide-all)
-         (local-set-key (kbd "<S-f6>") 'hs-show-all)
-         (local-set-key (kbd "<f8>") '(lambda () (interactive) (point-to-register ?1)))
-         (local-set-key (kbd "<S-f8>") '(lambda () (interactive) (register-to-point ?1)))
-         )
-       )
+ (function (lambda ()
+     (which-func-mode)
+     ;;Code hiding
+     (local-set-key (kbd "<f5>") 'hs-toggle-hiding)
+     (local-set-key (kbd "<f6>") 'hs-hide-all)
+     (local-set-key (kbd "<S-f6>") 'hs-show-all)
+     (local-set-key (kbd "<f8>") '(lambda () (interactive) (point-to-register ?1)))
+     (local-set-key (kbd "<S-f8>") '(lambda () (interactive) (register-to-point ?1)))
+     )
+   )
 )
 
 ;; insert print_r func template by C-c j in PHP-mode
 (add-hook 'php-mode-hook
- (function (lambda ()
-   (local-set-key (kbd "C-c j") (defun foo(arg) "Doc String" (interactive "M") (insert "printf(\"<pre>%s</pre>\",print_r(" arg ",true));"))))))
+(function (lambda ()
+(local-set-key (kbd "C-c j") (defun foo(arg) "Doc String" (interactive "M") (insert "printf(\"<pre>%s</pre>\",print_r(" arg ",true));"))))))
 
 ;; insert echo out debug template by C-c g in PHP-mode
 (add-hook 'php-mode-hook
- (function (lambda ()
-   (local-set-key (kbd "C-c g") (defun foo1(arg) "Doc String1" (interactive "M") (insert "echo \"blah=\"." arg ".\"<br>\";"))))))
+(function (lambda ()
+(local-set-key (kbd "C-c g") (defun foo1(arg) "Doc String1" (interactive "M") (insert "echo \"blah=\"." arg ".\"<br>\";"))))))
 
 ;;check php syntax
 (defun check-php ()
-  (interactive)
-  (setq php-buffer-name buffer-file-name)
-  (compile (concat "php -l " (buffer-file-name)))
+(interactive)
+(setq php-buffer-name buffer-file-name)
+(compile (concat "php -l " (buffer-file-name)))
 )
 (add-hook 'php-mode-hook
- (lambda ()
-  (local-set-key (kbd "C-p c") 'check-php)))
+(lambda ()
+(local-set-key (kbd "C-p c") 'check-php)))
 
 ;; insert comment
 (add-hook 'php-mode-hook
- (function (lambda ()
-   (local-set-key (kbd "C-c m") (defun foo2(arg) "Doc String2" (interactive "M") (insert 
+(function (lambda ()
+(local-set-key (kbd "C-c m") (defun foo2(arg) "Doc String2" (interactive "M") (insert 
 "
 /**
- *
- * Description
- *
- * @access " arg "
- */
+*
+* Description
+*
+* @access " arg "
+*/
 "
 ))))))
 
 ;;PearDoc ---------------------------------------------------------------
 (defun peardoc-command ()
 ;;  "This function could use some safety checks."
-  (interactive)      
-  (shell-command (concat "pear info " (replace-regexp-in-string "/" "_" (thing-at-point 'word)))))
+(interactive)      
+(shell-command (concat "pear info " (replace-regexp-in-string "/" "_" (thing-at-point 'word)))))
 
 (add-hook 'php-mode-hook
- (function (lambda ()
-   (local-set-key (kbd "C-c p") 'peardoc-command))))
+(function (lambda ()
+(local-set-key (kbd "C-c p") 'peardoc-command))))
 
 ;;links 'http://pear.php.net/search.php?q=PEAR::getStaticProperty&in=site'
 ;;Pear Web Doc ---------------------------------------------------------------
 (defun peardoc-webinfo-command ()
 ;;  "This function could use some safety checks."
-  (interactive)      
-  (w3m-goto-url (concat "http://pear.php.net/search.php?q=" (thing-at-point 'word) "&in=site") ))
+(interactive)      
+(w3m-goto-url (concat "http://pear.php.net/search.php?q=" (thing-at-point 'word) "&in=site") ))
 
 
 
 (add-hook 'php-mode-hook
 ;; ((lambda ()
 ;;  (define-key php-mode-map "\C-pr" 'peardoc-webinfo-command))))
-  (function (lambda ()
-    (local-set-key (kbd "C-p r") 'peardoc-webinfo-command))))
+(function (lambda ()
+(local-set-key (kbd "C-p r") 'peardoc-webinfo-command))))
 
 ;;PHP Web Doc ---------------------------------------------------------------
 (defun phpdoc-webinfo-command ()
 ;;  "This function could use some safety checks."
-  (interactive)      
-		(w3m-goto-url (concat "http://www.php.net/" (thing-at-point 'word) ) ))
+(interactive)      
+	    (w3m-goto-url (concat "http://www.php.net/" (thing-at-point 'word) ) ))
 
 
 (add-hook 'php-mode-hook
 ;; ((lambda ()
 ;;  (define-key php-mode-map "\C-pw" 'phpdoc-webinfo-command))))
-  (function (lambda ()
-    (local-set-key (kbd "C-p w") 'phpdoc-webinfo-command))))
+(function (lambda ()
+(local-set-key (kbd "C-p w") 'phpdoc-webinfo-command))))
 
 ;;evaluate php code on region
 (eval-after-load 'php-mode
-  (define-key php-mode-map (kbd "C-c C-p")
-    (lambda (from to)
-      (interactive "r")
-       (shell-command-on-region from to "php")
-    )
-  )
+(define-key php-mode-map (kbd "C-c C-p")
+(lambda (from to)
+  (interactive "r")
+   (shell-command-on-region from to "php")
+)
+)
 )
 
 (defun php-doc-paragraph-boundaries ()
-    (setq paragraph-separate "^[ \t]*\\(\\(/[/\\*]+\\)\\|\\(\\*+/\\)\\|\\(\\*?\\)\\|\\(\\*?[ \t]*@[[:alpha:]]+\\([ \t]+.*\\)?\\)\\)[ \t]*$")
-      (setq paragraph-start (symbol-value 'paragraph-separate)))
+(setq paragraph-separate "^[ \t]*\\(\\(/[/\\*]+\\)\\|\\(\\*+/\\)\\|\\(\\*?\\)\\|\\(\\*?[ \t]*@[[:alpha:]]+\\([ \t]+.*\\)?\\)\\)[ \t]*$")
+  (setq paragraph-start (symbol-value 'paragraph-separate)))
 
 (add-hook 'php-mode-user-hook 'php-doc-paragraph-boundaries)
 ;;End of PHP-mode ============================================================
@@ -2420,7 +2457,7 @@ because if you did it afterwards then it would zap view-mode."
 
 ;; Start cperl-mode instead of perl-mode
 (setq auto-mode-alist (cons '("\\.\\([pP][Llm]\\|al\\)$" . cperl-mode)
-                       auto-mode-alist))
+		   auto-mode-alist))
 ;;
 ;; You can either fine-tune the bells and whistles of this mode or
 ;; bulk enable them by putting
@@ -2435,7 +2472,7 @@ because if you did it afterwards then it would zap view-mode."
 
 ;; Start cperl-mode instead of perl-mode
 (setq auto-mode-alist (cons '("\\.\\([pP][Llm]\\|al\\)$" . cperl-mode)
-                       auto-mode-alist))
+		   auto-mode-alist))
 
 ;;
 ;; You can either fine-tune the bells and whistles of this mode or
@@ -2453,76 +2490,76 @@ because if you did it afterwards then it would zap view-mode."
 
 ;;cperl-mode
 (defvar cperl-mode-syntax-table cperl-mode-syntax-table)     
-   ;; colon considered part of word
-   (modify-syntax-entry ?: "w" cperl-mode-syntax-table)
-   ;; single quote considered part of word
-   (modify-syntax-entry ?' "w" cperl-mode-syntax-table)
-   ;; dollar-sign considered punctuation, not part of word
-   (modify-syntax-entry ?$ "." cperl-mode-syntax-table)
-   ;; ampersand considered punctuation, not part of word
-   (modify-syntax-entry ?& "." cperl-mode-syntax-table)
+;; colon considered part of word
+(modify-syntax-entry ?: "w" cperl-mode-syntax-table)
+;; single quote considered part of word
+(modify-syntax-entry ?' "w" cperl-mode-syntax-table)
+;; dollar-sign considered punctuation, not part of word
+(modify-syntax-entry ?$ "." cperl-mode-syntax-table)
+;; ampersand considered punctuation, not part of word
+(modify-syntax-entry ?& "." cperl-mode-syntax-table)
 
 (add-hook 'cperl-mode-hook 'hs-minor-mode)
 (add-hook 'cperl-mode-hook
-     (function (lambda ()
-         (which-func-mode)
-         ;;Code hiding
-         (local-set-key (kbd "<f5>") 'hs-toggle-hiding)
-         (local-set-key (kbd "<f6>") 'hs-hide-all)
-         (local-set-key (kbd "<S-f6>") 'hs-show-all)
-         (local-set-key (kbd "<f8>") '(lambda () (interactive) (point-to-register ?1)))
-         (local-set-key (kbd "<S-f8>") '(lambda () (interactive) (register-to-point ?1)))
-	 (which-function-mode)
-         )
-       )
+ (function (lambda ()
+     (which-func-mode)
+     ;;Code hiding
+     (local-set-key (kbd "<f5>") 'hs-toggle-hiding)
+     (local-set-key (kbd "<f6>") 'hs-hide-all)
+     (local-set-key (kbd "<S-f6>") 'hs-show-all)
+     (local-set-key (kbd "<f8>") '(lambda () (interactive) (point-to-register ?1)))
+     (local-set-key (kbd "<S-f8>") '(lambda () (interactive) (register-to-point ?1)))
+     (which-function-mode)
+     )
+   )
 )
 
 (add-hook 'cperl-mode-hook
- (function (lambda ()
-    (local-set-key [(f10)] 'check-perl))))
+(function (lambda ()
+(local-set-key [(f10)] 'check-perl))))
 
 (add-hook 'cperl-mode-hook
- (function (lambda ()
-    (local-set-key [(f11)] 'run-perl))))
+(function (lambda ()
+(local-set-key [(f11)] 'run-perl))))
 
 (add-hook 'cperl-mode-hook
- (function (lambda ()
-    (local-set-key [(control f11)] 'run-perl-cmdopt))))
+(function (lambda ()
+(local-set-key [(control f11)] 'run-perl-cmdopt))))
 
 (add-hook 'cperl-mode-hook
- (function (lambda ()
-    (local-set-key [(shift f11)] 'debug-perl))))
+(function (lambda ()
+(local-set-key [(shift f11)] 'debug-perl))))
 
 (add-hook 'cperl-mode-hook
- (function (lambda ()
-    (local-set-key [(f7)] 'insert-perl-DataDumper))))
+(function (lambda ()
+(local-set-key [(f7)] 'insert-perl-DataDumper))))
 
 (add-hook 'cperl-mode-hook
- (function (lambda ()
-    (local-set-key [(shift f7)] 'insert-perl-die))))
+(function (lambda ()
+(local-set-key [(shift f7)] 'insert-perl-die))))
 
 ;; insert sub template by C-c s in cperl-mode
 (add-hook 'cperl-mode-hook
- (function (lambda ()
-   (local-set-key (kbd "\C-cp s") (defun foo(arg) "Doc String" (interactive "M") (insert 
+(function (lambda ()
+(local-set-key (kbd "\C-cp s") (defun foo(arg) "Doc String" (interactive "M") (insert 
 "
 #
 #
 #
 sub " arg " {
 
-	my X = shift;
-	my (X,XXX,XXX) = @_;
+    my X = shift;
+    my (X,XXX,XXX) = @_;
 
-	return X;
+    return X;
 }
 "
 ))))))
 
 ;; insert mutator ( private ) by \C-cp m in cperl-mode
 (add-hook 'cperl-mode-hook
- (function (lambda ()
-   (local-set-key (kbd "\C-cp m") (defun PerlMutator(NameinMethod NameinAttribute) "Insert Perl Mutator template"  (interactive "sName in Method:\nsName in Attribute: ") (insert 
+(function (lambda ()
+(local-set-key (kbd "\C-cp m") (defun PerlMutator(NameinMethod NameinAttribute) "Insert Perl Mutator template"  (interactive "sName in Method:\nsName in Attribute: ") (insert 
 "
 #
 #
@@ -2541,14 +2578,14 @@ sub " arg " {
 
 sub _set" NameinMethod " {
 
-	# Comments
-  	my ( $this,XXX ) = @_;
+    # Comments
+    my ( $this,XXX ) = @_;
 
-	checkPrivate;
+    checkPrivate;
 
-  	$this->{'" NameinAttribute "'} = XXX;
+    $this->{'" NameinAttribute "'} = XXX;
 
-  	return;
+    return;
 
 }
 "
@@ -2556,8 +2593,8 @@ sub _set" NameinMethod " {
 
 ;; insert mutator ( public ) by \C-cp a in cperl-mode
 (add-hook 'cperl-mode-hook
- (function (lambda ()
-   (local-set-key (kbd "\C-cp a") (defun PerlAccessor(NameinMethod NameinAttribute) "Insert Perl Accessor template"  (interactive "sName in Method:\nsName in Attribute: ") (insert
+(function (lambda ()
+(local-set-key (kbd "\C-cp a") (defun PerlAccessor(NameinMethod NameinAttribute) "Insert Perl Accessor template"  (interactive "sName in Method:\nsName in Attribute: ") (insert
 "
 #
 #
@@ -2575,10 +2612,10 @@ sub _set" NameinMethod " {
 
 sub get" NameinMethod " {
 
-        # Comments
-        my $this = shift;
+    # Comments
+    my $this = shift;
 
-        return $this->{'" NameinAttribute "'};
+    return $this->{'" NameinAttribute "'};
 
 }
 "
@@ -2586,8 +2623,8 @@ sub get" NameinMethod " {
 
 ;; insert method ( public ) by \C-cp d in cperl-mode
 (add-hook 'cperl-mode-hook
- (function (lambda ()
-   (local-set-key (kbd "\C-cp d") (defun PerlMethod(NameofMethod) "Insert Perl Module Method template"  (interactive "sName Of Method: ") (insert
+(function (lambda ()
+(local-set-key (kbd "\C-cp d") (defun PerlMethod(NameofMethod) "Insert Perl Module Method template"  (interactive "sName Of Method: ") (insert
 "
 #
 # Method Name: do" NameofMethod " 
@@ -2606,32 +2643,32 @@ sub get" NameinMethod " {
 
 sub do" NameofMethod " {
 
-        # Comments
-        my ( $this,XXX,XXX ) = @_;
+    # Comments
+    my ( $this,XXX,XXX ) = @_;
 
-        $this->{'ATTRIBUTE'} = XXX;
+    $this->{'ATTRIBUTE'} = XXX;
 
-        return;
+    return;
 
 }
 "
 ))))))
 
 ;;cperl-mode with ffap
- (setq ffap-perl-inc-dirs 
-         (apply 'append 
-                (mapcar (function ffap-all-subdirs)
-                        (split-string (shell-command-to-string 
-                                       "perl -e 'pop @INC; print join(q/ /,@INC);'")))))
+(setq ffap-perl-inc-dirs 
+     (apply 'append 
+	    (mapcar (function ffap-all-subdirs)
+		    (split-string (shell-command-to-string 
+				   "perl -e 'pop @INC; print join(q/ /,@INC);'")))))
 
 (defun my-cperl-ffap-locate(name)
-     "Return cperl module for ffap"
-     (let* ((r (replace-regexp-in-string ":" "/"       (file-name-sans-extension name)))
-            (e (replace-regexp-in-string "//" "/" r))
-            (x (ffap-locate-file e '(".pm" ".pl" ".xs") ffap-perl-inc-dirs)))
-       x
-       )
-    )
+ "Return cperl module for ffap"
+ (let* ((r (replace-regexp-in-string ":" "/"       (file-name-sans-extension name)))
+	(e (replace-regexp-in-string "//" "/" r))
+	(x (ffap-locate-file e '(".pm" ".pl" ".xs") ffap-perl-inc-dirs)))
+   x
+   )
+)
 
 (add-to-list 'ffap-alist  '(cperl-mode . my-cperl-ffap-locate))
 
@@ -2658,96 +2695,96 @@ sub do" NameofMethod " {
 ;;Cperl-mode Perl Doc .function---------------------------------------------------------------
 (defun Cperlmode-perldoc-function-command ()
 ;;  "This function could use some safety checks."
-  (interactive)      
-  (shell-command (concat "perldoc -t -f " (thing-at-point 'word))))
+(interactive)      
+(shell-command (concat "perldoc -t -f " (thing-at-point 'word))))
 
 (add-hook 'cperl-mode-hook
- (lambda ()
-  (local-set-key (kbd "C-p f") 'Cperlmode-perldoc-function-command)))
+(lambda ()
+(local-set-key (kbd "C-p f") 'Cperlmode-perldoc-function-command)))
 
 ;;Perl function Web Doc ---------------------------------------------------------------
 (defun perldoc-function-webinfo-command ()
-	(interactive)
-		(w3m-goto-url (concat "http://perldoc.perl.org/functions/" (thing-at-point 'word) ".html") ))
+    (interactive)
+	    (w3m-goto-url (concat "http://perldoc.perl.org/functions/" (thing-at-point 'word) ".html") ))
 
 (add-hook 'cperl-mode-hook
-	(function (lambda ()
-		    (local-set-key (kbd "C-p C-f") 'perldoc-function-webinfo-command))))
+    (function (lambda ()
+		(local-set-key (kbd "C-p C-f") 'perldoc-function-webinfo-command))))
 
 ;;;;Cperl-mode Perl Doc .module---------------------------------------------------------------
 (defun Cperlmode-perldoc-module-command ()
 ;;  "This function could use some safety checks."
-    (interactive)
-       (shell-command (concat "perldoc -t " (thing-at-point 'word))))
+(interactive)
+   (shell-command (concat "perldoc -t " (thing-at-point 'word))))
 
 
 (add-hook 'cperl-mode-hook
- (lambda ()
-  (local-set-key (kbd "C-p m") 'Cperlmode-perldoc-module-command)))
+(lambda ()
+(local-set-key (kbd "C-p m") 'Cperlmode-perldoc-module-command)))
 
 
 ;; Cperl-mode-perldoc on prompt
 (add-hook 'cperl-mode-hook
- (lambda ()
-  (local-set-key (kbd "C-p d") 'cperl-perldoc)))
+(lambda ()
+(local-set-key (kbd "C-p d") 'cperl-perldoc)))
 
 ;;Perl modules Web Doc ---------------------------------------------------------------
 (defun perldoc-module-webinfo-command ()
-	(interactive)
-		(w3m-goto-url (concat "http://search.cpan.org/search?module=" (thing-at-point 'word)) ) )
+    (interactive)
+	    (w3m-goto-url (concat "http://search.cpan.org/search?module=" (thing-at-point 'word)) ) )
 
 (add-hook 'cperl-mode-hook
-	(function (lambda ()
-		    (local-set-key (kbd "C-p C-m") 'perldoc-module-webinfo-command))))
+    (function (lambda ()
+		(local-set-key (kbd "C-p C-m") 'perldoc-module-webinfo-command))))
 
 ;; check current perl syntax
 (defun check-perl ()
-  (interactive)
-  (setq perl-buffer-name buffer-file-name)
-  (shell-command (concat "perl -c " (replace-regexp-in-string "\\(.*\\):\\(.*\\)" "\\2" perl-buffer-name)))
+(interactive)
+(setq perl-buffer-name buffer-file-name)
+(shell-command (concat "perl -c " (replace-regexp-in-string "\\(.*\\):\\(.*\\)" "\\2" perl-buffer-name)))
 )
 
 
 ;;run the current perl program
 (defun run-perl ()
-  (interactive)
-  (setq perl-buffer-name buffer-file-name)
-  (shell-command (concat "perl " (replace-regexp-in-string "\\(.*\\):\\(.*\\)" "\\2" perl-buffer-name)))
+(interactive)
+(setq perl-buffer-name buffer-file-name)
+(shell-command (concat "perl " (replace-regexp-in-string "\\(.*\\):\\(.*\\)" "\\2" perl-buffer-name)))
 )
 
 ;;run the current perl program with user-input command options
 (defun run-perl-cmdopt ( Option )
-  "Run Perl current buffer with command option"
-  (interactive "sCommand Option: ")
-  (setq perl-buffer-name buffer-file-name)
-  (shell-command (concat "perl " (replace-regexp-in-string "\\(.*\\):\\(.*\\)" "\\2" perl-buffer-name) " " Option))
+"Run Perl current buffer with command option"
+(interactive "sCommand Option: ")
+(setq perl-buffer-name buffer-file-name)
+(shell-command (concat "perl " (replace-regexp-in-string "\\(.*\\):\\(.*\\)" "\\2" perl-buffer-name) " " Option))
 )
 
 ;;debug the current perl program
 (defun debug-perl ()
-  (interactive "*")
-  (setq perl-buffer-name buffer-file-name)
-  (shell)
-  (setq perl-run-command "perl -d ")
-  (insert perl-run-command)
-  (insert perl-buffer-name)
+(interactive "*")
+(setq perl-buffer-name buffer-file-name)
+(shell)
+(setq perl-run-command "perl -d ")
+(insert perl-run-command)
+(insert perl-buffer-name)
 )
 
 ;;Add perl Data::Dumper template
 (defun insert-perl-DataDumper ()
-  "Add perl print template of DataDumper"
-  (interactive "*")
-  (setq steve-var "use Data::Dumper;print Dumper();")
-  (insert steve-var)
+"Add perl print template of DataDumper"
+(interactive "*")
+(setq steve-var "use Data::Dumper;print Dumper();")
+(insert steve-var)
 )
 
 
 ;;Add perl die template
 (defun insert-perl-die ()
-  "Add perl die template"
-  (interactive "*")
-  (setq steve-var "or die \" : $!\";")
-  (insert steve-var)
+"Add perl die template"
+(interactive "*")
+(setq steve-var "or die \" : $!\";")
+(insert steve-var)
 )
 
 (add-hook 'cperl-mode-hook 'doperlmenu)
@@ -2759,35 +2796,35 @@ sub do" NameofMethod " {
 ;; ---------------------------------------------------------------------------
 ;;Add a 'Perl' menu
 (define-key global-map [menu-bar perl-menu]
-  (cons "myPerl" (make-sparse-keymap "myPerl")))
+(cons "myPerl" (make-sparse-keymap "myPerl")))
 (define-key-after (lookup-key global-map [menu-bar perl-menu])
-  [goto-line-label] '("Goto Line" . goto-line) t)
+[goto-line-label] '("Goto Line" . goto-line) t)
 (define-key-after (lookup-key global-map [menu-bar perl-menu])
-  [comment-region-label] '("Comment Highlighted Region" . comment-region) t)
+[comment-region-label] '("Comment Highlighted Region" . comment-region) t)
 (define-key-after (lookup-key global-map [menu-bar perl-menu])
-  [shell-label] '("MS-DOS Command Prompt" . shell) t)
+[shell-label] '("MS-DOS Command Prompt" . shell) t)
 (define-key-after (lookup-key global-map [menu-bar perl-menu])
-  [indent-region-label] '("Indent Highlighted Region   (f4)" . indent-region) t)
+[indent-region-label] '("Indent Highlighted Region   (f4)" . indent-region) t)
 (define-key-after (lookup-key global-map [menu-bar perl-menu])
-  [wrap-all-lines-label] '("Wrap Lines" . wrap-all-lines) t)
+[wrap-all-lines-label] '("Wrap Lines" . wrap-all-lines) t)
 (define-key-after (lookup-key global-map [menu-bar perl-menu])
-  [bury-buffer-label] '("Previous Window" . bury-buffer) t)
+[bury-buffer-label] '("Previous Window" . bury-buffer) t)
 (define-key-after (lookup-key global-map [menu-bar perl-menu])
-  [insert-perl-DataDumper-label] '("Insert: use Data::Dumper; print Dumper();" . insert-perl-DataDumper) t)
+[insert-perl-DataDumper-label] '("Insert: use Data::Dumper; print Dumper();" . insert-perl-DataDumper) t)
 (define-key-after (lookup-key global-map [menu-bar perl-menu])
-  [insert-perl-die-label] '("Insert: or die \" : $!\";" . insert-perl-die) t)
+[insert-perl-die-label] '("Insert: or die \" : $!\";" . insert-perl-die) t)
 (define-key-after (lookup-key global-map [menu-bar perl-menu])
-  [perl-menu-separator1] '("--" . perl-menu-separator1) t)
+[perl-menu-separator1] '("--" . perl-menu-separator1) t)
 (define-key-after (lookup-key global-map [menu-bar perl-menu])
-  [check-perl-label] '("Check Syntax of current Perl Code" . check-perl) t)
+[check-perl-label] '("Check Syntax of current Perl Code" . check-perl) t)
 (define-key-after (lookup-key global-map [menu-bar perl-menu])
-  [run-perl-label] '("Run Current Perl Code" . run-perl) t)
+[run-perl-label] '("Run Current Perl Code" . run-perl) t)
 (define-key-after (lookup-key global-map [menu-bar perl-menu])
-  [run-perl-cmdopt-label] '("Run Current Perl Code with Cmd Opt" . run-perl-cmdopt) t)
+[run-perl-cmdopt-label] '("Run Current Perl Code with Cmd Opt" . run-perl-cmdopt) t)
 (define-key-after (lookup-key global-map [menu-bar perl-menu])
-  [debug-perl-label] '("Debug Current Perl Code" . debug-perl) t)
+[debug-perl-label] '("Debug Current Perl Code" . debug-perl) t)
 (define-key-after (lookup-key global-map [menu-bar perl-menu])
-  [perl-menu-separator2] '("--" . perl-menu-separator2) t)
+[perl-menu-separator2] '("--" . perl-menu-separator2) t)
 ;;(define-key-after (lookup-key global-map [menu-bar perl-menu])
 ;;  [split-window-vertically-label] '("Split window                      (f9)" . split-window-vertically) t)
 ;;(define-key-after (lookup-key global-map [menu-bar perl-menu])
@@ -2797,72 +2834,72 @@ sub do" NameofMethod " {
 ;;(define-key-after (lookup-key global-map [menu-bar perl-menu])
 ;;  [undo-label] '("Undo                                (f12)" . undo) t)
 (define-key-after (lookup-key global-map [menu-bar perl-menu])
-  [perl-menu-separator3] '("--" . perl-menu-separator3) t)
+[perl-menu-separator3] '("--" . perl-menu-separator3) t)
 (define-key-after (lookup-key global-map [menu-bar perl-menu])
-  [end-of-defun-label] '("End of function" . end-of-defun) t)
+[end-of-defun-label] '("End of function" . end-of-defun) t)
 (define-key-after (lookup-key global-map [menu-bar perl-menu])
-  [beginning-of-defun-label] '("Beginning of function" . beginning-of-defun) t)
+[beginning-of-defun-label] '("Beginning of function" . beginning-of-defun) t)
 (define-key-after (lookup-key global-map [menu-bar perl-menu])
-  [ascii-table-label] '("Show ASCII Table" . ascii-table) t)
+[ascii-table-label] '("Show ASCII Table" . ascii-table) t)
 (define-key-after (lookup-key global-map [menu-bar perl-menu])
-  [cperl-mode-label] '("Switch to cperl-mode" . cperl-mode) t)
+[cperl-mode-label] '("Switch to cperl-mode" . cperl-mode) t)
 (define-key-after (lookup-key global-map [menu-bar perl-menu])
-  [perl-menu-separator4] '("--" . perl-menu-separator4) t)
+[perl-menu-separator4] '("--" . perl-menu-separator4) t)
 (define-key-after (lookup-key global-map [menu-bar perl-menu])
-  [unix-to-dos-label] '("Reformat UNIX -> DOS" . unix-dos) t)
+[unix-to-dos-label] '("Reformat UNIX -> DOS" . unix-dos) t)
 (define-key-after (lookup-key global-map [menu-bar perl-menu])
-  [dos-to-unix-label] '("Reformat DOS -> UNIX" . dos-unix) t)
+[dos-to-unix-label] '("Reformat DOS -> UNIX" . dos-unix) t)
 (define-key-after (lookup-key global-map [menu-bar perl-menu])
-  [perl-menu-separator5] '("--" . perl-menu-separator5) t)
+[perl-menu-separator5] '("--" . perl-menu-separator5) t)
 (define-key-after (lookup-key global-map [menu-bar perl-menu])
-  [comments-in-italics-label] '("Comments in Italics" . make-comment-italic) t)
+[comments-in-italics-label] '("Comments in Italics" . make-comment-italic) t)
 (define-key-after (lookup-key global-map [menu-bar perl-menu])
-  [comments-in-unitalics-label] '("Comments NOT in Italics" . make-comment-unitalic) t)
+[comments-in-unitalics-label] '("Comments NOT in Italics" . make-comment-unitalic) t)
 (define-key-after (lookup-key global-map [menu-bar perl-menu])
-  [comments-invisible-label] '("Invisible Comments" . make-comment-invisible) t)
+[comments-invisible-label] '("Invisible Comments" . make-comment-invisible) t)
 (define-key-after (lookup-key global-map [menu-bar perl-menu])
-  [comments-visible-label] '("Visible Comments" . make-comment-visible) t)
+[comments-visible-label] '("Visible Comments" . make-comment-visible) t)
 (define-key-after (lookup-key global-map [menu-bar perl-menu])
-  [comments-red-label] '("Red Comments" . make-comment-red) t)
+[comments-red-label] '("Red Comments" . make-comment-red) t)
 (define-key-after (lookup-key global-map [menu-bar perl-menu])
-  [perl-menu-separator6] '("--" . perl-menu-separator6) t)
+[perl-menu-separator6] '("--" . perl-menu-separator6) t)
 (define-key-after (lookup-key global-map [menu-bar perl-menu])
-  [desktop-save-label] '("Save Desktop" . desktop-save) t)
+[desktop-save-label] '("Save Desktop" . desktop-save) t)
 (define-key-after (lookup-key global-map [menu-bar perl-menu])
-  [desktop-clear-label] '("Clear Desktop" . desktop-clear) t)
+[desktop-clear-label] '("Clear Desktop" . desktop-clear) t)
 (define-key-after (lookup-key global-map [menu-bar perl-menu])
-  [desktop-remove-label] '("Disable Desktop Function" . desktop-remove) t)
+[desktop-remove-label] '("Disable Desktop Function" . desktop-remove) t)
 
 ; (define-key global-map [menu-bar Misc] nil)	;disable the menu
 
 ;; Add Speedbar to "Tools" menu
 (cond (window-system
-       (define-key-after (lookup-key global-map [menu-bar tools])
-         [speedbar-menu-separator] '("--" . speedbar-menu-separator) t)
-       (define-key-after (lookup-key global-map [menu-bar tools])
-         [speedbar] '("Speedbar" . speedbar-frame-mode) t)
-       (define-key-after (lookup-key global-map [menu-bar tools])
-         [speedbar2] '("(Selects files with middle mouse button)" . speedbar-frame-mode) t)
-       (define-key-after (lookup-key global-map [menu-bar tools])
-         [speedbar-menu-separator2] '("--" . speedbar-menu-separator2) t)
-       (define-key-after (lookup-key global-map [menu-bar tools])
-         [tetris-menu-label] '("Tetris" . tetris) t)
-       (define-key-after (lookup-key global-map [menu-bar tools])
-         [gomoku-menu-label] '("Gomoku" . gomoku) t)
-       (define-key-after (lookup-key global-map [menu-bar tools])
-         [doctor-menu-label] '("Emacs Doctor" . doctor) t)
+   (define-key-after (lookup-key global-map [menu-bar tools])
+     [speedbar-menu-separator] '("--" . speedbar-menu-separator) t)
+   (define-key-after (lookup-key global-map [menu-bar tools])
+     [speedbar] '("Speedbar" . speedbar-frame-mode) t)
+   (define-key-after (lookup-key global-map [menu-bar tools])
+     [speedbar2] '("(Selects files with middle mouse button)" . speedbar-frame-mode) t)
+   (define-key-after (lookup-key global-map [menu-bar tools])
+     [speedbar-menu-separator2] '("--" . speedbar-menu-separator2) t)
+   (define-key-after (lookup-key global-map [menu-bar tools])
+     [tetris-menu-label] '("Tetris" . tetris) t)
+   (define-key-after (lookup-key global-map [menu-bar tools])
+     [gomoku-menu-label] '("Gomoku" . gomoku) t)
+   (define-key-after (lookup-key global-map [menu-bar tools])
+     [doctor-menu-label] '("Emacs Doctor" . doctor) t)
 ))
 
 )
 
 ;;kill perlmenu when there are no cperl-mode in any openning buffers.
 (add-hook 'kill-buffer-hook 
-	(lambda () 
-		(interactive)
-			(if (eql major-mode 'cperl-mode) 
-				(killperlmenu)
-			)
-	)
+    (lambda () 
+	    (interactive)
+		    (if (eql major-mode 'cperl-mode) 
+			    (killperlmenu)
+		    )
+    )
 )
 
 (defun killperlmenu() (interactive) (define-key global-map [menu-bar perl-menu] nil))
@@ -2889,14 +2926,14 @@ sub do" NameofMethod " {
 (autoload 'perldb-ui "perldb-ui" "perl debugger" t)
 
 (add-hook 'cperl-mode-hook
- (function (lambda ()
-    (local-set-key (kbd "C-c d") 'myperldb))))
+(function (lambda ()
+(local-set-key (kbd "C-c d") 'myperldb))))
 
 (defun myperldb ()
-	(interactive)
-	(ecb-deactivate)
-	(setq perldb-many-windows t)
-	(call-interactively 'perldb-ui)
+    (interactive)
+    (ecb-deactivate)
+    (setq perldb-many-windows t)
+    (call-interactively 'perldb-ui)
 )
 
 (autoload 'xs-mode "xs-mode" "Major mode for XS files" t)
@@ -2909,46 +2946,46 @@ sub do" NameofMethod " {
 (require 'gud)
 ;;(require 'gdb-ui)
 
- (add-hook 'gdb-mode-hook 
- 	  (lambda ()
- 	    (setq gdb-many-windows 't)
-             (local-set-key [f6] 'gud-up)
-             (local-set-key [(shift f6)] 'gud-down)
-             (local-set-key [f7] 'gud-step)
-             (local-set-key [(shift f7)] 'gud-stepi)
-             (local-set-key [f8] 'gud-next)
-             (local-set-key [(shift f8)] 'gud-finish)
-             (local-set-key [(ctrl f8)] 'gud-until)
-             (local-set-key [f9] 'humble-recompile)
-             (local-set-key [(shift f9)] 'compile)
-             (local-set-key [f10] 'humble-gud)
- 	    ;;(define-key gud-mode-map [f9] 'gdb-many-windows)
- 	    ;;(setq gdb-use-separate-io-buffer 't)
- 	    ;;(tool-bar-mode 't)
-	    ))
+(add-hook 'gdb-mode-hook 
+      (lambda ()
+	(setq gdb-many-windows 't)
+	 (local-set-key [f6] 'gud-up)
+	 (local-set-key [(shift f6)] 'gud-down)
+	 (local-set-key [f7] 'gud-step)
+	 (local-set-key [(shift f7)] 'gud-stepi)
+	 (local-set-key [f8] 'gud-next)
+	 (local-set-key [(shift f8)] 'gud-finish)
+	 (local-set-key [(ctrl f8)] 'gud-until)
+	 (local-set-key [f9] 'humble-recompile)
+	 (local-set-key [(shift f9)] 'compile)
+	 (local-set-key [f10] 'humble-gud)
+	;;(define-key gud-mode-map [f9] 'gdb-many-windows)
+	;;(setq gdb-use-separate-io-buffer 't)
+	;;(tool-bar-mode 't)
+	))
 
 (defun humble-recompile () 
-  "recompile if possible"
-  (interactive) 
-  (if (fboundp 'recompile)
-      (recompile)
-    (call-interactively 'smart-compile)))
+"recompile if possible"
+(interactive) 
+(if (fboundp 'recompile)
+  (recompile)
+(call-interactively 'smart-compile)))
 
 
 (defun humble-gud ()
-  "gdb if not already running, otherwise bring to front"
-  (interactive)
-  (require 'gud)
-  (if (and (boundp 'gud-comint-buffer)	;find running gdb process
-	   gud-comint-buffer
-	   (buffer-name gud-comint-buffer)
-	   (get-buffer-process gud-comint-buffer))
-      (if (fboundp 'gdb-restore-windows)
-	   (gdb-restore-windows)
-	(pop-to-buffer gud-comint-buffer))
-    (call-interactively 
-     (or (cdr (assq major-mode preferred-debugger-alist))
-	 'gdb))))
+"gdb if not already running, otherwise bring to front"
+(interactive)
+(require 'gud)
+(if (and (boundp 'gud-comint-buffer)	;find running gdb process
+       gud-comint-buffer
+       (buffer-name gud-comint-buffer)
+       (get-buffer-process gud-comint-buffer))
+  (if (fboundp 'gdb-restore-windows)
+       (gdb-restore-windows)
+    (pop-to-buffer gud-comint-buffer))
+(call-interactively 
+ (or (cdr (assq major-mode preferred-debugger-alist))
+     'gdb))))
 
 ;; in project dir
 ;; find . /usr/lib/python2.7/dist-packages /home/harrison/projects.work/repo/github/robotframework  -type d \( -name '*branches*' -o -name '*tag*' -o -name '*\.ori' -o -name '*\.svn' -o -name '*tmp' -o -name '*temp' \) -prune -o \( -name '*.py' \) -print > cscope.files
@@ -2963,51 +3000,51 @@ sub do" NameofMethod " {
 ;;
 ;; to generate global index run cscope-indexer -r under /emcsvn/emc
 (add-hook 'cscope-minor-mode-hooks
-          '(lambda ()
-             (define-key cscope:map "\C-css" 'cscope-find-this-symbol)
-             (define-key cscope:map "\C-csd" 'cscope-find-global-definition)
-             (define-key cscope:map "\C-csg" 'cscope-find-global-definition)
-             (define-key cscope:map "\C-csG" 'cscope-find-global-definition-no-prompting)
-             (define-key cscope:map "\C-csc" 'cscope-find-functions-calling-this-function)
-             (define-key cscope:map "\C-csC" 'cscope-find-called-functions)
-             (define-key cscope:map "\C-cst" 'cscope-find-this-text-string)
-             (define-key cscope:map "\C-cse" 'cscope-find-egrep-pattern)
-             (define-key cscope:map "\C-csf" 'cscope-find-this-file)
-             (define-key cscope:map "\C-csi" 'cscope-find-files-including-file)
-             ;; --- (The '---' indicates that this line corresponds to a menu separator.)
-             (define-key cscope:map "\C-csb" 'cscope-display-buffer)
-             (define-key cscope:map "\C-csB" 'cscope-display-buffer-toggle)
-             (define-key cscope:map "\C-csn" 'cscope-next-symbol)
-             (define-key cscope:map "\C-csN" 'cscope-next-file)
-             (define-key cscope:map "\C-csp" 'cscope-prev-symbol)
-             (define-key cscope:map "\C-csP" 'cscope-prev-file)
-             (define-key cscope:map "\C-csu" 'cscope-pop-mark)
-             ;; ---
-             (define-key cscope:map "\C-csa" 'cscope-set-initial-directory)
-             (define-key cscope:map "\C-csA" 'cscope-unset-initial-directory)
-             ;; ---
-             (define-key cscope:map "\C-csL" 'cscope-create-list-of-files-to-index)
-             (define-key cscope:map "\C-csI" 'cscope-index-files)
-             (define-key cscope:map "\C-csE" 'cscope-edit-list-of-files-to-index)
-             (define-key cscope:map "\C-csW" 'cscope-tell-user-about-directory)
-             (define-key cscope:map "\C-csS" 'cscope-tell-user-about-directory)
-             (define-key cscope:map "\C-csT" 'cscope-tell-user-about-directory)
-             (define-key cscope:map "\C-csD" 'cscope-dired-directory)))
+      '(lambda ()
+	 (define-key cscope:map "\C-css" 'cscope-find-this-symbol)
+	 (define-key cscope:map "\C-csd" 'cscope-find-global-definition)
+	 (define-key cscope:map "\C-csg" 'cscope-find-global-definition)
+	 (define-key cscope:map "\C-csG" 'cscope-find-global-definition-no-prompting)
+	 (define-key cscope:map "\C-csc" 'cscope-find-functions-calling-this-function)
+	 (define-key cscope:map "\C-csC" 'cscope-find-called-functions)
+	 (define-key cscope:map "\C-cst" 'cscope-find-this-text-string)
+	 (define-key cscope:map "\C-cse" 'cscope-find-egrep-pattern)
+	 (define-key cscope:map "\C-csf" 'cscope-find-this-file)
+	 (define-key cscope:map "\C-csi" 'cscope-find-files-including-file)
+	 ;; --- (The '---' indicates that this line corresponds to a menu separator.)
+	 (define-key cscope:map "\C-csb" 'cscope-display-buffer)
+	 (define-key cscope:map "\C-csB" 'cscope-display-buffer-toggle)
+	 (define-key cscope:map "\C-csn" 'cscope-next-symbol)
+	 (define-key cscope:map "\C-csN" 'cscope-next-file)
+	 (define-key cscope:map "\C-csp" 'cscope-prev-symbol)
+	 (define-key cscope:map "\C-csP" 'cscope-prev-file)
+	 (define-key cscope:map "\C-csu" 'cscope-pop-mark)
+	 ;; ---
+	 (define-key cscope:map "\C-csa" 'cscope-set-initial-directory)
+	 (define-key cscope:map "\C-csA" 'cscope-unset-initial-directory)
+	 ;; ---
+	 (define-key cscope:map "\C-csL" 'cscope-create-list-of-files-to-index)
+	 (define-key cscope:map "\C-csI" 'cscope-index-files)
+	 (define-key cscope:map "\C-csE" 'cscope-edit-list-of-files-to-index)
+	 (define-key cscope:map "\C-csW" 'cscope-tell-user-about-directory)
+	 (define-key cscope:map "\C-csS" 'cscope-tell-user-about-directory)
+	 (define-key cscope:map "\C-csT" 'cscope-tell-user-about-directory)
+	 (define-key cscope:map "\C-csD" 'cscope-dired-directory)))
 
 (defun find-caller (tagname)
-    "Find occurences of tagname in files in the current directory matching extension of current file."
-    (interactive (list (find-tag-tag "Find caller: ")))
-      (let ((cmd "grep -n "))
-	    (cond
-	           ((member major-mode '(lisp-mode cmulisp-mode))
-		          (grep (concat cmd "-i '" tagname "' *.lisp")))
-		        ((eq major-mode 'c-mode)
-			       (grep (concat cmd "'" tagname "' *.[ch]")))
-			     ((member major-mode '(latex-mode tex-mode))
-			            (grep (concat cmd "-i '" tagname "' *.tex")))
-			          ((eq major-mode 'emacs-lisp-mode)
-				         (grep (concat cmd "'" tagname "' *.el")))
-				       (t (grep (concat cmd "'" tagname "' *"))))))
+"Find occurences of tagname in files in the current directory matching extension of current file."
+(interactive (list (find-tag-tag "Find caller: ")))
+  (let ((cmd "grep -n "))
+	(cond
+	       ((member major-mode '(lisp-mode cmulisp-mode))
+		      (grep (concat cmd "-i '" tagname "' *.lisp")))
+		    ((eq major-mode 'c-mode)
+			   (grep (concat cmd "'" tagname "' *.[ch]")))
+			 ((member major-mode '(latex-mode tex-mode))
+				(grep (concat cmd "-i '" tagname "' *.tex")))
+			      ((eq major-mode 'emacs-lisp-mode)
+				     (grep (concat cmd "'" tagname "' *.el")))
+				   (t (grep (concat cmd "'" tagname "' *"))))))
 
 
 (require 'cc-mode)
@@ -3016,12 +3053,12 @@ sub do" NameofMethod " {
 (c-set-offset 'substatement-open 0)
 
 (defun harrison-indent-or-complete ()
-  (interactive)
-  ;;(if (looking-at "\\>")
-         (hippie-expand nil)
-         (indent-for-tab-command)
-  ;;       (indent-for-tab-command))
- )
+(interactive)
+;;(if (looking-at "\\>")
+     (hippie-expand nil)
+     (indent-for-tab-command)
+;;       (indent-for-tab-command))
+)
 
 ;;make c code like :
 ;; void * test ( int * data ) {
@@ -3037,62 +3074,62 @@ sub do" NameofMethod " {
 ;;        ptr = &a;
 ;;}
 (c-add-style "HARRISON"
-            '("awk"
-              ;; enable following to get Tabwidth 8)
-              (c-basic-offset . 8)
-              ;;(c-basic-offset . 2)
-              (c-offsets-alist . ((inline-open . 0)
-                                  (inclass . +)
-                                  (label . -4)
-                                  (substatement-open . 0)
-                                  (case-label . +)
-                                  )
-              )
-             )
+	'("awk"
+	  ;; enable following to get Tabwidth 8)
+	  (c-basic-offset . 8)
+	  ;;(c-basic-offset . 2)
+	  (c-offsets-alist . ((inline-open . 0)
+			      (inclass . +)
+			      (label . -4)
+			      (substatement-open . 0)
+			      (case-label . +)
+			      )
+	  )
+	 )
 )
 
 (add-hook 'c-mode-hook 'hs-minor-mode)
 
 ;;;c-mode
 (defvar c-mode-syntax-table c-mode-syntax-table)     
-  ;; underscore considered part of word
-  (modify-syntax-entry ?_ "w" c-mode-syntax-table)
+;; underscore considered part of word
+(modify-syntax-entry ?_ "w" c-mode-syntax-table)
 
 (defun harrison-c-mode-common-hook()
-  ;; enable following to get Tabwidth 8 and Tab)
- ;;(setq tab-width 8 indent-tabs-mode t)
- (setq tab-width 8 tab-width 8 indent-tabs-mode nil)
+;; enable following to get Tabwidth 8 and Tab)
+;;(setq tab-width 8 indent-tabs-mode t)
+(setq tab-width 8 tab-width 8 indent-tabs-mode nil)
 ;;to add /usr/include/ C Header function definitions in the Semantic syntax db
 (setq semanticdb-project-system-databases
-                (list (semanticdb-create-database
-                         semanticdb-new-database-class
-                         "/usr/include")))
- (c-set-style "HARRISON")
- ;;; hungry-delete and auto-newline
- (c-toggle-auto-hungry-state 1)
+	    (list (semanticdb-create-database
+		     semanticdb-new-database-class
+		     "/usr/include")))
+(c-set-style "HARRISON")
+;;; hungry-delete and auto-newline
+(c-toggle-auto-hungry-state 1)
 
- (define-key c-mode-base-map [(return)] 'newline-and-indent)
- (define-key c-mode-base-map [(f7)] 'compile)
- (define-key c-mode-base-map [(meta \`)] 'c-indent-command)
+(define-key c-mode-base-map [(return)] 'newline-and-indent)
+(define-key c-mode-base-map [(f7)] 'compile)
+(define-key c-mode-base-map [(meta \`)] 'c-indent-command)
 ;;  (define-key c-mode-base-map [(tab)] 'hippie-expand)
- (define-key c-mode-base-map [(control tab)] 'harrison-indent-or-complete)
- (define-key c-mode-base-map [(alt ?/)] 'semantic-ia-complete-symbol-menu)
- (setq c-macro-shrink-window-flag t)
- (setq c-macro-preprocessor "cpp")
- (setq c-macro-cppflags " ")
- (setq c-macro-prompt-flag t)
- (define-key c-mode-base-map [f3] '(lambda () (interactive) (point-to-register ?1)))
- (define-key c-mode-base-map [S-f3] '(lambda () (interactive) (register-to-point ?1)))
- (define-key c-mode-base-map [f5] 'hs-toggle-hiding)
- (define-key c-mode-base-map [f6] 'hs-hide-all)
- (define-key c-mode-base-map [S-f6] 'hs-show-all)
- (setq abbrev-mode t)
+(define-key c-mode-base-map [(control tab)] 'harrison-indent-or-complete)
+(define-key c-mode-base-map [(alt ?/)] 'semantic-ia-complete-symbol-menu)
+(setq c-macro-shrink-window-flag t)
+(setq c-macro-preprocessor "cpp")
+(setq c-macro-cppflags " ")
+(setq c-macro-prompt-flag t)
+(define-key c-mode-base-map [f3] '(lambda () (interactive) (point-to-register ?1)))
+(define-key c-mode-base-map [S-f3] '(lambda () (interactive) (register-to-point ?1)))
+(define-key c-mode-base-map [f5] 'hs-toggle-hiding)
+(define-key c-mode-base-map [f6] 'hs-hide-all)
+(define-key c-mode-base-map [S-f6] 'hs-show-all)
+(setq abbrev-mode t)
 ;;enable following line to 1. get Tab 2. Tab-width 8
 ;; (setq c-basic-offset 8 tab-width 8 indent-tabs-mode t)
- ;;(setq c-basic-offset 8 tab-width 8 indent-tabs-mode nil)
- ;;add the followings to display which func we are
- (imenu-add-menubar-index)
- (which-function-mode)
+;;(setq c-basic-offset 8 tab-width 8 indent-tabs-mode nil)
+;;add the followings to display which func we are
+(imenu-add-menubar-index)
+(which-function-mode)
 )
 
 (add-hook 'c-mode-common-hook 'harrison-c-mode-common-hook)
@@ -3100,20 +3137,20 @@ sub do" NameofMethod " {
 
 ;;mygdb 0. deactivate ecb 1. call gdb
 (defun mygdb ()
-  (interactive)
-  (ecb-deactivate)
-  ;;(setq gud-gdb-command-name "gdb --annotate=3") 
-  (call-interactively 'gdb)
+(interactive)
+(ecb-deactivate)
+;;(setq gud-gdb-command-name "gdb --annotate=3") 
+(call-interactively 'gdb)
 )
 ;;run the current program
 (defun run-currentfile ()
- (interactive)
-   (setq current-buffer-name buffer-file-name)
-    (
-     if (string-match "\\(.*\\):\\(.*\\):\\(.*\\)\\.c" current-buffer-name)
-        (shell-command (match-string 3 current-buffer-name))
-      (shell-command (replace-regexp-in-string "\\(.*\\)\\.c" "\\1" current-buffer-name))
-    )
+(interactive)
+(setq current-buffer-name buffer-file-name)
+(
+ if (string-match "\\(.*\\):\\(.*\\):\\(.*\\)\\.c" current-buffer-name)
+    (shell-command (match-string 3 current-buffer-name))
+  (shell-command (replace-regexp-in-string "\\(.*\\)\\.c" "\\1" current-buffer-name))
+)
 )
 
 ;;(let* ((s1  "a:b/c.c") (s2 "d/e.c")) (if (string-match "^\\(.*:(?:.*)\\.c\\|.*\\)\\.c" s2) (match-string 1 s2) "error"))
@@ -3124,34 +3161,34 @@ sub do" NameofMethod " {
 ;;run the current program with user-input command options
 (defun run-buffer-name-cmdopt ( Option )
 ;; "Run current buffer with command option"
- (interactive "sCommand Option: ")
-  (setq current-buffer-name buffer-file-name)
-   (
-     if (string-match "\\(.*\\):\\(.*\\):\\(.*\\)\\.c" current-buffer-name)
-        (shell-command (concat (match-string 3 current-buffer-name) " " Option))
-      (shell-command (concat (replace-regexp-in-string "\\(.*\\)\\.c" "\\1" current-buffer-name) " " Option))
-   )
+(interactive "sCommand Option: ")
+(setq current-buffer-name buffer-file-name)
+(
+ if (string-match "\\(.*\\):\\(.*\\):\\(.*\\)\\.c" current-buffer-name)
+    (shell-command (concat (match-string 3 current-buffer-name) " " Option))
+  (shell-command (concat (replace-regexp-in-string "\\(.*\\)\\.c" "\\1" current-buffer-name) " " Option))
+)
 )
 
 (add-hook 'c-mode-hook
- (function (lambda ()
-    (local-set-key [(control f10)] 'run-currentfile))))
+(function (lambda ()
+(local-set-key [(control f10)] 'run-currentfile))))
 
 (add-hook 'c-mode-hook
- (function (lambda ()
-    (local-set-key [(control f11)] 'run-buffer-name-cmdopt))))
+(function (lambda ()
+(local-set-key [(control f11)] 'run-buffer-name-cmdopt))))
 
 ;;ccmode mysql c api web search --------------------------
 (defun mysqlapidoc-webinfo-command ()
-  (interactive)
-  (w3m-goto-url (concat "http://dev.mysql.com/doc/refman/5.0/en/" (replace-regexp-in-string "_" "-" (thing-at-point 'word)) ".html") ))
+(interactive)
+(w3m-goto-url (concat "http://dev.mysql.com/doc/refman/5.0/en/" (replace-regexp-in-string "_" "-" (thing-at-point 'word)) ".html") ))
 (define-key c-mode-base-map (kbd "C-c w") 'mysqlapidoc-webinfo-command ) 
 
 (defun harrison-c++-mode-hook()
 ;;enable following line to 1. get Tab 2. Tab-width 8
 ;; (setq tab-width 8 indent-tabs-mode t)
- (setq tab-width 2 indent-tabs-mode nil)
- (c-set-style "HARRISON")
+(setq tab-width 2 indent-tabs-mode nil)
+(c-set-style "HARRISON")
 ;;(define-key c++-mode-map [f3] 'replace-regexp)
 )
 
@@ -3160,12 +3197,12 @@ sub do" NameofMethod " {
 (autoload 'senator-try-expand-semantic "senator")
 
 (setq hippie-expand-try-functions-list
-         '(
-               senator-try-expand-semantic
-               try-expand-dabbrev
-               try-expand-dabbrev-visible
-               try-expand-dabbrev-all-buffers
-               try-expand-dabbrev-from-kill
+     '(
+	   senator-try-expand-semantic
+	   try-expand-dabbrev
+	   try-expand-dabbrev-visible
+	   try-expand-dabbrev-all-buffers
+	   try-expand-dabbrev-from-kill
                try-expand-list
                try-expand-list-all-buffers
                try-expand-line
@@ -3296,6 +3333,7 @@ sub do" NameofMethod " {
 ;;;;Begin of magit ==== 
 ;;;;
 ;;;;  to view diffs between 2 commits. 0: list all commits 1. cursor on commit A 2. d r 3. cursor on commit B 4. then show you dif
+;;;;  to checkout branch 0. show remote branches b ( magit-branch-popup ) 1. b b then check it out
 ;;;;
 ;;;;(defun my-magit-status ()
 ;;;;    "Don't split window."
@@ -3309,9 +3347,9 @@ sub do" NameofMethod " {
 (defun myms ()
   "Start up my magit status in new frame."
   (interactive)
-  (select-frame (make-frame '((name . "Emacs Magit Status")
-                  (minibuffer . t))))
-        (let ((pop-up-windows nil))
+  (select-frame (make-frame '((name . "Emacs Magit Status"))))
+    (let ((pop-up-windows nil))
+  ;;        (minibuffer . t)
           (call-interactively 'magit-status)
           (call-interactively 'magit-log)
           (other-window -1)
