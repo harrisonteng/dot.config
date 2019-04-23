@@ -197,6 +197,7 @@ If WINDOW is the only one in its frame, then `delete-frame' too."
 ;;Root Path of pylookup
 
 (when (load "flymake" t)
+(require 'flymake)
 (defun flymake-pyflakes-init ()
 (let* ((temp-file (flymake-init-create-temp-buffer-copy
 	   'flymake-create-temp-inplace))
@@ -205,8 +206,15 @@ If WINDOW is the only one in its frame, then `delete-frame' too."
 	(file-name-directory buffer-file-name))))
   (list "pycheckers.sh"  (list local-file))))
 (add-to-list 'flymake-allowed-file-name-masks
-	    '("\\.py\\'" flymake-pyflakes-init)))
+	     '("\\.py\\'" flymake-pyflakes-init)))
 
+;;dont use melpa's flymake-cursor since it was back to 2013 and wont support emacs >=26
+;;use this one : https://github.com/akash-akya/emacs-flymake-cursor
+(setq load-path (cons "~/.emacs.d/pkgs/emacs-flymake-cursor" load-path))
+(require 'flymake-cursor)
+(add-hook 'python-mode-hook 'flymake-mode)
+
+;;
 ;; PyDoc -----------------------------------------------------------------
 ;;(setq load-path (cons "~/.emacs.d/pkgs/python-mode-1.0" load-path))
 (defun pydoc (w)
@@ -719,7 +727,7 @@ Version 2016-06-18"
 (eval-after-load "json-mode"
 '(progn
  (require 'flymake-json)
- ;; flymake-cursor displays error in minibuffer message area instead of requiring hover
+ ;; flymake-cursor displays error in minibuffer message area instead of requiring hovery
  (require 'flymake-cursor)
 
  (add-hook 'json-mode-hook 'flymake-json-load)
@@ -2243,44 +2251,44 @@ Require `font-lock'."
 '(set-face-foreground (quote font-lock-comment-face) "wheat"))
 
 (custom-set-faces
-;; custom-set-faces was added by Custom.
-;; If you edit it by hand, you could mess it up, so be careful.
-;; Your init file should contain only one such instance.
-;; If there is more than one, they won't work right.
-'(background "blue")
-'(ediff-diff-options "-w")
-'(ediff-split-window-function 'split-window-horizontally)
-'(ediff-window-setup-function 'ediff-setup-windows-plain)
-'(font-lock-builtin-face ((((class color) (background dark)) (:foreground "Turquoise"))))
-'(font-lock-comment-face ((t (:foreground "MediumAquamarine"))))
-'(font-lock-constant-face ((((class color) (background dark)) (:bold t :foreground "DarkOrchid"))))
-'(font-lock-doc-string-face ((t (:foreground "green2"))))
-'(font-lock-function-name-face ((t (:foreground "SkyBlue"))))
-'(font-lock-keyword-face ((t (:bold t :foreground "CornflowerBlue"))))
-'(font-lock-preprocessor-face ((t (:italic nil :foreground "CornFlowerBlue"))))
-'(font-lock-reference-face ((t (:foreground "DodgerBlue"))))
-'(font-lock-string-face ((t (:foreground "LimeGreen"))))
-'(font-lock-type-face ((t (:foreground "#9290ff"))))
-'(font-lock-variable-name-face ((t (:foreground "PaleGreen"))))
-'(font-lock-warning-face ((((class color) (background dark)) (:foreground "yellow" :background "red"))))
-'(highlight ((t (:background "CornflowerBlue"))))
-'(list-mode-item-selected ((t (:background "gold"))))
-'(makefile-space-face ((t (:background "wheat"))) t)
-'(mode-line ((t (:background "Navy"))))
-'(paren-match ((t (:background "darkseagreen4"))))
-'(region ((t (:background "DarkSlateBlue"))))
-'(show-paren-match ((t (:foreground "black" :background "wheat"))))
-'(show-paren-mismatch ((((class color)) (:foreground "white" :background "red"))))
-'(speedbar-button-face ((((class color) (background dark)) (:foreground "green4"))))
-'(speedbar-directory-face ((((class color) (background dark)) (:foreground "khaki"))))
-'(speedbar-file-face ((((class color) (background dark)) (:foreground "cyan"))))
-'(speedbar-tag-face ((((class color) (background dark)) (:foreground "Springgreen"))))
-'(vhdl-speedbar-architecture-selected-face ((((class color) (background dark)) (:underline t :foreground "Blue"))))
-'(vhdl-speedbar-entity-face ((((class color) (background dark)) (:foreground "darkGreen"))))
-'(vhdl-speedbar-entity-selected-face ((((class color) (background dark)) (:underline t :foreground "darkGreen"))))
-'(vhdl-speedbar-package-face ((((class color) (background dark)) (:foreground "black"))))
-'(vhdl-speedbar-package-selected-face ((((class color) (background dark)) (:underline t :foreground "black"))))
-'(widget-field ((((class grayscale color) (background light)) (:background "DarkBlue")))))
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(background "blue")
+ '(ediff-diff-options "-w")
+ '(ediff-split-window-function 'split-window-horizontally)
+ '(ediff-window-setup-function 'ediff-setup-windows-plain)
+ '(font-lock-builtin-face ((((class color) (background dark)) (:foreground "Turquoise"))))
+ '(font-lock-comment-face ((t (:foreground "MediumAquamarine"))))
+ '(font-lock-constant-face ((((class color) (background dark)) (:bold t :foreground "DarkOrchid"))))
+ '(font-lock-doc-string-face ((t (:foreground "green2"))))
+ '(font-lock-function-name-face ((t (:foreground "SkyBlue"))))
+ '(font-lock-keyword-face ((t (:bold t :foreground "CornflowerBlue"))))
+ '(font-lock-preprocessor-face ((t (:italic nil :foreground "CornFlowerBlue"))))
+ '(font-lock-reference-face ((t (:foreground "DodgerBlue"))))
+ '(font-lock-string-face ((t (:foreground "LimeGreen"))))
+ '(font-lock-type-face ((t (:foreground "#9290ff"))))
+ '(font-lock-variable-name-face ((t (:foreground "PaleGreen"))))
+ '(font-lock-warning-face ((((class color) (background dark)) (:foreground "yellow" :background "red"))))
+ '(highlight ((t (:background "CornflowerBlue"))))
+ '(list-mode-item-selected ((t (:background "gold"))))
+ '(makefile-space-face ((t (:background "wheat"))) t)
+ '(mode-line ((t (:background "Navy"))))
+ '(paren-match ((t (:background "darkseagreen4"))))
+ '(region ((t (:background "DarkSlateBlue"))))
+ '(show-paren-match ((t (:foreground "black" :background "wheat"))))
+ '(show-paren-mismatch ((((class color)) (:foreground "white" :background "red"))))
+ '(speedbar-button-face ((((class color) (background dark)) (:foreground "green4"))))
+ '(speedbar-directory-face ((((class color) (background dark)) (:foreground "khaki"))))
+ '(speedbar-file-face ((((class color) (background dark)) (:foreground "cyan"))))
+ '(speedbar-tag-face ((((class color) (background dark)) (:foreground "Springgreen"))))
+ '(vhdl-speedbar-architecture-selected-face ((((class color) (background dark)) (:underline t :foreground "Blue"))))
+ '(vhdl-speedbar-entity-face ((((class color) (background dark)) (:foreground "darkGreen"))))
+ '(vhdl-speedbar-entity-selected-face ((((class color) (background dark)) (:underline t :foreground "darkGreen"))))
+ '(vhdl-speedbar-package-face ((((class color) (background dark)) (:foreground "black"))))
+ '(vhdl-speedbar-package-selected-face ((((class color) (background dark)) (:underline t :foreground "black"))))
+ '(widget-field ((((class grayscale color) (background light)) (:background "DarkBlue")))))
 
 
 ;;foreground and background
@@ -4848,9 +4856,9 @@ sub do" NameofMethod " {
      (ecb-vc-dir-managed-by-MTN . ecb-vc-state)
      (ecb-vc-dir-managed-by-HG . ecb-vc-state)))
  '(mumamo-chunk-coloring 1)
- '(org-agenda-files nil)
+ '(org-agenda-files nil t)
  '(package-selected-packages
-   '(py-autopep8 engine-mode helm-gitlab git-commit-insert-issue helm-cscope xcscope helm-company helm-ag helm-ag-r helm-projectile helm company-quickhelp flycheck-yamllint yaml-mode flymake-cursor flymake-json json-mode xwidgete groovy-mode elpy go-eldoc flycheck org-wunderlist org-webpage org-wc org-vcard org-trello org-tree-slide org-transform-tree-table org-toodledo org-table-comment org-sync org-screenshot org-repo-todo org-readme org-protocol-jekyll org-projectile org-present org-pomodoro org-pdfview org-password-manager org-pandoc org-page org-outlook org-octopress org-multiple-keymap org-mobile-sync org-mac-iCal org-linkany org-link-travis org-journal org-jira org-jekyll org-if org-grep org-gnome org-gcal org-fstree org-elisp-help org-ehtml org-dropbox multi-term magit-tramp magit-topgit magit-svn magit-stgit magit-gitflow magit-gh-pulls magit-gerrit magit-find-file magit-filenotify magit-annex go-stacktracer go-snippets go-scratch go-projectile go-play go-errcheck go-dlv go-direx go-complete go-autocomplete ecb cl-generic auto-complete-c-headers auto-compile))
+   '(py-autopep8 engine-mode helm-gitlab git-commit-insert-issue helm-cscope xcscope helm-company helm-ag helm-ag-r helm-projectile helm company-quickhelp flycheck-yamllint yaml-mode flymake-json json-mode xwidgete groovy-mode elpy go-eldoc flycheck org-wunderlist org-webpage org-wc org-vcard org-trello org-tree-slide org-transform-tree-table org-toodledo org-table-comment org-sync org-screenshot org-repo-todo org-readme org-protocol-jekyll org-projectile org-present org-pomodoro org-pdfview org-password-manager org-pandoc org-page org-outlook org-octopress org-multiple-keymap org-mobile-sync org-mac-iCal org-linkany org-link-travis org-journal org-jira org-jekyll org-if org-grep org-gnome org-gcal org-fstree org-elisp-help org-ehtml org-dropbox multi-term magit-tramp magit-topgit magit-svn magit-stgit magit-gitflow magit-gh-pulls magit-gerrit magit-find-file magit-filenotify magit-annex go-stacktracer go-snippets go-scratch go-projectile go-play go-errcheck go-dlv go-direx go-complete go-autocomplete ecb cl-generic auto-complete-c-headers auto-compile))
  '(regex-tool-backend 'perl)
  '(safe-local-variable-values '((eval add-hook 'write-file-hooks 'time-stamp)))
  '(show-paren-mode t)
