@@ -91,8 +91,8 @@ t)
            (blink-cursor-mode 1)          
            (fontify-frame nil)      
            )
-     ((equal (frame-parameter frame 'name) "*terminal<1>*")
-           (message "You are in Terminal.")
+     ((equal (frame-parameter frame 'name) "My Terminal")
+           (message "You are in My Terminal.")
            (set-background-color "dimgrey")
            (set-foreground-color "white")
            (blink-cursor-mode 1)          
@@ -2985,7 +2985,8 @@ sub do" NameofMethod " {
 ;;End of Cperl-mode ==========================================================
 
 ;;Begin of cc-mode ===========================================================
-(setq load-path (cons ".emacs.d/pkgs/ccmode-5.33" load-path))
+;;(setq load-path (cons ".emacs.d/pkgs/ccmode-5.33" load-path))
+(require 'cc-mode)
 (require 'gud)
 ;;(require 'gdb-ui)
 
@@ -3090,7 +3091,6 @@ sub do" NameofMethod " {
 				   (t (grep (concat cmd "'" tagname "' *"))))))
 
 
-(require 'cc-mode)
 (c-set-offset 'inline-open 0)
 (c-set-offset 'friend '-)
 (c-set-offset 'substatement-open 0)
