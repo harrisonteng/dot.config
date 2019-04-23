@@ -91,6 +91,13 @@ t)
            (blink-cursor-mode 1)          
            (fontify-frame nil)      
            )
+     ((equal (frame-parameter frame 'name) "*terminal<1>*")
+           (message "You are in Terminal.")
+           (set-background-color "dimgrey")
+           (set-foreground-color "white")
+           (blink-cursor-mode 1)          
+           (fontify-frame nil)      
+           )     
      (
       (message "You are in Regular buffer.")          
       (set-background-color "black")
@@ -3370,6 +3377,7 @@ sub do" NameofMethod " {
 ;;;;
 ;;;;  to view diffs between 2 commits. 0: list all commits 1. cursor on commit A 2. d r 3. cursor on commit B 4. then show you dif
 ;;;;  to checkout branch 0. show remote branches b ( magit-branch-popup ) 1. b b then check it out
+;;;;  to fetch all branches f a
 ;;;;
 ;;;;(defun my-magit-status ()
 ;;;;    "Don't split window."
@@ -4390,7 +4398,7 @@ sub do" NameofMethod " {
 	(parent (file-name-directory (buffer-file-name)))
 	(owin  (selected-window))
         (buf   (window-buffer))
-        (fr    (make-frame))
+        (fr    (make-frame '((name . "My Terminal"))))
 	)
     (select-frame fr)
     (other-window 1)
