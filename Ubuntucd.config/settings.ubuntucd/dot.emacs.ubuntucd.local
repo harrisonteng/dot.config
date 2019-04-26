@@ -18,6 +18,21 @@
  "Minor mode for pseudo-structurally editing Lisp code."
 t)
 
+(unless (package-installed-p 'use-package)
+  (package-refresh-contents)
+  (package-install 'use-package))
+
+(eval-when-compile
+  (require 'use-package))
+(require 'bind-key)
+
+(setq use-package-verbose t)
+
+;; Disable lazy loading in daemon mode
+(if (daemonp)
+    (setq use-package-always-demand t))
+
+
 ;; My Information
 (setq user-full-name "Harrison Teng")
 
@@ -86,7 +101,7 @@ t)
            )
      ((equal (frame-parameter frame 'name) "My EWW")
            (message "You are in My EWW.")
-           (set-background-color "dimgrey")
+           (set-background-color "Dark Grey")
            (set-foreground-color "black")
            (blink-cursor-mode 1)          
            (fontify-frame nil)      
@@ -880,6 +895,11 @@ Version 2016-06-18"
 (setq global-undo-tree-mode t)
 
 
+;;=== Begin of ace-links ===
+(ace-link-setup-default)
+;;==========================
+
+
 
 ;;org mode
 ;;M-Enter to add a same level indent
@@ -1026,7 +1046,6 @@ Version 2016-06-18"
 ;;#+END:
 
 ;;(define-key org-mode-map "\M-q" 'toggle-truncate-lines)
-
 ;;==== End of orgmode ======
 ;; Ediff
 ;; Enable below only in the same window
@@ -1216,6 +1235,8 @@ defun harrison-zoom (n) (interactive)
 ;; To view the Subversion log type "M-x svn-log".
 ;;
 
+
+
 ;;=== Begin of EWW ===
 ;;https://writequit.org/eos/eos-web.html
 (when (load "eww" t)
@@ -1266,7 +1287,6 @@ defun harrison-zoom (n) (interactive)
 ;;  (bind-key "f" #'eww-lnum-follow eww-mode-map)
 ;;  (bind-key "U" #'eww-lnum-universal eww-mode-map)))
 )
-
 ;;=== End of EWW ===
 
 ;;=== Begin engine-mode ===
@@ -3386,6 +3406,7 @@ sub do" NameofMethod " {
 ;;;;  to view diffs between 2 commits. 0: list all commits 1. cursor on commit A 2. d r 3. cursor on commit B 4. then show you dif
 ;;;;  to checkout branch 0. show remote branches b ( magit-branch-popup ) 1. b b then check it out
 ;;;;  to fetch all branches f a
+;;;;  to fix unpulled from remote info in magit, use r u to rebase from remote, normally master
 ;;;;
 ;;;;(defun my-magit-status ()
 ;;;;    "Don't split window."
@@ -4858,7 +4879,7 @@ sub do" NameofMethod " {
  '(mumamo-chunk-coloring 1)
  '(org-agenda-files nil t)
  '(package-selected-packages
-   '(py-autopep8 engine-mode helm-gitlab git-commit-insert-issue helm-cscope xcscope helm-company helm-ag helm-ag-r helm-projectile helm company-quickhelp flycheck-yamllint yaml-mode flymake-json json-mode xwidgete groovy-mode elpy go-eldoc flycheck org-wunderlist org-webpage org-wc org-vcard org-trello org-tree-slide org-transform-tree-table org-toodledo org-table-comment org-sync org-screenshot org-repo-todo org-readme org-protocol-jekyll org-projectile org-present org-pomodoro org-pdfview org-password-manager org-pandoc org-page org-outlook org-octopress org-multiple-keymap org-mobile-sync org-mac-iCal org-linkany org-link-travis org-journal org-jira org-jekyll org-if org-grep org-gnome org-gcal org-fstree org-elisp-help org-ehtml org-dropbox multi-term magit-tramp magit-topgit magit-svn magit-stgit magit-gitflow magit-gh-pulls magit-gerrit magit-find-file magit-filenotify magit-annex go-stacktracer go-snippets go-scratch go-projectile go-play go-errcheck go-dlv go-direx go-complete go-autocomplete ecb cl-generic auto-complete-c-headers auto-compile))
+   '(use-package ace-link py-autopep8 engine-mode helm-gitlab git-commit-insert-issue helm-cscope xcscope helm-company helm-ag helm-ag-r helm-projectile helm company-quickhelp flycheck-yamllint yaml-mode flymake-json json-mode xwidgete groovy-mode elpy go-eldoc flycheck org-wunderlist org-webpage org-wc org-vcard org-trello org-tree-slide org-transform-tree-table org-toodledo org-table-comment org-sync org-screenshot org-repo-todo org-readme org-protocol-jekyll org-projectile org-present org-pomodoro org-pdfview org-password-manager org-pandoc org-page org-outlook org-octopress org-multiple-keymap org-mobile-sync org-mac-iCal org-linkany org-link-travis org-journal org-jira org-jekyll org-if org-grep org-gnome org-gcal org-fstree org-elisp-help org-ehtml org-dropbox multi-term magit-tramp magit-topgit magit-svn magit-stgit magit-gitflow magit-gh-pulls magit-gerrit magit-find-file magit-filenotify magit-annex go-stacktracer go-snippets go-scratch go-projectile go-play go-errcheck go-dlv go-direx go-complete go-autocomplete ecb cl-generic auto-complete-c-headers auto-compile))
  '(regex-tool-backend 'perl)
  '(safe-local-variable-values '((eval add-hook 'write-file-hooks 'time-stamp)))
  '(show-paren-mode t)
