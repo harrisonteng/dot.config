@@ -3404,7 +3404,8 @@ sub do" NameofMethod " {
 ;;;;Begin of magit ==== 
 ;;;;
 ;;;;  to view diffs between 2 commits. 0: list all commits 1. cursor on commit A 2. d r 3. cursor on commit B 4. then show you dif
-;;;;  to checkout branch 0. show remote branches b ( magit-branch-popup ) 1. b b then check it out
+;;;;  to checkout remote branch 0. show remote branches b ( magit-branch-popup ) 1. b b then check it out, note that this will checkout origin/blah which will caused magit status to be 'Head Undetached' since origin/blah is a wrong name per git.
+;;;;  to chekcout remote branch and create local branch 0. show remote branches b 1. b c to create it
 ;;;;  to fetch all branches f a
 ;;;;  to fix unpulled from remote info in magit, use r u to rebase from remote, normally master
 ;;;;
@@ -3428,6 +3429,7 @@ sub do" NameofMethod " {
           (other-window -1)
     )    
 )
+
 ;;;;;;;End of magit ==== 
 
 ;;;;;;;Begin of magit with Gitlab =====
