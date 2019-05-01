@@ -524,10 +524,28 @@ confirmation"
   (set-buffer ctl-buf)
   (ediff-really-quit nil))))
 
+;; Split window and new one is default to next buffer
+(defun vsplit-last-buffer ()
+  (interactive)
+  (split-window-vertically)
+  (other-window 1 nil)
+  (switch-to-next-buffer)
+  )
+(defun hsplit-last-buffer ()
+  (interactive)
+  (split-window-horizontally)
+  (other-window 1 nil)
+  (switch-to-next-buffer)
+  )
+ 
+(global-set-key (kbd "C-x 6") 'vsplit-last-buffer)
+(global-set-key (kbd "C-x 7") 'hsplit-last-buffer)
+
 ;;;; Popup win
-;;(require 'popwin)
-;;(popwin-mode 1)
-;;(global-set-key (kbd "C-z") popwin:keymap)
+;;;;(setq load-path (cons "~/.emacs.d/pkgs/popwin-el" load-path))
+;;;;(require 'popwin)
+;;;;(popwin-mode 1)
+;;;;(global-set-key (kbd "C-Z") popwin:keymap)
 
 ;; Key    | Command                               |
 ;;--------+---------------------------------------|
