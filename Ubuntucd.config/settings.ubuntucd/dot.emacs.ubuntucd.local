@@ -155,6 +155,15 @@ t)
 ;;)
 ;;
 
+(defun my/frame-create (&optional title)
+  "Create a new frame returning its internal id,
+   optionally setting TITLE as title"
+  (interactive "sNew frame name: ")
+  (progn
+    (setq my/frame-id (make-frame-command))
+    (set-frame-name title))
+    my/frame-id)
+
 
 (defun delete-single-window (&optional window)
 "Remove WINDOW from the display.  Default is `selected-window'.
@@ -328,11 +337,32 @@ If WINDOW is the only one in its frame, then `delete-frame' too."
 (setq pdb-path '/usr/lib/python2.7/pdb.py
    gud-pdb-command-name (symbol-name pdb-path))
 (defadvice pdb (before gud-query-cmdline activate)
-"Provide a better default command line when called interactively."
-(interactive
-(list (gud-query-cmdline pdb-path
-	    (file-name-nondirectory buffer-file-name)))))
+  "Provide a better default command line when called interactively."
+  (interactive
+    (list (gud-query-cmdline pdb-path
+	                     (file-name-nondirectory buffer-file-name))
+    )
+  )
+)
 
+(add-hook
+ 'pdb-mode-hook
+ '(lambda ()
+    (let (window (get_buffer_window (current_buffer)))
+      (set-window-dedicated-p (not (window-dedicated-p window))))
+  )
+)
+
+(defun python-add-breakpoint ()
+    "Add a break point"
+    (interactive)
+    (newline-and-indent)
+    (insert "import pdb; pdb.set_trace()
+    ")
+
+(highlight-lines-matching-regexp "^[ ]*import pdb; pdb.set_trace()"))
+
+(define-key python-mode-map (kbd "C-P C-b") 'python-add-breakpoint)
 
 ;;End of Python-mode ============================================================
 
@@ -1813,14 +1843,17 @@ defun harrison-zoom (n) (interactive)
 ;;    ;; text only version
 ;;    (new-frame (concat title ": " msg))))
 
-(defun my-popup (prefixarg command-name)
-(interactive (list current-prefix-arg (read-extended-command)))
-(let ((command (intern-soft command-name)))
-(unless command
-  (error "%s is not a valid command name" command-name))
-(select-frame (make-frame))
-(let ((prefix-arg prefixarg))
-  (command-execute command))))
+(defun mypopcmd (prefixarg command-name)
+  (interactive (list current-prefix-arg (read-extended-command))
+  )
+  (let ((command (intern-soft command-name)))
+  (unless command
+          (error "%s is not a valid command name" command-name))
+  (select-frame (make-frame '((unsplittable . t))))
+  (let ((prefix-arg prefixarg))
+       (command-execute command)))
+)
+(global-set-key "\C-cP" 'mypopcmd)
 
 
 ;;;;Require C-x C-c prompt. I've closed too often by accident.
@@ -3028,6 +3061,41 @@ sub do" NameofMethod " {
 (autoload 'xs-mode "xs-mode" "Major mode for XS files" t)
 (add-to-list 'auto-mode-alist '("\\.xs$" . xs-mode))
 
+(defun pdb-down-to-here (command-line)
+  "Launch perl debugger, proceeding down to current line."
+  (interactive
+   (list (read-from-minibuffer "Run perldb (like this): "
+                               (if (and (require 'gud)
+                                        (consp gud-perldb-history))
+                                   (car gud-perldb-history)
+                                 "perl ") 
+                               nil nil
+                               '(gud-perldb-history . 1))))
+  (require 'gud)
+  (make-local-variable 'gud-perldb-history)
+  (let ((buf (current-buffer))
+        (line (+ (if (bolp) 1 0)
+                 (count-lines (point-min) (point)))))
+    (save-some-buffers t)
+    (perldb command-line)               ; changes current buf
+    (while (save-excursion
+             (goto-char (point-max))
+             (beginning-of-line)
+             (not (looking-at " *DB<1>")))
+      (sit-for 1)
+      (accept-process-output)
+      (if (save-excursion
+            (goto-char (point-max))
+            (beginning-of-line 0)
+            (looking-at "Debugger exited abnormally.*"))
+          (progn
+            (pop-to-buffer buf)
+            (error (buffer-substring (match-beginning 0) (match-end 0))))))
+    (goto-char (point-max))             ; ... but doesn't do this, oddly
+    (insert "c " (number-to-string (+ line (if (bolp) 1 0))))
+    (comint-send-input)))
+
+
 ;;End of Cperl-mode ==========================================================
 
 ;;Begin of cc-mode ===========================================================
@@ -3228,7 +3296,7 @@ sub do" NameofMethod " {
 (defun mygdb ()
 (interactive)
 (ecb-deactivate)
-;;(setq gud-gdb-command-name "gdb --annotate=3") 
+(setq gud-gdb-command-name "gdb --annotate=3") 
 (call-interactively 'gdb)
 )
 ;;run the current program
