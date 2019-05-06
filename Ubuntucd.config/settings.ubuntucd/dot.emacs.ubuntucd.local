@@ -197,7 +197,14 @@ If WINDOW is the only one in its frame, then `delete-frame' too."
 
 (when (require 'elpy nil t)
 (progn
+(setq elpy-rpc-backend "jedi")
 (elpy-enable)))
+
+(defun my/python-mode-hook ()
+  (add-to-list 'company-backends 'company-jedi)
+  )
+(add-hook 'python-mode-hook 'my/python-mode-hook)
+(add-hook 'python-mode-hook 'company-quickhelp-mode)
 
 (add-hook 'elpy-mode-hook
 	(lambda ()
@@ -207,6 +214,19 @@ If WINDOW is the only one in its frame, then `delete-frame' too."
 	  (setq company-quickhelp-mode t)
 	  )
 (setq gud-pdb-command-name "python -m pdb")
+
+;;;;pip install python-magic
+;;;;wget https://www.emacswiki.org/emacs/download/python-magic.el under ~/.emacs.d/pkgs/
+;;;;Move subtree up C-c @ C-^
+;;;;Move subtree down C-c @ C-v
+;;(use-package python-magic
+;;  :ensure outline-magic
+;;  :config
+;;  (add-hook 'python-mode-hook 'my-python-outline-hook)
+;;  (add-hook 'python-mode-hook
+;;            (lambda ()
+;;              (setq outline-regexp "def\\|class ")))
+;;)
 
 ;;(setq python-shell-completion-native-enable nil)
 
@@ -4967,7 +4987,7 @@ sub do" NameofMethod " {
  '(mumamo-chunk-coloring 1)
  '(org-agenda-files nil t)
  '(package-selected-packages
-   '(use-package ace-link py-autopep8 engine-mode helm-gitlab git-commit-insert-issue helm-cscope xcscope helm-company helm-ag helm-ag-r helm-projectile helm company-quickhelp flycheck-yamllint yaml-mode flymake-json json-mode xwidgete groovy-mode elpy go-eldoc flycheck org-wunderlist org-webpage org-wc org-vcard org-trello org-tree-slide org-transform-tree-table org-toodledo org-table-comment org-sync org-screenshot org-repo-todo org-readme org-protocol-jekyll org-projectile org-present org-pomodoro org-pdfview org-password-manager org-pandoc org-page org-outlook org-octopress org-multiple-keymap org-mobile-sync org-mac-iCal org-linkany org-link-travis org-journal org-jira org-jekyll org-if org-grep org-gnome org-gcal org-fstree org-elisp-help org-ehtml org-dropbox multi-term magit-tramp magit-topgit magit-svn magit-stgit magit-gitflow magit-gh-pulls magit-gerrit magit-find-file magit-filenotify magit-annex go-stacktracer go-snippets go-scratch go-projectile go-play go-errcheck go-dlv go-direx go-complete go-autocomplete ecb cl-generic auto-complete-c-headers auto-compile))
+   '(outline-magic use-package ace-link py-autopep8 engine-mode helm-gitlab git-commit-insert-issue helm-cscope xcscope helm-company helm-ag helm-ag-r helm-projectile helm company-quickhelp flycheck-yamllint yaml-mode flymake-json json-mode xwidgete groovy-mode elpy go-eldoc flycheck org-wunderlist org-webpage org-wc org-vcard org-trello org-tree-slide org-transform-tree-table org-toodledo org-table-comment org-sync org-screenshot org-repo-todo org-readme org-protocol-jekyll org-projectile org-present org-pomodoro org-pdfview org-password-manager org-pandoc org-page org-outlook org-octopress org-multiple-keymap org-mobile-sync org-mac-iCal org-linkany org-link-travis org-journal org-jira org-jekyll org-if org-grep org-gnome org-gcal org-fstree org-elisp-help org-ehtml org-dropbox multi-term magit-tramp magit-topgit magit-svn magit-stgit magit-gitflow magit-gh-pulls magit-gerrit magit-find-file magit-filenotify magit-annex go-stacktracer go-snippets go-scratch go-projectile go-play go-errcheck go-dlv go-direx go-complete go-autocomplete ecb cl-generic auto-complete-c-headers auto-compile))
  '(regex-tool-backend 'perl)
  '(safe-local-variable-values '((eval add-hook 'write-file-hooks 'time-stamp)))
  '(show-paren-mode t)
