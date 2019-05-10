@@ -1067,3 +1067,5 @@ fi
 if [ -f ~/Downloads/dot.bashrc.harrison ]; then
     . ~/Downloads/dot.bashrc.harrison
 fi
+
+#export TERM=xterm-256color

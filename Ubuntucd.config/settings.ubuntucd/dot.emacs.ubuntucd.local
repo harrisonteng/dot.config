@@ -4523,10 +4523,29 @@ sub do" NameofMethod " {
 (global-set-key "\C-x," 'multi-term-dedicated-open)
 
 
-(defun ht-multi-term ()
-                  "Make a multi-term buffer running foo."
-                  (let ((multi-term-program "/bin/bash"))
-                    (multi-term)))
+;;(require 'multi-term)
+;;
+(defun my-multi-term ()
+  (let ((mt-buffer-name "*terminal*"))
+    (multi-term)
+    (comint-send-string (get-buffer-process mt-buffer-name) (format "cd %s\n" dir))
+    (with-current-buffer mt-buffer-name
+      (rename-buffer new-name))))
+
+(defun init-multi-term (new-name dir)
+  (let ((mt-buffer-name "*terminal*"))
+    (multi-term)
+    (comint-send-string (get-buffer-process mt-buffer-name) (format "cd %s\n" dir))
+    (with-current-buffer mt-buffer-name
+      (rename-buffer new-name))))
+
+(defun init-multi-terms ()
+  (interactive)
+  (init-multi-term "svntrunk" "/home/harrison/projects.work/repo/newSVN/FortiRobot.trunk")
+  (init-multi-term "gitmaster" "/home/harrison/projects.work/repo/GitLab/FortiRobot"))
+
+;;(setq multi-term-program "/bin/bash")
+;;(add-hook 'emacs-startup-hook 'init-multi-terms)
 
 (defun term-here ()
   "Opens up a new term in the directory associated with the current buffer's file."
@@ -4540,10 +4559,8 @@ sub do" NameofMethod " {
     (select-frame fr)
     (other-window 1)
     (multi-term)
-    ;;(term "/bin/bash")
-    (rename-buffer (concat "*term: " name "*"))
-    ;;(insert "ls -al\n")
-    ;;(term-send-input)
+    (comint-send-string (get-buffer-process "My Terminal") "export TERM=xterm-256color\n")
+    ;;(init-multi-terms)
     )
 )
 
@@ -4558,11 +4575,18 @@ sub do" NameofMethod " {
 (global-set-key (kbd "C-@") 'term-here)
 (add-hook 'term-mode-hook
           (lambda ()
-            (define-key term-raw-map (kbd "C-1") 'delete-single-window)))
+            (define-key term-raw-map (kbd "C-1") 'delete-single-window))
+            ;;(init-multi-terms)
+          )
 
-;;(add-hook 'term-mode-hook
-;;  only needed if you use autopair
-;;  #'(lambda () (setq autopair-dont-activate t)))
+(add-hook 'term-mode-hook
+  (lambda () 
+    (setq autopair-dont-activate t)
+    (setq term-default-fg-color (face-foreground 'default))
+    (setq term-default-bg-color (face-background 'default))
+    (define-key term-raw-map (kbd "C-y") 'term-paste)
+    )
+  )
 
 ;;End of multi-term ======================================================
 
