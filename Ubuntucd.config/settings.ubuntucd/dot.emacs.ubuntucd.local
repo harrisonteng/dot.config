@@ -12,6 +12,13 @@
 (setq stack-trace-on-error t)
 (load "~/.emacs.d/pkgs/subdirs")
 
+;;Melpa
+(when (>= emacs-major-version 24)
+(require 'package) ;; You might already have this line
+(add-to-list 'package-archives
+	 '("melpa" . "http://melpa.milkbox.net/packages/") t)
+)
+
 ;;(setq server-mode t)
 ;;load paredit minor mode
 (autoload 'paredit-mode "paredit"
@@ -710,12 +717,6 @@ decrease the transparency, otherwise increase it in 10%-steps"
 (global-set-key (kbd "C-0") '(lambda()(interactive)
 			   (modify-frame-parameters nil `((alpha . 100)))))
 
-;;Melpa
-(when (>= emacs-major-version 24)
-(require 'package) ;; You might already have this line
-(add-to-list 'package-archives
-	 '("melpa" . "http://melpa.org/packages/") t)
-)
 
 ;; If package-check-signature is allow-unsigned, don't
 ;; signal error when we can't verify signature because of
