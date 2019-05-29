@@ -19,6 +19,19 @@
 	 '("melpa" . "http://melpa.milkbox.net/packages/") t)
 )
 
+;;Reload a buffer
+;; Source: http://www.emacswiki.org/emacs-en/download/misc-cmds.el
+(defun ht/revert-buffer ()
+    "Revert buffer without confirmation."
+    (interactive)
+    (revert-buffer t (not (buffer-modified-p)) t)
+    )
+(global-set-key (kbd "C-x C-V") 'ht/revert-buffer)
+
+
+(use-package vterm
+      :custom (vterm-install t))
+
 ;;(setq server-mode t)
 ;;load paredit minor mode
 (autoload 'paredit-mode "paredit"
@@ -81,6 +94,37 @@ t)
 (defun fontify-frame (frame)
 (set-frame-parameter frame 'font "-DAMA-Ubuntu Mono-normal-normal-normal-*-17-*-*-*-m-0-iso10646-1"))
 
+(defun fit-window-to-buffer-width (&optional window max-width min-width)
+  "Fit WINDOW according to its buffer's width.
+WINDOW, MAX-WIDTH and MIN-WIDTH have the same meaning as in
+`fit-window-to-buffer'."
+  (interactive)
+  (let ((fit-window-to-buffer-horizontally 'only))
+    (fit-window-to-buffer window nil nil max-width min-width)))
+
+(defun fit-window-to-buffer-height (&optional window max-height min-height)
+  "Fit WINDOW according to its buffer's height.
+WINDOW, MAX-HEIGHT and MIN-HEIGHT have the same meaning as in
+`fit-window-to-buffer'."
+  (interactive)
+  (let ((fit-window-to-buffer-horizontally nil))
+    (fit-window-to-buffer window max-height min-height nil nil)))
+
+(defun fit-window-to-buffer-height-or-width
+    (&optional window max-height min-height max-width min-width)
+  "Fit WINDOW according to its buffer's height and width.
+WINDOW, MAX-HEIGHT, MIN-HEIGHT, MAX-WIDTH and MIN-WIDTH have the same meaning
+as in `fit-window-to-buffer'."
+  (interactive)
+  (let ((fit-window-to-buffer-horizontally t))
+    (fit-window-to-buffer window max-height min-height max-width min-width)))
+
+(defun ht/set-frame-width-height (arg arg1)
+   (interactive "p")
+   (set-frame-width (selected-frame) arg)
+   (set-frame-height (selected-frame) arg1)
+   )
+
 ;;Frame settings
 (defun pop-frame-new (frame)
     ;;(if (equal (frame-parameter frame 'name) "Emacs Magit Status")
@@ -119,6 +163,7 @@ t)
            (set-foreground-color "white")
            (blink-cursor-mode 1)          
            (fontify-frame nil)      
+	    (ht/set-frame-width-height 208 180)
            )     
      (
       (message "You are in Regular buffer.")          
@@ -126,6 +171,7 @@ t)
       (set-foreground-color "white")
       (blink-cursor-mode 0)
       (fontify-frame nil)      
+      (ht/set-frame-width-height 208 180)
       )
     )
 )
@@ -190,7 +236,6 @@ If WINDOW is the only one in its frame, then `delete-frame' too."
 (when (processp proc)
   (set-process-query-on-exit-flag proc nil))))
 
-(add-hook 'term-exec-hook 'set-no-process-query-on-exit)
 
 ;;Begin of Python-mode =====================================================
 ;;(require 'yasnippet)
@@ -4568,15 +4613,38 @@ sub do" NameofMethod " {
     )
 )
 
+(defun ht/vterm-here ()
+  "Opens up a new vterm in the directory associated with the current buffer's file."
+  (interactive)
+  (let* (
+	(parent (file-name-directory (buffer-file-name)))
+	(owin  (selected-window))
+        (buf   (window-buffer))
+        (fr    (make-frame '((name . "My V Terminal"))))
+	)
+    (select-frame fr)
+    (other-window 1)
+    (vterm)
+    )
+)
+
 (defun set-no-process-query-on-exit ()
   (let ((proc (get-buffer-process (current-buffer))))
     (when (processp proc)
       (set-process-query-on-exit-flag proc nil))))
 
 (add-hook 'term-exec-hook 'set-no-process-query-on-exit)
+(add-hook 'term-exec-hook (lambda ()
+            (let* ((buff (current-buffer))
+                 (proc (get-buffer-process buff)))
+            (lexical-let ((buff buff))
+               (set-process-sentinel proc (lambda (process event)
+                            (if (string= event "finished\n")
+                                       (kill-buffer buff))))))))
 
 
 (global-set-key (kbd "C-@") 'term-here)
+(global-set-key (kbd "C-#") 'ht/vterm-here)
 (add-hook 'term-mode-hook
           (lambda ()
             (define-key term-raw-map (kbd "C-1") 'delete-single-window))
@@ -5015,7 +5083,7 @@ sub do" NameofMethod " {
  '(mumamo-chunk-coloring 1)
  '(org-agenda-files nil t)
  '(package-selected-packages
-   '(company-jedi outline-magic use-package ace-link py-autopep8 engine-mode helm-gitlab git-commit-insert-issue helm-cscope xcscope helm-company helm-ag helm-ag-r helm-projectile helm company-quickhelp flycheck-yamllint yaml-mode flymake-json json-mode xwidgete groovy-mode elpy go-eldoc flycheck org-wunderlist org-webpage org-wc org-vcard org-trello org-tree-slide org-transform-tree-table org-toodledo org-table-comment org-sync org-screenshot org-repo-todo org-readme org-protocol-jekyll org-projectile org-present org-pomodoro org-pdfview org-password-manager org-pandoc org-page org-outlook org-octopress org-multiple-keymap org-mobile-sync org-mac-iCal org-linkany org-link-travis org-journal org-jira org-jekyll org-if org-grep org-gnome org-gcal org-fstree org-elisp-help org-ehtml org-dropbox multi-term magit-tramp magit-topgit magit-svn magit-stgit magit-gitflow magit-gh-pulls magit-gerrit magit-find-file magit-filenotify magit-annex go-stacktracer go-snippets go-scratch go-projectile go-play go-errcheck go-dlv go-direx go-complete go-autocomplete ecb cl-generic auto-complete-c-headers auto-compile))
+   '(vterm company-jedi outline-magic use-package ace-link py-autopep8 engine-mode helm-gitlab git-commit-insert-issue helm-cscope xcscope helm-company helm-ag helm-ag-r helm-projectile helm company-quickhelp flycheck-yamllint yaml-mode flymake-json json-mode xwidgete groovy-mode elpy go-eldoc flycheck org-wunderlist org-webpage org-wc org-vcard org-trello org-tree-slide org-transform-tree-table org-toodledo org-table-comment org-sync org-screenshot org-repo-todo org-readme org-protocol-jekyll org-projectile org-present org-pomodoro org-pdfview org-password-manager org-pandoc org-page org-outlook org-octopress org-multiple-keymap org-mobile-sync org-mac-iCal org-linkany org-link-travis org-journal org-jira org-jekyll org-if org-grep org-gnome org-gcal org-fstree org-elisp-help org-ehtml org-dropbox multi-term magit-tramp magit-topgit magit-svn magit-stgit magit-gitflow magit-gh-pulls magit-gerrit magit-find-file magit-filenotify magit-annex go-stacktracer go-snippets go-scratch go-projectile go-play go-errcheck go-dlv go-direx go-complete go-autocomplete ecb cl-generic auto-complete-c-headers auto-compile))
  '(regex-tool-backend 'perl)
  '(safe-local-variable-values '((eval add-hook 'write-file-hooks 'time-stamp)))
  '(show-paren-mode t)
