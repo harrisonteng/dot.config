@@ -29,8 +29,8 @@
 (global-set-key (kbd "C-x C-V") 'ht/revert-buffer)
 
 
-(use-package vterm
-      :custom (vterm-install t))
+;;(use-package vterm
+;;      :custom (vterm-install t))
 
 ;;(setq server-mode t)
 ;;load paredit minor mode
@@ -2270,6 +2270,29 @@ Require `font-lock'."
 		  )
 		)
 )
+
+(define-key dired-mode-map (kbd "`") 'dired-open-term)
+
+(defun dired-open-term ()
+  "Open an `multi-term' that corresponds to current directory."
+  (interactive)
+  (let* (
+         (current-dir (dired-current-directory))
+	(owin  (selected-window))
+        (buf   (window-buffer))
+        (fr    (make-frame '((name . "My Terminal"))))
+        )
+    (term-send-string
+     (select-frame fr)
+     (other-window 1)
+     (multi-term)
+     (if (file-remote-p current-dir)
+         (let ((v (tramp-dissect-file-name current-dir t)))
+           (format "ssh %s@%s\n"
+                   (aref v 1) (aref v 2)))
+       (format "cd '%s'\n" current-dir))))
+)
+
 
 ;;End of Dird Mode======================================
 
@@ -4613,20 +4636,20 @@ sub do" NameofMethod " {
     )
 )
 
-(defun ht/vterm-here ()
-  "Opens up a new vterm in the directory associated with the current buffer's file."
-  (interactive)
-  (let* (
-	(parent (file-name-directory (buffer-file-name)))
-	(owin  (selected-window))
-        (buf   (window-buffer))
-        (fr    (make-frame '((name . "My V Terminal"))))
-	)
-    (select-frame fr)
-    (other-window 1)
-    (vterm)
-    )
-)
+;;(defun ht/vterm-here ()
+;;  "Opens up a new vterm in the directory associated with the current buffer's file."
+;;  (interactive)
+;;  (let* (
+;;	(parent (file-name-directory (buffer-file-name)))
+;;	(owin  (selected-window))
+;;        (buf   (window-buffer))
+;;        (fr    (make-frame '((name . "My V Terminal"))))
+;;	)
+;;    (select-frame fr)
+;;    (other-window 1)
+;;    (vterm)
+;;    )
+;;)
 
 (defun set-no-process-query-on-exit ()
   (let ((proc (get-buffer-process (current-buffer))))
@@ -4634,22 +4657,34 @@ sub do" NameofMethod " {
       (set-process-query-on-exit-flag proc nil))))
 
 (add-hook 'term-exec-hook 'set-no-process-query-on-exit)
-(add-hook 'term-exec-hook (lambda ()
-            (let* ((buff (current-buffer))
-                 (proc (get-buffer-process buff)))
-            (lexical-let ((buff buff))
-               (set-process-sentinel proc (lambda (process event)
-                            (if (string= event "finished\n")
-                                       (kill-buffer buff))))))))
-
 
 (global-set-key (kbd "C-@") 'term-here)
-(global-set-key (kbd "C-#") 'ht/vterm-here)
+
+(defun my/kill-buffer-and-frame-or-exit (&optional arg)
+  "Kill this buffer and frame.  With only one frame, exit Emacs.
+
+When there is more than one visible frame, run `delete-frame'.
+Otherwise, exit Emacs with `save-buffers-kill-terminal' after
+confirming this with user.
+
+If a prefix ARG is supplied, ignore it in the multiple-frame
+case.  Otherwise, bypass confirmation and pass the argument to
+`save-buffers-kill-terminal'."
+  (interactive "P")
+  (cond
+   ((> (length (visible-frame-list)) 1)  (kill-this-buffer) (delete-frame))
+   ((or arg (y-or-n-p "Quit Emacs?"))    (save-buffers-kill-terminal arg))
+   (t                                    (message "Abort")))
+  )
+
 (add-hook 'term-mode-hook
           (lambda ()
             (define-key term-raw-map (kbd "C-1") 'delete-single-window))
+	    ;;below is the same as delete-single-window
+            ;;(define-key term-raw-map (kbd "C-2") 'my/kill-buffer-and-frame-or-exit)
             ;;(init-multi-terms)
           )
+
 
 (add-hook 'term-mode-hook
   (lambda () 
@@ -4659,6 +4694,8 @@ sub do" NameofMethod " {
     (define-key term-raw-map (kbd "C-y") 'term-paste)
     )
   )
+
+
 
 ;;End of multi-term ======================================================
 
@@ -5081,9 +5118,9 @@ sub do" NameofMethod " {
      (ecb-vc-dir-managed-by-MTN . ecb-vc-state)
      (ecb-vc-dir-managed-by-HG . ecb-vc-state)))
  '(mumamo-chunk-coloring 1)
- '(org-agenda-files nil t)
+ '(org-agenda-files nil)
  '(package-selected-packages
-   '(vterm company-jedi outline-magic use-package ace-link py-autopep8 engine-mode helm-gitlab git-commit-insert-issue helm-cscope xcscope helm-company helm-ag helm-ag-r helm-projectile helm company-quickhelp flycheck-yamllint yaml-mode flymake-json json-mode xwidgete groovy-mode elpy go-eldoc flycheck org-wunderlist org-webpage org-wc org-vcard org-trello org-tree-slide org-transform-tree-table org-toodledo org-table-comment org-sync org-screenshot org-repo-todo org-readme org-protocol-jekyll org-projectile org-present org-pomodoro org-pdfview org-password-manager org-pandoc org-page org-outlook org-octopress org-multiple-keymap org-mobile-sync org-mac-iCal org-linkany org-link-travis org-journal org-jira org-jekyll org-if org-grep org-gnome org-gcal org-fstree org-elisp-help org-ehtml org-dropbox multi-term magit-tramp magit-topgit magit-svn magit-stgit magit-gitflow magit-gh-pulls magit-gerrit magit-find-file magit-filenotify magit-annex go-stacktracer go-snippets go-scratch go-projectile go-play go-errcheck go-dlv go-direx go-complete go-autocomplete ecb cl-generic auto-complete-c-headers auto-compile))
+   '(company-jedi outline-magic use-package ace-link py-autopep8 engine-mode helm-gitlab git-commit-insert-issue helm-cscope xcscope helm-company helm-ag helm-ag-r helm-projectile helm company-quickhelp flycheck-yamllint yaml-mode flymake-json json-mode xwidgete groovy-mode elpy go-eldoc flycheck org-wunderlist org-webpage org-wc org-vcard org-trello org-tree-slide org-transform-tree-table org-toodledo org-table-comment org-sync org-screenshot org-repo-todo org-readme org-protocol-jekyll org-projectile org-present org-pomodoro org-pdfview org-password-manager org-pandoc org-page org-outlook org-octopress org-multiple-keymap org-mobile-sync org-mac-iCal org-linkany org-link-travis org-journal org-jira org-jekyll org-if org-grep org-gnome org-gcal org-fstree org-elisp-help org-ehtml org-dropbox multi-term magit-tramp magit-topgit magit-svn magit-stgit magit-gitflow magit-gh-pulls magit-gerrit magit-find-file magit-filenotify magit-annex go-stacktracer go-snippets go-scratch go-projectile go-play go-errcheck go-dlv go-direx go-complete go-autocomplete ecb cl-generic auto-complete-c-headers auto-compile))
  '(regex-tool-backend 'perl)
  '(safe-local-variable-values '((eval add-hook 'write-file-hooks 'time-stamp)))
  '(show-paren-mode t)
