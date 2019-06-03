@@ -580,8 +580,17 @@ candidates)
 				  "\\.elc$"
 				  "\\.pyc$"
 				  "\\.swp$") helm-boring-file-regexp-list))
-(global-set-key (kbd "C-H S") 'helm-for-files);; 
-;; End of Helm
+(global-set-key (kbd "C-H S") 'helm-for-files);;
+
+
+(use-package helm-flx
+  :custom
+  (helm-flx-for-helm-find-files t)
+  (helm-flx-for-helm-locate t)
+  :config
+  (helm-flx-mode +1))
+  
+;;=============== End of Helm================================
 
 ;;YAML
 (require 'yaml-mode)
@@ -1631,23 +1640,46 @@ defun harrison-zoom (n) (interactive)
 ;;                  tab-width 8
 ;;                  indent-tabs-mode t)
 
+
+;;==== Begin of Dired ====
+
+(use-package dired-subtree
+        :ensure t
+        :bind (:map dired-mode-map
+                    ("i" . dired-subtree-insert)
+                    (";" . dired-subtree-remove)
+                    ("<tab>" . dired-subtree-toggle)
+                    ("<backtab>" . dired-subtree-cycle)))
+
+;;narrow dired to match filter
+(use-package dired-narrow
+  :ensure t
+  :bind (:map dired-mode-map
+              ("/" . dired-narrow)))
+
+;;recursively copy
+(setq dired-recursive-copies 'always)
+(setq dired-recursive-deletes 'always)
+;;append symlink with @
+(setq dired-ls-F-marks-symlinks t)
+
+;;
+(use-package quick-preview
+  :ensure t
+  :init
+  (global-set-key (kbd "C-c q") 'quick-preview-at-point)
+  (define-key dired-mode-map (kbd "Q") 'quick-preview-at-point))
+
+;;copy between different windows in the same buffer
+(setq dired-dwim-target t)
+;;==== End of Dired ====
+
 ;;Wdired
-;;(require 'wdired nil t)
-;;(when (featurep 'wdired)
-;;  (autoload 'wdired-change-to-wdired-mode "wdired")
-;;  (define-key dired-mode-map "r" 'wdired-change-to-wdired-mode)
-;;)
-
-(require 'wdired)
-(autoload 'wdired-change-to-wdired-mode "wdired")
-(add-hook 'dired-load-hook
-      '(lambda ()
-	 (define-key dired-mode-map "r" 'wdired-change-to-wdired-mode)
-	 (define-key dired-mode-map
-	   [menu-bar immediate wdired-change-to-wdired-mode]
-	   '("Edit File Names" . wdired-change-to-wdired-mode))))
-
-
+;;Another awesome extension for Dired that's built into Emacs,
+;;this makes the dired buffer writable, you can hit C-x C-q to enter the mode,
+;;make your changes and then hit C-c C-c to apply them, or C-c ESC to discard them.
+;;(require 'wdired)
+;;(autoload 'wdired-change-to-wdired-mode "wdired")
 ;;Dir+
 ;;(require 'dired+)
 ;;
@@ -1665,8 +1697,6 @@ defun harrison-zoom (n) (interactive)
 ;;(define-key dired-mode-map [(control ?/)] 'dired-undo)
 ;;
 
-;;copy between different windows in the same buffer
-(setq dired-dwim-target t)
 
 ;;mic-paren
 (require 'mic-paren) ; loading
@@ -5118,9 +5148,9 @@ case.  Otherwise, bypass confirmation and pass the argument to
      (ecb-vc-dir-managed-by-MTN . ecb-vc-state)
      (ecb-vc-dir-managed-by-HG . ecb-vc-state)))
  '(mumamo-chunk-coloring 1)
- '(org-agenda-files nil)
+ '(org-agenda-files nil t)
  '(package-selected-packages
-   '(company-jedi outline-magic use-package ace-link py-autopep8 engine-mode helm-gitlab git-commit-insert-issue helm-cscope xcscope helm-company helm-ag helm-ag-r helm-projectile helm company-quickhelp flycheck-yamllint yaml-mode flymake-json json-mode xwidgete groovy-mode elpy go-eldoc flycheck org-wunderlist org-webpage org-wc org-vcard org-trello org-tree-slide org-transform-tree-table org-toodledo org-table-comment org-sync org-screenshot org-repo-todo org-readme org-protocol-jekyll org-projectile org-present org-pomodoro org-pdfview org-password-manager org-pandoc org-page org-outlook org-octopress org-multiple-keymap org-mobile-sync org-mac-iCal org-linkany org-link-travis org-journal org-jira org-jekyll org-if org-grep org-gnome org-gcal org-fstree org-elisp-help org-ehtml org-dropbox multi-term magit-tramp magit-topgit magit-svn magit-stgit magit-gitflow magit-gh-pulls magit-gerrit magit-find-file magit-filenotify magit-annex go-stacktracer go-snippets go-scratch go-projectile go-play go-errcheck go-dlv go-direx go-complete go-autocomplete ecb cl-generic auto-complete-c-headers auto-compile))
+   '(helm-flx company-jedi outline-magic use-package ace-link py-autopep8 engine-mode helm-gitlab git-commit-insert-issue helm-cscope xcscope helm-company helm-ag helm-ag-r helm-projectile helm company-quickhelp flycheck-yamllint yaml-mode flymake-json json-mode xwidgete groovy-mode elpy go-eldoc flycheck org-wunderlist org-webpage org-wc org-vcard org-trello org-tree-slide org-transform-tree-table org-toodledo org-table-comment org-sync org-screenshot org-repo-todo org-readme org-protocol-jekyll org-projectile org-present org-pomodoro org-pdfview org-password-manager org-pandoc org-page org-outlook org-octopress org-multiple-keymap org-mobile-sync org-mac-iCal org-linkany org-link-travis org-journal org-jira org-jekyll org-if org-grep org-gnome org-gcal org-fstree org-elisp-help org-ehtml org-dropbox multi-term magit-tramp magit-topgit magit-svn magit-stgit magit-gitflow magit-gh-pulls magit-gerrit magit-find-file magit-filenotify magit-annex go-stacktracer go-snippets go-scratch go-projectile go-play go-errcheck go-dlv go-direx go-complete go-autocomplete ecb cl-generic auto-complete-c-headers auto-compile))
  '(regex-tool-backend 'perl)
  '(safe-local-variable-values '((eval add-hook 'write-file-hooks 'time-stamp)))
  '(show-paren-mode t)
