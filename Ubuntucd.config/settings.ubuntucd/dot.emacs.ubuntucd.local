@@ -1644,7 +1644,7 @@ defun harrison-zoom (n) (interactive)
 
 
 ;;==== Begin of Dired ====
-
+;; Review file on cursor, v, q then quit
 (use-package dired-subtree
         :ensure t
         :bind (:map dired-mode-map
@@ -1705,6 +1705,7 @@ defun harrison-zoom (n) (interactive)
                                      (dired-get-filename))) t))))
            (t (error "mark no more than 2 files")))))
 (define-key dired-mode-map "=" 'ht/ediff-marked-pair)
+
 
 ;;==== End of Dired ====
 
