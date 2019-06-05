@@ -4688,7 +4688,11 @@ sub do" NameofMethod " {
   "Opens up a new term in the directory associated with the current buffer's file."
   (interactive)
   (let* (
-	(parent (file-name-directory (buffer-file-name)))
+	(parent 
+	  (if (not buffer-file-name)                     
+	         (file-name-directory "/home/harrison/.") 
+		(file-name-directory (buffer-file-name)))
+	  )
 	(owin  (selected-window))
         (buf   (window-buffer))
         (fr    (make-frame '((name . "My Terminal"))))
