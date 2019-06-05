@@ -32,6 +32,10 @@
 ;;(use-package vterm
 ;;      :custom (vterm-install t))
 
+;;Register
+;;C-x r [SPC] $char => mark
+;;C-x r j $char => go back to mark
+
 ;;(setq server-mode t)
 ;;load paredit minor mode
 (autoload 'paredit-mode "paredit"
