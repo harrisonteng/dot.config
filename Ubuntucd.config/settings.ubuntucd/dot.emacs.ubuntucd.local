@@ -52,6 +52,8 @@ t)
 
 (setq use-package-verbose t)
 
+;;isend-mode
+(use-package isend-mode)
 ;; Disable lazy loading in daemon mode
 (if (daemonp)
     (setq use-package-always-demand t))
@@ -252,9 +254,14 @@ If WINDOW is the only one in its frame, then `delete-frame' too."
 		   elpy-module-yasnippet))
 
 (when (require 'elpy nil t)
-(progn
-(setq elpy-rpc-backend "jedi")
-(elpy-enable)))
+    (progn
+        (setq elpy-rpc-backend "jedi")
+        (elpy-enable)
+        (setq python-shell-interpreter "ipython"
+            python-shell-interpreter-args "-i --simple-prompt")
+    )
+)
+
 
 (use-package company-jedi
   :ensure t)
@@ -274,6 +281,7 @@ If WINDOW is the only one in its frame, then `delete-frame' too."
 	  )
 (setq gud-pdb-command-name "python -m pdb")
 
+
 ;;;;pip install python-magic
 ;;;;wget https://www.emacswiki.org/emacs/download/python-magic.el under ~/.emacs.d/pkgs/
 ;;;;Move subtree up C-c @ C-^
@@ -291,8 +299,10 @@ If WINDOW is the only one in its frame, then `delete-frame' too."
 
 ;; elpy: mark region then elpy-shell-send-region-and-go, aka, C-c C-y R
 ;; elpy: elpy-shell-send-buffer-and-go, aka, C-c C-c
+;;       IF your script starts with __name__ eq __main__ then C-u C-c C-c
 ;;    * C-c C-d: When point is on a symbol, Elpy will try and find the documentation for that object, and display that
 ;;    http://elpy.readthedocs.io/en/latest/ide.html
+
 
 ;;Did you try Elpy? It binds elpy-goto-definition to the key M-..
 ;;If you have a recent Emacs, I think you can also jump back with xref-pop-marker-stack (M-,). 
@@ -5193,7 +5203,7 @@ case.  Otherwise, bypass confirmation and pass the argument to
  '(mumamo-chunk-coloring 1)
  '(org-agenda-files nil t)
  '(package-selected-packages
-   '(helm-flx company-jedi outline-magic use-package ace-link py-autopep8 engine-mode helm-gitlab git-commit-insert-issue helm-cscope xcscope helm-company helm-ag helm-ag-r helm-projectile helm company-quickhelp flycheck-yamllint yaml-mode flymake-json json-mode xwidgete groovy-mode elpy go-eldoc flycheck org-wunderlist org-webpage org-wc org-vcard org-trello org-tree-slide org-transform-tree-table org-toodledo org-table-comment org-sync org-screenshot org-repo-todo org-readme org-protocol-jekyll org-projectile org-present org-pomodoro org-pdfview org-password-manager org-pandoc org-page org-outlook org-octopress org-multiple-keymap org-mobile-sync org-mac-iCal org-linkany org-link-travis org-journal org-jira org-jekyll org-if org-grep org-gnome org-gcal org-fstree org-elisp-help org-ehtml org-dropbox multi-term magit-tramp magit-topgit magit-svn magit-stgit magit-gitflow magit-gh-pulls magit-gerrit magit-find-file magit-filenotify magit-annex go-stacktracer go-snippets go-scratch go-projectile go-play go-errcheck go-dlv go-direx go-complete go-autocomplete ecb cl-generic auto-complete-c-headers auto-compile))
+   '(isend-mode helm-flx company-jedi outline-magic use-package ace-link py-autopep8 engine-mode helm-gitlab git-commit-insert-issue helm-cscope xcscope helm-company helm-ag helm-ag-r helm-projectile helm company-quickhelp flycheck-yamllint yaml-mode flymake-json json-mode xwidgete groovy-mode elpy go-eldoc flycheck org-wunderlist org-webpage org-wc org-vcard org-trello org-tree-slide org-transform-tree-table org-toodledo org-table-comment org-sync org-screenshot org-repo-todo org-readme org-protocol-jekyll org-projectile org-present org-pomodoro org-pdfview org-password-manager org-pandoc org-page org-outlook org-octopress org-multiple-keymap org-mobile-sync org-mac-iCal org-linkany org-link-travis org-journal org-jira org-jekyll org-if org-grep org-gnome org-gcal org-fstree org-elisp-help org-ehtml org-dropbox multi-term magit-tramp magit-topgit magit-svn magit-stgit magit-gitflow magit-gh-pulls magit-gerrit magit-find-file magit-filenotify magit-annex go-stacktracer go-snippets go-scratch go-projectile go-play go-errcheck go-dlv go-direx go-complete go-autocomplete ecb cl-generic auto-complete-c-headers auto-compile))
  '(regex-tool-backend 'perl)
  '(safe-local-variable-values '((eval add-hook 'write-file-hooks 'time-stamp)))
  '(show-paren-mode t)
