@@ -508,6 +508,11 @@ candidates)
 (advice-add 'helm-buffers-sort-transformer :around 'helm-buffers-sort-transformer@donot-sort)
 
 ;;(when (package-installed-p 'helm)
+;;To get all functions/methods, helm-semantics
+
+;;To get helm browse project file, C-c p h
+;;To mark down entries in selction candidates, C-spc
+;;To issue an action on the selected ones, C-z, then typing copy
 
 ;;https://www.reddit.com/r/emacs/comments/7rho4f/now_you_can_use_helm_with_frames_instead_of/
 ;;With the latest Helm, you can display Helm buffers in its own frame, like a popup:
@@ -3686,6 +3691,12 @@ sub do" NameofMethod " {
           (other-window -1)
     )    
 )
+;; How to see a region's commit history ?
+;; 0. select the region 1.  So by default, if you have magit-file-mode enabled: C-c M-g l
+;; How to list the history of a function ?
+;; magit-log-trace-definition
+;; Show history of lines
+;; http://blog.shanderlam.com/text%20editor/2012/05/11/use-vc-annotate-for-finding-modification-history-of-specific-line.html, C-x v g, then cursor on the line, press d to show you the diff
 
 ;;;;;;;End of magit ==== 
 
