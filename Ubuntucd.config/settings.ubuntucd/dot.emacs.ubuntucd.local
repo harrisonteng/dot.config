@@ -5138,8 +5138,8 @@ case.  Otherwise, bypass confirmation and pass the argument to
 (add-to-list 'load-path "~/.emacs.d/elpa/ecb-20170728.1221")
 (require 'ecb)
 (setq ecb-tip-of-the-day nil)
-(global-set-key [f12] 'ecb-activate) ;;activate ecb
-(global-set-key [C-f12] 'ecb-deactivate) ;;deactivate ecb
+;;(global-set-key [f12] 'ecb-activate) ;;activate ecb
+;;(global-set-key [C-f12] 'ecb-deactivate) ;;deactivate ecb
 
 ;;(add-hook 'ecb-activate-hook (lambda () (xsteve-ecb-toggle)))
 
