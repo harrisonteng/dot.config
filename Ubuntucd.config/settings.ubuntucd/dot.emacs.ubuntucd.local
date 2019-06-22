@@ -677,10 +677,12 @@ confirmation"
 
 
 ;;;; Popup win
-;;;;(setq load-path (cons "~/.emacs.d/pkgs/popwin-el" load-path))
-;;;;(require 'popwin)
-;;;;(popwin-mode 1)
-;;;;(global-set-key (kbd "C-Z") popwin:keymap)
+;;(setq load-path (cons "~/.emacs.d/pkgs/popwin-el" load-path))
+;;(require 'popwin)
+;;(popwin-mode 1)
+;;(setq display-buffer-function 'popwin:display-buffer)
+;;(push '("^\*helm .+\*$" :regexp t) popwin:special-display-config)
+;;(push '("^\*helm-.+\*$" :regexp t) popwin:special-display-config)
 
 ;; Key    | Command                               |
 ;;--------+---------------------------------------|
