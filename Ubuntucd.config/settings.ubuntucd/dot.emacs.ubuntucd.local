@@ -585,6 +585,19 @@ candidates)
 
 )
 
+;;in search file result, Press f5 will bring up dired on that file's directory.
+;;then you can review files in that dir by cursor on the file then press Q
+(setq helm-external-programs-associations
+      (quote (
+                ("pdf"  . "mupdf")
+                ("epub" . "mupdf")
+                ("png"  . "mupdf")
+                ("rmvb" . "smplayer")
+                ("mp4"  . "smplayer")
+             )
+      )
+)
+
 ;;http://amitp.blogspot.com/2012/10/emacs-helm-for-finding-files.html
 ;;find string in the file types
 (require 'helm-files)
