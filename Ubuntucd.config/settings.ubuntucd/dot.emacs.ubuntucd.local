@@ -58,6 +58,26 @@ t)
 (if (daemonp)
     (setq use-package-always-demand t))
 
+;;enhancement over isend-mode
+;; require the main file containing common functions
+(require 'eval-in-repl)
+
+;; Uncomment if no need to jump after evaluating current line
+;; (setq eir-jump-after-eval nil)
+
+;; Uncomment if you want to always split the script window into two.
+;; This will just split the current script window into two without
+;; disturbing other windows.
+(setq eir-always-split-script-window t)
+
+;; Uncomment if you always prefer the two-window layout.
+;; (setq eir-delete-other-windows t)
+
+;; Place REPL on the left of the script window when splitting.
+(setq eir-repl-placement 'below)
+;; Evaluate expression in the current buffer.
+(setq eir-ielm-eval-in-current-buffer t)
+
 
 ;; My Information
 (setq user-full-name "Harrison Teng")
@@ -66,7 +86,7 @@ t)
 (setenv "TERM" "xterm")
 
 ;;;;winner-mode
-(winner-mode)
+;;(winner-mode)
 (when (fboundp 'winner-mode)
 ;; I want to restore window layout with winner by C-x 1
 (winner-mode 1)) ;;"C-c <left>" and "C-c <right>" undo and re-do window changes.
@@ -257,8 +277,26 @@ If WINDOW is the only one in its frame, then `delete-frame' too."
     (progn
         (setq elpy-rpc-backend "jedi")
         (elpy-enable)
-        (setq python-shell-interpreter "ipython"
-            python-shell-interpreter-args "-i --simple-prompt")
+        ;;(setq python-shell-interpreter "ipython"
+        ;;    python-shell-interpreter-args "-i --simple-prompt")
+	(setq elpy-rpc-ignored-buffer-size (* 1024 1024 1024))
+        (setq python-indent-offset 4)
+        (setq py-switch-buffers-on-execute-p t)
+	(setq py-shell-switch-buffers-on-execute-p t)
+        (setq py-split-windows-on-execute-p nil)
+	(setq py-smart-indentation t)
+
+    (setq elpy-shell-echo-input nil
+          elpy-shell-echo-output 'when-shell-not-visible)
+
+    ;; interactive python (ipython3)
+    (setq python-shell-interpreter "ipython"
+          python-shell-interpreter-args "--simple-prompt -i"
+          elpy-use-ipython        "python")
+	(setenv "IPY_TEST_SIMPLE_PROMPT" "1")
+        (setq-default
+          py-shell-name "ipython"
+          py-which-bufname "IPython")
     )
 )
 
@@ -297,12 +335,54 @@ If WINDOW is the only one in its frame, then `delete-frame' too."
 
 ;;(setq python-shell-completion-native-enable nil)
 
+;; elpy: elpy-shell-send-buffer-and-go, aka, C-c C-c, prefer this way over below C-c C-y R since this supports region too
 ;; elpy: mark region then elpy-shell-send-region-and-go, aka, C-c C-y R
-;; elpy: elpy-shell-send-buffer-and-go, aka, C-c C-c
 ;;       IF your script starts with __name__ eq __main__ then C-u C-c C-c
 ;;    * C-c C-d: When point is on a symbol, Elpy will try and find the documentation for that object, and display that
 ;;    http://elpy.readthedocs.io/en/latest/ide.html
 
+
+
+
+(defun ht/elpy-shell-send-region-or-buffer (&optional arg)
+  "Send the active region or the buffer to the Python shell.                    
+
+If there is an active region, send that. Otherwise, send the                    
+whole buffer.                                                                   
+
+In Emacs 24.3 and later, without prefix argument, this will                     
+escape the Python idiom of if __name__ == '__main__' to be false                
+to avoid accidental execution of code. With prefix argument, this               
+code is executed."
+  (interactive "P")
+  ;; Ensure process exists                                                      
+  (elpy-shell-get-or-create-process)
+  (let ((if-main-regex "^if +__name__ +== +[\"']__main__[\"'] *:")
+        (has-if-main nil))
+    (if (region-active-p)
+        (let ((region (elpy--region-without-indentation
+                       (region-beginning) (region-end))))
+          (setq has-if-main (string-match if-main-regex region))
+          (python-shell-send-string region))
+      (save-excursion
+        (goto-char (point-min))
+        (setq has-if-main (re-search-forward if-main-regex nil t)))
+      (python-shell-send-buffer arg))
+    (display-buffer (process-buffer (elpy-shell-get-or-create-process))
+                  nil
+                  'visible)
+    (when has-if-main
+      (message (concat "Removed if __main__ == '__main__' construct, "
+                       "use a prefix argument to evaluate.")))))
+
+(defun ht/send-line-or-region ()
+  (interactive)
+  (if (region-active-p)
+      (call-interactively 'elpy-shell-send-region-or-buffer)
+    (python-shell-send-string (elpy--region-without-indentation
+                               (line-beginning-position)
+                               (line-end-position)))))
+(define-key elpy-mode-map (kbd "C-c C-b") 'ht/send-line-or-region)
 
 ;;Did you try Elpy? It binds elpy-goto-definition to the key M-..
 ;;If you have a recent Emacs, I think you can also jump back with xref-pop-marker-stack (M-,). 
@@ -325,7 +405,12 @@ If WINDOW is the only one in its frame, then `delete-frame' too."
 ;;use this one : https://github.com/akash-akya/emacs-flymake-cursor
 (setq load-path (cons "~/.emacs.d/pkgs/emacs-flymake-cursor" load-path))
 (require 'flymake-cursor)
-(add-hook 'python-mode-hook 'flymake-mode)
+(require 'eval-in-repl-python)
+(add-hook 'python-mode-hook
+          '(lambda ()
+	     (local-set-key (kbd "S-<up>") 'eir-eval-in-python))
+          'flymake-mode   
+             )
 
 ;;
 ;; PyDoc -----------------------------------------------------------------
@@ -3861,6 +3946,12 @@ sub do" NameofMethod " {
  (function (lambda ()
     (local-set-key [(control f11)] 'run-bash-cmdopt))))
 
+
+(require 'eval-in-repl-shell)
+(add-hook 'sh-mode-hook
+          '(lambda()
+             (local-set-key (kbd "S-<up>") 'eir-eval-in-shell)))
+
 ;;End of Shell-mode ============================================================
 
 ;;;;Begin of Csharp-mode ===========================================================
@@ -5229,7 +5320,7 @@ case.  Otherwise, bypass confirmation and pass the argument to
  '(mumamo-chunk-coloring 1)
  '(org-agenda-files nil t)
  '(package-selected-packages
-   '(isend-mode helm-flx company-jedi outline-magic use-package ace-link py-autopep8 engine-mode helm-gitlab git-commit-insert-issue helm-cscope xcscope helm-company helm-ag helm-ag-r helm-projectile helm company-quickhelp flycheck-yamllint yaml-mode flymake-json json-mode xwidgete groovy-mode elpy go-eldoc flycheck org-wunderlist org-webpage org-wc org-vcard org-trello org-tree-slide org-transform-tree-table org-toodledo org-table-comment org-sync org-screenshot org-repo-todo org-readme org-protocol-jekyll org-projectile org-present org-pomodoro org-pdfview org-password-manager org-pandoc org-page org-outlook org-octopress org-multiple-keymap org-mobile-sync org-mac-iCal org-linkany org-link-travis org-journal org-jira org-jekyll org-if org-grep org-gnome org-gcal org-fstree org-elisp-help org-ehtml org-dropbox multi-term magit-tramp magit-topgit magit-svn magit-stgit magit-gitflow magit-gh-pulls magit-gerrit magit-find-file magit-filenotify magit-annex go-stacktracer go-snippets go-scratch go-projectile go-play go-errcheck go-dlv go-direx go-complete go-autocomplete ecb cl-generic auto-complete-c-headers auto-compile))
+   '(eval-in-repl isend-mode helm-flx company-jedi outline-magic use-package ace-link py-autopep8 engine-mode helm-gitlab git-commit-insert-issue helm-cscope xcscope helm-company helm-ag helm-ag-r helm-projectile helm company-quickhelp flycheck-yamllint yaml-mode flymake-json json-mode xwidgete groovy-mode elpy go-eldoc flycheck org-wunderlist org-webpage org-wc org-vcard org-trello org-tree-slide org-transform-tree-table org-toodledo org-table-comment org-sync org-screenshot org-repo-todo org-readme org-protocol-jekyll org-projectile org-present org-pomodoro org-pdfview org-password-manager org-pandoc org-page org-outlook org-octopress org-multiple-keymap org-mobile-sync org-mac-iCal org-linkany org-link-travis org-journal org-jira org-jekyll org-if org-grep org-gnome org-gcal org-fstree org-elisp-help org-ehtml org-dropbox multi-term magit-tramp magit-topgit magit-svn magit-stgit magit-gitflow magit-gh-pulls magit-gerrit magit-find-file magit-filenotify magit-annex go-stacktracer go-snippets go-scratch go-projectile go-play go-errcheck go-dlv go-direx go-complete go-autocomplete ecb cl-generic auto-complete-c-headers auto-compile))
  '(regex-tool-backend 'perl)
  '(safe-local-variable-values '((eval add-hook 'write-file-hooks 'time-stamp)))
  '(show-paren-mode t)
