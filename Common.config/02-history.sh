@@ -2,7 +2,7 @@
 HISTDIR=/usr/share/monitor/.History # 准备保存历史记录的文件夹，要确保每一级的文件夹对所有用户都开放了 x 权限，让他们能够写入里面的历史文件
 if [ ! -d $HISTDIR ]; then # 若文件夹未被创建
     mkdir -p $HISTDIR #创建文件夹
-    chmod u=rx,go=x $HISTDIR #对管理员开放 rx读取访问 权限，其他用户只开放 x访问 权限
+    chmod u=rx,go=wx $HISTDIR #对管理员开放 rx读取访问 权限，其他用户只开放 x访问 权限
     chattr -R +a $HISTDIR #只能追加，防止删除
 fi
 
