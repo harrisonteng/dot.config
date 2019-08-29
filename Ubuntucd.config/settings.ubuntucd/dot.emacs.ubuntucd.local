@@ -600,7 +600,7 @@ code is executed."
 
 (require 'py-autopep8)
 (add-hook 'python-mode-hook 'py-autopep8-enable-on-save)
-(setq py-autopep8-options '("--max-line-length=80")
+(setq py-autopep8-options '("--max-line-length=80 --ignore=E401,E402")
   )
 
 ;;End of py-autopep8 mode ====
@@ -1231,6 +1231,27 @@ Version 2016-06-18"
 (define-key global-map "\C-cR" 'org-do-demote)
 (setq org-log-done t)
 (setq org-support-shift-select t)
+
+(font-lock-add-keywords 'org-mode
+                    '(("\\(src_\\)\\([^[{]+\\)\\(\\[:.*\\]\\){\\([^}]*\\)}"
+                       (1 '(:foreground "black" :weight 'normal :height 10)) ; src_ part
+                       (2 '(:foreground "cyan" :weight 'bold :height 75 :underline "red")) ; "lang" part.
+                       (3 '(:foreground "#555555" :height 70)) ; [:header arguments] part.
+                       (4 'org-code) ; "code..." part.
+                       )))
+
+(defun org-fontify-inline-src-block (limit)
+  "Fontify inline source block."
+  (when (re-search-forward org-babel-inline-src-block-regexp limit t)
+    (add-text-properties
+     (match-beginning 1) (match-end 0)
+     '(font-lock-fontified t face (t (:foreground "#008ED1" :background "#FFFFEA"))))
+    (org-remove-flyspell-overlays-in (match-beginning 0) (match-end 0))
+    t))
+
+'(org-fontify-inline-src-block)
+(setq org-src-fontify-natively t)
+
 
 ;;(defun reflash-indentation ()
 ;;    "Fix org-indent issues, center line."
