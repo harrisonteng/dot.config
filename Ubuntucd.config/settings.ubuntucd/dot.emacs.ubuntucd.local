@@ -598,10 +598,10 @@ code is executed."
 ;;Begin of py-autopep8 mode ====
 ;;M-x py-autopep8-buffer: Uses the autopep8 tool to reformat the current buffer.
 
-(require 'py-autopep8)
-(add-hook 'python-mode-hook 'py-autopep8-enable-on-save)
-(setq py-autopep8-options '("--max-line-length=80 --ignore=E401,E402")
-  )
+;;(require 'py-autopep8)
+;;(add-hook 'python-mode-hook 'py-autopep8-enable-on-save)
+;;(setq py-autopep8-options '("--max-line-length=80" "--ignore=E401,E402")
+;;  )
 
 ;;End of py-autopep8 mode ====
 
