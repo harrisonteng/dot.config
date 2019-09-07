@@ -982,7 +982,8 @@ decrease the transparency, otherwise increase it in 10%-steps"
 ;;Goto line by percentage
 (global-set-key (kbd "M-;") 'harrison-goto-line-in-percentage)
 ;;Vim-style goto-line
-(global-set-key (kbd "M-g") 'goto-line)
+;;(global-set-key (kbd "C-)") 'goto-line)
+;;somehow, with helm enabled goto-line's keybinding is : M-g g
 
 ;;Copy, Cut and Paste
 (defun xah-cut-line-or-region ()
