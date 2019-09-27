@@ -18,6 +18,7 @@
 (add-to-list 'package-archives
 	 '("melpa" . "http://melpa.milkbox.net/packages/") t)
 )
+(setq package-check-signature nil)
 
 ;;Reload a buffer
 ;; Source: http://www.emacswiki.org/emacs-en/download/misc-cmds.el
@@ -719,7 +720,8 @@ candidates)
 ;;Starting with helm-filtered-bookmarks allow also to retrieve your helm-find-files bookmark in a specific section.		      
 ;;C-c h C-x C-f -> find file/urls in current dir
 ;;C-c h C-c f -> List recent files
-;;(C-u) C-c h / -> Recursively find files
+;;(C-u) C-c h / -> 2 steps, 1: press enter when you find your start dir 2. prompt to find file in that directory
+;;
 (define-key helm-map (kbd "C-z")  'helm-select-action) ; list actions using C-z
 (add-to-list 'helm-completing-read-handlers-alist '(svn-status))
 
