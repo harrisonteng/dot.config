@@ -616,8 +616,9 @@ code is executed."
 ;;Helm
 (require 'helm)
 (require 'helm-config)
-;;(require 'helm-grep)
+(require 'helm-grep)
 (require 'helm-ag)
+;;below one will display full paths in candidate window
 (require 'helm-cscope)
 ;; Enable helm-cscope-mode
 (add-hook 'c-mode-hook 'helm-cscope-mode)
@@ -633,6 +634,10 @@ code is executed."
  (define-key helm-cscope-mode-map (kbd "M-s") 'helm-cscope-select)))
 
 (helm-mode 1)
+(setq helm-ff-transformer-show-only-basename nil)
+(setq helm-ag-base-command "ag --nocolor --nogroup --ignore-case")
+(setq helm-ag-command-option "--all-text")
+(setq helm-ag-insert-at-point 'symbol)  
 
 ;; The helm-etags-select command, bound to <helm-prefix> e by default, can be used to navigate TAGS files built with etags. 
 ;; To jump to the definition of the symbol at point, invoke the command with a universal prefix (C-u <helm-prefix> e).
@@ -697,7 +702,23 @@ candidates)
 (helm-projectile-on)
 )
 
+;;(defun helm-projectile-ag-inexact ()
+;;  "Run helm-projectile-ag case-insensitive and without word boundaries."
+;;  (interactive)
+;;  (setq helm-ag-base-command "ag --nocolor --nogroup --ignore-case")
+;;  (setq helm-ag-insert-at-point nil)
+;;  (helm-projectile-ag)
+;;)
+;;(defun helm-projectile-ag-exact ()
+;;  "Run helm-projectile-ag case-sensitive and with word boundaries."
+;;  (interactive)
+;;  (setq helm-ag-base-command
+;;        "ag --nocolor --nogroup --word-regexp --case-sensitive")
+;;  (setq helm-ag-insert-at-point 'symbol)
+;;  (helm-projectile-ag)
+;;  )
 
+    
 (defun helm-do-grep-recursive (&optional non-recursive)
 "Like `helm-do-grep', but greps recursively by default."
 (interactive "P")
@@ -763,7 +784,57 @@ candidates)
   (helm-flx-for-helm-locate t)
   :config
   (helm-flx-mode +1))
-  
+
+;;;; Helm-Swoop
+;;(require 'helm-swoop)
+;;
+;;;; Change the keybinds to whatever you like :)
+;;(global-set-key (kbd "M-i") 'helm-swoop)
+;;(global-set-key (kbd "M-I") 'helm-swoop-back-to-last-point)
+;;(global-set-key (kbd "C-c M-i") 'helm-multi-swoop)
+;;(global-set-key (kbd "C-x M-i") 'helm-multi-swoop-all)
+;;
+;;;; When doing isearch, hand the word over to helm-swoop
+;;(define-key isearch-mode-map (kbd "M-i") 'helm-swoop-from-isearch)
+;;;; From helm-swoop to helm-multi-swoop-all
+;;(define-key helm-swoop-map (kbd "M-i") 'helm-multi-swoop-all-from-helm-swoop)
+;;;; When doing evil-search, hand the word over to helm-swoop
+;;;; (define-key evil-motion-state-map (kbd "M-i") 'helm-swoop-from-evil-search)
+;;
+;;;; Instead of helm-multi-swoop-all, you can also use helm-multi-swoop-current-mode
+;;(define-key helm-swoop-map (kbd "M-m") 'helm-multi-swoop-current-mode-from-helm-swoop)
+;;
+;;;; Move up and down like isearch
+;;(define-key helm-swoop-map (kbd "C-r") 'helm-previous-line)
+;;(define-key helm-swoop-map (kbd "C-s") 'helm-next-line)
+;;(define-key helm-multi-swoop-map (kbd "C-r") 'helm-previous-line)
+;;(define-key helm-multi-swoop-map (kbd "C-s") 'helm-next-line)
+;;
+;;;; Save buffer when helm-multi-swoop-edit complete
+;;(setq helm-multi-swoop-edit-save t)
+;;
+;;;; If this value is t, split window inside the current window
+;;(setq helm-swoop-split-with-multiple-windows nil)
+;;
+;;;; Split direcion. 'split-window-vertically or 'split-window-horizontally
+;;(setq helm-swoop-split-direction 'split-window-vertically)
+;;
+;;;; If nil, you can slightly boost invoke speed in exchange for text color
+;;(setq helm-swoop-speed-or-color nil)
+;;
+;;;; ;; Go to the opposite side of line from the end or beginning of line
+;;(setq helm-swoop-move-to-line-cycle t)
+;;
+;;;; Optional face for line numbers
+;;;; Face name is `helm-swoop-line-number-face`
+;;(setq helm-swoop-use-line-number-face t)
+;;
+;;;; If you prefer fuzzy matching
+;;(setq helm-swoop-use-fuzzy-match t)
+;;
+;;;; If you would like to use migemo, enable helm's migemo feature
+;;;;(helm-migemo-mode 1)
+
 ;;=============== End of Helm================================
 
 ;;YAML
@@ -5392,10 +5463,15 @@ case.  Otherwise, bypass confirmation and pass the argument to
      (ecb-vc-dir-managed-by-BZR . ecb-vc-state)
      (ecb-vc-dir-managed-by-MTN . ecb-vc-state)
      (ecb-vc-dir-managed-by-HG . ecb-vc-state)))
+ '(helm-ag-base-command "ag --nocolor --nogroup --ignore-case")
+ '(helm-ag-command-option
+   "--all-text --ignore *~ --ignore .git --ignore .idea --ignore .svn")
+ '(helm-grep-ag-command
+   "ag --line-numbers -S --hidden --ignore-case --color --nogroup %s %s %s")
  '(mumamo-chunk-coloring 1)
  '(org-agenda-files nil t)
  '(package-selected-packages
-   '(eval-in-repl isend-mode helm-flx company-jedi outline-magic use-package ace-link py-autopep8 engine-mode helm-gitlab git-commit-insert-issue helm-cscope xcscope helm-company helm-ag helm-ag-r helm-projectile helm company-quickhelp flycheck-yamllint yaml-mode flymake-json json-mode xwidgete groovy-mode elpy go-eldoc flycheck org-wunderlist org-webpage org-wc org-vcard org-trello org-tree-slide org-transform-tree-table org-toodledo org-table-comment org-sync org-screenshot org-repo-todo org-readme org-protocol-jekyll org-projectile org-present org-pomodoro org-pdfview org-password-manager org-pandoc org-page org-outlook org-octopress org-multiple-keymap org-mobile-sync org-mac-iCal org-linkany org-link-travis org-journal org-jira org-jekyll org-if org-grep org-gnome org-gcal org-fstree org-elisp-help org-ehtml org-dropbox multi-term magit-tramp magit-topgit magit-svn magit-stgit magit-gitflow magit-gh-pulls magit-gerrit magit-find-file magit-filenotify magit-annex go-stacktracer go-snippets go-scratch go-projectile go-play go-errcheck go-dlv go-direx go-complete go-autocomplete ecb cl-generic auto-complete-c-headers auto-compile))
+   '(helm-swoop eval-in-repl isend-mode helm-flx company-jedi outline-magic use-package ace-link py-autopep8 engine-mode helm-gitlab git-commit-insert-issue helm-cscope xcscope helm-company helm-ag helm-ag-r helm-projectile helm company-quickhelp flycheck-yamllint yaml-mode flymake-json json-mode xwidgete groovy-mode elpy go-eldoc flycheck org-wunderlist org-webpage org-wc org-vcard org-trello org-tree-slide org-transform-tree-table org-toodledo org-table-comment org-sync org-screenshot org-repo-todo org-readme org-protocol-jekyll org-projectile org-present org-pomodoro org-pdfview org-password-manager org-pandoc org-page org-outlook org-octopress org-multiple-keymap org-mobile-sync org-mac-iCal org-linkany org-link-travis org-journal org-jira org-jekyll org-if org-grep org-gnome org-gcal org-fstree org-elisp-help org-ehtml org-dropbox multi-term magit-tramp magit-topgit magit-svn magit-stgit magit-gitflow magit-gh-pulls magit-gerrit magit-find-file magit-filenotify magit-annex go-stacktracer go-snippets go-scratch go-projectile go-play go-errcheck go-dlv go-direx go-complete go-autocomplete ecb cl-generic auto-complete-c-headers auto-compile))
  '(regex-tool-backend 'perl)
  '(safe-local-variable-values '((eval add-hook 'write-file-hooks 'time-stamp)))
  '(show-paren-mode t)
