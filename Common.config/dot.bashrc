@@ -94,7 +94,7 @@ unset color_prompt force_color_prompt
 case "$TERM" in
 xterm*|rxvt*)
     #PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOSTNAME}: ${PWD/$HOME/~}\007"'
-	PROMPT_COMMAND='RET=$?; echo;if [ $RET != 0 ] ; then echo -ne "\E[47;31m""\033[1mRC:$RET\033[0m"; fi;'
+	#PROMPT_COMMAND='RET=$?; echo;if [ $RET != 0 ] ; then echo -ne "\E[47;31m""\033[1mRC:$RET\033[0m"; fi;'
     ;;
 *)
     ;;
