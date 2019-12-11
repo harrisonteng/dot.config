@@ -848,6 +848,7 @@ candidates)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; ediff                                                                  ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;ediff-regions-wordwise -> provide buffer A -> provide buffer B -> then prompt for Region A then ESC Ctrl C -> same for Region B -> done
 (require 'ediff)
 ;;;; don't start another frame
 ;;;; this is done by default in preluse
@@ -3910,6 +3911,7 @@ sub do" NameofMethod " {
 ;;End of cc-mode =============================================================
 
 ;;;;Begin of magit ==== 
+;; view log of the changes in the dir , cursor on the file in dired then magit-dired-log
 ;;;;
 ;;;;  to view diffs between 2 commits. 0: list all commits 1. cursor on commit A 2. d r 3. cursor on commit B 4. then show you dif
 ;;;;  to checkout remote branch 0. show remote branches b ( magit-branch-popup ) 1. b b then check it out, note that this will checkout origin/blah which will caused magit status to be 'Head Undetached' since origin/blah is a wrong name per git.
@@ -3961,10 +3963,36 @@ sub do" NameofMethod " {
 ;;;;;;(--map (insert (concat it "\n"))
 ;;;;;;(git-commit-insert-issue-github-issues-format "inkel" "github-issues.el"))
 ;;;;;;;;
-(setq gitlab-host "https://git-devops.corp.fortinet.com"
-      gitlab-token-id "Z_KgXiR9m6PUQwK749Wq"
-      gitlab-username "hteng"
-      gitlab-password "N@1nternet")
+;;(setq gitlab-host "https://git-devops.corp.fortinet.com"
+;;      gitlab-token-id "Z_KgXiR9m6PUQwK749Wq"
+;;      gitlab-username "hteng"
+;;      gitlab-password "")
+
+
+;;https://www.jayconrod.com/posts/67/emacs-run-gitblame-on-the-current-line
+(defun git-blame-line ()
+  "Runs `git blame` on the current line and
+   adds the commit id to the kill ring"
+  (interactive)
+  (let* ((line-number (save-excursion
+                        (goto-char (point-at-bol))
+                        (+ 1 (count-lines 1 (point)))))
+         (line-arg (format "%d,%d" line-number line-number))
+         (commit-buf (generate-new-buffer "*git-blame-line-commit*")))
+    (call-process "git" nil commit-buf nil 
+                  "blame" (buffer-file-name) "-L" line-arg)
+    (let* ((commit-id (with-current-buffer commit-buf
+                        (buffer-substring 1 9)))
+           (log-buf (generate-new-buffer "*git-blame-line-log*")))
+      (kill-new commit-id)
+      (call-process "git" nil log-buf nil 
+                    "log" "-1" "--pretty=%h   %an   %s" commit-id)
+      (with-current-buffer log-buf
+        (message "Line %d: %s" line-number (buffer-string)))
+      (kill-buffer log-buf))
+    (kill-buffer commit-buf)))
+
+(global-set-key [(control G)] 'git-blame-line)
 ;;;;;;;End of magit with Gitlab =====
 
 ;;;;Begin of nxhtml-mode =======================================================
@@ -5470,9 +5498,9 @@ case.  Otherwise, bypass confirmation and pass the argument to
  '(helm-grep-ag-command
    "ag --line-numbers -S --hidden --ignore-case --color --nogroup %s %s %s")
  '(mumamo-chunk-coloring 1)
- '(org-agenda-files nil)
+ '(org-agenda-files nil t)
  '(package-selected-packages
-   '(ox-pandoc ox-gfm helm-swoop eval-in-repl isend-mode helm-flx company-jedi outline-magic use-package ace-link py-autopep8 engine-mode helm-gitlab git-commit-insert-issue helm-cscope xcscope helm-company helm-ag helm-ag-r helm-projectile helm company-quickhelp flycheck-yamllint yaml-mode flymake-json json-mode xwidgete groovy-mode elpy go-eldoc flycheck org-wunderlist org-webpage org-wc org-vcard org-trello org-tree-slide org-transform-tree-table org-toodledo org-table-comment org-sync org-screenshot org-repo-todo org-readme org-protocol-jekyll org-projectile org-present org-pomodoro org-pdfview org-password-manager org-pandoc org-page org-outlook org-octopress org-multiple-keymap org-mobile-sync org-mac-iCal org-linkany org-link-travis org-journal org-jira org-jekyll org-if org-grep org-gnome org-gcal org-fstree org-elisp-help org-ehtml org-dropbox multi-term magit-tramp magit-topgit magit-svn magit-stgit magit-gitflow magit-gh-pulls magit-gerrit magit-find-file magit-filenotify magit-annex go-stacktracer go-snippets go-scratch go-projectile go-play go-errcheck go-dlv go-direx go-complete go-autocomplete ecb cl-generic auto-complete-c-headers auto-compile))
+   '(helm-projectile magit ox-pandoc ox-gfm helm-swoop eval-in-repl isend-mode helm-flx company-jedi outline-magic use-package ace-link py-autopep8 engine-mode helm-gitlab git-commit-insert-issue helm-cscope xcscope helm-company helm-ag helm-ag-r helm company-quickhelp flycheck-yamllint yaml-mode flymake-json json-mode xwidgete groovy-mode elpy go-eldoc flycheck org-wunderlist org-webpage org-wc org-vcard org-trello org-tree-slide org-transform-tree-table org-toodledo org-table-comment org-sync org-screenshot org-repo-todo org-readme org-protocol-jekyll org-projectile org-present org-pomodoro org-pdfview org-password-manager org-pandoc org-page org-outlook org-octopress org-multiple-keymap org-mobile-sync org-mac-iCal org-linkany org-link-travis org-journal org-jira org-jekyll org-if org-grep org-gnome org-gcal org-fstree org-elisp-help org-ehtml org-dropbox multi-term go-stacktracer go-snippets go-scratch go-projectile go-play go-errcheck go-dlv go-direx go-complete go-autocomplete ecb cl-generic auto-complete-c-headers auto-compile))
  '(regex-tool-backend 'perl)
  '(safe-local-variable-values '((eval add-hook 'write-file-hooks 'time-stamp)))
  '(show-paren-mode t)
