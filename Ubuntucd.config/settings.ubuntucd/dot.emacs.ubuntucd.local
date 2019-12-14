@@ -22,10 +22,13 @@
 
 ;;Reload a buffer
 ;; Source: http://www.emacswiki.org/emacs-en/download/misc-cmds.el
+;; you have to set below true to get this function work with/out a file modified and update modline
+(setq auto-revert-check-vc-info t)
 (defun ht/revert-buffer ()
     "Revert buffer without confirmation."
     (interactive)
-    (revert-buffer t (not (buffer-modified-p)) t)
+    (revert-buffer t (not (buffer-modified-p)) to)
+    ;;(revert-buffer :ignore-auto :noconfirm)
     )
 (global-set-key (kbd "C-x C-V") 'ht/revert-buffer)
 
@@ -659,6 +662,7 @@ candidates)
 ;;To get helm browse project file, C-c p h
 ;;To mark down entries in selction candidates, C-spc
 ;;To issue an action on the selected ones, C-z, then typing copy
+;;To preview file under the candidate, C-up and C-down
 
 ;;https://www.reddit.com/r/emacs/comments/7rho4f/now_you_can_use_helm_with_frames_instead_of/
 ;;With the latest Helm, you can display Helm buffers in its own frame, like a popup:
@@ -1517,10 +1521,27 @@ defun harrison-zoom (n) (interactive)
 ;;ack
 (require 'ack)
 
+;;SVC
+;; C-x v l -> list vc log
+;; C-x v g -> blame opened file line by line
+;;To get the diff buffer:
+;;C-x v = does a diff on the current file.
+;;C-x v D does a recursive diff on a directory.
+;;C-x v d brings you to a buffer will all the modified/added/untracked/etc. files in the repo. You can select them with m and diff the selected files with =.
+;;In the diff buffer:
+;;
+;;n goes to the next hunk.
+;;p goes to the previous hunk.
+;;N goes to the next file.
+;;P goes to the previous file.
+;;o goes to the source file for the current hunk.
+
+
+
+
 ;; SVN
 ;; M-x svn-status -> list all files, regardless of the status
 ;; C-x v d -> list ONLY those local-changed files
-;; C-x v g -> blame opened file line by line
 ;; _ toggle modified only/all 
 ;;psvn
 (require 'psvn)
