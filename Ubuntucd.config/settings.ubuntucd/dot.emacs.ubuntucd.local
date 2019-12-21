@@ -20,6 +20,12 @@
 )
 (setq package-check-signature nil)
 
+;;VC mode
+;;(setq auto-revert-check-vc-info t)
+;;get status of the file
+;;(vc-state (buffer-file-name (current-buffer)))
+;;get branch of the file
+;;(vc-working-revision (buffer-file-name (current-buffer)))
 ;;Reload a buffer
 ;; Source: http://www.emacswiki.org/emacs-en/download/misc-cmds.el
 ;; you have to set below true to get this function work with/out a file modified and update modline
@@ -27,8 +33,8 @@
 (defun ht/revert-buffer ()
     "Revert buffer without confirmation."
     (interactive)
-    (revert-buffer t (not (buffer-modified-p)) to)
-    ;;(revert-buffer :ignore-auto :noconfirm)
+    ;;(revert-buffer t (not (buffer-modified-p)) to)
+    (revert-buffer :ignore-auto :noconfirm)
     )
 (global-set-key (kbd "C-x C-V") 'ht/revert-buffer)
 

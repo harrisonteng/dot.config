@@ -1069,3 +1069,5 @@ if [ -f ~/Downloads/dot.bashrc.harrison ]; then
 fi
 
 #export TERM=xterm-256color
+
+complete -C /usr/local/sbin/mc mc
