@@ -16,7 +16,7 @@
 (when (>= emacs-major-version 24)
 (require 'package) ;; You might already have this line
 (add-to-list 'package-archives
-	 '("melpa" . "http://melpa.milkbox.net/packages/") t)
+	 '("melpa" . "http://melpa.org/packages/") t)
 )
 (setq package-check-signature nil)
 
@@ -707,26 +707,28 @@ candidates)
 
 ;;; -----------------------------
 ;;; helm-projectile
+;;; C-c p g find file in the project workspace under the cursor
+;;; C-c p b switch opened buffers with helm-projectfile
 (when (package-installed-p 'helm-projectile)
 (projectile-global-mode)
 (helm-projectile-on)
 )
 
-;;(defun helm-projectile-ag-inexact ()
-;;  "Run helm-projectile-ag case-insensitive and without word boundaries."
-;;  (interactive)
-;;  (setq helm-ag-base-command "ag --nocolor --nogroup --ignore-case")
-;;  (setq helm-ag-insert-at-point nil)
-;;  (helm-projectile-ag)
-;;)
-;;(defun helm-projectile-ag-exact ()
-;;  "Run helm-projectile-ag case-sensitive and with word boundaries."
-;;  (interactive)
-;;  (setq helm-ag-base-command
-;;        "ag --nocolor --nogroup --word-regexp --case-sensitive")
-;;  (setq helm-ag-insert-at-point 'symbol)
-;;  (helm-projectile-ag)
-;;  )
+(defun helm-projectile-ag-inexact ()
+  "Run helm-projectile-ag case-insensitive and without word boundaries."
+  (interactive)
+  (setq helm-ag-base-command "ag --nocolor --nogroup --ignore-case")
+  (setq helm-ag-insert-at-point nil)
+  (helm-projectile-ag)
+)
+(defun helm-projectile-ag-exact ()
+  "Run helm-projectile-ag case-sensitive and with word boundaries."
+  (interactive)
+  (setq helm-ag-base-command
+        "ag --nocolor --nogroup --word-regexp --case-sensitive")
+  (setq helm-ag-insert-at-point 'symbol)
+  (helm-projectile-ag)
+  )
 
     
 (defun helm-do-grep-recursive (&optional non-recursive)
@@ -864,7 +866,7 @@ candidates)
 ;;;; this is done by default in preluse
 ;;(setq ediff-window-setup-function 'ediff-setup-windows-plain)
 ;;revert windows on exit - needs winner mode
-;;(add-hook 'ediff-after-quit-hook-internal 'winner-undo)
+(add-hook 'ediff-after-quit-hook-internal 'winner-undo)
 ;; put windows side by side
 (setq ediff-split-window-function 'split-window-horizontally)
 
